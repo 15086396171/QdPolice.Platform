@@ -121,9 +121,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Source\Platform-zh-CN.xml" />
+    <EmbeddedResource Include="Localization\Source\Platform.xml" />
     <EmbeddedResource Include="Localization\Source\Platform-tr.xml" />
-    <EmbeddedResource Include="Localization\Source\Platform.xml">
+    <EmbeddedResource Include="Localization\Source\Platform-en.xml">
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Localization\Source\Platform-lt.xml" />

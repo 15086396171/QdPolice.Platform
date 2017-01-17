@@ -21,7 +21,7 @@ namespace Vickn.Platform.Web.Controllers
 
         public string GetCultureName()
         {
-            return Thread.CurrentThread.CurrentUICulture.DisplayName;
+            return Thread.CurrentThread.CurrentUICulture.DisplayName +"\r\n"+ Thread.CurrentThread.CurrentUICulture.Name;
             //Thread.CurrentThread.CurrentUICulture = new CultureInfo();
         }
     }

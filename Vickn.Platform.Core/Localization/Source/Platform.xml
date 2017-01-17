@@ -4,7 +4,7 @@
     <text name="HomePage" value="Home page21" />
     <text name="About" value="About" />
     <text name="WellcomeMessage" value="Welcome to Platform!" />
-    
+
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant name can not be empty" />
 
@@ -53,5 +53,6 @@
     <text name="Yes" value="Yes" />
     <text name="No" value="No" />
     <text name="Optional" value="Optional" />
+
   </texts>
 </localizationDictionary>
