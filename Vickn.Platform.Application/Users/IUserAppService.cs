@@ -11,6 +11,10 @@ namespace Vickn.Platform.Users
 
         Task RemoveFromRole(long userId, string roleName);
 
+        /// <summary>
+        /// 获取用户列表
+        /// </summary>
+        /// <returns></returns>
         Task<ListResultDto<UserListDto>> GetUsers();
 
         Task CreateUser(CreateUserInput input);
