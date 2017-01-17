@@ -15,7 +15,7 @@ using Vickn.Platform.Users;
 
 namespace Vickn.Platform.MultiTenancy
 {
-    [AbpAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpAuthorize(AppPermissions.Pages_Tenants)]
     public class TenantAppService : PlatformAppServiceBase, ITenantAppService
     {
         private readonly TenantManager _tenantManager;

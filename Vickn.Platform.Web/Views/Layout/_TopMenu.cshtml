@@ -27,7 +27,7 @@
                 <dd>
                     <ul>
                         @foreach (var subMenuItem in menuItem.Items)
-                {
+                        {
                             <li><a data-href="@subMenuItem.Url" data-title="@subMenuItem.DisplayName" href="javascript:void(0)">@subMenuItem.DisplayName</a></li>
                         }
                     </ul>
@@ -36,3 +36,4 @@
         }
     </div>
 </aside>
+<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>

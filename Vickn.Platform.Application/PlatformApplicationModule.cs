@@ -1,6 +1,7 @@
 ﻿using System.Reflection;
 using Abp.AutoMapper;
 using Abp.Modules;
+using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform
 {
@@ -14,6 +15,8 @@ namespace Vickn.Platform
                 //Add your custom AutoMapper mappings here...
                 //mapper.CreateMap<,>()
             });
+
+            Configuration.Authorization.Providers.Add<UserAppAuthorizationProvider>();
         }
 
         public override void Initialize()

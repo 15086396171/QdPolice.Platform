@@ -1,91 +1,72 @@
 ﻿@using Abp.Authorization.Users
 @using Abp.Web.Mvc.Extensions
-@model Abp.Application.Services.Dto.ListResultDto<Vickn.Platform.Users.Dto.UserListDto>
+@model Abp.Application.Services.Dto.ListResultDto<Vickn.Platform.Users.Dtos.UserListDto>
 @{
+    ViewBag.Menu = "用户管理";
+    ViewBag.SecMenu = "用户管理";
+    ViewBag.tableTitle = "用户列表";
+    ViewBag.createBtn = "添加用户";
+    ViewBag.editBtn = "编辑用户";
+
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }
-@section scripts
-{
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+
+<div class="page-container">
+
+    <div class="text-c">
+        <input type="text" class="input-text" style="width: 250px" placeholder="输入管理员名称" id="" name="">
+        <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+    </div>
+    <div class="cl pd-5 bg-1 bk-gray mt-20">
+        <span class="l">
+            <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="javascript:;" class="btn btn-primary radius btn-create" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
+                <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
+            </a>
+        </span> <span class="r">共有数据：<strong>@Model.Items.Count</strong> 条</span>
+    </div>
+    <table class="table table-border table-bordered table-bg">
+        <thead>
+            <tr>
+                <th scope="col" colspan="9">@ViewBag.tableTitle</th>
+            </tr>
+            <tr class="text-c">
+                <th width="25"><input type="checkbox" name="" value=""></th>
+                <th>姓名</th>
+                <th>登录名</th>
+                <th>显示名</th>
+                <th>邮箱</th>
+                <th>电话号码</th>
+                <th>是否启用</th>
+                <th>上次登录时间</th>
+                <th>操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.Items)
+            {
+                <tr class="text-c">
+                    <td><input type="checkbox" value="1" name=""></td>
+                    <td>@item.Name</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Surname</td>
+                    <td>@item.EmailAddress</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@Html.Raw((item.IsActive ? "<span class='label label-success radius'>已启用</span>" : "<span class='label label-warning radius'>已禁用</span>"))</td>
+                    <td class="td-status">@item.LastLoginTime</td>
+                    <td class="td-manage">
+                        <a style="text-decoration: none" onClick="admin_stop(this, '10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>
+                        <a title="编辑" href="javascript:;" class="ml-5 btn-create" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                        <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+@section scripts{
     @Html.IncludeScript("~/Views/Users/Index.js")
+    <script></script>
 }
-<div>
-    <h1>@L("Users")</h1>
-    <div class="row">
-        <div class="col-md-12">
-            <button data-toggle="modal" data-target="#UserCreateModal" class="btn btn-primary pull-right"><i class="fa fa-plus"></i> @L("CreateNewUser")</button>
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th>@L("UserName")</th>
-                        <th>@L("FullName")</th>
-                        <th>@L("EmailAddress")</th>
-                        <th>@L("IsActive")</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var user in Model.Items)
-                    {
-                        <tr>
-                            <td>@user.UserName</td>
-                            <td>@user.FullName</td>
-                            <td>@user.EmailAddress</td>
-                            <td>@L(user.IsActive ? "Yes" : "No")</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="modal fade" id="UserCreateModal" tabindex="-1" role="dialog" aria-labelledby="UserCreateModalLabel" data-backdrop="static">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <form name="userCreateForm" role="form" novalidate class="form-validation">
-                <div class="modal-header">
-                    <h4 class="modal-title">
-                        <span>@L("CreateNewUser")</span>
-                    </h4>
-                </div>
-                <div class="modal-body">
-
-                    <div class="form-group">
-                        <label>@L("UserName")</label>
-                        <input class="form-control" type="text" name="UserName" required maxlength="@AbpUserBase.MaxUserNameLength" minlength="2">
-                    </div>
-
-                    <div class="form-group">
-                        <label>@L("Name")</label>
-                        <input type="text" name="Name" class="form-control" required maxlength="@Vickn.Platform.Users.User.MaxNameLength">
-                    </div>
-
-                    <div class="form-group">
-                        <label>@L("Surname")</label>
-                        <input type="text" name="Surname" class="form-control" required maxlength="@Vickn.Platform.Users.User.MaxSurnameLength">
-                    </div>
-
-                    <div class="form-group">
-                        <label>@L("EmailAddress")</label>
-                        <input type="email" name="EmailAddress" class="form-control" maxlength="@AbpUserBase.MaxEmailAddressLength">
-                    </div>
-
-                    <div class="form-group">
-                        <label>@L("Password")</label>
-                        <input type="password" name="Password" class="form-control" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
-                    </div>
-
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" name="IsActive" value="true" value="true" checked="checked"> @L("IsActive")
-                        </label>
-                    </div>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">@L("Cancel")</button>
-                    <button type="submit" class="btn btn-primary blue"><i class="fa fa-save"></i> <span>@L("Save")</span></button>
-                </div>
-            </form>
-        </div>
-    </div>
-</div>

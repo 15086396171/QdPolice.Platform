@@ -49,28 +49,30 @@
             <script>DD_belatedPNG.fix('*');</script>
             <![endif]-->
 </head>
-<body >
-    @RenderBody()
+<body>
+    <div>
+        @RenderBody()
+    </div>
 
-@Scripts.Render("~/Bundles/vendor/js/bottom")
-@Scripts.Render("~/Bundles/js")
+    @Scripts.Render("~/Bundles/vendor/js/bottom")
+    @Scripts.Render("~/Bundles/js")
 
-<script>
-    //Localizing momentjs
-
+    <script>
+        //Localizing momentjs
+      
     moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
-    //moment.locale('zh-CN');
-</script>
+        //moment.locale('zh-CN');
+    </script>
 
-<!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
-<script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
-<script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
+    <!-- Dynamic scripts of ABP system (They are created on runtime and can not be bundled) -->
+    <script src="~/api/AbpServiceProxies/GetAll?v=@(Clock.Now.Ticks)"></script>
+    <script src="~/AbpScripts/GetScripts?v=@(Clock.Now.Ticks)" type="text/javascript"></script>
 
-<!-- SignalR scripts -->
-<script src="~/signalr/hubs"></script>
-@Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
+    <!-- SignalR scripts -->
+    <script src="~/signalr/hubs"></script>
+    @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
 
-<!-- View specific scripts -->
-@RenderSection("scripts", required: false)
+    <!-- View specific scripts -->
+    @RenderSection("scripts", required: false)
 </body>
 </html>

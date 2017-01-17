@@ -9,16 +9,16 @@ namespace Vickn.Platform.Authorization
         public override void SetPermissions(IPermissionDefinitionContext context)
         {
             //Common permissions
-            var pages = context.GetPermissionOrNull(PermissionNames.Pages);
+            var pages = context.GetPermissionOrNull(AppPermissions.Pages);
             if (pages == null)
             {
-                pages = context.CreatePermission(PermissionNames.Pages, L("Pages"));
+                pages = context.CreatePermission(AppPermissions.Pages, L("Pages"));
             }
 
-            var users = pages.CreateChildPermission(PermissionNames.Pages_Users, L("Users"));
+            var users = pages.CreateChildPermission(AppPermissions.Pages_Users, L("Users"));
 
             //Host permissions
-            var tenants = pages.CreateChildPermission(PermissionNames.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
+            var tenants = pages.CreateChildPermission(AppPermissions.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }
 
         private static ILocalizableString L(string name)

@@ -121,7 +121,12 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Roles\IRoleAppService.cs" />
     <Compile Include="Roles\Dto\UpdateRolePermissionsInput.cs" />
-    <Compile Include="Users\Dto\CreateUserInput.cs" />
+    <Compile Include="Users\Dtos\CreateOrUpdateUserInput.cs" />
+    <Compile Include="Users\Dtos\GetUserForEditOutput.cs" />
+    <Compile Include="Users\Dtos\GetUserInput.cs" />
+    <Compile Include="Users\Dtos\UserEditDto.cs" />
+    <Compile Include="Users\Dtos\UserListDto.cs" />
+    <Compile Include="Users\Dtos\CreateUserInput.cs" />
     <Compile Include="Users\IUserAppService.cs" />
     <Compile Include="Roles\RoleAppService.cs" />
     <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
@@ -129,9 +134,8 @@
     <Compile Include="Sessions\Dto\UserLoginInfoDto.cs" />
     <Compile Include="Sessions\ISessionAppService.cs" />
     <Compile Include="Sessions\SessionAppService.cs" />
-    <Compile Include="Users\Dto\ProhibitPermissionInput.cs" />
+    <Compile Include="Users\Dtos\ProhibitPermissionInput.cs" />
     <Compile Include="Users\UserAppService.cs" />
-    <Compile Include="Users\Dto\UserListDto.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

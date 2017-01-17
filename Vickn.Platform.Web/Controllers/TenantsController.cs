@@ -5,7 +5,7 @@ using Vickn.Platform.MultiTenancy;
 
 namespace Vickn.Platform.Web.Controllers
 {
-    [AbpMvcAuthorize(PermissionNames.Pages_Tenants)]
+    [AbpMvcAuthorize(AppPermissions.Pages_Tenants)]
     public class TenantsController : PlatformControllerBase
     {
         private readonly ITenantAppService _tenantAppService;

@@ -21,7 +21,7 @@ namespace Vickn.Platform.Web
                         L("Tenants"),
                         url: "Tenants",
                         icon: "fa fa-globe",
-                        requiredPermissionName: PermissionNames.Pages_Tenants
+                        requiredPermissionName: AppPermissions.Pages_Tenants
                         ))
 
                 .AddItem(
@@ -30,7 +30,7 @@ namespace Vickn.Platform.Web
                         L("Users"),
                         url: "Users",
                         icon: "fa fa-users",
-                        requiredPermissionName: PermissionNames.Pages_Users
+                        requiredPermissionName: AppPermissions.Pages_Users
                         )
                         .AddItem(
                     new MenuItemDefinition(
@@ -38,7 +38,7 @@ namespace Vickn.Platform.Web
                         L("Users"),
                         url: "Users",
                         icon: "fa fa-users",
-                        requiredPermissionName: PermissionNames.Pages_Users
+                        requiredPermissionName: AppPermissions.Pages_Users
                         ))
                           )
                 .AddItem(

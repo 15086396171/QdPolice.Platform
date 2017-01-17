@@ -2481,12 +2481,6 @@
     <Content Include="Content\H-ui.admin_v2.5\static\h-ui\js\H-ui.js" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
-    <Content Include="css\main.css">
-      <DependentUpon>main.less</DependentUpon>
-    </Content>
-    <Content Include="css\main.min.css">
-      <DependentUpon>main.css</DependentUpon>
-    </Content>
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="H-ui.admin_v2.5\404.html" />
     <Content Include="H-ui.admin_v2.5\admin-add.html" />
@@ -4772,11 +4766,8 @@
     <Content Include="images\abp-logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
+    <Content Include="js\crud.js" />
     <Content Include="js\main.js" />
-    <Content Include="css\main.less" />
-    <Content Include="css\main.css.map">
-      <DependentUpon>main.css</DependentUpon>
-    </Content>
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
@@ -5986,6 +5977,8 @@
     <Content Include="Views\Users\Index.cshtml" />
     <Content Include="Views\Layout\_TopMenu - 复制.cshtml" />
     <Content Include="Views\Home\Welcome.cshtml" />
+    <Content Include="Views\Shared\_IndexLayout.cshtml" />
+    <Content Include="Views\Users\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -6032,6 +6025,7 @@
     <Folder Include="H-ui.admin_v2.5\template\picture\" />
     <Folder Include="H-ui.admin_v2.5\template\product\" />
     <Folder Include="H-ui.admin_v2.5\template\shop\" />
+    <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

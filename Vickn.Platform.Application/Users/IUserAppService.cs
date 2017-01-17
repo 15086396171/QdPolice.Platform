@@ -1,7 +1,9 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Vickn.Platform.Users.Dto;
+using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Users
 {
@@ -18,5 +20,55 @@ namespace Vickn.Platform.Users
         Task<ListResultDto<UserListDto>> GetUsers();
 
         Task CreateUser(CreateUserInput input);
+
+        #region 用户管理管理
+
+        /// <summary>
+        /// 根据查询条件获取用户管理分页列表
+        /// </summary>
+        Task<PagedResultDto<UserListDto>> GetPagedUsersAsync(GetUserInput input);
+
+        /// <summary>
+        /// 通过Id获取用户管理信息进行编辑或修改 
+        /// </summary>
+        Task<GetUserForEditOutput> GetUserForEditAsync(NullableIdDto<long> input);
+
+        /// <summary>
+        /// 通过指定id获取用户管理ListDto信息
+        /// </summary>
+        Task<UserListDto> GetUserByIdAsync(EntityDto<long> input);
+
+
+
+        /// <summary>
+        /// 新增或更改用户管理
+        /// </summary>
+        Task CreateOrUpdateUserAsync(CreateOrUpdateUserInput input);
+
+
+
+
+
+        /// <summary>
+        /// 新增用户管理
+        /// </summary>
+        Task<UserEditDto> CreateUserAsync(UserEditDto input);
+
+        /// <summary>
+        /// 更新用户管理
+        /// </summary>
+        Task UpdateUserAsync(UserEditDto input);
+
+        /// <summary>
+        /// 删除用户管理
+        /// </summary>
+        Task DeleteUserAsync(EntityDto<long> input);
+
+        /// <summary>
+        /// 批量删除用户管理
+        /// </summary>
+        Task BatchDeleteUserAsync(List<long> input);
+
+        #endregion
     }
 }
