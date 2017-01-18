@@ -38,13 +38,12 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         [HttpPost]
-        [DisableAbpAntiForgeryTokenValidation]
         public async Task<ActionResult> Create(UserEditDto dto)
         {
             if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
                 return View(dto);
 
-            await _userAppService.CreateOrUpdateUserAsync(new CreateOrUpdateUserInput() { UserEditDto = dto });
+            await _userAppService.CreateOrUpdateUserAsync(new CreateOrUpdateUserInput { UserEditDto = dto });
             //return Content("<script>parent.location.reload()</script>");
             return CreateResult;
         }
