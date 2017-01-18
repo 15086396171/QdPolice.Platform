@@ -1,0 +1,16 @@
+﻿/*
+ * 自定义验证样式
+*/
+.input-validation-error {
+    background-color: #fbe2e2;
+    border-color: #c66161;
+    color: #c00;
+}
+
+.field-validation-error {
+    position: absolute;
+    right: 18px;
+    top: 5px;
+    color: #ef392b;
+    font-size: 12px;
+}

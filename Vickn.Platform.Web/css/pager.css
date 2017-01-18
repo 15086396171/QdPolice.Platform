@@ -1,4 +1,7 @@
-﻿.pager-default .page-content {
+﻿/*
+  * 自定义分页样式
+*/
+.pager-default .page-content {
     float: right;
     text-align: right;
 }

@@ -14,6 +14,7 @@ using Abp.Auditing;
 using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using Abp.Extensions;
+using Vickn.PlatfForm.Utils;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Users.Dtos
@@ -51,6 +52,7 @@ namespace Vickn.Platform.Users.Dtos
         [DisplayName("电话号码.")]
         [Required]
         [MaxLength(20)]
+        [RegularExpression(RegularConst.PhoneRegularExpression,ErrorMessage = RegularConst.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -63,6 +65,8 @@ namespace Vickn.Platform.Users.Dtos
         /// 电子邮件
         /// </summary>
         [DisplayName("电子邮件")]
+        [Required]
+        [RegularExpression(RegularConst.EmailRegularExpression,ErrorMessage = RegularConst.EmailErrorMsg)]
         public string EmailAddress { get; set; }
 
         [DisplayName("是否启用")]

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using System.Text;
 using Abp.Application.Services.Dto;
 
-namespace Vickn.PlatfForm.Utils
+namespace Vickn.PlatfForm.Utils.Pager
 {
     /// <summary>
     /// ULR拼装

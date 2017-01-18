@@ -144,6 +144,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
+      <Project>{AFA147E0-7E8E-4832-9193-6161D90180FD}</Project>
+      <Name>Vickn.PlatfForm.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vickn.Platform.Core\Vickn.Platform.Core.csproj">
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Vickn.Platform.Core</Name>

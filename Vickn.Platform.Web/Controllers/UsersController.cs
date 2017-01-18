@@ -7,6 +7,7 @@ using Abp.Application.Services.Dto;
 using Abp.Web.Mvc.Authorization;
 using Abp.Web.Security.AntiForgery;
 using Vickn.PlatfForm.Utils;
+using Vickn.PlatfForm.Utils.Pager;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Dtos;
