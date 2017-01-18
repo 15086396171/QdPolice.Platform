@@ -1,13 +1,15 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
+using Vickn.PlatfForm.Utils.Pager;
 
 namespace Vickn.Platform.Dtos
 {
     /// <summary>
     /// 表示分页排序的Dto基类
     /// </summary>
-    public class PagedAndSortedInputDto : IPagedResultRequest, ISortedResultRequest
+    public class PagedAndSortedInputDto : IPagedResultRequest, IPagerInBase, ISortedResultRequest
     {
+
         /// <summary>
         /// Sorting information.
         ///             Should include sorting field and optionally a direction (ASC or DESC)
@@ -27,6 +29,7 @@ namespace Vickn.Platform.Dtos
         public PagedAndSortedInputDto()
         {
             MaxResultCount = PlatformConsts.DefaultPageSize;
+            PageIndex = 1;
         }
 
         /// <summary>
@@ -39,8 +42,12 @@ namespace Vickn.Platform.Dtos
         /// Skip count (beginning of the page).
         /// </summary>
         [Range(0, int.MaxValue)]
-        public int SkipCount { get; set; }
+        public int SkipCount
+        {
+            get { return (PageIndex-1) * MaxResultCount; }
+            set { }
+        }
 
-
+        public int PageIndex { get; set; }
     }
 }

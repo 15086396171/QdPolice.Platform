@@ -27,13 +27,13 @@ namespace Vickn.PlatfForm.Utils.Pager
         /// <param name="pagedResultDto">页面显示Dto</param>
         /// <param name="pagedResultRequest">分页排序的Dto</param>
         /// <returns></returns>
-        public static PagerResult<T,TInput> ToPagedList<T,TInput>(this PagedResultDto<T> pagedResultDto, TInput pagedResultRequest) where TInput:IPagedResultRequest
+        public static PagerResult<T,TInput> ToPagedList<T,TInput>(this PagedResultDto<T> pagedResultDto, TInput pagedResultRequest) where TInput:IPagedResultRequest,IPagerInBase
         {
             return new PagerResult<T,TInput>()
             {
                 DataList = pagedResultDto.Items,
                 TotalCount = pagedResultDto.TotalCount,
-                PageIndex = pagedResultRequest.SkipCount * pagedResultRequest.MaxResultCount,
+                PageIndex = pagedResultRequest.PageIndex,
                 PageSize = pagedResultRequest.MaxResultCount    ,
                 Input = pagedResultRequest
             };
