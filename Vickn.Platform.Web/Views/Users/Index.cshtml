@@ -1,5 +1,4 @@
-﻿@using Abp.Authorization.Users
-@using Abp.Web.Mvc.Extensions
+﻿@using Abp.Web.Mvc.Extensions
 @model Abp.Application.Services.Dto.ListResultDto<Vickn.Platform.Users.Dtos.UserListDto>
 @{
     ViewBag.Menu = "用户管理";
@@ -10,7 +9,7 @@
 
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页 <span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 
 <div class="page-container">
 
@@ -20,7 +19,7 @@
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
-            <a href="javascript:;" onclick="datadel()" class="btn btn-danger radius"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+            <a href="javascript:;" class="btn btn-danger radius btn-delAll" data-url="@Url.Action("BatchDelete")"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
             <a href="javascript:;" class="btn btn-primary radius btn-create" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
                 <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
             </a>
@@ -32,7 +31,7 @@
                 <th scope="col" colspan="9">@ViewBag.tableTitle</th>
             </tr>
             <tr class="text-c">
-                <th width="25"><input type="checkbox" name="" value=""></th>
+                <th width="25"><input type="checkbox"></th>
                 <th>姓名</th>
                 <th>登录名</th>
                 <th>显示名</th>
@@ -47,7 +46,7 @@
             @foreach (var item in Model.Items)
             {
                 <tr class="text-c">
-                    <td><input type="checkbox" value="1" name=""></td>
+                    <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
                     <td>@item.Name</td>
                     <td>@item.UserName</td>
                     <td>@item.Surname</td>
@@ -58,7 +57,7 @@
                     <td class="td-manage">
                         <a style="text-decoration: none" onClick="admin_stop(this, '10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>
                         <a title="编辑" href="javascript:;" class="ml-5 btn-create" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                        <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                        <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-url="@Url.Action("Delete",new {id=item.Id})"><i class="Hui-iconfont">&#xe6e2;</i></a>
                     </td>
                 </tr>
             }

@@ -140,21 +140,26 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 新增用户管理
         /// </summary>
-        [AbpAuthorize(UserAppPermissions.User_CreateUser)]
         public virtual async Task<UserEditDto> CreateUserAsync(UserEditDto input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
 
-            var entity = input.MapTo<User>();
+            var user = input.MapTo<User>();
 
-            entity = await _userRepository.InsertAsync(entity);
-            return entity.MapTo<UserEditDto>();
+            user.TenantId = AbpSession.TenantId;
+            user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
+            user.IsEmailConfirmed = true;
+            // 默认启用
+            user.IsActive = true;
+
+            CheckErrors(await UserManager.CreateAsync(user));
+
+            return input;
         }
 
         /// <summary>
         /// 编辑用户管理
         /// </summary>
-        [AbpAuthorize(UserAppPermissions.User_EditUser)]
         public virtual async Task UpdateUserAsync(UserEditDto input)
         {
             //TODO:更新前的逻辑判断，是否允许更新
@@ -168,7 +173,6 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 删除用户管理
         /// </summary>
-        [AbpAuthorize(UserAppPermissions.User_DeleteUser)]
         public async Task DeleteUserAsync(EntityDto<long> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
@@ -178,7 +182,6 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 批量删除用户管理
         /// </summary>
-        [AbpAuthorize(UserAppPermissions.User_DeleteUser)]
         public async Task BatchDeleteUserAsync(List<long> input)
         {
             //TODO:批量删除前的逻辑判断，是否允许删除

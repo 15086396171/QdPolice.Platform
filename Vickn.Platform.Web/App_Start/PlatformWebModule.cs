@@ -2,6 +2,7 @@
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Abp.Configuration.Startup;
 using Abp.Hangfire;
 using Abp.Hangfire.Configuration;
 using Abp.Zero.Configuration;
@@ -29,6 +30,8 @@ namespace Vickn.Platform.Web
 
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<PlatformNavigationProvider>();
+
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>

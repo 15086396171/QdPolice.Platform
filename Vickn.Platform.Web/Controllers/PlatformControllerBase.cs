@@ -1,4 +1,5 @@
-﻿using Abp.IdentityFramework;
+﻿using System.Web.Mvc;
+using Abp.IdentityFramework;
 using Abp.UI;
 using Abp.Web.Mvc.Controllers;
 using Microsoft.AspNet.Identity;
@@ -10,6 +11,8 @@ namespace Vickn.Platform.Web.Controllers
     /// </summary>
     public abstract class PlatformControllerBase : AbpController
     {
+        protected static readonly ActionResult CreateResult = new ContentResult() {Content = "<script>parent.location.reload()</script>"};
+
         protected PlatformControllerBase()
         {
             LocalizationSourceName = PlatformConsts.LocalizationSourceName;
@@ -27,5 +30,7 @@ namespace Vickn.Platform.Web.Controllers
         {
             identityResult.CheckErrors(LocalizationManager);
         }
-    }
+
+       
+}
 }
