@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Text;
+using Abp.Application.Services.Dto;
 
 namespace Vickn.PlatfForm.Utils
 {
@@ -16,17 +17,44 @@ namespace Vickn.PlatfForm.Utils
         }
     }
 
+
+    public static class PagedResultRequestExtension
+    {
+        /// <summary>
+        /// 返回分页列表
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <typeparam name="TInput"></typeparam>
+        /// <param name="pagedResultDto">页面显示Dto</param>
+        /// <param name="pagedResultRequest">分页排序的Dto</param>
+        /// <returns></returns>
+        public static PagerResult<T,TInput> ToPagedList<T,TInput>(this PagedResultDto<T> pagedResultDto, TInput pagedResultRequest) where TInput:IPagedResultRequest
+        {
+            return new PagerResult<T,TInput>()
+            {
+                DataList = pagedResultDto.Items,
+                TotalCount = pagedResultDto.TotalCount,
+                PageIndex = pagedResultRequest.SkipCount * pagedResultRequest.MaxResultCount,
+                PageSize = pagedResultRequest.MaxResultCount    ,
+                Input = pagedResultRequest
+            };
+        }
+    }
+
+
     /// <summary>
-    /// 分页核心代码
+    /// 分页列表
     /// </summary>
     /// <typeparam name="T"></typeparam>
-    public class PagerResult<T>
+    /// <typeparam name="TInput"></typeparam>
+    public class PagerResult<T,TInput> where TInput:IPagedResultRequest
     {
-        public int Code { get; set; }
-        public int Total { get; set; }
+        public int TotalCount { get; set; }
         public IEnumerable<T> DataList { get; set; }
         public int PageSize { get; set; }
         public int PageIndex { get; set; }
+
+        public TInput Input { get; set; }
         public string RequestUrl { get; set; } = System.Web.HttpContext.Current.Request.Url.OriginalString;
 
         /// <summary>
@@ -43,10 +71,10 @@ namespace Vickn.PlatfForm.Utils
 
             var html = new StringBuilder();
             html.AppendFormat("<div class='{0}'>", cssClass);
-            html.AppendFormat("<span class='page-info'>第{0}页/共{1}页</span>", PageIndex,Math.Ceiling((decimal)Total / PageSize));
+            html.AppendFormat("<span class='page-info'>第{0}页/共{1}页</span>", PageIndex, Math.Ceiling((decimal)TotalCount / PageSize));
 
             html.AppendFormat("<div class='page-content'>", cssClass);
-            var pageLen = Math.Ceiling((double)Total / PageSize);
+            var pageLen = Math.Ceiling((double)TotalCount / PageSize);
             html.AppendFormat("<a href='{0}' class='page-button page-index'> 首页 </a>", RequestUrl.GetUrl(PageIndex, 1));
             html.AppendFormat("<a href='{0}' class='page-button page-previous'> 上一页 </a>", RequestUrl.GetUrl(PageIndex, PageIndex < 2 ? 1 : PageIndex - 1));
 
@@ -62,7 +90,7 @@ namespace Vickn.PlatfForm.Utils
             html.AppendFormat("<a href='{0}' class='page-button page-next' > 下一页 </a>", RequestUrl.GetUrl(PageIndex, (int)(PageIndex > pageLen - 1 ? pageLen : PageIndex + 1)));
 
             html.AppendFormat("<a href='{0}' class='page-button page-last'> 尾页 </a>",
-                Math.Abs(Total) <= 0
+                Math.Abs(TotalCount) <= 0
                 ? RequestUrl.GetUrl(PageIndex, 1)
                 : RequestUrl.GetUrl(PageIndex, (int)pageLen));
 

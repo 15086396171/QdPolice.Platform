@@ -3868,3 +3868,329 @@ DEBUG 2017-01-18 21:40:49,620 [95   ] Abp.Web.SignalR.Hubs.AbpCommonHub        -
 DEBUG 2017-01-18 21:40:51,040 [92   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: edb67d71-f949-46f4-90fb-2f7b59cb11ec
 DEBUG 2017-01-18 21:40:51,290 [24   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"18197ea0-8f4c-43ea-b1aa-c81a655ae82b","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:40:51.2900737+08:00","Properties":{}}
 DEBUG 2017-01-18 21:40:51,294 [30   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 18197ea0-8f4c-43ea-b1aa-c81a655ae82b
+DEBUG 2017-01-18 21:41:20,135 [6    ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-01-18 21:41:20,135 [6    ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:41:20,136 [6    ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:41:20,136 [6    ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-01-18 21:41:22,824 [58   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 21:41:22,833 [58   ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 21:41:22,837 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Web.PlatformWebModule, Vickn.Platform.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,838 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformDataModule, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,838 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,838 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,838 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformCoreModule, Vickn.Platform.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformApplicationModule, Vickn.Platform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Api.PlatformWebApiModule, Vickn.Platform.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,839 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,840 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,840 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,840 [58   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:22,842 [58   ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 21:41:22,978 [58   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:41:22,978 [58   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:41:22,978 [58   ] o.Configuration.LanguageManagementConfig - Converted Platform (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:41:22,978 [58   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:41:23,241 [58   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Vickn.Platform.EntityFramework.PlatformDbContext, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:41:23,577 [58   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 21:41:23,580 [58   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 21:41:23,662 [58   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 21:41:23,664 [58   ] Abp.Localization.LocalizationManager     - Initialized localization source: Platform
+DEBUG 2017-01-18 21:41:23,665 [58   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 21:41:23,712 [58   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:41:23,744 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-01-18 21:41:23,744 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserEditDto
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserListDto
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 21:41:23,747 [58   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 21:41:24,647 [58   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-01-18 21:41:24,648 [58   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 21:41:24,649 [58   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 21:41:24,650 [58   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-01-18 21:41:25,453 [92   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:25.4149191+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:25,453 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"df908474-4213-4641-ba06-09668b81eb79","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:25.4149191+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:25,453 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"18197ea0-8f4c-43ea-b1aa-c81a655ae82b","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:25.4149191+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:30,148 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 18197ea0-8f4c-43ea-b1aa-c81a655ae82b
+DEBUG 2017-01-18 21:41:30,594 [24   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"42c6527c-6f2d-414e-933d-97962a41b0c0","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:30.594468+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:30,615 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 42c6527c-6f2d-414e-933d-97962a41b0c0
+DEBUG 2017-01-18 21:41:33,886 [65   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 42c6527c-6f2d-414e-933d-97962a41b0c0
+DEBUG 2017-01-18 21:41:34,164 [65   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"62be07af-706e-4a40-82cd-62382f097030","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:34.1644908+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:34,174 [109  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 62be07af-706e-4a40-82cd-62382f097030
+DEBUG 2017-01-18 21:41:35,284 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 62be07af-706e-4a40-82cd-62382f097030
+DEBUG 2017-01-18 21:41:35,514 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"2047053d-2263-4650-b69f-84c209f2ddf9","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:35.5144482+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:35,522 [81   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 2047053d-2263-4650-b69f-84c209f2ddf9
+DEBUG 2017-01-18 21:41:38,261 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 2047053d-2263-4650-b69f-84c209f2ddf9
+DEBUG 2017-01-18 21:41:38,544 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"94b79b39-11bc-4852-b442-80ae7be4012c","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:38.5438431+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:38,552 [109  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 94b79b39-11bc-4852-b442-80ae7be4012c
+DEBUG 2017-01-18 21:41:45,499 [99   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 94b79b39-11bc-4852-b442-80ae7be4012c
+DEBUG 2017-01-18 21:41:45,751 [24   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"72f46b06-651a-4216-949f-89d6ad7b3138","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:45.7507679+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:45,754 [109  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 72f46b06-651a-4216-949f-89d6ad7b3138
+DEBUG 2017-01-18 21:41:47,236 [95   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 72f46b06-651a-4216-949f-89d6ad7b3138
+DEBUG 2017-01-18 21:41:47,477 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"4c82dc82-5017-4451-a065-c0b0409a7905","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:47.4770641+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:47,491 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 4c82dc82-5017-4451-a065-c0b0409a7905
+DEBUG 2017-01-18 21:41:48,087 [81   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 4c82dc82-5017-4451-a065-c0b0409a7905
+DEBUG 2017-01-18 21:41:48,308 [24   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"b1aef87d-7ba2-4d01-ba75-385e913de351","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:48.3073167+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:48,316 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: b1aef87d-7ba2-4d01-ba75-385e913de351
+DEBUG 2017-01-18 21:41:49,658 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: b1aef87d-7ba2-4d01-ba75-385e913de351
+DEBUG 2017-01-18 21:41:49,903 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"62b29cdd-1d97-46fd-881d-f8b57315246c","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:41:49.9028859+08:00","Properties":{}}
+DEBUG 2017-01-18 21:41:49,910 [65   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 62b29cdd-1d97-46fd-881d-f8b57315246c
+DEBUG 2017-01-18 21:42:37,703 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 62b29cdd-1d97-46fd-881d-f8b57315246c
+DEBUG 2017-01-18 21:42:38,129 [95   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"aaa26336-087e-492c-99c1-73c33e28e551","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:42:38.1296073+08:00","Properties":{}}
+DEBUG 2017-01-18 21:42:38,134 [12   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: aaa26336-087e-492c-99c1-73c33e28e551
+DEBUG 2017-01-18 21:42:39,292 [24   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: aaa26336-087e-492c-99c1-73c33e28e551
+DEBUG 2017-01-18 21:42:39,550 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"10179e78-ad6a-4ddb-a33b-9228ee24b9ae","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:42:39.5496444+08:00","Properties":{}}
+DEBUG 2017-01-18 21:42:39,556 [65   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 10179e78-ad6a-4ddb-a33b-9228ee24b9ae
+DEBUG 2017-01-18 21:42:40,609 [6    ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 10179e78-ad6a-4ddb-a33b-9228ee24b9ae
+DEBUG 2017-01-18 21:42:40,918 [82   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"878861ab-f2d3-4c22-a6e4-0da883fde6cd","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:42:40.9183219+08:00","Properties":{}}
+DEBUG 2017-01-18 21:42:40,926 [31   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 878861ab-f2d3-4c22-a6e4-0da883fde6cd
+DEBUG 2017-01-18 21:43:32,537 [107  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 878861ab-f2d3-4c22-a6e4-0da883fde6cd
+DEBUG 2017-01-18 21:43:32,955 [95   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"2b61addf-6760-4942-94e1-0166fd4ea523","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:43:32.9552972+08:00","Properties":{}}
+DEBUG 2017-01-18 21:43:32,973 [65   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 2b61addf-6760-4942-94e1-0166fd4ea523
+DEBUG 2017-01-18 21:43:41,843 [95   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 2b61addf-6760-4942-94e1-0166fd4ea523
+DEBUG 2017-01-18 21:43:42,123 [81   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"34d9c4ce-017a-4dd2-be41-1ae965d8a685","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:43:42.1228621+08:00","Properties":{}}
+DEBUG 2017-01-18 21:43:42,126 [92   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 34d9c4ce-017a-4dd2-be41-1ae965d8a685
+DEBUG 2017-01-18 21:43:43,573 [78   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 34d9c4ce-017a-4dd2-be41-1ae965d8a685
+DEBUG 2017-01-18 21:43:43,831 [92   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"adb8ff7e-895d-4db4-9026-31b71238ca89","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:43:43.8308841+08:00","Properties":{}}
+DEBUG 2017-01-18 21:43:43,835 [114  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: adb8ff7e-895d-4db4-9026-31b71238ca89
+DEBUG 2017-01-18 21:56:02,726 [68   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-01-18 21:56:02,726 [68   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:02,727 [68   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:02,727 [68   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-01-18 21:56:05,576 [14   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 21:56:05,586 [14   ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 21:56:05,589 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Web.PlatformWebModule, Vickn.Platform.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,590 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformDataModule, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformCoreModule, Vickn.Platform.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformApplicationModule, Vickn.Platform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,591 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Api.PlatformWebApiModule, Vickn.Platform.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,592 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:05,594 [14   ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 21:56:05,683 [14   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:05,683 [14   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:05,683 [14   ] o.Configuration.LanguageManagementConfig - Converted Platform (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:05,683 [14   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:05,970 [14   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Vickn.Platform.EntityFramework.PlatformDbContext, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:06,299 [14   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 21:56:06,302 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 21:56:06,304 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 21:56:06,305 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: Platform
+DEBUG 2017-01-18 21:56:06,305 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 21:56:06,358 [14   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:06,399 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-01-18 21:56:06,399 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 21:56:06,402 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 21:56:06,402 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 21:56:06,403 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserEditDto
+DEBUG 2017-01-18 21:56:06,403 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserListDto
+DEBUG 2017-01-18 21:56:06,403 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 21:56:06,403 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 21:56:06,403 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 21:56:07,339 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-01-18 21:56:07,340 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 21:56:07,341 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 21:56:07,342 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-01-18 21:56:08,067 [97   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"adb8ff7e-895d-4db4-9026-31b71238ca89","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:08.0267953+08:00","Properties":{}}
+DEBUG 2017-01-18 21:56:08,067 [105  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:08.0267953+08:00","Properties":{}}
+DEBUG 2017-01-18 21:56:08,068 [29   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"df908474-4213-4641-ba06-09668b81eb79","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:08.0267953+08:00","Properties":{}}
+DEBUG 2017-01-18 21:56:08,713 [73   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-01-18 21:56:08,714 [73   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:08,714 [73   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:08,714 [73   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-01-18 21:56:11,367 [14   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 21:56:11,376 [14   ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 21:56:11,379 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Web.PlatformWebModule, Vickn.Platform.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,381 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformDataModule, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,381 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,381 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,381 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformCoreModule, Vickn.Platform.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformApplicationModule, Vickn.Platform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Api.PlatformWebApiModule, Vickn.Platform.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,382 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,383 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,383 [14   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:11,385 [14   ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 21:56:11,515 [14   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:11,515 [14   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:11,515 [14   ] o.Configuration.LanguageManagementConfig - Converted Platform (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:11,515 [14   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 21:56:11,768 [14   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Vickn.Platform.EntityFramework.PlatformDbContext, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 21:56:12,082 [14   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 21:56:12,085 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 21:56:12,087 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 21:56:12,088 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: Platform
+DEBUG 2017-01-18 21:56:12,088 [14   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 21:56:12,133 [14   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 21:56:12,166 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-01-18 21:56:12,166 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 21:56:12,168 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 21:56:12,168 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 21:56:12,169 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserEditDto
+DEBUG 2017-01-18 21:56:12,169 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserListDto
+DEBUG 2017-01-18 21:56:12,169 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 21:56:12,169 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 21:56:12,169 [14   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 21:56:13,106 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-01-18 21:56:13,107 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 21:56:13,108 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 21:56:13,109 [14   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-01-18 21:56:13,894 [89   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:13.8564392+08:00","Properties":{}}
+DEBUG 2017-01-18 21:56:13,895 [69   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"df908474-4213-4641-ba06-09668b81eb79","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:13.8564392+08:00","Properties":{}}
+DEBUG 2017-01-18 21:56:13,895 [29   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"adb8ff7e-895d-4db4-9026-31b71238ca89","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T21:56:13.8559395+08:00","Properties":{}}
+DEBUG 2017-01-18 22:00:22,413 [39   ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-01-18 22:00:22,413 [39   ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:00:22,414 [39   ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:00:22,414 [39   ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-01-18 22:00:25,061 [41   ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 22:00:25,063 [41   ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 22:00:25,066 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Web.PlatformWebModule, Vickn.Platform.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,066 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformDataModule, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,066 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformCoreModule, Vickn.Platform.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformApplicationModule, Vickn.Platform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,067 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Api.PlatformWebApiModule, Vickn.Platform.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,068 [41   ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,070 [41   ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 22:00:25,180 [41   ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:00:25,180 [41   ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:00:25,180 [41   ] o.Configuration.LanguageManagementConfig - Converted Platform (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:00:25,180 [41   ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:00:25,432 [41   ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Vickn.Platform.EntityFramework.PlatformDbContext, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:00:25,685 [41   ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 22:00:25,686 [41   ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 22:00:25,688 [41   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 22:00:25,689 [41   ] Abp.Localization.LocalizationManager     - Initialized localization source: Platform
+DEBUG 2017-01-18 22:00:25,690 [41   ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 22:00:25,734 [41   ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:00:25,753 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-01-18 22:00:25,753 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 22:00:25,753 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserEditDto
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserListDto
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 22:00:25,754 [41   ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 22:00:26,621 [41   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-01-18 22:00:26,622 [41   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 22:00:26,623 [41   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 22:00:26,624 [41   ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+DEBUG 2017-01-18 22:00:27,310 [79   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"df908474-4213-4641-ba06-09668b81eb79","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:00:27.3025726+08:00","Properties":{}}
+DEBUG 2017-01-18 22:00:27,310 [48   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d","IpAddress":"127.0.0.1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:00:27.3020723+08:00","Properties":{}}
+DEBUG 2017-01-18 22:00:27,315 [71   ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"adb8ff7e-895d-4db4-9026-31b71238ca89","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:00:27.3145795+08:00","Properties":{}}
+DEBUG 2017-01-18 22:12:38,647 [146  ] Abp.Modules.AbpModuleManager             - Shutting down has been started
+DEBUG 2017-01-18 22:12:38,647 [146  ] Abp.BackgroundJobs.BackgroundJobManager  - Stop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:12:38,647 [146  ] Abp.BackgroundJobs.BackgroundJobManager  - WaitToStop background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:12:38,647 [146  ] Abp.Modules.AbpModuleManager             - Shutting down completed.
+DEBUG 2017-01-18 22:12:41,839 [116  ] Abp.Modules.AbpModuleManager             - Loading Abp modules...
+DEBUG 2017-01-18 22:12:41,849 [116  ] Abp.Modules.AbpModuleManager             - Found 15 ABP modules in total.
+DEBUG 2017-01-18 22:12:41,855 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Web.PlatformWebModule, Vickn.Platform.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,856 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformDataModule, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,856 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.EntityFramework.AbpZeroEntityFrameworkModule, Abp.Zero.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,856 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Zero.AbpZeroCoreModule, Abp.Zero, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,856 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AbpKernelModule, Abp, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.EntityFramework.AbpEntityFrameworkModule, Abp.EntityFramework, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformCoreModule, Vickn.Platform.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.PlatformApplicationModule, Vickn.Platform.Application, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.AutoMapper.AbpAutoMapperModule, Abp.AutoMapper, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Vickn.Platform.Api.PlatformWebApiModule, Vickn.Platform.WebApi, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.WebApi.AbpWebApiModule, Abp.Web.Api, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebModule, Abp.Web, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.AbpWebCommonModule, Abp.Web.Common, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,857 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.SignalR.AbpWebSignalRModule, Abp.Web.SignalR, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,858 [116  ] Abp.Modules.AbpModuleManager             - Loaded module: Abp.Web.Mvc.AbpWebMvcModule, Abp.Web.Mvc, Version=1.2.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:41,860 [116  ] Abp.Modules.AbpModuleManager             - 15 modules loaded.
+DEBUG 2017-01-18 22:12:41,996 [116  ] o.Configuration.LanguageManagementConfig - Converted Abp (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:12:41,996 [116  ] o.Configuration.LanguageManagementConfig - Converted AbpZero (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:12:41,996 [116  ] o.Configuration.LanguageManagementConfig - Converted Platform (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:12:41,996 [116  ] o.Configuration.LanguageManagementConfig - Converted AbpWeb (Abp.Localization.Dictionaries.DictionaryBasedLocalizationSource) to MultiTenantLocalizationSource
+DEBUG 2017-01-18 22:12:42,275 [116  ] EntityFramework.AbpEntityFrameworkModule - Registering DbContext: Vickn.Platform.EntityFramework.PlatformDbContext, Vickn.Platform.EntityFramework, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+DEBUG 2017-01-18 22:12:43,054 [116  ] Abp.Localization.LocalizationManager     - Initializing 4 localization sources.
+DEBUG 2017-01-18 22:12:43,060 [116  ] Abp.Localization.LocalizationManager     - Initialized localization source: Abp
+DEBUG 2017-01-18 22:12:43,062 [116  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpZero
+DEBUG 2017-01-18 22:12:43,064 [116  ] Abp.Localization.LocalizationManager     - Initialized localization source: Platform
+DEBUG 2017-01-18 22:12:43,066 [116  ] Abp.Localization.LocalizationManager     - Initialized localization source: AbpWeb
+DEBUG 2017-01-18 22:12:43,118 [116  ] Abp.BackgroundJobs.BackgroundJobManager  - Start background worker: Abp.BackgroundJobs.BackgroundJobManager
+DEBUG 2017-01-18 22:12:43,151 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Found 8 classes define auto mapping attributes
+DEBUG 2017-01-18 22:12:43,151 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.TenantLoginInfoDto
+DEBUG 2017-01-18 22:12:43,154 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Sessions.Dto.UserLoginInfoDto
+DEBUG 2017-01-18 22:12:43,154 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dto.CreateUserInput
+DEBUG 2017-01-18 22:12:43,155 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserEditDto
+DEBUG 2017-01-18 22:12:43,155 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Users.Dtos.UserListDto
+DEBUG 2017-01-18 22:12:43,155 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.CreateTenantInput
+DEBUG 2017-01-18 22:12:43,155 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.MultiTenancy.Dto.TenantListDto
+DEBUG 2017-01-18 22:12:43,155 [116  ] Abp.AutoMapper.AbpAutoMapperModule       - Vickn.Platform.Web.Models.Account.TenantSelectionViewModel+TenantInfo
+DEBUG 2017-01-18 22:12:44,333 [116  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Sessions.ISessionAppService' with service name 'app/session'.
+DEBUG 2017-01-18 22:12:44,334 [116  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Users.IUserAppService' with service name 'app/user'.
+DEBUG 2017-01-18 22:12:44,335 [116  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.Roles.IRoleAppService' with service name 'app/role'.
+DEBUG 2017-01-18 22:12:44,336 [116  ] Abp.Logging.LogHelper                    - Dynamic web api controller is created for type 'Vickn.Platform.MultiTenancy.ITenantAppService' with service name 'app/tenant'.
+ERROR 2017-01-18 22:12:44,655 [144  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - Can not find IP address of the client! connectionId: b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d
+ERROR 2017-01-18 22:12:44,655 [144  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - 值不在预期的范围内。
+System.ArgumentException: 值不在预期的范围内。
+   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Web.Hosting.IIS7WorkerRequest.GetServerVariableInternal(String name)
+   在 System.Web.Hosting.IIS7WorkerRequest.GetServerVariable(String name)
+   在 System.Web.HttpRequest.FillInServerVariablesCollection()
+   在 System.Web.HttpServerVarsCollection.Populate()
+   在 System.Web.HttpServerVarsCollection.Get(String name)
+   在 Microsoft.Owin.Host.SystemWeb.OwinCallContext.Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.IPropertySource.GetServerRemoteIpAddress()
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.get_ServerRemoteIpAddress()
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.PropertiesTryGetValue(String key, Object& value)
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.System.Collections.Generic.IDictionary<System.String,System.Object>.get_Item(String key)
+   在 Abp.Web.SignalR.Hubs.AbpCommonHub.GetIpAddressOfClient() 位置 D:\Halil\Github\aspnetboilerplate\src\Abp.Web.SignalR\Web\SignalR\Hubs\AbpCommonHub.cs:行号 102
+ERROR 2017-01-18 22:12:44,655 [162  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - Can not find IP address of the client! connectionId: adb8ff7e-895d-4db4-9026-31b71238ca89
+ERROR 2017-01-18 22:12:44,659 [162  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - 值不在预期的范围内。
+System.ArgumentException: 值不在预期的范围内。
+   在 System.Runtime.InteropServices.Marshal.ThrowExceptionForHRInternal(Int32 errorCode, IntPtr errorInfo)
+   在 System.Web.Hosting.IIS7WorkerRequest.GetServerVariableInternal(String name)
+   在 System.Web.Hosting.IIS7WorkerRequest.GetServerVariable(String name)
+   在 System.Web.HttpRequest.FillInServerVariablesCollection()
+   在 System.Web.HttpServerVarsCollection.Populate()
+   在 System.Web.HttpServerVarsCollection.Get(String name)
+   在 Microsoft.Owin.Host.SystemWeb.OwinCallContext.Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.IPropertySource.GetServerRemoteIpAddress()
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.get_ServerRemoteIpAddress()
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.PropertiesTryGetValue(String key, Object& value)
+   在 Microsoft.Owin.Host.SystemWeb.CallEnvironment.AspNetDictionary.System.Collections.Generic.IDictionary<System.String,System.Object>.get_Item(String key)
+   在 Abp.Web.SignalR.Hubs.AbpCommonHub.GetIpAddressOfClient() 位置 D:\Halil\Github\aspnetboilerplate\src\Abp.Web.SignalR\Web\SignalR\Hubs\AbpCommonHub.cs:行号 102
+DEBUG 2017-01-18 22:12:44,681 [162  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"adb8ff7e-895d-4db4-9026-31b71238ca89","IpAddress":"","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:12:44.6613907+08:00","Properties":{}}
+DEBUG 2017-01-18 22:12:44,681 [144  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected (on reconnected event): {"ConnectionId":"b6341fc0-8fe0-4f4f-8323-ede1edfd0c4d","IpAddress":"","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:12:44.6613907+08:00","Properties":{}}
+DEBUG 2017-01-18 22:12:50,267 [157  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"9b426cf9-3df9-47f9-ab8c-3595ebb3196f","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:12:50.2666611+08:00","Properties":{}}
+DEBUG 2017-01-18 22:12:50,285 [151  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 9b426cf9-3df9-47f9-ab8c-3595ebb3196f
+DEBUG 2017-01-18 22:13:12,547 [150  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: 9b426cf9-3df9-47f9-ab8c-3595ebb3196f
+DEBUG 2017-01-18 22:13:13,278 [156  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"28ab4035-7b6f-4078-8b8e-72e1d509cb0a","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:13:13.2781199+08:00","Properties":{}}
+DEBUG 2017-01-18 22:13:13,294 [141  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 28ab4035-7b6f-4078-8b8e-72e1d509cb0a
+DEBUG 2017-01-18 22:13:13,295 [157  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"fa7e1d79-b01a-4c91-8d9f-8b49f21587cf","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:13:13.2956324+08:00","Properties":{}}
+DEBUG 2017-01-18 22:13:13,299 [153  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: fa7e1d79-b01a-4c91-8d9f-8b49f21587cf
+DEBUG 2017-01-18 22:13:18,314 [161  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"afd7304b-622e-4898-8262-60a8373367bd","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:13:18.3138755+08:00","Properties":{}}
+DEBUG 2017-01-18 22:13:18,318 [150  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: afd7304b-622e-4898-8262-60a8373367bd
+DEBUG 2017-01-18 22:13:20,529 [149  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is disconnected: afd7304b-622e-4898-8262-60a8373367bd
+DEBUG 2017-01-18 22:13:20,872 [156  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is connected: {"ConnectionId":"33f1ff05-39c8-4184-a8b4-9a99f0cf37da","IpAddress":"::1","TenantId":1,"UserId":2,"ConnectTime":"2017-01-18T22:13:20.8724164+08:00","Properties":{}}
+DEBUG 2017-01-18 22:13:20,883 [155  ] Abp.Web.SignalR.Hubs.AbpCommonHub        - A client is registered: 33f1ff05-39c8-4184-a8b4-9a99f0cf37da

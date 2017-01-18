@@ -1,5 +1,5 @@
 ﻿@using Abp.Web.Mvc.Extensions
-@model Vickn.PlatfForm.Utils.PagerResult<Vickn.Platform.Users.Dtos.UserListDto>
+@model Vickn.PlatfForm.Utils.PagerResult<Vickn.Platform.Users.Dtos.UserListDto,Vickn.Platform.Users.Dtos.GetUserInput>
 @{
     ViewBag.Menu = "用户管理";
     ViewBag.SecMenu = "用户管理";
@@ -63,20 +63,6 @@
         }
         </tbody>
     </table>
-    @*<div class="pager-default">
-        <span class="page-info">第1页/共1页</span>
-        <div class="page-content">
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-button page-index">首页 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-button page-previous"> 上一页 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-current "> 1 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-other "> 2 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-other "> 3 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-other "> 4 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-button page-next"> 下一页 </a>
-            <a href="http://localhost:61759/Users?pageindex=1" class="page-button page-last"> 尾页 </a>
-        </div>
-    </div>*@
-
       @Html.Raw(Model.PagerHtml())
 </div>
 

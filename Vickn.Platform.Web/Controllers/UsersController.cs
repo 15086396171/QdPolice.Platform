@@ -14,7 +14,7 @@ using Vickn.Platform.Users.Dtos;
 namespace Vickn.Platform.Web.Controllers
 {
     [AbpMvcAuthorize(AppPermissions.Pages_Users)]
-    public class UsersController : PlatformControllerBase 
+    public class UsersController : PlatformControllerBase
     {
         private readonly IUserAppService _userAppService;
 
@@ -23,23 +23,16 @@ namespace Vickn.Platform.Web.Controllers
             _userAppService = userAppService;
         }
 
-        public async Task<ActionResult> Index(GetUserInput input,int pageIndex=1)
+        public async Task<ActionResult> Index(GetUserInput input, int pageIndex = 1)
         {
             var output = await _userAppService.GetPagedUsersAsync(input);
-            PagerResult<UserListDto> result = new PagerResult<UserListDto>()
-            {
-                Code = 0,
-                DataList = output.Items,
-                Total = output.TotalCount,
-                PageSize = 1,
-                PageIndex = pageIndex  ,
-            };
-            return View(result);
+
+            return View(output.ToPagedList(input));
         }
 
         public async Task<ActionResult> Create(long? id)
         {
-            var result =await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
+            var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
             return View(result.User);
         }
 
@@ -57,7 +50,7 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> Delete(long id)
         {
             await _userAppService.DeleteUserAsync(new EntityDto<long>(id));
-            return Json(new {success = true});
+            return Json(new { success = true });
         }
 
         public async Task<ActionResult> BatchDelete(List<long> input)

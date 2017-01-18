@@ -61,6 +61,12 @@
         text-decoration: none !important;
     }
 
+    .pager-default .page-content .page-other:hover {
+        background: #5a98de;
+        color: #fff;
+        text-decoration: none !important;   
+    }
+
 .pager-default .pager-default .default .page-info {
     clear: both;
     float: left;
