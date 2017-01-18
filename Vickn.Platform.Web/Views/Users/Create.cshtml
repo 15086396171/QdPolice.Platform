@@ -7,10 +7,10 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
+    @Html.ValidationSummary(true, "", new { @class = "Huialert Huialert-danger summary-validation-error" })
 
     <div class="form form-horizontal">
-
-        @Html.ValidationSummary(true, "", new { @class = "form-label col-xs-4 col-sm-3" })
 
         <div class="row cl">
             @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })

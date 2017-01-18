@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Dto;
 using Vickn.Platform.Users.Dtos;
 
@@ -38,18 +39,19 @@ namespace Vickn.Platform.Users
         /// </summary>
         Task<UserListDto> GetUserByIdAsync(EntityDto<long> input);
 
-
-
         /// <summary>
         /// 新增或更改用户管理
         /// </summary>
         Task CreateOrUpdateUserAsync(CreateOrUpdateUserInput input);
 
-
-
-
-
         /// <summary>
+        /// 检查用户输入错误
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<CustomerModelStateValidationDto> CheckErrorAsync(UserEditDto input);
+
+            /// <summary>
         /// 新增用户管理
         /// </summary>
         Task<UserEditDto> CreateUserAsync(UserEditDto input);

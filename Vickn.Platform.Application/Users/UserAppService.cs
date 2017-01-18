@@ -7,10 +7,12 @@ using Abp.Application.Services.Dto;
 using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users.Dto;
 using Microsoft.AspNet.Identity;
+using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
 
@@ -135,6 +137,33 @@ namespace Vickn.Platform.Users
             {
                 await CreateUserAsync(input.UserEditDto);
             }
+        }
+
+        /// <summary>
+        /// 检查用户输入错误
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(UserEditDto input)
+        {
+            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.EmailAddress) != null)
+                return new CustomerModelStateValidationDto()
+                {
+                    HasModelError = true,
+                    ErrorMessage = $"电子邮件{input.EmailAddress}已存在",
+                    Key = "EmailAddress"
+                };
+
+            if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserName)!= null)
+            {
+                return new CustomerModelStateValidationDto()
+                {
+                    HasModelError = true,
+                    ErrorMessage = $"登录名{input.UserName}已存在",
+                    Key = "UserName"
+                };
+            }
+            return new CustomerModelStateValidationDto() {HasModelError = false};
         }
 
         /// <summary>

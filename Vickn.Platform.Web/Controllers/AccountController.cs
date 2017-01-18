@@ -81,7 +81,6 @@ namespace Vickn.Platform.Web.Controllers
         [DisableAuditing]
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
-            CheckModelState();
 
             var loginResult = await GetLoginResultAsync(
                 loginModel.UsernameOrEmailAddress,
@@ -179,7 +178,7 @@ namespace Vickn.Platform.Web.Controllers
         {
             try
             {
-                CheckModelState();
+                //CheckModelState();
 
                 //Get tenancy name and tenant
                 if (!_multiTenancyConfig.IsEnabled)

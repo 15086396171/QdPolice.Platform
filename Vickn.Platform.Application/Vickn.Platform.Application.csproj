@@ -111,6 +111,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
     <Compile Include="PlatformAppServiceBase.cs" />
