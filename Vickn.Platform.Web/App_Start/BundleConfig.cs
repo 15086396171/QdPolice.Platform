@@ -69,13 +69,16 @@ namespace Vickn.Platform.Web
             //APPLICATION RESOURCES
 
             //~/Bundles/css
+            bundles.Add(
+                new StyleBundle("~/Bundles/css").Include("~/css/pager.css", new CssRewriteUrlTransform())
+                );
 
             //~/Bundles/js
             bundles.Add(
-                new ScriptBundle("~/Bundles/js")
-                    .Include("~/js/main.js")
-                    .Include("~/js/crud.js")
-                );
+            new ScriptBundle("~/Bundles/js")
+                .Include("~/js/main.js")
+                .Include("~/js/crud.js")
+            );
         }
     }
 }

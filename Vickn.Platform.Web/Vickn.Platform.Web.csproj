@@ -2481,6 +2481,7 @@
     <Content Include="Content\H-ui.admin_v2.5\static\h-ui\js\H-ui.js" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
+    <Content Include="css\pager.css" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="H-ui.admin_v2.5\404.html" />
     <Content Include="H-ui.admin_v2.5\admin-add.html" />
@@ -5987,6 +5988,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
+      <Project>{afa147e0-7e8e-4832-9193-6161d90180fd}</Project>
+      <Name>Vickn.PlatfForm.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vickn.Platform.Application\Vickn.Platform.Application.csproj">
       <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
       <Name>Vickn.Platform.Application</Name>

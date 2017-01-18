@@ -1,9 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.Web.Mvc.Authorization;
 using Abp.Web.Security.AntiForgery;
+using Vickn.PlatfForm.Utils;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Dtos;
@@ -20,10 +23,18 @@ namespace Vickn.Platform.Web.Controllers
             _userAppService = userAppService;
         }
 
-        public async Task<ActionResult> Index(GetUserInput input)
+        public async Task<ActionResult> Index(GetUserInput input,int pageIndex=1)
         {
             var output = await _userAppService.GetPagedUsersAsync(input);
-            return View(output);
+            PagerResult<UserListDto> result = new PagerResult<UserListDto>()
+            {
+                Code = 0,
+                DataList = output.Items,
+                Total = output.TotalCount,
+                PageSize = 1,
+                PageIndex = pageIndex  ,
+            };
+            return View(result);
         }
 
         public async Task<ActionResult> Create(long? id)
@@ -53,6 +64,7 @@ namespace Vickn.Platform.Web.Controllers
         {
             await _userAppService.BatchDeleteUserAsync(input);
             return Json(new { success = true });
-        } 
+        }
+
     }
 }

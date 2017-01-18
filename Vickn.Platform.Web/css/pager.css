@@ -1,0 +1,73 @@
+﻿.pager-default .page-content {
+    float: right;
+    text-align: right;
+}
+
+    .pager-default .page-content .page-button {
+        border: 1px solid #ccc;
+        cursor: pointer;
+        display: inline-block;
+        margin-left: 2px;
+        text-align: center;
+        text-decoration: none;
+        color: #666;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        margin: 0 0 2px 2px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+        .pager-default .page-content .page-button:hover {
+            background: #5a98de;
+            color: #fff;
+            text-decoration: none !important;
+        }
+
+    .pager-default .page-content .page-current {
+        border: 1px solid #ccc;
+        cursor: default;
+        display: inline-block;
+        margin-left: 2px;
+        text-align: center;
+        text-decoration: none;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        margin: 0 0 3px 3px;
+        padding: 0 10px;
+        font-size: 14px;
+        background: #5a98de;
+        color: #fff !important;
+    }
+
+    .pager-default .page-content .page-other {
+        border: 1px solid #ccc;
+        cursor: pointer;
+        display: inline-block;
+        margin-left: 2px;
+        text-align: center;
+        text-decoration: none;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        margin: 0 0 3px 3px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
+
+    .pager-default .page-content .page-current:hover {
+        text-decoration: none !important;
+    }
+
+.pager-default .pager-default .default .page-info {
+    clear: both;
+    float: left;
+    font-size: 14px;
+    color: #666;
+}
+
+.pager-default {
+    padding-top: 10px;
+}
