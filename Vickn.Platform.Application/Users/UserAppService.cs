@@ -46,6 +46,7 @@ namespace Vickn.Platform.Users
 
         public async Task<ListResultDto<UserListDto>> GetUsers()
         {
+             var a= AbpSession.UserId;
             var users = await _userRepository.GetAllListAsync();
 
             return new ListResultDto<UserListDto>(

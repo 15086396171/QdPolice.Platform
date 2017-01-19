@@ -70,7 +70,7 @@ namespace Vickn.PlatfForm.Utils.Pager
 
             var html = new StringBuilder();
             html.AppendFormat("<div class='{0}'>", cssClass);
-            html.AppendFormat("<span class='page-info'>第{0}页/共{1}页</span>", PageIndex, Math.Ceiling((decimal)TotalCount / PageSize));
+         
 
             html.AppendFormat("<div class='page-content'>", cssClass);
             var pageLen = Math.Ceiling((double)TotalCount / PageSize);
@@ -93,7 +93,7 @@ namespace Vickn.PlatfForm.Utils.Pager
                 ? RequestUrl.GetUrl(PageIndex, 1)
                 : RequestUrl.GetUrl(PageIndex, (int)pageLen));
 
-
+            html.AppendFormat("<span class='page-info'>共{0}页</span>", Math.Ceiling((decimal)TotalCount / PageSize));
             html.Append(@"</div>");
             html.Append(@"</div>");
 
