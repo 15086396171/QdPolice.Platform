@@ -1,16 +1,20 @@
-﻿
-// 项目展示地址:"http://www.ddxc.org/"
-// 如果你有什么好的建议或者觉得可以加什么功能，请加QQ群：104390185大家交流沟通
-// 项目展示地址:"http://www.yoyocms.com/"
-//博客地址：http://www.cnblogs.com/wer-ltm/
-//代码生成器帮助文档：http://www.cnblogs.com/wer-ltm/p/5777190.html
-//<Author-作者>角落的白板笔</Author-作者>
-// Copyright © YoYoCms@中国.2017-01-17T22:21:10. All Rights Reserved.
-//<生成时间>2017-01-17T22:21:10</生成时间>
+﻿/*
+* 命名空间 :     NanNingSSOMS.BLL.Services.PbManagementV3
+* 类 名  称 :     ChangeWorkV3Service
+* 版      本 :      v1.0.0.0
+* 文 件  名 :     ChangeWorkV3Service.cs
+* 描      述 :      
+* 创建时间 :     2016-07-22 11:34:41
+* ===============================================================================
+* Copyright © Vickn 2017 . All rights reserved.
+* ===============================================================================
+*/
+
 using System;
 using System.ComponentModel;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Vickn.Platform.Dtos;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Users.Dtos
@@ -19,7 +23,7 @@ namespace Vickn.Platform.Users.Dtos
     /// 用户管理列表Dto
     /// </summary>
     [AutoMapFrom(typeof(User))]
-    public class UserListDto : EntityDto<long>
+    public class UserListDto : EntityDto<long>, IListDto
     {
         /// <summary>
         /// 姓名

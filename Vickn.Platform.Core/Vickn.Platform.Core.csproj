@@ -110,6 +110,7 @@
     <Compile Include="Authorization\Roles\Role.cs" />
     <Compile Include="Authorization\Roles\RoleManager.cs" />
     <Compile Include="Authorization\Roles\RoleStore.cs" />
+    <Compile Include="TestModels\TestModel.cs" />
     <Compile Include="Users\Authorization\UserAppAuthorizationProvider.cs" />
     <Compile Include="Users\Authorization\UserAppPermissions.cs" />
     <Compile Include="Users\User.cs" />

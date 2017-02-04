@@ -1,6 +1,6 @@
-﻿ 
+﻿
 // 项目展示地址:"http://www.ddxc.org/"
- // 如果你有什么好的建议或者觉得可以加什么功能，请加QQ群：104390185大家交流沟通
+// 如果你有什么好的建议或者觉得可以加什么功能，请加QQ群：104390185大家交流沟通
 // 项目展示地址:"http://www.yoyocms.com/"
 //博客地址：http://www.cnblogs.com/wer-ltm/
 //代码生成器帮助文档：http://www.cnblogs.com/wer-ltm/p/5777190.html
@@ -11,34 +11,34 @@
 
 namespace Vickn.Platform.Users.Authorization
 {
-	 /// <summary>
-	 /// 定义系统的权限名称的字符串常量。
-     /// <see cref="UserAppAuthorizationProvider"/>中对权限的定义.
-     /// </summary>
-  public static   class UserAppPermissions
+    /// <summary>
+    /// 定义系统的权限名称的字符串常量。
+    /// <see cref="UserAppAuthorizationProvider"/>中对权限的定义.
+    /// </summary>
+    public static class UserAppPermissions
     {
-      
+
 
         /// <summary>
         /// 用户管理管理权限
         /// </summary>
         public const string User = "Pages.User";
 
-	 
 
-		/// <summary>
+
+        /// <summary>
         /// 用户管理创建权限
         /// </summary>
         public const string User_CreateUser = "Pages.User.CreateUser";
-		/// <summary>
+        /// <summary>
         /// 用户管理修改权限
         /// </summary>
         public const string User_EditUser = "Pages.User.EditUser";
-		/// <summary>
+        /// <summary>
         /// 用户管理删除权限
         /// </summary>
         public const string User_DeleteUser = "Pages.User.DeleteUser";
     }
-	
+
 }
 

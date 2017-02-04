@@ -35,8 +35,6 @@ namespace Vickn.Platform.Users.Dtos
         {
             if (string.IsNullOrEmpty(Sorting))
             {
-			
-		
                 Sorting = "Id";
             }
         }

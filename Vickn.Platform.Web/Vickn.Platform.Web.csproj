@@ -6032,7 +6032,6 @@
     <Folder Include="H-ui.admin_v2.5\template\picture\" />
     <Folder Include="H-ui.admin_v2.5\template\product\" />
     <Folder Include="H-ui.admin_v2.5\template\shop\" />
-    <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
