@@ -71,6 +71,13 @@ namespace Vickn.Platform.Users
         /// </summary>
         Task BatchDeleteUserAsync(List<long> input);
 
+        /// <summary>
+        /// 停用或启用用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task DisableUser(EntityDto<long> input);
+
         #endregion
     }
 }

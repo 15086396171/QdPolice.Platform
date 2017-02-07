@@ -47,8 +47,10 @@
             /// 业务
             /// </summary>
             public const string Business = "Business";
-
         }
-
+        public static class UserConst
+        {
+            public const string DefaultAdminUserName = "admin";
+        }
     }
 }

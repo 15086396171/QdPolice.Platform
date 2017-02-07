@@ -18,10 +18,16 @@
     });
     $('.btn-delete').on('click', function () {
         var url = $(this).data('url');
-        layer.confirm('确定删除?', function () {
+        var index=layer.confirm('确定删除?', function () {
             abp.ajax({
-                url: url
-            }).done(function () {
+                url: url,
+                method:'post'
+            }).done(function (data) {
+                layer.close(index);
+                if (data.success === false) {
+                    layer.alert(data.msg);
+                }
+                else
                 location.reload();
             });
         });
@@ -44,5 +50,9 @@
                 location.reload();
             });
         });
+    });
+    $('.btn-back').on('click', function() {
+        var index = parent.layer.getFrameIndex(window.name); //先得到当前iframe层的索引
+        parent.layer.close(index); //再执行关闭  
     });
 })(jQuery);

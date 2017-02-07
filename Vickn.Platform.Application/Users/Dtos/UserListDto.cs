@@ -23,7 +23,7 @@ namespace Vickn.Platform.Users.Dtos
     /// 用户管理列表Dto
     /// </summary>
     [AutoMapFrom(typeof(User))]
-    public class UserListDto : EntityDto<long>, IListDto
+    public class UserListDto : EntityDto<long>
     {
         /// <summary>
         /// 姓名

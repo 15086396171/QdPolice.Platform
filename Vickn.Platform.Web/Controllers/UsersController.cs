@@ -50,6 +50,10 @@ namespace Vickn.Platform.Web.Controllers
 
         public async Task<ActionResult> Delete(long id)
         {
+            var user = await _userAppService.GetUserByIdAsync(new EntityDto<long>(id));
+            if (user.UserName == PlatformConsts.UserConst.DefaultAdminUserName)
+                return Json(new {success = false, msg = $"系统管理员不能被删除!"});
+
             await _userAppService.DeleteUserAsync(new EntityDto<long>(id));
             return Json(new { success = true });
         }

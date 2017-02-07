@@ -36,7 +36,7 @@ namespace Vickn.Platform.Users.Dtos
         /// 姓名
         /// </summary>
         [DisplayName("姓名")]
-        [Required]
+        [Required(ErrorMessage = "姓名不可为空")]
         [MaxLength(8)]
         public string Name { get; set; }
 
@@ -49,10 +49,10 @@ namespace Vickn.Platform.Users.Dtos
         /// <summary>
         /// 电话号码.
         /// </summary>
-        [DisplayName("电话号码.")]
+        [DisplayName("电话号码")]
         [Required]
         [MaxLength(20)]
-        [RegularExpression(RegularConst.PhoneRegularExpression,ErrorMessage = RegularConst.PhoneErrorMsg)]
+        [RegularExpression(RegularHelper.PhoneRegularExpression,ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("电子邮件")]
         [Required]
-        [RegularExpression(RegularConst.EmailRegularExpression,ErrorMessage = RegularConst.EmailErrorMsg)]
+        [RegularExpression(RegularHelper.EmailRegularExpression,ErrorMessage = RegularHelper.EmailErrorMsg)]
         public string EmailAddress { get; set; }
 
         [DisplayName("是否启用")]

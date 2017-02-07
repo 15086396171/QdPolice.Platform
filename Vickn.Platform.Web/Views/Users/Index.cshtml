@@ -1,5 +1,8 @@
-﻿@using Abp.Web.Mvc.Extensions
-@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Users.Dtos.UserListDto,Vickn.Platform.Users.Dtos.GetUserInput>
+﻿@using System.Web.UI.WebControls.Expressions
+@using Abp.Authorization
+@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.Users.Authorization
+@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Users.Dtos.UserListDto, Vickn.Platform.Users.Dtos.GetUserInput>
 @{
     ViewBag.Menu = "用户管理";
     ViewBag.SecMenu = "用户管理";
@@ -27,46 +30,51 @@
     </div>
     <table class="table table-border table-bordered table-bg">
         <thead>
-        <tr>
-            <th scope="col" colspan="9">@ViewBag.tableTitle</th>
-        </tr>
-        <tr class="text-c">
-            <th width="25"><input type="checkbox"></th>
-            <th>姓名</th>
-            <th>登录名</th>
-            <th>显示名</th>
-            <th>邮箱</th>
-            <th>电话号码</th>
-            <th>是否启用</th>
-            <th>上次登录时间</th>
-            <th>操作</th>
-        </tr>
+            <tr>
+                <th scope="col" colspan="9">@ViewBag.tableTitle</th>
+            </tr>
+            <tr class="text-c">
+                <th width="25"><input type="checkbox"></th>
+                <th>姓名</th>
+                <th>登录名</th>
+                <th>显示名</th>
+                <th>邮箱</th>
+                <th>电话号码</th>
+                <th>是否启用</th>
+                <th>上次登录时间</th>
+                <th>操作</th>
+            </tr>
         </thead>
         <tbody>
-        @foreach (var item in Model.DataList)
-        {
-            <tr class="text-c">
-                <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
-                <td>@item.Name</td>
-                <td>@item.UserName</td>
-                <td>@item.Surname</td>
-                <td>@item.EmailAddress</td>
-                <td>@item.PhoneNumber</td>
-                <td>@Html.Raw((item.IsActive ? "<span class='label label-success radius'>已启用</span>" : "<span class='label label-warning radius'>已禁用</span>"))</td>
-                <td class="td-status">@item.LastLoginTime</td>
-                <td class="td-manage">
-                    <a style="text-decoration: none" onClick="admin_stop(this, '10001')" href="javascript:;" title="停用"><i class="Hui-iconfont">&#xe631;</i></a>
-                    <a title="编辑" href="javascript:;" class="ml-5 btn-create" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                    <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-url="@Url.Action("Delete", new {id = item.Id})"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                </td>
-            </tr>
-        }
+            @foreach (var item in Model.DataList)
+            {
+                <tr class="text-c">
+                    <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
+                    <td>@item.Name</td>
+                    <td>@item.UserName</td>
+                    <td>@item.Surname</td>
+                    <td>@item.EmailAddress</td>
+                    <td>@item.PhoneNumber</td>
+                    <td>@Html.Raw((item.IsActive ? "<span class='label label-success radius'>已启用</span>" : "<span class='label label-warning radius'>已禁用</span>"))</td>
+                    <td class="td-status">@item.LastLoginTime</td>
+                    <td class="td-manage">
+                        <a style="text-decoration: none" class="a-disable" data-id="@item.Id" href="javascript:;" title="@(item.IsActive?"停用":"启用")"><i class="Hui-iconfont">&#xe631;</i></a>
+                        @*@if (IsGranted(UserAppPermissions.User_EditUser))*@
+                        {
+                            <a title="编辑" href="javascript:;" class="ml-5 btn-create" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                        }
+                      @*  @if (IsGranted(UserAppPermissions.User_DeleteUser))*@
+                        {
+                            <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-url="@Url.Action("Delete", new {id = item.Id})"><i class="Hui-iconfont">&#xe6e2;</i></a>
+                        }
+                    </td>
+                </tr>
+            }
         </tbody>
     </table>
-      @Html.Raw(Model.PagerHtml())
+    @Html.Raw(Model.PagerHtml())
 </div>
 
 @section scripts{
     @Html.IncludeScript("~/Views/Users/Index.js")
-    <script></script>
 }

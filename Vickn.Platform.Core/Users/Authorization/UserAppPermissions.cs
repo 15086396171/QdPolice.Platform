@@ -24,8 +24,6 @@ namespace Vickn.Platform.Users.Authorization
         /// </summary>
         public const string User = "Pages.User";
 
-
-
         /// <summary>
         /// 用户管理创建权限
         /// </summary>

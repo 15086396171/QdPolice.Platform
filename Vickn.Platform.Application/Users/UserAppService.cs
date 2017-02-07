@@ -146,7 +146,8 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         public async Task<CustomerModelStateValidationDto> CheckErrorAsync(UserEditDto input)
         {
-            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.EmailAddress) != null)
+            //input.Id = input.Id ?? 0;
+            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.EmailAddress && p.Id != input.Id) != null)
                 return new CustomerModelStateValidationDto()
                 {
                     HasModelError = true,
@@ -154,7 +155,7 @@ namespace Vickn.Platform.Users
                     Key = "EmailAddress"
                 };
 
-            if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserName)!= null)
+            if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserName && p.Id != input.Id) != null)
             {
                 return new CustomerModelStateValidationDto()
                 {
@@ -215,6 +216,17 @@ namespace Vickn.Platform.Users
         {
             //TODO:批量删除前的逻辑判断，是否允许删除
             await _userRepository.DeleteAsync(s => input.Contains(s.Id));
+        }
+
+        /// <summary>
+        /// 停用或启用用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task DisableUser(EntityDto<long> input)
+        {
+            var user = await _userRepository.GetAsync(input.Id);
+            user.IsActive = !user.IsActive;
         }
 
         #endregion

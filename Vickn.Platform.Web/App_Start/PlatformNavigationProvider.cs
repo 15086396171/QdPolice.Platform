@@ -18,7 +18,7 @@ namespace Vickn.Platform.Web
                 .AddItem(
                     new MenuItemDefinition(
                         "Tenants",
-                        L("Tenants"),
+                        L("租户管理"),
                         url: "Tenants",
                         icon: "fa fa-globe",
                         requiredPermissionName: AppPermissions.Pages_Tenants
@@ -27,15 +27,14 @@ namespace Vickn.Platform.Web
                 .AddItem(
                     new MenuItemDefinition(
                         "Users",
-                        L("Users"),
-                        url: "Users",
+                        L("系统管理"),
                         icon: "fa fa-users",
                         requiredPermissionName: AppPermissions.Pages_Users
                         )
                         .AddItem(
                     new MenuItemDefinition(
                         "Users",
-                        L("Users"),
+                        L("用户管理"),
                         url: "Users",
                         icon: "fa fa-users",
                         requiredPermissionName: AppPermissions.Pages_Users
@@ -44,7 +43,7 @@ namespace Vickn.Platform.Web
                 .AddItem(
                     new MenuItemDefinition(
                         "About",
-                        L("About"),
+                        L("关于"),
                         url: "About",
                         icon: "fa fa-info"
                         )

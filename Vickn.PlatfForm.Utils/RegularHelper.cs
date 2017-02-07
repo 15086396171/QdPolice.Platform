@@ -1,6 +1,6 @@
 ﻿namespace Vickn.PlatfForm.Utils
 {
-    public static class RegularConst
+    public static class RegularHelper
     {
         /// <summary>
         /// 电子邮件
