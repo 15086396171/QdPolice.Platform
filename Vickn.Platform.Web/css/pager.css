@@ -67,15 +67,27 @@
     .pager-default .page-content .page-other:hover {
         background: #5a98de;
         color: #fff;
-        text-decoration: none !important;   
+        text-decoration: none !important;
     }
 
-.pager-default .pager-default .default .page-info {
-    clear: both;
-    float: left;
-    font-size: 14px;
-    color: #666;
-}
+    .pager-default .page-content .page-info {
+        clear: both;
+        float: right;
+        font-size: 14px;
+        color: #666;
+        border: 1px solid #ccc;
+        display: inline-block;
+        margin-left: 2px;
+        text-align: center;
+        text-decoration: none;
+        color: #666;
+        height: 26px;
+        line-height: 26px;
+        text-decoration: none;
+        margin: 0 0 2px 2px;
+        padding: 0 10px;
+        font-size: 14px;
+    }
 
 .pager-default {
     padding-top: 10px;
