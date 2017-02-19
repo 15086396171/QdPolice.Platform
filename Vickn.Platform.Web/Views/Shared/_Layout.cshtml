@@ -50,7 +50,7 @@
             <![endif]-->
 </head>
 <body >
-    @RenderBody()
+@RenderBody()
 
 @Scripts.Render("~/Bundles/vendor/js/bottom")
 @Scripts.Render("~/Bundles/js")
@@ -58,7 +58,7 @@
 <script>
     //Localizing momentjs
 
-    moment.locale('@Thread.CurrentThread.CurrentUICulture.Name');
+    moment.locale('zh-CN');
     //moment.locale('zh-CN');
 </script>
 

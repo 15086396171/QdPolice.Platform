@@ -241,3 +241,5 @@ ModelManifest.xml
 # FAKE - F# Make
 .fake/
 /Vickn.Platform.Web/App_Data/Logs/Logs.txt
+/Vickn.Platform.Web/App_Data/Logs/Logs.txt.1
+/Vickn.Platform.Web/App_Data/Logs/Logs.txt.1
