@@ -1,5 +1,5 @@
 ﻿/// <reference path="~/Abp/Framework/scripts/abp.js" />
-/// <reference path="~/Content/H-ui.admin_v2.5/lib/layer/2.1/layer.js" />
+/// <reference path="~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js" />
 (function ($) {
     $('.btn-create').on('click', function () {
         var url = $(this).data('url');

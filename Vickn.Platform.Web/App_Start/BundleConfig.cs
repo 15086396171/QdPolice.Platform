@@ -13,11 +13,11 @@ namespace Vickn.Platform.Web
             //~/Bundles/vendor/css
             bundles.Add(
                 new StyleBundle("~/Bundles/vendor/css")
-                            .Include("~/Content/H-ui.admin_v2.5/static/h-ui/css/H-ui.min.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v2.5/static/h-ui.admin/css/H-ui.admin.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v2.5/lib/Hui-iconfont/1.0.7/iconfont.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v2.5/lib/icheck/icheck.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v2.5/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
+                            .Include("~/Content/H-ui.admin_v3.0/static/h-ui/css/H-ui.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/css/H-ui.admin.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/lib/Hui-iconfont/1.0.7/iconfont.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/lib/icheck/icheck.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
                     .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
                     .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
                 );
@@ -38,7 +38,7 @@ namespace Vickn.Platform.Web
                         "~/Scripts/json2.min.js",
 
                         //"~/Scripts/jquery-2.2.0.min.js",
-                        //"~/H-ui.admin_v2.5/lib/jquery/1.9.1/jquery.min.js",
+                        //"~/H-ui.admin_v3.0/lib/jquery/1.9.1/jquery.min.js",
                         //"~/Scripts/jquery-ui-1.11.4.min.js",
 
                         "~/Scripts/moment-with-locales.min.js",
@@ -59,10 +59,10 @@ namespace Vickn.Platform.Web
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
 
                         // H-ui
-                        "~/Content/H-ui.admin_v2.5/lib/layer/2.1/layer.js",
-                        "~/Content/H-ui.admin_v2.5/lib/jquery.contextmenu/jquery.contextmenu.r2.js",
-                        "~/Content/H-ui.admin_v2.5/static/h-ui/js/H-ui.js",
-                        "~/Content/H-ui.admin_v2.5/static/h-ui.admin/js/H-ui.admin.js"
+                        "~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js",
+                        "~/Content/H-ui.admin_v3.0/lib/jquery.contextmenu/jquery.contextmenu.r2.js",
+                        "~/Content/H-ui.admin_v3.0/static/h-ui/js/H-ui.js",
+                        "~/Content/H-ui.admin_v3.0/static/h-ui.admin/js/H-ui.admin.js"
                     )
                 );
 
