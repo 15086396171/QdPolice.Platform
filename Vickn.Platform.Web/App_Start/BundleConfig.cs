@@ -15,7 +15,7 @@ namespace Vickn.Platform.Web
                 new StyleBundle("~/Bundles/vendor/css")
                             .Include("~/Content/H-ui.admin_v3.0/static/h-ui/css/H-ui.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/css/H-ui.admin.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/lib/Hui-iconfont/1.0.7/iconfont.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/lib/Hui-iconfont/1.0.8/iconfont.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/lib/icheck/icheck.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
                     .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
