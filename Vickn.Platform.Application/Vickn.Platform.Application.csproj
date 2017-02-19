@@ -143,6 +143,7 @@
     <Compile Include="Users\Dtos\UserEditDto.cs" />
     <Compile Include="Users\Dtos\UserListDto.cs" />
     <Compile Include="Users\Dtos\CreateUserInput.cs" />
+    <Compile Include="Users\Dtos\UserRoleDto.cs" />
     <Compile Include="Users\IUserAppService.cs" />
     <Compile Include="Roles\RoleAppService.cs" />
     <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />

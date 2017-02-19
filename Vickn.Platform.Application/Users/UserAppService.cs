@@ -5,13 +5,15 @@ using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Microsoft.AspNet.Identity;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users.Dto;
-using Microsoft.AspNet.Identity;
+using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
@@ -24,11 +26,13 @@ namespace Vickn.Platform.Users
     {
         private readonly IRepository<User, long> _userRepository;
         private readonly IPermissionManager _permissionManager;
+        private readonly RoleManager _roleManager;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager,RoleManager roleManager)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
+            _roleManager = roleManager;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -95,6 +99,15 @@ namespace Vickn.Platform.Users
         /// </summary>
         public async Task<GetUserForEditOutput> GetUserForEditAsync(NullableIdDto<long> input)
         {
+            var userRoleDtos = (await _roleManager.Roles
+              .OrderBy(r => r.DisplayName)
+              .Select(r => new UserRoleDto
+              {
+                  RoleId = r.Id,
+                  RoleName = r.Name,
+                  RoleDisplayName = r.DisplayName
+              })
+              .ToArrayAsync());
             var output = new GetUserForEditOutput();
 
             UserEditDto userEditDto;
@@ -103,12 +116,27 @@ namespace Vickn.Platform.Users
             {
                 var entity = await _userRepository.GetAsync(input.Id.Value);
                 userEditDto = entity.MapTo<UserEditDto>();
+                foreach (var userRoleDto in userRoleDtos)
+                {
+                    userRoleDto.IsAssigned = await UserManager.IsInRoleAsync(input.Id.Value, userRoleDto.RoleName);
+                }
             }
             else
             {
                 userEditDto = new UserEditDto();
+                // 创建时选中默认角色
+                foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
+                {
+                    var defaultUserRole = userRoleDtos.FirstOrDefault(ur => ur.RoleName == defaultRole.Name);
+                    if (defaultUserRole != null)
+                    {
+                        defaultUserRole.IsAssigned = true;
+                    }
+                }
+
             }
 
+            userEditDto.UserRoleDtos = userRoleDtos;
             output.User = userEditDto;
             return output;
         }
@@ -183,6 +211,12 @@ namespace Vickn.Platform.Users
             // 默认启用
             user.IsActive = true;
 
+            user.Roles = new List<UserRole>();
+            foreach (var userRoleDto in input.UserRoleDtos)
+            {
+                user.Roles.Add(new UserRole { RoleId = userRoleDto.RoleId });
+            }
+
             CheckErrors(await UserManager.CreateAsync(user));
 
             return input;
@@ -199,6 +233,10 @@ namespace Vickn.Platform.Users
             input.MapTo(entity);
 
             await _userRepository.UpdateAsync(entity);
+
+            var roleNames = input.UserRoleDtos.Select(p => p.RoleName).ToArray();
+            await UserManager.SetRoles(entity, roleNames);
+
         }
 
         /// <summary>

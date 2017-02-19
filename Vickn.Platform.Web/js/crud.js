@@ -38,7 +38,7 @@
         $('input[class="check-box"]:checked').each(function (index, data) {
             chk_value.push($(data).val());
         });
-        if (chk_value.length == 0) {
+        if (chk_value.length === 0) {
             layer.alert("请选择要删除的数据");
             return;
         }

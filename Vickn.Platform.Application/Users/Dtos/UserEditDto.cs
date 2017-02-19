@@ -8,13 +8,16 @@
 // Copyright © YoYoCms@中国.2017-01-17T22:21:09. All Rights Reserved.
 //<生成时间>2017-01-17T22:21:09</生成时间>
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Auditing;
 using Abp.AutoMapper;
 using Abp.Runtime.Validation;
 using Abp.Extensions;
 using Vickn.PlatfForm.Utils;
+using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Users.Dtos
@@ -44,6 +47,7 @@ namespace Vickn.Platform.Users.Dtos
         /// 显示名
         /// </summary>
         [DisplayName("显示名")]
+        [Required]
         public string Surname { get; set; }
 
         /// <summary>
@@ -59,6 +63,8 @@ namespace Vickn.Platform.Users.Dtos
         /// 用户名
         /// </summary>
         [DisplayName("登录名")]
+        [Required]
+        [RegularExpression(RegularHelper.UserNameRegularExpression,ErrorMessage = RegularHelper.UserNameErrorMsg)]
         public string UserName { get; set; }
 
         /// <summary>
@@ -71,6 +77,10 @@ namespace Vickn.Platform.Users.Dtos
 
         [DisplayName("是否启用")]
         public bool IsActive { get; set; }
+
+        [DisplayName("角色")]
+        public UserRoleDto[] UserRoleDtos { get; set; }
+
 
     }
 }

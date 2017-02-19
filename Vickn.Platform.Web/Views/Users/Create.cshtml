@@ -1,4 +1,5 @@
-﻿@model Vickn.Platform.Users.Dtos.UserEditDto
+﻿@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Users.Dtos.UserEditDto
 
 @{
     ViewBag.Title = "Create";
@@ -8,57 +9,73 @@
 {
     @Html.AntiForgeryToken()
 
-    <div id="tab-system" class="HuiTab">
-        <div class="tabBar cl"><span>用户信息</span><span>角色管理</span></div>
-        <div class="tabCon">
 
-            @Html.ValidationSummary(true, "", new {@class = "Huialert Huialert-danger summary-validation-error"})
+    @Html.ValidationSummary(true, "", new { @class = "Huialert Huialert-danger summary-validation-error" })
 
-            <div class="form form-horizontal">
-                <div class="row cl">
-                    @Html.LabelFor(model => model.Name, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
-                    <div class="formControls col-xs-8 col-sm-8">
-                        @Html.HiddenFor(model => model.IsActive)
-                        @Html.EditorFor(model => model.Name, new {htmlAttributes = new {@class = "input-text"}})
-                        @Html.ValidationMessageFor(model => model.Name, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
-                <div class="row cl">
-                    @Html.LabelFor(model => model.UserName, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
-                    <div class="formControls col-xs-8 col-sm-8">
-                        @Html.EditorFor(model => model.UserName, new {htmlAttributes = new {@class = "input-text"}})
-                        @Html.ValidationMessageFor(model => model.UserName, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
-                <div class="row cl">
-                    @Html.LabelFor(model => model.Surname, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
-                    <div class="formControls col-xs-8 col-sm-8">
-                        @Html.EditorFor(model => model.Surname, new {htmlAttributes = new {@class = "input-text"}})
-                        @Html.ValidationMessageFor(model => model.Surname, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
-                <div class="row cl">
-                    @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
-                    <div class="formControls col-xs-8 col-sm-8">
-                        @Html.EditorFor(model => model.PhoneNumber, new {htmlAttributes = new {@class = "input-text"}})
-                        @Html.ValidationMessageFor(model => model.PhoneNumber, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
-                <div class="row cl">
-                    @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
-                    <div class="formControls col-xs-8 col-sm-8">
-                        @Html.EditorFor(model => model.EmailAddress, new {htmlAttributes = new {@class = "input-text"}})
-                        @Html.ValidationMessageFor(model => model.EmailAddress, "", new {@class = "text-danger"})
-                    </div>
-                </div>
-
+    <div class="form form-horizontal">
+        <div class="row cl">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.HiddenFor(model => model.IsActive)
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
             </div>
         </div>
-        <div class="tabCon"></div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.Surname, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.Surname, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.Surname, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.PhoneNumber, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.PhoneNumber, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.EmailAddress, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.EmailAddress, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.EmailAddress, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <!--角色-->
+        <div class="row cl">
+            @Html.LabelFor(model => model.UserRoleDtos, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8  skin-minimal">
+                <dl>
+                    <dd>
+                        @for (int i = 0; i < Model.UserRoleDtos.Length; i++)
+                        {
+                            <div class="check-box">
+                                @Html.CheckBoxFor(model => model.UserRoleDtos[i].IsAssigned, new {id = "checkbox_" + Model.UserRoleDtos[i].RoleId}) 
+                                <label for= "checkbox_@(Model.UserRoleDtos[i].RoleId)">@Model.UserRoleDtos[i].RoleDisplayName</label>
+                                @Html.HiddenFor(model => model.UserRoleDtos[i].RoleId)
+                                @Html.HiddenFor(model => model.UserRoleDtos[i].RoleDisplayName)
+                                @Html.HiddenFor(model => model.UserRoleDtos[i].RoleName)
+                            </div>
+                        }
+                    </dd>
+                </dl>
+                @Html.ValidationMessageFor(model => model.UserRoleDtos, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
         <div class="row cl">
             <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
                 <input class="btn btn-secondary radius" type="submit" value="&nbsp;&nbsp;保     存&nbsp;&nbsp;">
@@ -66,12 +83,12 @@
             </div>
         </div>
     </div>
+
 }
 @section scripts{
-    <script>
-        $.Huitab("#tab-system .tabBar span", "#tab-system .tabCon", "current", "click", "0");
-    </script>
+    @Html.IncludeScript("~/Views/Users/Create.js")
 }
+
 
 
 

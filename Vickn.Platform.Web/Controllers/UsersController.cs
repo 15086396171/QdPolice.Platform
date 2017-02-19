@@ -40,6 +40,7 @@ namespace Vickn.Platform.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(UserEditDto dto)
         {
+            var od = Request["RoleNames"];
             if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
                 return View(dto);
 
