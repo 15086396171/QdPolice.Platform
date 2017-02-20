@@ -24,7 +24,7 @@ namespace Vickn.Platform.Web.Controllers
             _userAppService = userAppService;
         }
 
-        public async Task<ActionResult> Index(GetUserInput input, int pageIndex = 1)
+        public async Task<ActionResult> Index(GetUserInput input)
         {
             var output = await _userAppService.GetPagedUsersAsync(input);
 
@@ -40,7 +40,6 @@ namespace Vickn.Platform.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(UserEditDto dto)
         {
-            var od = Request["RoleNames"];
             if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
                 return View(dto);
 
