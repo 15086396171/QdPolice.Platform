@@ -212,7 +212,7 @@ namespace Vickn.Platform.Users
             user.IsActive = true;
 
             user.Roles = new List<UserRole>();
-            foreach (var userRoleDto in input.UserRoleDtos)
+            foreach (var userRoleDto in input.UserRoleDtos.Where(p=>p.IsAssigned))
             {
                 user.Roles.Add(new UserRole { RoleId = userRoleDto.RoleId });
             }
@@ -234,7 +234,7 @@ namespace Vickn.Platform.Users
 
             await _userRepository.UpdateAsync(entity);
 
-            var roleNames = input.UserRoleDtos.Select(p => p.RoleName).ToArray();
+            var roleNames = input.UserRoleDtos.Where(p=>p.IsAssigned).Select(p => p.RoleName).ToArray();
             await UserManager.SetRoles(entity, roleNames);
 
         }
