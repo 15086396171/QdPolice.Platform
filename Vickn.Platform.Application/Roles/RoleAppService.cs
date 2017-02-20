@@ -30,7 +30,6 @@ namespace Vickn.Platform.Roles
 	/// <summary>
     /// 角色服务
     /// </summary>
-	[AbpAuthorize(RoleAppPermissions.Role)]
     public class RoleAppService : PlatformAppServiceBase, IRoleAppService
     {
 	    private readonly IRepository<Role,int> _roleRepository;

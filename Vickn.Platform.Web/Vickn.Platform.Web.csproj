@@ -1568,6 +1568,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
+    <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\Layout\UserMenuOrLoginLinkViewModel.cs" />
@@ -1608,6 +1609,7 @@
     <Content Include="Views\Home\Welcome.cshtml" />
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Common\_FooterWithSaveAndCancel.cshtml" />
+    <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1639,7 +1641,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
