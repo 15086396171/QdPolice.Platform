@@ -1,0 +1,62 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Roles.Dtos.RoleEditDto
+
+@{
+    ViewBag.Title = "Create";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    @Html.ValidationSummary(true, "", new { @class = "Huialert Huialert-danger summary-validation-error" })
+
+    <div class="form form-horizontal">
+        <div class="row cl">
+            @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.DisplayName, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8">
+                @Html.EditorFor(model => model.DisplayName, new { htmlAttributes = new { @class = "input-text" } })
+                @Html.ValidationMessageFor(model => model.DisplayName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+            @Html.LabelFor(model => model.IsDefault, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+            <div class="formControls col-xs-8 col-sm-8 skin-minimal">
+                <div class="check-box">
+                    @Html.EditorFor(model => model.IsDefault, new { htmlAttributes = new { @class = "input-text" } })
+                </div>
+                @Html.ValidationMessageFor(model => model.IsDefault, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row cl">
+        @Html.LabelFor(model => model.IsStatic, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+        <div class="formControls col-xs-8 col-sm-8 skin-minimal">
+            <div class="check-box">
+                @Html.EditorFor(model => model.IsStatic, new { htmlAttributes = new { @class = "input-text" } })
+            </div>
+            @Html.ValidationMessageFor(model => model.IsStatic, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+        @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+    </div>
+
+}
+@section scripts{
+    @Html.IncludeScript("~/Views/Users/Create.js")
+}
+
+
+
+

@@ -1610,6 +1610,7 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Common\_FooterWithSaveAndCancel.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <None Include="Views\Roles\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

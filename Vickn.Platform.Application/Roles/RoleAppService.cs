@@ -134,7 +134,6 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 新增角色
         /// </summary>
-		[AbpAuthorize(RoleAppPermissions.Role_CreateRole)]
         public async Task<RoleEditDto> CreateAsync(RoleEditDto input)
 		{
 			//TODO: 新增前的逻辑判断，是否允许新增
@@ -148,7 +147,6 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 更新角色
         /// </summary>
-		[AbpAuthorize(RoleAppPermissions.Role_EditRole)]
         public async Task UpdateAsync(RoleEditDto input)
 		{
 		    //TODO: 更新前的逻辑判断，是否允许更新
@@ -162,7 +160,6 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 删除角色
         /// </summary>
-		[AbpAuthorize(RoleAppPermissions.Role_DeleteRole)]
         public async Task DeleteAsync(EntityDto<int> input)
 		{
 			//TODO: 删除前的逻辑判断，是否允许删除
@@ -173,11 +170,11 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 批量删除角色
         /// </summary>
-		[AbpAuthorize(RoleAppPermissions.Role_DeleteRole)]
         public async Task BatchDeleteAsync(List<int> input)
 		{
 		    //TODO: 批量删除前的逻辑判断，是否允许删除
-
+            var adminRole = await _roleRepository.FirstOrDefaultAsync(p => p.Name == StaticRoleNames.Tenants.Admin);
+            input.Remove(adminRole.Id);
             await _roleRepository.DeleteAsync(s => input.Contains(s.Id));
 		}
 

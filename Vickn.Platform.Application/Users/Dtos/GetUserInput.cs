@@ -28,6 +28,11 @@ namespace Vickn.Platform.Users.Dtos
 		/// </summary>
 		public string FilterText { get; set; }
 
+        /// <summary>
+        /// 用户姓名
+        /// </summary>
+	    public string Name { get; set; }
+
 		/// <summary>
 	    /// 用于排序的默认值
 		/// </summary>

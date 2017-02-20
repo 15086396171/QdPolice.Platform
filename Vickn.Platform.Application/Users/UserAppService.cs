@@ -80,6 +80,8 @@ namespace Vickn.Platform.Users
             var query = _userRepository.GetAll();
             //TODO:根据传入的参数添加过滤条件
 
+            query = query.WhereIf(!input.Name.IsNullOrEmpty(), p => p.Name.Contains(input.Name));
+
             var userCount = await query.CountAsync();
 
             var users = await query
@@ -254,6 +256,9 @@ namespace Vickn.Platform.Users
         public async Task BatchDeleteUserAsync(List<long> input)
         {
             //TODO:批量删除前的逻辑判断，是否允许删除
+            var admin = await
+                _userRepository.FirstOrDefaultAsync(p => p.UserName == PlatformConsts.UserConst.DefaultAdminUserName);
+            input.Remove(admin.Id);
             await _userRepository.DeleteAsync(s => input.Contains(s.Id));
         }
 
