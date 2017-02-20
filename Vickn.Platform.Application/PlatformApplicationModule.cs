@@ -16,7 +16,7 @@ namespace Vickn.Platform
                 //mapper.CreateMap<,>()
             });
 
-            Configuration.Authorization.Providers.Add<UserAppAuthorizationProvider>();
+            new AuthorizationProvider().AddAuthorizationProviders(Configuration);
         }
 
         public override void Initialize()

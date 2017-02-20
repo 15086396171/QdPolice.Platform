@@ -35,13 +35,6 @@ namespace Vickn.Platform.Users.Authorization
             user.CreateChildPermission(UserAppPermissions.User_CreateUser, L("CreateUser"));
             user.CreateChildPermission(UserAppPermissions.User_EditUser, L("EditUser"));           
             user.CreateChildPermission(UserAppPermissions. User_DeleteUser, L("DeleteUser"));
- 
-
-  
-            
-
-
-            
         }
 
         private static ILocalizableString L(string name)

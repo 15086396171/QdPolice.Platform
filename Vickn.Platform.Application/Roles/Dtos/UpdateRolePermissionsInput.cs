@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Vickn.Platform.Roles.Dto
+namespace Vickn.Platform.Roles.Dtos
 {
     public class UpdateRolePermissionsInput
     {

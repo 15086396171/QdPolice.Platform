@@ -109,6 +109,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
+    <Compile Include="Authorization\Roles\Authorization\RoleAppPermissions.cs" />
     <Compile Include="PlatformConsts.cs" />
     <Compile Include="PlatformCoreModule.cs" />
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />

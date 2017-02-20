@@ -126,6 +126,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuthorizationProvider.cs" />
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
@@ -135,8 +136,11 @@
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
     <Compile Include="MultiTenancy\TenantAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\Dtos\GetRoleInput.cs" />
+    <Compile Include="Roles\Dtos\RoleDto.cs" />
+    <Compile Include="Roles\Dtos\RoleEditDto.cs" />
     <Compile Include="Roles\IRoleAppService.cs" />
-    <Compile Include="Roles\Dto\UpdateRolePermissionsInput.cs" />
+    <Compile Include="Roles\Dtos\UpdateRolePermissionsInput.cs" />
     <Compile Include="Users\Dtos\CreateOrUpdateUserInput.cs" />
     <Compile Include="Users\Dtos\GetUserForEditOutput.cs" />
     <Compile Include="Users\Dtos\GetUserInput.cs" />
