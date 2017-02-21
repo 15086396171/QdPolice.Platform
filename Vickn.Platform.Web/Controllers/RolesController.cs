@@ -65,7 +65,7 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> SetPermissions(int id)
         {
             var result =await _roleAppService.GetRolePermissionForEditAsync(new EntityDto(id));
-            return View(result);
+            return PartialView("_SetPermissions",result);
         }
     }
 }

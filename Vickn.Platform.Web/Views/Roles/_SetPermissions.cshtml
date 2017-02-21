@@ -22,17 +22,3 @@ if (!permissions.Any())
 <div class="permission-tree">
     @CreatePermissionTreeItems(null)
 </div>
-@section styles{
-    <link href="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css" rel="stylesheet" />
-}
-@section scripts
-{
-    <script src="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.min.js"></script>
-    @Html.IncludeScript("~/Views/Roles/_PermissionTree.js")
-    <script>
-        $(function () {
-            var _permissionTree = new PermissionsTree();
-            _permissionTree.init($(".permission-tree"));
-        });
-    </script>
-}

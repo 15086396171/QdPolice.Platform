@@ -52,7 +52,7 @@
                     <td>@(item.IsStatic ? "是" : "否")</td>
                     <td>@(item.IsDefault ? "是" : "否")</td>
                     <td class="td-manage">
-                        <a title="设置权限" href="javascript:;" class="ml-5 btn-openWindow" data-title="设置权限" data-middle="true" data-url="@Url.Action("SetPermissions", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                        <a title="设置权限" href="javascript:;" class="ml-5 btn-setPermission" data-title="设置权限" data-middle="true" data-id="@item.Id" data-url="@Url.Action("SetPermissions", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
                         @*@if (IsGranted(UserAppPermissions.User_EditUser))*@
                         {
                         <a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
@@ -64,7 +64,63 @@
                     </td>
                 </tr>
             }
+            <tr><td id="load"></td></tr>
         </tbody>
     </table>
+
+    <div id="modal-setPermission" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content radius">
+                <div class="modal-header">
+                    <h3 class="modal-title">设置角色权限</h3>
+                    <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
+                </div>
+                <div class="modal-body" id="content">
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary btn-SetPermissionOk">确定</button>
+                    <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @Html.Raw(Model.PagerHtml())
 </div>
+@section styles{
+    <link href="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css" rel="stylesheet" />
+}
+@section scripts{
+    <script src="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.min.js"></script>
+    @Html.IncludeScript("~/Views/Roles/_PermissionTree.js")
+    <script>
+        $(function () {
+            var _permissionTree;
+            var _roleServices = abp.services.app.role;
+            var _roleId;
+            var _modal = $("#modal-setPermission");
+
+            $(".btn-setPermission").click(function () {
+                _modal.modal("show");
+                _roleId = $(this).data('id');
+                _modal.find(".modal-body").load('@Url.Action("SetPermissions")', { id: _roleId }, function () {
+                    _permissionTree = new PermissionsTree();
+                    _permissionTree.init(_modal.find(".permission-tree"));
+                });
+            });
+            $(".btn-SetPermissionOk").click(function () {
+                abp.ui.setBusy(_modal);
+                var permissions = _permissionTree.getSelectedPermissionNames();
+                _roleServices.updateRolePermissionsAsync({
+                    roleId: _roleId,
+                    grantedPermissionNames:permissions
+                }).done(function() {
+                    abp.notify.success("修改权限成功");
+                }).always(function() {
+                    abp.ui.clearBusy(_modal);
+                    _modal.modal("hide");
+                });
+            });
+        });
+    </script>
+}

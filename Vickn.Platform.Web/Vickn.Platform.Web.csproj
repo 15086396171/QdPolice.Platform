@@ -1626,7 +1626,7 @@
     <Content Include="Views\Common\_FooterWithSaveAndCancel.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
-    <Content Include="Views\Roles\SetPermissions.cshtml" />
+    <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
