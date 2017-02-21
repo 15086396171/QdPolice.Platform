@@ -61,5 +61,11 @@ namespace Vickn.Platform.Web.Controllers
             await _roleAppService.BatchDeleteAsync(input);
             return Json(new { success = true });
         }
+
+        public async Task<ActionResult> SetPermissions(int id)
+        {
+            var result =await _roleAppService.GetRolePermissionForEditAsync(new EntityDto(id));
+            return View(result);
+        }
     }
 }

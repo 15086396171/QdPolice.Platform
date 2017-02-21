@@ -26,7 +26,7 @@
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
             <a href="javascript:;" class="btn btn-danger radius btn-delAll" data-url="@Url.Action("BatchDelete")"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
-            <a href="javascript:;" class="btn btn-primary radius btn-create" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
+            <a href="javascript:;" class="btn btn-primary radius btn-openWindow" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
                 <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
             </a>
         </span> <span class="r">共有数据：<strong>@Model.DataList.Count()</strong> 条</span>
@@ -64,7 +64,7 @@
                         <a style="text-decoration: none" class="a-disable" data-id="@item.Id" href="javascript:;" title="@(item.IsActive?"停用":"启用")"><i class="Hui-iconfont">&#xe631;</i></a>
                         @*@if (IsGranted(UserAppPermissions.User_EditUser))*@
                         {
-                            <a title="编辑" href="javascript:;" class="ml-5 btn-create" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
+                            <a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
                         }
                       @*  @if (IsGranted(UserAppPermissions.User_DeleteUser))*@
                         {

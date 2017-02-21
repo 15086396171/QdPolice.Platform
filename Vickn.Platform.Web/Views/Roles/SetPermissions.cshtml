@@ -1,0 +1,38 @@
+﻿@using Abp.Extensions
+@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Roles.Dtos.GetRolePermissionEditDto
+@helper CreatePermissionTreeItems(string parentName)
+{
+var permissions = Model.Permissions.Where(p => p.ParentName == parentName || (p.ParentName.IsNullOrEmpty() && parentName.IsNullOrEmpty())).ToList();
+if (!permissions.Any())
+{
+    return;
+}
+    <ul>
+        @foreach (var permission in permissions)
+        {
+            var selected = Model.GrantedPermissionNames.Contains(permission.Name);
+            <li id="@permission.Name" class="jstree-open" data-jstree='{"selected": @selected.ToString().ToLower()}'>
+                @permission.DisplayName
+                @CreatePermissionTreeItems(permission.Name)
+            </li>
+        }
+    </ul>
+}
+<div class="permission-tree">
+    @CreatePermissionTreeItems(null)
+</div>
+@section styles{
+    <link href="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css" rel="stylesheet" />
+}
+@section scripts
+{
+    <script src="~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.min.js"></script>
+    @Html.IncludeScript("~/Views/Roles/_PermissionTree.js")
+    <script>
+        $(function () {
+            var _permissionTree = new PermissionsTree();
+            _permissionTree.init($(".permission-tree"));
+        });
+    </script>
+}

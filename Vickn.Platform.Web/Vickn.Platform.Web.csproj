@@ -750,6 +750,20 @@
     <Content Include="Content\H-ui.admin_v3.0\lib\ueditor\1.4.3\ueditor.config.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\ueditor\1.4.3\ueditor.parse.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\ueditor\1.4.3\ueditor.parse.min.js" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\jstree.js" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\jstree.min.js" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default-dark\32px.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default-dark\40px.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default-dark\style.css" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default-dark\style.min.css" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default-dark\throbber.gif" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\32px.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\32px_line.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\32px_original.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\40px.png" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\style.css" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\style.min.css" />
+    <Content Include="Content\H-ui.admin_v3.0\lib\vakata-jstree-9770c67\dist\themes\default\throbber.gif" />
     <Content Include="Content\H-ui.admin_v3.0\lib\webuploader\0.1.5\cropper\cropper.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\webuploader\0.1.5\cropper\index.html" />
     <Content Include="Content\H-ui.admin_v3.0\lib\webuploader\0.1.5\cropper\uploader.js" />
@@ -1540,6 +1554,7 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
+    <Content Include="Views\Roles\_PermissionTree.js" />
     <Content Include="Views\Tenants\Index.js" />
     <Content Include="Views\Users\Create.js" />
     <Content Include="Views\Users\Index.js" />
@@ -1611,6 +1626,7 @@
     <Content Include="Views\Common\_FooterWithSaveAndCancel.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
+    <Content Include="Views\Roles\SetPermissions.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

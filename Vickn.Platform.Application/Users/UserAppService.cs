@@ -20,7 +20,6 @@ using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Users
 {
-    /* THIS IS JUST A SAMPLE. */
     [AbpAuthorize(AppPermissions.Pages_Users)]
     public class UserAppService : PlatformAppServiceBase, IUserAppService
     {

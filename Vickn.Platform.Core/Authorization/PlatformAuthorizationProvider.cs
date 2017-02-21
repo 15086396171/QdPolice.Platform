@@ -12,12 +12,12 @@ namespace Vickn.Platform.Authorization
             var pages = context.GetPermissionOrNull(AppPermissions.Pages);
             if (pages == null)
             {
-                pages = context.CreatePermission(AppPermissions.Pages, L("Pages"));
+                pages = context.CreatePermission(AppPermissions.Pages, L("页面"));
             }
 
             var users = pages.CreateChildPermission(AppPermissions.Pages_Users, L("Users"));
 
-            //Host permissions
+            ////Host permissions
             var tenants = pages.CreateChildPermission(AppPermissions.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }
 

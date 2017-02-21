@@ -1,7 +1,7 @@
 ﻿/// <reference path="~/Abp/Framework/scripts/abp.js" />
 /// <reference path="~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js" />
 (function ($) {
-    $('.btn-create').on('click', function () {
+    $('.btn-openWindow').on('click', function () {
         var url = $(this).data('url');
         var title = $(this).data('title');
         if (title === undefined) title = '添加';

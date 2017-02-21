@@ -34,6 +34,13 @@ namespace Vickn.Platform.Roles
         Task UpdateRolePermissionsAsync(UpdateRolePermissionsInput input);
 
         /// <summary>
+        /// 根据角色Id获取角色权限编辑Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+         Task<GetRolePermissionEditDto> GetRolePermissionForEditAsync(EntityDto input);
+
+        /// <summary>
         /// 根据查询条件获取角色分页列表
         /// </summary>
         Task<PagedResultDto<RoleDto>> GetPagedAsync(GetRoleInput input);
