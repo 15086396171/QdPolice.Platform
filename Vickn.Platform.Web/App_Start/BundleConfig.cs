@@ -10,6 +10,8 @@ namespace Vickn.Platform.Web
 
             //VENDOR RESOURCES
 
+            #region Platformlib
+
             //~/Bundles/vendor/css
             bundles.Add(
                 new StyleBundle("~/Bundles/vendor/css")
@@ -81,6 +83,23 @@ namespace Vickn.Platform.Web
                 .Include("~/js/main.js")
                 .Include("~/js/crud.js")
             );
+
+         
+            #endregion
+
+            #region otherlib
+
+          //jstree
+          bundles.Add(
+                new StyleBundle("~/Bundles/lib/css/jstree")
+                    .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
+                );
+            bundles.Add(
+             new ScriptBundle("~/Bundles/lib/js/jstree")
+                 .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.js")
+             );
+
+            #endregion
         }
     }
 }

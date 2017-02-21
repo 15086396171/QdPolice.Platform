@@ -1554,6 +1554,7 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
+    <Content Include="Views\Roles\Index.js" />
     <Content Include="Views\Roles\_PermissionTree.js" />
     <Content Include="Views\Tenants\Index.js" />
     <Content Include="Views\Users\Create.js" />
