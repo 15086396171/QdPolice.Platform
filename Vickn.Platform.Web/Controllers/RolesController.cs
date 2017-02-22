@@ -36,12 +36,12 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(RoleEditDto dto)
+        public async Task<ActionResult> Create(GetRoleForEditOutput dto)
         {
             if (!CheckModelState(await _roleAppService.CheckErrorAsync(dto)))
                 return View(dto);
 
-            await _roleAppService.CreateOrUpdateAsync(dto);
+            await _roleAppService.CreateOrUpdateAsync(new CreateOrUpdateRoleInput() {RoleEditDto = dto.RoleEditDto});
             //return Content("<script>parent.location.reload()</script>");
             return CreateResult;
         }

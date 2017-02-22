@@ -49,7 +49,7 @@ namespace Vickn.Platform.Roles
         /// 通过Id获取角色信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        Task<RoleEditDto> GetForEditAsync(NullableIdDto<int> input);
+        Task<GetRoleForEditOutput> GetForEditAsync(NullableIdDto<int> input);
 
         /// <summary>
         /// 通过指定id获取角色Dto信息
@@ -59,17 +59,17 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 新增或更改角色
         /// </summary>
-        Task CreateOrUpdateAsync(RoleEditDto input);
+        Task CreateOrUpdateAsync(CreateOrUpdateRoleInput input);
 
         /// <summary>
         /// 新增角色
         /// </summary>
-        Task<RoleEditDto> CreateAsync(RoleEditDto input);
+        Task<RoleEditDto> CreateAsync(CreateOrUpdateRoleInput input);
 
         /// <summary>
         /// 更新角色
         /// </summary>
-        Task UpdateAsync(RoleEditDto input);
+        Task UpdateAsync(CreateOrUpdateRoleInput input);
 
         /// <summary>
         /// 删除角色
@@ -84,9 +84,9 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 自定义检查角色输入逻辑错误
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="output"></param>
         /// <returns></returns>
-        Task<CustomerModelStateValidationDto> CheckErrorAsync(RoleEditDto input);
+        Task<CustomerModelStateValidationDto> CheckErrorAsync(GetRoleForEditOutput output);
 
         #endregion
 

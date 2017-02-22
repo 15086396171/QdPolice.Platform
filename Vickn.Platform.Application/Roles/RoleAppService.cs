@@ -49,6 +49,29 @@ namespace Vickn.Platform.Roles
         #region 角色管理
 
         /// <summary>
+        /// 根据查询条件获取角色分页列表
+        /// </summary>
+        public async Task<PagedResultDto<RoleDto>> GetPagedAsync(GetRoleInput input)
+        {
+            var query = _roleRepository.GetAll();
+
+            //TODO:根据传入的参数添加过滤条件
+
+            var roleCount = await query.CountAsync();
+
+            var roles = await query
+            .OrderBy(input.Sorting)
+            .PageBy(input)
+            .ToListAsync();
+
+            var roleDtos = roles.MapTo<List<RoleDto>>();
+            return new PagedResultDto<RoleDto>(
+            roleCount,
+            roleDtos
+            );
+        }
+
+        /// <summary>
         /// 更新角色权限
         /// </summary>
         /// <param name="input"></param>
@@ -84,33 +107,10 @@ namespace Vickn.Platform.Roles
         }
 
         /// <summary>
-        /// 根据查询条件获取角色分页列表
-        /// </summary>
-        public async Task<PagedResultDto<RoleDto>> GetPagedAsync(GetRoleInput input)
-        {
-            var query = _roleRepository.GetAll();
-
-            //TODO:根据传入的参数添加过滤条件
-
-            var roleCount = await query.CountAsync();
-
-            var roles = await query
-            .OrderBy(input.Sorting)
-            .PageBy(input)
-            .ToListAsync();
-
-            var roleDtos = roles.MapTo<List<RoleDto>>();
-            return new PagedResultDto<RoleDto>(
-            roleCount,
-            roleDtos
-            );
-        }
-
-        /// <summary>
         /// 通过Id获取角色信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        public async Task<RoleEditDto> GetForEditAsync(NullableIdDto<int> input)
+        public async Task<GetRoleForEditOutput> GetForEditAsync(NullableIdDto<int> input)
         {
             RoleEditDto roleEditDto;
 
@@ -123,7 +123,7 @@ namespace Vickn.Platform.Roles
             {
                 roleEditDto = new RoleEditDto();
             }
-            return roleEditDto;
+            return new GetRoleForEditOutput() { RoleEditDto = roleEditDto };
         }
 
         /// <summary>
@@ -138,9 +138,9 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 新增或更改角色
         /// </summary>
-        public async Task CreateOrUpdateAsync(RoleEditDto input)
+        public async Task CreateOrUpdateAsync(CreateOrUpdateRoleInput input)
         {
-            if (input.Id.HasValue)
+            if (input.RoleEditDto.Id.HasValue)
             {
                 await UpdateAsync(input);
             }
@@ -153,11 +153,11 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 新增角色
         /// </summary>
-        public async Task<RoleEditDto> CreateAsync(RoleEditDto input)
+        public async Task<RoleEditDto> CreateAsync(CreateOrUpdateRoleInput input)
         {
             //TODO: 新增前的逻辑判断，是否允许新增
 
-            var entity = input.MapTo<Role>();
+            var entity = input.RoleEditDto.MapTo<Role>();
 
             entity = await _roleRepository.InsertAsync(entity);
             return entity.MapTo<RoleEditDto>();
@@ -166,11 +166,11 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 更新角色
         /// </summary>
-        public async Task UpdateAsync(RoleEditDto input)
+        public async Task UpdateAsync(CreateOrUpdateRoleInput input)
         {
             //TODO: 更新前的逻辑判断，是否允许更新
 
-            var entity = await _roleRepository.GetAsync(input.Id.Value);
+            var entity = await _roleRepository.GetAsync(input.RoleEditDto.Id.Value);
             input.MapTo(entity);
 
             await _roleRepository.UpdateAsync(entity);
@@ -200,9 +200,9 @@ namespace Vickn.Platform.Roles
         /// <summary>
         /// 自定义检查角色输入逻辑错误
         /// </summary>
-        /// <param name="input"></param>
+        /// <param name="output"></param>
         /// <returns></returns>
-        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(RoleEditDto input)
+        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(GetRoleForEditOutput output)
         {
             //TODO: 自定义逻辑判断是否有逻辑错误
 

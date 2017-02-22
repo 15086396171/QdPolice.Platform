@@ -136,7 +136,9 @@
     <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
     <Compile Include="MultiTenancy\TenantAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Roles\Dtos\CreateOrUpdateRoleInput.cs" />
     <Compile Include="Roles\Dtos\FlatPermissionDto.cs" />
+    <Compile Include="Roles\Dtos\GetRoleForEditOutput.cs" />
     <Compile Include="Roles\Dtos\GetRoleInput.cs" />
     <Compile Include="Roles\Dtos\GetRolePermissionEditDto.cs" />
     <Compile Include="Roles\Dtos\RoleDto.cs" />
