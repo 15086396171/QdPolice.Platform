@@ -14,7 +14,6 @@ using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Web.Controllers
 {
-    [AbpMvcAuthorize(AppPermissions.Pages_Users)]
     public class UsersController : PlatformControllerBase
     {
         private readonly IUserAppService _userAppService;

@@ -28,8 +28,8 @@ namespace Vickn.Platform.Users.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
-              var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_Administration) 
-                ?? pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
+              var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_SystemManage) 
+                ?? pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
 
             var user = entityNameModel.CreateChildPermission(UserAppPermissions.User , L("User"));
             user.CreateChildPermission(UserAppPermissions.User_CreateUser, L("CreateUser"));

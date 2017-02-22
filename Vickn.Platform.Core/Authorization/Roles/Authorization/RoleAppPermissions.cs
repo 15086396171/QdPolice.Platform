@@ -37,5 +37,7 @@ namespace Vickn.Platform.Authorization.Roles.Authorization
         /// 角色管理删除权限
         /// </summary>
         public const string Role_DeleteRole = "Pages.Role.DeleteRole";
+
+        public const string Role_EditRolePermission = "Pages.Role.EditRolePermission";
     }
 }

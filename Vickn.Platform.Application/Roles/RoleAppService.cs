@@ -123,7 +123,7 @@ namespace Vickn.Platform.Roles
             {
                 roleEditDto = new RoleEditDto();
             }
-            return new GetRoleForEditOutput() { RoleEditDto = roleEditDto };
+            return new GetRoleForEditOutput { RoleEditDto = roleEditDto };
         }
 
         /// <summary>

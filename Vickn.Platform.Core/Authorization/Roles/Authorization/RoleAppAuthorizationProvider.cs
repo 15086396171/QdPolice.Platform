@@ -34,13 +34,14 @@ namespace Vickn.Platform.Authorization.Roles.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
-            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_Administration) 
-                ?? pages.CreateChildPermission(AppPermissions.Pages_Administration, L("Administration"));
+            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_SystemManage) 
+                ?? pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
 
             var role = entityNameModel.CreateChildPermission(RoleAppPermissions.Role , L("Role"));
             role.CreateChildPermission(RoleAppPermissions.Role_CreateRole, L("CreateRole"));
             role.CreateChildPermission(RoleAppPermissions.Role_EditRole, L("EditRole"));           
             role.CreateChildPermission(RoleAppPermissions. Role_DeleteRole, L("DeleteRole"));
+            role.CreateChildPermission(RoleAppPermissions.Role_EditRolePermission, L("EditRolePermission"));
 		}
 
 		private static ILocalizableString L(string name)

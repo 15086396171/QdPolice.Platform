@@ -20,7 +20,6 @@ using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Users
 {
-    [AbpAuthorize(AppPermissions.Pages_Users)]
     public class UserAppService : PlatformAppServiceBase, IUserAppService
     {
         private readonly IRepository<User, long> _userRepository;

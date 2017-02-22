@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using Vickn.Platform.Authorization;
+using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Web
 {
@@ -23,27 +25,34 @@ namespace Vickn.Platform.Web
                         icon: "fa fa-globe",
                         requiredPermissionName: AppPermissions.Pages_Tenants
                         ))
-
                 .AddItem(
                     new MenuItemDefinition(
-                        "Users",
-                        L("系统管理"),
+                        "SystemManage",
+                        L("SystemManage"),
                         icon: "fa fa-users",
-                        requiredPermissionName: AppPermissions.Pages_Users
+                        requiredPermissionName: AppPermissions.Pages_SystemManage
                         )
                         .AddItem(
                     new MenuItemDefinition(
                         "Users",
-                        L("用户管理"),
+                        L("User"),
                         url: "Users",
                         icon: "fa fa-users",
-                        requiredPermissionName: AppPermissions.Pages_Users
+                        requiredPermissionName: UserAppPermissions.User
+                        ))
+                         .AddItem(
+                    new MenuItemDefinition(
+                        "Role",
+                        L("Role"),
+                        url: "Roles",
+                        icon: "fa fa-users",
+                        requiredPermissionName: RoleAppPermissions.Role
                         ))
                           )
                 .AddItem(
                     new MenuItemDefinition(
                         "About",
-                        L("关于"),
+                        L("About"),
                         url: "About",
                         icon: "fa fa-info"
                         )

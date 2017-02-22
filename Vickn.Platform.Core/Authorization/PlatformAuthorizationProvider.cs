@@ -15,7 +15,7 @@ namespace Vickn.Platform.Authorization
                 pages = context.CreatePermission(AppPermissions.Pages, L("页面"));
             }
 
-            var users = pages.CreateChildPermission(AppPermissions.Pages_Users, L("Users"));
+            var systemManage = pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
 
             ////Host permissions
             var tenants = pages.CreateChildPermission(AppPermissions.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);

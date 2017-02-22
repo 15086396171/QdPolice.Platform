@@ -2,7 +2,6 @@
 <localizationDictionary culture="zh-CN">
   <texts>
     <text name="HomePage" value="主页" />
-    <text name="Users" value="用户管理" />
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 Platform!" />
 
@@ -19,8 +18,20 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
+    
+    <text name="SystemManage" value="系统管理" />
 
     <text name="LoginFailed" value="登录失败!" />
+    <text name="Role" value="角色管理" />
+    <text name="CreateRole" value="添加角色" />
+    <text name="EditRole" value="编辑角色" />
+    <text name="DeleteRole" value="删除角色" />
+    <text name="EditRolePermission" value="修改角色权限" />
+
+    <text name="User" value="用户管理" />
+    <text name="CreateUser" value="添加用户" />
+    <text name="DeleteUser" value="删除用户" />
+    <text name="EditUser" value="编辑用户" />
 
   </texts>
 </localizationDictionary>
