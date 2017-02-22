@@ -19,13 +19,14 @@ namespace Vickn.Platform.Users.Dtos
     /// <summary>
     /// 用户管理新增和编辑时用Dto
     /// </summary>
-    
     public class CreateOrUpdateUserInput  
     {
     /// <summary>
     /// 用户管理编辑Dto
     /// </summary>
 		public UserEditDto  UserEditDto {get;set;}
- 
+
+        public UserRoleDto[] UserRoleDtos { get; set; }
+
     }
 }

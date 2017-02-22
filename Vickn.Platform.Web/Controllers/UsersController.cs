@@ -34,16 +34,16 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> Create(long? id)
         {
             var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
-            return View(result.User);
+            return View(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult> Create(UserEditDto dto)
+        public async Task<ActionResult> Create(GetUserForEditOutput dto)
         {
-            if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
+            if (!CheckModelState(await _userAppService.CheckErrorAsync(dto.User)))
                 return View(dto);
 
-            await _userAppService.CreateOrUpdateUserAsync(new CreateOrUpdateUserInput { UserEditDto = dto });
+            await _userAppService.CreateOrUpdateUserAsync(new CreateOrUpdateUserInput { UserEditDto = dto.User,UserRoleDtos = dto.UserRoleDtos});
             //return Content("<script>parent.location.reload()</script>");
             return CreateResult;
         }

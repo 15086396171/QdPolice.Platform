@@ -134,10 +134,8 @@ namespace Vickn.Platform.Users
                         defaultUserRole.IsAssigned = true;
                     }
                 }
-
             }
-
-            userEditDto.UserRoleDtos = userRoleDtos;
+            output.UserRoleDtos = userRoleDtos;
             output.User = userEditDto;
             return output;
         }
@@ -161,11 +159,11 @@ namespace Vickn.Platform.Users
         {
             if (input.UserEditDto.Id.HasValue)
             {
-                await UpdateUserAsync(input.UserEditDto);
+                await UpdateUserAsync(input);
             }
             else
             {
-                await CreateUserAsync(input.UserEditDto);
+                await CreateUserAsync(input);
             }
         }
 
@@ -182,7 +180,7 @@ namespace Vickn.Platform.Users
                 {
                     HasModelError = true,
                     ErrorMessage = $"电子邮件{input.EmailAddress}已存在",
-                    Key = "EmailAddress"
+                    Key = "User.EmailAddress"
                 };
 
             if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserName && p.Id != input.Id) != null)
@@ -191,7 +189,7 @@ namespace Vickn.Platform.Users
                 {
                     HasModelError = true,
                     ErrorMessage = $"登录名{input.UserName}已存在",
-                    Key = "UserName"
+                    Key = "User.UserName"
                 };
             }
             return new CustomerModelStateValidationDto() {HasModelError = false};
@@ -200,11 +198,11 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 新增用户管理
         /// </summary>
-        public virtual async Task<UserEditDto> CreateUserAsync(UserEditDto input)
+        public virtual async Task<UserEditDto> CreateUserAsync(CreateOrUpdateUserInput input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
 
-            var user = input.MapTo<User>();
+            var user = input.UserEditDto.MapTo<User>();
 
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
@@ -220,17 +218,17 @@ namespace Vickn.Platform.Users
 
             CheckErrors(await UserManager.CreateAsync(user));
 
-            return input;
+            return user.MapTo<UserEditDto>();
         }
 
         /// <summary>
         /// 编辑用户管理
         /// </summary>
-        public virtual async Task UpdateUserAsync(UserEditDto input)
+        public virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
         {
             //TODO:更新前的逻辑判断，是否允许更新
 
-            var entity = await _userRepository.GetAsync(input.Id.Value);
+            var entity = await _userRepository.GetAsync(input.UserEditDto.Id.Value);
             input.MapTo(entity);
 
             await _userRepository.UpdateAsync(entity);

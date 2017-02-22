@@ -77,10 +77,5 @@ namespace Vickn.Platform.Users.Dtos
 
         [DisplayName("是否启用")]
         public bool IsActive { get; set; }
-
-        [DisplayName("角色")]
-        public UserRoleDto[] UserRoleDtos { get; set; }
-
-
     }
 }

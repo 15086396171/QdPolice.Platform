@@ -54,12 +54,12 @@ namespace Vickn.Platform.Users
             /// <summary>
         /// 新增用户管理
         /// </summary>
-        Task<UserEditDto> CreateUserAsync(UserEditDto input);
+        Task<UserEditDto> CreateUserAsync(CreateOrUpdateUserInput input);
 
         /// <summary>
         /// 更新用户管理
         /// </summary>
-        Task UpdateUserAsync(UserEditDto input);
+        Task UpdateUserAsync(CreateOrUpdateUserInput input);
 
         /// <summary>
         /// 删除用户管理
