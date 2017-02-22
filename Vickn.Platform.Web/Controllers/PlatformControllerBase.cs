@@ -38,7 +38,5 @@ namespace Vickn.Platform.Web.Controllers
         {
             identityResult.CheckErrors(LocalizationManager);
         }
-
-
     }
 }

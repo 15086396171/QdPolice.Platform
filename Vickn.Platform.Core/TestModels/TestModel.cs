@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 
@@ -21,5 +22,21 @@ namespace Vickn.Platform.TestModels
         /// </summary>
         public bool IsEnable { get; set; }
 
+        public decimal Decimal { get; set; }
+
+        public virtual ICollection<TestModelChild> TestModelChildren { get; set; }
+
+    }
+
+    public class TestModelChild:FullAuditedEntity
+    {
+        public int TestModelId { get; set; }
+
+        public string Test { get; set; }
+    }
+
+    public class TestModelBrother
+    {
+        
     }
 }

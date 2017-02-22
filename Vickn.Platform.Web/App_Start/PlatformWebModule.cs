@@ -33,7 +33,7 @@ namespace Vickn.Platform.Web
 
             Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = false;
 
-            Configuration.Modules.AbpConfiguration.Localization.IsEnabled = false;
+            Configuration.Modules.AbpConfiguration.Localization.IsEnabled = true;
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>
