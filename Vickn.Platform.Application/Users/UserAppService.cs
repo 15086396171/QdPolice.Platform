@@ -228,7 +228,7 @@ namespace Vickn.Platform.Users
             //TODO:更新前的逻辑判断，是否允许更新
 
             var entity = await _userRepository.GetAsync(input.UserEditDto.Id.Value);
-            input.MapTo(entity);
+            input.UserEditDto.MapTo(entity);
 
             await _userRepository.UpdateAsync(entity);
 
