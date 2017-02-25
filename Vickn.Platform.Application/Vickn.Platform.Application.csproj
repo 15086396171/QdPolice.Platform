@@ -129,6 +129,15 @@
     <Compile Include="AuthorizationProvider.cs" />
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
+    <Compile Include="Organizations\Dto\CreateOrganizationUnitInput.cs" />
+    <Compile Include="Organizations\Dto\GetOrganizationUnitUsersInput.cs" />
+    <Compile Include="Organizations\Dto\MoveOrganizationUnitInput.cs" />
+    <Compile Include="Organizations\Dto\OrganizationUnitDto.cs" />
+    <Compile Include="Organizations\Dto\OrganizationUnitUserListDto.cs" />
+    <Compile Include="Organizations\Dto\UpdateOrganizationUnitInput.cs" />
+    <Compile Include="Organizations\Dto\UserToOrganizationUnitInput.cs" />
+    <Compile Include="Organizations\IOrganizationUnitAppService.cs" />
+    <Compile Include="Organizations\OrganizationUnitAppService.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
     <Compile Include="PlatformAppServiceBase.cs" />
     <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
