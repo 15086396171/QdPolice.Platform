@@ -1,7 +1,7 @@
 ﻿using System;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using MyCompanyName.AbpZeroTemplate.Authorization.Users;
+using Vickn.Platform.Users;
 
 namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
 {

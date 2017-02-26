@@ -4,7 +4,7 @@ using Abp.Organizations;
 
 namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
 {
-    public class UpdateOrganizationUnitInput : IInputDto
+    public class UpdateOrganizationUnitInput 
     {
         [Range(1, long.MaxValue)]
         public long Id { get; set; }

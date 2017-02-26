@@ -20,6 +20,7 @@ namespace Vickn.Platform.Web
                     .Include("~/Content/H-ui.admin_v3.0/lib/Hui-iconfont/1.0.8/iconfont.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/lib/icheck/icheck.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/style.css", new CssRewriteUrlTransform())
                     .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
                     .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
                 );
@@ -28,6 +29,8 @@ namespace Vickn.Platform.Web
             bundles.Add(
                 new ScriptBundle("~/Bundles/vendor/js/top")
                     .Include(
+                    "~/Content/H-ui.admin_v3.0/lib/jquery/1.9.1/jquery.js",
+
                         "~/Abp/Framework/scripts/utils/ie10fix.js",
                         "~/Scripts/modernizr-2.8.3.js"
                     )
@@ -39,12 +42,11 @@ namespace Vickn.Platform.Web
                     .Include(
                         "~/Scripts/json2.min.js",
 
-                        //"~/Scripts/jquery-2.2.0.min.js",
-                        //"~/H-ui.admin_v3.0/lib/jquery/1.9.1/jquery.min.js",
-                        //"~/Scripts/jquery-ui-1.11.4.min.js",
+                        // jqvaliate
 
+                        "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.js",
+                        "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
                         "~/Scripts/moment-with-locales.min.js",
-                        //"~/Scripts/jquery.validate.min.js",
                         "~/Scripts/jquery.blockUI.js",
                         "~/Scripts/toastr.min.js",
                         "~/Scripts/sweetalert/sweet-alert.min.js",
@@ -83,7 +85,6 @@ namespace Vickn.Platform.Web
                 .Include("~/js/main.js")
                 .Include("~/js/crud.js")
             );
-
          
             #endregion
 

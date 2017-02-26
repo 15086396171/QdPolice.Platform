@@ -4,7 +4,7 @@ using Abp.Organizations;
 
 namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
 {
-    public class CreateOrganizationUnitInput : IInputDto
+    public class CreateOrganizationUnitInput 
     {
         public long? ParentId { get; set; }
 

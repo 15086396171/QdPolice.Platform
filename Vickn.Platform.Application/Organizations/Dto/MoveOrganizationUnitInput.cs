@@ -3,7 +3,7 @@ using Abp.Application.Services.Dto;
 
 namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
 {
-    public class MoveOrganizationUnitInput : IInputDto
+    public class MoveOrganizationUnitInput 
     {
         [Range(1, long.MaxValue)]
         public long Id { get; set; }
