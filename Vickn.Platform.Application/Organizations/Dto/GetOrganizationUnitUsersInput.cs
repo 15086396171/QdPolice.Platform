@@ -2,7 +2,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Runtime.Validation;
 using Vickn.Platform.Dtos;
 
-namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
+namespace Vickn.Platform.Organizations.Dto
 {
     public class GetOrganizationUnitUsersInput : PagedAndSortedInputDto, IShouldNormalize
     {

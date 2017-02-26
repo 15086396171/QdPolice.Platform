@@ -2,7 +2,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Organizations;
 
-namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
+namespace Vickn.Platform.Organizations.Dto
 {
     [AutoMapFrom(typeof(OrganizationUnit))]
     public class OrganizationUnitDto : AuditedEntityDto<long>

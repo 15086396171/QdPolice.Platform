@@ -4,11 +4,11 @@
 @using Vickn.Platform.Users.Authorization
 @model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Users.Dtos.UserListDto, Vickn.Platform.Users.Dtos.GetUserInput>
 @{
-    ViewBag.Menu = "用户管理";
-    ViewBag.SecMenu = "用户管理";
+    ViewBag.Menu = L("User");
+    ViewBag.SecMenu = L("User");
     ViewBag.tableTitle = "用户列表";
-    ViewBag.createBtn = "添加用户";
-    ViewBag.editBtn = "编辑用户";
+    ViewBag.createBtn = L("CreateUser");
+    ViewBag.editBtn = L("EditUser");
 
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }

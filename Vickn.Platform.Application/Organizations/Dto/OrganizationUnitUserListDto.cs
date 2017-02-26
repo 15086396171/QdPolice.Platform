@@ -3,7 +3,7 @@ using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Vickn.Platform.Users;
 
-namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
+namespace Vickn.Platform.Organizations.Dto
 {
     [AutoMapFrom(typeof(User))]
     public class OrganizationUnitUserListDto : EntityDto<long>

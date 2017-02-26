@@ -1,26 +1,86 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
-using MyCompanyName.AbpZeroTemplate.Organizations.Dto;
+using Vickn.Platform.Organizations.Dto;
 
-namespace MyCompanyName.AbpZeroTemplate.Organizations
+namespace Vickn.Platform.Organizations
 {
     public interface IOrganizationUnitAppService : IApplicationService
     {
+        /// <summary>
+        /// 获取所有组织
+        /// </summary>
+        /// <returns></returns>
+        Task<List<OrganizationUnitDto>> GetOrganizationUnitDto();
+
+        /// <summary>
+        /// 根据查询条件获取组织分页列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<PagedResultDto<OrganizationUnitDto>> GetPagedOrganizationUnitAsync(GetOrganizationUnitInput input);
+
+        /// <summary>
+        /// 根据查询条件获取该组织下用户分页列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input);
 
+        Task<GetOrganizationUnitForEditOutput> GetGetOrganizationUnitForEditAsync(NullableIdDto<long> input);
+
+        Task CreateOrUpdateOrganizationUnit(GetOrganizationUnitForEditOutput output);
+
+            /// <summary>
+            /// 创建组织
+            /// </summary>
+            /// <param name="input"></param>
+            /// <returns></returns>
         Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input);
 
+        /// <summary>
+        /// 编辑组织
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task<OrganizationUnitDto> UpdateOrganizationUnit(UpdateOrganizationUnitInput input);
 
+        /// <summary>
+        /// 移动组织
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task<OrganizationUnitDto> MoveOrganizationUnit(MoveOrganizationUnitInput input);
+
+        /// <summary>
+        /// 删除组织
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
 
         Task DeleteOrganizationUnit(EntityDto<long> input);
 
+        /// <summary>
+        /// 添加用户到组织中
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+
         Task AddUserToOrganizationUnit(UserToOrganizationUnitInput input);
         
+        /// <summary>
+        /// 从组织中删除用户
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task RemoveUserFromOrganizationUnit(UserToOrganizationUnitInput input);
 
+        /// <summary>
+        /// 获取用户是否在组织中
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task<bool> IsInOrganizationUnit(UserToOrganizationUnitInput input);
     }
 }

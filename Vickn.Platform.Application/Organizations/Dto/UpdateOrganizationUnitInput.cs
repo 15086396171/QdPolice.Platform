@@ -1,8 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Abp.Application.Services.Dto;
 using Abp.Organizations;
 
-namespace MyCompanyName.AbpZeroTemplate.Organizations.Dto
+namespace Vickn.Platform.Organizations.Dto
 {
     public class UpdateOrganizationUnitInput 
     {

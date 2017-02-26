@@ -1215,6 +1215,9 @@
     <Content Include="Views\Users\Create.cshtml" />
     <Content Include="Views\Common\_FooterWithSaveAndCancel.cshtml" />
     <Content Include="Views\Roles\Index.cshtml" />
+    <Content Include="Views\OrganizationUnits\Index.cshtml" />
+    <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.cshtml" />
+    <Content Include="Views\OrganizationUnits\Create.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">
@@ -1248,7 +1251,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\OrganizationUnits\" />
     <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>

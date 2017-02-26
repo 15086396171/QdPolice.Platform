@@ -130,6 +130,8 @@
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
     <Compile Include="Organizations\Dto\CreateOrganizationUnitInput.cs" />
+    <Compile Include="Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
+    <Compile Include="Organizations\Dto\GetOrganizationUnitInput.cs" />
     <Compile Include="Organizations\Dto\GetOrganizationUnitUsersInput.cs" />
     <Compile Include="Organizations\Dto\MoveOrganizationUnitInput.cs" />
     <Compile Include="Organizations\Dto\OrganizationUnitDto.cs" />
