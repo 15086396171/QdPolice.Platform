@@ -33,5 +33,10 @@
     <text name="DeleteUser" value="删除用户" />
     <text name="EditUser" value="编辑用户" />
 
+    <text name="OrganizationUnit" value="组织管理"/>
+    <text name="CreateOrganizationUnit" value="创建组织"/>
+    <text name="DeleteOrganizationUnit" value="删除组织"/>
+    <text name="EditOrganizationUnit" value="删除组织"/>
+
   </texts>
 </localizationDictionary>

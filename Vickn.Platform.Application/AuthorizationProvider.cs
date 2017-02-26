@@ -1,5 +1,6 @@
 ﻿using Abp.Configuration.Startup;
 using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform
@@ -17,6 +18,7 @@ namespace Vickn.Platform
         {
             Configuration.Authorization.Providers.Add<UserAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<RoleAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<OrganizationUnitAppAuthorizationProvider>();
 
         }
     }

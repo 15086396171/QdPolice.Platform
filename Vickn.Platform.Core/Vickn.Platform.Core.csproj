@@ -111,6 +111,8 @@
   <ItemGroup>
     <Compile Include="Authorization\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
     <Compile Include="Authorization\Roles\Authorization\RoleAppPermissions.cs" />
+    <Compile Include="OrganizationUnits\Authorization\OrganizationUnitAppAuthorizationProvider.cs" />
+    <Compile Include="OrganizationUnits\Authorization\OrganizationUnitAppPermissions.cs" />
     <Compile Include="PlatformConsts.cs" />
     <Compile Include="PlatformCoreModule.cs" />
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />

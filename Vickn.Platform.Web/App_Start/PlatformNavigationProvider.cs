@@ -2,6 +2,7 @@
 using Abp.Localization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Web
@@ -34,7 +35,7 @@ namespace Vickn.Platform.Web
                         )
                         .AddItem(
                     new MenuItemDefinition(
-                        "Users",
+                        "User",
                         L("User"),
                         url: "Users",
                         icon: "fa fa-users",
@@ -48,15 +49,17 @@ namespace Vickn.Platform.Web
                         icon: "fa fa-users",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
-                          )
-                .AddItem(
+
+                          .AddItem(
                     new MenuItemDefinition(
-                        "About",
-                        L("About"),
-                        url: "About",
-                        icon: "fa fa-info"
+                        "OrganizationUnit",
+                        L("OrganizationUnit"),
+                        url: "OrganizationUnits",
+                        icon: "fa fa-users",
+                        requiredPermissionName: RoleAppPermissions.Role
+                        ))
                         )
-                );
+                ;
         }
 
         private static ILocalizableString L(string name)
