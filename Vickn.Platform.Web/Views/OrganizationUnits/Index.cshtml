@@ -81,38 +81,10 @@
 
 @section styles{
     @Styles.Render("~/Bundles/lib/css/jstree")
-    <style>
-        .jstree-open > .jstree-anchor > .fa-folder:before {
-            margin-left: 2px;
-            content: "\f07c";
-        }
-    </style>
 }
 
 @section scripts{
     @Scripts.Render("~/Bundles/lib/js/jstree")
-    <script>
-        $(function () {
-            $(".organizationUnit").load('@Url.Action("OrganizationUnitTree")', function () {
-                $(".organizationUnit-tree").jstree({
-                    "types": {
-                        "default": {
-                            "icon": "Hui-iconfont Hui-iconfont-file"
-                        },
-                        "file": {
-                            "icon": "Hui-iconfont Hui-iconfont-system"
-                        }
-                    },
-                    plugins: ['types']
-                });
-                $(".organizationUnit-tree").on("changed.jstree", function (e, data) {
-                    if (!data.node) {
-                        return;
-                    }
-                    window.location.href = "/OrganizationUnits/Index?parentId=" + data.node.id;
-                });
-            });
-
-        });
-    </script>
+    @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
+    @Html.IncludeScript("~/Views/OrganizationUnits/Index.js")
 }
