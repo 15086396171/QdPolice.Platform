@@ -8,6 +8,7 @@ using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Domain.Uow;
+using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.Organizations;
 using Vickn.Platform.Organizations.Dto;
@@ -37,7 +38,7 @@ namespace Vickn.Platform.Organizations
         public async Task<List<OrganizationUnitDto>> GetOrganizationUnitDto()
         {
 
-            var query =  _organizationUnitRepository.GetAll();
+            var query = _organizationUnitRepository.GetAll();
 
             var organizationUnits = await query.ToListAsync();
 
@@ -49,6 +50,8 @@ namespace Vickn.Platform.Organizations
             var query = _organizationUnitRepository.GetAll();
 
             query = query.WhereIf(input.ParentId.HasValue, p => p.ParentId == input.ParentId.Value);
+
+            query = query.WhereIf(!input.DisplayName.IsNullOrEmpty(), p => p.DisplayName.Contains(input.DisplayName));
 
             var totalCount = await query.CountAsync();
 
@@ -153,6 +156,11 @@ namespace Vickn.Platform.Organizations
         public async Task DeleteOrganizationUnit(EntityDto<long> input)
         {
             await _organizationUnitManager.DeleteAsync(input.Id);
+        }
+
+        public async Task BatchDeleteOrganizationUnitAsync(List<long> input)
+        {
+            await _organizationUnitRepository.DeleteAsync(p => input.Contains(p.Id));
         }
 
         public async Task AddUserToOrganizationUnit(UserToOrganizationUnitInput input)

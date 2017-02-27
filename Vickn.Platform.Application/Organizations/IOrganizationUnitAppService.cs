@@ -32,11 +32,11 @@ namespace Vickn.Platform.Organizations
 
         Task CreateOrUpdateOrganizationUnit(GetOrganizationUnitForEditOutput output);
 
-            /// <summary>
-            /// 创建组织
-            /// </summary>
-            /// <param name="input"></param>
-            /// <returns></returns>
+        /// <summary>
+        /// 创建组织
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         Task<OrganizationUnitDto> CreateOrganizationUnit(CreateOrganizationUnitInput input);
 
         /// <summary>
@@ -61,6 +61,8 @@ namespace Vickn.Platform.Organizations
 
         Task DeleteOrganizationUnit(EntityDto<long> input);
 
+        Task BatchDeleteOrganizationUnitAsync(List<long> input);
+
         /// <summary>
         /// 添加用户到组织中
         /// </summary>
@@ -68,7 +70,7 @@ namespace Vickn.Platform.Organizations
         /// <returns></returns>
 
         Task AddUserToOrganizationUnit(UserToOrganizationUnitInput input);
-        
+
         /// <summary>
         /// 从组织中删除用户
         /// </summary>

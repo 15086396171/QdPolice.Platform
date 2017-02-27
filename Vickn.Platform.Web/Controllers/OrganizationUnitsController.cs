@@ -50,5 +50,17 @@ namespace Vickn.Platform.Web.Controllers
             await _organizationUnitAppService.CreateOrUpdateOrganizationUnit(output);
             return CreateResult;
         }
+
+        public async Task<ActionResult> Delete(long id)
+        {
+            await _organizationUnitAppService.DeleteOrganizationUnit(new EntityDto<long>(id));
+            return Json(new { success = true });
+        }
+
+        public async Task<ActionResult> BatchDelete(List<long> input)
+        {
+            await _organizationUnitAppService.BatchDeleteOrganizationUnitAsync(input);
+            return Json(new { success = true });
+        }
     }
 }

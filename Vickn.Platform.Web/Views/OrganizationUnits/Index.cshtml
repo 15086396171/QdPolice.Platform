@@ -24,7 +24,7 @@
             @using (Html.BeginForm())
             {
                 @Html.AntiForgeryToken()
-                @*@Html.TextBoxFor(model => model.Input.Name, new { @class = "input-text", style = "width: 250px", placeholder = "输入管理员名称" })*@
+                @Html.TextBoxFor(model => model.Input.DisplayName, new { @class = "input-text", style = "width: 250px", placeholder = "输入组织名称" })
                 <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
             }
         </div>
@@ -50,7 +50,6 @@
                 <tr class="text-c">
                     <th width="25"><input type="checkbox"></th>
                     <th>组织名称</th>
-                    <th>组织代码</th>
                     <th>创建时间</th>
                     <th>操作</th>
                 </tr>
@@ -61,7 +60,6 @@
                     <tr class="text-c">
                         <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
                         <td>@item.DisplayName</td>
-                        <td>@item.Code</td>
                         <td class="td-status">@item.CreationTime</td>
                         <td class="td-manage">
                             @if (IsGranted(UserAppPermissions.User_EditUser))
