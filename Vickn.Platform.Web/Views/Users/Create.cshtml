@@ -1,5 +1,5 @@
 ﻿@using Abp.Web.Mvc.Extensions
-@model Vickn.Platform.Users.Dtos.GetUserForEditOutput
+@model Vickn.Platform.Users.Dtos.GetUserForEdit
 
 @{
     ViewBag.Title = "Create";
@@ -15,46 +15,46 @@
     <div class="form form-horizontal">
         <!--隐藏字段-->
         <div class="hidden">
-            @Html.HiddenFor(model => model.User.IsActive)
-            @Html.HiddenFor(model=>model.User.Id)
+            @Html.HiddenFor(model => model.UserEditDto.IsActive)
+            @Html.HiddenFor(model=>model.UserEditDto.Id)
         </div>
         <div class="row cl">
-            @Html.LabelFor(model => model.User.Name, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
+            @Html.LabelFor(model => model.UserEditDto.Name, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
             <div class="formControls col-xs-8 col-sm-8">
-                @Html.EditorFor(model => model.User.Name, new {htmlAttributes = new {@class = "input-text"}})
-                @Html.ValidationMessageFor(model => model.User.Name, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserEditDto.Name, new {htmlAttributes = new {@class = "input-text"}})
+                @Html.ValidationMessageFor(model => model.UserEditDto.Name, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="row cl">
-            @Html.LabelFor(model => model.User.UserName, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
+            @Html.LabelFor(model => model.UserEditDto.UserName, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
             <div class="formControls col-xs-8 col-sm-8">
-                @Html.EditorFor(model => model.User.UserName, new {htmlAttributes = new {@class = "input-text"}})
-                @Html.ValidationMessageFor(model => model.User.UserName, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserEditDto.UserName, new {htmlAttributes = new {@class = "input-text"}})
+                @Html.ValidationMessageFor(model => model.UserEditDto.UserName, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="row cl">
-            @Html.LabelFor(model => model.User.Surname, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
+            @Html.LabelFor(model => model.UserEditDto.Surname, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
             <div class="formControls col-xs-8 col-sm-8">
-                @Html.EditorFor(model => model.User.Surname, new {htmlAttributes = new {@class = "input-text"}})
-                @Html.ValidationMessageFor(model => model.User.Surname, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserEditDto.Surname, new {htmlAttributes = new {@class = "input-text"}})
+                @Html.ValidationMessageFor(model => model.UserEditDto.Surname, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="row cl">
-            @Html.LabelFor(model => model.User.PhoneNumber, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
+            @Html.LabelFor(model => model.UserEditDto.PhoneNumber, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
             <div class="formControls col-xs-8 col-sm-8">
-                @Html.EditorFor(model => model.User.PhoneNumber, new {htmlAttributes = new {@class = "input-text"}})
-                @Html.ValidationMessageFor(model => model.User.PhoneNumber, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserEditDto.PhoneNumber, new {htmlAttributes = new {@class = "input-text"}})
+                @Html.ValidationMessageFor(model => model.UserEditDto.PhoneNumber, "", new {@class = "text-danger"})
             </div>
         </div>
 
         <div class="row cl">
-            @Html.LabelFor(model => model.User.EmailAddress, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
+            @Html.LabelFor(model => model.UserEditDto.EmailAddress, htmlAttributes: new {@class = "form-label col-xs-4 col-sm-3"})
             <div class="formControls col-xs-8 col-sm-8">
-                @Html.EditorFor(model => model.User.EmailAddress, new {htmlAttributes = new {@class = "input-text"}})
-                @Html.ValidationMessageFor(model => model.User.EmailAddress, "", new {@class = "text-danger"})
+                @Html.EditorFor(model => model.UserEditDto.EmailAddress, new {htmlAttributes = new {@class = "input-text"}})
+                @Html.ValidationMessageFor(model => model.UserEditDto.EmailAddress, "", new {@class = "text-danger"})
             </div>
         </div>
 

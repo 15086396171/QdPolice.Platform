@@ -97,7 +97,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 通过Id获取用户管理信息进行编辑或修改 
         /// </summary>
-        public async Task<GetUserForEditOutput> GetUserForEditAsync(NullableIdDto<long> input)
+        public async Task<GetUserForEdit> GetUserForEditAsync(NullableIdDto<long> input)
         {
             var userRoleDtos = (await _roleManager.Roles
               .OrderBy(r => r.DisplayName)
@@ -108,7 +108,7 @@ namespace Vickn.Platform.Users
                   RoleDisplayName = r.DisplayName
               })
               .ToArrayAsync());
-            var output = new GetUserForEditOutput();
+            var output = new GetUserForEdit();
 
             UserEditDto userEditDto;
 
@@ -135,7 +135,7 @@ namespace Vickn.Platform.Users
                 }
             }
             output.UserRoleDtos = userRoleDtos;
-            output.User = userEditDto;
+            output.UserEditDto = userEditDto;
             return output;
         }
 
@@ -154,7 +154,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 新增或更改用户管理
         /// </summary>
-        public async Task CreateOrUpdateUserAsync(CreateOrUpdateUserInput input)
+        public async Task CreateOrUpdateUserAsync(GetUserForEdit input)
         {
             if (input.UserEditDto.Id.HasValue)
             {
@@ -171,23 +171,23 @@ namespace Vickn.Platform.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(UserEditDto input)
+        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(GetUserForEdit input)
         {
             //input.Id = input.Id ?? 0;
-            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.EmailAddress && p.Id != input.Id) != null)
+            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.UserEditDto.EmailAddress && p.Id != input.UserEditDto.Id) != null)
                 return new CustomerModelStateValidationDto()
                 {
                     HasModelError = true,
-                    ErrorMessage = $"电子邮件{input.EmailAddress}已存在",
+                    ErrorMessage = $"电子邮件{input.UserEditDto.EmailAddress}已存在",
                     Key = "User.EmailAddress"
                 };
 
-            if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserName && p.Id != input.Id) != null)
+            if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserEditDto.UserName && p.Id != input.UserEditDto.Id) != null)
             {
                 return new CustomerModelStateValidationDto()
                 {
                     HasModelError = true,
-                    ErrorMessage = $"登录名{input.UserName}已存在",
+                    ErrorMessage = $"登录名{input.UserEditDto.UserName}已存在",
                     Key = "User.UserName"
                 };
             }
@@ -197,7 +197,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 新增用户管理
         /// </summary>
-        public virtual async Task<UserEditDto> CreateUserAsync(CreateOrUpdateUserInput input)
+        public virtual async Task<UserEditDto> CreateUserAsync(GetUserForEdit input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
 
@@ -223,7 +223,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 编辑用户管理
         /// </summary>
-        public virtual async Task UpdateUserAsync(CreateOrUpdateUserInput input)
+        public virtual async Task UpdateUserAsync(GetUserForEdit input)
         {
             //TODO:更新前的逻辑判断，是否允许更新
 

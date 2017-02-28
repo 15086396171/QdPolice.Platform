@@ -156,8 +156,7 @@
     <Compile Include="Roles\Dtos\RoleEditDto.cs" />
     <Compile Include="Roles\IRoleAppService.cs" />
     <Compile Include="Roles\Dtos\UpdateRolePermissionsInput.cs" />
-    <Compile Include="Users\Dtos\CreateOrUpdateUserInput.cs" />
-    <Compile Include="Users\Dtos\GetUserForEditOutput.cs" />
+    <Compile Include="Users\Dtos\GetUserForEdit.cs" />
     <Compile Include="Users\Dtos\GetUserInput.cs" />
     <Compile Include="Users\Dtos\UserEditDto.cs" />
     <Compile Include="Users\Dtos\UserListDto.cs" />

@@ -32,7 +32,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 通过Id获取用户管理信息进行编辑或修改 
         /// </summary>
-        Task<GetUserForEditOutput> GetUserForEditAsync(NullableIdDto<long> input);
+        Task<GetUserForEdit> GetUserForEditAsync(NullableIdDto<long> input);
 
         /// <summary>
         /// 通过指定id获取用户管理ListDto信息
@@ -42,24 +42,24 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 新增或更改用户管理
         /// </summary>
-        Task CreateOrUpdateUserAsync(CreateOrUpdateUserInput input);
+        Task CreateOrUpdateUserAsync(GetUserForEdit input);
 
         /// <summary>
         /// 检查用户输入错误
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<CustomerModelStateValidationDto> CheckErrorAsync(UserEditDto input);
+        Task<CustomerModelStateValidationDto> CheckErrorAsync(GetUserForEdit input);
 
             /// <summary>
         /// 新增用户管理
         /// </summary>
-        Task<UserEditDto> CreateUserAsync(CreateOrUpdateUserInput input);
+        Task<UserEditDto> CreateUserAsync(GetUserForEdit input);
 
         /// <summary>
         /// 更新用户管理
         /// </summary>
-        Task UpdateUserAsync(CreateOrUpdateUserInput input);
+        Task UpdateUserAsync(GetUserForEdit input);
 
         /// <summary>
         /// 删除用户管理
