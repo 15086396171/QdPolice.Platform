@@ -46,6 +46,7 @@ namespace Vickn.Platform.Web
 
                         "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.js",
                         "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
+
                         "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/jquery.blockUI.js",
                         "~/Scripts/toastr.min.js",
@@ -98,6 +99,16 @@ namespace Vickn.Platform.Web
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/jstree")
                  .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.js")
+             );
+
+            //ztree
+            bundles.Add(
+                  new StyleBundle("~/Bundles/lib/css/ztree/metro")
+                      .Include("~/Content/H-ui.admin_v3.0/lib/zTree/v3/css/metroStyle/metroStyle.css", new CssRewriteUrlTransform())
+                  );
+            bundles.Add(
+             new ScriptBundle("~/Bundles/lib/js/ztree/core")
+                 .Include("~/Content/H-ui.admin_v3.0/lib/zTree/v3/js/jquery.ztree.core-3.5.js")
              );
 
             #endregion

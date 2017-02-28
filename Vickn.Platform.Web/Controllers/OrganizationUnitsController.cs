@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Web.Models;
 using Vickn.PlatfForm.Utils.Pager;
 using Vickn.Platform.Organizations;
 using Vickn.Platform.Organizations.Dto;
@@ -20,11 +21,12 @@ namespace Vickn.Platform.Web.Controllers
             _organizationUnitAppService = organizationUnitAppService;
         }
 
-        public async Task<ActionResult> OrganizationUnitTree()
+        [DontWrapResult]
+        public async Task<ActionResult> GetTreeData()
         {
             var result = await _organizationUnitAppService.GetOrganizationUnitDto();
-            return PartialView("_OrganizationUnitTree", result);
-        }
+            return Json(result);
+        } 
 
         // GET: OrganizationUnits
         public async Task<ActionResult> Index(GetOrganizationUnitInput input)

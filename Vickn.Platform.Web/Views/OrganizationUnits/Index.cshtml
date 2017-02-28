@@ -12,13 +12,11 @@
     ViewBag.ActiveMenu = "OrganizationUnits"; //The menu item will be active for this page.
 
 }
-<div class="pos-a organizationUnit" style="width:200px;left:0;top:0; bottom:0; height:100%; border-right:1px solid #e5e5e5; background-color:#f5f5f5; overflow:auto;">
-
+<div class="pos-a" style="width:200px;left:0;top:0; bottom:0; height:100%; border-right:1px solid #e5e5e5; background-color:#f5f5f5; overflow:auto;">
+    <div class="organizationUnit ztree"></div>
 </div>
 <div style="margin-left:200px;">
-
     <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-
     <div class="page-container">
         <div class="text-c">
             @using (Html.BeginForm())
@@ -80,11 +78,10 @@
 </div>
 
 @section styles{
-    @Styles.Render("~/Bundles/lib/css/jstree")
+    @Styles.Render("~/Bundles/lib/css/ztree/metro")
 }
-
 @section scripts{
-    @Scripts.Render("~/Bundles/lib/js/jstree")
+    @Scripts.Render("~/Bundles/lib/js/ztree/core")
     @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
     @Html.IncludeScript("~/Views/OrganizationUnits/Index.js")
 }

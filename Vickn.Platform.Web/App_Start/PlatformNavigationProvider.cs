@@ -30,7 +30,7 @@ namespace Vickn.Platform.Web
                     new MenuItemDefinition(
                         "SystemManage",
                         L("SystemManage"),
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-system",
                         requiredPermissionName: AppPermissions.Pages_SystemManage
                         )
                         .AddItem(
