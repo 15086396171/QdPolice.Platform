@@ -126,6 +126,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditing\AuditLogAndUser.cs" />
+    <Compile Include="Auditing\AuditLogAppService.cs" />
+    <Compile Include="Auditing\Dto\AuditLogListDto.cs" />
+    <Compile Include="Auditing\Dto\GetAuditLogsInput.cs" />
+    <Compile Include="Auditing\IAuditLogAppService.cs" />
     <Compile Include="AuthorizationProvider.cs" />
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
@@ -188,6 +193,7 @@
       <Name>Vickn.Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

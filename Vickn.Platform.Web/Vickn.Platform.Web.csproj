@@ -1172,6 +1172,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AuditLogsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
@@ -1219,6 +1220,7 @@
     <Content Include="Views\Roles\Index.cshtml" />
     <Content Include="Views\OrganizationUnits\Index.cshtml" />
     <Content Include="Views\OrganizationUnits\Create.cshtml" />
+    <Content Include="Views\AuditLogs\Index.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">
