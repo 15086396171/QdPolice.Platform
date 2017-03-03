@@ -5,7 +5,6 @@
 @{
     ViewBag.Menu = L("OrganizationUnit");
     ViewBag.SecMenu = L("OrganizationUnit");
-    ViewBag.tableTitle = "组织列表";
     ViewBag.createBtn = L("CreateOrganizationUnit");
     ViewBag.editBtn = L("EditOrganizationUnit");
 
@@ -38,13 +37,10 @@
                         <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
                     </a>
                 }
-            </span> <span class="r">共有数据：<strong>@Model.DataList.Count()</strong> 条</span>
+            </span> <span class="r">共有数据：<strong>@Model.TotalCount</strong> 条</span>
         </div>
         <table class="table table-border table-bordered table-bg">
             <thead>
-                <tr>
-                    <th scope="col" colspan="9">@ViewBag.tableTitle</th>
-                </tr>
                 <tr class="text-c">
                     <th width="25"><input type="checkbox"></th>
                     <th>组织名称</th>
