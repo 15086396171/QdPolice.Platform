@@ -36,7 +36,12 @@
     <text name="OrganizationUnit" value="组织管理"/>
     <text name="CreateOrganizationUnit" value="创建组织"/>
     <text name="DeleteOrganizationUnit" value="删除组织"/>
-    <text name="EditOrganizationUnit" value="删除组织"/>
+    <text name="EditOrganizationUnit" value="编辑组织"/>
+
+    <text name="AuditLog" value="审计管理"/>
+    <text name="CreateAuditLog" value="创建审计"/>
+    <text name="DeleteAuditLog" value="删除审计"/>
+    <text name="EditAuditLog" value="编辑审计"/>
 
   </texts>
 </localizationDictionary>

@@ -109,6 +109,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
+    <Compile Include="AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
     <Compile Include="Authorization\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
     <Compile Include="Authorization\Roles\Authorization\RoleAppPermissions.cs" />
     <Compile Include="OrganizationUnits\Authorization\OrganizationUnitAppAuthorizationProvider.cs" />

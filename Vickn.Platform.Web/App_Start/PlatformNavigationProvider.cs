@@ -49,7 +49,6 @@ namespace Vickn.Platform.Web
                         icon: "fa fa-users",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
-
                           .AddItem(
                     new MenuItemDefinition(
                         "OrganizationUnit",
@@ -58,7 +57,16 @@ namespace Vickn.Platform.Web
                         icon: "fa fa-users",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
-                        )
+                    .AddItem(
+                    new MenuItemDefinition(
+                        "AuditLog",
+                        L("AuditLog"),
+                        url: "AuditLogs",
+                        icon: "fa fa-users",
+                        requiredPermissionName: RoleAppPermissions.Role
+                        ))
+
+                        ) // end:SystemManage
                 ;
         }
 
