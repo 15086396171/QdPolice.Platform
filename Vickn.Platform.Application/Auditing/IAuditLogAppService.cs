@@ -7,7 +7,7 @@ namespace Vickn.Platform.Auditing
 {
     public interface IAuditLogAppService : IApplicationService
     {
-        Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input);
+        Task<PagedResultDto<AuditLogListDto>> GetAuditLogs(GetAuditLogsInput input); 
 
     }
 }
