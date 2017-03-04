@@ -1,6 +1,7 @@
 ﻿var OrganizationUnitTree = (function ($) {
     return function () {
         var _url;
+        var _search;
 
         var $tree;
         var setting = {
@@ -23,14 +24,15 @@
                 onClick:zTreeOnClick
             }
         };
-        function init($treeContainer,url) {
+        function init($treeContainer,url,search) {
             $tree = $treeContainer;
             _url = url;
+            _search = search;
             $.fn.zTree.init($tree, setting, null);
         }
 
         function zTreeOnClick(event, treeId, treeNode) {
-            window.location.href = _url + "?parentId=" + treeNode.Id;
+            _search(treeNode.Id);
         };
 
         return {

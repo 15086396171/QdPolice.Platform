@@ -1,10 +1,14 @@
 ﻿(function () {
     $(function () {
         var _tree = new OrganizationUnitTree();
-        _tree.init($(".organizationUnit"), abp.appPath + "OrganizationUnits/Index");
+
         var $dataTable = $(".dataTable");
 
         var _service = abp.services.app.organizationUnit;
+
+        var _dataTable = new DataTable();
+
+        var _parentId;
 
         var _permissions = {
             create: abp.auth.hasPermission('Pages.OrganizationUnit.CreateOrganizationUnit'),
@@ -16,6 +20,8 @@
             var input = {
                 pageIndex: parseInt(data.start / data.length) + 1,
                 maxResultCount: data.length,
+                parentId: _parentId,
+                displayName: $("#displayName").val()
             };
             _service.getPagedOrganizationUnitAsync(input).done(function (result) {
                 var returnData = {};
@@ -65,10 +71,14 @@
               },
         ];
 
-        var dataTable = new DataTable();
-        dataTable.Init($dataTable, columns, columnDefs, ajax);
+        _dataTable.Init($dataTable, columns, columnDefs, ajax);
 
-        $dataTable.on('init.dt', function () {
+        _tree.init($(".organizationUnit"), abp.appPath + "OrganizationUnits/Index", function (parentId) {
+            _parentId = parentId;
+            _dataTable.Search();
+        });
+
+        $dataTable.on('draw.dt', function () {
             $(".btn-openWindow").on("click", function () {
                 var index = layer.open({
                     type: 2,
@@ -88,7 +98,7 @@
         });
 
         $("#search").click(function () {
-            dataTable.Search();
+            _dataTable.Search();
         });
     });
 })();
