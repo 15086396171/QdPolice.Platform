@@ -9,7 +9,7 @@ namespace Vickn.Platform.Organizations
     public interface IOrganizationUnitAppService : IApplicationService
     {
         /// <summary>
-        /// 获取所有组织
+        /// 获取所有组织 
         /// </summary>
         /// <returns></returns>
         Task<List<OrganizationUnitDto>> GetOrganizationUnitDto();
