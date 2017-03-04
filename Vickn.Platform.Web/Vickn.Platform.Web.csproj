@@ -349,7 +349,6 @@
     <Content Include="Content\H-ui.admin_v3.0\favicon.ico" />
     <Content Include="Content\H-ui.admin_v3.0\feedback-list.html" />
     <Content Include="Content\H-ui.admin_v3.0\index.html" />
-    <Content Include="Content\H-ui.admin_v3.0\lib\datatables\1.10.0\dataTables.buttons.min.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\datatables\1.10.0\jquery.dataTables.min.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\DD_belatedPNG_0.0.8a-min.js" />
     <Content Include="Content\H-ui.admin_v3.0\lib\expressInstall.swf" />
@@ -1151,6 +1150,8 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
+    <Content Include="js\_DataTable.js" />
+    <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="Views\OrganizationUnits\Index.js" />
     <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.js" />
     <Content Include="Views\Roles\Index.js" />

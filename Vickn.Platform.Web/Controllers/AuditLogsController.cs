@@ -22,10 +22,9 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         // GET: AuditLogs
-        public async Task<ActionResult> Index(GetAuditLogsInput input)
+        public ActionResult Index(GetAuditLogsInput input)
         {
-            var result = await _auditLogAppService.GetAuditLogs(input);
-            return View(result.ToPagedList(input));
+            return View();
         }
     }
 }

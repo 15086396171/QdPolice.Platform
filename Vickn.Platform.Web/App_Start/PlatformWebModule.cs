@@ -31,7 +31,7 @@ namespace Vickn.Platform.Web
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<PlatformNavigationProvider>();
 
-            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = false;
+            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
 
             Configuration.Modules.AbpConfiguration.Localization.IsEnabled = true;
 

@@ -61,7 +61,12 @@ namespace Vickn.Platform.Web
                         "~/Abp/Framework/scripts/libs/abp.spin.js",
                         "~/Abp/Framework/scripts/libs/abp.sweet-alert.js",
 
+                        "~/Scripts/moment.min.js",
+                        "~/Scripts/moment-with-locales.min.js",
+
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
+
+                        "~/Content/H-ui.admin_v3.0/lib/datatables/1.10.0/jquery.dataTables.min.js", 
 
                         // H-ui
                         "~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js",
@@ -84,18 +89,18 @@ namespace Vickn.Platform.Web
             bundles.Add(
             new ScriptBundle("~/Bundles/js")
                 .Include("~/js/main.js")
-                //.Include("~/js/crud.js")
+            //.Include("~/js/crud.js")
             );
-         
+
             #endregion
 
             #region otherlib
 
-          //jstree
-          bundles.Add(
-                new StyleBundle("~/Bundles/lib/css/jstree")
-                    .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
-                );
+            //jstree
+            bundles.Add(
+                  new StyleBundle("~/Bundles/lib/css/jstree")
+                      .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
+                  );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/jstree")
                  .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.js")

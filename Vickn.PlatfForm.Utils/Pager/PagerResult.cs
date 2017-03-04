@@ -27,14 +27,14 @@ namespace Vickn.PlatfForm.Utils.Pager
         /// <param name="pagedResultDto">页面显示Dto</param>
         /// <param name="pagedResultRequest">分页排序的Dto</param>
         /// <returns></returns>
-        public static PagerResult<T,TInput> ToPagedList<T,TInput>(this PagedResultDto<T> pagedResultDto, TInput pagedResultRequest) where TInput:IPagedResultRequest,IPagerInBase
+        public static PagerResult<T, TInput> ToPagedList<T, TInput>(this PagedResultDto<T> pagedResultDto, TInput pagedResultRequest) where TInput : IPagedResultRequest, IPagerInBase
         {
-            return new PagerResult<T,TInput>()
+            return new PagerResult<T, TInput>()
             {
                 DataList = pagedResultDto.Items,
                 TotalCount = pagedResultDto.TotalCount,
                 PageIndex = pagedResultRequest.PageIndex,
-                PageSize = pagedResultRequest.MaxResultCount    ,
+                PageSize = pagedResultRequest.MaxResultCount,
                 Input = pagedResultRequest
             };
         }
@@ -46,7 +46,7 @@ namespace Vickn.PlatfForm.Utils.Pager
     /// </summary>
     /// <typeparam name="T"></typeparam>
     /// <typeparam name="TInput"></typeparam>
-    public class PagerResult<T,TInput> where TInput:IPagedResultRequest
+    public class PagerResult<T, TInput> where TInput : IPagedResultRequest
     {
         public int TotalCount { get; set; }
         public IEnumerable<T> DataList { get; set; }
@@ -59,7 +59,7 @@ namespace Vickn.PlatfForm.Utils.Pager
         /// <summary>
         /// 分页页码Html
         /// </summary>
-        /// <param name="cssClass">默认样式：jpager</param>
+        /// <param name="cssClass">默认样式：pager-default</param>
         /// <returns></returns>
         public string PagerHtml(string cssClass = "pager-default")
         {
@@ -70,7 +70,7 @@ namespace Vickn.PlatfForm.Utils.Pager
 
             var html = new StringBuilder();
             html.AppendFormat("<div class='{0}'>", cssClass);
-         
+
 
             html.AppendFormat("<div class='page-content'>", cssClass);
             var pageLen = Math.Ceiling((double)TotalCount / PageSize);
