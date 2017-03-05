@@ -3,10 +3,14 @@ using Abp.Authorization;
 using Abp.Authorization.Roles;
 using Abp.Authorization.Users;
 using Abp.MultiTenancy;
+using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles;
+using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.EntityFramework;
+using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users;
+using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Migrations.SeedData
 {
@@ -38,7 +42,7 @@ namespace Vickn.Platform.Migrations.SeedData
 
                 //Grant all permissions to admin role
                 var permissions = PermissionFinder
-                    .GetAllPermissions(new PlatformAuthorizationProvider())
+                    .GetAllPermissions(new PlatformAuthorizationProvider(),new  UserAppAuthorizationProvider(),new RoleAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new AuditLogAppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant))
                     .ToList();
 
