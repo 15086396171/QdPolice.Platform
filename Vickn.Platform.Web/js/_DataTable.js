@@ -23,13 +23,26 @@
             $dataTable.dataTable(_settings);
         }
 
+        /*
+        *
+        *   events : {selector,event,callback}
+        */
+        function setEvents(events) {
+            $dataTable.on('draw.dt', function () {
+                $.each(events, function (index, data) {
+                    $(data.selector).on(data.event, data.callback);
+                });
+            });
+        }
+
         function search() {
             $dataTable.fnDraw();
         }
 
         return {
-            Init: init,
-            Search: search
+            init: init,
+            search: search,
+            setEvents:setEvents
         };
     }
 })(jQuery);
