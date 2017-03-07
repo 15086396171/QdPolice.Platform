@@ -5,6 +5,12 @@
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 Platform!" />
 
+    <text name="IndexPage" value="首页"/>
+    <text name="Search" value="搜索"/>
+    <text name="ReSearch" value="重置"/>
+    <text name="Reflesh" value="刷新"/>
+    <text name="BatchDelete" value="批量删除"/>
+    
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
 
@@ -18,6 +24,9 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
+    
+    <text name="CreationTime" value="创建时间"/>
+    <text name="Operational" value="操作"/>
     
     <text name="SystemManage" value="系统管理" />
 
@@ -37,6 +46,7 @@
     <text name="CreateOrganizationUnit" value="创建组织"/>
     <text name="DeleteOrganizationUnit" value="删除组织"/>
     <text name="EditOrganizationUnit" value="编辑组织"/>
+    <text name="OrganizationUnit.DisplayName" value="组织名称"/>
 
     <text name="AuditLog" value="审计管理"/>
     <text name="CreateAuditLog" value="创建审计"/>
