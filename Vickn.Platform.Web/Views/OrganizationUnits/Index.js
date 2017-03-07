@@ -55,7 +55,7 @@
                   render: function (data, type, row, meta) {
                       var $div = $('<div></div>');
                       if (_permissions.edit) {
-                          $('<a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="编辑" data-url="' + abp.appPath + 'OrganizationUnits/Create?id=' + data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
+                          $('<a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="编辑" data-id="'+ data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
                               alert();
                           })
                           .appendTo($div);
@@ -81,12 +81,7 @@
                 selector: ".btn-openWindow",
                 event: "click",
                 callback: function () {
-                    var index = layer.open({
-                        type: 2,
-                        title: "编辑组织机构",
-                        content: $(this).data("url")
-                    });
-                    layer.full(index);
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?Id=" + $(this).data("id"));
                 }
             },
             {
@@ -107,5 +102,32 @@
         $("#search").click(function () {
             _dataTable.search();
         });
+        $("#create").click(function () {
+            if (_parentId)
+                commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?parentId=" + _parentId);
+            else
+                commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create");
+        })
+        $("#batchDelete").click(function () {
+            var input = [];
+            var url = $(this).data('url');
+            $('input[class="check-box"]:checked').each(function (index, data) {
+                input.push($(data).val());
+            });
+            if (input.length === 0) {
+                layer.alert("请选择要删除的数据");
+                return;
+            }
+            layer.confirm('确定删除?', function () {
+                _service.batchDeleteOrganizationUnitAsync(input).done(function () {
+                    window.location.reload();
+                })
+            });
+        });
+        $("#research").click(function () {
+            $("#displayName").val("");
+            _parentId = null;
+            _dataTable.search();
+        })
     });
 })();

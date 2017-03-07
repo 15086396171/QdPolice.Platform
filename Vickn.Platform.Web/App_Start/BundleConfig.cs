@@ -89,7 +89,7 @@ namespace Vickn.Platform.Web
             bundles.Add(
             new ScriptBundle("~/Bundles/js")
                 .Include("~/js/main.js")
-            //.Include("~/js/crud.js")
+            .Include("~/js/common.js")
             );
 
             #endregion
