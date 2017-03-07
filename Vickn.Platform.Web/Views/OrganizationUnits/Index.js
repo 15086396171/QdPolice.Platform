@@ -55,13 +55,13 @@
                   render: function (data, type, row, meta) {
                       var $div = $('<div></div>');
                       if (_permissions.edit) {
-                          $('<a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="编辑" data-id="'+ data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
+                          $('<a title="编辑" href="javascript:;" class="ml-5 edit" data-title="编辑" data-id="'+ data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
                               alert();
                           })
                           .appendTo($div);
                       }
                       if (_permissions.delete) {
-                          $('<a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-id="' + data + '"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                          $('<a title="删除" href="javascript:;" class="ml-5 delete" style="text-decoration: none" data-id="' + data + '"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                               .appendTo($div);
                       }
                       return $div.html();
@@ -78,14 +78,14 @@
 
         _dataTable.setEvents([
             {
-                selector: ".btn-openWindow",
+                selector: ".edit",
                 event: "click",
                 callback: function () {
                     commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?Id=" + $(this).data("id"));
                 }
             },
             {
-                selector: ".btn-delete",
+                selector: ".delete",
                 event: "click",
                 callback: function () {
                     var id = $(this).data("id");
@@ -102,12 +102,13 @@
         $("#search").click(function () {
             _dataTable.search();
         });
-        $("#create").click(function () {
-            if (_parentId)
-                commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?parentId=" + _parentId);
-            else
-                commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create");
-        })
+        $("#create")
+            .click(function() {
+                if (_parentId)
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?parentId=" + _parentId);
+                else
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create");
+            });
         $("#batchDelete").click(function () {
             var input = [];
             var url = $(this).data('url');
@@ -119,15 +120,17 @@
                 return;
             }
             layer.confirm('确定删除?', function () {
-                _service.batchDeleteOrganizationUnitAsync(input).done(function () {
-                    window.location.reload();
-                })
+                _service.batchDeleteOrganizationUnitAsync(input)
+                    .done(function() {
+                        window.location.reload();
+                    });
             });
         });
-        $("#research").click(function () {
-            $("#displayName").val("");
-            _parentId = null;
-            _dataTable.search();
-        })
+        $("#research")
+            .click(function() {
+                $("#displayName").val("");
+                _parentId = null;
+                _dataTable.search();
+            });
     });
 })();

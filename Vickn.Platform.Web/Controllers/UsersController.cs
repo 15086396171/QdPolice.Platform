@@ -23,11 +23,9 @@ namespace Vickn.Platform.Web.Controllers
             _userAppService = userAppService;
         }
 
-        public async Task<ActionResult> Index(GetUserInput input)
+        public ActionResult Index()
         {
-            var output = await _userAppService.GetPagedUsersAsync(input);
-
-            return View(output.ToPagedList(input));
+            return View();
         }
 
         public async Task<ActionResult> Create(long? id)

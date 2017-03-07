@@ -1223,6 +1223,7 @@
     <Content Include="Views\OrganizationUnits\Index.cshtml" />
     <Content Include="Views\OrganizationUnits\Create.cshtml" />
     <Content Include="Views\AuditLogs\Index.cshtml" />
+    <Content Include="Views\Common\_Navigation.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">

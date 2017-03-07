@@ -29,10 +29,9 @@ namespace Vickn.Platform.Web.Controllers
         } 
 
         // GET: OrganizationUnits
-        public async Task<ActionResult> Index(GetOrganizationUnitInput input)
+       public ActionResult Index()
         {
-            var result = await _organizationUnitAppService.GetPagedOrganizationUnitAsync(input);
-            return View(result.ToPagedList(input));
+            return View();
         }
 
         public async Task<ActionResult> Create(long? parentId, int? id)
@@ -51,18 +50,6 @@ namespace Vickn.Platform.Web.Controllers
             }
             await _organizationUnitAppService.CreateOrUpdateOrganizationUnit(output);
             return CreateResult;
-        }
-
-        public async Task<ActionResult> Delete(long id)
-        {
-            await _organizationUnitAppService.DeleteOrganizationUnit(new EntityDto<long>(id));
-            return Json(new { success = true });
-        }
-
-        public async Task<ActionResult> BatchDelete(List<long> input)
-        {
-            await _organizationUnitAppService.BatchDeleteOrganizationUnitAsync(input);
-            return Json(new { success = true });
         }
     }
 }

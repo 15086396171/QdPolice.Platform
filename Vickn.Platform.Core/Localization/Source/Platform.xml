@@ -41,6 +41,13 @@
     <text name="CreateUser" value="添加用户" />
     <text name="DeleteUser" value="删除用户" />
     <text name="EditUser" value="编辑用户" />
+    <text name="User.Name" value="姓名"/>
+    <text name="User.UserName" value="登录名"/>
+    <text name="User.DisplayName" value="显示名"/>
+    <text name="Email" value="电子邮件"/>
+    <text name="Phone" value="电话号码"/>
+    <text name="LastLoginTime" value="上次登录时间"/>
+    <text name="IsEnable" value="是否启用"/>
 
     <text name="OrganizationUnit" value="组织管理"/>
     <text name="CreateOrganizationUnit" value="创建组织"/>

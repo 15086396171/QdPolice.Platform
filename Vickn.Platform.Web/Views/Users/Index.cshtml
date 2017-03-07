@@ -1,8 +1,5 @@
-﻿@using System.Web.UI.WebControls.Expressions
-@using Abp.Authorization
-@using Abp.Web.Mvc.Extensions
+﻿@using Abp.Web.Mvc.Extensions
 @using Vickn.Platform.Users.Authorization
-@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Users.Dtos.UserListDto, Vickn.Platform.Users.Dtos.GetUserInput>
 @{
     ViewBag.Menu = L("User");
     ViewBag.SecMenu = L("User");
@@ -11,75 +8,47 @@
 
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-
+@Html.Partial("~/Views/Common/_Navigation.cshtml")
 <div class="page-container">
     <div class="text-c">
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-            @Html.TextBoxFor(model => model.Input.Name, new { @class = "input-text", style = "width: 250px", placeholder = "输入管理员名称" })
-            <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
-        }
+        <input type="text" placeholder="@L("User.Name")" class="input-text" id="name" style="width: 250px;" />
+        <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
+        <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
             @if (IsGranted(UserAppPermissions.User_DeleteUser))
             {
-                <a href="javascript:;" class="btn btn-danger radius btn-delAll " data-url="@Url.Action("BatchDelete")"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+                <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
             }
             @if (IsGranted(UserAppPermissions.User_CreateUser))
             {
-                <a href="javascript:;" class="btn btn-primary radius btn-openWindow" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
+                <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
                     <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
                 </a>
             }
-        </span> <span class="r">共有数据：<strong>@Model.TotalCount</strong> 条</span>
+        </span>
     </div>
-    <table class="table table-border table-bordered table-bg">
+    <table class="table table-border table-bordered table-bg dataTable">
         <thead>
-            <tr class="text-c">
-                <th width="25"><input type="checkbox"></th>
-                <th>姓名</th>
-                <th>登录名</th>
-                <th>显示名</th>
-                <th>邮箱</th>
-                <th>电话号码</th>
-                <th>是否启用</th>
-                <th>上次登录时间</th>
-                <th>操作</th>
-            </tr>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox"></th>
+            <th>@L("User.Name")</th>
+            <th>@L("User.UserName")</th>
+            <th>@L("User.DisplayName")</th>
+            <th>@L("Email")</th>
+            <th>@L("Phone")</th>
+            <th>@L("IsEnable")</th>
+            <th>@L("LastLoginTime")</th>
+            <th>@L("Operational")</th>
+        </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model.DataList)
-            {
-                <tr class="text-c">
-                    <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
-                    <td>@item.Name</td>
-                    <td>@item.UserName</td>
-                    <td>@item.Surname</td>
-                    <td>@item.EmailAddress</td>
-                    <td>@item.PhoneNumber</td>
-                    <td>@Html.Raw((item.IsActive ? "<span class='label label-success radius'>已启用</span>" : "<span class='label label-warning radius'>已禁用</span>"))</td>
-                    <td class="td-status">@item.LastLoginTime</td>
-                    <td class="td-manage">
-                        @if (IsGranted(UserAppPermissions.User_EditUser))
-                        {
-                            <a style="text-decoration: none" class="a-disable" data-id="@item.Id" href="javascript:;" title="@(item.IsActive ? "停用" : "启用")"><i class="Hui-iconfont">&#xe631;</i></a>
-                                <a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                        }
-                        @if (IsGranted(UserAppPermissions.User_DeleteUser))
-                        {
-                            <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-url="@Url.Action("Delete", new {id = item.Id})"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                        }
-                    </td>
-                </tr>
-            }
-        </tbody>
+        <tbody></tbody>
     </table>
-    @Html.Raw(Model.PagerHtml())
+
 </div>
 
 @section scripts{
+@Html.IncludeScript("~/js/_DataTable.js")
     @Html.IncludeScript("~/Views/Users/Index.js")
 }
