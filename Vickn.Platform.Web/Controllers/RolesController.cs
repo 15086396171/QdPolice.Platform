@@ -23,10 +23,9 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         // GET: Roles
-        public async Task<ActionResult> Index(GetRoleInput input)
+        public ActionResult Index()
         {
-            var output = await _roleAppService.GetPagedAsync(input);
-            return View(output.ToPagedList(input));
+            return View();
         }
 
         public async Task<ActionResult> Create(int? id)

@@ -36,6 +36,10 @@
     <text name="EditRole" value="编辑角色" />
     <text name="DeleteRole" value="删除角色" />
     <text name="EditRolePermission" value="修改角色权限" />
+    <text name="Role.Name" value="角色名称" />
+    <text name="Role.DisplayName" value="显示名称" />
+    <text name="Role.IsDefault" value="是否默认角色" />
+    <text name="Role.IsStatic" value="是否静态角色" />
 
     <text name="User" value="用户管理" />
     <text name="CreateUser" value="添加用户" />
