@@ -45,22 +45,6 @@ namespace Vickn.Platform.Web.Controllers
             return CreateResult;
         }
 
-        public async Task<ActionResult> Delete(int id)
-        {
-            var role = await _roleAppService.GetByIdAsync(new EntityDto<int>(id));
-            if (role.Name == StaticRoleNames.Tenants.Admin)
-                return Json(new { success = false, msg = $"系统角色不能被删除!" });
-
-            await _roleAppService.DeleteAsync(new EntityDto<int>(id));
-            return Json(new { success = true });
-        }
-
-        public async Task<ActionResult> BatchDelete(List<int> input)
-        {
-            await _roleAppService.BatchDeleteAsync(input);
-            return Json(new { success = true });
-        }
-
         public async Task<ActionResult> SetPermissions(int id)
         {
             var result =await _roleAppService.GetRolePermissionForEditAsync(new EntityDto(id));

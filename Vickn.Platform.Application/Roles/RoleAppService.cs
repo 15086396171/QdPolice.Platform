@@ -186,7 +186,8 @@ namespace Vickn.Platform.Roles
         {
             //TODO: 删除前的逻辑判断，是否允许删除
 
-            await _roleRepository.DeleteAsync(input.Id);
+            if (_roleRepository.FirstOrDefault(input.Id).Name != StaticRoleNames.Tenants.Admin)
+                await _roleRepository.DeleteAsync(input.Id);
         }
 
         /// <summary>

@@ -109,6 +109,8 @@
                         _userService.deleteUserAsync({ id: id })
                             .done(function () {
                                 location.reload();
+                            }).allways(function() {
+                                layer.close(index);
                             });
                     });
                 }
