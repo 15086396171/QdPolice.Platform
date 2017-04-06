@@ -1,7 +1,7 @@
 ﻿@using System.Web.Optimization
 @using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.OrganizationUnits.Authorization
 @using Vickn.Platform.Users.Authorization
-@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Organizations.Dto.OrganizationUnitDto, Vickn.Platform.Organizations.Dto.GetOrganizationUnitInput>
 @{
     ViewBag.Menu = L("OrganizationUnit");
     ViewBag.SecMenu = L("OrganizationUnit");
@@ -15,21 +15,22 @@
     <div class="organizationUnit ztree"></div>
 </div>
 <div style="margin-left:200px;">
-    <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+    @Html.Partial("~/Views/Common/_Navigation.cshtml")
     <div class="page-container">
         <div class="text-c">
-            <input type="text" placeholder="请输入组织名称" class="input-text" id="displayName" style="width: 250px;" />
-            <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+            <input type="text" placeholder="@L("OrganizationUnit.DisplayName")" class="input-text" id="displayName" style="width: 250px;" />
+            <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
+            <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
         </div>
         <div class="cl pd-5 bg-1 bk-gray mt-20">
             <span class="l">
-                @if (IsGranted(UserAppPermissions.User_DeleteUser))
+                @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_DeleteOrganizationUnit))
             {
-                    <a href="javascript:;" class="btn btn-danger radius btn-delAll " data-url="@Url.Action("BatchDelete")"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+                    <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
                 }
-                @if (IsGranted(UserAppPermissions.User_CreateUser))
+                @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit))
             {
-                    <a href="javascript:;" class="btn btn-primary radius btn-openWindow" data-url="@Url.Action("Create", new { parentId = Model.Input.ParentId })" data-title="@ViewBag.createBtn">
+                    <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
                         <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
                     </a>
                 }
@@ -39,9 +40,9 @@
             <thead>
                 <tr class="text-c">
                     <th width="25"><input type="checkbox"></th>
-                    <th>组织名称</th>
-                    <th>创建时间</th>
-                    <th>操作</th>
+                    <th>@L("OrganizationUnit.DisplayName")</th>
+                    <th>@L("CreationTime")</th>
+                    <th>@L("Operational")</th>
                 </tr>
             </thead>
             <tbody></tbody>

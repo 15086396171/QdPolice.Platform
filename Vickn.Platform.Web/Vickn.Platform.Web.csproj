@@ -1084,7 +1084,7 @@
     <Content Include="css\pager.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="js\crud.js" />
+    <Content Include="js\common.js" />
     <Content Include="js\main.js" />
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />
@@ -1223,6 +1223,7 @@
     <Content Include="Views\OrganizationUnits\Index.cshtml" />
     <Content Include="Views\OrganizationUnits\Create.cshtml" />
     <Content Include="Views\AuditLogs\Index.cshtml" />
+    <Content Include="Views\Common\_Navigation.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">

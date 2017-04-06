@@ -10,6 +10,7 @@ using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.UI;
 using Microsoft.AspNet.Identity;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users.Dto;
@@ -243,6 +244,7 @@ namespace Vickn.Platform.Users
         public async Task DeleteUserAsync(EntityDto<long> input)
         {
             //TODO:É¾³ýÇ°µÄÂß¼­ÅÐ¶Ï£¬ÊÇ·ñÔÊÐíÉ¾³ý
+            if( _userRepository.FirstOrDefault(input.Id).UserName != PlatformConsts.UserConst.DefaultAdminUserName)
             await _userRepository.DeleteAsync(input.Id);
         }
 

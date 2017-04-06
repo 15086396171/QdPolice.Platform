@@ -1,6 +1,6 @@
 ﻿(function () {
     $(function () {
-        var $dataTable = $(".dataTable");
+        var _dataTable = new DataTable();
         var _service = abp.services.app.auditLog;
 
         var ajax = function (data, callback, settings) {
@@ -10,11 +10,12 @@
                 userName: $("#userName").val()
             };
             _service.getAuditLogs(input).done(function (result) {
-                var returnData = {};
-                returnData.draw = data.draw; //这里直接自行返回了draw计数器,应该由后台返回
-                returnData.recordsTotal = result.totalCount;
-                returnData.recordsFiltered = result.totalCount; 
-                returnData.data = result.items;
+                var returnData = {
+                    draw: data.draw, //这里直接自行返回了draw计数器,应该由后台返回
+                    recordsTotal: result.totalCount,
+                    recordsFiltered: result.totalCount,
+                    data: result.items,
+                };
                 callback(returnData);
             });
         };
@@ -62,11 +63,11 @@
                 }
             },
         ];
-        var dataTable = new DataTable();
-        dataTable.Init($dataTable, columns, columnDefs, ajax);
+        _dataTable.init($(".dataTable"), columns, columnDefs, ajax);
+
 
         $("#search").click(function () {
-            dataTable.Search();
+            _dataTable.search();
         });
     });
 })();

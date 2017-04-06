@@ -5,6 +5,12 @@
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 Platform!" />
 
+    <text name="IndexPage" value="首页"/>
+    <text name="Search" value="搜索"/>
+    <text name="ReSearch" value="重置"/>
+    <text name="Reflesh" value="刷新"/>
+    <text name="BatchDelete" value="批量删除"/>
+    
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
 
@@ -19,6 +25,9 @@
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
     
+    <text name="CreationTime" value="创建时间"/>
+    <text name="Operational" value="操作"/>
+    
     <text name="SystemManage" value="系统管理" />
 
     <text name="LoginFailed" value="登录失败!" />
@@ -27,16 +36,28 @@
     <text name="EditRole" value="编辑角色" />
     <text name="DeleteRole" value="删除角色" />
     <text name="EditRolePermission" value="修改角色权限" />
+    <text name="Role.Name" value="角色名称" />
+    <text name="Role.DisplayName" value="显示名称" />
+    <text name="Role.IsDefault" value="是否默认角色" />
+    <text name="Role.IsStatic" value="是否静态角色" />
 
     <text name="User" value="用户管理" />
     <text name="CreateUser" value="添加用户" />
     <text name="DeleteUser" value="删除用户" />
     <text name="EditUser" value="编辑用户" />
+    <text name="User.Name" value="姓名"/>
+    <text name="User.UserName" value="登录名"/>
+    <text name="User.DisplayName" value="显示名"/>
+    <text name="Email" value="电子邮件"/>
+    <text name="Phone" value="电话号码"/>
+    <text name="LastLoginTime" value="上次登录时间"/>
+    <text name="IsEnable" value="是否启用"/>
 
     <text name="OrganizationUnit" value="组织管理"/>
     <text name="CreateOrganizationUnit" value="创建组织"/>
     <text name="DeleteOrganizationUnit" value="删除组织"/>
     <text name="EditOrganizationUnit" value="编辑组织"/>
+    <text name="OrganizationUnit.DisplayName" value="组织名称"/>
 
     <text name="AuditLog" value="审计管理"/>
     <text name="CreateAuditLog" value="创建审计"/>

@@ -23,10 +23,9 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         // GET: Roles
-        public async Task<ActionResult> Index(GetRoleInput input)
+        public ActionResult Index()
         {
-            var output = await _roleAppService.GetPagedAsync(input);
-            return View(output.ToPagedList(input));
+            return View();
         }
 
         public async Task<ActionResult> Create(int? id)
@@ -44,22 +43,6 @@ namespace Vickn.Platform.Web.Controllers
             await _roleAppService.CreateOrUpdateAsync(new CreateOrUpdateRoleInput() {RoleEditDto = dto.RoleEditDto});
             //return Content("<script>parent.location.reload()</script>");
             return CreateResult;
-        }
-
-        public async Task<ActionResult> Delete(int id)
-        {
-            var role = await _roleAppService.GetByIdAsync(new EntityDto<int>(id));
-            if (role.Name == StaticRoleNames.Tenants.Admin)
-                return Json(new { success = false, msg = $"系统角色不能被删除!" });
-
-            await _roleAppService.DeleteAsync(new EntityDto<int>(id));
-            return Json(new { success = true });
-        }
-
-        public async Task<ActionResult> BatchDelete(List<int> input)
-        {
-            await _roleAppService.BatchDeleteAsync(input);
-            return Json(new { success = true });
         }
 
         public async Task<ActionResult> SetPermissions(int id)

@@ -20,6 +20,7 @@ using Abp.Authorization;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
+using Castle.Core.Internal;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.Dtos;
@@ -56,6 +57,8 @@ namespace Vickn.Platform.Roles
             var query = _roleRepository.GetAll();
 
             //TODO:根据传入的参数添加过滤条件
+            query = query.WhereIf(!input.RoleName.IsNullOrEmpty(),
+                p => p.Name.Contains(input.RoleName) || p.DisplayName.Contains(input.RoleName));
 
             var roleCount = await query.CountAsync();
 
@@ -183,7 +186,8 @@ namespace Vickn.Platform.Roles
         {
             //TODO: 删除前的逻辑判断，是否允许删除
 
-            await _roleRepository.DeleteAsync(input.Id);
+            if (_roleRepository.FirstOrDefault(input.Id).Name != StaticRoleNames.Tenants.Admin)
+                await _roleRepository.DeleteAsync(input.Id);
         }
 
         /// <summary>

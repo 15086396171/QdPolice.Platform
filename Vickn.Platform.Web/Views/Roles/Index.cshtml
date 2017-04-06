@@ -5,7 +5,6 @@
 @using Abp.Web.Mvc.Extensions
 @using Vickn.Platform.Authorization.Roles.Authorization
 @using Vickn.Platform.Users.Authorization
-@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Roles.Dtos.RoleDto, Vickn.Platform.Roles.Dtos.GetRoleInput>
 @{
     ViewBag.Menu = L("Role");
     ViewBag.SecMenu = L("Role");
@@ -14,65 +13,39 @@
 
     ViewBag.ActiveMenu = "Roles"; //The menu item will be active for this page.
 }
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
-
+@Html.Partial("~/Views/Common/_Navigation.cshtml")
 <div class="page-container">
-
     <div class="text-c">
-        <input type="text" class="input-text" style="width: 250px" placeholder="输入角色名称" id="" name="">
-        <button type="submit" class="btn btn-success" id="" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+        <input type="text" placeholder="@L("Role.Name")" class="input-text" id="name" style="width: 250px;" />
+        <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
+        <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
     </div>
     <div class="cl pd-5 bg-1 bk-gray mt-20">
         <span class="l">
             @if (IsGranted(RoleAppPermissions.Role_DeleteRole))
             {
-                <a href="javascript:;" class="btn btn-danger radius btn-delAll" data-url="@Url.Action("BatchDelete")"><i class="Hui-iconfont">&#xe6e2;</i> 批量删除</a>
+                <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
             }
             @if (IsGranted(RoleAppPermissions.Role_CreateRole))
             {
-                <a href="javascript:;" class="btn btn-primary radius btn-openWindow" data-url="@Url.Action("Create")" data-title="@ViewBag.createBtn">
+                <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
                     <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
                 </a>
             }
-        </span> <span class="r">共有数据：<strong>@Model.TotalCount</strong> 条</span>
+        </span>
     </div>
-    <table class="table table-border table-bordered table-bg">
+    <table class="table table-border table-bordered table-bg dataTable">
         <thead>
-            <tr class="text-c">
-                <th width="25"><input type="checkbox"></th>
-                <th>角色名</th>
-                <th>显示名</th>
-                <th>是否静态角色</th>
-                <th>是否默认角色</th>
-                <th>操作</th>
-            </tr>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox"></th>
+            <th>@L("Role.Name")</th>
+            <th>@L("Role.DisplayName")</th>
+            <th>@L("Role.IsStatic")</th>
+            <th>@L("Role.IsDefault")</th>
+            <th>@L("Operational")</th>
+        </tr>
         </thead>
-        <tbody>
-            @foreach (var item in Model.DataList)
-            {
-                <tr class="text-c">
-                    <td><input type="checkbox" class="check-box" name="check-box" value="@item.Id"></td>
-                    <td>@item.Name</td>
-                    <td>@item.DisplayName</td>
-                    <td>@(item.IsStatic ? "是" : "否")</td>
-                    <td>@(item.IsDefault ? "是" : "否")</td>
-                    <td class="td-manage">
-                        @if (IsGranted(RoleAppPermissions.Role_EditRolePermission)) { 
-                        <a title="设置权限" href="javascript:;" class="ml-5 btn-setPermission" data-title="设置权限" data-url="@Url.Action("SetPermissions")" data-id="@item.Id" data-url="@Url.Action("SetPermissions", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe681;</i></a>
-                        }
-                          @if (IsGranted(RoleAppPermissions.Role_EditRole))
-                        {
-                        <a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="@ViewBag.editBtn" data-url="@Url.Action("Create", new {id = item.Id})" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>
-                        }
-                         @if (IsGranted(RoleAppPermissions.Role_DeleteRole))
-                        {
-                        <a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-url="@Url.Action("Delete", new {id = item.Id})"><i class="Hui-iconfont">&#xe6e2;</i></a>
-                        }
-                    </td>
-                </tr>
-            }
-            <tr><td id="load"></td></tr>
-        </tbody>
+        <tbody></tbody>
     </table>
 
     <div id="modal-setPermission" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -91,13 +64,14 @@
             </div>
         </div>
     </div>
-
-    @Html.Raw(Model.PagerHtml())
 </div>
+
 @section styles{
     @Styles.Render("~/Bundles/lib/css/jstree")
 }
+
 @section scripts{
+    @Html.IncludeScript("~/js/_DataTable.js")
     @Scripts.Render("~/Bundles/lib/js/jstree")
     @Html.IncludeScript("~/Views/Roles/_PermissionTree.js")
     @Html.IncludeScript("~/Views/Roles/Index.js")

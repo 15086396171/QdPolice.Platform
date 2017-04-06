@@ -22,6 +22,8 @@ namespace Vickn.Platform.Roles.Dtos
     {
 		//DOTO:在这里增加查询参数
 
+        public string RoleName { get; set; }
+
 		/// <summary>
 	    /// 模糊查询参数
 		/// </summary>

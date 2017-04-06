@@ -1,12 +1,9 @@
 ﻿(function () {
     $(function () {
         var _tree = new OrganizationUnitTree();
-
-        var $dataTable = $(".dataTable");
+        var _dataTable = new DataTable();
 
         var _service = abp.services.app.organizationUnit;
-
-        var _dataTable = new DataTable();
 
         var _parentId;
 
@@ -24,11 +21,12 @@
                 displayName: $("#displayName").val()
             };
             _service.getPagedOrganizationUnitAsync(input).done(function (result) {
-                var returnData = {};
-                returnData.draw = data.draw; //这里直接自行返回了draw计数器,应该由后台返回
-                returnData.recordsTotal = result.totalCount;
-                returnData.recordsFiltered = result.totalCount;
-                returnData.data = result.items;
+                var returnData = {
+                    draw: data.draw, //这里直接自行返回了draw计数器,应该由后台返回
+                    recordsTotal: result.totalCount,
+                    recordsFiltered: result.totalCount,
+                    data: result.items,
+                };
                 callback(returnData);
             });
         };
@@ -57,13 +55,13 @@
                   render: function (data, type, row, meta) {
                       var $div = $('<div></div>');
                       if (_permissions.edit) {
-                          $('<a title="编辑" href="javascript:;" class="ml-5 btn-openWindow" data-title="编辑" data-url="' + abp.appPath + 'OrganizationUnits/Create?id=' + data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
+                          $('<a title="编辑" href="javascript:;" class="ml-5 edit" data-title="编辑" data-id="'+ data + '" style="text-decoration: none"><i class="Hui-iconfont">&#xe6df;</i></a>').on("click", function () {
                               alert();
                           })
                           .appendTo($div);
                       }
                       if (_permissions.delete) {
-                          $('<a title="删除" href="javascript:;" class="ml-5 btn-delete" style="text-decoration: none" data-id="' + data + '"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                          $('<a title="删除" href="javascript:;" class="ml-5 delete" style="text-decoration: none" data-id="' + data + '"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                               .appendTo($div);
                       }
                       return $div.html();
@@ -71,34 +69,68 @@
               },
         ];
 
-        _dataTable.Init($dataTable, columns, columnDefs, ajax);
-
         _tree.init($(".organizationUnit"), abp.appPath + "OrganizationUnits/Index", function (parentId) {
             _parentId = parentId;
-            _dataTable.Search();
+            _dataTable.search();
         });
 
-        $dataTable.on('draw.dt', function () {
-            $(".btn-openWindow").on("click", function () {
-                var index = layer.open({
-                    type: 2,
-                    title: "编辑组织机构",
-                    content: $(this).data("url")
-                });
-                layer.full(index);
-            });
-            $(".btn-delete").on("click", function () {
-                var id = $(this).data("id");
-                var index = layer.confirm('确定删除?', function () {
-                    _service.deleteOrganizationUnit({ id: id }).done(function () {
-                        location.reload();
+        _dataTable.init($(".dataTable"), columns, columnDefs, ajax);
+
+        _dataTable.setEvents([
+            {
+                selector: ".edit",
+                event: "click",
+                callback: function () {
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?Id=" + $(this).data("id"));
+                }
+            },
+            {
+                selector: ".delete",
+                event: "click",
+                callback: function () {
+                    var id = $(this).data("id");
+                    var index = layer.confirm('确定删除该组织机构?', function () {
+                        _service.deleteOrganizationUnit({ id: id })
+                            .done(function () {
+                                location.reload();
+                            });
                     });
-                });
-            });
-        });
+                }
+            }
+        ]);
 
         $("#search").click(function () {
-            _dataTable.Search();
+            _dataTable.search();
         });
+        $("#create")
+            .click(function() {
+                if (_parentId)
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create?parentId=" + _parentId);
+                else
+                    commonCreateOrEdit(abp.appPath + "OrganizationUnits/Create");
+            });
+        $("#batchDelete").click(function () {
+            var input = [];
+            var url = $(this).data('url');
+            $('input[class="check-box"]:checked').each(function (index, data) {
+                input.push($(data).val());
+            });
+            if (input.length === 0) {
+                layer.alert("请选择要删除的数据");
+                return;
+            }
+            layer.confirm('确定删除?', function () {
+                _service.batchDeleteOrganizationUnitAsync(input)
+                    .done(function() {
+                        window.location.reload();
+                    });
+            });
+        });
+        $("#research")
+            .click(function() {
+                $("#displayName").val("");
+                _parentId = null;
+                _dataTable.search();
+            });
     });
 })();
