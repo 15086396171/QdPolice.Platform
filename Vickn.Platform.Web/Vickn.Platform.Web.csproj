@@ -1078,6 +1078,7 @@
     <Content Include="Content\H-ui.admin_v3.0\_menu.html" />
     <Content Include="Content\H-ui.admin_v3.0\_meta.html" />
     <Content Include="Content\H-ui.admin_v3.0\【开发必读】文档目录.txt" />
+    <Content Include="css\common.css" />
     <Content Include="css\validation.css" />
     <Content Include="Content\toastr.css" />
     <Content Include="Content\toastr.min.css" />
@@ -1150,7 +1151,6 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
-    <Content Include="js\_DataTable.js" />
     <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="Views\OrganizationUnits\Index.js" />
     <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.js" />
@@ -1158,6 +1158,7 @@
     <Content Include="Views\Roles\_PermissionTree.js" />
     <Content Include="Views\Tenants\Index.js" />
     <Content Include="Views\Users\Create.js" />
+    <Content Include="js\datatable.extend.js" />
     <Content Include="Views\Users\Index.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

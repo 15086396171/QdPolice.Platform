@@ -265,7 +265,7 @@ namespace Vickn.Platform.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task DisableUser(EntityDto<long> input)
+        public async Task DisableUserAsync(EntityDto<long> input)
         {
             var user = await _userRepository.GetAsync(input.Id);
             user.IsActive = !user.IsActive;

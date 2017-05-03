@@ -7,7 +7,7 @@ namespace Vickn.Platform.Dtos
     /// <summary>
     /// 表示分页排序的Dto基类
     /// </summary>
-    public class PagedAndSortedInputDto : IPagedResultRequest, IPagerInBase, ISortedResultRequest
+    public class PagedAndSortedInputDto : IPagedResultRequest, IPagerInBase, ISortedResultRequest,IDatatable
     {
 
         /// <summary>
@@ -49,5 +49,6 @@ namespace Vickn.Platform.Dtos
         }
 
         public int PageIndex { get; set; }
+        public int Draw { get; set; }
     }
 }

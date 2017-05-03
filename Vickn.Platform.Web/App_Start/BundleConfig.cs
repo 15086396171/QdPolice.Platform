@@ -83,6 +83,7 @@ namespace Vickn.Platform.Web
                 new StyleBundle("~/Bundles/css")
                 .Include("~/css/pager.css", new CssRewriteUrlTransform())
                 .Include("~/css/validation.css", new CssRewriteUrlTransform())
+                .Include("~/css/common.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/js

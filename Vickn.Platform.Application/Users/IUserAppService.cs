@@ -76,7 +76,7 @@ namespace Vickn.Platform.Users
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task DisableUser(EntityDto<long> input);
+        Task DisableUserAsync(EntityDto<long> input);
 
         #endregion
     }

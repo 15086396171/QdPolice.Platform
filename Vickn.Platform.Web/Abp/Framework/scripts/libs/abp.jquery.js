@@ -26,8 +26,9 @@
                         userOptions.success && userOptions.success(data);
                     }
                 }).fail(function (jqXHR) {
-                    if (jqXHR.responseJSON && jqXHR.responseJSON.__abp) {
-                        abp.ajax.handleResponse(jqXHR.responseJSON, userOptions, $dfd, jqXHR);
+                    var json = $.parseJSON(jqXHR.responseText);
+                    if (json && json.__abp) {
+                        abp.ajax.handleResponse(json, userOptions, $dfd, jqXHR);
                     } else {
                         abp.ajax.handleNonAbpErrorResponse(jqXHR, userOptions, $dfd);
                     }

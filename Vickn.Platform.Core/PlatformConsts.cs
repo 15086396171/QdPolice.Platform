@@ -6,7 +6,7 @@
         //public const string LocalizationSourceName = "Platform-es";
 
         public const string AppName = "Vickn统一登录管理平台";
-        public const int DefaultPageSize = 15;
+        public const int DefaultPageSize = 10;
         public const int MaxPageSize = 100;
 
         /// <summary>

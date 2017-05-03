@@ -133,6 +133,7 @@
     <Compile Include="Auditing\IAuditLogAppService.cs" />
     <Compile Include="AuthorizationProvider.cs" />
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
+    <Compile Include="Dtos\IDataTable.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
     <Compile Include="Organizations\Dto\CreateOrganizationUnitInput.cs" />
     <Compile Include="Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
