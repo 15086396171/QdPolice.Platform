@@ -12,7 +12,7 @@ namespace Vickn.Platform.Migrations
 
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "Platform";
         }
 

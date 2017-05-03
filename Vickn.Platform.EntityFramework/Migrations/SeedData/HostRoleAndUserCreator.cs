@@ -8,6 +8,9 @@ using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.EntityFramework;
 using Vickn.Platform.Users;
 using Microsoft.AspNet.Identity;
+using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Migrations.SeedData
 {
@@ -37,7 +40,7 @@ namespace Vickn.Platform.Migrations.SeedData
 
                 //Grant all tenant permissions
                 var permissions = PermissionFinder
-                    .GetAllPermissions(new PlatformAuthorizationProvider())
+                    .GetAllPermissions(new PlatformAuthorizationProvider(),new UserAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new RoleAppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host))
                     .ToList();
 

@@ -42,7 +42,7 @@ namespace Vickn.Platform.Migrations.SeedData
 
                 //Grant all permissions to admin role
                 var permissions = PermissionFinder
-                    .GetAllPermissions(new PlatformAuthorizationProvider(),new  UserAppAuthorizationProvider(),new RoleAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new AuditLogAppAuthorizationProvider())
+                    .GetAllPermissions(new PlatformAuthorizationProvider(),new UserAppAuthorizationProvider(),new RoleAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new AuditLogAppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant))
                     .ToList();
 
@@ -66,7 +66,7 @@ namespace Vickn.Platform.Migrations.SeedData
             var adminUser = _context.Users.FirstOrDefault(u => u.TenantId == _tenantId && u.UserName == User.AdminUserName);
             if (adminUser == null)
             {
-                adminUser = User.CreateTenantAdminUser(_tenantId, "admin@defaulttenant.com", "123qwe");
+                adminUser = User.CreateTenantAdminUser(_tenantId, "admin@defaulttenant.com", "123456");
                 adminUser.IsEmailConfirmed = true;
                 adminUser.IsActive = true;
 
