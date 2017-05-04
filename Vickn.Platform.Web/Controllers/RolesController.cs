@@ -42,7 +42,7 @@ namespace Vickn.Platform.Web.Controllers
 
             await _roleAppService.CreateOrUpdateAsync(new CreateOrUpdateRoleInput() {RoleEditDto = dto.RoleEditDto});
             //return Content("<script>parent.location.reload()</script>");
-            return CreateResult;
+            return RedirectToAction("Index");
         }
 
         public async Task<ActionResult> SetPermissions(int id)

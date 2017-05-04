@@ -62,6 +62,8 @@
     });
 
     function addEvent(target, options) {
+        if (!options.methods)
+            return;
         $.each(options.methods, function (index, data) {
             var actionOptions = {};
             if (data.actionName === "editAction") {
@@ -146,6 +148,8 @@
             }
             $(options.target).search();
         });
+        if (!options.commonMethods)
+            return;
         $.each(options.commonMethods,
             function (index, data) {
                 var actionOptions = {};
@@ -154,24 +158,24 @@
                         window.location.href = data.url;
                     });
                 }
-                else if (data.actionName === "batctAction") {
+                else if (data.actionName === "batchAction") {
                     $("#batchDelete").click(function () {
                         var input = [];
-                        $('input[class="check-box"]:checked').each(function (index, data) {
-                            input.push($(data).val());
+                        $('input[class="check-box"]:checked').each(function (index2, data2) {
+                            input.push($(data2).val());
                         });
                         if (input.length === 0) {
                             layer.alert("请选择要删除的数据");
                             return;
                         }
-                        var index = layer.confirm('确定删除?', function () {
+                        var index1 = layer.confirm('确定删除?', function () {
                             abp.ajax({
                                 url: data.url,
                                 data: JSON.stringify(input)
                             }).done(function () {
                                 $(options.target).search();
                             });
-                            layer.close(index);
+                            layer.close(index1);
                         });
                     });
                 }

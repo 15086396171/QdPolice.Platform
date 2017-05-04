@@ -14,7 +14,7 @@
 <nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
 <div class="page-container">
     <div class="text-c mb-20">
-        <input type="text" class="input-text" placeholder="请输入用户名" style="width: 250px;" id="userName" />
+        <input type="text" class="input-text" placeholder="请输入时间" style="width: 250px;" id="userName" />
         <button class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
     </div>
     <table class="table table-border table-bordered table-hover table-bg dataTable ">
@@ -35,6 +35,6 @@
     </table>
 </div>
 @section scripts{
-    @Html.IncludeScript("~/js/_DataTable.js")
+    @Html.IncludeScript("~/js/datatable.extend.js")
     @Html.IncludeScript("~/Views/AuditLogs/Index.js")
 }

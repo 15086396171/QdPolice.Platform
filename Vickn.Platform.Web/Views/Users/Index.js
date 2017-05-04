@@ -97,7 +97,7 @@
                     url: abp.appPath + "Users/Create"
                 },
                 {
-                    actionName: "batctAction",
+                    actionName: "batchAction",
                     url: abp.appPath + "api/services/app/user/batchDeleteUserAsync"
                 },
             ]

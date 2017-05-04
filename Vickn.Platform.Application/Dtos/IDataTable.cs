@@ -8,6 +8,6 @@
         /// <summary>
         /// ajax计数
         /// </summary>
-        int Draw { get; set; }
+        int Draw { get; set; }  
     }
 }

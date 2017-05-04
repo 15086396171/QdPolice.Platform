@@ -47,7 +47,7 @@ namespace Vickn.Platform.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.HasDefaultSchema("basic");
-            modelBuilder.ChangeAbpTablePrefix<Tenant,Role,User>("Sys2");
+            modelBuilder.ChangeAbpTablePrefix<Tenant,Role,User>("Platform");
         }
     }
 }

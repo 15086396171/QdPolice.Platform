@@ -36,14 +36,14 @@
     </div>
     <table class="table table-border table-bordered table-bg dataTable">
         <thead>
-        <tr class="text-c">
-            <th width="25"><input type="checkbox"></th>
-            <th>@L("Role.Name")</th>
-            <th>@L("Role.DisplayName")</th>
-            <th>@L("Role.IsStatic")</th>
-            <th>@L("Role.IsDefault")</th>
-            <th>@L("Operational")</th>
-        </tr>
+            <tr class="text-c">
+                <th width="25"><input type="checkbox"></th>
+                <th>@L("Role.Name")</th>
+                <th>@L("Role.DisplayName")</th>
+                <th>@L("Role.IsStatic")</th>
+                <th>@L("Role.IsDefault")</th>
+                <th>@L("Operational")</th>
+            </tr>
         </thead>
         <tbody></tbody>
     </table>
@@ -71,7 +71,7 @@
 }
 
 @section scripts{
-    @Html.IncludeScript("~/js/_DataTable.js")
+    @Html.IncludeScript("~/js/datatable.extend.js")
     @Scripts.Render("~/Bundles/lib/js/jstree")
     @Html.IncludeScript("~/Views/Roles/_PermissionTree.js")
     @Html.IncludeScript("~/Views/Roles/Index.js")
