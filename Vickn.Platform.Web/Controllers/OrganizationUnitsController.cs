@@ -49,7 +49,7 @@ namespace Vickn.Platform.Web.Controllers
                 return View(output);
             }
             await _organizationUnitAppService.CreateOrUpdateOrganizationUnit(output);
-            return CreateResult;
+            return RedirectToAction("Index");
         }
     }
 }

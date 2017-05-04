@@ -1,15 +1,6 @@
 ﻿(function ($) {
     $.fn.extend({
         createDatatable: function (options) {
-            var columnDefs = [];
-            $.each(options.fileds, function (index, data) {
-                if (data.render) {
-                    columnDefs.push({
-                        target: index,
-                        render: data.render
-                    });
-                }
-            });
             var _settings = {
                 autoWidth: false, //禁用自动调整列宽
                 ordering: false, //取消默认排序查询,否则复选框一列会出现小箭头
@@ -21,11 +12,10 @@
                 "retrieve": true,  //保证只有一个table实例
                 //processing: false,
                 ajax: options.listAction.method || function (data, callback, settings) {
-                    //var index = layer.load(2);
                     var input = {
                         pageIndex: parseInt(data.start / data.length) + 1,
                         maxResultCount: data.length,
-                        draw:data.draw,
+                        draw: data.draw,
                     };
 
                     if (options.listAction.filters) {
@@ -37,20 +27,19 @@
                         url: options.listAction.url,
                         data: JSON.stringify(input)
                     }).done(function (result) {
-                        setTimeout(function () {
-                            var returnData = {
-                                draw: data.draw, //这里直接自行返回了draw计数器,应该由后台返回
-                                recordsTotal: result.totalCount,
-                                recordsFiltered: result.totalCount,
-                                data: result.items,
-                            };
-                            callback(returnData);
-                            //layer.close(index);
-                        }, 10);
+                        //setTimeout(function () {
+                        var returnData = {
+                            draw: data.draw, //这里直接自行返回了draw计数器,应该由后台返回
+                            recordsTotal: result.totalCount,
+                            recordsFiltered: result.totalCount,
+                            data: result.items,
+                        };
+                        callback(returnData);
+                        //layer.close(index);
+                        //}, 10);
                     });
                 },
                 columns: options.fileds,
-                columnDefs: columnDefs
             };
             $(this).dataTable(_settings);
             addEvent(this, options);
@@ -152,33 +141,42 @@
             return;
         $.each(options.commonMethods,
             function (index, data) {
-                var actionOptions = {};
                 if (data.actionName === "createAction") {
-                    $("#create").click(function () {
-                        window.location.href = data.url;
-                    });
+                    if (data.action)
+                        data.action();
+                    else {
+                        $("#create").click(function () {
+                            window.location.href = data.url;
+                        });
+                    }
                 }
                 else if (data.actionName === "batchAction") {
-                    $("#batchDelete").click(function () {
-                        var input = [];
-                        $('input[class="check-box"]:checked').each(function (index2, data2) {
-                            input.push($(data2).val());
-                        });
-                        if (input.length === 0) {
-                            layer.alert("请选择要删除的数据");
-                            return;
-                        }
-                        var index1 = layer.confirm('确定删除?', function () {
-                            abp.ajax({
-                                url: data.url,
-                                data: JSON.stringify(input)
-                            }).done(function () {
-                                $(options.target).search();
+                    if (data.action)
+                        data.action();
+                    else {
+                        $("#batchDelete").click(function () {
+                            var input = [];
+                            $('input[class="check-box"]:checked').each(function (index2, data2) {
+                                input.push($(data2).val());
                             });
-                            layer.close(index1);
+                            if (input.length === 0) {
+                                layer.alert("请选择要删除的数据");
+                                return;
+                            }
+                            var index1 = layer.confirm('确定删除?',
+                                function () {
+                                    abp.ajax({
+                                        url: data.url,
+                                        data: JSON.stringify(input)
+                                    }).done(function () {
+                                        $(options.target).search();
+                                    });
+                                    layer.close(index1);
+                                });
                         });
-                    });
+                    }
                 }
+                // 不必实现else，由index.js自行实现
             });
     }
 })(jQuery);

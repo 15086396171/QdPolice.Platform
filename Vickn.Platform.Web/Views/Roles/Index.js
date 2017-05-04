@@ -62,7 +62,7 @@
                 },
                 {
                     actionName: "deleteAction",
-                    url: abp.appPath + "api/services/app/role/deleteRoleAsync",
+                    url: abp.appPath + "api/services/app/role/deleteAsync",
                 },
                 {
                     actionName: "setPermissionAction",

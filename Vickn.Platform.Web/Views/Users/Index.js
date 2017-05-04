@@ -14,8 +14,9 @@
                 filters: [
                     {
                         key: "name",
-                        selector: $("#name")
-                    }
+                        selector: $("#name"),
+                    },
+
                 ]
             },
             fileds: [
