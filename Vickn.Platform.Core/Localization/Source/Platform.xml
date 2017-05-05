@@ -66,6 +66,8 @@
     <text name="CreateAuditLog" value="创建审计"/>
     <text name="DeleteAuditLog" value="删除审计"/>
     <text name="EditAuditLog" value="编辑审计"/>
+    
+    <text name="Submit" value="保存"/>
 
   </texts>
 </localizationDictionary>

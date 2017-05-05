@@ -1,7 +1,8 @@
-﻿$('.pass-reset-form').validate({
+﻿$('form').validate({
     rules: {
         PasswordRepeat: {
-            equalTo: "#Password"
+            equalTo: "#Password",
+
         }
     },
 
