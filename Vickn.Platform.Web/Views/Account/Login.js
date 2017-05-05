@@ -3,8 +3,9 @@
     $(function () {
         $('#LoginButton').click(function (e) {
             e.preventDefault();
+            var index = layer.load(2);
             abp.ui.setBusy(
-                $('#LoginArea'),
+                $('#loginform'),
                 abp.ajax({
                     url: abp.appPath + 'Account/Login',
                     type: 'POST',
@@ -15,6 +16,8 @@
                         rememberMe: $('#RememberMeInput').is(':checked'),
                         returnUrlHash: $('#ReturnUrlHash').val()
                     })
+                }).fail(function () {
+                    layer.close(index);
                 })
             );
         });

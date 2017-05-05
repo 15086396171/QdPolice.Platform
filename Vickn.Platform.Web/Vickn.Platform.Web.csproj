@@ -1151,6 +1151,7 @@
       <DependentUpon>Login.css</DependentUpon>
     </Content>
     <Content Include="Views\Account\Register.js" />
+    <Content Include="Views\Account\ResetPassword.js" />
     <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="Views\OrganizationUnits\Index.js" />
     <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.js" />
@@ -1182,6 +1183,8 @@
     <Compile Include="Controllers\RolesController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Models\Account\ResetPasswordFormViewModel.cs" />
+    <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\Layout\UserMenuOrLoginLinkViewModel.cs" />
     <Compile Include="Models\Account\LoginFormViewModel.cs" />
     <Compile Include="Models\Account\LoginViewModel.cs" />
@@ -1225,6 +1228,7 @@
     <Content Include="Views\OrganizationUnits\Create.cshtml" />
     <Content Include="Views\AuditLogs\Index.cshtml" />
     <Content Include="Views\Common\_Navigation.cshtml" />
+    <Content Include="Views\Account\ResetPassword.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">

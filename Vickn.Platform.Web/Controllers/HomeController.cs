@@ -21,7 +21,6 @@ namespace Vickn.Platform.Web.Controllers
         }
         public ActionResult Index()
         {
-            SetCulture("zh-CN");
             return View();
         }
 
@@ -29,26 +28,6 @@ namespace Vickn.Platform.Web.Controllers
         {
             return View();
         }
-
-        private void SetCulture(string cultureName)
-        {
-            Response.Cookies.Add(
-                new HttpCookie(_webLocalizationConfiguration.CookieName, cultureName)
-                {
-                    Expires = Clock.Now.AddYears(2)
-                }
-            );
-
-            if (AbpSession.UserId.HasValue)
-            {
-                SettingManager.ChangeSettingForUser(
-                    AbpSession.ToUserIdentifier(),
-                    LocalizationSettingNames.DefaultLanguage,
-                    cultureName
-                );
-            }
-        }
-
         public string GetCultureName()
         {
             return Thread.CurrentThread.CurrentUICulture.DisplayName +"\r\n"+ Thread.CurrentThread.CurrentUICulture.Name;

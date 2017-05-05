@@ -124,7 +124,10 @@ namespace Vickn.Platform.Users
             }
             else
             {
-                userEditDto = new UserEditDto();
+                userEditDto = new UserEditDto()
+                {
+                    ShouldChangePasswordOnNextLogin = true
+                };
                 // 创建时选中默认角色
                 foreach (var defaultRole in await _roleManager.Roles.Where(r => r.IsDefault).ToListAsync())
                 {

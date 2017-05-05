@@ -12,6 +12,7 @@ using Abp.AutoMapper;
 using Abp.Configuration.Startup;
 using Abp.Domain.Uow;
 using Abp.Extensions;
+using Abp.Runtime.Security;
 using Abp.Threading;
 using Abp.UI;
 using Abp.Web.Models;
@@ -64,6 +65,7 @@ namespace Vickn.Platform.Web.Controllers
 
         public ActionResult Login(string returnUrl = "")
         {
+            SetCulture("zh-CN");
             if (string.IsNullOrWhiteSpace(returnUrl))
             {
                 returnUrl = Request.ApplicationPath;
@@ -87,6 +89,21 @@ namespace Vickn.Platform.Web.Controllers
                 loginModel.Password,
                 loginModel.TenancyName
                 );
+
+            if (loginResult.User.ShouldChangePasswordOnNextLogin)
+            {
+                loginResult.User.SetNewPasswordResetCode();
+                return Json(new AjaxResponse
+                {
+                    TargetUrl = Url.Action(
+                            "ResetPassword",
+                            new ResetPasswordViewModel
+                            {
+                                UserId = SimpleStringCipher.Instance.Encrypt(loginResult.User.Id.ToString()),
+                                ResetCode = loginResult.User.PasswordResetCode
+                            })
+                });
+            }
 
             await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
 
@@ -154,6 +171,54 @@ namespace Vickn.Platform.Web.Controllers
         {
             AuthenticationManager.SignOut();
             return RedirectToAction("Login");
+        }
+
+        #endregion
+
+        #region ResetPassword
+
+        [UnitOfWork]
+        public virtual async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            var userId = SimpleStringCipher.Instance.Decrypt(model.UserId).To<long>();
+
+            var user = await _userManager.GetUserByIdAsync(userId);
+            if (user == null || user.PasswordResetCode.IsNullOrEmpty() || user.PasswordResetCode != model.ResetCode)
+            {
+                throw new UserFriendlyException(L("InvalidPasswordResetCode"), L("InvalidPasswordResetCode_Detail"));
+            }
+
+            //var setting = await SettingManager.GetSettingValueForUserAsync(AppSettings.Security.PasswordComplexity, tenantId, userId);
+            //model.PasswordComplexitySetting = JsonConvert.DeserializeObject<PasswordComplexitySetting>(setting);
+
+            return View(model);
+        }
+
+        [HttpPost]
+        [UnitOfWork]
+        public virtual async Task<ActionResult> ResetPassword(ResetPasswordFormViewModel model)
+        {
+            var userId = Convert.ToInt64(SimpleStringCipher.Instance.Decrypt(model.UserId));
+
+            var user = await _userManager.GetUserByIdAsync(userId);
+            if (user == null || user.PasswordResetCode.IsNullOrEmpty() || user.PasswordResetCode != model.ResetCode)
+            {
+                throw new UserFriendlyException(L("InvalidPasswordResetCode"), L("InvalidPasswordResetCode_Detail"));
+            }
+
+            user.Password = new PasswordHasher().HashPassword(model.Password);
+            user.PasswordResetCode = null;
+            user.IsEmailConfirmed = true;
+            user.ShouldChangePasswordOnNextLogin = false;
+
+            await _userManager.UpdateAsync(user);
+
+            if (user.IsActive)
+            {
+                await SignInAsync(user);
+            }
+
+            return RedirectToAction("Index", "Home");
         }
 
         #endregion

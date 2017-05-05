@@ -26,10 +26,15 @@
                         userOptions.success && userOptions.success(data);
                     }
                 }).fail(function (jqXHR) {
-                    var json = $.parseJSON(jqXHR.responseText);
-                    if (json && json.__abp) {
-                        abp.ajax.handleResponse(json, userOptions, $dfd, jqXHR);
-                    } else {
+                    try {
+                        var json = $.parseJSON(jqXHR.responseText);
+                        if (json && json.__abp) {
+                            abp.ajax.handleResponse(json, userOptions, $dfd, jqXHR);
+                        } else {
+                            abp.ajax.handleNonAbpErrorResponse(jqXHR, userOptions, $dfd);
+                        }
+                    }
+                    catch (ex){
                         abp.ajax.handleNonAbpErrorResponse(jqXHR, userOptions, $dfd);
                     }
                 });

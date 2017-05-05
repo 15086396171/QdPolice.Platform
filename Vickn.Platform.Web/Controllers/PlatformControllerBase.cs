@@ -1,6 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System.Web;
+using System.Web.Mvc;
+using Abp.Configuration;
 using Abp.Extensions;
 using Abp.IdentityFramework;
+using Abp.Localization;
+using Abp.Runtime.Session;
+using Abp.Timing;
 using Abp.UI;
 using Abp.Web.Mvc.Controllers;
 using Microsoft.AspNet.Identity;
@@ -18,6 +23,25 @@ namespace Vickn.Platform.Web.Controllers
         protected PlatformControllerBase()
         {
             LocalizationSourceName = PlatformConsts.LocalizationSourceName;
+        }
+
+        protected void SetCulture(string cultureName)
+        {
+            Response.Cookies.Add(
+                new HttpCookie("Abp.Localization.CultureName", cultureName)
+                {
+                    Expires = Clock.Now.AddYears(2)
+                }
+            );
+
+            if (AbpSession.UserId.HasValue)
+            {
+                SettingManager.ChangeSettingForUser(
+                    AbpSession.ToUserIdentifier(),
+                    LocalizationSettingNames.DefaultLanguage,
+                    cultureName
+                );
+            }
         }
 
         protected virtual bool CheckModelState(CustomerModelStateValidationDto customerError)

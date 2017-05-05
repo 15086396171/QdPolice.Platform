@@ -43,6 +43,11 @@ namespace Vickn.Platform.Users.Dtos
         [MaxLength(8)]
         public string Name { get; set; }
 
+        public virtual Guid? ProfilePictureId { get; set; }
+
+        [DisplayName("下次登录修改密码")]
+        public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
+
         /// <summary>
         /// 显示名
         /// </summary>

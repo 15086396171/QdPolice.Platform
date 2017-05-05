@@ -9,6 +9,10 @@ namespace Vickn.Platform.Users
     {
         public const string DefaultPassword = "123456";
 
+        public virtual Guid? ProfilePictureId { get; set; }
+
+        public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
+
         public static string CreateRandomPassword()
         {
             return Guid.NewGuid().ToString("N").Truncate(16);

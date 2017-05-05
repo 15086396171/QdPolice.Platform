@@ -60,6 +60,17 @@
                     @Html.ValidationMessageFor(model => model.UserEditDto.EmailAddress, "", new { @class = "text-danger" })
                 </div>
             </div>
+            
+            <div class="row cl">
+                @Html.LabelFor(model => model.UserEditDto.ShouldChangePasswordOnNextLogin, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
+                <div class="formControls col-xs-8 col-sm-8 skin-minimal">
+                    <div class="check-box">
+                        @Html.CheckBoxFor(model => model.UserEditDto.ShouldChangePasswordOnNextLogin, new { htmlAttributes = new { @class = "" } })
+                        <label for="checkbox-pinglun">&nbsp;</label>
+                    </div>
+                        @Html.ValidationMessageFor(model => model.UserEditDto.ShouldChangePasswordOnNextLogin, "", new { @class = "text-danger" })
+                    </div>
+            </div>
 
             <!--角色-->
             <div class="row cl">
