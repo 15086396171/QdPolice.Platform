@@ -29,7 +29,6 @@
             trail: 60,
             speed: 1.2
         }
-
     };
 
     abp.ui.setBusy = function (elm, optionsOrPromise) {

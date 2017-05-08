@@ -3,23 +3,20 @@
     $(function () {
         $('#LoginButton').click(function (e) {
             e.preventDefault();
-            var index = layer.load(2);
-            abp.ui.setBusy(
-                $('#loginform'),
-                abp.ajax({
-                    url: abp.appPath + 'Account/Login',
-                    type: 'POST',
-                    data: JSON.stringify({
-                        tenancyName: $('#TenancyName').val(),
-                        usernameOrEmailAddress: $('#EmailAddressInput').val(),
-                        password: $('#PasswordInput').val(),
-                        rememberMe: $('#RememberMeInput').is(':checked'),
-                        returnUrlHash: $('#ReturnUrlHash').val()
-                    })
-                }).fail(function () {
-                    layer.close(index);
+            abp.ui.setBusy();
+            abp.ajax({
+                url: abp.appPath + 'Account/Login',
+                type: 'POST',
+                data: JSON.stringify({
+                    tenancyName: $('#TenancyName').val(),
+                    usernameOrEmailAddress: $('#EmailAddressInput').val(),
+                    password: $('#PasswordInput').val(),
+                    rememberMe: $('#RememberMeInput').is(':checked'),
+                    returnUrlHash: $('#ReturnUrlHash').val()
                 })
-            );
+            }).fail(function() {
+                abp.ui.clearBusy();
+            });
         });
 
         $('a.social-login-link').click(function () {

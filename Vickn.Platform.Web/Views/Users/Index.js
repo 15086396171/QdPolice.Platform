@@ -104,12 +104,5 @@
         };
         $dataTable.createDatatable(options);
 
-        $("#asd").click(function() {
-            abp.message.confirm("是否要这样做？",
-                "你是真的",
-                function() {
-                    abp.message.info("恭喜你做了", "+1");
-                });
-        });
     });
 })();

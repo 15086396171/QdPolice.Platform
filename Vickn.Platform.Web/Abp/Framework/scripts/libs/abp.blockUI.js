@@ -7,25 +7,27 @@
 
     $.extend($.blockUI.defaults, {
         message: ' ',
-        css: { },
+        css: {},
         overlayCSS: {
             backgroundColor: '#AAA',
             opacity: 0.3,
-            cursor: 'wait'    
+            cursor: 'wait'
         }
     });
-    
+
+    var index = -1;
     abp.ui.block = function (elm) {
         if (!elm) {
-            $.blockUI();
+            index = layer.load(2);
         } else {
             $(elm).block();
         }
+        return index;
     };
 
     abp.ui.unblock = function (elm) {
         if (!elm) {
-            $.unblockUI();
+            layer.close(index);
         } else {
             $(elm).unblock();
         }

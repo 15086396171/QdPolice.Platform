@@ -1,8 +1,5 @@
 ﻿var abp = abp || {};
 (function ($) {
-    if (!sweetAlert || !$) {
-        return;
-    }
 
     /* DEFAULTS *************************************************/
 
@@ -91,8 +88,6 @@
             callback();
             layer.close(index);
         });
-
-      
     };
 
     abp.event.on('abp.dynamicScriptsInitialized', function () {
