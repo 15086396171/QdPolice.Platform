@@ -37,11 +37,15 @@ namespace Vickn.Platform.Roles.Dtos
 		[DisplayName("是否静态角色")]
         public bool IsStatic { get; set; }
 
+        public string IsStaticDes => IsStatic ? "是" : "否";
+
         /// <summary>
         /// 是否默认角色
         /// </summary>
 		[DisplayName("是否默认角色")]
         public bool IsDefault { get; set; }
+
+        public string IsDefaultDes => IsDefault ? "是" : "否";
 
         /// <summary>
         /// 角色名

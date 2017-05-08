@@ -32,8 +32,8 @@
 
                 { "data": "name" },
                 { "data": "displayName" },
-                { "data": "isStatic" },
-                { "data": "isDefault" },
+                { "data": "isStaticDes" },
+                { "data": "isDefaultDes" },
                 {
                     "data": "id",
                     render: function (data, type, row, meta) {
