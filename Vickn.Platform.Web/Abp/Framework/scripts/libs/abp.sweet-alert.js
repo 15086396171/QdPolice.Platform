@@ -45,7 +45,7 @@
 
         var opts = $.extend(
             {},
-            abp.libs.sweetAlert.config.default,
+            abp.libs.sweetAlert.config['default'],
             abp.libs.sweetAlert.config[type],
             {
                 title: title,
@@ -61,45 +61,38 @@
     };
 
     abp.message.info = function (message, title) {
-        return showMessage('info', message, title);
+        return layer.alert(message, { icon: 7, title: title });
     };
 
     abp.message.success = function (message, title) {
-        return showMessage('success', message, title);
+        return layer.alert(message, { icon: 1, title: title });
     };
 
     abp.message.warn = function (message, title) {
-        return showMessage('warn', message, title);
+        return layer.alert(message, { icon: 7, title: title });
     };
 
     abp.message.error = function (message, title) {
-        return showMessage('error', message, title);
+        //return showMessage('error', message, title);
+        return layer.alert(message, { icon: 2, title: title });
     };
 
     abp.message.confirm = function (message, titleOrCallback, callback) {
-        var userOpts = {
-            text: message
-        };
+
+        var title = "确定操作？";
 
         if ($.isFunction(titleOrCallback)) {
             callback = titleOrCallback;
         } else if (titleOrCallback) {
-            userOpts.title = titleOrCallback;
+            title = titleOrCallback;
         };
 
-        var opts = $.extend(
-            {},
-            abp.libs.sweetAlert.config.default,
-            abp.libs.sweetAlert.config.confirm,
-            userOpts
-        );
-
-        return $.Deferred(function ($dfd) {
-            sweetAlert(opts, function (isConfirmed) {
-                callback && callback(isConfirmed);
-                $dfd.resolve(isConfirmed);
-            });
+       return  layer.confirm(message, { icon: 3, title:title }, function (index) {
+            callback();
+            layer.close(index);
         });
+
+      
     };
 
     abp.event.on('abp.dynamicScriptsInitialized', function () {

@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Auditing;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Configuration.Startup;
@@ -142,6 +143,11 @@ namespace Vickn.Platform.Web.Controllers
 
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
+        }
+
+        public ActionResult sendError()
+        {
+            throw new UserFriendlyException("asdsad");
         }
 
         private Exception CreateExceptionForFailedLoginAttempt(AbpLoginResultType result, string usernameOrEmailAddress, string tenancyName)

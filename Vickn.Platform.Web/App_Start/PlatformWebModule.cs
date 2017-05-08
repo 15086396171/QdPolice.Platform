@@ -31,9 +31,9 @@ namespace Vickn.Platform.Web
             //Configure navigation/menu
             Configuration.Navigation.Providers.Add<PlatformNavigationProvider>();
 
-            Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
-
-            Configuration.Modules.AbpConfiguration.Localization.IsEnabled = true;
+            //Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
+           
+            //Configuration.Modules
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>

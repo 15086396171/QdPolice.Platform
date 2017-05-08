@@ -23,9 +23,9 @@ namespace Vickn.Platform.MultiTenancy
         private readonly IAbpZeroDbMigrator _abpZeroDbMigrator;
 
         public TenantAppService(
-            TenantManager tenantManager, 
-            RoleManager roleManager, 
-            EditionManager editionManager, 
+            TenantManager tenantManager,
+            RoleManager roleManager,
+            EditionManager editionManager,
             IAbpZeroDbMigrator abpZeroDbMigrator)
         {
             _tenantManager = tenantManager;
@@ -58,7 +58,7 @@ namespace Vickn.Platform.MultiTenancy
                 tenant.EditionId = defaultEdition.Id;
             }
 
-            CheckErrors(await TenantManager.CreateAsync(tenant));
+            await TenantManager.CreateAsync(tenant);
             await CurrentUnitOfWork.SaveChangesAsync(); //To get new tenant's id.
 
             //Create tenant database

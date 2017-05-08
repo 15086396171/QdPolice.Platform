@@ -178,13 +178,13 @@ namespace Vickn.Platform.Users
         public async Task<CustomerModelStateValidationDto> CheckErrorAsync(GetUserForEdit input)
         {
             //input.Id = input.Id ?? 0;
-            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.UserEditDto.EmailAddress && p.Id != input.UserEditDto.Id) != null)
-                return new CustomerModelStateValidationDto()
-                {
-                    HasModelError = true,
-                    ErrorMessage = $"电子邮件{input.UserEditDto.EmailAddress}已存在",
-                    Key = "User.EmailAddress"
-                };
+            //if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.UserEditDto.EmailAddress && p.Id != input.UserEditDto.Id) != null)
+            //    return new CustomerModelStateValidationDto()
+            //    {
+            //        HasModelError = true,
+            //        ErrorMessage = $"电子邮件{input.UserEditDto.EmailAddress}已存在",
+            //        Key = "User.EmailAddress"
+            //    };
 
             if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserEditDto.UserName && p.Id != input.UserEditDto.Id) != null)
             {
