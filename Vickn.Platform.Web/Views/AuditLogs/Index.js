@@ -54,8 +54,8 @@
                 { "data": "executionDuration" },
                 { "data": "clientIpAddress" },
                 { "data": "clientName" },
-                { "data": "browserInfo" },
-            ],
+                { "data": "browserInfo" }
+            ]
         };
         $dataTable.createDatatable(options);
     });

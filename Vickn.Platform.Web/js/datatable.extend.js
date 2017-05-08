@@ -20,7 +20,8 @@
 
                     if (options.listAction.filters) {
                         $.each(options.listAction.filters, function (index, value) {
-                            eval("input." + value.key + " ='" + $(value.selector).val() + "'");
+                            if (value) // 兼容IE8
+                                eval("input." + value.key + " ='" + $(value.selector).val() + "'");
                         });
                     }
                     abp.ajax({
@@ -54,30 +55,32 @@
         if (!options.methods)
             return;
         $.each(options.methods, function (index, data) {
-            var actionOptions = {};
-            if (data.actionName === "editAction") {
-                actionOptions.isAjax = false;
-                actionOptions.selector = data.selector || "a.edit";
-            }
-            else if (data.actionName === "deleteAction") {
-                actionOptions.isAjax = true;
-                actionOptions.isConfirm = true;
-                actionOptions.selector = data.selector || "a.delete";
-                actionOptions.confirmMsg = "确定删除本条数据？";
-            }
+            if (data) {// 兼容IE8
+                var actionOptions = {};
+                if (data.actionName === "editAction") {
+                    actionOptions.isAjax = false;
+                    actionOptions.selector = data.selector || "a.edit";
+                }
+                else if (data.actionName === "deleteAction") {
+                    actionOptions.isAjax = true;
+                    actionOptions.isConfirm = true;
+                    actionOptions.selector = data.selector || "a.delete";
+                    actionOptions.confirmMsg = "确定删除本条数据？";
+                }
 
-            else {
-                var dataActionOptions = data.actionOptions || {};
-                actionOptions.isAjax = dataActionOptions.isAjax || false;
-                actionOptions.isConfirm = dataActionOptions.isConfirm || true;
-                actionOptions.confirmMsg = dataActionOptions.confirmMsg;
-                actionOptions.selector = data.selector;
+                else {
+                    var dataActionOptions = data.actionOptions || {};
+                    actionOptions.isAjax = dataActionOptions.isAjax || false;
+                    actionOptions.isConfirm = dataActionOptions.isConfirm || true;
+                    actionOptions.confirmMsg = dataActionOptions.confirmMsg;
+                    actionOptions.selector = data.selector;
+                }
+                actionOptions.target = target;
+                actionOptions.event = data.event || "click";
+                actionOptions.action = data.action;
+                actionOptions.url = data.url;
+                bindAction(actionOptions);
             }
-            actionOptions.target = target;
-            actionOptions.event = data.event || "click";
-            actionOptions.action = data.action;
-            actionOptions.url = data.url;
-            bindAction(actionOptions);
         });
     }
 
@@ -141,39 +144,41 @@
             return;
         $.each(options.commonMethods,
             function (index, data) {
-                if (data.actionName === "createAction") {
-                    if (data.action)
-                        data.action();
-                    else {
-                        $("#create").click(function () {
-                            window.location.href = data.url;
-                        });
-                    }
-                }
-                else if (data.actionName === "batchAction") {
-                    if (data.action)
-                        data.action();
-                    else {
-                        $("#batchDelete").click(function () {
-                            var input = [];
-                            $('input[class="check-box"]:checked').each(function (index2, data2) {
-                                input.push($(data2).val());
+                if (data) { //兼容IE8
+                    if (data.actionName === "createAction") {
+                        if (data.action)
+                            data.action();
+                        else {
+                            $("#create").click(function () {
+                                window.location.href = data.url;
                             });
-                            if (input.length === 0) {
-                                layer.alert("请选择要删除的数据");
-                                return;
-                            }
-                            var index1 = layer.confirm('确定删除?',
-                                function () {
-                                    abp.ajax({
-                                        url: data.url,
-                                        data: JSON.stringify(input)
-                                    }).done(function () {
-                                        $(options.target).search();
-                                    });
-                                    layer.close(index1);
+                        }
+                    }
+                    else if (data.actionName === "batchAction") {
+                        if (data.action)
+                            data.action();
+                        else {
+                            $("#batchDelete").click(function () {
+                                var input = [];
+                                $('input[class="check-box"]:checked').each(function (index2, data2) {
+                                    input.push($(data2).val());
                                 });
-                        });
+                                if (input.length === 0) {
+                                    layer.alert("请选择要删除的数据");
+                                    return;
+                                }
+                                var index1 = layer.confirm('确定删除?',
+                                    function () {
+                                        abp.ajax({
+                                            url: data.url,
+                                            data: JSON.stringify(input)
+                                        }).done(function () {
+                                            $(options.target).search();
+                                        });
+                                        layer.close(index1);
+                                    });
+                            });
+                        }
                     }
                 }
                 // 不必实现else，由index.js自行实现

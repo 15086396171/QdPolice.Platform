@@ -5,7 +5,7 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.User.CreateUser'),
             edit: abp.auth.hasPermission('Pages.User.EditUser'),
-            'delete': abp.auth.hasPermission('Pages.User.DeleteUser')
+            del: abp.auth.hasPermission('Pages.User.DeleteUser')
         };
 
         var options = {
@@ -14,9 +14,8 @@
                 filters: [
                     {
                         key: "name",
-                        selector: $("#name"),
-                    },
-
+                        selector: $("#name")
+                    }
                 ]
             },
             fileds: [
@@ -27,7 +26,7 @@
                     }
                 },
                 {
-                    data: "name",
+                    data: "name"
                 },
                 { "data": "userName" },
                 { "data": "surname" },
@@ -64,7 +63,7 @@
                             $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
                                 .appendTo($div);
                         }
-                        if (_permissions.delete) {
+                        if (_permissions.del) {
                             $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                                 .appendTo($div);
                         }
@@ -100,7 +99,7 @@
                 {
                     actionName: "batchAction",
                     url: abp.appPath + "api/services/app/user/batchDeleteUserAsync"
-                },
+                }
             ]
         };
         $dataTable.createDatatable(options);

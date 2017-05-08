@@ -9,7 +9,7 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.Role.CreateRole'),
             edit: abp.auth.hasPermission('Pages.Role.EditRole'),
-            'delete': abp.auth.hasPermission('Pages.Role.DeleteRole')
+            del: abp.auth.hasPermission('Pages.Role.DeleteRole')
         };
 
         var options = {
@@ -47,13 +47,13 @@
                             $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
                                 .appendTo($div);
                         }
-                        if (_permissions.delete) {
+                        if (_permissions.del) {
                             $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                                 .appendTo($div);
                         }
                         return $div.html();
                     }
-                },
+                }
             ],
             methods: [
                 {

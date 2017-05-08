@@ -11,7 +11,7 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.OrganizationUnit.CreateOrganizationUnit'),
             edit: abp.auth.hasPermission('Pages.OrganizationUnit.EditOrganizationUnit'),
-            'delete': abp.auth.hasPermission('Pages.OrganizationUnit.DeleteOrganizationUnit')
+            del: abp.auth.hasPermission('Pages.OrganizationUnit.DeleteOrganizationUnit')
         };
 
         var options = {
@@ -20,12 +20,12 @@
                 filters: [
                     {
                         key: "displayName",
-                        selector: $("#displayName"),
+                        selector: $("#displayName")
                     },
                     {
                         key: "parentId",
-                        selector: _$parentId,
-                    },
+                        selector: _$parentId
+                    }
                 ]
             },
             fileds: [
@@ -50,13 +50,13 @@
                             $('<a title="编辑" href="javascript:;" class="ml-5 edit" data-title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>')
                                 .appendTo($div);
                         }
-                        if (_permissions.delete) {
+                        if (_permissions.del) {
                             $('<a title="删除" href="javascript:;" class="ml-5 delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                                 .appendTo($div);
                         }
                         return $div.html();
                     }
-                },
+                }
             ],
             methods: [
                 {
@@ -72,7 +72,7 @@
                 {
                     actionName: "createAction",
                     action: function () {
-                        $("#create").click(function() {
+                        $("#create").click(function () {
                             window.location.href = abp
                                 .appPath +
                                 "OrganizationUnits/Create?parentId=" +
@@ -83,7 +83,7 @@
                 {
                     actionName: "batchAction",
                     url: abp.appPath + "api/services/app/organizationUnit/batchDeleteOrganizationUnitAsync"
-                },
+                }
             ]
         };
         $dataTable.createDatatable(options);
