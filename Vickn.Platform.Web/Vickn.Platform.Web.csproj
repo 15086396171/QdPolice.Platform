@@ -1107,6 +1107,8 @@
     <Content Include="Content\H-ui.admin_v3.0\logo.psd" />
     <Content Include="Content\H-ui.admin_v3.0\README.md" />
     <None Include="Properties\PublishProfiles\本地发布.pubxml" />
+    <Content Include="Scripts\jquery-2.2.1.js" />
+    <Content Include="Scripts\jquery-2.2.1.min.js" />
     <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.js" />
     <Content Include="Scripts\jquery.signalR-2.2.1.min.js" />
@@ -1215,6 +1217,7 @@
     <Content Include="Views\AuditLogs\Index.cshtml" />
     <Content Include="Views\Common\_Navigation.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
+    <Content Include="Scripts\jquery-2.2.1.min.map" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">
