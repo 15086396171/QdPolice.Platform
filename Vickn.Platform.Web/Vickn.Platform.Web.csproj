@@ -1075,7 +1075,6 @@
     <Content Include="css\pager.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
-    <Content Include="js\common.js" />
     <Content Include="js\main.js" />
     <Content Include="log4net.config" />
     <Content Include="Content\toastr.scss" />

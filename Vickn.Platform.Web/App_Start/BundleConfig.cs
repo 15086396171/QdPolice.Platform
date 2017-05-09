@@ -66,8 +66,9 @@ namespace Vickn.Platform.Web
                         "~/Scripts/moment-with-locales.min.js",
 
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
-
-                        "~/Content/H-ui.admin_v3.0/lib/datatables/1.10.0/jquery.dataTables.min.js", 
+                        // datatable
+                        "~/js/datatable.extend.js",
+                        "~/Content/H-ui.admin_v3.0/lib/datatables/1.10.0/jquery.dataTables.min.js",
 
                         // H-ui
                         "~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js",
@@ -91,7 +92,6 @@ namespace Vickn.Platform.Web
             bundles.Add(
             new ScriptBundle("~/Bundles/js")
                 .Include("~/js/main.js")
-            .Include("~/js/common.js")
             );
 
             #endregion

@@ -68,6 +68,7 @@
     <text name="EditAuditLog" value="编辑审计"/>
     
     <text name="Submit" value="保存"/>
+    <text name="SureToDelete" value="确定删除数据？"/>
 
   </texts>
 </localizationDictionary>
