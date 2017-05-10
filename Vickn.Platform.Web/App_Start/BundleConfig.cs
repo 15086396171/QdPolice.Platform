@@ -28,9 +28,9 @@ namespace Vickn.Platform.Web
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
             bundles.Add(
                 new ScriptBundle("~/Bundles/vendor/js/top")
+                    //.Include("")
                     .Include(
                     "~/Scripts/jquery-2.2.1.js",
-                    "~/Content/H-ui.admin_v3.0/lib/jquery/1.9.1/jquery.js",
 
                         "~/Abp/Framework/scripts/utils/ie10fix.js",
                         "~/Scripts/modernizr-2.8.3.js"

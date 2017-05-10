@@ -86,7 +86,7 @@ namespace Vickn.Platform.Organizations
                 }).ToList());
         }
 
-        public async Task<GetOrganizationUnitForEditOutput> GetGetOrganizationUnitForEditAsync(NullableIdDto<long> input)
+        public async Task<GetOrganizationUnitForEditOutput> GetOrganizationUnitForEditAsync(NullableIdDto<long> input)
         {
             GetOrganizationUnitForEditOutput output;
             if (input.Id.HasValue)
@@ -183,6 +183,39 @@ namespace Vickn.Platform.Organizations
             var dto = organizationUnit.MapTo<OrganizationUnitDto>();
             dto.MemberCount = await _userOrganizationUnitRepository.CountAsync(uou => uou.OrganizationUnitId == organizationUnit.Id);
             return dto;
+        }
+
+        public async Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitWithAllUserForAdd(GetOrganizationUnitUsersInput input)
+        {
+            var query = UserManager.Users;
+
+            query = query.WhereIf(!input.Name.IsNullOrEmpty(), p => p.Name.Contains(input.Name));
+
+            var totalCount = await query.CountAsync();
+            var items = await query.OrderBy(input.Sorting).PageBy(input).ToListAsync();
+
+            return new PagedResultDto<OrganizationUnitUserListDto>(
+                totalCount,
+                items.Select(item =>
+                {
+                    var dto = item.MapTo<OrganizationUnitUserListDto>();
+                    dto.IsChecked =
+                        _userOrganizationUnitRepository.GetAll()
+                            .Any(p => p.OrganizationUnitId == input.Id && p.UserId == dto.Id);
+                    return dto;
+                }).ToList());
+        }
+
+        public async Task AddUserToOuAsync(AddUserToOuInput input)
+        {
+            foreach (var delUserId in input.DelUserIds)
+            {
+                await UserManager.RemoveFromOrganizationUnitAsync(delUserId, input.OuId);
+            }
+            foreach (var userId in input.UserIds)
+            {
+                await UserManager.AddToOrganizationUnitAsync(userId, input.OuId);
+            }
         }
     }
 }

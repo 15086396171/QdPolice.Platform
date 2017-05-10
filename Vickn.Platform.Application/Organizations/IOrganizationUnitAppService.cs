@@ -28,7 +28,21 @@ namespace Vickn.Platform.Organizations
         /// <returns></returns>
         Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input);
 
-        Task<GetOrganizationUnitForEditOutput> GetGetOrganizationUnitForEditAsync(NullableIdDto<long> input);
+        /// <summary>
+        /// 获取所有用户在该组织下的选择情况用于修改用户组织
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitWithAllUserForAdd(GetOrganizationUnitUsersInput input);
+
+        /// <summary>
+        /// 批量添加用户到Ou中
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task AddUserToOuAsync(AddUserToOuInput input);
+
+        Task<GetOrganizationUnitForEditOutput> GetOrganizationUnitForEditAsync(NullableIdDto<long> input);
 
         Task CreateOrUpdateOrganizationUnit(GetOrganizationUnitForEditOutput output);
 

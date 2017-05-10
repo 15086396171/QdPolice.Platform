@@ -1,0 +1,20 @@
+﻿@using Abp.Web.Mvc.Extensions
+<div class="page-container">
+    <div class="text-c">
+        <input type="text" placeholder="@L("User.Name")" class="input-text" id="Name" style="width: 250px;" />
+        <input hidden value="@ViewBag.ouId" id="ouId" />
+        <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
+    </div>
+    <table class="table table-border dataTable">
+        <thead>
+        <tr class="text-c">
+            <th width="25"><input type="checkbox"></th>
+            <th>@L("User.Name")</th>
+        </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+@section scripts{
+    @Html.IncludeScript("~/Views/OrganizationUnits/UserAddToOu.js")
+}

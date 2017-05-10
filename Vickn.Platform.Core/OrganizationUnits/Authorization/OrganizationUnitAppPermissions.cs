@@ -21,6 +21,9 @@ namespace Vickn.Platform.OrganizationUnits.Authorization
         /// 组织管理修改权限
         /// </summary>
         public const string OrganizationUnit_EditOrganizationUnit = "Pages.OrganizationUnit.EditOrganizationUnit";
+
+        public const string Pages_OrganizationUnit_ManageUser = "Pages.OrganizationUnit.ManageUser";
+
         /// <summary>
         /// 组织管理删除权限
         /// </summary>

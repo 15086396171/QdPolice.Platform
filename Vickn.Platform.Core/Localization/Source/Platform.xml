@@ -61,6 +61,7 @@
     <text name="DeleteOrganizationUnit" value="删除组织"/>
     <text name="EditOrganizationUnit" value="编辑组织"/>
     <text name="OrganizationUnit.DisplayName" value="组织名称"/>
+    <text name="OrganizationUnit.ManageUser" value="管理用户"/>
 
     <text name="AuditLog" value="审计管理"/>
     <text name="CreateAuditLog" value="创建审计"/>

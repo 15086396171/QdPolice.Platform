@@ -35,6 +35,7 @@ namespace Vickn.Platform.OrganizationUnits.Authorization
             var user = entityNameModel.CreateChildPermission(OrganizationUnitAppPermissions.OrganizationUnit, L("OrganizationUnit"));
             user.CreateChildPermission(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit, L("CreateOrganizationUnit"));
             user.CreateChildPermission(OrganizationUnitAppPermissions.OrganizationUnit_EditOrganizationUnit, L("EditOrganizationUnit"));
+            user.CreateChildPermission(OrganizationUnitAppPermissions.Pages_OrganizationUnit_ManageUser, L("OrganizationUnit.ManageUser"));
             user.CreateChildPermission(OrganizationUnitAppPermissions.OrganizationUnit_DeleteOrganizationUnit, L("DeleteOrganizationUnit"));
         }
 

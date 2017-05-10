@@ -11,7 +11,8 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.OrganizationUnit.CreateOrganizationUnit'),
             edit: abp.auth.hasPermission('Pages.OrganizationUnit.EditOrganizationUnit'),
-            del: abp.auth.hasPermission('Pages.OrganizationUnit.DeleteOrganizationUnit')
+            del: abp.auth.hasPermission('Pages.OrganizationUnit.DeleteOrganizationUnit'),
+            manageuser: abp.auth.hasPermission("Pages.OrganizationUnit.ManageUser")
         };
 
         var options = {
@@ -46,12 +47,19 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
+
+                        if (_permissions.manageuser) {
+                            if (_permissions.edit) {
+                                $('<a title="管理用户" href="javascript:;" class="ml-5 nodecoration manageUser"><i class="Hui-iconfont">&#xe62b;</i></a>')
+                                    .appendTo($div);
+                            }
+                        }
                         if (_permissions.edit) {
-                            $('<a title="编辑" href="javascript:;" class="ml-5 edit" data-title="编辑"><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit"><i class="Hui-iconfont">&#xe6df;</i></a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="ml-5 delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                            $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
                                 .appendTo($div);
                         }
                         return $div.html();
@@ -67,6 +75,11 @@
                     actionName: "deleteAction",
                     url: abp.appPath + "api/services/app/organizationUnit/deleteOrganizationUnitAsync",
                 },
+                {
+                    actionName: "manageUser",
+                    selector: "a.manageUser",
+                    action: manageUser
+                }
             ],
             commonMethods: [
                 {
@@ -92,5 +105,51 @@
             _$parentId.val(parentId);
             $dataTable.DataTable().draw();
         });
+
+        function manageUser(row) {
+            var ouId = row.id;
+            layer.open({
+                type: 2,
+                area: ['400px', '80%'],
+                fix: false, //不固定
+                maxmin: true,
+                shade: 0.4,
+                title: row.displayName + "用户管理",
+                content: abp.appPath + "OrganizationUnits/UserAddToOu?ouId=" + ouId,
+                btn: ['确定', '取消'],
+                yes: function (index, layero) {
+                    //do something
+                    var body = layer.getChildFrame('body', index);
+
+                    var input = {
+                        ouId: ouId,
+                        userIds: [],
+                        delUserIds: []
+                    };
+
+                    var $selected = $(body).find('input[class="check-box"]');
+                    $.each($selected, function (i, data) {
+                        if ($(data).is(":checked")) {
+
+                            input.userIds.push($(data).val());
+                        } else {
+                            if ($(data).data("checked"))
+                                input.delUserIds.push($(data).val());
+                        }
+                    });
+
+                    _service.addUserToOuAsync(input).done(function () {
+                        abp.notify.success("用户已添加到" + row.displayName);
+                        layer.close(index); //如果设定了yes回调，需进行手工关闭
+                    });
+
+
+                },
+                cancel: function (index, layero) {
+                    layer.close(index);
+                    return false;
+                }
+            });
+        }
     });
 })();

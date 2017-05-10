@@ -1,21 +1,27 @@
 ﻿(function ($) {
     $.fn.extend({
         createDatatable: function (options) {
+            var customerInput = options.listAction.input || {};
+            var settings = options.settings || {};
+
             var _settings = {
-                autoWidth: false, //禁用自动调整列宽
-                ordering: false, //取消默认排序查询,否则复选框一列会出现小箭头
+                ordering: settings.ordering != undefined ? settings.ordering : false, //取消默认排序查询,否则复选框一列会出现小箭头
+                autoWidth: settings.autoWidth != undefined ? settings.autoWidth : true, //禁用自动调整列宽
+                "aLengthMenu": [customerInput.maxResultCount || 10],
+                bPaginate: settings.bPaginate != undefined ? settings.bPaginate : true,
+                info: settings.info != undefined ? settings.info : true,
                 serverSide: true, //启用服务器端分页
+                "retrieve": true,  //保证只有一个table实例
                 deferRender: true,
                 bLengthChange: false,
                 searching: false,
                 stripeClasses: ["text-c"],
-                "retrieve": true,  //保证只有一个table实例
-                //processing: false,
+                processing: true,
                 ajax: options.listAction.method || function (data, callback, settings) {
                     var input = {
-                        pageIndex: parseInt(data.start / data.length) + 1,
-                        maxResultCount: data.length,
-                        draw: data.draw,
+                        pageIndex: customerInput.pageIndex || parseInt(data.start / data.length) + 1,
+                        maxResultCount: customerInput.maxResultCount || 10,
+                        draw: data.draw
                     };
 
                     if (options.listAction.filters) {
@@ -28,7 +34,6 @@
                         url: options.listAction.url,
                         data: JSON.stringify(input)
                     }).done(function (result) {
-                        //setTimeout(function () {
                         var returnData = {
                             draw: data.draw, //这里直接自行返回了draw计数器,应该由后台返回
                             recordsTotal: result.totalCount,
@@ -36,11 +41,9 @@
                             data: result.items,
                         };
                         callback(returnData);
-                        //layer.close(index);
-                        //}, 10);
                     });
                 },
-                columns: options.fileds,
+                columns: options.fileds
             };
             $(this).dataTable(_settings);
             addEvent(this, options);

@@ -8,6 +8,7 @@ namespace Vickn.Platform.Organizations.Dto
     [AutoMapFrom(typeof(User))]
     public class OrganizationUnitUserListDto : EntityDto<long>
     {
+        public bool IsChecked { get; set; }
         public string Name { get; set; }
 
         public string Surname { get; set; }

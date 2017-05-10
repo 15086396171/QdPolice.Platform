@@ -36,7 +36,7 @@ namespace Vickn.Platform.Web.Controllers
 
         public async Task<ActionResult> Create(long? parentId, int? id)
         {
-            var result = await _organizationUnitAppService.GetGetOrganizationUnitForEditAsync(new NullableIdDto<long>(id));
+            var result = await _organizationUnitAppService.GetOrganizationUnitForEditAsync(new NullableIdDto<long>(id));
             result.ParentId = parentId;
             return View(result);
         }
@@ -50,6 +50,12 @@ namespace Vickn.Platform.Web.Controllers
             }
             await _organizationUnitAppService.CreateOrUpdateOrganizationUnit(output);
             return RedirectToAction("Index");
+        }
+
+        public async Task<ActionResult> UserAddToOu(long ouId)
+        {
+            ViewBag.ouId = ouId;
+            return View();
         }
     }
 }

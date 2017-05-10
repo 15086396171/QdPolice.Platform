@@ -1141,6 +1141,7 @@
     <Content Include="Views\Account\ResetPassword.js" />
     <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="Views\OrganizationUnits\Index.js" />
+    <Content Include="Views\OrganizationUnits\UserAddToOu.js" />
     <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.js" />
     <Content Include="Views\Roles\Index.js" />
     <Content Include="Views\Roles\_PermissionTree.js" />
@@ -1217,6 +1218,7 @@
     <Content Include="Views\Common\_Navigation.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
+    <Content Include="Views\OrganizationUnits\UserAddToOu.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">

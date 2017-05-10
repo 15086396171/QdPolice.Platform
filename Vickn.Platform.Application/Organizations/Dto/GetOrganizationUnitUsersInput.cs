@@ -9,6 +9,8 @@ namespace Vickn.Platform.Organizations.Dto
         [Range(1, long.MaxValue)]
         public long Id { get; set; }
 
+        public string Name { get; set; }
+
         public void Normalize()
         {
             if (string.IsNullOrEmpty(Sorting))

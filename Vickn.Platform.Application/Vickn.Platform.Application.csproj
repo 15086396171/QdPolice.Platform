@@ -140,6 +140,7 @@
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\IDataTable.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
+    <Compile Include="Organizations\Dto\AddUserToOuInput.cs" />
     <Compile Include="Organizations\Dto\CreateOrganizationUnitInput.cs" />
     <Compile Include="Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
     <Compile Include="Organizations\Dto\GetOrganizationUnitInput.cs" />
