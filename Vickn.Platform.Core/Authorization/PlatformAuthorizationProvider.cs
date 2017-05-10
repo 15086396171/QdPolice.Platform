@@ -17,6 +17,8 @@ namespace Vickn.Platform.Authorization
 
             var systemManage = pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
 
+            pages.CreateChildPermission(AppPermissions.Pages_Maintenance, L("Maintenance"));
+
             ////Host permissions
             var tenants = pages.CreateChildPermission(AppPermissions.Pages_Tenants, L("Tenants"), multiTenancySides: MultiTenancySides.Host);
         }

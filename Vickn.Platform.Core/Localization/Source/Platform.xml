@@ -4,11 +4,17 @@
     <text name="HomePage" value="主页" />
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 Platform!" />
+    <text name="Maintenance" value="系统维护" />
+    <text name="CacheSetting" value="缓存设置" />
+    <text name="Clear" value="清除" />
+    <text name="ClearAllCache" value="清除所有缓存" />
+    <text name="WebLogs" value="系统日志" />
+    <text name="DownLoadAll" value="下载所有日志" />
 
     <text name="IndexPage" value="首页"/>
     <text name="Search" value="搜索"/>
     <text name="ReSearch" value="重置"/>
-    <text name="Reflesh" value="刷新"/>
+    <text name="Reflash" value="刷新"/>
     <text name="BatchDelete" value="批量删除"/>
     <text name="ChangePassword" value="修改密码"/>
     <text name="PleaseEnterYourNewPassword" value="请输入新密码"/>
@@ -63,7 +69,7 @@
     <text name="OrganizationUnit.DisplayName" value="组织名称"/>
     <text name="OrganizationUnit.ManageUser" value="管理用户"/>
 
-    <text name="AuditLog" value="审计管理"/>
+    <text name="AuditLog" value="审计日志"/>
     <text name="CreateAuditLog" value="创建审计"/>
     <text name="DeleteAuditLog" value="删除审计"/>
     <text name="EditAuditLog" value="编辑审计"/>

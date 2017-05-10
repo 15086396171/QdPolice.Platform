@@ -36,7 +36,7 @@
                         if (data) {
                             $div.append('<span class="label label-warning round"><i class="Hui-iconfont Hui-iconfont-close"></i></span>');
                         } else {
-                            $div.append('<span class="label label-success round"><i class="Hui-iconfont Hui-iconfont-xuanze"></i></span>');
+                            $div.append('<span class="label label-success round"><i class="Hui-iconfont Hui-iconfont-xuanze "></i></span>');
                         }
 
                         return $div.html();

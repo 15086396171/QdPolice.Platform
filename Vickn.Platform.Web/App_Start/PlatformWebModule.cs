@@ -1,16 +1,19 @@
 ﻿using System.Reflection;
+using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Abp.Configuration.Startup;
 using Abp.Hangfire;
 using Abp.Hangfire.Configuration;
+using Abp.IO;
 using Abp.Zero.Configuration;
 using Abp.Modules;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Vickn.Platform.Api;
 using Hangfire;
+using Vickn.Platform.MainTenance.AppFolders;
 
 namespace Vickn.Platform.Web
 {
@@ -49,6 +52,19 @@ namespace Vickn.Platform.Web
             AreaRegistration.RegisterAllAreas();
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+        }
+
+
+        public override void PostInitialize()
+        {
+            var server = HttpContext.Current.Server;
+            var appFolders = IocManager.Resolve<AppFolders>();
+
+            appFolders.SampleProfileImagesFolder = server.MapPath("~/Common/Images/SampleProfilePics");
+            appFolders.TempFileDownloadFolder = server.MapPath("~/Temp/Downloads");
+            appFolders.WebLogsFolder = server.MapPath("~/App_Data/Logs");
+
+            try { DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder); } catch { }
         }
     }
 }

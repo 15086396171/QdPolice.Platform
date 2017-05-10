@@ -72,6 +72,9 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=10.4.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.10.4.0\lib\net\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -131,58 +134,67 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Auditing\AuditLogAndUser.cs" />
-    <Compile Include="Auditing\AuditLogAppService.cs" />
-    <Compile Include="Auditing\Dto\AuditLogListDto.cs" />
-    <Compile Include="Auditing\Dto\GetAuditLogsInput.cs" />
-    <Compile Include="Auditing\IAuditLogAppService.cs" />
+    <Compile Include="Dtos\FileDto.cs" />
+    <Compile Include="MainTenance\Auditing\AuditLogAndUser.cs" />
+    <Compile Include="MainTenance\Auditing\AuditLogAppService.cs" />
+    <Compile Include="MainTenance\Auditing\Dto\AuditLogListDto.cs" />
+    <Compile Include="MainTenance\Auditing\Dto\GetAuditLogsInput.cs" />
+    <Compile Include="MainTenance\Auditing\IAuditLogAppService.cs" />
     <Compile Include="AuthorizationProvider.cs" />
     <Compile Include="Dtos\CustomerModelStateValidationDto.cs" />
     <Compile Include="Dtos\IDataTable.cs" />
     <Compile Include="Dtos\PagedAndSortedInputDto.cs" />
-    <Compile Include="Organizations\Dto\AddUserToOuInput.cs" />
-    <Compile Include="Organizations\Dto\CreateOrganizationUnitInput.cs" />
-    <Compile Include="Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
-    <Compile Include="Organizations\Dto\GetOrganizationUnitInput.cs" />
-    <Compile Include="Organizations\Dto\GetOrganizationUnitUsersInput.cs" />
-    <Compile Include="Organizations\Dto\MoveOrganizationUnitInput.cs" />
-    <Compile Include="Organizations\Dto\OrganizationUnitDto.cs" />
-    <Compile Include="Organizations\Dto\OrganizationUnitUserListDto.cs" />
-    <Compile Include="Organizations\Dto\UpdateOrganizationUnitInput.cs" />
-    <Compile Include="Organizations\Dto\UserToOrganizationUnitInput.cs" />
-    <Compile Include="Organizations\IOrganizationUnitAppService.cs" />
-    <Compile Include="Organizations\OrganizationUnitAppService.cs" />
+    <Compile Include="MainTenance\IO\AppFileHelper.cs" />
+    <Compile Include="MainTenance\Logging\Dto\GetLatestWebLogsOutput.cs" />
+    <Compile Include="MainTenance\Logging\IWebLogAppService.cs" />
+    <Compile Include="MainTenance\Logging\WebLogAppService.cs" />
+    <Compile Include="Net\MimeTypes\MimeTypeNames.cs" />
+    <Compile Include="Zero\Organizations\Dto\AddUserToOuInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\CreateOrganizationUnitInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
+    <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitUsersInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\MoveOrganizationUnitInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\OrganizationUnitDto.cs" />
+    <Compile Include="Zero\Organizations\Dto\OrganizationUnitUserListDto.cs" />
+    <Compile Include="Zero\Organizations\Dto\UpdateOrganizationUnitInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\UserToOrganizationUnitInput.cs" />
+    <Compile Include="Zero\Organizations\IOrganizationUnitAppService.cs" />
+    <Compile Include="Zero\Organizations\OrganizationUnitAppService.cs" />
     <Compile Include="PlatformApplicationModule.cs" />
     <Compile Include="PlatformAppServiceBase.cs" />
-    <Compile Include="MultiTenancy\Dto\CreateTenantInput.cs" />
-    <Compile Include="MultiTenancy\ITenantAppService.cs" />
-    <Compile Include="MultiTenancy\Dto\TenantListDto.cs" />
-    <Compile Include="MultiTenancy\TenantAppService.cs" />
+    <Compile Include="Zero\MultiTenancy\Dto\CreateTenantInput.cs" />
+    <Compile Include="Zero\MultiTenancy\ITenantAppService.cs" />
+    <Compile Include="Zero\MultiTenancy\Dto\TenantListDto.cs" />
+    <Compile Include="Zero\MultiTenancy\TenantAppService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Roles\Dtos\CreateOrUpdateRoleInput.cs" />
-    <Compile Include="Roles\Dtos\FlatPermissionDto.cs" />
-    <Compile Include="Roles\Dtos\GetRoleForEditOutput.cs" />
-    <Compile Include="Roles\Dtos\GetRoleInput.cs" />
-    <Compile Include="Roles\Dtos\GetRolePermissionEditDto.cs" />
-    <Compile Include="Roles\Dtos\RoleDto.cs" />
-    <Compile Include="Roles\Dtos\RoleEditDto.cs" />
-    <Compile Include="Roles\IRoleAppService.cs" />
-    <Compile Include="Roles\Dtos\UpdateRolePermissionsInput.cs" />
-    <Compile Include="Users\Dtos\GetUserForEdit.cs" />
-    <Compile Include="Users\Dtos\GetUserInput.cs" />
-    <Compile Include="Users\Dtos\UserEditDto.cs" />
-    <Compile Include="Users\Dtos\UserListDto.cs" />
-    <Compile Include="Users\Dtos\CreateUserInput.cs" />
-    <Compile Include="Users\Dtos\UserRoleDto.cs" />
-    <Compile Include="Users\IUserAppService.cs" />
-    <Compile Include="Roles\RoleAppService.cs" />
-    <Compile Include="Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
-    <Compile Include="Sessions\Dto\TenantLoginInfoDto.cs" />
-    <Compile Include="Sessions\Dto\UserLoginInfoDto.cs" />
-    <Compile Include="Sessions\ISessionAppService.cs" />
-    <Compile Include="Sessions\SessionAppService.cs" />
-    <Compile Include="Users\Dtos\ProhibitPermissionInput.cs" />
-    <Compile Include="Users\UserAppService.cs" />
+    <Compile Include="Zero\Roles\Dtos\CreateOrUpdateRoleInput.cs" />
+    <Compile Include="Zero\Roles\Dtos\FlatPermissionDto.cs" />
+    <Compile Include="Zero\Roles\Dtos\GetRoleForEditOutput.cs" />
+    <Compile Include="Zero\Roles\Dtos\GetRoleInput.cs" />
+    <Compile Include="Zero\Roles\Dtos\GetRolePermissionEditDto.cs" />
+    <Compile Include="Zero\Roles\Dtos\RoleDto.cs" />
+    <Compile Include="Zero\Roles\Dtos\RoleEditDto.cs" />
+    <Compile Include="Zero\Roles\IRoleAppService.cs" />
+    <Compile Include="Zero\Roles\Dtos\UpdateRolePermissionsInput.cs" />
+    <Compile Include="MainTenance\Caching\CachingAppService.cs" />
+    <Compile Include="MainTenance\Caching\Dto\CacheDto.cs" />
+    <Compile Include="MainTenance\Caching\ICachingAppService.cs" />
+    <Compile Include="Zero\Users\Dtos\GetUserForEdit.cs" />
+    <Compile Include="Zero\Users\Dtos\GetUserInput.cs" />
+    <Compile Include="Zero\Users\Dtos\UserEditDto.cs" />
+    <Compile Include="Zero\Users\Dtos\UserListDto.cs" />
+    <Compile Include="Zero\Users\Dtos\CreateUserInput.cs" />
+    <Compile Include="Zero\Users\Dtos\UserRoleDto.cs" />
+    <Compile Include="Zero\Users\IUserAppService.cs" />
+    <Compile Include="Zero\Roles\RoleAppService.cs" />
+    <Compile Include="Zero\Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
+    <Compile Include="Zero\Sessions\Dto\TenantLoginInfoDto.cs" />
+    <Compile Include="Zero\Sessions\Dto\UserLoginInfoDto.cs" />
+    <Compile Include="Zero\Sessions\ISessionAppService.cs" />
+    <Compile Include="Zero\Sessions\SessionAppService.cs" />
+    <Compile Include="Zero\Users\Dtos\ProhibitPermissionInput.cs" />
+    <Compile Include="Zero\Users\UserAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

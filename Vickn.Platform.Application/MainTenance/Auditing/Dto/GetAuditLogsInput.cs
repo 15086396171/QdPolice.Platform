@@ -30,7 +30,7 @@ namespace Vickn.Platform.Auditing.Dto
         {
             if (Sorting.IsNullOrWhiteSpace())
             {
-                Sorting = "AuditLog.Id";
+                Sorting = "AuditLog.Id Desc";
             }
 
         }

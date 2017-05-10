@@ -115,33 +115,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
-    <Compile Include="AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
-    <Compile Include="Authorization\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
-    <Compile Include="Authorization\Roles\Authorization\RoleAppPermissions.cs" />
-    <Compile Include="OrganizationUnits\Authorization\OrganizationUnitAppAuthorizationProvider.cs" />
-    <Compile Include="OrganizationUnits\Authorization\OrganizationUnitAppPermissions.cs" />
+    <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
+    <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
+    <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
+    <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
+    <Compile Include="Zero\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
+    <Compile Include="Zero\Roles\Authorization\RoleAppPermissions.cs" />
+    <Compile Include="Zero\OrganizationUnits\Authorization\OrganizationUnitAppAuthorizationProvider.cs" />
+    <Compile Include="Zero\OrganizationUnits\Authorization\OrganizationUnitAppPermissions.cs" />
     <Compile Include="PlatformConsts.cs" />
     <Compile Include="PlatformCoreModule.cs" />
     <Compile Include="Authorization\PlatformAuthorizationProvider.cs" />
     <Compile Include="Authorization\LoginManager.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="Authorization\AppPermissions.cs" />
-    <Compile Include="Authorization\Roles\AppRoleConfig.cs" />
-    <Compile Include="Authorization\Roles\StaticRoleNames.cs" />
-    <Compile Include="Editions\EditionManager.cs" />
-    <Compile Include="Features\FeatureValueStore.cs" />
-    <Compile Include="MultiTenancy\Tenant.cs" />
-    <Compile Include="MultiTenancy\TenantManager.cs" />
+    <Compile Include="Zero\Roles\AppRoleConfig.cs" />
+    <Compile Include="Zero\Roles\StaticRoleNames.cs" />
+    <Compile Include="Zero\Editions\EditionManager.cs" />
+    <Compile Include="Zero\Features\FeatureValueStore.cs" />
+    <Compile Include="Zero\MultiTenancy\Tenant.cs" />
+    <Compile Include="Zero\MultiTenancy\TenantManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Authorization\Roles\Role.cs" />
-    <Compile Include="Authorization\Roles\RoleManager.cs" />
-    <Compile Include="Authorization\Roles\RoleStore.cs" />
-    <Compile Include="Users\Authorization\UserAppAuthorizationProvider.cs" />
-    <Compile Include="Users\Authorization\UserAppPermissions.cs" />
-    <Compile Include="Users\User.cs" />
-    <Compile Include="Users\UserManager.cs" />
-    <Compile Include="Users\UserStore.cs" />
+    <Compile Include="Zero\Roles\Role.cs" />
+    <Compile Include="Zero\Roles\RoleManager.cs" />
+    <Compile Include="Zero\Roles\RoleStore.cs" />
+    <Compile Include="Zero\Users\Authorization\UserAppAuthorizationProvider.cs" />
+    <Compile Include="Zero\Users\Authorization\UserAppPermissions.cs" />
+    <Compile Include="Zero\Users\User.cs" />
+    <Compile Include="Zero\Users\UserManager.cs" />
+    <Compile Include="Zero\Users\UserStore.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config">

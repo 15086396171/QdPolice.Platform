@@ -1,0 +1,71 @@
+﻿@using Abp.Extensions
+@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Web.Models.Maintenance.MaintenanceViewModel
+@{
+    ViewBag.Menu = L("Maintenance");
+    ViewBag.SecMenu = L("Maintenance");
+}
+@section Styles
+{
+    @Html.IncludeStyle("~/Views/Maintenance/Index.min.css")
+}
+@section Scripts
+{
+    @Html.IncludeScript("~/Views/Maintenance/Index.js")
+    <script>
+        $.Huitab("#tab-system .tabBar span", "#tab-system .tabCon", "current", "click", "0");
+    </script>
+}
+
+@Html.Partial("~/Views/Common/_Navigation.cshtml")
+<div class="page-container">
+  
+    <div id="tab-system" class="HuiTab">
+        <div class="tabBar cl">
+            <span>@L("CacheSetting")</span>
+            <span>@L("WebLogs")</span>
+        </div>
+        <div class="tabCon">
+            @*<div class="text-r mb-5">
+                <a class="btn btn-primary  size-S" id="ClearAllCachesButton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
+                    @L("ClearAllCache")
+                </a>
+            </div>*@
+            <table class="table table-border ">
+                <tbody>
+                    <tr>
+                        <td style="width: 90%"> </td>
+                        <td style="padding: 5px;">
+                            <a class="btn btn-primary  size-S" id="ClearAllCachesButton" style="" href="javascript:;">
+                                @L("ClearAllCache")
+                            </a>
+                        </td>
+                    </tr>
+                @foreach (var item in Model.Caches)
+                {
+                    <tr>
+                        <td style="width: 90%">@item.Name</td>
+                        <td>
+                            <a href="javascript:;" class="btn btn-primary-outline size-S btn-clear-cache" data-cache-name="@item.Name">@L("Clear")</a>
+                        </td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+        </div>
+        <div class="tabCon">
+            <div class="text-r mb-5">
+                <a class="btn btn-primary  size-S" id="DownloadAllLogsbutton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
+                    @L("DownLoadAll")
+                </a>
+                <a class="btn btn-primary  size-S" id="RefreshButton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
+                    @L("Reflash")
+                </a>
+            </div>
+            <div id="WebSiteLogsContent" class="web-log-view full-height">
+            </div>
+        </div>
+       
+    </div>
+   
+</div>

@@ -1140,6 +1140,9 @@
     <Content Include="Views\Account\Register.js" />
     <Content Include="Views\Account\ResetPassword.js" />
     <Content Include="Views\AuditLogs\Index.js" />
+    <Content Include="Views\Maintenance\Index.css" />
+    <Content Include="Views\Maintenance\Index.js" />
+    <Content Include="Views\Maintenance\Index.min.css" />
     <Content Include="Views\OrganizationUnits\Index.js" />
     <Content Include="Views\OrganizationUnits\UserAddToOu.js" />
     <Content Include="Views\OrganizationUnits\_OrganizationUnitTree.js" />
@@ -1165,7 +1168,9 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
+    <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\RolesController.cs" />
@@ -1186,6 +1191,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Layout\TopMenuViewModel.cs" />
+    <Compile Include="Models\Maintenance\MaintenanceViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\PlatformWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
@@ -1219,6 +1225,8 @@
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\OrganizationUnits\UserAddToOu.cshtml" />
+    <Content Include="Views\Maintenance\Index.cshtml" />
+    <Content Include="Views\Maintenance\Index.less" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <None Include="Web.Debug.config">

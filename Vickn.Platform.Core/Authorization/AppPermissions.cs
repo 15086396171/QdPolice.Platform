@@ -8,5 +8,7 @@
 
         public const string Pages_SystemManage = "Pages.SystemManage";
 
+        public const string Pages_Maintenance = "Pages.Maintenance";
+
     }
 }
