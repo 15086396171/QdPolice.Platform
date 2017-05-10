@@ -1,6 +1,8 @@
 ﻿(function () {
     $(function () {
+        var _tree = new OrganizationUnitTree();
         var $dataTable = $(".dataTable");
+        var _$ouId = $("<input></input>");
 
         var _permissions = {
             create: abp.auth.hasPermission('Pages.User.CreateUser'),
@@ -15,6 +17,10 @@
                     {
                         key: "name",
                         selector: $("#name")
+                    },
+                    {
+                        key: "OuId",
+                        selector: _$ouId
                     }
                 ]
             },
@@ -74,27 +80,29 @@
             methods: [
                 {
                     actionName: "editAction",
-                    url: abp.appPath + "users/create",
+                    url: abp.appPath + "users/create"
                 },
                 {
                     actionName: "deleteAction",
-                    url: abp.appPath + "api/services/app/user/deleteUserAsync",
+                    url: abp.appPath + "api/services/app/user/deleteUserAsync"
                 },
                 {
                     actionName: "disableAction",
                     actionOptions: {
                         isAjax: true,
                         isConfirm: true,
-                        confirmMsg: "确定更改用户启用状态？",
+                        confirmMsg: "确定更改用户启用状态？"
                     },
                     selector: "a.disable",
-                    url: abp.appPath + "api/services/app/user/disableUserAsync",
+                    url: abp.appPath + "api/services/app/user/disableUserAsync"
                 }
             ],
             commonMethods: [
                 {
                     actionName: "createAction",
-                    url: abp.appPath + "Users/Create"
+                    action:function() {
+                        window.location.href = abp.appPath + "Users/Create?ouId=" + _$ouId.val();
+                    }
                 },
                 {
                     actionName: "batchAction",
@@ -104,5 +112,9 @@
         };
         $dataTable.createDatatable(options);
 
+        _tree.init($(".organizationUnit"), function (node) {
+            _$ouId.val(node.Id);
+            $dataTable.DataTable().draw();
+        });
     });
 })();

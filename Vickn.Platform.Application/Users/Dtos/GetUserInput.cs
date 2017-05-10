@@ -33,6 +33,8 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
 	    public string Name { get; set; }
 
+        public long? OuId { get; set; }
+
 		/// <summary>
 	    /// 用于排序的默认值
 		/// </summary>

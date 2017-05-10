@@ -29,5 +29,11 @@ namespace Vickn.Platform.Users.Dtos
 
         [DisplayName("角色")]
         public UserRoleDto[] UserRoleDtos { get; set; }
+
+
+        /// <summary>
+        /// 组织Id
+        /// </summary>
+        public long? OuId { get; set; }
     }
 }

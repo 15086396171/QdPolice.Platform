@@ -20,6 +20,11 @@
         public const int MaxUserNameLength = 32;
 
         /// <summary>
+        /// 是否启用组织
+        /// </summary>
+        public const bool EnableOrganizationUnit = true;
+
+        /// <summary>
         /// 数据库架构名
         /// </summary>
         public static class SchemaName

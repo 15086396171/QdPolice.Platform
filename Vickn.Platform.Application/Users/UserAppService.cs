@@ -8,6 +8,7 @@ using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
+using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.UI;
@@ -26,12 +27,14 @@ namespace Vickn.Platform.Users
         private readonly IRepository<User, long> _userRepository;
         private readonly IPermissionManager _permissionManager;
         private readonly RoleManager _roleManager;
+        private readonly IRepository<UserOrganizationUnit, long> _userOrganizationRepository;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager,RoleManager roleManager)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
             _roleManager = roleManager;
+            _userOrganizationRepository = userOrganizationRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -49,7 +52,7 @@ namespace Vickn.Platform.Users
 
         public async Task<ListResultDto<UserListDto>> GetUsers()
         {
-             var a= AbpSession.UserId;
+            var a = AbpSession.UserId;
             var users = await _userRepository.GetAllListAsync();
 
             return new ListResultDto<UserListDto>(
@@ -78,6 +81,15 @@ namespace Vickn.Platform.Users
 
             var query = _userRepository.GetAll();
             //TODO:根据传入的参数添加过滤条件
+
+            if (input.OuId.HasValue)
+            {
+                query = from user in query
+                        join userOrganizationUnit in _userOrganizationRepository.GetAll() on user.Id equals
+                        userOrganizationUnit.UserId
+                        where userOrganizationUnit.OrganizationUnitId == input.OuId.Value
+                        select user;
+            }
 
             query = query.WhereIf(!input.Name.IsNullOrEmpty(), p => p.Name.Contains(input.Name));
 
@@ -177,25 +189,24 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         public async Task<CustomerModelStateValidationDto> CheckErrorAsync(GetUserForEdit input)
         {
-            //input.Id = input.Id ?? 0;
-            //if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.UserEditDto.EmailAddress && p.Id != input.UserEditDto.Id) != null)
-            //    return new CustomerModelStateValidationDto()
-            //    {
-            //        HasModelError = true,
-            //        ErrorMessage = $"电子邮件{input.UserEditDto.EmailAddress}已存在",
-            //        Key = "User.EmailAddress"
-            //    };
-
             if (await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.UserEditDto.UserName && p.Id != input.UserEditDto.Id) != null)
             {
                 return new CustomerModelStateValidationDto()
                 {
                     HasModelError = true,
                     ErrorMessage = $"登录名{input.UserEditDto.UserName}已存在",
-                    Key = "User.UserName"
+                    Key = "UserEditDto.UserName"
                 };
             }
-            return new CustomerModelStateValidationDto() {HasModelError = false};
+
+            if (await _userRepository.FirstOrDefaultAsync(p => p.EmailAddress == input.UserEditDto.EmailAddress && p.Id != input.UserEditDto.Id) != null)
+                return new CustomerModelStateValidationDto()
+                {
+                    HasModelError = true,
+                    ErrorMessage = $"电子邮件{input.UserEditDto.EmailAddress}已存在",
+                    Key = "UserEditDto.EmailAddress"
+                };
+            return new CustomerModelStateValidationDto() { HasModelError = false };
         }
 
         /// <summary>
@@ -204,6 +215,7 @@ namespace Vickn.Platform.Users
         public virtual async Task<UserEditDto> CreateUserAsync(GetUserForEdit input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
+
 
             var user = input.UserEditDto.MapTo<User>();
 
@@ -214,12 +226,16 @@ namespace Vickn.Platform.Users
             user.IsActive = true;
 
             user.Roles = new List<UserRole>();
-            foreach (var userRoleDto in input.UserRoleDtos.Where(p=>p.IsAssigned))
+            foreach (var userRoleDto in input.UserRoleDtos.Where(p => p.IsAssigned))
             {
                 user.Roles.Add(new UserRole { RoleId = userRoleDto.RoleId });
             }
+            user.Id = await _userRepository.InsertAndGetIdAsync(user);
 
-            CheckErrors(await UserManager.CreateAsync(user));
+            if (input.OuId.HasValue)
+            {
+                await UserManager.AddToOrganizationUnitAsync(user.Id, input.OuId.Value);
+            }
 
             return user.MapTo<UserEditDto>();
         }
@@ -236,7 +252,7 @@ namespace Vickn.Platform.Users
 
             await _userRepository.UpdateAsync(entity);
 
-            var roleNames = input.UserRoleDtos.Where(p=>p.IsAssigned).Select(p => p.RoleName).ToArray();
+            var roleNames = input.UserRoleDtos.Where(p => p.IsAssigned).Select(p => p.RoleName).ToArray();
             await UserManager.SetRoles(entity, roleNames);
 
         }
@@ -247,8 +263,8 @@ namespace Vickn.Platform.Users
         public async Task DeleteUserAsync(EntityDto<long> input)
         {
             //TODO:删除前的逻辑判断，是否允许删除
-            if( _userRepository.FirstOrDefault(input.Id).UserName != PlatformConsts.UserConst.DefaultAdminUserName)
-            await _userRepository.DeleteAsync(input.Id);
+            if (_userRepository.FirstOrDefault(input.Id).UserName != PlatformConsts.UserConst.DefaultAdminUserName)
+                await _userRepository.DeleteAsync(input.Id);
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿@using Abp.Web.Mvc.Extensions
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform
 @using Vickn.Platform.Users.Authorization
 @{
     ViewBag.Menu = L("User");
@@ -8,46 +10,57 @@
 
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }
-@Html.Partial("~/Views/Common/_Navigation.cshtml")
-<div class="page-container">
-    <div class="text-c">
-        <input type="text" placeholder="@L("User.Name")" value="" class="input-text" id="name" style="width: 250px;" />
-        <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
-        <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
+@if (PlatformConsts.EnableOrganizationUnit)
+{
+    <div class="pos-a ztree-background">
+        <div class="organizationUnit ztree"></div>
     </div>
-    <div class="cl pd-5 bg-1 bk-gray mt-20">
-        <span class="l">
-            @if (IsGranted(UserAppPermissions.User_DeleteUser))
+}
+<div style="margin-left:200px;">
+    @Html.Partial("~/Views/Common/_Navigation.cshtml")
+    <div class="page-container">
+        <div class="text-c">
+            <input type="text" placeholder="@L("User.Name")" value="" class="input-text" id="name" style="width: 250px;" />
+            <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
+            <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
+        </div>
+        <div class="cl pd-5 bg-1 bk-gray mt-20">
+            <span class="l">
+                @if (IsGranted(UserAppPermissions.User_DeleteUser))
             {
-                <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
-            }
-            @if (IsGranted(UserAppPermissions.User_CreateUser))
+                    <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
+                }
+                @if (IsGranted(UserAppPermissions.User_CreateUser))
             {
-                <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
-                    <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
-                </a>
-            }
-        </span>
+                    <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
+                        <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
+                    </a>
+                }
+            </span>
+        </div>
+        <table class="table table-border table-bordered table-hover table-bg dataTable">
+            <thead>
+                <tr class="text-c">
+                    <th width="25"><input type="checkbox"></th>
+                    <th>@L("User.Name")</th>
+                    <th>@L("User.UserName")</th>
+                    <th>@L("User.DisplayName")</th>
+                    <th>@L("Email")</th>
+                    <th>@L("Phone")</th>
+                    <th>@L("IsEnable")</th>
+                    <th>@L("LastLoginTime")</th>
+                    <th>@L("Operational")</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
     </div>
-    <table class="table table-border table-bordered table-hover table-bg dataTable">
-        <thead>
-            <tr class="text-c">
-                <th width="25"><input type="checkbox"></th>
-                <th>@L("User.Name")</th>
-                <th>@L("User.UserName")</th>
-                <th>@L("User.DisplayName")</th>
-                <th>@L("Email")</th>
-                <th>@L("Phone")</th>
-                <th>@L("IsEnable")</th>
-                <th>@L("LastLoginTime")</th>
-                <th>@L("Operational")</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
 </div>
-
+@section styles{
+    @Styles.Render("~/Bundles/lib/css/ztree/metro")
+}
 @section scripts{
+    @Scripts.Render("~/Bundles/lib/js/ztree/core")
+    @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
     @Html.IncludeScript("~/Views/Users/Index.js")
 }

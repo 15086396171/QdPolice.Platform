@@ -23,9 +23,12 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
-        public async Task<ActionResult> Create(long? id)
+        public async Task<ActionResult> Create(long? id, long? ouId)
         {
             var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
+            if (!result.UserEditDto.Id.HasValue)
+                result.OuId = ouId;
+
             return View(result);
         }
 
@@ -36,7 +39,6 @@ namespace Vickn.Platform.Web.Controllers
                 return View(dto);
 
             await _userAppService.CreateOrUpdateUserAsync(dto);
-            //return Content("<script>parent.location.reload()</script>");
             return RedirectToAction("Index");
         }
     }

@@ -1,7 +1,6 @@
 ﻿var OrganizationUnitTree = (function ($) {
     return function () {
-        var _url;
-        var _search;
+        var _nodeclickCallback;
 
         var $tree;
         var setting = {
@@ -21,18 +20,17 @@
                 }
             },
             callback: {
-                onClick:zTreeOnClick
+                onClick: zTreeOnClick
             }
         };
-        function init($treeContainer,url,search) {
+        function init($treeContainer, nodeclickCallback) {
             $tree = $treeContainer;
-            _url = url;
-            _search = search;
+            _nodeclickCallback = nodeclickCallback;
             $.fn.zTree.init($tree, setting, null);
         }
 
         function zTreeOnClick(event, treeId, treeNode) {
-            _search(treeNode.Id);
+            _nodeclickCallback(treeNode);
         };
 
         return {

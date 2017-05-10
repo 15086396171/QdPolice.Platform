@@ -16,7 +16,7 @@
                 bLengthChange: false,
                 searching: false,
                 stripeClasses: ["text-c"],
-                processing: true,
+                processing: false,
                 ajax: options.listAction.method || function (data, callback, settings) {
                     var input = {
                         pageIndex: customerInput.pageIndex || parseInt(data.start / data.length) + 1,
@@ -149,19 +149,19 @@
             function (index, data) {
                 if (data) { //兼容IE8
                     if (data.actionName === "createAction") {
-                        if (data.action)
-                            data.action();
-                        else {
-                            $("#create").click(function () {
+                        $("#create").click(function () {
+                            if (data.action)
+                                data.action();
+                            else {
                                 window.location.href = data.url;
-                            });
-                        }
+                            }
+                        });
                     }
                     else if (data.actionName === "batchAction") {
-                        if (data.action)
-                            data.action();
-                        else {
-                            $("#batchDelete").click(function () {
+                        $("#batchDelete").click(function () {
+                            if (data.action)
+                                data.action();
+                            else {
                                 var input = [];
                                 $('input[class="check-box"]:checked').each(function (index2, data2) {
                                     input.push($(data2).val());
@@ -180,8 +180,8 @@
                                         });
                                         layer.close(index1);
                                     });
-                            });
-                        }
+                            }
+                        });
                     }
                 }
                 // 不必实现else，由index.js自行实现

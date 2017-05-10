@@ -101,8 +101,8 @@
         };
         $dataTable.createDatatable(options);
 
-        _tree.init($(".organizationUnit"), abp.appPath + "OrganizationUnits/Index", function (parentId) {
-            _$parentId.val(parentId);
+        _tree.init($(".organizationUnit"), function (node) {
+            _$parentId.val(node.Id);
             $dataTable.DataTable().draw();
         });
 
