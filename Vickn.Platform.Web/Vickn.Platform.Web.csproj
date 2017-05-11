@@ -1140,6 +1140,8 @@
     <Content Include="Views\Account\Register.js" />
     <Content Include="Views\Account\ResetPassword.js" />
     <Content Include="Views\AuditLogs\Index.js" />
+    <Content Include="js\AppUserNotificationService.js" />
+    <Content Include="Views\Home\Index.js" />
     <Content Include="Views\Maintenance\Index.css" />
     <Content Include="Views\Maintenance\Index.js" />
     <Content Include="Views\Maintenance\Index.min.css" />

@@ -1,4 +1,4 @@
-﻿
+﻿@using Abp.Web.Mvc.Extensions
 @Html.Action("UserMenuOrLoginLink", "Layout")
 @Html.Action("TopMenu", "Layout")
 
@@ -32,4 +32,12 @@
             border-bottom: 1px solid #e5e5e5;
         }
     </style>
+}
+@section scripts{
+    <!-- SignalR scripts -->
+    <script src="~/signalr/hubs"></script>
+    @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
+
+    @Html.IncludeScript("~/js/AppUserNotificationService.js")
+    @Html.IncludeScript("~/Views/Home/Index.js")
 }

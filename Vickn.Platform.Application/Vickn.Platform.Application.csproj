@@ -149,6 +149,14 @@
     <Compile Include="MainTenance\Logging\IWebLogAppService.cs" />
     <Compile Include="MainTenance\Logging\WebLogAppService.cs" />
     <Compile Include="Net\MimeTypes\MimeTypeNames.cs" />
+    <Compile Include="Notifications\Dto\GetNotificationSettingsOutput.cs" />
+    <Compile Include="Notifications\Dto\GetNotificationsOutput.cs" />
+    <Compile Include="Notifications\Dto\GetUserNotificationsInput.cs" />
+    <Compile Include="Notifications\Dto\NotificationSubscriptionDto.cs" />
+    <Compile Include="Notifications\Dto\NotificationSubscriptionWithDisplayNameDto.cs" />
+    <Compile Include="Notifications\Dto\UpdateNotificationSettingsInput.cs" />
+    <Compile Include="Notifications\INotificationAppService.cs" />
+    <Compile Include="Notifications\NotificationAppService.cs" />
     <Compile Include="Zero\Organizations\Dto\AddUserToOuInput.cs" />
     <Compile Include="Zero\Organizations\Dto\CreateOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />

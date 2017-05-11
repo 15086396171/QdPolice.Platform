@@ -119,6 +119,8 @@
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
+    <Compile Include="Zero\Notifications\INotificationManager.cs" />
+    <Compile Include="Zero\Notifications\NotificationManager.cs" />
     <Compile Include="Zero\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
     <Compile Include="Zero\Roles\Authorization\RoleAppPermissions.cs" />
     <Compile Include="Zero\OrganizationUnits\Authorization\OrganizationUnitAppAuthorizationProvider.cs" />
