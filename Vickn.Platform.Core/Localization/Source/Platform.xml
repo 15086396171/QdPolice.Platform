@@ -10,6 +10,7 @@
     <text name="ClearAllCache" value="清除所有缓存" />
     <text name="WebLogs" value="系统日志" />
     <text name="DownLoadAll" value="下载所有日志" />
+    <text name="Pages" value="Pages" />
 
     <text name="IndexPage" value="首页"/>
     <text name="Search" value="搜索"/>

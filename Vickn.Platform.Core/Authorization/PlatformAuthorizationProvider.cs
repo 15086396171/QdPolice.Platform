@@ -12,7 +12,7 @@ namespace Vickn.Platform.Authorization
             var pages = context.GetPermissionOrNull(AppPermissions.Pages);
             if (pages == null)
             {
-                pages = context.CreatePermission(AppPermissions.Pages, L("页面"));
+                pages = context.CreatePermission(AppPermissions.Pages, L("Pages"));
             }
 
             var systemManage = pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
