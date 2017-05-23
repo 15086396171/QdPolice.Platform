@@ -20,6 +20,7 @@ namespace Vickn.Platform.Api
 
             Configuration.Modules.AbpWebApi().DynamicApiControllerBuilder
                 .ForAll<IApplicationService>(typeof(PlatformApplicationModule).Assembly, "app")
+                //.WithConventionalVerbs()   // 根据方法名的前缀确定HTTP动词
                 .Build();
 
             Configuration.Modules.AbpWebApi().HttpConfiguration.Filters.Add(new HostAuthenticationFilter("Bearer"));
