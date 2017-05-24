@@ -17,7 +17,7 @@
                 url: abp.appPath + "api/services/app/role/getPagedAsync",
                 filters: [
                     {
-                        key: "name",
+                        key: "roleName",
                         selector: $("#name")
                     }
                 ]

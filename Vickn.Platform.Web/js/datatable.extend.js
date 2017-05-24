@@ -17,7 +17,7 @@
                 searching: false,
                 stripeClasses: ["text-c"],
                 processing: false,
-                ajax: options.listAction.method || function (data, callback, settings) {
+                ajax: options.listAction.method || function (data, callback, setting) {
                     var input = {
                         pageIndex: customerInput.pageIndex || parseInt(data.start / data.length) + 1,
                         maxResultCount: customerInput.maxResultCount || 10,
