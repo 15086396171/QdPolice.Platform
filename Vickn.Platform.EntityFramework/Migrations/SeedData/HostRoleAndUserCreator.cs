@@ -35,12 +35,12 @@ namespace Vickn.Platform.Migrations.SeedData
             var adminRoleForHost = _context.Roles.FirstOrDefault(r => r.TenantId == null && r.Name == StaticRoleNames.Host.Admin);
             if (adminRoleForHost == null)
             {
-                adminRoleForHost = _context.Roles.Add(new Role { Name = StaticRoleNames.Host.Admin, DisplayName = StaticRoleNames.Host.Admin, IsStatic = true });
+                adminRoleForHost = _context.Roles.Add(new Role { Name = StaticRoleNames.Host.Admin, DisplayName = StaticRoleNames.Host.Admin, IsStatic = true, Weight = StaticRoleNames.Host.AdminWeight });
                 _context.SaveChanges();
 
                 //Grant all tenant permissions
                 var permissions = PermissionFinder
-                    .GetAllPermissions(new PlatformAuthorizationProvider(),new UserAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new RoleAppAuthorizationProvider())
+                    .GetAllPermissions(new PlatformAuthorizationProvider(), new UserAppAuthorizationProvider(), new OrganizationUnitAppAuthorizationProvider(), new RoleAppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Host))
                     .ToList();
 

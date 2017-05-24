@@ -6,6 +6,7 @@ using Abp.Runtime.Session;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
 using Microsoft.AspNet.Identity;
+using Vickn.Platform.Authorization.Roles;
 
 namespace Vickn.Platform
 {

@@ -17,6 +17,7 @@ using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Abp.Linq.Extensions;
@@ -36,15 +37,17 @@ namespace Vickn.Platform.Roles
         private readonly IRepository<Role, int> _roleRepository;
         private readonly RoleManager _roleManager;
         private readonly IPermissionManager _permissionManager;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
 
         /// <summary>
         /// 初始化角色服务实例
         /// </summary>
-        public RoleAppService(IRepository<Role, int> roleRepository, RoleManager roleManager, IPermissionManager permissionManager)
+        public RoleAppService(IRepository<Role, int> roleRepository, RoleManager roleManager, IPermissionManager permissionManager, IRepository<UserRole, long> userRoleRepository)
         {
             _roleRepository = roleRepository;
             _roleManager = roleManager;
             _permissionManager = permissionManager;
+            _userRoleRepository = userRoleRepository;
         }
 
         #region 角色管理
@@ -54,7 +57,8 @@ namespace Vickn.Platform.Roles
         /// </summary>
         public async Task<PagedResultDto<RoleDto>> GetPagedAsync(GetRoleInput input)
         {
-            var query = _roleRepository.GetAll();
+            var maxWeight = await _roleManager.GetMaxWeightByUserIdAsync(AbpSession.UserId.Value);
+            var query = _roleRepository.GetAll().Where(p => p.Weight <= maxWeight);
 
             //TODO:根据传入的参数添加过滤条件
             query = query.WhereIf(!input.RoleName.IsNullOrEmpty(),
@@ -210,6 +214,18 @@ namespace Vickn.Platform.Roles
         {
             //TODO: 自定义逻辑判断是否有逻辑错误
 
+            var myRoles = await _roleManager.FindByUserIdAsync(AbpSession.UserId.Value);
+
+            var maxWeight = myRoles.Max(p => p.Weight);
+
+            if (output.RoleEditDto.Weight > maxWeight)
+                return new CustomerModelStateValidationDto()
+                {
+                    HasModelError = true,
+                    Key = "RoleEditDto.Weight",
+                    ErrorMessage = $"不能大于本用户最大权值，最大权值为{maxWeight}"
+                };
+
             return new CustomerModelStateValidationDto() { HasModelError = false };
         }
 
@@ -217,3 +233,4 @@ namespace Vickn.Platform.Roles
 
     }
 }
+

@@ -28,13 +28,15 @@ namespace Vickn.Platform.Users
         private readonly IPermissionManager _permissionManager;
         private readonly RoleManager _roleManager;
         private readonly IRepository<UserOrganizationUnit, long> _userOrganizationRepository;
+        private readonly IRepository<UserRole, long> _userRoleRepository;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
             _roleManager = roleManager;
             _userOrganizationRepository = userOrganizationRepository;
+            _userRoleRepository = userRoleRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -78,8 +80,12 @@ namespace Vickn.Platform.Users
         /// </summary>
         public async Task<PagedResultDto<UserListDto>> GetPagedUsersAsync(GetUserInput input)
         {
-
-            var query = _userRepository.GetAll();
+            var maxWeight = await _roleManager.GetMaxWeightByUserIdAsync(AbpSession.UserId.Value);
+            var query = from user in _userRepository.GetAll()
+                        join userRole in _userRoleRepository.GetAll() on user.Id equals userRole.UserId
+                        join role in _roleManager.Roles on userRole.RoleId equals role.Id
+                        where role.Weight <= maxWeight
+                        select user;
             //TODO:根据传入的参数添加过滤条件
 
             if (input.OuId.HasValue)
@@ -112,7 +118,10 @@ namespace Vickn.Platform.Users
         /// </summary>
         public async Task<GetUserForEdit> GetUserForEditAsync(NullableIdDto<long> input)
         {
+            var myroles = await _roleManager.FindByUserIdAsync(AbpSession.UserId.Value);
+            var myMax = myroles.Max(r => r.Weight);
             var userRoleDtos = (await _roleManager.Roles
+                .Where(p => p.Weight <= myMax)
               .OrderBy(r => r.DisplayName)
               .Select(r => new UserRoleDto
               {

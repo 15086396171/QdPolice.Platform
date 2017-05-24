@@ -37,7 +37,7 @@ namespace Vickn.Platform.Migrations.SeedData
             var adminRole = _context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
             if (adminRole == null)
             {
-                adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin) { IsStatic = true });
+                adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin,StaticRoleNames.Tenants.AdminWeight) { IsStatic = true });
                 _context.SaveChanges();
 
                 //Grant all permissions to admin role
