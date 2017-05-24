@@ -18,14 +18,7 @@ namespace Vickn.Platform.Web
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu
-                .AddItem(
-                    new MenuItemDefinition(
-                        "Tenants",
-                        L("Tenants"),
-                        url: "Tenants",
-                        icon: "fa fa-globe",
-                        requiredPermissionName: AppPermissions.Pages_Tenants
-                        ))
+            #region 系统管理
                 .AddItem(
                     new MenuItemDefinition(
                         "SystemManage",
@@ -72,8 +65,10 @@ namespace Vickn.Platform.Web
                         url: "MainTenance",
                         icon: "fa fa-users",
                         requiredPermissionName: AppPermissions.Pages_Maintenance
-                        ))
-                        ) // end:SystemManage
+                        ))) // end:SystemManage
+
+            #endregion
+
                 ;
         }
 
