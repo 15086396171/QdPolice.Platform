@@ -105,6 +105,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Extensions\EnumExtension.cs" />
     <Compile Include="Pager\IPagerInBase.cs" />
     <Compile Include="Pager\PagerResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
