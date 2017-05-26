@@ -31,7 +31,7 @@ namespace Vickn.Platform.Web
                         "User",
                         L("User"),
                         url: "Users",
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-user",
                         requiredPermissionName: UserAppPermissions.User
                         ))
                          .AddItem(
@@ -39,7 +39,7 @@ namespace Vickn.Platform.Web
                         "Role",
                         L("Role"),
                         url: "Roles",
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-root",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
                           .AddItem(
@@ -47,7 +47,7 @@ namespace Vickn.Platform.Web
                         "OrganizationUnit",
                         L("OrganizationUnit"),
                         url: "OrganizationUnits",
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-user-group",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
                     .AddItem(
@@ -55,7 +55,7 @@ namespace Vickn.Platform.Web
                         "AuditLog",
                         L("AuditLog"),
                         url: "AuditLogs",
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-log",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
                         .AddItem(
@@ -63,7 +63,7 @@ namespace Vickn.Platform.Web
                         "MainTenance",
                         L("Maintenance"),
                         url: "MainTenance",
-                        icon: "fa fa-users",
+                        icon: "Hui-iconfont-system",
                         requiredPermissionName: AppPermissions.Pages_Maintenance
                         ))) // end:SystemManage
 

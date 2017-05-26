@@ -4,14 +4,14 @@
 
 @{
     ViewBag.Menu = L("SystemManage");
-    ViewBag.SecMenu = L("AuditLog");
+    ViewBag.SubMenu = L("AuditLog");
     ViewBag.createBtn = L("CreateAuditLog");
     ViewBag.editBtn = L("EditAuditLog");
 
     ViewBag.ActiveMenu = "AuditLogs"; //The menu item will be active for this page.
 
 }
-<nav class="breadcrumb"><i class="Hui-iconfont">&#xe67f;</i> 首页<span class="c-gray en">&gt;</span> @ViewBag.Menu <span class="c-gray en">&gt;</span> @ViewBag.SecMenu <a class="btn btn-success radius r" style="line-height:1.6em;margin-top:3px" href="javascript:location.replace(location.href);" title="刷新"><i class="Hui-iconfont">&#xe68f;</i></a></nav>
+@Html.Partial("~/Views/Common/_Navigation.cshtml")
 <div class="page-container">
     <div class="text-c mb-20">
         <input type="text" class="input-text" placeholder="请输入时间" style="width: 250px;" id="userName" />

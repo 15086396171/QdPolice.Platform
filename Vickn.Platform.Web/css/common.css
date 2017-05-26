@@ -2,8 +2,8 @@
     通用样式
 */
 
-.nodecoration {
-    text-decoration: none
+a, a:hover {
+    text-decoration: none;
 }
 
 .ztree-background {
@@ -16,6 +16,7 @@
     background-color: #f5f5f5;
     overflow: auto;
 }
+
 .txt-small {
     font-size: small;
 }
