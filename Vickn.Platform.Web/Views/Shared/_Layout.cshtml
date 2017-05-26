@@ -31,17 +31,17 @@
         //This is used to get the application's root path from javascript. It's useful if you're running application in a virtual directory under IIS.
         var abp = abp || {}; abp.appPath = '@ApplicationPath';
     </script>
-    @*<script src="~/Scripts/jquery-2.2.1.js"></script>*@
     @Scripts.Render("~/Bundles/vendor/js/top")
 
     <!--[if lt IE 9]>
-    <script type="text/javascript" src="~/Content/H-ui.admin_v3.0/lib/html5shiv.js"></script>
-    <script type="text/javascript" src="~/Content/H-ui.admin_v3.0/lib/respond.min.js"></script>
+    <script type="text/javascript" src="~/Scripts/lib/html5shiv.js"></script>
+    <script type="text/javascript" src="~/Scripts/lib/respond.min.js"></script>
     <![endif]-->
     <!--[if IE 6]>
-    <script src="~/Content/H-ui.admin_v3.0/lib/DD_belatedPNG_0.0.8a-min.js"></script>
+    <script src="~/Scripts/lib/DD_belatedPNG_0.0.8a-min.js"></script>
             <script>DD_belatedPNG.fix('*');</script>
-            <![endif]-->
+    <![endif]-->
+
 </head>
 <body>
     @RenderBody()

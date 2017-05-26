@@ -17,8 +17,8 @@ namespace Vickn.Platform.Web
                 new StyleBundle("~/Bundles/vendor/css")
                             .Include("~/Content/H-ui.admin_v3.0/static/h-ui/css/H-ui.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/css/H-ui.admin.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/lib/Hui-iconfont/1.0.8/iconfont.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/lib/icheck/icheck.css", new CssRewriteUrlTransform())
+                    .Include("~/Scripts/lib/Hui-iconfont/1.0.8/iconfont.css", new CssRewriteUrlTransform())
+                    .Include("~/Scripts/lib/icheck/icheck.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/style.css", new CssRewriteUrlTransform())
                     .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
@@ -28,10 +28,8 @@ namespace Vickn.Platform.Web
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
             bundles.Add(
                 new ScriptBundle("~/Bundles/vendor/js/top")
-                    //.Include("")
                     .Include(
                     "~/Scripts/jquery-2.2.1.js",
-
                         "~/Abp/Framework/scripts/utils/ie10fix.js",
                         "~/Scripts/modernizr-2.8.3.js"
                     )
@@ -45,8 +43,8 @@ namespace Vickn.Platform.Web
 
                         // jqvaliate
 
-                        "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.js",
-                        "~/Content/H-ui.admin_v3.0/lib/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
+                        "~/Scripts/lib/jquery.validation/1.14.0/jquery.validate.js",
+                        "~/Scripts/lib/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
 
                         "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/jquery.blockUI.js",
@@ -68,11 +66,11 @@ namespace Vickn.Platform.Web
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
                         // datatable
                         "~/js/datatable.extend.js",
-                        "~/Content/H-ui.admin_v3.0/lib/datatables/1.10.0/jquery.dataTables.min.js",
+                        "~/Scripts/lib/datatables/1.10.0/jquery.dataTables.min.js",
 
                         // H-ui
-                        "~/Content/H-ui.admin_v3.0/lib/layer/2.4/layer.js",
-                        "~/Content/H-ui.admin_v3.0/lib/jquery.contextmenu/jquery.contextmenu.r2.js",
+                        "~/Scripts/lib/layer/2.4/layer.js",
+                        "~/Scripts/lib/jquery.contextmenu/jquery.contextmenu.r2.js",
                         "~/Content/H-ui.admin_v3.0/static/h-ui/js/H-ui.js",
                         "~/Content/H-ui.admin_v3.0/static/h-ui.admin/js/H-ui.admin.js"
                     )
@@ -101,21 +99,31 @@ namespace Vickn.Platform.Web
             //jstree
             bundles.Add(
                   new StyleBundle("~/Bundles/lib/css/jstree")
-                      .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
+                      .Include("~/Scripts/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
                   );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/jstree")
-                 .Include("~/Content/H-ui.admin_v3.0/lib/vakata-jstree-9770c67/dist/jstree.js")
+                 .Include("~/Scripts/lib/vakata-jstree-9770c67/dist/jstree.js")
              );
 
             //ztree
             bundles.Add(
                   new StyleBundle("~/Bundles/lib/css/ztree/metro")
-                      .Include("~/Content/H-ui.admin_v3.0/lib/zTree/v3/css/metroStyle/metroStyle.css", new CssRewriteUrlTransform())
+                      .Include("~/Scripts/lib/zTree/v3/css/metroStyle/metroStyle.css", new CssRewriteUrlTransform())
                   );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/ztree/core")
-                 .Include("~/Content/H-ui.admin_v3.0/lib/zTree/v3/js/jquery.ztree.core-3.5.js")
+                 .Include("~/Scripts/lib/zTree/v3/js/jquery.ztree.core-3.5.js")
+             );
+
+            // wangEditor
+            bundles.Add(
+              new StyleBundle("~/Bundles/lib/css/wangEditor")
+                  .Include("~/Scripts/lib/wangEditor-2.1.23/dist/css/wangEditor.css", new CssRewriteUrlTransform())
+              );
+            bundles.Add(
+             new ScriptBundle("~/Bundles/lib/js/wangEditor")
+                 .Include("~/Scripts/lib/wangEditor-2.1.23/dist/js/wangEditor.js")
              );
 
             #endregion
