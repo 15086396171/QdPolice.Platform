@@ -23,7 +23,6 @@ namespace Vickn.Platform.Web
                     .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/style.css", new CssRewriteUrlTransform())
                     .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
                     .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
-                    .Include("~/Scripts/lib/layer/2.4/skin/layer.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
