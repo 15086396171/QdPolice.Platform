@@ -3376,7 +3376,7 @@ _e(function (E, $) {
 
     // 上传图片的配置
     // server地址
-    E.config.uploadImgUrl = '';
+    E.config.uploadImgUrl = '/File/UploadImg';
     // 超时时间
     E.config.uploadTimeout = 20 * 1000;
     // 用于存储上传回调事件
@@ -3412,7 +3412,7 @@ _e(function (E, $) {
     E.config.pasteText = false;
 
     // 插入代码时，默认的语言
-    E.config.codeDefaultLang = 'javascript';
+    E.config.codeDefaultLang = 'c#';
 
 });
 // 全局UI
