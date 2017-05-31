@@ -7,7 +7,7 @@
 
         var getUserNotificationsAsync = function () {
             notificationService.getPagedUserNotificationsAsync({
-                state:0,
+                state: 0,
                 maxResultCount: 5
             }).then(function (result) {
                 if (result.unreadCount > 0) {
@@ -16,9 +16,9 @@
                     $.each(result.items,
                         function (index, item) {
                             var $divp = $("<div class=\"prettyprint\" style=\"margin-bottom:5px;\"></div>");
-                            $(' <div><span class="label label-secondary round" > <i class="Hui-iconfont Hui-iconfont-more"></i></span> '+appUserNotificationService.formattedMessage(item).text+'</div>').appendTo($divp);
-                            $('<span class="txt-small">2017/5/8 13:42:31</span>').appendTo($divp);
-                            $('<a href="javascript:void(0)" data-id=' + item.id + '  class="clearfix txt-small markAsRead">- <span class="makeasread-text">标为已读</span></a >').appendTo($divp);
+                            $(' <div><span class="label label-secondary round" > <i class="Hui-iconfont Hui-iconfont-more"></i></span> ' + appUserNotificationService.formattedMessage(item).text + '</div>').appendTo($divp);
+                            $('<span class="txt-small">' + moment(item.notification.creationTime).format("YYYY-MM-DD hh:mm:ss") + '</span>').appendTo($divp);
+                            $('<a href="javascript:void(0)" data-id=' + item.id + '  class="clearfix txt-small markAsRead"> <span class="makeasread-text label label-secondary radius">[标为已读]</span></a >').appendTo($divp);
                             $divp.appendTo($div);
                         });
                     _$messageContent.attr("data-content", $div.html());

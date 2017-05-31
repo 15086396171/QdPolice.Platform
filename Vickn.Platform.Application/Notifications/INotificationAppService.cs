@@ -39,5 +39,11 @@ namespace Vickn.Platform.Notifications
         /// <param name="input"></param>
         /// <returns></returns>
         Task UpdateNotificationSettings(UpdateNotificationSettingsInput input);
+
+        /// <summary>
+        /// 发送测试消息
+        /// </summary>
+        /// <returns></returns>
+        Task SendTestNotification();
     }
 }

@@ -10,24 +10,27 @@ using Abp.Configuration;
 using Abp.Notifications;
 using Abp.Runtime.Session;
 using Vickn.Platform.Notifications.Dto;
+using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.Notifications
 {
     [AbpAuthorize]
     public class NotificationAppService : PlatformAppServiceBase, INotificationAppService
     {
-          private readonly INotificationDefinitionManager _notificationDefinitionManager;
-          private readonly IUserNotificationManager _userNotificationManager;
-          private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
+        private readonly INotificationDefinitionManager _notificationDefinitionManager;
+        private readonly IUserNotificationManager _userNotificationManager;
+        private readonly INotificationSubscriptionManager _notificationSubscriptionManager;
+        private readonly NotificationManager _notificationManager;
 
         public NotificationAppService(
             INotificationDefinitionManager notificationDefinitionManager,
-            IUserNotificationManager userNotificationManager, 
-            INotificationSubscriptionManager notificationSubscriptionManager)
+            IUserNotificationManager userNotificationManager,
+            INotificationSubscriptionManager notificationSubscriptionManager, NotificationManager notificationManager)
         {
             _notificationDefinitionManager = notificationDefinitionManager;
             _userNotificationManager = userNotificationManager;
             _notificationSubscriptionManager = notificationSubscriptionManager;
+            _notificationManager = notificationManager;
         }
 
         [DisableAuditing]
@@ -57,10 +60,10 @@ namespace Vickn.Platform.Notifications
         public async Task MakeNotificationAsRead(EntityDto<Guid> input)
         {
             var userNotification = await _userNotificationManager.GetUserNotificationAsync(AbpSession.TenantId, input.Id);
-            if (userNotification.UserId != AbpSession.GetUserId()){
+            if (userNotification.UserId != AbpSession.GetUserId())
+            {
 
                 throw new ApplicationException($"消息Id为{input.Id}的信息，不属于当前的用户，用户id：{AbpSession.UserId}");
-              
             }
 
             await _userNotificationManager.UpdateUserNotificationStateAsync(AbpSession.TenantId, input.Id, UserNotificationState.Read);
@@ -77,8 +80,6 @@ namespace Vickn.Platform.Notifications
                     .Where(nd => nd.EntityType == null) //Get general notifications, not entity related notifications.
                     .MapTo<List<NotificationSubscriptionWithDisplayNameDto>>()
             };
-
-
 
             var subscribedNotifications = (await _notificationSubscriptionManager
                 .GetSubscribedNotificationsAsync(AbpSession.ToUserIdentifier()))
@@ -111,6 +112,13 @@ namespace Vickn.Platform.Notifications
             }
         }
 
-       
+        /// <summary>
+        /// 发送测试消息
+        /// </summary>
+        /// <returns></returns>
+        public async Task SendTestNotification()
+        {
+            await _notificationManager.SendMessageAsync((await GetCurrentUserAsync()).ToUserIdentifier(), "这是测试消息");
+        }
     }
 }
