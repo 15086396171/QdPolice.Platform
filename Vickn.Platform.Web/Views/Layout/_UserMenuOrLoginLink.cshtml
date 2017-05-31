@@ -1,4 +1,5 @@
 ﻿@using Vickn.Platform
+@using Vickn.Platform.Authorization
 @model Vickn.Platform.Web.Models.Layout.UserMenuOrLoginLinkViewModel
 
 @if (Model.LoginInformations != null)
@@ -9,6 +10,10 @@
                 <a class="logo navbar-logo f-l mr-10 hidden-xs" href="javascript:location.reload();">@PlatformConsts.AppName</a> <a class="logo navbar-logo-m f-l mr-10 visible-xs" href="javascript:location.reload();">@PlatformConsts.AppName</a> @*<span class="logo navbar-slogan f-l mr-10 hidden-xs">v2.5</span>*@ <a aria-hidden="false" class="nav-toggle Hui-iconfont visible-xs" href="javascript:;">&#xe667;</a>
                 <nav id="Hui-userbar" class="nav navbar-nav navbar-userbar hidden-xs">
                     <ul class="cl">
+                        @if (IsGranted(AppPermissions.Pages_Hangfire))
+                        {
+                            <li><a href="/hangfire">hangfire</a></li>
+                        }
                         <li id="Hui-msg"> <a href="javascript:;" id="message-Content" data-html="true" title="" data-container="body" data-toggle="popover" data-placement="bottom" data-content="" data-original-title="通知详情" aria-describedby="popover822917"><span class="badge badge-danger" id="message"></span><i class="Hui-iconfont" style="font-size: 18px">&#xe68a;</i></a> </li>
                         @*<li>@Model.LoginInformations.User.Name</li>*@
                         <li class="dropDown dropDown_hover">

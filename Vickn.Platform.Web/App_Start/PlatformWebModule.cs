@@ -35,13 +35,13 @@ namespace Vickn.Platform.Web
             Configuration.Navigation.Providers.Add<PlatformNavigationProvider>();
 
             //Configuration.Modules.AbpWebCommon().SendAllExceptionsToClients = true;
-           
+
             //Configuration.Modules
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
             //Configuration.BackgroundJobs.UseHangfire(configuration =>
             //{
-            //    configuration.GlobalConfiguration.UseSqlServerStorage("Default");
+            //    configuration.GlobalConfiguration.UseSqlServerStorage("Hangfire");
             //});
         }
 

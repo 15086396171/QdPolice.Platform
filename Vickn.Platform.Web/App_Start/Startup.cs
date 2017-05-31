@@ -12,6 +12,7 @@ using Microsoft.Owin.Security.Facebook;
 using Microsoft.Owin.Security.Google;
 using Microsoft.Owin.Security.Twitter;
 using Owin;
+using Vickn.Platform.Authorization;
 
 [assembly: OwinStartup(typeof(Startup))]
 
@@ -54,7 +55,7 @@ namespace Vickn.Platform.Web
             //ENABLE TO USE HANGFIRE dashboard (Requires enabling Hangfire in PlatformWebModule)
             //app.UseHangfireDashboard("/hangfire", new DashboardOptions
             //{
-            //    Authorization = new[] { new AbpHangfireAuthorizationFilter() } //You can remove this line to disable authorization
+            //    Authorization = new[] { new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Hangfire) } //You can remove this line to disable authorization
             //});
         }
 
