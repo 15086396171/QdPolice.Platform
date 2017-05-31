@@ -132,16 +132,26 @@
 
     function addCommonEvents(options) {
         $("#search").on("click", function () {
-            $(options.target).search();
+            if (options.listAction.search) {
+                options.listAction.search();
+            }
+            else {
+                $(options.target).search();
+            }
         });
         $("#research").click(function () {
-            if (options.listAction.filters) {
-                $.each(options.listAction.filters,
-                    function (index, value) {
-                        $(value.selector).val("");
-                    });
+            if (options.listAction.research) {
+                options.listAction.research();
             }
-            $(options.target).search();
+            else {
+                if (options.listAction.filters) {
+                    $.each(options.listAction.filters,
+                        function (index, value) {
+                            $(value.selector).val("");
+                        });
+                }
+                $(options.target).search();
+            }
         });
         if (!options.commonMethods)
             return;
