@@ -15,9 +15,9 @@ namespace Vickn.Platform.Authorization
                 pages = context.CreatePermission(AppPermissions.Pages, L("Pages"));
             }
 
-            var systemManage = pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
+            pages.CreateChildPermission(AppPermissions.Pages_SystemManage, L("SystemManage"));
 
-            var hangfire = pages.CreateChildPermission(AppPermissions.Pages_Hangfire, L("Hangfire"));
+            pages.CreateChildPermission(AppPermissions.Pages_Hangfire, L("Hangfire"));
 
             pages.CreateChildPermission(AppPermissions.Pages_Maintenance, L("Maintenance"));
 

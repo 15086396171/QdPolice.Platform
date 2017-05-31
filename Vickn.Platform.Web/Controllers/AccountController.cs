@@ -18,6 +18,7 @@ using Abp.Runtime.Security;
 using Abp.Threading;
 using Abp.UI;
 using Abp.Web.Models;
+using Abp.Web.Mvc.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.MultiTenancy;
@@ -183,6 +184,18 @@ namespace Vickn.Platform.Web.Controllers
         #endregion
 
         #region ResetPassword
+
+        [AbpMvcAuthorize]
+        public async Task<ActionResult> ResetPasswordForUser()
+        {
+            var user = await _userManager.FindByIdAsync(AbpSession.UserId.Value);
+            user.SetNewPasswordResetCode();
+            return RedirectToAction("ResetPassword", new ResetPasswordViewModel
+            {
+                UserId = SimpleStringCipher.Instance.Encrypt(user.Id.ToString()),
+                ResetCode = user.PasswordResetCode
+            });
+        }
 
         [UnitOfWork]
         public virtual async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
