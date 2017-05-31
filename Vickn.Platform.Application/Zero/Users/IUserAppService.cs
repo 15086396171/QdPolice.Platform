@@ -78,6 +78,12 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         Task DisableUserAsync(EntityDto<long> input);
 
+        /// <summary>
+        /// 获取我的信息
+        /// </summary>
+        /// <returns></returns>
+        Task<GetUserForEdit> GetMyInfoAsync();
+
         #endregion
     }
 }

@@ -25,7 +25,7 @@
                 @Html.LabelFor(model => model.UserEditDto.Name, htmlAttributes: new { @class = "form-label col-xs-4 col-sm-3" })
                 <div class="formControls col-xs-8 col-sm-8">
                     @Html.EditorFor(model => model.UserEditDto.Name, new { htmlAttributes = new { @class = "input-text" } })
-                    @Html.ValidationMessageFor(model => model.UserEditDto.Name, "", new { @class = "text-danger" })
+                    @Html.ValidationMessageFor(model => model.UserEditDto.Name, "", new { @class = "" })
                 </div>
             </div>
 

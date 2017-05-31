@@ -4,6 +4,7 @@
         var notificationService = abp.services.app.notification;
         var _$message = $("#message");
         var _$messageContent = $("#message-Content");
+        var _modal = $("#modal-MyInfo");
 
         var getUserNotificationsAsync = function () {
             notificationService.getPagedUserNotificationsAsync({
@@ -46,9 +47,35 @@
             _$messageContent.popover('hide');
             getUserNotificationsAsync();
         });
-        //测试为领域事件的一个例子
         abp.event.on('abp.notifications.received', function (userNotification) {
             getUserNotificationsAsync();
+        });
+
+        // 我的信息
+        $("#myInfo").click(function () {
+            _modal.modal("show");
+            _modal.find(".modal-body").load(abp.appPath + "Users/MyInfo", {}, function () {
+                // 设置form验证就不行，其他都可以
+                $("form").validate({
+                    rules: {
+                        UserEditDto_Name: {
+                            required: true,
+                            minlength: 2,
+                            maxlength: 16
+                        },
+                    },
+                    onkeyup: false,
+                    focusCleanup: true,
+                    success: "valid",
+                    submitHandler: function (form) {
+                        //$(form).ajaxSubmit();
+                        alert();
+                    }
+                });
+            });
+        });
+        $("#btn-Ok").click(function () {
+            $("form").submit();
         });
     });
 })(jQuery);

@@ -299,6 +299,15 @@ namespace Vickn.Platform.Users
             user.IsActive = !user.IsActive;
         }
 
+        /// <summary>
+        /// 获取我的信息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<GetUserForEdit> GetMyInfoAsync()
+        {
+            return await GetUserForEditAsync(new NullableIdDto<long>(AbpSession.UserId));
+        }
+
         #endregion
     }
 }

@@ -41,5 +41,10 @@ namespace Vickn.Platform.Web.Controllers
             await _userAppService.CreateOrUpdateUserAsync(dto);
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> MyInfo()
+        {
+            return View("_MyInfo", await _userAppService.GetMyInfoAsync());
+        }
     }
 }

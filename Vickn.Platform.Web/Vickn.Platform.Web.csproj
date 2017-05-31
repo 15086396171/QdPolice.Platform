@@ -1186,6 +1186,7 @@
     <Content Include="Scripts\lib\wangEditor-2.1.23\dist\fonts\icomoon.woff" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
+    <Content Include="Views\Users\_MyInfo.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
