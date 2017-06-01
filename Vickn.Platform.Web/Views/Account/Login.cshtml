@@ -1,89 +1,42 @@
 ﻿@using Abp.Web.Mvc.Extensions
 @using Microsoft.Owin.Security
 @model Vickn.Platform.Web.Models.Account.LoginFormViewModel
-@section Styles
-{
-    <link href="~/Content/H-ui.admin_v3.0/static/h-ui.admin/css/H-ui.login.css" rel="stylesheet" />
+@{
+    ViewBag.Title = "登录";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
 }
 @section Scripts
 {
+
     @Html.IncludeScript("~/Views/Account/Login.js")
 }
-<div class="header"></div>
-<div class="loginWraper">
-    <div id="loginform" class="loginBox">
-        <form id="LoginForm" class="form form-horizontal" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
-            @if (Model.IsMultiTenancyEnabled)
-            {
-                <div class="row cl">
-                    <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
-                    <div class="formControls col-xs-8">
-                        <input type="text" class="input-text" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
-                    </div>
-                </div>
-            }
+
+<div class="middle-box text-center loginscreen  animated fadeInDown">
+    <div>
+        <h1 class="logo-name">V<small>ickn</small></h1>
+    </div>
+    <h3>欢迎登录</h3>
+    <form id="LoginForm" class="m-t" role="form" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
+        @if (Model.IsMultiTenancyEnabled)
+        {
+        <div class="form-group">
+            <input type="text" class="form-control" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
+        </div>
+
+        }
             else
             {
                 <input type="hidden" id="TenancyName" value="">
             }
 
-            <div class="row cl">
-                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60d;</i></label>
-                <div class="formControls col-xs-8">
-                    <input type="text" placeholder="@L("UserNameOrEmail")" class="input-text size-L" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Vickn.Platform.Users.User.MaxEmailAddressLength">
-                </div>
-            </div>
-            <div class="row cl">
-                <label class="form-label col-xs-3"><i class="Hui-iconfont">&#xe60e;</i></label>
-                <div class="formControls col-xs-8">
-                    <input type="password" class="input-text size-L" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
-                </div>
-            </div>
-            <div class="row cl">
-                <div class="formControls col-xs-8 col-xs-offset-3">
-                    <div class="checkbox">
-                        <label>
-                            <input type="checkbox" id="RememberMeInput">
-                            <span class="ripple"></span>
-                            <span class="check"></span> @L("RememberMe")
-                        </label>
-                    </div>
-                    <input id="ReturnUrlHash" type="hidden" name="returnUrlHash" />
-                </div>
-            </div>
-            <div class="row cl">
-                <div class="formControls col-xs-8 col-xs-offset-3">
-                    <button id="LoginButton" type="submit" class="btn btn-primary radius size-L"> &nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;</button>
-                    <input name="" type="reset" class="btn btn-default radius size-L" value="&nbsp;取&nbsp;&nbsp;&nbsp;&nbsp;消&nbsp;">
-                </div>
-            </div>
-        </form>
+        <input type="checkbox" hidden="hidden" id="RememberMeInput">
 
-        @{
-            var loginProviders = Context.GetOwinContext().Authentication.GetExternalAuthenticationTypes().ToList();
-        }
-
-        @if (loginProviders.Count > 0)
-        {
-            <p>@L("OrLoginWith"):</p>
-
-
-            using (Html.BeginForm("ExternalLogin", "Account", method: FormMethod.Post))
-            {
-                @Html.AntiForgeryToken()
-
-                <input type="hidden" name="returnUrl" value="@ViewBag.ReturnUrl" />
-                <input type="hidden" name="provider" value="" />
-
-                foreach (var provider in loginProviders)
-                {
-                    <a class="btn btn-default btn-sm social-login-link" title="@provider.AuthenticationType"
-                       data-provider="@provider.AuthenticationType"
-                       href="javascript:;">
-                        <i class="fa fa-@(provider.AuthenticationType.ToLower())"></i> @provider.AuthenticationType
-                    </a>
-                }
-            }
-        }
-    </div>
+        <div class="form-group">
+            <input type="text" placeholder="@L("UserNameOrEmail")" class="form-control" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Vickn.Platform.Users.User.MaxEmailAddressLength">
+        </div>
+        <div class="form-group">
+            <input type="password" class="form-control" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
+        </div>
+        <button id="LoginButton" type="submit" class="btn btn-primary block full-width m-b"> &nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;</button>
+    </form>
 </div>

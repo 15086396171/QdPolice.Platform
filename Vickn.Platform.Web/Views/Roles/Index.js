@@ -41,10 +41,10 @@
                         if (_permissions.edit) {
                             // &#xe631;
 
-                            $('<a title="设置权限" href="javascript:;" class="ml-5 setPermission" data-title="设置权限"><i class="Hui-iconfont">&#xe681;</i></a>')
+                            $('<a title="设置权限" href="javascript:;" class="ml-5 setPermission" data-title="设置权限"><i class="glyphicon glyphicon-th-list"></i></a>')
                                 .appendTo($div);
 
-                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="fa fa-edit"></i></a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {

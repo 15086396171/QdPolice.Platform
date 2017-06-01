@@ -74,10 +74,10 @@ namespace Vickn.Platform.Web
 
                         /*   <!-- 自定义js -->*/
                         "~/Content/Hplus/js/hplus.js",
-                        "~/Content/Hplus/js/contabs.js",
+                        "~/Content/Hplus/js/contabs.js"
 
                         /*   <!-- 第三方插件 -->*/
-                        "~/Content/Hplus/js/plugins/pace/pace.min.js"
+
                     )
                 );
 

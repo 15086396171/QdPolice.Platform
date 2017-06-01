@@ -15,19 +15,17 @@
         }
     });
 
-    var index = -1;
     abp.ui.block = function (elm) {
         if (!elm) {
-            index = layer.load(2);
+            $.blockUI();
         } else {
             $(elm).block();
         }
-        return index;
     };
 
     abp.ui.unblock = function (elm) {
         if (!elm) {
-            layer.close(index);
+            $.unblockUI();
         } else {
             $(elm).unblock();
         }

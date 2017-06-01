@@ -18,7 +18,7 @@
 
     <LINK rel="Bookmark" href="/favicon.ico">
     <LINK rel="Shortcut Icon" href="/favicon.ico" />
-    <title>@PlatformConsts.AppName</title>
+    <title>@PlatformConsts.AppName - @ViewBag.Title</title>
     <link rel="shortcut icon" href="~/favicon.ico">
 
     @Styles.Render("~/Bundles/vendor/css")
@@ -33,11 +33,8 @@
     @Scripts.Render("~/Bundles/vendor/js/top")
 
 </head>
-<body class="gray-bg">
-
-    <div class="wrapper wrapper-content animated fadeInRight">
-        @RenderBody()
-    </div>
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    @RenderBody()
 
     @Scripts.Render("~/Bundles/vendor/js/bottom")
     @Scripts.Render("~/Bundles/js")

@@ -17,23 +17,46 @@
         return ApplicationPath + url;
     });
 }
-<aside class="Hui-aside">
-    <input runat="server" id="divScrollValue" type="hidden" value=""/>
-    <div class="menu_dropdown bk_2">
-        @foreach (var menuItem in Model.MainMenu.Items)
-        {
-            <dl id="">
-                <dt><i class="Hui-iconfont @menuItem.Icon"></i> @menuItem.DisplayName<i class="Hui-iconfont menu_dropdown-arrow">&#xe6d5;</i></dt>
-                <dd>
-                    <ul>
+
+<nav class="navbar-default navbar-static-side" role="navigation">
+    <div class="nav-close">
+        <i class="fa fa-times-circle"></i>
+    </div>
+    <div class="sidebar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="nav-header">
+                @Html.Action("UserMenuOrLoginLink", "Layout")
+            </li>
+            @foreach (var menuItem in Model.MainMenu.Items)
+            {
+                <li>
+                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">@menuItem.DisplayName</span><span class="fa arrow"></span></a>
+                    <ul class="nav nav-second-level">
                         @foreach (var subMenuItem in menuItem.Items)
                         {
-                            <li> <a data-href="@subMenuItem.Url" data-title="@subMenuItem.DisplayName" href="javascript:void(0)"><i class="Hui-iconfont @subMenuItem.Icon"></i>@subMenuItem.DisplayName</a></li>
+                            <li>
+                                @if (subMenuItem.Items.Count > 0)
+                                {
+                                    <a href="#">@subMenuItem.DisplayName <span class="fa arrow"></span></a>
+                                    <ul class="nav nav-third-level">
+                                        @foreach (var thirdMenuItem in subMenuItem.Items)
+                                        {
+                                        <li>
+                                            <a class="J_menuItem" href="@calculateMenuUrl(thirdMenuItem.Url)">@thirdMenuItem.DisplayName</a>
+                                        </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <a class="J_menuItem" href="@calculateMenuUrl(subMenuItem.Url)">@subMenuItem.DisplayName</a>
+                                }
+                            </li>
                         }
                     </ul>
-                </dd>
-            </dl>
-        }
+                </li>
+            }
+        </ul>
     </div>
-</aside>
-<div class="dislpayArrow hidden-xs"><a class="pngfix" href="javascript:void(0);" onClick="displaynavbar(this)"></a></div>
+</nav>
+
