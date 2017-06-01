@@ -15,14 +15,11 @@ namespace Vickn.Platform.Web
             //~/Bundles/vendor/css
             bundles.Add(
                 new StyleBundle("~/Bundles/vendor/css")
-                            .Include("~/Content/H-ui.admin_v3.0/static/h-ui/css/H-ui.min.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/css/H-ui.admin.css", new CssRewriteUrlTransform())
-                    .Include("~/Scripts/lib/Hui-iconfont/1.0.8/iconfont.css", new CssRewriteUrlTransform())
-                    .Include("~/Scripts/lib/icheck/icheck.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/skin/blue/skin.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/H-ui.admin_v3.0/static/h-ui.admin/style.css", new CssRewriteUrlTransform())
-                    .Include("~/Content/toastr.min.css", new CssRewriteUrlTransform())
-                    .Include("~/Scripts/sweetalert/sweet-alert.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/plugins/toastr/toastr.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/bootstrap.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/font-awesome.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/animate.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/style.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
@@ -43,13 +40,11 @@ namespace Vickn.Platform.Web
 
                         // jqvaliate
 
-                        "~/Scripts/lib/jquery.validation/1.14.0/jquery.validate.js",
-                        "~/Scripts/lib/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.validation/1.14.0/jquery.validate.js",
+                        "~/Scripts/jquery.validation/1.14.0/jquery.validate.unobtrusive.js",
 
-                        "~/Scripts/moment-with-locales.min.js",
                         "~/Scripts/jquery.blockUI.js",
                         "~/Scripts/toastr.min.js",
-                        "~/Scripts/sweetalert/sweet-alert.min.js",
                         "~/Scripts/others/spinjs/spin.js",
                         "~/Scripts/others/spinjs/jquery.spin.js",
 
@@ -66,13 +61,23 @@ namespace Vickn.Platform.Web
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
                         // datatable
                         "~/js/datatable.extend.js",
-                        "~/Scripts/lib/datatables/1.10.0/jquery.dataTables.min.js",
+                        "~/Content/Hplus/js/plugins/dataTables/jquery.dataTables.js",
 
-                        // H-ui
-                        "~/Scripts/lib/layer/2.4/layer.js",
-                        "~/Scripts/lib/jquery.contextmenu/jquery.contextmenu.r2.js",
-                        "~/Content/H-ui.admin_v3.0/static/h-ui/js/H-ui.js",
-                        "~/Content/H-ui.admin_v3.0/static/h-ui.admin/js/H-ui.admin.js"
+                        // layer
+                        "~/Content/Hplus/js/plugins/layer/layer.min.js",
+
+                        // H+
+                        /*< !--全局js-- >*/
+                        "~/Content/Hplus/js/bootstrap.min.js",
+                        "~/Content/Hplus/js/plugins/metisMenu/jquery.metisMenu.js",
+                        "~/Content/Hplus/js/plugins/slimscroll/jquery.slimscroll.min.js",
+
+                        /*   <!-- 自定义js -->*/
+                        "~/Content/Hplus/js/hplus.js",
+                        "~/Content/Hplus/js/contabs.js",
+
+                        /*   <!-- 第三方插件 -->*/
+                        "~/Content/Hplus/js/plugins/pace/pace.min.js"
                     )
                 );
 
@@ -99,31 +104,21 @@ namespace Vickn.Platform.Web
             //jstree
             bundles.Add(
                   new StyleBundle("~/Bundles/lib/css/jstree")
-                      .Include("~/Scripts/lib/vakata-jstree-9770c67/dist/themes/default/style.css", new CssRewriteUrlTransform())
+                      .Include("~/Content/Hplus/css/plugins/jsTree/style.min.css", new CssRewriteUrlTransform())
                   );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/jstree")
-                 .Include("~/Scripts/lib/vakata-jstree-9770c67/dist/jstree.js")
+                 .Include("~/Content/Hplus/js/plugins/jsTree/jstree.js")
              );
 
             //ztree
             bundles.Add(
                   new StyleBundle("~/Bundles/lib/css/ztree/metro")
-                      .Include("~/Scripts/lib/zTree/v3/css/metroStyle/metroStyle.css", new CssRewriteUrlTransform())
+                      .Include("~/Content/Hplus/js/plugins/zTree/v3/css/metroStyle/metroStyle.css", new CssRewriteUrlTransform())
                   );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/ztree/core")
-                 .Include("~/Scripts/lib/zTree/v3/js/jquery.ztree.core-3.5.js")
-             );
-
-            // wangEditor
-            bundles.Add(
-              new StyleBundle("~/Bundles/lib/css/wangEditor")
-                  .Include("~/Scripts/lib/wangEditor-2.1.23/dist/css/wangEditor.css", new CssRewriteUrlTransform())
-              );
-            bundles.Add(
-             new ScriptBundle("~/Bundles/lib/js/wangEditor")
-                 .Include("~/Scripts/lib/wangEditor-2.1.23/dist/js/wangEditor.js")
+                 .Include("~/Content/Hplus/js/plugins//zTree/v3/js/jquery.ztree.core-3.5.js")
              );
 
             #endregion
