@@ -1,5 +1,6 @@
 ﻿(function () {
     $(function () {
+        if (window.top !== window.self) { window.top.location = window.location; }
         var appUserNotificationService = new AppUserNotificationService();
         var notificationService = abp.services.app.notification;
         var _$message = $("#messageCount");

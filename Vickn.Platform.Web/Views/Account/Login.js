@@ -1,6 +1,7 @@
 ﻿(function () {
-
     $(function () {
+        if (window.top !== window.self) { window.top.location = window.location; }
+
         $('#LoginButton').click(function (e) {
             e.preventDefault();
             abp.ui.setBusy();
