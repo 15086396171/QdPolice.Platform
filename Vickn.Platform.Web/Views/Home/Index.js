@@ -14,6 +14,7 @@
                 if (result.unreadCount > 0) {
                     _$message.html(result.unreadCount);
                     _$messageContent.children("li.m-t-xs").remove();
+                    _$messageContent.children("li.divider").remove();
                     $.each(result.items, function (index, item) {
                         var li = '<li class="m-t-xs">'+
                         '<div class="dropdown-messages-box">' + ' <a href="javascript:;" class="pull-left"><img alt="image" class="img-circle" src="/Images/SystemMsg.png"></a>' + '<div class="media-body">' +
@@ -21,7 +22,6 @@
                             '<br><small class="text-muted">' + moment(item.notification.creationTime).format("YYYY-MM-DD hh:mm:ss") +
                             '<a href="javascript:void(0)" data-id=' + item.id + '  class="markAsRead"><span class="label label-primary radius">[标为已读]</span></a></small></div></div></li><li class="divider"></li>';
                         $("#messageContent li").eq(0).after(li);
-                        //_$messageContent.append();
                     });
                     //_$messageContent.append('<li><div class="text-center link-block"><a class="J_menuItem" href="/Notifications/MyNotification"><i class="fa fa-envelope"></i> <strong> 查看所有消息</strong></a></div></li>');
                     $(".markAsRead").bind("click", function () {
