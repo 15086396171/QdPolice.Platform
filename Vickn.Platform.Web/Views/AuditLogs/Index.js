@@ -7,7 +7,6 @@
             edit: abp.auth.hasPermission('Pages.AuditLog.EditAuditLog'),
             'delete': abp.auth.hasPermission('Pages.AuditLog.DeleteAuditLog')
         };
-
         var options = {
             listAction: {
                 url: abp.appPath + "api/services/app/auditLog/getAuditLogs",
@@ -59,8 +58,34 @@
                 { "data": "clientIpAddress" },
                 { "data": "clientName" },
                 { "data": "browserInfo" }
+            ],
+            methods: [
+                {
+                    actionName: "details",
+                    selector: "a.detail",
+                    action: function (data,tr) {
+                        var row = $dataTable.DataTable().row(tr);
+
+                        if (row.child.isShown()) {
+                            tr.removeClass('details');
+                            row.child.hide();
+                        }
+                        else {
+                            tr.addClass('details');
+                            row.child(format(data)).show();
+                           
+                        }
+                    }
+                }
             ]
         };
+
         $dataTable.createDatatable(options);
     });
+    function format(data) {
+        var html = "参数:" + data.parameters;
+        html += "</br>" + "客户端数据：" + data.customData;
+        html += "</br>" + "异常：" + data.exception;
+        return html;
+    }
 })();

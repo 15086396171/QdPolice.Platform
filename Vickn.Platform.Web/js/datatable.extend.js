@@ -70,7 +70,6 @@
                     actionOptions.selector = data.selector || "a.delete";
                     actionOptions.confirmMsg = "确定删除本条数据？";
                 }
-
                 else {
                     var dataActionOptions = data.actionOptions || {};
                     actionOptions.isAjax = dataActionOptions.isAjax || false;
@@ -90,9 +89,10 @@
     function bindAction(options) {
         $(options.target).on(options.event || "click", options.selector, function () {
             var table = $(options.target).DataTable();
+            var tr = $(this).closest('tr');
             var data = table.row($(this).parents('tr')).data();
             if (options.action) {
-                options.action(data);
+                options.action(data,tr);
             } else {
                 if (options.isAjax) {
                     if (options.isConfirm)
