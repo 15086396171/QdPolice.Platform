@@ -15,11 +15,14 @@ namespace Vickn.Platform.Web
             //~/Bundles/vendor/css
             bundles.Add(
                 new StyleBundle("~/Bundles/vendor/css")
-                    .Include("~/Content/Hplus/css/plugins/toastr/toastr.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/Hplus/css/bootstrap.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/Hplus/css/font-awesome.min.css", new CssRewriteUrlTransform())
                     .Include("~/Content/Hplus/css/animate.css", new CssRewriteUrlTransform())
                     .Include("~/Content/Hplus/css/style.css", new CssRewriteUrlTransform())
+
+                    .Include("~/Content/Hplus/css/plugins/dataTables/dataTables.bootstrap.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/plugins/toastr/toastr.min.css", new CssRewriteUrlTransform())
+                    .Include("~/Content/Hplus/css/plugins/iCheck/custom.css", new CssRewriteUrlTransform())
                 );
 
             //~/Bundles/vendor/js/top (These scripts should be included in the head of the page)
@@ -60,9 +63,10 @@ namespace Vickn.Platform.Web
 
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
                         // datatable
-                        "~/js/datatable.extend.js",
-                        "~/Content/Hplus/js/plugins/dataTables/jquery.dataTables.js",
 
+                        "~/Content/Hplus/js/plugins/dataTables/jquery.dataTables.js",
+                        "~/Content/Hplus/js/plugins/dataTables/dataTables.bootstrap.js",
+                                                "~/js/datatable.extend.js",
                         // layer
                         "~/Content/Hplus/js/plugins/layer/layer.min.js",
 
@@ -71,13 +75,14 @@ namespace Vickn.Platform.Web
                         "~/Content/Hplus/js/bootstrap.min.js",
                         "~/Content/Hplus/js/plugins/metisMenu/jquery.metisMenu.js",
                         "~/Content/Hplus/js/plugins/slimscroll/jquery.slimscroll.min.js",
-
+                  
                         /*   <!-- 自定义js -->*/
                         "~/Content/Hplus/js/hplus.js",
-                        "~/Content/Hplus/js/contabs.js"
+                        "~/Content/Hplus/js/contabs.js",
+                        "~/Content/Hplus/js/content.js",
 
-                        /*   <!-- 第三方插件 -->*/
-
+                          /*   <!-- 第三方插件 -->*/
+                          "~/Content/Hplus/js/plugins/iCheck/icheck.min.js"
                     )
                 );
 

@@ -50,16 +50,16 @@
 
                         if (_permissions.manageuser) {
                             if (_permissions.edit) {
-                                $('<a title="管理用户" href="javascript:;" class="ml-5 nodecoration manageUser"><i class="Hui-iconfont">&#xe62b;</i></a>')
+                                $('<a title="管理用户" href="javascript:;" class="m-l-xs nodecoration manageUser"><i class="glyphicon glyphicon-user"></i></a>')
                                     .appendTo($div);
                             }
                         }
                         if (_permissions.edit) {
-                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit"><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit"><i class="glyphicon glyphicon-pencil"></i> </a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
                                 .appendTo($div);
                         }
                         return $div.html();
@@ -73,7 +73,7 @@
                 },
                 {
                     actionName: "deleteAction",
-                    url: abp.appPath + "api/services/app/organizationUnit/deleteOrganizationUnitAsync",
+                    url: abp.appPath + "api/services/app/organizationUnit/deleteOrganizationUnit",
                 },
                 {
                     actionName: "manageUser",
@@ -110,7 +110,7 @@
             var ouId = row.id;
             layer.open({
                 type: 2,
-                area: ['400px', '80%'],
+                area: ['600px', '80%'],
                 fix: false, //不固定
                 maxmin: true,
                 shade: 0.4,

@@ -60,17 +60,17 @@
                         var $div = $('<div></div>');
                         if (_permissions.edit) {
                             if (row.isActive === true) {
-                                $('<a title="禁用" href="javascript:;" class="ml-5 nodecoration disable" data-title="禁用"><i class="Hui-iconfont">&#xe631;</i></a>')
+                                $('<a title="禁用" href="javascript:;" class="m-l-xs nodecoration disable"><i class="glyphicon glyphicon-off"></i> </a>')
                                     .appendTo($div);
                             } else
-                                $('<a title="启用" href="javascript:;" class="ml-5 nodecoration disable" data-title="启用"><i class="Hui-iconfont">&#xe631;</i></a>')
+                                $('<a title="启用" href="javascript:;" class="m-l-xs nodecoration disable"><i class="glyphicon glyphicon-off"></i> </a>')
                                     .appendTo($div);
 
-                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
                                 .appendTo($div);
                         }
                         return $div.html();

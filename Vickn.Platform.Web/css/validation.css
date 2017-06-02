@@ -14,6 +14,11 @@
     color: #ef392b;
     font-size: 12px;
 }
-.summary-validation-error{
+
+.summary-validation-error {
     text-align: center;
 }
+
+    .summary-validation-error ul {
+        list-style: none;
+    }

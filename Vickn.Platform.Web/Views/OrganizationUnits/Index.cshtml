@@ -11,43 +11,45 @@
     ViewBag.ActiveMenu = "OrganizationUnits"; //The menu item will be active for this page.
 
 }
-<div class="pos-a ztree-background">
-    <div class="organizationUnit ztree"></div>
-</div>
-<div style="margin-left:200px;">
-    @Html.Partial("~/Views/Common/_Navigation.cshtml")
-    <div class="page-container">
-        <div class="text-c">
-            <input type="text" placeholder="@L("OrganizationUnit.DisplayName")" class="input-text radius" id="displayName" style="width: 250px;" />
-            <button type="button" class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i>@L("Search")</button>
-            <button type="button" class="btn btn-default" id="research"><i class="Hui-iconfont">&#xe66b;</i>@L("ReSearch")</button>
+<div class="row animated fadeInRight">
+    <div class="col-md-1">
+        <div class="organizationUnit ztree"></div>
+    </div>
+    <div class="col-md-11">
+        <div class="ibox-content">
+            <div class="form-inline">
+                <div class="form-group">
+                    @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_DeleteOrganizationUnit))
+                    {
+                        <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+                    }
+                    @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit))
+                    {
+                        <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
+                            <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
+                        </a>
+                    }
+                    <input type="text" placeholder="@L("OrganizationUnit.DisplayName")" class="form-control" id="displayName"/>
+                    <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+                    <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+                </div>
+            </div>
         </div>
-        <div class="cl pd-5 bg-1 bk-gray mt-20">
-            <span class="l">
-                @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_DeleteOrganizationUnit))
-            {
-                    <a href="javascript:;" class="btn btn-danger radius" id="batchDelete"><i class="Hui-iconfont">&#xe6e2;</i> @L("BatchDelete")</a>
-                }
-                @if (IsGranted(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit))
-            {
-                    <a href="javascript:;" class="btn btn-primary radius" id="create" data-title="@ViewBag.createBtn">
-                        <i class="Hui-iconfont">&#xe600;</i> @ViewBag.createBtn
-                    </a>
-                }
-            </span>
-        </div>
-        <table class="table table-border table-bordered table-bg dataTable">
-            <thead>
-                <tr class="text-c">
-                    <th width="25"><input type="checkbox"></th>
-                    <th>@L("OrganizationUnit.DisplayName")</th>
-                    <th>@L("CreationTime")</th>
-                    <th>@L("Operational")</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
 
+        <div class="ibox-content">
+            <table class="table table-striped table-bordered table-hover dataTable">
+                <thead>
+                    <tr class="text-c">
+                        <th width="25"><input type="checkbox"></th>
+                        <th>@L("OrganizationUnit.DisplayName")</th>
+                        <th>@L("CreationTime")</th>
+                        <th>@L("Operational")</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+        </div>
     </div>
 </div>
 

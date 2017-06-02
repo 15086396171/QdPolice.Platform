@@ -942,10 +942,6 @@
     <Content Include="Content\Hplus\img\.DS_Store" />
     <Content Include="Content\Hplus\img\browser.psd" />
     <Content Include="Content\Hplus\js\.DS_Store" />
-    <Content Include="Content\Hplus\js\demo\bootstrap_table_test.json" />
-    <Content Include="Content\Hplus\js\demo\bootstrap_table_test2.json" />
-    <Content Include="Content\Hplus\js\demo\photos.json" />
-    <Content Include="Content\Hplus\js\demo\table_base.json" />
     <Content Include="Content\Hplus\js\jquery.min.map" />
     <Content Include="Content\Hplus\js\plugins\.DS_Store" />
     <Content Include="Content\Hplus\js\plugins\bootstrap-table\.DS_Store" />
@@ -961,6 +957,10 @@
     <Content Include="Content\Hplus\js\plugins\webuploader\README.md" />
     <Content Include="Content\Hplus\plugins\fullavatareditor\jsp\upload.jsp" />
     <Content Include="Content\Hplus\plugins\fullavatareditor\php\upload.php" />
+    <Content Include="Content\Hplus\js\demo\bootstrap_table_test.json" />
+    <Content Include="Content\Hplus\js\demo\bootstrap_table_test2.json" />
+    <Content Include="Content\Hplus\js\demo\photos.json" />
+    <Content Include="Content\Hplus\js\demo\table_base.json" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1510,6 +1510,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>

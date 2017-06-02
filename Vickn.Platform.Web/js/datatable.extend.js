@@ -197,4 +197,11 @@
                 // 不必实现else，由index.js自行实现
             });
     }
+
+    $(function() {
+        $(".checkall").click(function () {
+            var check = $(this).prop("checked");
+            $("input[type='checkbox']").prop("checked", check);
+        });
+    });
 })(jQuery);
