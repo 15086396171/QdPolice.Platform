@@ -13,9 +13,13 @@
                 url: abp.appPath + "api/services/app/auditLog/getAuditLogs",
                 filters: [
                     {
-                        key: "name",
-                        selector: $("#name")
-                    }
+                        key: "startDate",
+                        selector: $("#startDate")
+                    },
+                       {
+                           key: "endDate",
+                           selector: $("#endDate")
+                       }
                 ]
             },
             fileds: [
@@ -23,7 +27,7 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div class=\"text-center\"></div>');
-                        $div.append('<a href="javascript:void(0)" class="detail"><i class="Hui-iconfont Hui-iconfont-search2"></i></a>');
+                        $div.append('<a href="javascript:void(0)" class="detail"><i class="fa fa-search"></i></a>');
 
                         return $div.html();
                     }
@@ -34,9 +38,9 @@
                         var $div = $('<div class=\"text-center\"></div>');
 
                         if (data) {
-                            $div.append('<span class="label label-warning round"><i class="Hui-iconfont Hui-iconfont-close"></i></span>');
+                            $div.append('<span class="label label-warning round"><i class="fa fa-close"></i></span>');
                         } else {
-                            $div.append('<span class="label label-success round"><i class="Hui-iconfont Hui-iconfont-xuanze "></i></span>');
+                            $div.append('<span class="label label-success round"><i class="fa fa-check"></i></span>');
                         }
 
                         return $div.html();

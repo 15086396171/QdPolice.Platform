@@ -62,13 +62,16 @@ namespace Vickn.Platform.Web
                         "~/Scripts/moment-with-locales.min.js",
 
                         "~/Scripts/jquery.signalR-2.2.1.min.js",
-                        // datatable
 
+                        // datatable
                         "~/Content/Hplus/js/plugins/dataTables/jquery.dataTables.js",
                         "~/Content/Hplus/js/plugins/dataTables/dataTables.bootstrap.js",
                                                 "~/js/datatable.extend.js",
                         // layer
                         "~/Content/Hplus/js/plugins/layer/layer.min.js",
+
+                        // layerDate
+                        "~/Content/Hplus/js/plugins/layer/laydate/laydate.js",
 
                         // H+
                         /*< !--全局js-- >*/
@@ -82,7 +85,8 @@ namespace Vickn.Platform.Web
                         "~/Content/Hplus/js/content.js",
 
                           /*   <!-- 第三方插件 -->*/
-                          "~/Content/Hplus/js/plugins/iCheck/icheck.min.js"
+                          "~/Content/Hplus/js/plugins/iCheck/icheck.min.js",
+                          "~/js/icheck.fn.js"
                     )
                 );
 

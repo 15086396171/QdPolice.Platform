@@ -11,12 +11,17 @@
     ViewBag.ActiveMenu = "AuditLogs"; //The menu item will be active for this page.
 
 }
-@Html.Partial("~/Views/Common/_Navigation.cshtml")
-<div class="page-container">
-    <div class="text-c mb-20">
-        <input type="text" class="input-text" placeholder="请输入时间" style="width: 250px;" id="userName" />
-        <button class="btn btn-success" id="search" name=""><i class="Hui-iconfont">&#xe665;</i> 搜索</button>
+<div class="ibox-content">
+    <div class="form-inline">
+        <div class="form-group">
+            <input class="form-control layer-date laydate-icon" placeholder="请输入开始时间" id="startDate" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+            <input class="form-control layer-date laydate-icon" placeholder="请输入结束时间" id="endDate" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})">
+            <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+            <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+        </div>
     </div>
+</div>
+<div class="ibox-content">
     <table class="table table-border table-bordered table-hover table-bg dataTable ">
         <thead>
             <tr class="text-c">

@@ -61,10 +61,12 @@ namespace Vickn.Platform.Auditing
             var query = from auditLog in _auditLogRepository.GetAll()
                         join user in _userRepository.GetAll() on auditLog.UserId equals user.Id into userJoin
                         from joinedUser in userJoin.DefaultIfEmpty()
-                        //where auditLog.ExecutionTime >= input.StartDate && auditLog.ExecutionTime < input.EndDate
+                            //where auditLog.ExecutionTime >= input.StartDate && auditLog.ExecutionTime < input.EndDate
                         select new AuditLogAndUser { AuditLog = auditLog, User = joinedUser };
 
             query = query
+                .WhereIf(input.StartDate.HasValue, p => p.AuditLog.ExecutionTime >= input.StartDate.Value)
+                .WhereIf(input.EndDate.HasValue, p => p.AuditLog.ExecutionTime <= input.EndDate.Value)
                 .WhereIf(!input.UserName.IsNullOrWhiteSpace(), item => item.User.UserName.Contains(input.UserName))
                 .WhereIf(!input.ServiceName.IsNullOrWhiteSpace(), item => item.AuditLog.ServiceName.Contains(input.ServiceName))
                 .WhereIf(!input.MethodName.IsNullOrWhiteSpace(), item => item.AuditLog.MethodName.Contains(input.MethodName))

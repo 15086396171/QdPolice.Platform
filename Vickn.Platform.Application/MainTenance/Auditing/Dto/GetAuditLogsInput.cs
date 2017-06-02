@@ -8,9 +8,9 @@ namespace Vickn.Platform.Auditing.Dto
 {
     public class GetAuditLogsInput : PagedAndSortedInputDto, IShouldNormalize
     {
-        public DateTime StartDate { get; set; }
+        public DateTime? StartDate { get; set; }
 
-        public DateTime EndDate { get; set; }
+        public DateTime? EndDate { get; set; }
 
         public string UserName { get; set; }
 
