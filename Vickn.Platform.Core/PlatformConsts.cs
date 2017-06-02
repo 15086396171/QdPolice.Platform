@@ -1,6 +1,6 @@
 ﻿namespace Vickn.Platform
 {
-    public class PlatformConsts
+    public static class PlatformConsts
     {
         public const string LocalizationSourceName = "Platform";
         //public const string LocalizationSourceName = "Platform-es";
