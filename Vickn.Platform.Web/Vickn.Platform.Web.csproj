@@ -920,6 +920,8 @@
     <Content Include="Content\Hplus\typography.html" />
     <Content Include="Content\Hplus\webim.html" />
     <Content Include="Content\Hplus\widgets.html" />
+    <Content Include="Images\System.png" />
+    <Content Include="Images\SystemMsg.png" />
     <Content Include="js\icheck.fn.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\additional-methods.js" />
     <Content Include="Abp\Framework\styles\abp.mixings.less" />
@@ -1349,7 +1351,6 @@
     <Content Include="css\common.css" />
     <Content Include="css\validation.css" />
     <Content Include="css\pager.css" />
-    <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="js\main.js" />
     <Content Include="log4net.config" />
@@ -1483,6 +1484,7 @@
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
+    <Content Include="Views\Users\ChangeProfilePic.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

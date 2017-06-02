@@ -45,6 +45,12 @@ namespace Vickn.Platform.Web.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<ActionResult> ChangeProfilePic()
+        {
+            return View(await _userAppService.GetMyInfoAsync());
+        }
+
+
         public async Task<ActionResult> MyInfo()
         {
             return View("_MyInfo", await _userAppService.GetMyInfoAsync());
