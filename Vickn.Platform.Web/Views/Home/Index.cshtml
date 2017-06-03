@@ -1,5 +1,6 @@
 ﻿@using System.Web.Optimization
 @using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.Authorization
 
 @{
     ViewBag.Title = "主页";
@@ -38,6 +39,12 @@
                         </li>
                     </ul>
                 </li>
+                @if (IsGranted(AppPermissions.Pages_Hangfire))
+                {
+                    <li>
+                        <a href="/Hangfire">Hangfire</a>
+                    </li>
+                }
             </ul>
         </nav>
     </div>
