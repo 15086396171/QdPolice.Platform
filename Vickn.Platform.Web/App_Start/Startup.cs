@@ -53,10 +53,10 @@ namespace Vickn.Platform.Web
             app.MapSignalR();
 
             //ENABLE TO USE HANGFIRE dashboard (Requires enabling Hangfire in PlatformWebModule)
-            //app.UseHangfireDashboard("/hangfire", new DashboardOptions
-            //{
-            //    Authorization = new[] { new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Hangfire) } //You can remove this line to disable authorization
-            //});
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
+            {
+                Authorization = new[] { new AbpHangfireAuthorizationFilter(AppPermissions.Pages_Hangfire) } //You can remove this line to disable authorization
+            });
         }
 
         private static FacebookAuthenticationOptions CreateFacebookAuthOptions()
