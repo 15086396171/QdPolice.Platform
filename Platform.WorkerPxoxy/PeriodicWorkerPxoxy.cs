@@ -32,6 +32,7 @@ namespace Vickn.Platform.WorkerPxoxy
         /// <param name="method"></param>
         public void Excete<T>(Action method, WorkerConfig config) where T : IBackgroundWorkerDo
         {
+            config.IntervalSecond = config.IntervalSecond == 0 ? 3600 : config.IntervalSecond;
             ExetuteMethod = method;
             Timer.Period = config.IntervalSecond * 1000;//将传入的秒数转化为毫秒
             Timer.Start();
