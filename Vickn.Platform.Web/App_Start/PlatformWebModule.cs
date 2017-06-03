@@ -72,7 +72,6 @@ namespace Vickn.Platform.Web
             try { DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder); } catch { }
 
             var workManager = IocManager.Resolve<IBackgroundWorkerManager>();
-            workManager.Add(IocManager.Resolve<TestWorker>());
         }
     }
 }
