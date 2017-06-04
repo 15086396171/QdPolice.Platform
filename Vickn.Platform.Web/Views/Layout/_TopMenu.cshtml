@@ -30,7 +30,7 @@
             @foreach (var menuItem in Model.MainMenu.Items)
             {
                 <li>
-                    <a href="#"><i class="fa fa-edit"></i> <span class="nav-label">@menuItem.DisplayName</span><span class="fa arrow"></span></a>
+                    <a href="#"><i class="@menuItem.Icon"></i> <span class="nav-label">@menuItem.DisplayName</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         @foreach (var subMenuItem in menuItem.Items)
                         {
@@ -41,9 +41,9 @@
                                     <ul class="nav nav-third-level">
                                         @foreach (var thirdMenuItem in subMenuItem.Items)
                                         {
-                                        <li>
-                                            <a class="J_menuItem" href="@calculateMenuUrl(thirdMenuItem.Url)">@thirdMenuItem.DisplayName</a>
-                                        </li>
+                                            <li>
+                                                <a class="J_menuItem" href="@calculateMenuUrl(thirdMenuItem.Url)">@thirdMenuItem.DisplayName</a>
+                                            </li>
                                         }
                                     </ul>
                                 }

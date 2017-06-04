@@ -37,9 +37,9 @@
                         var $div = $('<div class=\"text-center\"></div>');
 
                         if (data) {
-                            $div.append('<span class="label label-warning round"><i class="fa fa-close"></i></span>');
+                            $div.append('<span class="badge badge-warning round"><i class="fa fa-close"></i></span>');
                         } else {
-                            $div.append('<span class="label label-success round"><i class="fa fa-check"></i></span>');
+                            $div.append('<span class="badge badge-success round"><i class="fa fa-check"></i></span>');
                         }
 
                         return $div.html();
