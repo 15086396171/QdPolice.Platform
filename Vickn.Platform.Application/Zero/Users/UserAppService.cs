@@ -81,14 +81,14 @@ namespace Vickn.Platform.Users
         public async Task<PagedResultDto<UserListDto>> GetPagedUsersAsync(GetUserInput input)
         {
             var maxWeight = await _roleManager.GetMaxWeightByUserIdAsync(AbpSession.UserId.Value);
-            var query = from user in _userRepository.GetAll()
+            var query = (from user in _userRepository.GetAll()
                         join userRole in _userRoleRepository.GetAll() on user.Id equals userRole.UserId
                             into t
                         from a in t.DefaultIfEmpty()
                         where (from role in _roleManager.Roles
                                where t.Select(p => p.RoleId).Contains(role.Id)
                                select role).Max(p => p.Weight) <= maxWeight || a == null
-                        select user;
+                        select user).Distinct();
 
             //TODO:根据传入的参数添加过滤条件
 
