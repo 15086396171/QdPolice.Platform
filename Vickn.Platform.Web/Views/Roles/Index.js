@@ -39,7 +39,7 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
-                        if (_permissionTree.editPermissoin) {
+                        if (_permissions.editPermissoin) {
                             $('<a title="设置权限" href="javascript:;" class="m-l-xs setPermission" data-title="设置权限"> <i class="glyphicon glyphicon-list-alt"></i> </a>')
                           .appendTo($div);
                         }
