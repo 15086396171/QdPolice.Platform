@@ -9,7 +9,8 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.Role.CreateRole'),
             edit: abp.auth.hasPermission('Pages.Role.EditRole'),
-            del: abp.auth.hasPermission('Pages.Role.DeleteRole')
+            del: abp.auth.hasPermission('Pages.Role.DeleteRole'),
+            editPermissoin: abp.auth.hasPermission('Pages.Role.EditRolePermission')
         };
 
         var options = {
@@ -38,11 +39,11 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
-                        if (_permissions.edit) {
-                            // &#xe631;
-
-                            $('<a title="设置权限" href="javascript:;" class="ml-5 setPermission" data-title="设置权限"><i class="Hui-iconfont">&#xe681;</i></a>')
+                        if (_permissions.editPermissoin) {
+                            $('<a title="设置权限" href="javascript:;" class="m-l-xs setPermission" data-title="设置权限"> <i class="glyphicon glyphicon-list-alt"></i> </a>')
                                 .appendTo($div);
+                        }
+                        if (_permissions.edit) {
 
                             $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
                                 .appendTo($div);

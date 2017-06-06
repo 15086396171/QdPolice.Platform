@@ -8,6 +8,9 @@ namespace Vickn.Platform.Web
         {
             bundles.IgnoreList.Clear();
 
+            // 默认不压缩
+            BundleTable.EnableOptimizations = false;
+
             //VENDOR RESOURCES
 
             #region Platformlib
