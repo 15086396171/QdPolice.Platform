@@ -39,9 +39,8 @@
     <Reference Include="Abp, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.2.0.2\lib\net46\Abp.dll</HintPath>
     </Reference>
-    <Reference Include="Abp.AutoMapper, Version=1.4.2.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Abp.AutoMapper.1.4.2.0\lib\net452\Abp.AutoMapper.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Abp.AutoMapper, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Abp.AutoMapper.2.0.2\lib\net46\Abp.AutoMapper.dll</HintPath>
     </Reference>
     <Reference Include="Abp.Zero, Version=2.0.2.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Abp.Zero.2.0.2\lib\net46\Abp.Zero.dll</HintPath>
