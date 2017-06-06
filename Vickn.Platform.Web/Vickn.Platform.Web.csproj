@@ -1218,6 +1218,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\WorkLogs\Views\Shared\" />
     <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>
