@@ -82,13 +82,13 @@ namespace Vickn.Platform.Users
         {
             var maxWeight = await _roleManager.GetMaxWeightByUserIdAsync(AbpSession.UserId.Value);
             var query = (from user in _userRepository.GetAll()
-                        join userRole in _userRoleRepository.GetAll() on user.Id equals userRole.UserId
-                            into t
-                        from a in t.DefaultIfEmpty()
-                        where (from role in _roleManager.Roles
-                               where t.Select(p => p.RoleId).Contains(role.Id)
-                               select role).Max(p => p.Weight) <= maxWeight || a == null
-                        select user).Distinct();
+                         join userRole in _userRoleRepository.GetAll() on user.Id equals userRole.UserId
+                             into t
+                         from a in t.DefaultIfEmpty()
+                         where (from role in _roleManager.Roles
+                                where t.Select(p => p.RoleId).Contains(role.Id)
+                                select role).Max(p => p.Weight) <= maxWeight || a == null
+                         select user).Distinct();
 
             //TODO:根据传入的参数添加过滤条件
 
@@ -310,6 +310,23 @@ namespace Vickn.Platform.Users
         public async Task<GetUserForEdit> GetMyInfoAsync()
         {
             return await GetUserForEditAsync(new NullableIdDto<long>(AbpSession.UserId));
+        }
+
+        /// <summary>
+        /// 重置密码
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(UserAppPermissions.User_ResetPasswordUser)]
+        public async Task ResetPasswordAsync(EntityDto<long> input)
+        {
+            var user = await UserManager.GetUserByIdAsync(input.Id);
+            user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
+
+            user.SetNewPasswordResetCode();
+            user.ShouldChangePasswordOnNextLogin = true;
+
+            await UserManager.UpdateAsync(user);
         }
 
         #endregion

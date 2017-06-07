@@ -7,7 +7,8 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.User.CreateUser'),
             edit: abp.auth.hasPermission('Pages.User.EditUser'),
-            del: abp.auth.hasPermission('Pages.User.DeleteUser')
+            del: abp.auth.hasPermission('Pages.User.DeleteUser'),
+            resetPassword:abp.auth.hasPermission('Pages.User.ResetPasswordUser')
         };
 
         var options = {
@@ -58,6 +59,10 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
+                        if (_permissions.resetPassword) {
+                            $('<a title="重置密码" href="javascript:;" class="m-l-xs nodecoration resetPassword"><i class="glyphicon glyphicon-refresh"></i> </a>')
+                            .appendTo($div);
+                        }
                         if (_permissions.edit) {
                             if (row.isActive === true) {
                                 $('<a title="禁用" href="javascript:;" class="m-l-xs nodecoration disable"><i class="glyphicon glyphicon-off"></i> </a>')
@@ -91,10 +96,21 @@
                     actionOptions: {
                         isAjax: true,
                         isConfirm: true,
+                        isNeedSuccessAlert:true,
                         confirmMsg: "确定更改用户启用状态？"
                     },
                     selector: "a.disable",
                     url: abp.appPath + "api/services/app/user/disableUserAsync"
+                },
+                {
+                    actionName: "resetPasswordAction",
+                    actionOptions: {
+                        isAjax: true,
+                        isConfirm: true,
+                        confirmMsg:"确认重置密码？"
+                    },
+                    selector: "a.resetPassword",
+                    url: abp.appPath + "api/services/app/user/resetPasswordAsync"
                 }
             ],
             commonMethods: [

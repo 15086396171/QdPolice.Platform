@@ -25,6 +25,11 @@ namespace Vickn.Platform.Users.Authorization
         /// 用户管理删除权限
         /// </summary>
         public const string User_DeleteUser = "Pages.User.DeleteUser";
+
+        /// <summary>
+        /// 重置密码权限
+        /// </summary>
+        public const string User_ResetPasswordUser = "Pages.User.ResetPasswordUser";
     }
 
 }

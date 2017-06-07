@@ -76,6 +76,8 @@
                     actionOptions.isConfirm = dataActionOptions.isConfirm || true;
                     actionOptions.confirmMsg = dataActionOptions.confirmMsg;
                     actionOptions.selector = data.selector;
+                    actionOptions.isNeedSuccessAlert = dataActionOptions.isNeedSuccessAlert != undefined ? dataActionOptions.isNeedSuccessAlert : true;
+                    actionOptions.successMsg = dataActionOptions.successMsg;
                 }
                 actionOptions.target = target;
                 actionOptions.event = data.event || "click";
@@ -92,7 +94,7 @@
             var tr = $(this).closest('tr');
             var data = table.row($(this).parents('tr')).data();
             if (options.action) {
-                options.action(data,tr);
+                options.action(data, tr);
             } else {
                 if (options.isAjax) {
                     if (options.isConfirm)
@@ -102,6 +104,9 @@
                                     url: options.url,
                                     data: JSON.stringify({ id: data.id })
                                 }).done(function () {
+                                    if (options.isNeedSuccessAlert === true) {
+                                        abp.notify.success(options.successMsg || "操作成功");
+                                    }
                                     table.draw();
                                 });
                                 layer.close(index1);
@@ -198,7 +203,7 @@
             });
     }
 
-    $(function() {
+    $(function () {
         $(".checkall").click(function () {
             var check = $(this).prop("checked");
             $("input[type='checkbox']").prop("checked", check);
