@@ -19,8 +19,8 @@
                 processing: false,
                 ajax: options.listAction.method || function (data, callback, setting) {
                     var input = {
-                        pageIndex: customerInput.pageIndex || parseInt(data.start / data.length) + 1,
-                        maxResultCount: customerInput.maxResultCount || 10,
+                        skipCount: data.start,
+                        maxResultCount: customerInput.maxResultCount || data.length,
                         draw: data.draw
                     };
 
