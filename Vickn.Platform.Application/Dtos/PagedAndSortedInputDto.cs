@@ -28,14 +28,13 @@ namespace Vickn.Platform.Dtos
         /// </summary>
         protected PagedAndSortedInputDto()
         {
-            MaxResultCount = PlatformConsts.DefaultPageSize;
         }
 
         /// <summary>
         /// Max expected result count.
         /// </summary>
         [Range(1, PlatformConsts.MaxPageSize)]
-        public virtual int MaxResultCount { get; set; }
+        public virtual int MaxResultCount { get; set; } = PlatformConsts.DefaultPageSize;
 
         /// <summary>
         /// Skip count (beginning of the page).

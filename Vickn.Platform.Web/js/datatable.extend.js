@@ -112,7 +112,15 @@
                                 layer.close(index1);
                             });
                     else {
-                        alert("操作成功");
+                        abp.ajax({
+                            url: options.url,
+                            data: JSON.stringify({ id: data.id })
+                        }).done(function () {
+                            if (options.isNeedSuccessAlert === true) {
+                                abp.notify.success(options.successMsg || "操作成功");
+                            }
+                            table.draw();
+                        });
                     }
                 } else {
                     var url = options.url || "/";
