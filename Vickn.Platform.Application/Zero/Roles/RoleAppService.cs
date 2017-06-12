@@ -178,7 +178,7 @@ namespace Vickn.Platform.Roles
             //TODO: 更新前的逻辑判断，是否允许更新
 
             var entity = await _roleRepository.GetAsync(input.RoleEditDto.Id.Value);
-            input.MapTo(entity);
+            input.RoleEditDto.MapTo(entity);
 
             await _roleRepository.UpdateAsync(entity);
         }
@@ -217,7 +217,7 @@ namespace Vickn.Platform.Roles
             if (
                 await
                     _roleRepository.FirstOrDefaultAsync(
-                        p => p.Name == output.RoleEditDto.Name && p.Id != output.RoleEditDto.Id) !=null)
+                        p => p.Name == output.RoleEditDto.Name && p.Id != output.RoleEditDto.Id) != null)
             {
                 return new CustomerModelStateValidationDto()
                 {
@@ -236,7 +236,7 @@ namespace Vickn.Platform.Roles
                 {
                     HasModelError = true,
                     Key = "RoleEditDto.Weight",
-                    ErrorMessage = $"不能大于本用户最大权值，最大权值为{maxWeight}"
+                    ErrorMessage = $"不能大于本用户最大角色等级"
                 };
 
             return new CustomerModelStateValidationDto() { HasModelError = false };

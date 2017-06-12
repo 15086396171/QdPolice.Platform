@@ -54,7 +54,7 @@ namespace Vickn.Platform.Roles.Dtos
         [Required]
         public string Name { get; set; }
 
-        [DisplayName("权重")]
+        [DisplayName("角色等级")]
         [Required]
         public int Weight { get; set; }
 

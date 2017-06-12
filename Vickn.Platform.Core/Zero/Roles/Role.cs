@@ -8,7 +8,7 @@ namespace Vickn.Platform.Authorization.Roles
         //Can add application specific role properties here
 
         /// <summary>
-        /// 权重，只能设置权值比自己低的角色
+        /// 角色等级，只能设置等级比自己低的角色
         /// </summary>
         public int Weight { get; set; }
 
@@ -29,7 +29,7 @@ namespace Vickn.Platform.Authorization.Roles
         {
 
         }
-        public Role(int? tenantId, string name, string displayName,int weight)
+        public Role(int? tenantId, string name, string displayName, int weight)
           : base(tenantId, name, displayName)
         {
             this.Weight = weight;
