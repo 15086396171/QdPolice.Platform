@@ -1387,6 +1387,7 @@
     <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="js\AppUserNotificationService.js" />
     <Content Include="Views\DataDictionaries\Index.js" />
+    <Content Include="Views\DataDictionaryItems\Index.js" />
     <Content Include="Views\Home\Index.js" />
     <Content Include="Views\Maintenance\Index.css" />
     <Content Include="Views\Maintenance\Index.js" />
@@ -1421,6 +1422,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
     <Compile Include="Controllers\DataDictionariesController.cs" />
+    <Compile Include="Controllers\DataDictionaryItemsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
@@ -1483,6 +1485,8 @@
     <Content Include="Views\Home\NoAuth.cshtml" />
     <Content Include="Views\DataDictionaries\Index.cshtml" />
     <Content Include="Views\DataDictionaries\Create.cshtml" />
+    <Content Include="Views\DataDictionaryItems\Index.cshtml" />
+    <Content Include="Views\DataDictionaryItems\Create.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

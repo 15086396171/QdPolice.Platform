@@ -41,7 +41,6 @@ namespace Vickn.Platform.DataDictionaries.Dtos
         /// 显示名
         /// </summary>
         [DisplayName("显示名")]
-        [Required]
         [MaxLength(32)]
         public string DisplayName { get; set; }
 

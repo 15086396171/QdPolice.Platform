@@ -3,18 +3,25 @@
         var $dataTable = $(".dataTable");
 
         var _permissions = {
-            create: abp.auth.hasPermission('Pages.DataDictionary.CreateDataDictionary'),
-            edit: abp.auth.hasPermission('Pages.DataDictionary.EditDataDictionary'),
-            'del': abp.auth.hasPermission('Pages.DataDictionary.DeleteDataDictionary')
+            create: abp.auth.hasPermission('Pages.DataDictionaryItem.CreateDataDictionaryItem'),
+            edit: abp.auth.hasPermission('Pages.DataDictionaryItem.EditDataDictionaryItem'),
+            'del': abp.auth.hasPermission('Pages.DataDictionaryItem.DeleteDataDictionaryItem')
         };
         var options = {
             listAction: {
-                url: abp.appPath + "api/services/app/dataDictionary/getPagedAsync",
+                url: abp.appPath + "api/services/app/dataDictionaryItem/getPagedAsync",
                 filters: [
                     {
                         key: "displayName",
                         selector: $("#displayName")
+                    },
+                    {
+                        key: "dataDictionaryId",
+                        selector: $("#dataDictionaryId")
                     }
+                ],
+                ingore: [
+                    "dataDictionaryId"
                 ]
             },
             fileds: [
@@ -25,7 +32,7 @@
                     }
                 },
                 { "data": "displayName" },
-                { "data": "key" },
+                { "data": "value" },
                 {
                     "data": "id",
                     render: function (data, type, row, meta) {
@@ -33,11 +40,8 @@
 
                         if (_permissions.edit) {
 
-                            $('<a title="管理字典项" href="javascript:;" class="m-l-xs nodecoration manage" ><i class="glyphicon glyphicon-th-list"></i> </a>')
-                                .appendTo($div);
                             $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
                                 .appendTo($div);
-
                         }
                         if (_permissions.del) {
                             $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
@@ -50,28 +54,21 @@
             methods: [
             {
                 actionName: "editAction",
-                url: abp.appPath + "DataDictionaries/create"
+                url: abp.appPath + "DataDictionaryItems/create?dataDictionaryId=" + $("#dataDictionaryId").val()
             },
-            {
-                actionName: "deleteAction",
-                url: abp.appPath + "api/services/app/dataDictionary/deleteAsync"
-            },
-            {
-                actionName: "manageAction",
-                selector: "a.manage",
-                action: function (data) {
-                    window.location.href = abp.appPath + "DataDictionaryItems?dataDictionaryId=" + data.id;
-                }
-            }
+                {
+                    actionName: "deleteAction",
+                    url: abp.appPath + "api/services/app/dataDictionaryItem/deleteAsync"
+                },
             ],
             commonMethods: [
               {
                   actionName: "createAction",
-                  url: abp.appPath + "DataDictionaries/Create"
+                  url: abp.appPath + "DataDictionaryItems/Create/?dataDictionaryId=" + $("#dataDictionaryId").val()
               },
               {
                   actionName: "batchAction",
-                  url: abp.appPath + "api/services/app/dataDictionary/batchDeleteAsync"
+                  url: abp.appPath + "api/services/app/dataDictionaryItem/batchDeleteAsync"
               }
             ]
         };

@@ -78,6 +78,7 @@
     
     <text name="Submit" value="保存"/>
     <text name="SureToDelete" value="确定删除数据？"/>
+    <text name="Back" value="返回"/>
 
     <!-- 数据字典管理 -->
 
@@ -104,6 +105,7 @@
 
     <!--//用于表格展示的数据信息的标题-->
     <text name="DataDictionaryItem.Value" value="值" />
+    <text name="DataDictionaryItem.DisplayName" value="显示名" />
     <text name="DataDictionaryItem.DataDictionaryId" value="键Id" />
 
     <text name="DataDictionaryItem" value="数据字典项管理" />

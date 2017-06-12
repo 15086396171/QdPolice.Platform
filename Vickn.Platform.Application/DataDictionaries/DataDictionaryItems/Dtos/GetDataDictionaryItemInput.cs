@@ -28,6 +28,11 @@ namespace Vickn.Platform.DataDictionaries.Dtos
 		/// </summary>
 		public string FilterText { get; set; }
 
+        /// <summary>
+        /// 键Id
+        /// </summary>
+         public int DataDictionaryId { get; set; }
+
 		/// <summary>
 	    /// 用于排序的默认值
 		/// </summary>

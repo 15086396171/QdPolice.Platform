@@ -1,0 +1,52 @@
+﻿@model Vickn.Platform.DataDictionaries.Dtos.DataDictionaryItemForEdit
+
+
+@{
+    ViewBag.Title = "Create";
+
+}
+<div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form form-horizontal">
+            <!--隐藏字段-->
+            <div class="hidden">
+                @Html.HiddenFor(model => model.DataDictionaryItemEditDto.Id)
+                @Html.HiddenFor(model => model.DataDictionaryItemEditDto.DataDictionaryId)
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataDictionaryItemEditDto.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataDictionaryItemEditDto.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataDictionaryItemEditDto.DisplayName, "", new { @class = "" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataDictionaryItemEditDto.Value, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataDictionaryItemEditDto.Value, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataDictionaryItemEditDto.Value, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="hr-line-dashed"></div>
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn btn-primary" type="submit">保存</button>
+                    @Html.ActionLink("取消", "Index", new { dataDictionaryId = Model.DataDictionaryItemEditDto.DataDictionaryId }, new { @class = "btn btn-white" })
+                </div>
+            </div>
+
+        </div>
+
+    }
+</div>
+@section scripts{
+
+}

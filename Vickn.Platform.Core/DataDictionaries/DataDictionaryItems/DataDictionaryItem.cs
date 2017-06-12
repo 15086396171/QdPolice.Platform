@@ -7,6 +7,10 @@ namespace Vickn.Platform.DataDictionaries
     /// </summary>
     public class DataDictionaryItem : Entity
     {
+        public DataDictionaryItem()
+        {
+
+        }
         public DataDictionaryItem(string displayName, string value)
         {
             this.DisplayName = displayName;

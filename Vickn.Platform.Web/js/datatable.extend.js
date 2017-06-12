@@ -72,8 +72,8 @@
                 }
                 else {
                     var dataActionOptions = data.actionOptions || {};
-                    actionOptions.isAjax = dataActionOptions.isAjax || false;
-                    actionOptions.isConfirm = dataActionOptions.isConfirm || true;
+                    actionOptions.isAjax = dataActionOptions.isAjax != undefined ? dataActionOptions.isAjax : false;
+                    actionOptions.isConfirm = dataActionOptions.isConfirm != undefined ? dataActionOptions.isConfirm : true;
                     actionOptions.confirmMsg = dataActionOptions.confirmMsg;
                     actionOptions.isNeedSuccessAlert = dataActionOptions.isNeedSuccessAlert != undefined ? dataActionOptions.isNeedSuccessAlert : true;
                     actionOptions.successMsg = dataActionOptions.successMsg;
@@ -100,18 +100,18 @@
             } else {
                 if (options.isAjax) {
                     if (options.isConfirm)
-                        var index1 = layer.confirm(options.confirmMsg || "确定操作？",function () {
-                                abp.ajax({
-                                    url: options.url,
-                                    data: JSON.stringify({ id: data.id })
-                                }).done(function () {
-                                    if (options.isNeedSuccessAlert === true) {
-                                        abp.notify.success(options.successMsg || "操作成功");
-                                    }
-                                    table.draw();
-                                });
-                                layer.close(index1);
+                        var index1 = layer.confirm(options.confirmMsg || "确定操作？", function () {
+                            abp.ajax({
+                                url: options.url,
+                                data: JSON.stringify({ id: data.id })
+                            }).done(function () {
+                                if (options.isNeedSuccessAlert === true) {
+                                    abp.notify.success(options.successMsg || "操作成功");
+                                }
+                                table.draw();
                             });
+                            layer.close(index1);
+                        });
                     else {
                         abp.ajax({
                             url: options.url,
@@ -161,7 +161,9 @@
                 if (options.listAction.filters) {
                     $.each(options.listAction.filters,
                         function (index, value) {
-                            $(value.selector).val("");
+                            if (options.listAction.ignore && $.inArray(value.key, options.listAction.ignore) >= 0);
+                            else
+                                $(value.selector).val("");
                         });
                 }
                 $(options.target).search();

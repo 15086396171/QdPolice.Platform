@@ -1,27 +1,30 @@
 ﻿@using Abp.Web.Mvc.Extensions
 @using Vickn.Platform.DataDictionaries.Authorization
-
 @{
 
-    ViewBag.createBtn = L("CreateDataDictionary");
-    ViewBag.editBtn = L("EditDataDictionary");
+    ViewBag.createBtn = L("CreateDataDictionaryItem");
+    ViewBag.editBtn = L("EditDataDictionaryItem");
 
-    ViewBag.ActiveMenu = "DataDictionaries"; //The menu item will be active for this page.
+    ViewBag.ActiveMenu = "DataDictionaryItem"; //The menu item will be active for this page.
 
 }
 <div class="ibox-content">
     <div class="form-inline">
         <div class="form-group">
-            @if (IsGranted(DataDictionaryAppPermissions.DataDictionary_DeleteDataDictionary))
+            <a href="@Url.Action("Index","DataDictionaries",new {ViewBag.dataDictionaryId})" class="btn btn-default"><i class="fa fa-close">@L("Back")</i></a>
+            @if (IsGranted(DataDictionaryItemAppPermissions.DataDictionaryItem_DeleteDataDictionaryItem))
             {
                 <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
             }
-            @if (IsGranted(DataDictionaryAppPermissions.DataDictionary_CreateDataDictionary))
+            @if (IsGranted(DataDictionaryItemAppPermissions.DataDictionaryItem_CreateDataDictionaryItem))
             {
                 <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
                     <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
                 </a>
             }
+            <div class="hidden">
+                <input name="dataDictionaryId" id="dataDictionaryId" value="@ViewBag.dataDictionaryId" />
+            </div>
             <input class="form-control" placeholder="显示名称" id="displayName">
             <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
             <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
@@ -33,13 +36,13 @@
         <thead>
             <tr class="text-c">
                 <th width="25"><input type="checkbox" class="checkall"></th>
-                <th>@L("DataDictionary.DisplayName")</th>
-                <th>@L("DataDictionary.Key")</th>
+                <th>@L("DataDictionaryItem.DisplayName")</th>
+                <th>@L("DataDictionaryItem.Value")</th>
                 <th>@L("Operational")</th>
             </tr>
         </thead>
     </table>
 </div>
 @section scripts{
-    @Html.IncludeScript("~/Views/DataDictionaries/Index.js")
+    @Html.IncludeScript("~/Views/DataDictionaryItems/Index.js")
 }

@@ -5,6 +5,16 @@
     /// </summary>
     public class CustomerModelStateValidationDto
     {
+        public CustomerModelStateValidationDto()
+        {
+
+        }
+        public CustomerModelStateValidationDto(bool hasModelError, string key, string errorMsg)
+        {
+            HasModelError = hasModelError;
+            Key = key;
+            ErrorMessage = ErrorMessage;
+        }
         /// <summary>
         /// 是否验证错误
         /// </summary>
