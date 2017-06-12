@@ -1386,6 +1386,7 @@
     <Content Include="Views\Account\ResetPassword.js" />
     <Content Include="Views\AuditLogs\Index.js" />
     <Content Include="js\AppUserNotificationService.js" />
+    <Content Include="Views\DataDictionaries\Index.js" />
     <Content Include="Views\Home\Index.js" />
     <Content Include="Views\Maintenance\Index.css" />
     <Content Include="Views\Maintenance\Index.js" />
@@ -1419,6 +1420,7 @@
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
+    <Compile Include="Controllers\DataDictionariesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
@@ -1479,6 +1481,8 @@
     <Content Include="Views\Home\NotFound.cshtml" />
     <Content Include="Views\Home\Error.cshtml" />
     <Content Include="Views\Home\NoAuth.cshtml" />
+    <Content Include="Views\DataDictionaries\Index.cshtml" />
+    <Content Include="Views\DataDictionaries\Create.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

@@ -1,0 +1,49 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.DataDictionaries.Dtos.DataDictionaryForEdit
+
+@{
+    ViewBag.Title = "Create";
+    ViewBag.Menu = L("User");
+    ViewBag.SecMenu = L("User");
+}
+<div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form form-horizontal">
+            <!--隐藏字段-->
+            <div class="hidden">
+                @Html.HiddenFor(model => model.DataDictionaryEditDto.Id)
+
+            </div>
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataDictionaryEditDto.Key, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataDictionaryEditDto.Key, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataDictionaryEditDto.Key, "", new { @class = "" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DataDictionaryEditDto.DisplayName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DataDictionaryEditDto.DisplayName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.DataDictionaryEditDto.DisplayName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+        </div>
+
+    }
+</div>
+@section scripts{
+    @Html.IncludeScript("~/Views/Users/Create.js")
+}
+
+
+
+

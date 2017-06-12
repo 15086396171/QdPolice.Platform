@@ -3,6 +3,7 @@ using Abp.Localization;
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -46,7 +47,14 @@ namespace Vickn.Platform.Web
                         "OrganizationUnit",
                         L("OrganizationUnit"),
                         url: "OrganizationUnits",
-                        requiredPermissionName: RoleAppPermissions.Role
+                        requiredPermissionName: OrganizationUnitAppPermissions.OrganizationUnit
+                        ))
+                        .AddItem(
+                    new MenuItemDefinition(
+                        "DataDictionaries",
+                        L("DataDictionary"),
+                        url: "DataDictionaries",
+                        requiredPermissionName: DataDictionaryAppPermissions.DataDictionary
                         ))
                     .AddItem(
                     new MenuItemDefinition(

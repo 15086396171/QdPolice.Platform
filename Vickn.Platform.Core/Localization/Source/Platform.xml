@@ -79,5 +79,38 @@
     <text name="Submit" value="保存"/>
     <text name="SureToDelete" value="确定删除数据？"/>
 
+    <!-- 数据字典管理 -->
+
+
+    <text name="	DataDictionaryHeaderInfo" value="数据字典信息列表" />
+    <text name="DataDictionaryDeleteWarningMessage" value="数据字典名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="DataDictionaryName" value="数据字典" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="DataDictionary.Key" value="键名" />
+    <text name="DataDictionary.DisplayName" value="显示名" />
+    <text name="DataDictionary.DataDictionaryItems" value="项集合" />
+
+    <text name="DataDictionary" value="数据字典管理" />
+    <text name="CreateDataDictionary" value="添加数据字典" />
+    <text name="EditDataDictionary" value="更新数据字典" />
+    <text name="DeleteDataDictionary" value="删除数据字典" />
+    <!-- 数据字典项管理 -->
+    <text name="	DataDictionaryItemHeaderInfo" value="数据字典项信息列表" />
+    <text name="DataDictionaryItemDeleteWarningMessage" value="数据字典项名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="DataDictionaryItemName" value="数据字典项" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="DataDictionaryItem.Value" value="值" />
+    <text name="DataDictionaryItem.DataDictionaryId" value="键Id" />
+
+    <text name="DataDictionaryItem" value="数据字典项管理" />
+    <text name="CreateDataDictionaryItem" value="添加数据字典项" />
+    <text name="EditDataDictionaryItem" value="更新数据字典项" />
+    <text name="DeleteDataDictionaryItem" value="删除数据字典项" />
+
+
   </texts>
 </localizationDictionary>

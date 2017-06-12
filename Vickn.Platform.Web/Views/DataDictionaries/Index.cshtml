@@ -1,0 +1,47 @@
+﻿@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.DataDictionaries.Authorization
+@using Vickn.Platform.Users.Authorization
+@model Vickn.PlatfForm.Utils.Pager.PagerResult<Vickn.Platform.Auditing.Dto.AuditLogListDto, Vickn.Platform.Auditing.Dto.GetAuditLogsInput>
+
+@{
+
+    ViewBag.createBtn = L("CreateDataDictionary");
+    ViewBag.editBtn = L("EditDataDictionary");
+
+    ViewBag.ActiveMenu = "DataDictionaries"; //The menu item will be active for this page.
+
+}
+<div class="ibox-content">
+    <div class="form-inline">
+        <div class="form-group">
+            @if (IsGranted(DataDictionaryAppPermissions.DataDictionary_DeleteDataDictionary))
+            {
+                <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+            }
+            @if (IsGranted(DataDictionaryAppPermissions.DataDictionary_CreateDataDictionary))
+            {
+                <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
+                    <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
+                </a>
+            }
+            <input class="form-control" placeholder="显示名称" id="displayName">
+            <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+            <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+        </div>
+    </div>
+</div>
+<div class="ibox-content">
+    <table class="table table-border table-bordered table-hover table-bg dataTable ">
+        <thead>
+            <tr class="text-c">
+                <th width="25"><input type="checkbox" class="checkall"></th>
+                <th>@L("DataDictionary.DisplayName")</th>
+                <th>@L("DataDictionary.Key")</th>
+                <th>@L("Operational")</th>
+            </tr>
+        </thead>
+    </table>
+</div>
+@section scripts{
+    @Html.IncludeScript("~/Views/DataDictionaries/Index.js")
+}
