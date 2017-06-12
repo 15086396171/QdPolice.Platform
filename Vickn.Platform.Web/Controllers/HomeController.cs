@@ -1,11 +1,13 @@
 ﻿using System.Threading;
 using System.Web.Mvc;
+using Abp.Auditing;
 using Abp.Web.Configuration;
 using Abp.Web.Mvc.Authorization;
 
 namespace Vickn.Platform.Web.Controllers
 {
     [AbpMvcAuthorize]
+    [DisableAuditing]
     public class HomeController : PlatformControllerBase
     {
         private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
@@ -22,10 +24,23 @@ namespace Vickn.Platform.Web.Controllers
         {
             return View();
         }
-        public string GetCultureName()
+
+        [AllowAnonymous]
+        public ActionResult NotFound()
         {
-            return Thread.CurrentThread.CurrentUICulture.DisplayName +"\r\n"+ Thread.CurrentThread.CurrentUICulture.Name;
-            //Thread.CurrentThread.CurrentUICulture = new CultureInfo();
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult Error()
+        {
+            return View();
+        }
+
+        [AllowAnonymous]
+        public ActionResult NoAuth()
+        {
+            return View();
         }
     }
 }

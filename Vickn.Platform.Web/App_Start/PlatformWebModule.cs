@@ -3,17 +3,20 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Abp.BackgroundJobs;
 using Abp.Configuration.Startup;
 using Abp.Hangfire;
 using Abp.Hangfire.Configuration;
 using Abp.IO;
 using Abp.Zero.Configuration;
 using Abp.Modules;
+using Abp.Threading.BackgroundWorkers;
 using Abp.Web.Mvc;
 using Abp.Web.SignalR;
 using Vickn.Platform.Api;
 using Hangfire;
 using Vickn.Platform.MainTenance.AppFolders;
+using Vickn.Platform.WorkerPxoxy.HangFire;
 
 namespace Vickn.Platform.Web
 {
@@ -22,8 +25,10 @@ namespace Vickn.Platform.Web
         typeof(PlatformApplicationModule),
         typeof(PlatformWebApiModule),
         typeof(AbpWebSignalRModule),
-        //typeof(AbpHangfireModule), - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
-        typeof(AbpWebMvcModule))]
+        typeof(AbpHangfireModule),  //- ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
+        typeof(HangFireWorkerModule),
+        typeof(AbpWebMvcModule)
+        )]
     public class PlatformWebModule : AbpModule
     {
         public override void PreInitialize()
@@ -39,10 +44,10 @@ namespace Vickn.Platform.Web
             //Configuration.Modules
 
             //Configure Hangfire - ENABLE TO USE HANGFIRE INSTEAD OF DEFAULT JOB MANAGER
-            //Configuration.BackgroundJobs.UseHangfire(configuration =>
-            //{
-            //    configuration.GlobalConfiguration.UseSqlServerStorage("Hangfire");
-            //});
+            Configuration.BackgroundJobs.UseHangfire(configuration =>
+            {
+                configuration.GlobalConfiguration.UseSqlServerStorage("Hangfire");
+            });
         }
 
         public override void Initialize()
@@ -65,6 +70,8 @@ namespace Vickn.Platform.Web
             appFolders.WebLogsFolder = server.MapPath("~/App_Data/Logs");
 
             try { DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder); } catch { }
+
+            var workManager = IocManager.Resolve<IBackgroundWorkerManager>();
         }
     }
 }

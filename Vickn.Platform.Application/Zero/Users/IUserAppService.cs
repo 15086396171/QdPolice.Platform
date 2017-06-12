@@ -84,6 +84,13 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         Task<GetUserForEdit> GetMyInfoAsync();
 
+        /// <summary>
+        /// ÷ÿ÷√√‹¬Î
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task ResetPasswordAsync(EntityDto<long> input);
+
         #endregion
     }
 }

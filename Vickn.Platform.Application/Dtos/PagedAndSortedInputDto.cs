@@ -7,7 +7,7 @@ namespace Vickn.Platform.Dtos
     /// <summary>
     /// 表示分页排序的Dto基类
     /// </summary>
-    public class PagedAndSortedInputDto : IPagedResultRequest, ISortedResultRequest
+    public class PagedAndSortedInputDto : IPagedResultRequest,ISortedResultRequest
     {
 
         /// <summary>
@@ -41,6 +41,5 @@ namespace Vickn.Platform.Dtos
         /// </summary>
         [Range(0, int.MaxValue)]
         public virtual int SkipCount { get; set; }
-
     }
 }

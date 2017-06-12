@@ -16,9 +16,8 @@
     <meta name="keywords" content="@PlatformConsts.AppName">
     <meta name="description" content="@PlatformConsts.AppName">
 
-    <LINK rel="Bookmark" href="/favicon.ico">
-    <LINK rel="Shortcut Icon" href="/favicon.ico" />
-
+    <LINK rel="Bookmark" href="~/favicon.ico">
+    <LINK rel="Shortcut Icon" href="~/favicon.ico" />
     <title>@PlatformConsts.AppName</title>
     <link rel="shortcut icon" href="~/favicon.ico">
 
@@ -33,18 +32,11 @@
     </script>
     @Scripts.Render("~/Bundles/vendor/js/top")
 
-    <!--[if lt IE 9]>
-    <script type="text/javascript" src="~/Scripts/lib/html5shiv.js"></script>
-    <script type="text/javascript" src="~/Scripts/lib/respond.min.js"></script>
-    <![endif]-->
-    <!--[if IE 6]>
-    <script src="~/Scripts/lib/DD_belatedPNG_0.0.8a-min.js"></script>
-            <script>DD_belatedPNG.fix('*');</script>
-    <![endif]-->
-
 </head>
-<body>
-    @RenderBody()
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        @RenderBody()
+    </div>
 
     @Scripts.Render("~/Bundles/vendor/js/bottom")
     @Scripts.Render("~/Bundles/js")

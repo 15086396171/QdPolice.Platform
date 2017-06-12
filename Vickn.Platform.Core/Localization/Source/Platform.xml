@@ -18,6 +18,7 @@
     <text name="Reflash" value="刷新"/>
     <text name="BatchDelete" value="批量删除"/>
     <text name="ChangePassword" value="修改密码"/>
+    <text name="ResetPasswordUser" value="重置密码"/>
     <text name="PleaseEnterYourNewPassword" value="请输入新密码"/>
     <text name="PasswordRepeat" value="密码（核对）"/>
 

@@ -11,5 +11,7 @@ namespace Vickn.Platform.Sessions
     public interface ISessionAppService : IApplicationService
     {
         Task<GetCurrentLoginInformationsOutput> GetCurrentLoginInformations();
+
+        Task SetCurrentCulture(CultureInput input);
     }
 }

@@ -1,61 +1,103 @@
-﻿@using Abp.Web.Mvc.Extensions
-@Html.Action("UserMenuOrLoginLink", "Layout")
-@Html.Action("TopMenu", "Layout")
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.Authorization
 
-<section class="Hui-article-box">
-    <div id="Hui-tabNav" class="Hui-tabNav hidden-xs">
-        <div class="Hui-tabNav-wp">
-            <ul id="min_title_list" class="acrossTab cl">
-                <li class="active"><span title="我的桌面" data-href="welcome.html">我的桌面</span><em></em></li>
+@{
+    ViewBag.Title = "主页";
+    Layout = "~/Views/Shared/_HomeLayout.cshtml";
+}
+
+<!--左侧导航开始-->
+@Html.Action("TopMenu", "Layout")
+<!--左侧导航结束-->
+<!--右侧部分开始-->
+<div id="page-wrapper" class="gray-bg dashbard-1">
+    <div class="row border-bottom">
+        <nav class="navbar navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                <form role="search" class="navbar-form-custom" method="post" action="search_results.html">
+                    <div class="form-group">
+                        <input type="text" placeholder="请输入您需要查找的内容 …" class="form-control" name="top-search" id="top-search">
+                    </div>
+                </form>
+            </div>
+            <ul class="nav navbar-top-links navbar-right">
+                <!--消息通知-->
+                <li class="dropdown">
+                    <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                        <i class="fa fa-envelope"></i> <span class="label label-warning" id="messageCount"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-messages" id="messageContent">
+                        <li></li>
+                        <li>
+                            <div class="text-center link-block">
+                                <a class="J_menuItem" href="mailbox.html">
+                                    <i class="fa fa-envelope"></i> <strong> 查看所有消息</strong>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                @if (IsGranted(AppPermissions.Pages_Hangfire))
+                {
+                    <li>
+                        <a href="/Hangfire">Hangfire</a>
+                    </li>
+                }
+            </ul>
+        </nav>
+    </div>
+    <div class="row content-tabs">
+        <button class="roll-nav roll-left J_tabLeft">
+            <i class="fa fa-backward"></i>
+        </button>
+        <nav class="page-tabs J_menuTabs">
+            <div class="page-tabs-content">
+                <a href="javascript:;" class="active J_menuTab" data-id="/Home/Welcome">首页</a>
+            </div>
+        </nav>
+        <button class="roll-nav roll-right J_tabRight">
+            <i class="fa fa-forward"></i>
+        </button>
+        <div class="btn-group roll-nav roll-right">
+            <button class="dropdown J_tabClose" data-toggle="dropdown">
+                关闭操作<span class="caret"></span>
+
+            </button>
+            <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                <li class="J_tabShowActive">
+                    <a>定位当前选项卡</a>
+                </li>
+                <li class="divider"></li>
+                <li class="J_tabCloseAll">
+                    <a>关闭全部选项卡</a>
+                </li>
+                <li class="J_tabCloseOther">
+                    <a>关闭其他选项卡</a>
+                </li>
             </ul>
         </div>
-        <div class="Hui-tabNav-more btn-group">
-            <a id="js-tabNav-prev" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d4;</i></a><a id="js-tabNav-next" class="btn radius btn-default size-S" href="javascript:;"><i class="Hui-iconfont">&#xe6d7;</i></a>
-        </div>
+        <a href="/Account/Logout" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
     </div>
-    <div id="iframe_box" class="Hui-article">
-        <div class="show_iframe">
-            <div style="display: none" class="loading"></div>
-            <iframe scrolling="yes" frameborder="0" src="@Url.Action("Welcome")"></iframe>
-        </div>
+    <div class="row J_mainContent" id="content-main">
+        <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="/Home/Welcome" frameborder="0" data-id="/Home/Welcome" seamless></iframe>
     </div>
-</section>
-<div class="contextMenu" id="Huiadminmenu">
-    <ul>
-        <li id="closethis" style="text-align:center;font-size:12px;">关闭当前</li>
-        <li id="closeall"  style="text-align:center;font-size:12px;">关闭全部</li>
-    </ul>
-</div>
-
-<div id="modal-MyInfo" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content radius">
-            <div class="modal-header">
-                <h3 class="modal-title">我的信息</h3>
-                <a class="close" data-dismiss="modal" aria-hidden="true" href="javascript:void();">×</a>
-            </div>
-            <div class="modal-body" id="content">
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-primary" id="btn-Ok">确定</button>
-                <button class="btn" data-dismiss="modal" aria-hidden="true">关闭</button>
-            </div>
+    <div class="footer">
+        <div class="pull-right">
+            &copy; 2017
         </div>
     </div>
 </div>
+<!--右侧部分结束-->
 
-@section styles{
-    <style>
-        li {
-            border-bottom: 1px solid #e5e5e5;
-        }
-    </style>
-}
 @section scripts{
+    @*<script src="~/Content/Hplus/js/plugins/pace/pace.min.js"></script>*@
     <!-- SignalR scripts -->
     <script src="~/signalr/hubs"></script>
     @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
 
     @Html.IncludeScript("~/js/AppUserNotificationService.js")
     @Html.IncludeScript("~/Views/Home/Index.js")
+
 }

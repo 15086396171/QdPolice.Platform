@@ -8,10 +8,11 @@ using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
+using Vickn.Platform.WorkerPxoxy;
 
 namespace Vickn.Platform
 {
-    [DependsOn(typeof(AbpZeroCoreModule))]
+    [DependsOn(typeof(AbpZeroCoreModule), typeof(PlatformWorkerPxoxyModule))]
     public class PlatformCoreModule : AbpModule
     {
         public override void PreInitialize()

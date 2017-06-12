@@ -187,6 +187,7 @@
     <Compile Include="MainTenance\Caching\CachingAppService.cs" />
     <Compile Include="MainTenance\Caching\Dto\CacheDto.cs" />
     <Compile Include="MainTenance\Caching\ICachingAppService.cs" />
+    <Compile Include="Zero\Sessions\Dto\CultureInput.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserForEdit.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserInput.cs" />
     <Compile Include="Zero\Users\Dtos\UserEditDto.cs" />

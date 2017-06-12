@@ -214,6 +214,19 @@ namespace Vickn.Platform.Roles
         {
             //TODO: 自定义逻辑判断是否有逻辑错误
 
+            if (
+                await
+                    _roleRepository.FirstOrDefaultAsync(
+                        p => p.Name == output.RoleEditDto.Name && p.Id != output.RoleEditDto.Id) !=null)
+            {
+                return new CustomerModelStateValidationDto()
+                {
+                    HasModelError = true,
+                    ErrorMessage = $"角色名{output.RoleEditDto.Name}已存在",
+                    Key = "RoleEditDto.Name"
+                };
+            }
+
             var myRoles = await _roleManager.FindByUserIdAsync(AbpSession.UserId.Value);
 
             var maxWeight = myRoles.Max(p => p.Weight);

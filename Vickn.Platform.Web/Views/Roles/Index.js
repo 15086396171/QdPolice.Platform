@@ -41,15 +41,15 @@
                         var $div = $('<div></div>');
                         if (_permissions.editPermissoin) {
                             $('<a title="设置权限" href="javascript:;" class="m-l-xs setPermission" data-title="设置权限"> <i class="glyphicon glyphicon-list-alt"></i> </a>')
-                                .appendTo($div);
+                          .appendTo($div);
                         }
                         if (_permissions.edit) {
-
-                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            // &#xe631;
+                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" > <i class="glyphicon glyphicon-pencil"></i> </a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"> <i class="glyphicon glyphicon-trash"></i> </a>')
                                 .appendTo($div);
                         }
                         return $div.html();

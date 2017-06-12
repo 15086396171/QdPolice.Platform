@@ -29,7 +29,7 @@ namespace Vickn.Platform.Roles.Dtos
 		/// </summary>
 		public string FilterText { get; set; }
 
-		/// <summary>
+         /// <summary>
 	    /// 用于排序的默认值
 		/// </summary>
         public void Normalize()

@@ -30,6 +30,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vickn.Platform.Migrator", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vickn.PlatfForm.Utils", "Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj", "{AFA147E0-7E8E-4832-9193-6161D90180FD}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WorkerPxoxy", "WorkerPxoxy", "{C78F477E-A40B-4504-9C2D-4D22A93F5A15}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vickn.Platform.WorkerPxoxy", "Platform.WorkerPxoxy\Vickn.Platform.WorkerPxoxy.csproj", "{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vickn.Platform.WorkerPxoxy.HangFire", "Vickn.Platform.HangFire\Vickn.Platform.WorkerPxoxy.HangFire.csproj", "{51F40EC8-C5AC-48C6-A756-1D84F2A469D3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -68,6 +74,14 @@ Global
 		{AFA147E0-7E8E-4832-9193-6161D90180FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AFA147E0-7E8E-4832-9193-6161D90180FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AFA147E0-7E8E-4832-9193-6161D90180FD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{51F40EC8-C5AC-48C6-A756-1D84F2A469D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51F40EC8-C5AC-48C6-A756-1D84F2A469D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51F40EC8-C5AC-48C6-A756-1D84F2A469D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51F40EC8-C5AC-48C6-A756-1D84F2A469D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -75,5 +89,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C602C47E-F379-40A3-A146-4F19105B3491} = {7E85C7E5-70BD-4C9D-B052-D95955F46609}
 		{6F98C2F2-898A-421B-BE3D-68FE69EC0646} = {7408541C-F99C-4197-B203-136115BD1CB9}
+		{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F} = {C78F477E-A40B-4504-9C2D-4D22A93F5A15}
+		{51F40EC8-C5AC-48C6-A756-1D84F2A469D3} = {C78F477E-A40B-4504-9C2D-4D22A93F5A15}
 	EndGlobalSection
 EndGlobal

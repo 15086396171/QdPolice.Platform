@@ -12,60 +12,58 @@
 @section Scripts
 {
     @Html.IncludeScript("~/Views/Maintenance/Index.js")
-    <script>
-        $.Huitab("#tab-system .tabBar span", "#tab-system .tabCon", "current", "click", "0");
-    </script>
 }
 
-@Html.Partial("~/Views/Common/_Navigation.cshtml")
-<div class="page-container">
-  
-    <div id="tab-system" class="HuiTab">
-        <div class="tabBar cl">
-            <span>@L("CacheSetting")</span>
-            <span>@L("WebLogs")</span>
-        </div>
-        <div class="tabCon">
-            @*<div class="text-r mb-5">
-                <a class="btn btn-primary  size-S" id="ClearAllCachesButton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
-                    @L("ClearAllCache")
-                </a>
-            </div>*@
-            <table class="table table-border ">
-                <tbody>
-                    <tr>
-                        <td style="width: 90%"> </td>
-                        <td style="padding: 5px;">
-                            <a class="btn btn-primary  size-S" id="ClearAllCachesButton" style="" href="javascript:;">
-                                @L("ClearAllCache")
-                            </a>
-                        </td>
-                    </tr>
-                @foreach (var item in Model.Caches)
-                {
-                    <tr>
-                        <td style="width: 90%">@item.Name</td>
-                        <td>
-                            <a href="javascript:;" class="btn btn-primary-outline size-S btn-clear-cache" data-cache-name="@item.Name">@L("Clear")</a>
-                        </td>
-                    </tr>
-                }
-                </tbody>
-            </table>
-        </div>
-        <div class="tabCon">
-            <div class="text-r mb-5">
-                <a class="btn btn-primary  size-S" id="DownloadAllLogsbutton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
-                    @L("DownLoadAll")
-                </a>
-                <a class="btn btn-primary  size-S" id="RefreshButton" style="line-height:1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
-                    @L("Reflash")
-                </a>
-            </div>
-            <div id="WebSiteLogsContent" class="web-log-view full-height">
+<div class="tabs-container">
+    <ul class="nav nav-tabs">
+        <li class="active">
+            <a data-toggle="tab" href="#tab-1" aria-expanded="true"> @L("CacheSetting")</a>
+        </li>
+        <li class="">
+            <a data-toggle="tab" href="#tab-2" aria-expanded="false">@L("WebLogs")</a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div id="tab-1" class="tab-pane active">
+            <div class="panel-body">
+                <table class="table table-border ">
+                    <tbody>
+                        <tr>
+                            <td style="width: 90%"> </td>
+                            <td style="padding: 5px;">
+                                <a class="btn btn-primary btn-sm" id="ClearAllCachesButton" style="" href="javascript:;">
+                                    @L("ClearAllCache")
+                                </a>
+                            </td>
+                        </tr>
+                        @foreach (var item in Model.Caches)
+                        {
+                            <tr>
+                                <td style="width: 90%">@item.Name</td>
+                                <td>
+                                    <a href="javascript:;" class="btn btn-success btn-outline btn-sm btn-clear-cache" data-cache-name="@item.Name">@L("Clear")</a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
             </div>
         </div>
-       
+        <div id="tab-2" class="tab-pane">
+            <div class="panel-body">
+                <div class="m-sm row">
+                    <div class="">
+                        <a class="btn btn-primary btn-sm" id="DownloadAllLogsbutton" style="line-height: 1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
+                            @L("DownLoadAll")
+                        </a>
+                        <a class="btn btn-primary  btn-sm" id="RefreshButton" style="line-height: 1.6em; margin-top: 3px; margin-right: 10px;" href="javascript:;">
+                            @L("Reflash")
+                        </a>
+                    </div>
+                </div>
+                <div id="WebSiteLogsContent" class="web-log-view full-height">
+                </div>
+            </div>
+        </div>
     </div>
-   
 </div>

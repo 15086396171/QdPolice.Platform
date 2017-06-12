@@ -7,7 +7,7 @@
             $tree.jstree({
                 "types": {
                     "default": {
-                        "icon": "Hui-iconfont Hui-iconfont-file"
+                        "icon": "fa fa-folder"
                     },
                     "file": {
                         "icon": "Hui-iconfont Hui-iconfont-weigouxuan2"

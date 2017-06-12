@@ -7,7 +7,8 @@
         var _permissions = {
             create: abp.auth.hasPermission('Pages.User.CreateUser'),
             edit: abp.auth.hasPermission('Pages.User.EditUser'),
-            del: abp.auth.hasPermission('Pages.User.DeleteUser')
+            del: abp.auth.hasPermission('Pages.User.DeleteUser'),
+            resetPassword:abp.auth.hasPermission('Pages.User.ResetPasswordUser')
         };
 
         var options = {
@@ -58,19 +59,23 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
+                        if (_permissions.resetPassword) {
+                            $('<a title="重置密码" href="javascript:;" class="m-l-xs nodecoration resetPassword"><i class="glyphicon glyphicon-refresh"></i> </a>')
+                            .appendTo($div);
+                        }
                         if (_permissions.edit) {
                             if (row.isActive === true) {
-                                $('<a title="禁用" href="javascript:;" class="ml-5 nodecoration disable" data-title="禁用"><i class="Hui-iconfont">&#xe631;</i></a>')
+                                $('<a title="禁用" href="javascript:;" class="m-l-xs nodecoration disable"><i class="glyphicon glyphicon-off"></i> </a>')
                                     .appendTo($div);
                             } else
-                                $('<a title="启用" href="javascript:;" class="ml-5 nodecoration disable" data-title="启用"><i class="Hui-iconfont">&#xe631;</i></a>')
+                                $('<a title="启用" href="javascript:;" class="m-l-xs nodecoration disable"><i class="glyphicon glyphicon-off"></i> </a>')
                                     .appendTo($div);
 
-                            $('<a title="编辑" href="javascript:;" class="ml-5 nodecoration edit" data-title="编辑" ><i class="Hui-iconfont">&#xe6df;</i></a>')
+                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
                                 .appendTo($div);
                         }
                         if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="ml-5 nodecoration delete"><i class="Hui-iconfont">&#xe6e2;</i></a>')
+                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
                                 .appendTo($div);
                         }
                         return $div.html();
@@ -91,10 +96,21 @@
                     actionOptions: {
                         isAjax: true,
                         isConfirm: true,
+                        isNeedSuccessAlert:true,
                         confirmMsg: "确定更改用户启用状态？"
                     },
                     selector: "a.disable",
                     url: abp.appPath + "api/services/app/user/disableUserAsync"
+                },
+                {
+                    actionName: "resetPasswordAction",
+                    actionOptions: {
+                        isAjax: true,
+                        isConfirm: true,
+                        confirmMsg:"确认重置密码？"
+                    },
+                    selector: "a.resetPassword",
+                    url: abp.appPath + "api/services/app/user/resetPasswordAsync"
                 }
             ],
             commonMethods: [

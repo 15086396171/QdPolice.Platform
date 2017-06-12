@@ -70,7 +70,6 @@
                     actionOptions.selector = data.selector || "a.delete";
                     actionOptions.confirmMsg = "确定删除本条数据？";
                 }
-
                 else {
                     var dataActionOptions = data.actionOptions || {};
                     actionOptions.isAjax = dataActionOptions.isAjax || false;
@@ -79,6 +78,8 @@
                     actionOptions.isNeedSuccessAlert = dataActionOptions.isNeedSuccessAlert != undefined ? dataActionOptions.isNeedSuccessAlert : true;
                     actionOptions.successMsg = dataActionOptions.successMsg;
                     actionOptions.selector = data.selector;
+                    actionOptions.isNeedSuccessAlert = dataActionOptions.isNeedSuccessAlert != undefined ? dataActionOptions.isNeedSuccessAlert : true;
+                    actionOptions.successMsg = dataActionOptions.successMsg;
                 }
                 actionOptions.target = target;
                 actionOptions.event = data.event || "click";
@@ -92,9 +93,10 @@
     function bindAction(options) {
         $(options.target).on(options.event || "click", options.selector, function () {
             var table = $(options.target).DataTable();
+            var tr = $(this).closest('tr');
             var data = table.row($(this).parents('tr')).data();
             if (options.action) {
-                options.action(data);
+                options.action(data, tr);
             } else {
                 if (options.isAjax) {
                     if (options.isConfirm)
@@ -209,4 +211,11 @@
                 // 不必实现else，由index.js自行实现
             });
     }
+
+    $(function () {
+        $(".checkall").click(function () {
+            var check = $(this).prop("checked");
+            $("input[type='checkbox']").prop("checked", check);
+        });
+    });
 })(jQuery);

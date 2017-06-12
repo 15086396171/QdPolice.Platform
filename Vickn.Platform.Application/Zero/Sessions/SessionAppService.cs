@@ -2,6 +2,9 @@
 using Abp.Auditing;
 using Abp.Authorization;
 using Abp.AutoMapper;
+using Abp.Configuration;
+using Abp.Localization;
+using Abp.Runtime.Session;
 using Vickn.Platform.Sessions.Dto;
 
 namespace Vickn.Platform.Sessions
@@ -23,6 +26,15 @@ namespace Vickn.Platform.Sessions
             }
 
             return output;
+        }
+
+        public async Task SetCurrentCulture(CultureInput input)
+        {
+            await SettingManager.ChangeSettingForUserAsync(
+                      AbpSession.ToUserIdentifier(),
+                      LocalizationSettingNames.DefaultLanguage,
+                      input.CultureName
+                  );
         }
     }
 }

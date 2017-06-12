@@ -4,11 +4,14 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Web.Mvc.Authorization;
 using Vickn.Platform.Users;
+using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Web.Controllers
 {
+    [AbpMvcAuthorize(UserAppPermissions.User)]
     public class UsersController : PlatformControllerBase
     {
         private readonly IUserAppService _userAppService;
@@ -41,6 +44,12 @@ namespace Vickn.Platform.Web.Controllers
             await _userAppService.CreateOrUpdateUserAsync(dto);
             return RedirectToAction("Index");
         }
+
+        public async Task<ActionResult> ChangeProfilePic()
+        {
+            return View(await _userAppService.GetMyInfoAsync());
+        }
+
 
         public async Task<ActionResult> MyInfo()
         {

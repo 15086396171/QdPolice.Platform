@@ -118,7 +118,7 @@ namespace Vickn.Platform.Notifications
         /// <returns></returns>
         public async Task SendTestNotification()
         {
-            await _notificationManager.SendMessageAsync((await GetCurrentUserAsync()).ToUserIdentifier(), "这是测试消息");
+            await _notificationManager.SendMessageAsync((await GetCurrentUserAsync()).ToUserIdentifier(), "这是测试消息，很长很长的测试消息，真的很长");
         }
     }
 }

@@ -312,6 +312,23 @@ namespace Vickn.Platform.Users
             return await GetUserForEditAsync(new NullableIdDto<long>(AbpSession.UserId));
         }
 
+        /// <summary>
+        /// ÷ÿ÷√√‹¬Î
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        [AbpAuthorize(UserAppPermissions.User_ResetPasswordUser)]
+        public async Task ResetPasswordAsync(EntityDto<long> input)
+        {
+            var user = await UserManager.GetUserByIdAsync(input.Id);
+            user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
+
+            user.SetNewPasswordResetCode();
+            user.ShouldChangePasswordOnNextLogin = true;
+
+            await UserManager.UpdateAsync(user);
+        }
+
         #endregion
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
+using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
@@ -23,7 +24,7 @@ namespace Vickn.Platform.Web
                     new MenuItemDefinition(
                         "SystemManage",
                         L("SystemManage"),
-                        icon: "Hui-iconfont-system",
+                        icon: "fa fa-gear",
                         requiredPermissionName: AppPermissions.Pages_SystemManage
                         )
                         .AddItem(
@@ -31,7 +32,6 @@ namespace Vickn.Platform.Web
                         "User",
                         L("User"),
                         url: "Users",
-                        icon: "Hui-iconfont-user",
                         requiredPermissionName: UserAppPermissions.User
                         ))
                          .AddItem(
@@ -39,7 +39,6 @@ namespace Vickn.Platform.Web
                         "Role",
                         L("Role"),
                         url: "Roles",
-                        icon: "Hui-iconfont-root",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
                           .AddItem(
@@ -47,7 +46,6 @@ namespace Vickn.Platform.Web
                         "OrganizationUnit",
                         L("OrganizationUnit"),
                         url: "OrganizationUnits",
-                        icon: "Hui-iconfont-user-group",
                         requiredPermissionName: RoleAppPermissions.Role
                         ))
                     .AddItem(
@@ -55,15 +53,13 @@ namespace Vickn.Platform.Web
                         "AuditLog",
                         L("AuditLog"),
                         url: "AuditLogs",
-                        icon: "Hui-iconfont-log",
-                        requiredPermissionName: RoleAppPermissions.Role
+                        requiredPermissionName: AuditLogAppPermissions.AuditLog
                         ))
                         .AddItem(
                     new MenuItemDefinition(
                         "MainTenance",
                         L("Maintenance"),
                         url: "MainTenance",
-                        icon: "Hui-iconfont-system",
                         requiredPermissionName: AppPermissions.Pages_Maintenance
                         ))) // end:SystemManage
 
