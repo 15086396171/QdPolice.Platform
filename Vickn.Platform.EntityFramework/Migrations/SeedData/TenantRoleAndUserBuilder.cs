@@ -45,11 +45,11 @@ namespace Vickn.Platform.Migrations.SeedData
                     Key = StaticDictionaryNames.Role_Weight,
                     DataDictionaryItems = new List<DataDictionaryItem>()
                       {
-                          new DataDictionaryItem("1级",10.ToString()),
-                          new DataDictionaryItem("2级",9.ToString()),
-                          new DataDictionaryItem("3级",8.ToString()),
-                          new DataDictionaryItem("4级",7.ToString()),
-                          new DataDictionaryItem("5级",8.ToString()),
+                          new DataDictionaryItem("一级",10.ToString()),
+                          new DataDictionaryItem("二级",9.ToString()),
+                          new DataDictionaryItem("三级",8.ToString()),
+                          new DataDictionaryItem("四级",7.ToString()),
+                          new DataDictionaryItem("五级",8.ToString()),
                       }
                 };
                 _context.DataDictionaries.Add(dic);
