@@ -32,6 +32,8 @@
             /// <summary>
             /// 基础设置
             /// </summary>
+            public const string Default = "dbo";
+
             public const string Basic = "Basic";
 
             /// <summary>

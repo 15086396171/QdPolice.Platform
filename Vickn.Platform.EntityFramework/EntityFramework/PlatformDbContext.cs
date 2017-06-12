@@ -2,6 +2,8 @@
 using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using Vickn.Platform.Authorization.Roles;
+using Vickn.Platform.DataDictionaries;
+using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
 
@@ -10,6 +12,10 @@ namespace Vickn.Platform.EntityFramework
     public class PlatformDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
+
+        public IDbSet<DataDictionary> DataDictionaries { get; set; }
+
+        public IDbSet<DataDictionaryItem> DataDictionaryItems { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -47,7 +53,15 @@ namespace Vickn.Platform.EntityFramework
         {
             base.OnModelCreating(modelBuilder);
             //modelBuilder.HasDefaultSchema("basic");
-            modelBuilder.ChangeAbpTablePrefix<Tenant,Role,User>("Platform");
+            modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("Platform");
+
+            PlatformConfiguration(modelBuilder);
+        }
+
+        private void PlatformConfiguration(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Configurations.Add(new DataDictionaryCfg());
+            modelBuilder.Configurations.Add(new DataDictionaryItemCfg());
         }
     }
 }

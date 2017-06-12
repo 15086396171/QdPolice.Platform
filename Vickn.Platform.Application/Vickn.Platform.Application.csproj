@@ -133,6 +133,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataDictionaries\DataDictionaryAppService.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemAppService.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Dtos\DataDictionaryItemDto.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Dtos\DataDictionaryItemEditDto.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Dtos\DataDictionaryItemForEdit.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Dtos\GetDataDictionaryItemInput.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\IDataDictionaryItemAppService.cs" />
+    <Compile Include="DataDictionaries\Dtos\DataDictionaryDto.cs" />
+    <Compile Include="DataDictionaries\Dtos\DataDictionaryEditDto.cs" />
+    <Compile Include="DataDictionaries\Dtos\DataDictionaryForEdit.cs" />
+    <Compile Include="DataDictionaries\Dtos\GetDataDictionaryInput.cs" />
+    <Compile Include="DataDictionaries\IDataDictionaryAppService.cs" />
     <Compile Include="Dtos\FileDto.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAndUser.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAppService.cs" />

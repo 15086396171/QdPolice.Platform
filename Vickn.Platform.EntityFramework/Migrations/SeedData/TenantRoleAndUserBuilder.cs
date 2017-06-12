@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Abp.Authorization;
 using Abp.Authorization.Roles;
@@ -7,6 +8,8 @@ using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.Authorization.Roles.Authorization;
+using Vickn.Platform.DataDictionaries;
+using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.EntityFramework;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users;
@@ -32,17 +35,38 @@ namespace Vickn.Platform.Migrations.SeedData
 
         private void CreateRolesAndUsers()
         {
+            // Role等级
+            var dic = _context.DataDictionaries.FirstOrDefault(p => p.Key == "RoleWeight");
+            if (dic == null)
+            {
+                dic = new DataDictionary()
+                {
+                    DisplayName = StaticDictionaryNames.Role_WeightDisplayName,
+                    Key = StaticDictionaryNames.Role_Weight,
+                    DataDictionaryItems = new List<DataDictionaryItem>()
+                      {
+                          new DataDictionaryItem("1级",10.ToString()),
+                          new DataDictionaryItem("2级",9.ToString()),
+                          new DataDictionaryItem("3级",8.ToString()),
+                          new DataDictionaryItem("4级",7.ToString()),
+                          new DataDictionaryItem("5级",8.ToString()),
+                      }
+                };
+                _context.DataDictionaries.Add(dic);
+                _context.SaveChanges();
+            }
+
             //Admin role
 
             var adminRole = _context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
             if (adminRole == null)
             {
-                adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.Admin,StaticRoleNames.Tenants.AdminWeight) { IsStatic = true });
+                adminRole = _context.Roles.Add(new Role(_tenantId, StaticRoleNames.Tenants.Admin, StaticRoleNames.Tenants.AdminDisplayName, StaticRoleNames.Tenants.AdminWeight) { IsStatic = true });
                 _context.SaveChanges();
 
                 //Grant all permissions to admin role
                 var permissions = PermissionFinder
-                    .GetAllPermissions(new PlatformAuthorizationProvider(),new UserAppAuthorizationProvider(),new RoleAppAuthorizationProvider(),new OrganizationUnitAppAuthorizationProvider(),new AuditLogAppAuthorizationProvider())
+                    .GetAllPermissions(new PlatformAuthorizationProvider(), new UserAppAuthorizationProvider(), new RoleAppAuthorizationProvider(), new OrganizationUnitAppAuthorizationProvider(), new AuditLogAppAuthorizationProvider())
                     .Where(p => p.MultiTenancySides.HasFlag(MultiTenancySides.Tenant))
                     .ToList();
 

@@ -12,8 +12,9 @@ namespace Vickn.Platform.Authorization.Roles
         public static class Tenants
         {
             public const string Admin = "Admin";
+            public const string AdminDisplayName = "π‹¿Ì‘±";
 
-            public const int AdminWeight = 100;
+            public const int AdminWeight = 10;
         }
     }
 }

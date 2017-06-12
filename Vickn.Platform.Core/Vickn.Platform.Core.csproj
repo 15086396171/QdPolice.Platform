@@ -131,6 +131,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataDictionaries\Authorization\DataDictionaryAppAuthorizationProvider.cs" />
+    <Compile Include="DataDictionaries\Authorization\DataDictionaryAppPermissions.cs" />
+    <Compile Include="DataDictionaries\DataDictionary.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Authorization\DataDictionaryItemAppAuthorizationProvider.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\Authorization\DataDictionaryItemAppPermissions.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItem.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryManager.cs" />
+    <Compile Include="DataDictionaries\_DataDictionaryReadme.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
+    <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
@@ -201,6 +211,7 @@
       <Name>Vickn.Platform.WorkerPxoxy</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
