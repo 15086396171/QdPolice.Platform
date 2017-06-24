@@ -20,6 +20,8 @@ namespace Vickn.Platform.Web
         public override void SetNavigation(INavigationProviderContext context)
         {
             context.Manager.MainMenu
+
+
             #region 系统管理
                 .AddItem(
                     new MenuItemDefinition(
