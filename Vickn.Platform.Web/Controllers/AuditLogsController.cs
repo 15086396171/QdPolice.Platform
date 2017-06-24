@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Auditing;
+using Abp.Web.Mvc.Authorization;
 using Vickn.PlatfForm.Utils.Pager;
 using Vickn.Platform.Auditing;
 using Vickn.Platform.Auditing.Dto;
+using Vickn.Platform.AuditLogs.Authorization;
 
 namespace Vickn.Platform.Web.Controllers
 {
     [DisableAuditing]
+    [AbpMvcAuthorize(AuditLogAppPermissions.AuditLog)]
     public class AuditLogsController : PlatformControllerBase
     {
         private IAuditLogAppService _auditLogAppService;

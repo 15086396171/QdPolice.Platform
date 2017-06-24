@@ -6,12 +6,15 @@ using System.Web;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.Web.Models;
+using Abp.Web.Mvc.Authorization;
 using Vickn.PlatfForm.Utils.Pager;
 using Vickn.Platform.Organizations;
 using Vickn.Platform.Organizations.Dto;
+using Vickn.Platform.OrganizationUnits.Authorization;
 
 namespace Vickn.Platform.Web.Controllers
 {
+    [AbpMvcAuthorize(OrganizationUnitAppPermissions.OrganizationUnit)]
     public class OrganizationUnitsController : PlatformControllerBase
     {
         private readonly IOrganizationUnitAppService _organizationUnitAppService;
@@ -34,6 +37,7 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
+        [AbpMvcAuthorize(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit,OrganizationUnitAppPermissions.OrganizationUnit_EditOrganizationUnit)]
         public async Task<ActionResult> Create(long? parentId, int? id)
         {
             var result = await _organizationUnitAppService.GetOrganizationUnitForEditAsync(new NullableIdDto<long>(id));

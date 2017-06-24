@@ -27,8 +27,8 @@ namespace Vickn.Platform.Web.Controllers
         {
             return View();
         }
-
-        [AbpMvcAuthorize(DataDictionaryAppPermissions.DataDictionary_CreateDataDictionary)]
+       
+        [AbpMvcAuthorize(DataDictionaryAppPermissions.DataDictionary_CreateDataDictionary, DataDictionaryAppPermissions.DataDictionary_EditDataDictionary)]
         public async Task<ActionResult> Create(int? id)
         {
             return View(await _dataDictionaryAppService.GetForEditAsync(new NullableIdDto(id)));

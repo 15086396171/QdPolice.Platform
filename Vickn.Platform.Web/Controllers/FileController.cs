@@ -10,6 +10,8 @@ using Vickn.Platform.MainTenance.AppFolders;
 
 namespace Vickn.Platform.Web.Controllers
 {
+    [AbpMvcAuthorize]
+    [DisableAuditing]
     public class FileController : PlatformControllerBase
     {
         private readonly IAppFolders _appFolders;
@@ -19,8 +21,6 @@ namespace Vickn.Platform.Web.Controllers
             _appFolders = appFolders;
         }
 
-        [AbpMvcAuthorize]
-        [DisableAuditing]
         public ActionResult DownloadTempFile(FileDto file)
         {
             var filePath = Path.Combine(_appFolders.TempFileDownloadFolder, file.FileToken);

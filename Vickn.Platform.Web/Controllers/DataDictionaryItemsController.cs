@@ -5,11 +5,14 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Web.Mvc.Authorization;
 using Vickn.Platform.DataDictionaries;
+using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.DataDictionaries.Dtos;
 
 namespace Vickn.Platform.Web.Controllers
 {
+    [AbpMvcAuthorize(DataDictionaryItemAppPermissions.DataDictionaryItem)]
     public class DataDictionaryItemsController : PlatformControllerBase
     {
         private IDataDictionaryItemAppService _dataDictionaryItemAppService;
@@ -26,6 +29,7 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
+        [AbpMvcAuthorize(DataDictionaryItemAppPermissions.DataDictionaryItem_CreateDataDictionaryItem,DataDictionaryItemAppPermissions.DataDictionaryItem_EditDataDictionaryItem)]
         public async Task<ActionResult> Create(int dataDictionaryId, int? id)
         {
             var result = await _dataDictionaryItemAppService.GetForEditAsync(new NullableIdDto(id));

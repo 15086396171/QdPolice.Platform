@@ -5,8 +5,10 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Web.Mvc.Authorization;
 using Vickn.PlatfForm.Utils.Pager;
 using Vickn.Platform.Authorization.Roles;
+using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.Roles;
@@ -15,6 +17,7 @@ using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Web.Controllers
 {
+    [AbpMvcAuthorize(RoleAppPermissions.Role)]
     public class RolesController : PlatformControllerBase
     {
         private IRoleAppService _roleAppService;
@@ -32,6 +35,7 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
+        [AbpMvcAuthorize(RoleAppPermissions.Role_CreateRole,RoleAppPermissions.Role_EditRole)]
         public async Task<ActionResult> Create(int? id)
         {
             var result = await _roleAppService.GetForEditAsync(new NullableIdDto<int>(id));

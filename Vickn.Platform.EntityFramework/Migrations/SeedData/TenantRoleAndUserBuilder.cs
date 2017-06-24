@@ -36,7 +36,7 @@ namespace Vickn.Platform.Migrations.SeedData
         private void CreateRolesAndUsers()
         {
             // RoleµÈ¼¶
-            var dic = _context.DataDictionaries.FirstOrDefault(p => p.Key == "RoleWeight");
+            var dic = _context.DataDictionaries.FirstOrDefault(p => p.Key == StaticDictionaryNames.Role_Weight);
             if (dic == null)
             {
                 dic = new DataDictionary()

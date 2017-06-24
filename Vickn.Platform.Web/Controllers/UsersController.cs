@@ -26,6 +26,7 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
+        [AbpMvcAuthorize(UserAppPermissions.User_CreateUser,UserAppPermissions.User_EditUser)]
         public async Task<ActionResult> Create(long? id, long? ouId)
         {
             var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
