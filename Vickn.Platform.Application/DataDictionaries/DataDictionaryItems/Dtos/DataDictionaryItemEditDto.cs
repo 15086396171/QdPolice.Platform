@@ -45,6 +45,24 @@ namespace Vickn.Platform.DataDictionaries.Dtos
         public string DisplayName { get; set; }
 
         /// <summary>
+        /// 编号
+        /// </summary>
+        [DisplayName("编号")]
+        public string Number { get; set; }
+
+        /// <summary>
+        /// 上级编号
+        /// </summary>
+        [DisplayName("上级编号")]
+        public string ParentNo { get; set; }
+
+        /// <summary>
+        /// 扩展字段，按*分隔
+        /// </summary>
+        [DisplayName("扩展字段")]
+        public string Extend { get; set; }
+
+        /// <summary>
         /// 键Id
         /// </summary>
 		[DisplayName("键Id")]

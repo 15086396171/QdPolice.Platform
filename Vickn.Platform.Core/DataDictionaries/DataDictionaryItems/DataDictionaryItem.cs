@@ -18,7 +18,7 @@ namespace Vickn.Platform.DataDictionaries
         }
 
         /// <summary>
-        /// 显示
+        /// 名称
         /// </summary>
         public string DisplayName { get; set; }
 
@@ -26,6 +26,21 @@ namespace Vickn.Platform.DataDictionaries
         /// 值
         /// </summary>
         public string Value { get; set; }
+
+        /// <summary>
+        /// 编号
+        /// </summary>
+        public string Number { get; set; }
+
+        /// <summary>
+        /// 上级编号
+        /// </summary>
+        public string ParentNo { get; set; }
+
+        /// <summary>
+        /// 扩展字段，按*分隔
+        /// </summary>
+        public string Extend { get; set; }
 
         /// <summary>
         /// 键Id

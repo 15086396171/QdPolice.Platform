@@ -106,6 +106,9 @@
     <!--//用于表格展示的数据信息的标题-->
     <text name="DataDictionaryItem.Value" value="值" />
     <text name="DataDictionaryItem.DisplayName" value="显示名" />
+    <text name="DataDictionaryItem.Number" value="编号" />
+    <text name="DataDictionaryItem.ParentNo" value="上级编号" />
+    <text name="DataDictionaryItem.Extend" value="扩展字段" />
     <text name="DataDictionaryItem.DataDictionaryId" value="键Id" />
 
     <text name="DataDictionaryItem" value="数据字典项管理" />

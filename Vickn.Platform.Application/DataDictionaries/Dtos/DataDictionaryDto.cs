@@ -33,7 +33,7 @@ namespace Vickn.Platform.DataDictionaries.Dtos
         /// <summary>
         /// 显示名
         /// </summary>
-		[DisplayName("显示名")]
+		[DisplayName("名称")]
         public string DisplayName { get; set; }
 
     }

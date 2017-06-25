@@ -24,11 +24,11 @@ namespace Vickn.Platform.DataDictionaries.Dtos
     [AutoMap(typeof(DataDictionary))]
     public class DataDictionaryEditDto
     {
-	    /// <summary>
+        /// <summary>
         ///   主键Id
         /// </summary>
         [DisplayName("主键Id")]
-		public int? Id{get;set;}
+        public int? Id { get; set; }
         /// <summary>
         /// 键名
         /// </summary>
@@ -40,7 +40,7 @@ namespace Vickn.Platform.DataDictionaries.Dtos
         /// <summary>
         /// 显示名
         /// </summary>
-		[DisplayName("显示名")]
+		[DisplayName("名称")]
         [Required]
         [MaxLength(16)]
         public string DisplayName { get; set; }
