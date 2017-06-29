@@ -9,7 +9,7 @@ namespace Vickn.Platform.Users
     {
         public const string DefaultPassword = "123456";
 
-        public virtual Guid? ProfilePictureId { get; set; }
+        public virtual string ProfilePictureId { get; set; }
 
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 

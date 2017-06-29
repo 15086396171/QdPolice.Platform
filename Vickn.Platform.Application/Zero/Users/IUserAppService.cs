@@ -5,6 +5,7 @@ using Abp.Application.Services.Dto;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Dto;
 using Vickn.Platform.Users.Dtos;
+using Vickn.Platform.Zero.Users.Dtos;
 
 namespace Vickn.Platform.Users
 {
@@ -90,6 +91,13 @@ namespace Vickn.Platform.Users
         /// <param name="input"></param>
         /// <returns></returns>
         Task ResetPasswordAsync(EntityDto<long> input);
+
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        Task ChangeProfilePic(ChangeProfilePicDto dto);
 
         #endregion
     }

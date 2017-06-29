@@ -1,11 +1,21 @@
-﻿@using Vickn.Platform
+﻿@using Abp.Extensions
+@using Vickn.Platform
 @using Vickn.Platform.Authorization
 @model Vickn.Platform.Web.Models.Layout.UserMenuOrLoginLinkViewModel
 
 @if (Model.LoginInformations != null)
 {
     <div class="dropdown profile-element">
-        <span><img alt="image" class="img-circle" src=""/></span>
+        <span>
+            @if (!Model.LoginInformations.User.ProfilePictureId.IsNullOrEmpty())
+            {
+                <img alt="image" class="img-circle" style="width: 64px; height: 64px;" id="user_profilePic" src="@Model.LoginInformations.User.ProfilePictureId" />
+            }
+            else
+            {
+                <img src="~/Images/头像.png" style="width: 64px; height: 64px;"  id="user_profilePic" class="img-circle"  />
+            }
+        </span>
         <a data-toggle="dropdown" class="dropdown-toggle" href="#">
             <span class="clear">
                 <span class="block m-t-xs"><strong class="font-bold">@Model.LoginInformations.User.Surname</strong> <b class="caret"></b></span>
@@ -28,5 +38,5 @@
         </ul>
     </div>
 
-  
+
 }

@@ -43,7 +43,7 @@ namespace Vickn.Platform.Users.Dtos
         [MaxLength(8)]
         public string Name { get; set; }
 
-        public virtual Guid? ProfilePictureId { get; set; }
+        public string ProfilePictureId { get; set; }
 
         [DisplayName("下次登录修改密码")]
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
@@ -61,7 +61,7 @@ namespace Vickn.Platform.Users.Dtos
         [DisplayName("电话号码")]
         [Required]
         [MaxLength(20)]
-        [RegularExpression(RegularHelper.PhoneRegularExpression,ErrorMessage = RegularHelper.PhoneErrorMsg)]
+        [RegularExpression(RegularHelper.PhoneRegularExpression, ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -69,7 +69,7 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("登录名")]
         [Required]
-        [RegularExpression(RegularHelper.UserNameRegularExpression,ErrorMessage = RegularHelper.UserNameErrorMsg)]
+        [RegularExpression(RegularHelper.UserNameRegularExpression, ErrorMessage = RegularHelper.UserNameErrorMsg)]
         public string UserName { get; set; }
 
         /// <summary>
@@ -77,7 +77,7 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("电子邮件")]
         [Required]
-        [RegularExpression(RegularHelper.EmailRegularExpression,ErrorMessage = RegularHelper.EmailErrorMsg)]
+        [RegularExpression(RegularHelper.EmailRegularExpression, ErrorMessage = RegularHelper.EmailErrorMsg)]
         public string EmailAddress { get; set; }
 
         [DisplayName("是否启用")]

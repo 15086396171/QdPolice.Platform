@@ -19,6 +19,7 @@ using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
+using Vickn.Platform.Zero.Users.Dtos;
 
 namespace Vickn.Platform.Users
 {
@@ -327,6 +328,17 @@ namespace Vickn.Platform.Users
             user.ShouldChangePasswordOnNextLogin = true;
 
             await UserManager.UpdateAsync(user);
+        }
+
+        /// <summary>
+        /// 修改用户头像
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        public async Task ChangeProfilePic(ChangeProfilePicDto dto)
+        {
+            var user = await _userRepository.FirstOrDefaultAsync(dto.Id);
+            user.ProfilePictureId = dto.ProfilePictureId;
         }
 
         #endregion

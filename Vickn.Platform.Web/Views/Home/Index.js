@@ -46,6 +46,10 @@
         abp.event.on('abp.notifications.received', function (userNotification) {
             getUserNotificationsAsync();
         });
-
+        // 修改头像成功后刷新头像
+        abp.event.on('abp.profilePic.refalsh', function (profileSrc) {
+            alert(profileSrc);
+            $("#user_profilePic").attr("src", profileSrc);
+        });
     });
 })(jQuery);
