@@ -1517,7 +1517,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
-    <Folder Include="crop-avatar\" />
     <Folder Include="_GeneratedCode\" />
   </ItemGroup>
   <ItemGroup>
