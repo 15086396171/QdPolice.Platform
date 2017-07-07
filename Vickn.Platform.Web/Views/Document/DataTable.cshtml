@@ -1,0 +1,95 @@
+﻿<div class="row">
+    <div class="col-sm-12">
+
+        <div class="ibox">
+            <div class="ibox-title">
+                <h5>Datatables 扩展Api</h5>
+                <div class="ibox-tools">
+
+                </div>
+            </div>
+            <div class="ibox-content">
+                <div class="project-list">
+                    <ul class="unstyled">
+                        <li>
+                            <h3>var options={</h3>
+                        </li>
+                        <li>&nbsp;</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" data-tips="获取列表数据设置" class="tips">listAction: {</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:;" class="tips" data-tips="[当method不存在时必选]获取数据Url，一般直接调用服务层中getPagedAsync，如：abp.appPath + 'api/services/app/role/getPagedAsync'">url:"",</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:;" class="tips" data-tips="[可选]替换默认的输入项，控制分页数量">input: [ </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; {</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="分页数量,默认是10">maxResultCount:10 </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:;" class="tips" data-tips="[当method不存在时必选]数据过滤数组，实现后台查找，通过Key对应GetXXXInput中的属性">filters: [ </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; {</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="对应GetXXXInput中的属性">key:"filterText" </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="获取值的元素选择器">selector: $("#filterText") </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; <a href="javascript:;" class="tips" data-tips="自定义获取数据方法，本方法需要自己实现datatable取值回调，不建议使用，当该方法存在时url，filter无效</br>参数说明：data：Datatables构造的请求参数，如果开启了服务器模式( serverSideOption ) 这个还会包含服务器请求的一些参数</br>callback:获取数据后传值给datatable的回调函数</br>setting:datatable设置参数">method: function (data, callback, setting) {</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// TODO:实现获取数据后回调</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li>&nbsp;</li>
+
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" data-tips="处理table中定义的列" class="tips"> fileds: [</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; {</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[必选]显示列的数据字段，对应Dto中属性，可为导航属性，如user.name">"data":"id" </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]列渲染方法,返回渲染后的文本或dom对象</br>参数说明：data：在data中定义的数据</br>type:数据类型 - 有这些值：filter、display、type、sort</br>row:整个row的数据</br>meta:单元格的附加信息</br>参考http://www.datatables.club/reference/option/columns.render.html">render: function (data, type, row, meta) { </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;},</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; ],</li>
+
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" data-tips="处理列的事件" class="tips">methods: [</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; {</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[必选]列事件名称</br>预定义了editAction和deleteAction，只需要actionName和url，也可以重写">actionName: "editAction", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[必选]列上的选择器">selector: "a.edit", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]事件方法</br>默认：click">event: "click", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]实现自定义方法，自定义方法时以下其他参数无效</br>参数说明:data:当前列的数据</br>tr:当前列jq对象">action: function (data,tr) { </a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// TODO:处理自定义事件</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;},</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]请求地址，根据actionOptions设置跳转或请求">url: "", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]请求设置">actionOptions: {</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]是否是ajax请求,ajax请求以url为请求地址，参数为当前行id</br>默认：否">isAjax:false,</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]是否确认请求</br>默认：是">isConfirm:true,</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]提示文本</br>默认：确认操作？">confirmMsg:"确认操作？",</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]是否成功提示</br>默认：true">isNeedSuccessAlert:true,</a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]成功提示文本</br>默认：操作成功">successMsg:"操作成功",</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; ],</li>
+
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" data-tips="处理添加方法和批量删除" class="tips"> commonMethods: [</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; {</li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[必选]列事件名称</br>预定义了createAction和batchAction，只需要actionName和url，也可以重写">actionName: "createAction", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]跳转地址或ajax请求地址">url: "", </a></li>
+                        <li> &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:;" class="tips" data-tips="[可选]重写自定义处理方法">action:function() {</a></li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;// TODO:自定义添加或批量删除</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;},</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; },</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp; ],</li>
+
+                        <li>}</li>
+                        <li>&nbsp;</li>
+                        <li>生成table:$(selector).createDatatable(options);</li>
+                        <li>&nbsp;</li>
+                        <li>更多用法，参考：<a href="http://www.datatables.club/" target="blank">http://www.datatables.club/</a></li>
+                        <li>注：1.在js对应Service中Dto全部使用驼峰命名法（Camel-Case）</li>
+                        <li>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2.页面其他事件自行实现</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $(".tips").click(function () {
+                layer.tips($(this).data("tips"), $(this), {
+                    tips: [2, '#3595CC'],
+                    time: 60 * 1000
+                });
+            });
+        })
+    </script>
+}

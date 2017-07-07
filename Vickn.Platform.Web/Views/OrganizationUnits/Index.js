@@ -85,12 +85,10 @@
                 {
                     actionName: "createAction",
                     action: function () {
-                        $("#create").click(function () {
                             window.location.href = abp
                                 .appPath +
                                 "OrganizationUnits/Create?parentId=" +
                                 _$parentId.val();
-                        });
                     }
                 },
                 {

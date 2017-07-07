@@ -1406,6 +1406,7 @@
     <Compile Include="Controllers\AuditLogsController.cs" />
     <Compile Include="Controllers\DataDictionariesController.cs" />
     <Compile Include="Controllers\DataDictionaryItemsController.cs" />
+    <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
@@ -1471,6 +1472,7 @@
     <Content Include="Views\DataDictionaries\Create.cshtml" />
     <Content Include="Views\DataDictionaryItems\Index.cshtml" />
     <Content Include="Views\DataDictionaryItems\Create.cshtml" />
+    <Content Include="Views\Document\DataTable.cshtml" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

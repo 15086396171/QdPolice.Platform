@@ -10,6 +10,8 @@
 
         public const string Pages_Maintenance = "Pages.Maintenance";
 
+        public const string Pages_Api = "Pages.Api";
+
         public const string Pages_Hangfire = "Pages.Hangfire";
 
     }
