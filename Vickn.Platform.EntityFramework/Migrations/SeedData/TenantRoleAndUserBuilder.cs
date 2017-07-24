@@ -49,7 +49,7 @@ namespace Vickn.Platform.Migrations.SeedData
                           new DataDictionaryItem("二级",9.ToString()),
                           new DataDictionaryItem("三级",8.ToString()),
                           new DataDictionaryItem("四级",7.ToString()),
-                          new DataDictionaryItem("五级",8.ToString()),
+                          new DataDictionaryItem("五级",6.ToString()),
                       }
                 };
                 _context.DataDictionaries.Add(dic);
