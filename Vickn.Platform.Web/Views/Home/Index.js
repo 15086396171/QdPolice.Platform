@@ -29,6 +29,10 @@
                         makeNotificationAsRead(id);
                     });
                 } else {
+                    _$message.html("");
+                    _$messageContent.children("li.m-t-xs").remove();
+                    _$messageContent.children("li.divider").remove();
+
                     //_$messageContent.append('<li><div class="text-center link-block"><a class="J_menuItem" href="/Notifications/MyNotification"><i class="fa fa-envelope"></i> <strong> 查看所有消息</strong></a></div></li>');
                 }
             });
