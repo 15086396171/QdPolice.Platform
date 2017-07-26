@@ -7,7 +7,7 @@
             var _settings = {
                 ordering: settings.ordering != undefined ? settings.ordering : false, //取消默认排序查询,否则复选框一列会出现小箭头
                 autoWidth: settings.autoWidth != undefined ? settings.autoWidth : true, //禁用自动调整列宽
-                "aLengthMenu": [customerInput.maxResultCount || 10],
+                "aLengthMenu": [customerInput.maxResultCount || 15],
                 bPaginate: settings.bPaginate != undefined ? settings.bPaginate : true,
                 info: settings.info != undefined ? settings.info : true,
                 serverSide: true, //启用服务器端分页
