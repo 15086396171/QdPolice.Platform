@@ -86,7 +86,6 @@ namespace Vickn.Platform.Web.Controllers
         [DisableAuditing]
         public async Task<JsonResult> Login(LoginViewModel loginModel, string returnUrl = "", string returnUrlHash = "")
         {
-            Thread.Sleep(2000);
             var loginResult = await GetLoginResultAsync(
                 loginModel.UsernameOrEmailAddress,
                 loginModel.Password,
