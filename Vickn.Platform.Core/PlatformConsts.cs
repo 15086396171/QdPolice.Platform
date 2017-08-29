@@ -2,7 +2,7 @@
 {
     public static class PlatformConsts
     {
-        public const string LocalizationSourceName = "Platform";
+        public const string LocalizationSourceName = "Platform-zh-CN";
         //public const string LocalizationSourceName = "Platform-es";
 
         public const string AppName = "Vickn后台管理系统";
