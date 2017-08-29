@@ -12,7 +12,7 @@
     abp.ajax = function (userOptions) {
         userOptions = userOptions || {};
 
-        var options = $.extend({}, abp.ajax.defaultOpts, userOptions);
+        var options = $.extend(true, {}, abp.ajax.defaultOpts, userOptions);
         options.success = undefined;
         options.error = undefined;
 
@@ -26,15 +26,9 @@
                         userOptions.success && userOptions.success(data);
                     }
                 }).fail(function (jqXHR) {
-                    try {
-                        var json = $.parseJSON(jqXHR.responseText);
-                        if (json && json.__abp) {
-                            abp.ajax.handleResponse(json, userOptions, $dfd, jqXHR);
-                        } else {
-                            abp.ajax.handleNonAbpErrorResponse(jqXHR, userOptions, $dfd);
-                        }
-                    }
-                    catch (ex){
+                    if (jqXHR.responseJSON && jqXHR.responseJSON.__abp) {
+                        abp.ajax.handleResponse(jqXHR.responseJSON, userOptions, $dfd, jqXHR);
+                    } else {
                         abp.ajax.handleNonAbpErrorResponse(jqXHR, userOptions, $dfd);
                     }
                 });
@@ -45,7 +39,10 @@
         defaultOpts: {
             dataType: 'json',
             type: 'POST',
-            contentType: 'application/json'
+            contentType: 'application/json',
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest'
+            }
         },
 
         defaultError: {
