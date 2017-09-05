@@ -127,6 +127,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="DataDictionaries\Authorization\DataDictionaryAppAuthorizationProvider.cs" />
     <Compile Include="DataDictionaries\Authorization\DataDictionaryAppPermissions.cs" />
     <Compile Include="DataDictionaries\DataDictionary.cs" />
@@ -137,6 +138,7 @@
     <Compile Include="DataDictionaries\_DataDictionaryReadme.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
+    <Compile Include="BusinessExceptions\ErrorCode.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
@@ -204,6 +206,10 @@
     <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerPxoxy.csproj">
       <Project>{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}</Project>
       <Name>Vickn.Platform.WorkerPxoxy</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
+      <Project>{afa147e0-7e8e-4832-9193-6161d90180fd}</Project>
+      <Name>Vickn.PlatfForm.Utils</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />
