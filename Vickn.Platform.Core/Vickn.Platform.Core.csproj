@@ -127,6 +127,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="DataDictionaries\Authorization\DataDictionaryAppAuthorizationProvider.cs" />
     <Compile Include="DataDictionaries\Authorization\DataDictionaryAppPermissions.cs" />
