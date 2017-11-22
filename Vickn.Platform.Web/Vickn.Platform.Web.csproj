@@ -1405,6 +1405,7 @@
     <Compile Include="Controllers\DataDictionaryItemsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\FileController.cs" />
+    <Compile Include="Controllers\FileRecordController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MaintenanceController.cs" />
     <Compile Include="Controllers\OrganizationUnitsController.cs" />
@@ -1414,6 +1415,7 @@
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\Account\ResetPasswordFormViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
+    <Compile Include="Models\FileRecord\FileUploadViewModel.cs" />
     <Compile Include="Models\Files\CropperViewModel.cs" />
     <Compile Include="Models\Layout\UserMenuOrLoginLinkViewModel.cs" />
     <Compile Include="Models\Account\LoginFormViewModel.cs" />

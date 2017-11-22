@@ -4,6 +4,8 @@ using Abp.Zero.EntityFramework;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
+using Vickn.Platform.FileRecords;
+using Vickn.Platform.FileRecords.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
 
@@ -16,6 +18,8 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<DataDictionary> DataDictionaries { get; set; }
 
         public IDbSet<DataDictionaryItem> DataDictionaryItems { get; set; }
+
+        public IDbSet<FileRecord> FileRecords { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -60,6 +64,7 @@ namespace Vickn.Platform.EntityFramework
 
         private void PlatformConfiguration(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Configurations.Add(new FileRecordCfg());
             modelBuilder.Configurations.Add(new DataDictionaryCfg());
             modelBuilder.Configurations.Add(new DataDictionaryItemCfg());
         }

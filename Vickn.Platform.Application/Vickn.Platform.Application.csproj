@@ -171,6 +171,12 @@
     <Compile Include="DataDictionaries\Dtos\GetDataDictionaryInput.cs" />
     <Compile Include="DataDictionaries\IDataDictionaryAppService.cs" />
     <Compile Include="Dtos\FileDto.cs" />
+    <Compile Include="FileRecords\Dtos\FileRecordDto.cs" />
+    <Compile Include="FileRecords\Dtos\FileRecordEditDto.cs" />
+    <Compile Include="FileRecords\Dtos\FileRecordForEdit.cs" />
+    <Compile Include="FileRecords\Dtos\GetFileRecordInput.cs" />
+    <Compile Include="FileRecords\FileRecordAppService.cs" />
+    <Compile Include="FileRecords\IFileRecordAppService.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAndUser.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAppService.cs" />
     <Compile Include="MainTenance\Auditing\Dto\AuditLogListDto.cs" />

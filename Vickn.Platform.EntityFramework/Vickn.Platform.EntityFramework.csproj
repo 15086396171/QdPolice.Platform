@@ -135,6 +135,7 @@
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\DataDictionaryCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\DataDictionaryItems\DataDictionaryItemCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\StaticDictionaryNames.cs" />
+    <Compile Include="EntityFramework\EntityMapper\FileRecords\FileRecordCfg.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\PlatformRepositoryBase.cs" />
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />

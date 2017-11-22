@@ -140,6 +140,11 @@
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
     <Compile Include="BusinessExceptions\ErrorCode.cs" />
+    <Compile Include="FileRecords\Authorization\FileRecordAppAuthorizationProvider.cs" />
+    <Compile Include="FileRecords\Authorization\FileRecordAppPermissions.cs" />
+    <Compile Include="FileRecords\FileRecord.cs" />
+    <Compile Include="FileRecords\FileRecordManager.cs" />
+    <Compile Include="FileRecords\_FileRecordReadme.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
