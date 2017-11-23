@@ -76,10 +76,10 @@ namespace Vickn.Platform.Web.Controllers
                 foreach (string fileNo in Request.Files)
                 {
                     var file = Request.Files[fileNo];
-                    if (!file.FileName.Contains(".") || !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".") + 1)))
+                    if (!file.FileName.Contains(".") || !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1)))
                         throw new UserFriendlyException("文件格式不正确");
 
-                    var fileName = DateTime.Now.Ticks + "_" + file.FileName;
+                    var fileName = DateTime.Now.Ticks + file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1);
 
                     file.SaveAs(savePath + fileName);
 
