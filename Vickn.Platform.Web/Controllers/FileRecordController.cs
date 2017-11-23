@@ -40,10 +40,10 @@ namespace Vickn.Platform.Web.Controllers
                 throw new UserFriendlyException("文件不存在");
 
             if (!file.FileName.Contains(".") ||
-                !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".") + 1)))
+                !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1)))
                 throw new UserFriendlyException("文件不存在");
 
-            var fileName = DateTime.Now.Ticks + "_" + file.FileName;
+            var fileName = DateTime.Now.Ticks  + file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1);
             try
             {
                 file.SaveAs(savePath + fileName);
