@@ -19,10 +19,5 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// 编号
         /// </summary>
         public string No { get; set; }
-
-        /// <summary>
-        /// 电量
-        /// </summary>
-        public string Battery { get; set; }
     }
 }

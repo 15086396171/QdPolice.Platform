@@ -42,8 +42,6 @@ namespace Vickn.Platform.HandheldTerminals.Devices.EntityMapper
 			Property(a => a.Imei).HasMaxLength(32);
 		    // 编号
 			Property(a => a.No).HasMaxLength(16);
-		    // 电量
-			Property(a => a.Battery).HasMaxLength(16);
 
 		    HasRequired(p => p.User).WithMany().HasForeignKey(p => p.CreatorUserId);
 		}

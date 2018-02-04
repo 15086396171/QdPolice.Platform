@@ -13,10 +13,15 @@
 using Abp.Domain.Repositories;
 using Abp.Domain.Services;
 using System;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Threading.Tasks;
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.HandheldTerminals.Devices
 {
-	 /// <summary>
+    /// <summary>
     /// 设备管理
     /// </summary>
     public class DeviceManager : IDomainService
@@ -38,6 +43,37 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// </summary>
         private void Init()
         {
+        }
+
+        public async Task<DeviceLoginResult> DeviceLoginAsync(string imei, User user)
+        {
+            var device = await _deviceRepository.FirstOrDefaultAsync(p => p.Imei == imei);
+            if (device == null)
+            {
+                device = new Device()
+                {
+                    Imei = imei,
+                    User = user,
+                    No = await GetNo()
+                };
+                await _deviceRepository.InsertAsync(device);
+                return DeviceLoginResult.Success;
+            }
+            if (device.CreatorUserId != user.Id)
+            {
+                return DeviceLoginResult.NotMe;
+            }
+            return DeviceLoginResult.Success;
+        }
+
+        private async Task<string> GetNo()
+        {
+            var device = await _deviceRepository.GetAll().OrderByDescending(p => p.Id).FirstOrDefaultAsync();
+            if (device != null)
+            {
+                return (int.Parse(device.No) + 1).ToString("D5");
+            }
+            return "00001";
         }
     }
 }

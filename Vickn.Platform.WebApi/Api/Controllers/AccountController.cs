@@ -13,6 +13,7 @@ using Vickn.Platform.Users;
 using Microsoft.Owin.Infrastructure;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.OAuth;
+using Vickn.Platform.HandheldTerminals.Devices;
 
 namespace Vickn.Platform.Api.Controllers
 {
@@ -22,14 +23,17 @@ namespace Vickn.Platform.Api.Controllers
 
         private readonly LogInManager _logInManager;
 
+        private readonly DeviceManager _deviceManager;
+
         static AccountController()
         {
             OAuthBearerOptions = new OAuthBearerAuthenticationOptions();
         }
 
-        public AccountController(LogInManager logInManager)
+        public AccountController(LogInManager logInManager, DeviceManager deviceManager)
         {
             _logInManager = logInManager;
+            _deviceManager = deviceManager;
             LocalizationSourceName = PlatformConsts.LocalizationSourceName;
         }
 
@@ -44,6 +48,8 @@ namespace Vickn.Platform.Api.Controllers
                 loginModel.TenancyName
                 );
 
+            await DeviceLogin(loginModel, loginResult);
+
             var ticket = new AuthenticationTicket(loginResult.Identity, new AuthenticationProperties());
 
             var currentUtc = new SystemClock().UtcNow;
@@ -51,6 +57,15 @@ namespace Vickn.Platform.Api.Controllers
             ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(1));
 
             return new AjaxResponse(OAuthBearerOptions.AccessTokenFormat.Protect(ticket));
+        }
+
+        private async Task DeviceLogin(LoginModel loginModel, AbpLoginResult<Tenant, User> loginResult)
+        {
+            var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginResult.User);
+            if (deviceLoginResult == DeviceLoginResult.NotMe)
+            {
+                throw new UserFriendlyException("登录失败", "设备已绑定其他账号");
+            }
         }
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)

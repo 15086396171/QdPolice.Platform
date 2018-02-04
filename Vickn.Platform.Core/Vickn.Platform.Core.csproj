@@ -148,6 +148,7 @@
     <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppAuthorizationProvider.cs" />
     <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppPermissions.cs" />
     <Compile Include="HandheldTerminals\Devices\Device.cs" />
+    <Compile Include="HandheldTerminals\Devices\DeviceLoginResult.cs" />
     <Compile Include="HandheldTerminals\Devices\DeviceManager.cs" />
     <Compile Include="HandheldTerminals\Devices\_DeviceReadme.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
