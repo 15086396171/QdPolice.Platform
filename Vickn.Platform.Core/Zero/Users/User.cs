@@ -11,6 +11,16 @@ namespace Vickn.Platform.Users
 
         public virtual string ProfilePictureId { get; set; }
 
+        /// <summary>
+        /// 警号
+        /// </summary>
+        public string PoliceNo { get; set; }
+
+        /// <summary>
+        /// 职务
+        /// </summary>
+        public string Position { get; set; }
+
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 
         public static string CreateRandomPassword()

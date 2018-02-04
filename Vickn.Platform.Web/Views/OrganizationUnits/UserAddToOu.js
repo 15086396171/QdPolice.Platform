@@ -20,7 +20,7 @@
                     }
                 ],
                 input: {
-                    maxResultCount: 50
+                    maxResultCount: 100
                 }
             },
             fileds: [

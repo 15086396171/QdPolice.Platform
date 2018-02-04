@@ -37,10 +37,14 @@ namespace Vickn.Platform.Users.Dtos
         [DisplayName("用户名")]
         public string UserName { get; set; }
         /// <summary>
-        /// 显示名
+        /// 警号
         /// </summary>
-        [DisplayName("显示名")]
-        public string Surname { get; set; }
+        public string PoliceNo { get; set; }
+
+        /// <summary>
+        /// 职务
+        /// </summary>
+        public string Position { get; set; }
         /// <summary>
         /// 是否邮件确认
         /// </summary>

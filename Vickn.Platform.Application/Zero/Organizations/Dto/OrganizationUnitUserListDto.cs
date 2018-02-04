@@ -11,13 +11,9 @@ namespace Vickn.Platform.Organizations.Dto
         public bool IsChecked { get; set; }
         public string Name { get; set; }
 
-        public string Surname { get; set; }
-
         public string UserName { get; set; }
 
         public string EmailAddress { get; set; }
-
-        public Guid? ProfilePictureId { get; set; }
 
         public DateTime AddedTime { get; set; }
     }

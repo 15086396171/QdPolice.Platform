@@ -229,13 +229,13 @@ namespace Vickn.Platform.Users
         public virtual async Task<UserEditDto> CreateUserAsync(GetUserForEdit input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
-
-
             var user = input.UserEditDto.MapTo<User>();
 
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
             user.IsEmailConfirmed = true;
+            user.EmailAddress = user.EmailAddress.IsNullOrEmpty() ? user.Name + "@default.com" : user.EmailAddress;
+            user.Surname = user.Name;
             // 默认启用
             user.IsActive = true;
 

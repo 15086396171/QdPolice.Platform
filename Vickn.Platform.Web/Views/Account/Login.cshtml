@@ -8,35 +8,35 @@
 @section Scripts
 {
 
-    @Html.IncludeScript("~/Views/Account/Login.js")
+  @Html.IncludeScript("~/Views/Account/Login.js")
 }
 
 <div class="middle-box text-center loginscreen  animated fadeInDown">
-    <div>
-        <h1 class="logo-name">V<small>ickn</small></h1>
+  <div>
+    <h1 class="logo-name">V<small>ickn</small></h1>
+  </div>
+  <h3>欢迎登录</h3>
+  <form id="LoginForm" class="m-t" role="form" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
+    @if (Model.IsMultiTenancyEnabled)
+    {
+        <div class="form-group">
+          <input type="text" class="form-control" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
+        </div>
+
+    }
+    else
+    {
+        <input type="hidden" id="TenancyName" value="">
+    }
+
+    <input type="checkbox" hidden="hidden" id="RememberMeInput">
+
+    <div class="form-group">
+      <input type="text" placeholder="@L("UserNameOrEmail")" class="form-control" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Vickn.Platform.Users.User.MaxEmailAddressLength">
     </div>
-    <h3>欢迎登录</h3>
-    <form id="LoginForm" class="m-t" role="form" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
-        @if (Model.IsMultiTenancyEnabled)
-        {
-        <div class="form-group">
-            <input type="text" class="form-control" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
-        </div>
-
-        }
-            else
-            {
-                <input type="hidden" id="TenancyName" value="">
-            }
-
-        <input type="checkbox" hidden="hidden" id="RememberMeInput">
-
-        <div class="form-group">
-            <input type="text" placeholder="@L("UserNameOrEmail")" class="form-control" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Vickn.Platform.Users.User.MaxEmailAddressLength">
-        </div>
-        <div class="form-group">
-            <input type="password" class="form-control" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
-        </div>
-        <button id="LoginButton" type="submit" class="btn btn-primary block full-width m-b"> &nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;</button>
-    </form>
+    <div class="form-group">
+      <input type="password" class="form-control" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
+    </div>
+    <button id="LoginButton" type="submit" class="btn btn-primary block full-width m-b"> &nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;</button>
+  </form>
 </div>

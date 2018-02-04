@@ -36,9 +36,10 @@
                     data: "name"
                 },
                 { "data": "userName" },
-                { "data": "surname" },
-                { "data": "emailAddress" },
+                { "data": "policeNo" },
+                { "data": "position" },
                 { "data": "phoneNumber" },
+              { "data": "emailAddress" },
                 {
                     "data": "isActive",
                     render: function (data, type, row, meta) {

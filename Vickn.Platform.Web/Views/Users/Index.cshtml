@@ -11,55 +11,56 @@
     ViewBag.ActiveMenu = "Users"; //The menu item will be active for this page.
 }
 <div class="row animated fadeInRight">
-    <div class="col-md-1">
-        <div class="organizationUnit ztree"></div>
-    </div>
-    <div class="col-md-11">
-        <div class="ibox-content">
-            <div class="form-inline">
-                <div class="form-group">
-                    @if (IsGranted(UserAppPermissions.User_DeleteUser))
-                    {
-                        <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
-                    }
-                    @if (IsGranted(UserAppPermissions.User_CreateUser))
-                    {
-                        <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
-                            <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
-                        </a>
-                    }
-                    <input type="text" placeholder="@L("User.Name")" class="form-control" id="name" style="width: 250px;" />
-                    <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
-                    <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
-                </div>
-            </div>
+  <div class="col-md-1">
+    <div class="organizationUnit ztree"></div>
+  </div>
+  <div class="col-md-11">
+    <div class="ibox-content">
+      <div class="form-inline">
+        <div class="form-group">
+          @if (IsGranted(UserAppPermissions.User_DeleteUser))
+          {
+              <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+          }
+          @if (IsGranted(UserAppPermissions.User_CreateUser))
+          {
+              <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
+                <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
+              </a>
+          }
+          <input type="text" placeholder="@L("User.Name")" class="form-control" id="name" style="width: 250px;" />
+          <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+          <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
         </div>
+      </div>
+    </div>
 
-        <div class="ibox-content">
-            <table class="table table-border table-bordered table-hover table-bg dataTable">
-                <thead>
-                    <tr>
-                        <th width="25"><input type="checkbox" class="checkall"></th>
-                        <th>@L("User.Name")</th>
-                        <th>@L("User.UserName")</th>
-                        <th>@L("User.DisplayName")</th>
-                        <th>@L("Email")</th>
-                        <th>@L("Phone")</th>
-                        <th>@L("IsEnable")</th>
-                        <th>@L("LastLoginTime")</th>
-                        <th>@L("Operational")</th>
-                    </tr>
-                </thead>
-                <tbody></tbody>
-            </table>
-        </div>
+    <div class="ibox-content">
+      <table class="table table-border table-bordered table-hover table-bg dataTable">
+        <thead>
+          <tr>
+            <th width="25"><input type="checkbox" class="checkall"></th>
+            <th>@L("User.Name")</th>
+            <th>@L("User.UserName")</th>
+            <th>警号</th>
+            <th>职务</th>
+            <th>@L("Phone")</th>
+            <th>@L("Email")</th>
+            <th>@L("IsEnable")</th>
+            <th>@L("LastLoginTime")</th>
+            <th>@L("Operational")</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
     </div>
+  </div>
 </div>
 @section styles{
-    @Styles.Render("~/Bundles/lib/css/ztree/metro")
+  @Styles.Render("~/Bundles/lib/css/ztree/metro")
 }
 @section scripts{
-    @Scripts.Render("~/Bundles/lib/js/ztree/core")
-    @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
-    @Html.IncludeScript("~/Views/Users/Index.js")
+  @Scripts.Render("~/Bundles/lib/js/ztree/core")
+  @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
+  @Html.IncludeScript("~/Views/Users/Index.js")
 }

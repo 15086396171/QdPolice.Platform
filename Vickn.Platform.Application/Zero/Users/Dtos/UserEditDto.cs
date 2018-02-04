@@ -28,7 +28,6 @@ namespace Vickn.Platform.Users.Dtos
     [AutoMap(typeof(User))]
     public class UserEditDto
     {
-
         /// <summary>
         ///   主键Id
         /// </summary>
@@ -49,11 +48,17 @@ namespace Vickn.Platform.Users.Dtos
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 
         /// <summary>
-        /// 显示名
+        /// 警号
         /// </summary>
-        [DisplayName("显示名")]
+        [DisplayName("警号")]
         [Required]
-        public string Surname { get; set; }
+        public string PoliceNo { get; set; }
+
+        /// <summary>
+        /// 职务
+        /// </summary>
+        [DisplayName("职务")]
+        public string Position { get; set; }
 
         /// <summary>
         /// 电话号码.
@@ -76,7 +81,6 @@ namespace Vickn.Platform.Users.Dtos
         /// 电子邮件
         /// </summary>
         [DisplayName("电子邮件")]
-        [Required]
         [RegularExpression(RegularHelper.EmailRegularExpression, ErrorMessage = RegularHelper.EmailErrorMsg)]
         public string EmailAddress { get; set; }
 
