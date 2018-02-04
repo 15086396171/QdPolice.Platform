@@ -14,5 +14,10 @@
 
         public const string Pages_Hangfire = "Pages.Hangfire";
 
+        /// <summary>
+        /// 手持终端管理
+        /// </summary>
+        public const string Pages_HandheldTerminal = "Pages.HandheldTerminal";
+
     }
 }

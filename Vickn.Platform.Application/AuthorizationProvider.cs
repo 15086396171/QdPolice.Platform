@@ -2,6 +2,7 @@
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.DataDictionaries.Authorization;
+using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -24,6 +25,7 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<AuditLogAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<DataDictionaryAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<DataDictionaryItemAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<DeviceAppAuthorizationProvider>();
 
         }
     }

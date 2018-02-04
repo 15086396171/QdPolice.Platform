@@ -118,7 +118,28 @@
     <text name="CreateDataDictionaryItem" value="添加数据字典项" />
     <text name="EditDataDictionaryItem" value="更新数据字典项" />
     <text name="DeleteDataDictionaryItem" value="删除数据字典项" />
+    <text name="Pages.HandheldTerminal" value="手持终端管理" />
+    <!-- 设备管理 -->
 
+
+    <text name="	DeviceHeaderInfo" value="设备信息列表" />
+    <text name="DeviceDeleteWarningMessage" value="设备名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="DeviceName" value="设备" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="Device.User" value="User" />
+    <text name="Device.Imei" value="IMEI" />
+    <text name="Device.No" value="编号" />
+    <text name="Device.Battery" value="电量" />
+    <text name="Device.LastModificationTime" value="最后编辑时间" />
+    <text name="Device.CreationTime" value="创建时间" />
+
+
+    <text name="Device" value="设备管理" />
+    <text name="CreateDevice" value="添加设备" />
+    <text name="EditDevice" value="编辑设备" />
+    <text name="DeleteDevice" value="删除设备" />
 
   </texts>
 </localizationDictionary>

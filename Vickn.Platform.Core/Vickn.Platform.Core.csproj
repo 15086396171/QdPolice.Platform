@@ -145,6 +145,11 @@
     <Compile Include="FileRecords\FileRecord.cs" />
     <Compile Include="FileRecords\FileRecordManager.cs" />
     <Compile Include="FileRecords\_FileRecordReadme.cs" />
+    <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppAuthorizationProvider.cs" />
+    <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppPermissions.cs" />
+    <Compile Include="HandheldTerminals\Devices\Device.cs" />
+    <Compile Include="HandheldTerminals\Devices\DeviceManager.cs" />
+    <Compile Include="HandheldTerminals\Devices\_DeviceReadme.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
@@ -209,16 +214,18 @@
     <EmbeddedResource Include="Localization\Source\Platform-nl-NL.xml" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerPxoxy.csproj">
+    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerProxy.csproj">
       <Project>{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}</Project>
-      <Name>Vickn.Platform.WorkerPxoxy</Name>
+      <Name>Vickn.Platform.WorkerProxy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
       <Project>{afa147e0-7e8e-4832-9193-6161d90180fd}</Project>
       <Name>Vickn.PlatfForm.Utils</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="HandheldTerminals\PhoneWhites\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

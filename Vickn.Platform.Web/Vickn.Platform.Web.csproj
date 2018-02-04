@@ -1551,9 +1551,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerPxoxy.csproj">
+    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerProxy.csproj">
       <Project>{83772ce0-5546-44ad-8f5c-2cfeeb4a1e0f}</Project>
-      <Name>Vickn.Platform.WorkerPxoxy</Name>
+      <Name>Vickn.Platform.WorkerProxy</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
       <Project>{afa147e0-7e8e-4832-9193-6161d90180fd}</Project>
@@ -1571,9 +1571,9 @@
       <Project>{3979f157-deb0-4878-ab1d-4cef6b5a1300}</Project>
       <Name>Vickn.Platform.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Vickn.Platform.HangFire\Vickn.Platform.WorkerPxoxy.HangFire.csproj">
+    <ProjectReference Include="..\Vickn.Platform.HangFire\Vickn.Platform.WorkerProxy.HangFire.csproj">
       <Project>{51f40ec8-c5ac-48c6-a756-1d84f2a469d3}</Project>
-      <Name>Vickn.Platform.WorkerPxoxy.HangFire</Name>
+      <Name>Vickn.Platform.WorkerProxy.HangFire</Name>
     </ProjectReference>
     <ProjectReference Include="..\Vickn.Platform.WebApi\Vickn.Platform.WebApi.csproj">
       <Project>{5eb52d3d-09fd-463a-b02a-8d9856bd3724}</Project>

@@ -107,9 +107,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerPxoxy.csproj">
+    <ProjectReference Include="..\Platform.WorkerPxoxy\Vickn.Platform.WorkerProxy.csproj">
       <Project>{83772CE0-5546-44AD-8F5C-2CFEEB4A1E0F}</Project>
-      <Name>Vickn.Platform.WorkerPxoxy</Name>
+      <Name>Vickn.Platform.WorkerProxy</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -6,6 +6,8 @@ using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.FileRecords;
 using Vickn.Platform.FileRecords.EntityMapper;
+using Vickn.Platform.HandheldTerminals.Devices;
+using Vickn.Platform.HandheldTerminals.Devices.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
 
@@ -20,6 +22,9 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<DataDictionaryItem> DataDictionaryItems { get; set; }
 
         public IDbSet<FileRecord> FileRecords { get; set; }
+
+
+        public IDbSet<Device> Devices { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -67,6 +72,8 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new FileRecordCfg());
             modelBuilder.Configurations.Add(new DataDictionaryCfg());
             modelBuilder.Configurations.Add(new DataDictionaryItemCfg());
+            modelBuilder.Configurations.Add(new DeviceCfg());
+
         }
     }
 }

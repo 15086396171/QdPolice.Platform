@@ -34,6 +34,8 @@
             /// </summary>
             public const string Default = "dbo";
 
+            public const string HandheldTerminal = "HandheldTerminal";
+
             public const string Basic = "Basic";
 
             /// <summary>

@@ -4,6 +4,7 @@ using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.DataDictionaries.Authorization;
+using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -19,8 +20,23 @@ namespace Vickn.Platform.Web
     {
         public override void SetNavigation(INavigationProviderContext context)
         {
-            context.Manager.MainMenu
+            var device = new MenuItemDefinition(
+                AppPermissions.Pages_HandheldTerminal,
+                L(AppPermissions.Pages_HandheldTerminal),
+                icon: "icon-grid"
+            );
 
+            device.AddItem(
+                new MenuItemDefinition(
+                    DeviceAppPermissions.Device,
+                    L("Device"),
+                    "icon-star",
+                    url: "/Devices/Device",
+                    requiredPermissionName: DeviceAppPermissions.Device));
+
+
+            context.Manager.MainMenu
+                .AddItem(device)
 
             #region 系统管理
                 .AddItem(
