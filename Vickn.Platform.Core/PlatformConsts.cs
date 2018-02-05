@@ -38,6 +38,8 @@
 
             public const string Basic = "Basic";
 
+            public const string Chat = "Chat";
+
             /// <summary>
             /// 模块管理
             /// </summary>

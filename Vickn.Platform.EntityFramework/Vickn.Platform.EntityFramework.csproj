@@ -132,11 +132,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupUserCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Chats\ChatHistoryCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Chats\ChatMessageCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\DataDictionaryCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\DataDictionaryItems\DataDictionaryItemCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\DataDictionaries\StaticDictionaryNames.cs" />
     <Compile Include="EntityFramework\EntityMapper\Devices\DeviceCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\FileRecords\FileRecordCfg.cs" />
+    <Compile Include="EntityFramework\PlatformDbContext.Chat.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\PlatformRepositoryBase.cs" />
     <Compile Include="Migrations\AbpZeroDbMigrator.cs" />
@@ -161,6 +166,7 @@
       <Name>Vickn.Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

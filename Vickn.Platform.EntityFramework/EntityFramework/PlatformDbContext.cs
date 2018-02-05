@@ -13,7 +13,7 @@ using Vickn.Platform.Users;
 
 namespace Vickn.Platform.EntityFramework
 {
-    public class PlatformDbContext : AbpZeroDbContext<Tenant, Role, User>
+    public partial class PlatformDbContext : AbpZeroDbContext<Tenant, Role, User>
     {
         //TODO: Define an IDbSet for your Entities...
 
@@ -22,7 +22,6 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<DataDictionaryItem> DataDictionaryItems { get; set; }
 
         public IDbSet<FileRecord> FileRecords { get; set; }
-
 
         public IDbSet<Device> Devices { get; set; }
 
@@ -65,6 +64,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.ChangeAbpTablePrefix<Tenant, Role, User>("Platform");
 
             PlatformConfiguration(modelBuilder);
+            ChatConfiguration(modelBuilder);
         }
 
         private void PlatformConfiguration(DbModelBuilder modelBuilder)

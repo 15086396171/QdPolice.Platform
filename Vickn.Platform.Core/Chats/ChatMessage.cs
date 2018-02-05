@@ -1,6 +1,7 @@
 ﻿using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 using Vickn.PlatfForm.Utils.Extensions;
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Chats
 {
@@ -32,17 +33,25 @@ namespace Vickn.Platform.Chats
         /// <summary>
         /// 发送人
         /// </summary>
-        public long FromUserId { get; set; }
+        public User FromUser { get; set; }
 
         /// <summary>
         /// 接收人
         /// </summary>
         public long? ToUserId { get; set; }
 
+
+        public virtual User ToUser { get; set; }
+
         /// <summary>
         /// 接收群组
         /// </summary>
         public long? ToGroupId { get; set; }
+
+        /// <summary>
+        /// 接收群组
+        /// </summary>
+        public virtual ChatGroup ToGroup { get; set; }
     }
 
     /// <summary>
