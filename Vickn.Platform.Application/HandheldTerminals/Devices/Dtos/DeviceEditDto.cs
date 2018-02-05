@@ -30,7 +30,6 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// </summary>
         [DisplayName("主键Id")]
 		public long? Id{get;set;}
-        public UserListDto User { get; set; }
 
         /// <summary>
         /// IMEI
@@ -46,13 +45,5 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
 		[DisplayName("编号")]
         [MaxLength(16)]
         public string No { get; set; }
-
-        /// <summary>
-        /// 电量
-        /// </summary>
-		[DisplayName("电量")]
-        [MaxLength(16)]
-        public string Battery { get; set; }
-
     }
 }

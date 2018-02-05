@@ -60,6 +60,9 @@ namespace Vickn.Platform.HandheldTerminals.Devices
 			 var query = _deviceRepository.GetAll();
 
             //TODO:根据传入的参数添加过滤条件
+		    query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.Imei.Contains(input.FilterText) ||
+		                                                                  p.User.Name.Contains(input.FilterText) ||
+		                                                                  p.User.PoliceNo.Contains(input.FilterText));
 
             var deviceCount = await query.CountAsync();
 

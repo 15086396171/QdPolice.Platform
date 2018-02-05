@@ -40,10 +40,8 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         public string No { get; set; }
 
         /// <summary>
-        /// 电量
+        /// 是否在线
         /// </summary>
-		[DisplayName("电量")]
-        public string Battery { get; set; }
-
+        public bool IsOnline { get; set; }
     }
 }

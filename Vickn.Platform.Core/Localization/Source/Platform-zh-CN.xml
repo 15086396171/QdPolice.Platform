@@ -11,6 +11,7 @@
     <text name="WebLogs" value="系统日志" />
     <text name="DownLoadAll" value="下载所有日志" />
     <text name="Pages" value="Pages" />
+    <text name="FilterText" value="模糊搜索" />
 
     <text name="IndexPage" value="首页"/>
     <text name="Search" value="搜索"/>

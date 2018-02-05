@@ -1011,6 +1011,7 @@
     <Content Include="Assets\src\views\document\Details.vue" />
     <Content Include="Assets\src\views\document\Index.vue" />
     <Content Include="Assets\static\.gitkeep" />
+    <Content Include="Areas\Devices\Views\Device\Index_js.js" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1456,6 +1457,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Areas\Devices\Views\Device\Index.cshtml" />
+    <Content Include="Areas\Devices\Views\Device\Create.cshtml" />
+    <Content Include="Areas\Devices\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Devices\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1499,6 +1504,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\PlatformWebViewPageBase.cs" />
     <Compile Include="Views\UrlChecker.cs" />
+    <Compile Include="Areas\Devices\Controllers\DeviceController.cs" />
+    <Compile Include="Areas\Devices\DevicesAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
