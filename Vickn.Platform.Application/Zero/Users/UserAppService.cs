@@ -13,6 +13,7 @@ using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.UI;
 using Microsoft.AspNet.Identity;
+using Vickn.PlatfForm.Utils.Extensions;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Users.Dto;
 using Vickn.Platform.Authorization.Roles;
@@ -55,7 +56,8 @@ namespace Vickn.Platform.Users
 
         public async Task<ListResultDto<UserListDto>> GetUsers()
         {
-            var a = AbpSession.UserId;
+            var deviceId = AbpSession.GetDeviceId();
+
             var users = await _userRepository.GetAllListAsync();
 
             return new ListResultDto<UserListDto>(

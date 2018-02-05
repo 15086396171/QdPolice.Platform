@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using System.Web.Http;
 using Abp.Authorization;
@@ -48,8 +49,9 @@ namespace Vickn.Platform.Api.Controllers
                 loginModel.TenancyName
                 );
 
-            await DeviceLogin(loginModel, loginResult);
+            var deviceLoginResult = await DeviceLogin(loginModel, loginResult);
 
+            loginResult.Identity.AddClaim(new Claim("DeviceId",deviceLoginResult.Device.Id.ToString()));
             var ticket = new AuthenticationTicket(loginResult.Identity, new AuthenticationProperties());
 
             var currentUtc = new SystemClock().UtcNow;
@@ -59,13 +61,15 @@ namespace Vickn.Platform.Api.Controllers
             return new AjaxResponse(OAuthBearerOptions.AccessTokenFormat.Protect(ticket));
         }
 
-        private async Task DeviceLogin(LoginModel loginModel, AbpLoginResult<Tenant, User> loginResult)
+        private async Task<DeviceLoginResult> DeviceLogin(LoginModel loginModel, AbpLoginResult<Tenant, User> loginResult)
         {
             var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginModel.DeviceLoginModel.AppVersion, loginModel.DeviceLoginModel.SystemVersion, loginResult.User);
-            if (deviceLoginResult == DeviceLoginResult.NotMe)
+            if (deviceLoginResult.DeviceLogin == DeviceLoginEnum.NotMe)
             {
                 throw new UserFriendlyException("登录失败", "设备已绑定其他账号");
             }
+
+            return deviceLoginResult;
         }
 
         private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string usernameOrEmailAddress, string password, string tenancyName)

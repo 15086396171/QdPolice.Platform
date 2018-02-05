@@ -1015,6 +1015,7 @@
     <Content Include="Areas\Devices\Views\Device\Index_js.js" />
     <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Index_js.js" />
     <Content Include="Areas\Devices\Views\Device\Details.cshtml" />
+    <Content Include="Areas\Devices\Views\Device\ShowFile.cshtml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1602,6 +1603,9 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="_GeneratedCode\Areas\" />
+    <Folder Include="_GeneratedCode\HandheldTerminals\Application\" />
+    <Folder Include="_GeneratedCode\HandheldTerminals\Core\" />
+    <Folder Include="_GeneratedCode\HandheldTerminals\EntityFramework\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

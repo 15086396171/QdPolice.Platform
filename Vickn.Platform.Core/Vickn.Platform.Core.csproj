@@ -163,6 +163,11 @@
     <Compile Include="HandheldTerminals\Devices\DeviceLoginResult.cs" />
     <Compile Include="HandheldTerminals\Devices\DeviceManager.cs" />
     <Compile Include="HandheldTerminals\Devices\_DeviceReadme.cs" />
+    <Compile Include="HandheldTerminals\ForensicsRecords\Authorization\ForensicsRecordAppAuthorizationProvider.cs" />
+    <Compile Include="HandheldTerminals\ForensicsRecords\Authorization\ForensicsRecordAppPermissions.cs" />
+    <Compile Include="HandheldTerminals\ForensicsRecords\ForensicsRecord.cs" />
+    <Compile Include="HandheldTerminals\ForensicsRecords\ForensicsRecordManager.cs" />
+    <Compile Include="HandheldTerminals\ForensicsRecords\_ForensicsRecordReadme.cs" />
     <Compile Include="MainTenance\AppFolders\IAppFolders.cs" />
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />

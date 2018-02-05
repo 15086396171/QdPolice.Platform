@@ -3,7 +3,14 @@
     /// <summary>
     /// 设备登录结果
     /// </summary>
-    public enum DeviceLoginResult
+    public class DeviceLoginResult
+    {
+        public DeviceLoginEnum DeviceLogin { get; set; }
+
+        public Device Device { get; set; }
+    }
+
+    public enum DeviceLoginEnum
     {
         /// <summary>
         /// 成功

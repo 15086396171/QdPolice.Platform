@@ -15,7 +15,9 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Runtime.Session;
 using Abp.Web.Mvc.Authorization;
+using Vickn.PlatfForm.Utils.Extensions;
 using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
@@ -31,7 +33,6 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
         public DeviceController(IDeviceAppService deviceAppService)
         {
             _deviceAppService = deviceAppService;
-           
         }
 
         public ActionResult Index()
@@ -63,5 +64,10 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             return View(deviceDto);
         }
 
+        public async Task<ActionResult> ShowFile(long id)
+        {
+            ViewBag.id = id;
+            return View();
+        }
     }
 }

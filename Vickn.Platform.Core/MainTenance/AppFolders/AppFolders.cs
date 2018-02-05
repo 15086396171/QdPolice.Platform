@@ -9,5 +9,6 @@ namespace Vickn.Platform.MainTenance.AppFolders
         public string SampleProfileImagesFolder { get; set; }
 
         public string WebLogsFolder { get; set; }
+        public string ForensiceRecordFolder { get; set; }
     }
 }

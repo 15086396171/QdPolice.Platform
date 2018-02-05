@@ -68,6 +68,7 @@ namespace Vickn.Platform.Web
             appFolders.SampleProfileImagesFolder = server.MapPath("~/Common/Images/SampleProfilePics");
             appFolders.TempFileDownloadFolder = server.MapPath("~/Temp/Downloads");
             appFolders.WebLogsFolder = server.MapPath("~/App_Data/Logs");
+            appFolders.ForensiceRecordFolder = server.MapPath("~/FileRecord/ForensiceRecord");
 
             try { DirectoryHelper.CreateIfNotExists(appFolders.TempFileDownloadFolder); } catch { }
 

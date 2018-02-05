@@ -82,14 +82,15 @@
           actionName: "details",
           selector: "a.details",
           action:function(data) {
-            layer.open({
-              title:"管控设备",
+            var index= layer.open({
+              title: "管控设备",
               type: 2,
               area: ['90%', '550px'],
               content: abp.appPath +
                 "Devices/Device/Details/" +data.id //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-          }); 
-        }
+            });
+            layer.full(index);
+          }
         }
       ],
       commonMethods: [

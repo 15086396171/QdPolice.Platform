@@ -6,10 +6,12 @@ using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.FileRecords;
 using Vickn.Platform.FileRecords.EntityMapper;
+using Vickn.Platform.HandheldTerminals;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.EntityMapper;
 using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.EntityMapper;
+using Vickn.Platform.HandheldTerminals.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.Users;
 
@@ -28,6 +30,8 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<Device> Devices { get; set; }
 
         public IDbSet<AppWhiteList> AppWhiteLists { get; set; }
+
+        public IDbSet<ForensicsRecord> ForensicsRecords { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -78,6 +82,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new DataDictionaryItemCfg());
             modelBuilder.Configurations.Add(new DeviceCfg());
             modelBuilder.Configurations.Add(new AppWhiteListCfg());
+            modelBuilder.Configurations.Add(new ForensicsRecordCfg());
 
         }
     }

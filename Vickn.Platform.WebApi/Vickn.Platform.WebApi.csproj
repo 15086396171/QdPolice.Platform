@@ -182,6 +182,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Vickn.PlatfForm.Utils\Vickn.PlatfForm.Utils.csproj">
+      <Project>{AFA147E0-7E8E-4832-9193-6161D90180FD}</Project>
+      <Name>Vickn.PlatfForm.Utils</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Vickn.Platform.Application\Vickn.Platform.Application.csproj">
       <Project>{edf5d964-4c0f-4f19-b674-58a38a5e5401}</Project>
       <Name>Vickn.Platform.Application</Name>
