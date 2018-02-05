@@ -1012,6 +1012,7 @@
     <Content Include="Assets\src\views\document\Index.vue" />
     <Content Include="Assets\static\.gitkeep" />
     <Content Include="Areas\Devices\Views\Device\Index_js.js" />
+    <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Index_js.js" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1461,6 +1462,10 @@
     <Content Include="Areas\Devices\Views\Device\Create.cshtml" />
     <Content Include="Areas\Devices\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Devices\Views\web.config" />
+    <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Index.cshtml" />
+    <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Create.cshtml" />
+    <Content Include="Areas\AppWhiteLists\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\AppWhiteLists\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1507,6 +1512,8 @@
     <Compile Include="Views\UrlChecker.cs" />
     <Compile Include="Areas\Devices\Controllers\DeviceController.cs" />
     <Compile Include="Areas\Devices\DevicesAreaRegistration.cs" />
+    <Compile Include="Areas\AppWhiteLists\AppWhiteListsAreaRegistration.cs" />
+    <Compile Include="Areas\AppWhiteLists\Controllers\AppWhiteListController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1592,7 +1599,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
-    <Folder Include="_GeneratedCode\" />
+    <Folder Include="_GeneratedCode\Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

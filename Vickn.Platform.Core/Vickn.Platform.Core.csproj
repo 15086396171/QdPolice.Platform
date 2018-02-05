@@ -152,6 +152,11 @@
     <Compile Include="FileRecords\FileRecord.cs" />
     <Compile Include="FileRecords\FileRecordManager.cs" />
     <Compile Include="FileRecords\_FileRecordReadme.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\AppWhiteList.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\AppWhiteListManager.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Authorization\AppWhiteListAppAuthorizationProvider.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Authorization\AppWhiteListAppPermissions.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\_AppWhiteListReadme.cs" />
     <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppAuthorizationProvider.cs" />
     <Compile Include="HandheldTerminals\Devices\Authorization\DeviceAppPermissions.cs" />
     <Compile Include="HandheldTerminals\Devices\Device.cs" />

@@ -132,6 +132,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EntityFramework\EntityMapper\AppWhiteLists\AppWhiteListCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatHistoryCfg.cs" />

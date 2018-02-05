@@ -142,5 +142,23 @@
     <text name="EditDevice" value="编辑设备" />
     <text name="DeleteDevice" value="删除设备" />
 
+    <!-- 应用白名单管理 -->
+
+    <text name="	AppWhiteListHeaderInfo" value="应用白名单信息列表" />
+    <text name="AppWhiteListDeleteWarningMessage" value="应用白名单名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="AppWhiteListName" value="应用白名单" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="AppWhiteList.Name" value="应用名称" />
+    <text name="AppWhiteList.PackageName" value="包名" />
+    <text name="AppWhiteList.Src" value="文件" />
+    <text name="AppWhiteList.CreationTime" value="创建时间" />
+
+
+    <text name="AppWhiteList" value="应用白名单管理" />
+    <text name="CreateAppWhiteList" value="添加应用白名单" />
+    <text name="EditAppWhiteList" value="编辑应用白名单" />
+    <text name="DeleteAppWhiteList" value="删除应用白名单" />
   </texts>
 </localizationDictionary>

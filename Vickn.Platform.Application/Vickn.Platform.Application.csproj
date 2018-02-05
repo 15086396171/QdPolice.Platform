@@ -173,6 +173,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HandheldTerminals\AppWhiteLists\AppWhiteListAppService.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\AppWhiteListDto.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\AppWhiteListEditDto.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\AppWhiteListForEdit.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\GetAppWhiteListInput.cs" />
+    <Compile Include="HandheldTerminals\AppWhiteLists\IAppWhiteListAppService.cs" />
     <Compile Include="Chats\ChatMessages\Dtos\ChatMessageReceiveDto.cs" />
     <Compile Include="Chats\ChatMessages\Dtos\ChatMessageSendDto.cs" />
     <Compile Include="Chats\PoliceCommonHub.cs" />

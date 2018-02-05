@@ -4,6 +4,7 @@ using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
 using Vickn.Platform.DataDictionaries.Authorization;
+using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.Users.Authorization;
@@ -25,6 +26,13 @@ namespace Vickn.Platform.Web
                 L(AppPermissions.Pages_HandheldTerminal),
                 icon: "icon-grid"
             );
+            var appWhiteList = new MenuItemDefinition(
+                AppWhiteListAppPermissions.AppWhiteList,
+                L("AppWhiteList"),
+                url: "/AppWhiteLists/AppWhiteList",
+                icon: "icon-grid",
+                requiredPermissionName: AppWhiteListAppPermissions.AppWhiteList
+            );
 
             device.AddItem(
                 new MenuItemDefinition(
@@ -32,7 +40,8 @@ namespace Vickn.Platform.Web
                     L("Device"),
                     "icon-star",
                     url: "/Devices/Device",
-                    requiredPermissionName: DeviceAppPermissions.Device));
+                    requiredPermissionName: DeviceAppPermissions.Device))
+                    .AddItem(appWhiteList);
 
 
             context.Manager.MainMenu

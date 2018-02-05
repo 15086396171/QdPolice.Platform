@@ -1,0 +1,147 @@
+﻿@model Vickn.Platform.HandheldTerminals.AppWhiteLists.Dtos.AppWhiteListForEdit
+
+@{
+    ViewBag.Menu = L("AppWhiteLists");
+    ViewBag.SubMenu = L("AppWhiteList");
+}
+<div class="row animated fadeInRight">
+  <div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form-horizontal">
+
+          <div class="hidden">
+            @Html.HiddenFor(model => model.AppWhiteListEditDto.Id)
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AppWhiteListEditDto.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AppWhiteListEditDto.Name, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.AppWhiteListEditDto.Name, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AppWhiteListEditDto.PackageName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AppWhiteListEditDto.PackageName, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.AppWhiteListEditDto.PackageName, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AppWhiteListEditDto.Version, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AppWhiteListEditDto.Version, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.AppWhiteListEditDto.Version, "", new { @class = "text-danger" })
+            </div>
+          </div>
+          
+          <div class="form-group">
+            @Html.LabelFor(model => model.AppWhiteListEditDto.Src, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AppWhiteListEditDto.Src, new { htmlAttributes = new { @class = "form-control",@readonly="readonly" } })
+              @Html.ValidationMessageFor(model => model.AppWhiteListEditDto.Src, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-2">文件</label>
+            <div class="col-md-4">
+              <div id="uploader" class="wu-example">
+                <!--用来存放文件信息-->
+                <div id="thelist" class="uploader-list"></div>
+                <div class="btns">
+                  <div id="picker">选择文件</div>
+                </div>
+            
+              </div>
+            </div>
+          </div>
+
+          @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+        </div>
+    }
+  </div>
+</div>
+
+
+
+@section styles{
+  <link href="~/Content/Hplus/js/plugins/webuploader/webuploader.css" rel="stylesheet" />
+  <style>
+  </style>
+}
+
+
+@section scripts{
+  <script src="~/Content/Hplus/js/plugins/webuploader/webuploader.js"></script>
+  <script>
+    $(document).ready(function () {
+      // 初始化Web Uploader
+      var $list = $("#thelist");
+      var uploader = WebUploader.create({
+        accept: {
+          mimeTypes: "application/vnd.android.package-archive"
+        },
+        // 选完文件后，是否自动上传。
+        auto: true,
+
+        // swf文件路径
+        swf: '/Scripts/lib/webuploader/0.1.5/Uploader.swf',
+
+        // 文件接收服务端。
+        server: '/FileRecord/SimpleUpload',
+
+        // 选择文件的按钮。可选。
+        // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+        pick: '#picker',
+      });
+      uploader.on('uploadProgress', function (file, percentage) {
+        var $li = $('#' + file.id),
+          $percent = $li.find('.progress .progress-bar');
+
+        // 避免重复创建
+        if (!$percent.length) {
+          $percent = $('<div class="progress progress-striped active">' +
+            '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+            '</div>' +
+            '</div>').appendTo($li).find('.progress-bar');
+        }
+
+        $li.find('p.state').text('上传中');
+
+        $percent.css('width', percentage * 100 + '%');
+      });
+      uploader.on('fileQueued', function (file) {
+        $list.append('<div id="' + file.id + '" class="item">' +
+          '<h4 class="info">' + file.name + '</h4>' +
+          '<p class="state">等待上传...</p>' +
+          '</div>');
+      });
+      uploader.on('uploadSuccess', function (file, response) {
+        $('#' + file.id).find('p.state').html('<a href="javascript:;" class="delete' + response.result.id + '" data-id="' + response.result.id + '">上传完成</a>');
+        $("#AppWhiteListEditDto_Src").val(response.result.url);
+      });
+
+      uploader.on('uploadError', function (file) {
+        $('#' + file.id).find('p.state').text('上传出错');
+      });
+
+      uploader.on('uploadComplete', function (file) {
+        $('#' + file.id).find('.progress').fadeOut();
+      });
+    })
+  </script>
+}
+
+
+
+
+
+

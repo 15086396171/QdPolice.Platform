@@ -40,8 +40,8 @@ namespace Vickn.Platform.Web.Controllers
                 throw new UserFriendlyException("文件不存在");
 
             if (!file.FileName.Contains(".") ||
-                !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1)))
-                throw new UserFriendlyException("文件不存在");
+                "exe|bat".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal) + 1)))
+                throw new UserFriendlyException("文件格式不正确");
 
             var fileName = DateTime.Now.Ticks  + file.FileName.Substring(file.FileName.LastIndexOf(".", StringComparison.Ordinal));
             try

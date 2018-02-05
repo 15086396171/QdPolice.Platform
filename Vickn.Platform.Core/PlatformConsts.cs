@@ -7,7 +7,7 @@
 
         public const string AppName = "Vickn移动警务管理平台";
         public const int DefaultPageSize = 15;
-        public const int MaxPageSize = 100;
+        public const int MaxPageSize = 65535;
 
         /// <summary>
         /// 显示名称的最大长度
