@@ -229,9 +229,11 @@
     <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
     <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitUsersInput.cs" />
+    <Compile Include="Zero\Organizations\Dto\GetOuWithUsersInput.cs" />
     <Compile Include="Zero\Organizations\Dto\MoveOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\Dto\OrganizationUnitDto.cs" />
     <Compile Include="Zero\Organizations\Dto\OrganizationUnitUserListDto.cs" />
+    <Compile Include="Zero\Organizations\Dto\OuWithUserDto.cs" />
     <Compile Include="Zero\Organizations\Dto\UpdateOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\Dto\UserToOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\IOrganizationUnitAppService.cs" />

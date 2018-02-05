@@ -12,6 +12,7 @@ using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.Organizations;
 using Vickn.Platform.Organizations.Dto;
+using Vickn.Platform.Zero.Users.Dtos;
 
 namespace Vickn.Platform.Organizations
 {
@@ -45,6 +46,42 @@ namespace Vickn.Platform.Organizations
             return organizationUnits.MapTo<List<OrganizationUnitDto>>();
         }
 
+        /// <summary>
+        /// 获取组织和用户
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<OuWithUserDto>> GetOuWithUsersAsync()
+        {
+            // 只查询根节点
+            var query = _organizationUnitRepository.GetAll().Where(p=>!p.ParentId.HasValue);
+            var organizationUnits = await query.ToListAsync();
+
+            var ouWithUserDtos = organizationUnits.MapTo<List<OuWithUserDto>>();
+
+            foreach (var ouWithUserDto in ouWithUserDtos)
+            {
+                await GetUsers(ouWithUserDto);
+            }
+
+            return ouWithUserDtos;
+        }
+
+        public async Task GetUsers(OuWithUserDto dto)
+        {
+            var query = from uou in _userOrganizationUnitRepository.GetAll()
+                join ou in _organizationUnitRepository.GetAll() on uou.OrganizationUnitId equals ou.Id
+                join user in UserManager.Users on uou.UserId equals user.Id
+                where uou.OrganizationUnitId == dto.Id
+                select user;
+            var users = await query.ToListAsync();
+
+            dto.Users = users.MapTo<List<UserSimpleDto>>();
+            foreach (var ouWithUserDto in dto.Children)
+            {
+                await GetUsers(ouWithUserDto);
+            }
+        }
+
         public async Task<PagedResultDto<OrganizationUnitDto>> GetPagedOrganizationUnitAsync(GetOrganizationUnitInput input)
         {
             var query = _organizationUnitRepository.GetAll();
@@ -64,6 +101,11 @@ namespace Vickn.Platform.Organizations
             return new PagedResultDto<OrganizationUnitDto>(totalCount, organizationUnitListDto);
         }
 
+        /// <summary>
+        /// 根据查询条件获取该组织下用户分页列表
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<PagedResultDto<OrganizationUnitUserListDto>> GetOrganizationUnitUsers(GetOrganizationUnitUsersInput input)
         {
             var query = from uou in _userOrganizationUnitRepository.GetAll()
