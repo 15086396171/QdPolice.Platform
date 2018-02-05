@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Organizations;
@@ -11,6 +12,8 @@ namespace Vickn.Platform.Organizations.Dto
     {
         public long? ParentId { get; set; }
         public List<OuWithUserDto> Children { get; set; }
+
+        public  string Code { get; set; }
 
         public string DisplayName { get; set; }
 
