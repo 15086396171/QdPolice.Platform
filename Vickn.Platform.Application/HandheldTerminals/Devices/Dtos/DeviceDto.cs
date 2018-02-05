@@ -43,16 +43,19 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// <summary>
         /// 是否在线
         /// </summary>
+        [DisplayName("是否在线")]
         public bool IsOnline { get; set; }
 
         /// <summary>
         /// app版本
         /// </summary>
+        [DisplayName("App版本")]
         public string AppVersion { get; set; }
 
         /// <summary>
         /// 系统版本
         /// </summary>
+        [DisplayName("系统版本")]
         public string SystemVersion { get; set; }
     }
 }

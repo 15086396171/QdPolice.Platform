@@ -206,6 +206,7 @@
     <Compile Include="HandheldTerminals\Devices\Dtos\DeviceEditDto.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\DeviceForEdit.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\GetDeviceInput.cs" />
+    <Compile Include="HandheldTerminals\Devices\Dtos\ManageInput.cs" />
     <Compile Include="HandheldTerminals\Devices\IDeviceAppService.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAndUser.cs" />
     <Compile Include="MainTenance\Auditing\AuditLogAppService.cs" />

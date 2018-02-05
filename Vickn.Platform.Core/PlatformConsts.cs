@@ -74,6 +74,11 @@
             public const string WelcomeToCms = "App.WelcomeToCms";
 
             public const string SendMessageAsync = "App.SendMessageAsync";
+
+            /// <summary>
+            /// 设备管控
+            /// </summary>
+            public const string Device_Manage = "Device.Manage";
         }
 
     }

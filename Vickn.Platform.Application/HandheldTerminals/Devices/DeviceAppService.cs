@@ -24,11 +24,13 @@ using Abp.AutoMapper;
 using Abp.Configuration;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
+using Abp.Json;
 using Abp.Linq.Extensions;
 using Abp.RealTime;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
+using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.HandheldTerminals.Devices
 {
@@ -41,14 +43,16 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         private readonly IRepository<Device, long> _deviceRepository;
         private readonly DeviceManager _deviceManager;
         private readonly IOnlineClientManager _onlineClientManager;
+        private readonly NotificationManager _notificationManager;
         /// <summary>
         /// 初始化设备服务实例
         /// </summary>
-        public DeviceAppService(IRepository<Device, long> deviceRepository, DeviceManager deviceManager, IOnlineClientManager onlineClientManager)
+        public DeviceAppService(IRepository<Device, long> deviceRepository, DeviceManager deviceManager, IOnlineClientManager onlineClientManager, NotificationManager notificationManager)
         {
             _deviceRepository = deviceRepository;
             _deviceManager = deviceManager;
             _onlineClientManager = onlineClientManager;
+            _notificationManager = notificationManager;
         }
 
         #region 设备管理
@@ -181,6 +185,17 @@ namespace Vickn.Platform.HandheldTerminals.Devices
             //TODO: 批量删除前的逻辑判断，是否允许删除
 
             await _deviceRepository.DeleteAsync(s => input.Contains(s.Id));
+        }
+
+        /// <summary>
+        /// 管理设备
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task ManageAsync(ManageInput input)
+        {
+            var device = await _deviceRepository.GetAsync(input.Id);
+            await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId,device.User.Id),PlatformConsts.NotificationConstNames.Device_Manage,input.Operation, device.MapTo<DeviceDto>());
         }
 
         /// <summary>

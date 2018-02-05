@@ -312,6 +312,7 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css" />
     <Content Include="Abp\Framework\styles\abp.mixings.min.css" />
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
+    <Content Include="Areas\Devices\Views\Device\Details.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
     <Content Include="Assets\build\check-versions.js" />
@@ -1013,6 +1014,7 @@
     <Content Include="Assets\static\.gitkeep" />
     <Content Include="Areas\Devices\Views\Device\Index_js.js" />
     <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Index_js.js" />
+    <Content Include="Areas\Devices\Views\Device\Details.cshtml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />

@@ -57,5 +57,11 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             return RedirectToAction("Index");
         }
 
+        public async Task<ActionResult> Details(long id)
+        {
+            var deviceDto = await _deviceAppService.GetByIdAsync(new EntityDto<long>(id));
+            return View(deviceDto);
+        }
+
     }
 }

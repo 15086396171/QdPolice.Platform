@@ -54,6 +54,9 @@
           "data": "id",
           render: function (data, type, row, meta) {
             var $div = $('<div></div>');
+            $('<a title="查看" href="javascript:;" class="m-l-xs nodecoration details" data-title="查看" ><i class="glyphicon glyphicon-search"></i> </a>')
+              .appendTo($div);
+
             if (_permissions.edit) {
               $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
                 .appendTo($div);
@@ -74,6 +77,19 @@
         {
           actionName: "deleteAction",
           url: abp.appPath + "api/services/app/device/deleteAsync"
+        },
+        {
+          actionName: "details",
+          selector: "a.details",
+          action:function(data) {
+            layer.open({
+              title:"管控设备",
+              type: 2,
+              area: ['90%', '550px'],
+              content: abp.appPath +
+                "Devices/Device/Details/" +data.id //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
+          }); 
+        }
         }
       ],
       commonMethods: [

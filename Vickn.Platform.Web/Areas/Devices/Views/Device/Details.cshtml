@@ -1,0 +1,100 @@
+﻿@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.HandheldTerminals.Devices.Dtos.DeviceDto
+
+@{
+    ViewBag.Menu = L("Devices");
+    ViewBag.SubMenu = L("Device");
+}
+<div class="row">
+  <div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form-horizontal">
+
+          <div class="hidden">
+            @Html.HiddenFor(model => model.Id)
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.User.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.User.Name, new { htmlAttributes = new { @class = "form-control disable", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.User.PoliceNo, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.User.PoliceNo, new { htmlAttributes = new { @class = "form-control disable", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.No, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.No, new { htmlAttributes = new { @class = "form-control disable", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.Imei, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.Imei, new { htmlAttributes = new { @class = "form-control disable", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AppVersion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AppVersion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.SystemVersion, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.SystemVersion, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.IsOnline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @*@Html.EditorFor(model => (model.IsOnline?"是":"否"), new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })*@
+              <input type="text" readonly="readonly" class="form-control" value="@(Model.IsOnline?"是":"否")" />
+            </div>
+          </div>
+
+          <div class="hr-line-dashed"></div>
+
+          <div class="form-group">
+            <div class="col-md-8 col-md-offset-2">
+              <div class="btn-group">
+                <a class="btn btn-white" href="@Url.Action("ShowFile", new { id = Model.Id })">查看文件</a>
+                <button class="btn btn-primary manage" type="button" data-operation="reboot" data-id="@Model.Id">重启设备</button>
+                <button class="btn btn-white manage" type="button" data-operation="shutdown" data-id="@Model.Id">关闭电源</button>
+                <button class="btn btn-white manage" type="button" data-operation="format" data-id="@Model.Id">格式化设备</button>
+                <button class="btn btn-white manage" type="button" data-operation="unlock" data-id="@Model.Id">解锁设备</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    }
+  </div>
+</div>
+
+@section styles{
+  <style>
+    .form-control {
+      background-color: #ffffff !important;
+    }
+  </style>
+}
+
+@section scripts{
+@Html.IncludeScript("~/Areas/Devices/Views/Device/Details.js")
+}

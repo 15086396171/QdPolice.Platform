@@ -68,6 +68,13 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         Task BatchDeleteAsync(List<long> input);
 
         /// <summary>
+        /// 管理设备
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task ManageAsync(ManageInput input);
+
+            /// <summary>
         /// 自定义检查设备输入逻辑错误
         /// </summary>
         /// <param name="input"></param>
