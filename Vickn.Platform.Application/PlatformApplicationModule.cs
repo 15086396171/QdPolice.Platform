@@ -1,6 +1,9 @@
 ﻿using System.Reflection;
 using Abp.AutoMapper;
 using Abp.Modules;
+using Abp.Notifications;
+using Castle.MicroKernel.Registration;
+using Vickn.Platform.RealTime;
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform
@@ -22,6 +25,9 @@ namespace Vickn.Platform
         public override void Initialize()
         {
             IocManager.RegisterAssemblyByConvention(Assembly.GetExecutingAssembly());
+
+            IocManager.IocContainer.Register(Component.For<IRealTimeNotifier>().Named("MyRealTimeNotifier")
+                .ImplementedBy<MySignalrRealTimeNotifier>().IsDefault());
         }
     }
 }
