@@ -1481,6 +1481,7 @@
     <Compile Include="Controllers\OrganizationUnitsController.cs" />
     <Compile Include="Controllers\Results\ChallengeResult.cs" />
     <Compile Include="Controllers\RolesController.cs" />
+    <Compile Include="Controllers\SignalrTestController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
     <Compile Include="Models\Account\ResetPasswordFormViewModel.cs" />
@@ -1550,6 +1551,7 @@
     <Content Include="Views\Shared\_HomeLayout.cshtml" />
     <Content Include="Views\Users\ChangeProfilePic.cshtml" />
     <Content Include="Views\Users\Test.cshtml" />
+    <Content Include="Views\SignalrTest\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

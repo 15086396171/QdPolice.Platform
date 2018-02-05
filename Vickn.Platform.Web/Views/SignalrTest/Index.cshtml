@@ -1,0 +1,42 @@
+﻿@using Abp.Web.Mvc.Extensions
+
+<button class="btn btn-primary" id="sendMessage">单人发送消息</button>
+@section scripts
+{
+  <script src="~/signalr/hubs"></script>
+  @Html.IncludeScript("~/Abp/Framework/scripts/libs/abp.signalr.js")
+  <script>
+    $(function () {
+      var hub = abp.signalr.hubs.common;
+      console.log(hub);
+      abp.signalr.connect();
+      hub.client.getMessages = function (messages) {
+        console.log("messages:", messages);
+        var input = [];
+        $.each(messages,
+          function(index, data) {
+            input.push({
+              id: data.id
+            });
+          });
+        hub.server.readMessages(input).done(function() {
+          console.log("已读成功");
+        });
+      }
+      hub.client.getMessage = function (message) {
+        console.log("message:", message);
+      }
+      $("#sendMessage").click(function() {
+        hub.server.sendMessage({
+          message: "测试消息",
+          tickets: 1000,
+          chatMessageType: 0,
+          chatSendType: 0,
+          toUserId:2,
+        }).done(function(result) {
+          console.log("发送成功" + result);
+        });
+      })
+    })
+  </script>
+}

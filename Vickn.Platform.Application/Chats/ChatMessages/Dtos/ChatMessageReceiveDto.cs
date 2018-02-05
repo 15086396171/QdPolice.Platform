@@ -1,4 +1,5 @@
 ﻿using Abp.AutoMapper;
+using Abp.Domain.Entities.Auditing;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Dtos;
 using Vickn.Platform.Zero.Users.Dtos;
@@ -9,7 +10,7 @@ namespace Vickn.Platform.Chats.ChatMessages
     /// 消息接收对象
     /// </summary>
     [AutoMapFrom(typeof(ChatMessage))]
-    public class ChatMessageReceiveDto
+    public class ChatMessageReceiveDto:CreationAuditedEntity<long>
     {
         /// <summary>
         /// 正文
@@ -43,9 +44,11 @@ namespace Vickn.Platform.Chats.ChatMessages
         /// </summary>
         public long? ToGroupId { get; set; }
 
-        /// <summary>
-        /// 接收群组
-        /// </summary>
-        public virtual ChatGroup ToGroup { get; set; }
+        public long? ToUserId { get; set; }
+
+        ///// <summary>
+        ///// 接收群组
+        ///// </summary>
+        //public virtual ChatGroup ToGroup { get; set; }
     }
 }

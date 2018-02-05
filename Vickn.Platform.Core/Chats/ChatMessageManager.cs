@@ -9,7 +9,7 @@ namespace Vickn.Platform.Chats
     {
         private readonly IRepository<ChatMessage, long> _chatMessageRepository;
         private readonly IRepository<ChatGroup, long> _chatGroupRepository;
-        private IRepository<ChatHistory, long> _chatHistoryRepository;
+        private readonly IRepository<ChatHistory, long> _chatHistoryRepository;
 
         public ChatMessageManager(IRepository<ChatMessage, long> chatMessageRepository, IRepository<ChatHistory, long> chatHistoryRepository, IRepository<ChatGroup, long> chatGroupRepository)
         {
@@ -23,10 +23,9 @@ namespace Vickn.Platform.Chats
         /// </summary>
         /// <param name="chatMessage"></param>
         /// <returns></returns>
-        [UnitOfWork]
         public async Task<ChatMessage> AddMessageAsync(ChatMessage chatMessage)
         {
-            chatMessage = await _chatMessageRepository.InsertAsync(chatMessage);
+            chatMessage.Id = await _chatMessageRepository.InsertAndGetIdAsync(chatMessage);
 
             // 如果群组，遍历每个人插入记录
             if (chatMessage.ChatSendType == ChatSendType.Group)
@@ -37,7 +36,7 @@ namespace Vickn.Platform.Chats
                 {
                     await _chatHistoryRepository.InsertAsync(new ChatHistory()
                     {
-                        ChatMessage = chatMessage,
+                        ChatMessageId = chatMessage.Id,
                         ToUserId = chatGroupUser.UserId
                     });
                 }
@@ -46,7 +45,7 @@ namespace Vickn.Platform.Chats
             {
                 await _chatHistoryRepository.InsertAsync(new ChatHistory()
                 {
-                    ChatMessage = chatMessage,
+                    ChatMessageId = chatMessage.Id,
                     ToUserId = chatMessage.ToUserId.Value
                 });
             }

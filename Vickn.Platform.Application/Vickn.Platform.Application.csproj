@@ -173,8 +173,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Chats\ChatMessages\ChatMessageReceiveDto.cs" />
-    <Compile Include="Chats\ChatMessages\ChatMessageSendDto.cs" />
+    <Compile Include="Chats\ChatMessages\Dtos\ChatMessageReceiveDto.cs" />
+    <Compile Include="Chats\ChatMessages\Dtos\ChatMessageSendDto.cs" />
     <Compile Include="Chats\PoliceCommonHub.cs" />
     <Compile Include="DataDictionaries\DataDictionaryAppService.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemAppService.cs" />

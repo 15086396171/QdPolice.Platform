@@ -130,6 +130,7 @@
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="Chats\ChatGroup.cs" />
+    <Compile Include="Chats\ChatGroupManager.cs" />
     <Compile Include="Chats\ChatGroupUser.cs" />
     <Compile Include="Chats\ChatHistory.cs" />
     <Compile Include="Chats\ChatHistoryManager.cs" />

@@ -28,7 +28,6 @@ namespace Vickn.Platform.Chats
             return chatMessages;
         }
 
-        [UnitOfWork]
         public async Task ReadMessagesAsync([NotNull]UserIdentifier userIdentifier, List<long> messageIds)
         {
             var chatHistories = await _chatHistoryRepository.GetAllListAsync(p => p.ToUserId == userIdentifier.UserId && messageIds.Contains(p.ChatMessageId));

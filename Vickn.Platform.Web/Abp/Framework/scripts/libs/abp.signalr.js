@@ -35,7 +35,7 @@
   };
 
   if (abp.signalr.autoConnect === undefined) {
-    abp.signalr.autoConnect = true;
+    abp.signalr.autoConnect = false;
   }
 
   if (abp.signalr.autoConnect) {
