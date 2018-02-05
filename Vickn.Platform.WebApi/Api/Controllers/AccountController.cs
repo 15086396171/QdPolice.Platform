@@ -61,7 +61,7 @@ namespace Vickn.Platform.Api.Controllers
 
         private async Task DeviceLogin(LoginModel loginModel, AbpLoginResult<Tenant, User> loginResult)
         {
-            var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginResult.User);
+            var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginModel.DeviceLoginModel.AppVersion, loginModel.DeviceLoginModel.SystemVersion, loginResult.User);
             if (deviceLoginResult == DeviceLoginResult.NotMe)
             {
                 throw new UserFriendlyException("登录失败", "设备已绑定其他账号");

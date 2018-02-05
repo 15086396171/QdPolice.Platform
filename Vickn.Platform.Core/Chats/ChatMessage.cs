@@ -33,7 +33,7 @@ namespace Vickn.Platform.Chats
         /// <summary>
         /// 发送人
         /// </summary>
-        public User FromUser { get; set; }
+        public virtual User FromUser { get; set; }
 
         /// <summary>
         /// 接收人

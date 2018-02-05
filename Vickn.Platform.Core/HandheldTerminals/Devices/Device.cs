@@ -19,5 +19,15 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// 编号
         /// </summary>
         public string No { get; set; }
+
+        /// <summary>
+        /// app版本
+        /// </summary>
+        public string AppVersion { get; set; }
+
+        /// <summary>
+        /// 系统版本
+        /// </summary>
+        public string SystemVersion { get; set; }
     }
 }

@@ -173,6 +173,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chats\ChatMessages\ChatMessageReceiveDto.cs" />
+    <Compile Include="Chats\ChatMessages\ChatMessageSendDto.cs" />
     <Compile Include="Chats\PoliceCommonHub.cs" />
     <Compile Include="DataDictionaries\DataDictionaryAppService.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemAppService.cs" />
@@ -261,6 +263,7 @@
     <Compile Include="Zero\Users\Dtos\UserListDto.cs" />
     <Compile Include="Zero\Users\Dtos\CreateUserInput.cs" />
     <Compile Include="Zero\Users\Dtos\UserRoleDto.cs" />
+    <Compile Include="Zero\Users\Dtos\UserSimpleDto.cs" />
     <Compile Include="Zero\Users\IUserAppService.cs" />
     <Compile Include="Zero\Roles\RoleAppService.cs" />
     <Compile Include="Zero\Sessions\Dto\GetCurrentLoginInformationsOutput.cs" />
@@ -289,7 +292,11 @@
       <Name>Vickn.Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Chats\ChatGroups\" />
+    <Folder Include="Chats\ChatGroupUsers\" />
+    <Folder Include="Chats\ChatHistories\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

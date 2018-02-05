@@ -37,8 +37,10 @@
             return user.policeNo;
           }
         },
-        { "data": "imei" },
         { "data": "no" },
+        { "data": "imei" },
+        { "data": "appVersion" },
+        { "data": "systemVersion" },
         {
           "data": "isOnline",
           render: function (data, type, row, meta) {

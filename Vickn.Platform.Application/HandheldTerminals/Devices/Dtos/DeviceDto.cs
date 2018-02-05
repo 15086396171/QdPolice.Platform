@@ -16,6 +16,7 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Vickn.Platform.Users.Dtos;
+using Vickn.Platform.Zero.Users.Dtos;
 
 namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
 {
@@ -25,7 +26,7 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
     [AutoMap(typeof(Device))]
     public class DeviceDto : EntityDto<long>
     {
-        public UserListDto User { get; set; }
+        public UserSimpleDto User { get; set; }
 
         /// <summary>
         /// IMEI
@@ -43,5 +44,15 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// 是否在线
         /// </summary>
         public bool IsOnline { get; set; }
+
+        /// <summary>
+        /// app版本
+        /// </summary>
+        public string AppVersion { get; set; }
+
+        /// <summary>
+        /// 系统版本
+        /// </summary>
+        public string SystemVersion { get; set; }
     }
 }
