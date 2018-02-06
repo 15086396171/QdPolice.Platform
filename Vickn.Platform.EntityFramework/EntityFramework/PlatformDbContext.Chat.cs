@@ -6,13 +6,13 @@ namespace Vickn.Platform.EntityFramework
 {
     public partial class PlatformDbContext
     {
-        public IDbSet<ChatGroup> ChatGroups { get; set; }
+        public virtual IDbSet<ChatGroup> ChatGroups { get; set; }
 
-        public IDbSet<ChatGroupUser> ChatGroupUsers { get; set; }
+        public virtual IDbSet<ChatGroupUser> ChatGroupUsers { get; set; }
 
-        public IDbSet<ChatHistory> ChatHistories { get; set; }
+        public virtual IDbSet<ChatHistory> ChatHistories { get; set; }
 
-        public IDbSet<ChatMessage> ChatMessages { get; set; }
+        public virtual IDbSet<ChatMessage> ChatMessages { get; set; }
 
         private void ChatConfiguration(DbModelBuilder modelBuilder)
         {

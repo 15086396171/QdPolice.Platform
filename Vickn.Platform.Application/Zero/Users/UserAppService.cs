@@ -236,7 +236,7 @@ namespace Vickn.Platform.Users
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
             user.IsEmailConfirmed = true;
-            user.EmailAddress = user.EmailAddress.IsNullOrEmpty() ? user.Name + "@default.com" : user.EmailAddress;
+            user.EmailAddress = user.EmailAddress.IsNullOrEmpty() ? user.PhoneNumber + "@default.com" : user.EmailAddress;
             user.Surname = user.Name;
             // ƒ¨»œ∆Ù”√
             user.IsActive = true;

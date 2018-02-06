@@ -173,6 +173,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
+    <Compile Include="Chats\ChatGroups\Dtos\InviteToGroupInput.cs" />
+    <Compile Include="Chats\ChatGroupUsers\Dtos\ChatGroupUserDto.cs" />
     <Compile Include="HandheldTerminals\AppWhiteLists\AppWhiteListAppService.cs" />
     <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\AppWhiteListDto.cs" />
     <Compile Include="HandheldTerminals\AppWhiteLists\Dtos\AppWhiteListEditDto.cs" />
@@ -308,8 +311,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Chats\ChatGroups\" />
-    <Folder Include="Chats\ChatGroupUsers\" />
     <Folder Include="Chats\ChatHistories\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -10,6 +10,8 @@ namespace Vickn.Platform.Chats
         /// </summary>
         public long ChatGroupId { get; set; }
 
+        public ChatGroupUserType ChatGroupUserType { get; set; }
+
         /// <summary>
         /// 用户Id
         /// </summary>
@@ -19,5 +21,23 @@ namespace Vickn.Platform.Chats
         /// 用户
         /// </summary>
         public virtual User User { get; set; }
+    }
+
+    public enum ChatGroupUserType
+    {
+        /// <summary>
+        /// 普通用户
+        /// </summary>
+        Default,
+
+        /// <summary>
+        /// 管理员
+        /// </summary>
+        Admin,
+
+        /// <summary>
+        /// 创建者
+        /// </summary>
+        Owner,
     }
 }
