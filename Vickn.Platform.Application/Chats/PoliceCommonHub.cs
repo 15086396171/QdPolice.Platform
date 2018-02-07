@@ -11,6 +11,7 @@ using Abp.RealTime;
 using Abp.Runtime.Session;
 using Abp.UI;
 using Abp.Web.SignalR.Hubs;
+using Newtonsoft.Json;
 using Vickn.Platform.Chats.ChatGroups.Dtos;
 using Vickn.Platform.Chats.ChatGroupUsers.Dtos;
 using Vickn.Platform.Chats.ChatMessages;
@@ -45,39 +46,18 @@ namespace Vickn.Platform.Chats
         }
 
         /// <summary>
-        /// Called when the connection connects to this hub instance.
+        /// 获取历史消息
         /// </summary>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /></returns>
-
-        public override async Task OnConnected()
+        /// <returns></returns>
+        public async Task GetHistories()
         {
-            await base.OnConnected();
-            await JoinGroups();
-            await GetHistories();
-        }
-
-        private async Task GetHistories()
-        {
-            // 查询历史记录
-            var chatMessages = await _chatHistoryManager.GetChatHistoryAsync(AbpSession.ToUserIdentifier());
-            var chatMessageDto = chatMessages.MapTo<List<ChatMessageReceiveDto>>();
-
-            var clients = _onlineClientManager.GetAllByUserId(AbpSession.ToUserIdentifier());
-            foreach (var onlineClient in clients)
+            using (var uow = UnitOfWorkManager.Begin())
             {
-                Clients.Client(onlineClient.ConnectionId).getMessages(chatMessageDto);
+                // 查询历史记录
+                var chatMessages = await _chatHistoryManager.GetChatHistoryAsync(AbpSession.ToUserIdentifier());
+                var chatMessageDto = chatMessages.MapTo<List<ChatMessageReceiveDto>>();
+                Clients.Client(Context.ConnectionId).getMessages(chatMessageDto);
             }
-        }
-
-        /// <summary>
-        /// Called when the connection reconnects to this hub instance.
-        /// </summary>
-        /// <returns>A <see cref="T:System.Threading.Tasks.Task" /></returns>
-        public override async Task OnReconnected()
-        {
-            await base.OnReconnected();
-            await JoinGroups();
-            await GetHistories();
         }
 
         #region 消息相关
@@ -85,12 +65,21 @@ namespace Vickn.Platform.Chats
         /// <summary>
         /// 发送消息
         /// </summary>
-        /// <param name="chatMessageSendDto"></param>
+        /// <param name="sendMessage"></param>
         /// <returns></returns>
-        public async Task SendMessage(ChatMessageSendDto chatMessageSendDto)
+        public async Task<ChatMessageReceiveDto> SendMessage(string sendMessage)
         {
+            ChatMessageSendDto chatMessageSendDto = JsonConvert.DeserializeObject<ChatMessageSendDto>(sendMessage);
             using (var uow = UnitOfWorkManager.Begin())
             {
+                if (chatMessageSendDto.ToUserId == 0)
+                {
+                    chatMessageSendDto.ToUserId = null;
+                }
+                if (chatMessageSendDto.ToGroupId == 0)
+                {
+                    chatMessageSendDto.ToGroupId = null;
+                }
                 var chatMessage = chatMessageSendDto.MapTo<ChatMessage>();
 
                 chatMessage = await _chatMessageManager.AddMessageAsync(chatMessage);
@@ -104,7 +93,7 @@ namespace Vickn.Platform.Chats
                 {
                     chatMessageReceiveDto.ToGroup =
                         (await _chatGroupManager.GetGroupByIdAsync(chatMessageReceiveDto.ToGroupId.Value))
-                        .MapTo<ChatGroupDto>();
+                        .MapTo<ChatMessageGroupDto>();
                     Clients.Group(chatMessageReceiveDto.ToGroup.Name).getMessage(chatMessageReceiveDto);
                 }
                 else
@@ -119,6 +108,7 @@ namespace Vickn.Platform.Chats
                 }
 
                 await uow.CompleteAsync();
+                return chatMessage.MapTo<ChatMessageReceiveDto>();
             }
         }
 
@@ -127,11 +117,16 @@ namespace Vickn.Platform.Chats
         /// </summary>
         /// <param name="messageIds"></param>
         /// <returns></returns>
-        public async Task ReadMessages(List<EntityDto<long>> messageIds)
+        public async Task ReadMessages(string messageIdStr)
         {
-            await _chatHistoryManager.ReadMessagesAsync(AbpSession.ToUserIdentifier(), messageIds.Select(p => p.Id).ToList());
+            using (var uow = UnitOfWorkManager.Begin())
+            {
+                List<EntityDto<long>> messageIds = JsonConvert.DeserializeObject<List<EntityDto<long>>>(messageIdStr);
+                await _chatHistoryManager.ReadMessagesAsync(AbpSession.ToUserIdentifier(),
+                    messageIds.Select(p => p.Id).ToList());
+                await uow.CompleteAsync();
+            }
         }
-
         #endregion
 
         #region 群组相关
@@ -143,16 +138,21 @@ namespace Vickn.Platform.Chats
         /// <returns></returns>
         public async Task CreateGroup(string groupName)
         {
-            try
+            using (var uow = UnitOfWorkManager.Begin())
             {
-                var chatGroup = await _chatGroupManager.CreateGroupAsync(AbpSession.ToUserIdentifier(), groupName);
-                await Groups.Add(Context.ConnectionId, chatGroup.Name);
+                try
+                {
+                    var chatGroup = await _chatGroupManager.CreateGroupAsync(AbpSession.ToUserIdentifier(), groupName);
+                    await Groups.Add(Context.ConnectionId, chatGroup.Name);
+                }
+                catch (UserFriendlyException e)
+                {
+                    Clients.Client(Context.ConnectionId).showError(e.Message);
+                }
+                await uow.CompleteAsync();
+
+                await JoinGroups();
             }
-            catch (UserFriendlyException e)
-            {
-                Clients.Client(Context.ConnectionId).showError(e.Message);
-            }
-            await JoinGroups();
         }
 
         /// <summary>
@@ -161,20 +161,26 @@ namespace Vickn.Platform.Chats
         /// <returns></returns>
         public async Task JoinGroups()
         {
-            var chatGroups = await _chatGroupManager.GetGroupsAsync(AbpSession.ToUserIdentifier());
-            foreach (var chatGroup in chatGroups)
+            using (var uow = UnitOfWorkManager.Begin())
             {
-                await Groups.Add(Context.ConnectionId, chatGroup.Name);
+                var chatGroups = await _chatGroupManager.GetGroupsAsync(AbpSession.ToUserIdentifier());
+                foreach (var chatGroup in chatGroups)
+                {
+                    await Groups.Add(Context.ConnectionId, chatGroup.Name);
+                }
+                Clients.Client(Context.ConnectionId).joinGroups(chatGroups.MapTo<List<ChatGroupDto>>());
+
+                await uow.CompleteAsync();
             }
-            Clients.Client(Context.ConnectionId).joinGroups(chatGroups.MapTo<List<ChatGroupDto>>());
         }
 
         /// <summary>
         /// 邀请加入群组
         /// </summary>
         /// <returns></returns>
-        public async Task<List<ChatGroupUserDto>> InviteToGroup(InviteToGroupInput input)
+        public async Task InviteToGroup(string inputStr)
         {
+            InviteToGroupInput input = JsonConvert.DeserializeObject<InviteToGroupInput>(inputStr);
             using (var uow = UnitOfWorkManager.Begin())
             {
                 var chatGroup =
@@ -192,24 +198,9 @@ namespace Vickn.Platform.Chats
                     }
                 }
                 await uow.CompleteAsync();
-                return await GetGroupUsers(input.GroupId);
+                await JoinGroups();
             }
         }
-
-        /// <summary>
-        /// 获取组织用户
-        /// </summary>
-        /// <returns></returns>
-        public async Task<List<ChatGroupUserDto>> GetGroupUsers(long groupId)
-        {
-            using (var uow = UnitOfWorkManager.Begin())
-            {
-                var chatGroupUsers = await _chatGroupManager.GetChatGroupUsers(groupId);
-                var chatGroupUserDtos = chatGroupUsers.MapTo<List<ChatGroupUserDto>>();
-                return chatGroupUserDtos;
-            }
-        }
-
         #endregion
     }
 }

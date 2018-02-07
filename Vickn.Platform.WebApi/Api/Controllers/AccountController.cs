@@ -56,7 +56,7 @@ namespace Vickn.Platform.Api.Controllers
 
             var currentUtc = new SystemClock().UtcNow;
             ticket.Properties.IssuedUtc = currentUtc;
-            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(1));
+            ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(100));
 
             return new AjaxResponse(OAuthBearerOptions.AccessTokenFormat.Protect(ticket));
         }

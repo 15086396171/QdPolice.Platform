@@ -44,14 +44,14 @@
         console.log("groups:", groups);
       }
       $("#sendMessage").click(function () {
-        hub.server.sendMessage({
+        hub.server.sendMessage(JSON.stringify({
           message: "测试消息",
           tickets: 1000,
           chatMessageType: 0,
           chatSendType: 0,
           toUserId: 4,
-        }).done(function (result) {
-          console.log("发送消息成功");
+        })).done(function (result) {
+          console.log("发送消息成功",result);
         });
       });
 
@@ -80,13 +80,13 @@
         })
       })
       $("#groupChat").click(function() {
-        hub.server.sendMessage({
+        hub.server.sendMessage(JSON.stringify({
           message: "测试群发消息",
           tickets: 1000,
           chatMessageType: 0,
           chatSendType: 1,
           toGroupId: 1,
-        }).done(function (result) {
+        })).done(function (result) {
           console.log("发送消息成功");
         });
       })

@@ -37,8 +37,8 @@ namespace Vickn.Platform.Chats
                         p => p.ToUserId != userIdentifier.UserId && p.ChatMessageId == chatHistory.Id) == null)
                 {
                     await _chatMessageRepository.DeleteAsync(chatHistory.ChatMessageId);
-                    await _chatHistoryRepository.DeleteAsync(chatHistory.Id);
                 }
+                await _chatHistoryRepository.DeleteAsync(chatHistory.Id);
             }
         }
     }

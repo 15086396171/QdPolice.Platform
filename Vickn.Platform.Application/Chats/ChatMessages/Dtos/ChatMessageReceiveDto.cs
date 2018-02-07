@@ -50,6 +50,6 @@ namespace Vickn.Platform.Chats.ChatMessages
         /// <summary>
         /// 接收群组
         /// </summary>
-        public ChatGroupDto ToGroup { get; set; }
+        public ChatMessageGroupDto ToGroup { get; set; }
     }
 }
