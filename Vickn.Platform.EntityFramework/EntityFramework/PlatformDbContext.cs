@@ -13,6 +13,8 @@ using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.EntityMapper;
 using Vickn.Platform.HandheldTerminals.EntityMapper;
 using Vickn.Platform.MultiTenancy;
+using Vickn.Platform.PrivatePhoneWhites;
+using Vickn.Platform.PrivatePhoneWhites.EntityMapper;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.EntityFramework
@@ -32,6 +34,10 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<AppWhiteList> AppWhiteLists { get; set; }
 
         public IDbSet<ForensicsRecord> ForensicsRecords { get; set; }
+
+        public IDbSet<PrivatePhoneWhite> PrivatePhoneWhites { get; set; }
+
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -83,6 +89,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new DeviceCfg());
             modelBuilder.Configurations.Add(new AppWhiteListCfg());
             modelBuilder.Configurations.Add(new ForensicsRecordCfg());
+            modelBuilder.Configurations.Add(new PrivatePhoneWhiteCfg());
 
         }
     }

@@ -160,5 +160,23 @@
     <text name="CreateAppWhiteList" value="添加应用白名单" />
     <text name="EditAppWhiteList" value="编辑应用白名单" />
     <text name="DeleteAppWhiteList" value="删除应用白名单" />
+
+    <text name="	PrivatePhoneWhiteHeaderInfo" value="个人白名单信息列表" />
+    <text name="PrivatePhoneWhiteDeleteWarningMessage" value="个人白名单名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="PrivatePhoneWhiteName" value="个人白名单" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="PrivatePhoneWhite.Name" value="姓名" />
+    <text name="PrivatePhoneWhite.PhoneNumber" value="电话号码" />
+    <text name="PrivatePhoneWhite.UserId" value="所属人Id" />
+    <text name="PrivatePhoneWhite.User" value="所属人" />
+    <text name="PrivatePhoneWhite.CreationTime" value="创建时间" />
+				 
+
+    <text name="PrivatePhoneWhite" value="个人白名单管理" />
+    <text name="CreatePrivatePhoneWhite" value="添加个人白名单" />
+    <text name="EditPrivatePhoneWhite" value="编辑个人白名单" />
+    <text name="DeletePrivatePhoneWhite" value="删除个人白名单" />
   </texts>
 </localizationDictionary>

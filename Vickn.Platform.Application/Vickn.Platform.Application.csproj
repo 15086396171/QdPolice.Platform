@@ -240,6 +240,12 @@
     <Compile Include="Notifications\Dto\UpdateNotificationSettingsInput.cs" />
     <Compile Include="Notifications\INotificationAppService.cs" />
     <Compile Include="Notifications\NotificationAppService.cs" />
+    <Compile Include="PrivatePhoneWhites\Dtos\GetPrivatePhoneWhiteInput.cs" />
+    <Compile Include="PrivatePhoneWhites\Dtos\PrivatePhoneWhiteDto.cs" />
+    <Compile Include="PrivatePhoneWhites\Dtos\PrivatePhoneWhiteEditDto.cs" />
+    <Compile Include="PrivatePhoneWhites\Dtos\PrivatePhoneWhiteForEdit.cs" />
+    <Compile Include="PrivatePhoneWhites\IPrivatePhoneWhiteAppService.cs" />
+    <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteAppService.cs" />
     <Compile Include="RealTime\MySignalrRealTimeNotifier.cs" />
     <Compile Include="Zero\Organizations\Dto\AddUserToOuInput.cs" />
     <Compile Include="Zero\Organizations\Dto\CreateOrganizationUnitInput.cs" />

@@ -172,6 +172,11 @@
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
+    <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppAuthorizationProvider.cs" />
+    <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppPermissions.cs" />
+    <Compile Include="PrivatePhoneWhites\PrivatePhoneWhite.cs" />
+    <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteManager.cs" />
+    <Compile Include="PrivatePhoneWhites\_PrivatePhoneWhiteReadme.cs" />
     <Compile Include="Zero\Notifications\INotificationManager.cs" />
     <Compile Include="Zero\Notifications\NotificationManager.cs" />
     <Compile Include="Zero\Roles\Authorization\RoleAppAuthorizationProvider.cs" />

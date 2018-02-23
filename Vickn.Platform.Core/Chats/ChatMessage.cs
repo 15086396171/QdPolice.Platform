@@ -74,6 +74,13 @@ namespace Vickn.Platform.Chats
         /// </summary>
         [EnumDescription("图片")]
         Picture,
+
+        /// <summary>
+        /// 测回
+        /// </summary>
+        Cancel,
+
+        Ppt,
     }
 
     /// <summary>
