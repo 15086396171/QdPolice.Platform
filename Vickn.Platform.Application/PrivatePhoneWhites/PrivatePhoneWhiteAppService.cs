@@ -29,6 +29,7 @@ using Abp.Linq.Extensions;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.PrivatePhoneWhites.Authorization;
 using Vickn.Platform.PrivatePhoneWhites.Dtos;
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.PrivatePhoneWhites
 {
@@ -39,20 +40,46 @@ namespace Vickn.Platform.PrivatePhoneWhites
     public class PrivatePhoneWhiteAppService : PlatformAppServiceBase, IPrivatePhoneWhiteAppService
     {
 	    private readonly IRepository<PrivatePhoneWhite,long> _privatePhoneWhiteRepository;
+        private readonly IRepository<User, long> _userRepository;
 	  	private readonly PrivatePhoneWhiteManager _privatePhoneWhiteManager;
 
 	    /// <summary>
         /// 初始化个人白名单服务实例
         /// </summary>
-        public PrivatePhoneWhiteAppService(IRepository<PrivatePhoneWhite, long> privatePhoneWhiteRepository,PrivatePhoneWhiteManager privatePhoneWhiteManager)
+        public PrivatePhoneWhiteAppService(IRepository<PrivatePhoneWhite, long> privatePhoneWhiteRepository,PrivatePhoneWhiteManager privatePhoneWhiteManager, IRepository<User, long> userRepository)
         {
             _privatePhoneWhiteRepository = privatePhoneWhiteRepository;
             _privatePhoneWhiteManager = privatePhoneWhiteManager;
+            _userRepository = userRepository;
         }
 
         #region 个人白名单管理
 
-		/// <summary>
+        /// <summary>
+        /// 获取个人的所有通话名单
+        /// </summary>
+        /// <returns></returns>
+        public async Task<ListResultDto<PhoneWhiteDto>> GetPhoneWhites()
+        {
+            List<PhoneWhiteDto> phoneWhiteDtos = new List<PhoneWhiteDto>();
+            phoneWhiteDtos.AddRange(_userRepository.GetAll().Select(p=>new PhoneWhiteDto()
+            {
+                Name = p.Name,
+                PhoneNumber = p.PhoneNumber,
+                PhoneWhiteType = PhoneWhiteType.Public
+            }).ToList());
+
+            phoneWhiteDtos.AddRange(_privatePhoneWhiteRepository.GetAllList(p=>p.UserId == AbpSession.UserId.Value).Select(p=>new PhoneWhiteDto()
+            {
+                Name = p.Name,
+                PhoneNumber = p.PhoneNumber,
+                PhoneWhiteType = PhoneWhiteType.Private
+            }).ToList());
+
+            return new ListResultDto<PhoneWhiteDto>(phoneWhiteDtos);
+        }
+
+        /// <summary>
         /// 根据查询条件获取个人白名单分页列表
         /// </summary>
         public async Task<PagedResultDto<PrivatePhoneWhiteDto>> GetPagedAsync(GetPrivatePhoneWhiteInput input)

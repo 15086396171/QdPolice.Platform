@@ -26,7 +26,12 @@ namespace Vickn.Platform.PrivatePhoneWhites
     {
         #region 个人白名单管理
 
-		/// <summary>
+        /// <summary>
+        /// 获取个人的所有通话名单
+        /// </summary>
+        /// <returns></returns>
+        Task<ListResultDto<PhoneWhiteDto>> GetPhoneWhites();
+            /// <summary>
         /// 根据查询条件获取个人白名单分页列表
         /// </summary>
         Task<PagedResultDto<PrivatePhoneWhiteDto>> GetPagedAsync(GetPrivatePhoneWhiteInput input);
