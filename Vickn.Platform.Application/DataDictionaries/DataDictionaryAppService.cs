@@ -53,6 +53,17 @@ namespace Vickn.Platform.DataDictionaries
         #region 数据字典管理
 
         /// <summary>
+        /// 根据字典键名获取键值
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<ListResultDto<DataDictionaryItem>> GetDataDictionaryItemsByDicName(GetDataDictoryItemsByDicKeyInput input)
+        {
+            var dataDictionary = await _dataDictionaryRepository.FirstOrDefaultAsync(p => p.Key == input.DicKey);
+            return new ListResultDto<DataDictionaryItem>(dataDictionary.DataDictionaryItems.MapTo<List<DataDictionaryItem>>());
+        }
+
+        /// <summary>
         /// 根据查询条件获取数据字典分页列表
         /// </summary>
         public async Task<PagedResultDto<DataDictionaryDto>> GetPagedAsync(GetDataDictionaryInput input)

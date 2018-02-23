@@ -26,7 +26,14 @@ namespace Vickn.Platform.DataDictionaries
     {
         #region 数据字典管理
 
-		/// <summary>
+        /// <summary>
+        /// 根据字典键名获取键值
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ListResultDto<DataDictionaryItem>> GetDataDictionaryItemsByDicName(GetDataDictoryItemsByDicKeyInput input);
+
+        /// <summary>
         /// 根据查询条件获取数据字典分页列表
         /// </summary>
         Task<PagedResultDto<DataDictionaryDto>> GetPagedAsync(GetDataDictionaryInput input);

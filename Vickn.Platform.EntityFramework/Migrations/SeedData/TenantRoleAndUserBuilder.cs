@@ -56,6 +56,24 @@ namespace Vickn.Platform.Migrations.SeedData
                 _context.SaveChanges();
             }
 
+            // 取证
+            var dicTag = _context.DataDictionaries.FirstOrDefault(p => p.Key == StaticDictionaryNames.Forensics_Tag);
+            if (dicTag == null)
+            {
+                dic = new DataDictionary()
+                {
+                    DisplayName = StaticDictionaryNames.Forensics_TagDisplayName,
+                    Key = StaticDictionaryNames.Forensics_Tag,
+                    DataDictionaryItems = new List<DataDictionaryItem>()
+                    {
+                        new DataDictionaryItem("办公区","办公区"),
+                    }
+                };
+                _context.DataDictionaries.Add(dic);
+                _context.SaveChanges();
+            }
+
+
             //Admin role
 
             var adminRole = _context.Roles.FirstOrDefault(r => r.TenantId == _tenantId && r.Name == StaticRoleNames.Tenants.Admin);
