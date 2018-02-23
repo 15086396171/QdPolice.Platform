@@ -1,0 +1,59 @@
+﻿@model Vickn.Platform.PrivatePhoneWhites.Dtos.PrivatePhoneWhiteForEdit
+
+@{
+    ViewBag.Menu = L("PrivatePhoneWhites");
+    ViewBag.SubMenu = L("PrivatePhoneWhite");
+}
+<div class="row animated fadeInRight">
+  <div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+        <div class="form-horizontal">
+          <div class="hidden">
+            @Html.HiddenFor(model => model.PrivatePhoneWhiteEditDto.Id)
+            @Html.HiddenFor(model => model.PrivatePhoneWhiteEditDto.UserId)
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.PrivatePhoneWhiteEditDto.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.PrivatePhoneWhiteEditDto.Name, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.PrivatePhoneWhiteEditDto.Name, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.PrivatePhoneWhiteEditDto.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.PrivatePhoneWhiteEditDto.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.PrivatePhoneWhiteEditDto.PhoneNumber, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2">
+              <button class="btn btn-primary" type="submit">保存</button>
+              @Html.ActionLink("取消", "Index", new { userId = Model.PrivatePhoneWhiteEditDto.UserId }, new { @class = "btn btn-white" })
+            </div>
+          </div>
+
+        </div>
+    }
+  </div>
+</div>
+@section styles{
+  <style>
+  </style>
+}
+
+@section scripts{
+  <script>
+
+  </script>
+}
+
+

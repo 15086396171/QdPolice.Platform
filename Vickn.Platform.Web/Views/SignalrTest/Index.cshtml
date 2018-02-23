@@ -17,7 +17,12 @@
     $(function () {
       var hub = abp.signalr.hubs.common;
       console.log(hub);
+      abp.event.on("abp.signalr.connected",function() {
+        hub.server.joinGroups();
+        hub.server.getHistories();
+      });
       abp.signalr.connect();
+     
       hub.client.getMessages = function (messages) {
         console.log("messages:", messages);
         var input = [];
@@ -86,7 +91,7 @@
           chatMessageType: 0,
           chatSendType: 1,
           toGroupId: 1,
-        })).done(function (result) {
+        })).done(function () {
           console.log("发送消息成功");
         });
       })

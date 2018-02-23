@@ -1016,6 +1016,7 @@
     <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Index_js.js" />
     <Content Include="Areas\Devices\Views\Device\Details.cshtml" />
     <Content Include="Areas\Devices\Views\Device\ShowFile.cshtml" />
+    <Content Include="Areas\PrivatePhoneWhites\Views\PrivatePhoneWhite\Index_js.js" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1469,6 +1470,10 @@
     <Content Include="Areas\AppWhiteLists\Views\AppWhiteList\Create.cshtml" />
     <Content Include="Areas\AppWhiteLists\Views\_ViewStart.cshtml" />
     <Content Include="Areas\AppWhiteLists\Views\web.config" />
+    <Content Include="Areas\PrivatePhoneWhites\Views\PrivatePhoneWhite\Index.cshtml" />
+    <Content Include="Areas\PrivatePhoneWhites\Views\PrivatePhoneWhite\Create.cshtml" />
+    <Content Include="Areas\PrivatePhoneWhites\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PrivatePhoneWhites\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1517,6 +1522,8 @@
     <Compile Include="Areas\Devices\DevicesAreaRegistration.cs" />
     <Compile Include="Areas\AppWhiteLists\AppWhiteListsAreaRegistration.cs" />
     <Compile Include="Areas\AppWhiteLists\Controllers\AppWhiteListController.cs" />
+    <Compile Include="Areas\PrivatePhoneWhites\Controllers\PrivatePhoneWhiteController.cs" />
+    <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

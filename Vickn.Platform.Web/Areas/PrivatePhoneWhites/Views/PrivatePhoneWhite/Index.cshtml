@@ -1,0 +1,57 @@
+﻿@using System.Web.Optimization
+@using System.Web.UI.WebControls
+@using System.Web.UI.WebControls.Expressions
+@using Abp.Authorization
+@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.PrivatePhoneWhites.Authorization
+@{
+    ViewBag.Menu = L("PrivatePhoneWhites");
+    ViewBag.SubMenu = L("PrivatePhoneWhite");
+}
+<div class="row animated fadeInRight">
+  <div class="ibox-content">
+    <div class="form-inline">
+      <div class="form-group">
+        <a href="@Url.Action("Index","Users",new {Area=""})" class="btn btn-default"><i class="fa fa-close">@L("Back")</i></a>
+        <label>@L("FilterText")</label>
+        <input type="text" placeholder="@L("FilterText")" class="form-control" id="filterText" style="width: 250px;"/>
+        <input type="hidden" id="userId" name="UserId" value="@ViewBag.userId"/>
+        <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+        <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+        @if (IsGranted(PrivatePhoneWhiteAppPermissions.PrivatePhoneWhite_CreatePrivatePhoneWhite))
+        {
+          <a href="javascript:;" class="btn btn-primary" id="create">
+            <span class="glyphicon glyphicon-plus"></span> @L("CreatePrivatePhoneWhite")
+          </a>
+        }
+        @if (IsGranted(PrivatePhoneWhiteAppPermissions.PrivatePhoneWhite_DeletePrivatePhoneWhite))
+        {
+          <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="ibox-content">
+    <table class="table table-bordered table-hover dataTable">
+      <thead>
+        <tr>
+          <th width="25"><input type="checkbox" class="checkall"></th>
+          <th>@L("PrivatePhoneWhite.Name")</th>
+          <th>@L("PrivatePhoneWhite.PhoneNumber")</th>
+          <th>@L("Operational")</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+@section styles{
+
+}
+
+@section scripts{
+  @Html.IncludeScript("~/Areas/PrivatePhoneWhites/Views/PrivatePhoneWhite/index_js.js")
+}
+

@@ -15,6 +15,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Vickn.PlatfForm.Utils;
 
 namespace Vickn.Platform.PrivatePhoneWhites.Dtos
 {
@@ -43,6 +44,7 @@ namespace Vickn.Platform.PrivatePhoneWhites.Dtos
 		[DisplayName("电话号码")]
         [Required]
         [MaxLength(16)]
+		[RegularExpression(RegularHelper.PhoneRegularExpression, ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
