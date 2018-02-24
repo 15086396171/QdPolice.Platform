@@ -36,7 +36,6 @@ namespace Vickn.Platform.Announcements
 	/// <summary>
     /// 通知公告服务
     /// </summary>
-	[AbpAuthorize(AnnouncementAppPermissions.Announcement)]
     public class AnnouncementAppService : PlatformAppServiceBase, IAnnouncementAppService
     {
 	    private readonly IRepository<Announcement,long> _announcementRepository;

@@ -21,10 +21,10 @@ import authUtils from '../../../../common/utils/authUtils'
     options.error = undefined;
 
     options.beforeSend = function () {
-      Popup.showLoading("loading...");
+      //Popup.showLoading("loading...");
     };
     options.complete = function () {
-      Popup.close();
+      //Popup.close();
     }
 
     return $.Deferred(function ($dfd) {

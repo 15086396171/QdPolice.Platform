@@ -13,12 +13,9 @@
         </div>
       </div>
     </card>
-    <group v-if="document.document2Documents &&document.document2Documents.length>0 " title="您可能还需要：">
+    <!--<group v-if="document.document2Documents &&document.document2Documents.length>0 " title="您可能还需要：">
       <cell v-for="(item,index) in document.document2Documents" :key="item.nextDocument.id" :title="item.nextDocument.title" :link="'/docDetails/'+item.nextDocument.id"></cell>
-    </group>
-    <br />
-    <br />
-    <br />
+    </group>-->
     <br />
   </div>
 </template>
@@ -33,9 +30,7 @@
     },
     data() {
       return {
-        document: {
-
-        },
+        document: {},
       }
     },
     watch: {
@@ -51,9 +46,8 @@
       async fetchData() {
         let input = {
           id: this.$route.params.id,
-          documentIndexType: this.$route.params.documentIndexType
         };
-        let ret = await documentService.getByIdOrIndexTypeAsync(input)
+        let ret = await documentService.getByIdAsync(input)
         this.document = ret
         document.title = this.document.title
       }

@@ -12,16 +12,16 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api/': {
-        target: 'http://localhost:61759',
+        target: 'http://localhost:61780',
       },
       '/AbpScripts/': {
-        target: 'http://localhost:61759'
+        target: 'http://localhost:61780'
       },
       '/FileRecord/': {
-        target: 'http://localhost:61759'
+        target: 'http://localhost:61780'
       },
       '/File/': {
-        target: 'http://localhost:61759'
+        target: 'http://localhost:61780'
       }
     },
 

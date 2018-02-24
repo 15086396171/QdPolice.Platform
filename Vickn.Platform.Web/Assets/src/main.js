@@ -18,8 +18,6 @@ import Config from './common/config'
 import LoadFile from './common/utils/loadFile'
 console.log(Config.apiHost, process.env);
 
-import '../static/mobile-dialog/popup.js'
-import '../static/mobile-dialog/popup.css'
 import './vendor/abp/scripts/abp.js'
 import './vendor/abp/scripts/libs/abp.jquery.js'
 
