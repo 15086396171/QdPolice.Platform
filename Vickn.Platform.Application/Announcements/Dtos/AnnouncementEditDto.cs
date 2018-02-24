@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
@@ -43,6 +44,8 @@ namespace Vickn.Platform.Announcements.Dtos
 		[DisplayName("内容")]
         [Required]
         public string Content { get; set; }
+
+        public virtual List<AnnouncementUserEditDto> AnnouncementUsers { get; set; }
 
     }
 }

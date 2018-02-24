@@ -28,8 +28,8 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> GetTreeData()
         {
             var result = await _organizationUnitAppService.GetOrganizationUnitDto();
-            return Json(result); 
-        } 
+            return Json(result);
+        }
 
         // GET: OrganizationUnits
        public ActionResult Index()

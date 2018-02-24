@@ -60,6 +60,7 @@ namespace Vickn.Platform.Announcements
 			 var query = _announcementRepository.GetAll();
 
             //TODO:根据传入的参数添加过滤条件
+		    query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.Title.Contains(input.FilterText));
 
             var announcementCount = await query.CountAsync();
 

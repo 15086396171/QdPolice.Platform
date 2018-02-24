@@ -130,7 +130,7 @@ namespace Vickn.Platform.Web
                   );
             bundles.Add(
              new ScriptBundle("~/Bundles/lib/js/ztree/core")
-                 .Include("~/Content/Hplus/js/plugins//zTree/v3/js/jquery.ztree.core-3.5.js")
+                 .Include("~/Content/Hplus/js/plugins//zTree/v3/js/jquery.ztree.core-3.5.js", "~/Content/Hplus/js/plugins//zTree/v3/js/jquery.ztree.excheck-3.5.js")
              );
 
             #endregion

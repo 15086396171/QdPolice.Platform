@@ -1,5 +1,6 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
+using Vickn.Platform.Announcements.Authorization;
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
@@ -43,9 +44,23 @@ namespace Vickn.Platform.Web
                     requiredPermissionName: DeviceAppPermissions.Device))
                     .AddItem(appWhiteList);
 
+            var announcement = new MenuItemDefinition(
+                AnnouncementAppPermissions.Announcement,
+                L("Announcement"),
+                icon: "icon-grid"
+            );
+
+            announcement.AddItem(
+                new MenuItemDefinition(
+                    AnnouncementAppPermissions.Announcement,
+                    L("Announcement"),
+                    "icon-star",
+                    "announcements/announcement",
+                    requiredPermissionName: AnnouncementAppPermissions.Announcement));
 
             context.Manager.MainMenu
                 .AddItem(device)
+                .AddItem(announcement)
 
             #region 系统管理
                 .AddItem(
