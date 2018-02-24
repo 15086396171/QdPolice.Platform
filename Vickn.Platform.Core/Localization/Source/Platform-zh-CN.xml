@@ -178,5 +178,26 @@
     <text name="CreatePrivatePhoneWhite" value="添加个人白名单" />
     <text name="EditPrivatePhoneWhite" value="编辑个人白名单" />
     <text name="DeletePrivatePhoneWhite" value="删除个人白名单" />
+
+    <!-- 通知公告管理 -->
+
+
+    <text name="	AnnouncementHeaderInfo" value="通知公告信息列表" />
+    <text name="AnnouncementDeleteWarningMessage" value="通知公告名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="AnnouncementName" value="通知公告" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="Announcement.Title" value="标题" />
+    <text name="Announcement.Content" value="内容" />
+    <text name="Announcement.AnnouncementUsers" value="AnnouncementUsers" />
+    <text name="Announcement.LastModificationTime" value="最后编辑时间" />
+    <text name="Announcement.CreationTime" value="创建时间" />
+
+
+    <text name="Announcement" value="通知公告管理" />
+    <text name="CreateAnnouncement" value="添加通知公告" />
+    <text name="EditAnnouncement" value="编辑通知公告" />
+    <text name="DeleteAnnouncement" value="删除通知公告" />
   </texts>
 </localizationDictionary>

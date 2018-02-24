@@ -1,6 +1,8 @@
 ﻿using System.Data.Common;
 using System.Data.Entity;
 using Abp.Zero.EntityFramework;
+using Vickn.Platform.Announcements;
+using Vickn.Platform.Announcements.EntityMapper;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
@@ -37,6 +39,9 @@ namespace Vickn.Platform.EntityFramework
 
         public IDbSet<PrivatePhoneWhite> PrivatePhoneWhites { get; set; }
 
+        public IDbSet<Announcement> Announcements { get; set; }
+
+        public IDbSet<AnnouncementUser> AnnouncementUsers { get; set; }
 
 
         /* NOTE: 
@@ -90,6 +95,9 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new AppWhiteListCfg());
             modelBuilder.Configurations.Add(new ForensicsRecordCfg());
             modelBuilder.Configurations.Add(new PrivatePhoneWhiteCfg());
+
+            modelBuilder.Configurations.Add(new AnnouncementCfg());
+            modelBuilder.Configurations.Add(new AnnouncementUserCfg());
 
         }
     }

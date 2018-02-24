@@ -1610,6 +1610,9 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
+    <Folder Include="_GeneratedCode\Announcements\Application\" />
+    <Folder Include="_GeneratedCode\Announcements\Core\" />
+    <Folder Include="_GeneratedCode\Announcements\EntityFramework\EntityMapper\" />
     <Folder Include="_GeneratedCode\Areas\" />
   </ItemGroup>
   <ItemGroup>

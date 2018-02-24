@@ -173,6 +173,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Announcements\AnnouncementAppService.cs" />
+    <Compile Include="Announcements\Dtos\AnnouncementDto.cs" />
+    <Compile Include="Announcements\Dtos\AnnouncementEditDto.cs" />
+    <Compile Include="Announcements\Dtos\AnnouncementForEdit.cs" />
+    <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
+    <Compile Include="Announcements\IAnnouncementAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\InviteToGroupInput.cs" />

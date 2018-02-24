@@ -127,6 +127,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Announcements\Announcement.cs" />
+    <Compile Include="Announcements\AnnouncementManager.cs" />
+    <Compile Include="Announcements\AnnouncementUser.cs" />
+    <Compile Include="Announcements\Authorization\AnnouncementAppAuthorizationProvider.cs" />
+    <Compile Include="Announcements\Authorization\AnnouncementAppPermissions.cs" />
+    <Compile Include="Announcements\_AnnouncementReadme.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="Chats\ChatGroup.cs" />
