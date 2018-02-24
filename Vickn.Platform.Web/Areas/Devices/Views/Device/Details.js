@@ -4,7 +4,6 @@
     $(".manage").click(function () {
       var id = $(this).data("id");
       var operation = $(this).data("operation");
-      console.log(id);
       _deviceService.manageAsync({
         id: id,
         operation: operation
