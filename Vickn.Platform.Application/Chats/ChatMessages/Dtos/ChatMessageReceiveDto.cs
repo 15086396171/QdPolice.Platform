@@ -19,6 +19,11 @@ namespace Vickn.Platform.Chats.ChatMessages
         public string Message { get; set; }
 
         /// <summary>
+        /// 时长
+        /// </summary>
+        public long Duration { get; set; }
+
+        /// <summary>
         /// 时间戳
         /// </summary>
         public long Tickets { get; set; }
