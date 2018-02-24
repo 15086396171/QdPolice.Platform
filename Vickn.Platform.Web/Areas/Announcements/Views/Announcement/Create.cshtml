@@ -14,44 +14,55 @@
 
         @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
 
-      <div class="form-horizontal">
+        <div class="form-horizontal">
 
-        <div class="hidden">
-          @Html.HiddenFor(model => model.AnnouncementEditDto.Id)
-        </div>
-
-        <div class="form-group">
-          @Html.LabelFor(model => model.AnnouncementEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-8">
-            @Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Title, "", new { @class = "text-danger" })
+          <div class="hidden">
+            @Html.HiddenFor(model => model.AnnouncementEditDto.Id)
           </div>
-        </div>
 
-        <div class="form-group">
-          @Html.LabelFor(model => model.AnnouncementEditDto.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-8">
-            @Html.TextAreaFor(model => model.AnnouncementEditDto.Content, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Content, "", new { @class = "text-danger" })
+          <div class="form-group">
+            @Html.LabelFor(model => model.AnnouncementEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Title, "", new { @class = "text-danger" })
+            </div>
           </div>
-        </div>
-          
-        <div class="form-group">
-          @Html.LabelFor(model => model.AnnouncementEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-          <div class="col-md-8">
-            @Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })
-              
-            @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Title, "", new { @class = "text-danger" })
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AnnouncementEditDto.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.TextAreaFor(model => model.AnnouncementEditDto.Content, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Content, "", new { @class = "text-danger" })
+            </div>
           </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.AnnouncementEditDto.AnnouncementUsers, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @*@Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })*@
+
+              <input type="text" readonly="readonly" class="form-control" value="@(string.Join(",",Model.AnnouncementEditDto.AnnouncementUsers.Select(p => p.User.Name)))" id="names" onclick="showMenu()" />
+              <div id="users">
+                @for (int i = 0; i < Model.AnnouncementEditDto.AnnouncementUsers.Count; i++)
+                {
+                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].Id)
+                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].UserId)
+                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].AnnouncementId)
+
+                    @*<input name="AnnouncementEditDto.AnnouncementUsers[0].Id" type="hidden" value="false">*@
+                }
+              </div>
+              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.AnnouncementUsers, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+
+          @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
         </div>
-          
 
-        @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
-      </div>
-
-      <div id="menuContent" class="menuContent" style="display: none;">
-        <div class="organizationUnit ztree"></div>
-      </div>
+        <div id="menuContent" class="menuContent" style="display: none;">
+          <div class="organizationUnit ztree"></div>
+        </div>
     }
   </div>
 </div>
@@ -75,7 +86,7 @@
       //页面层
       layer.open({
         type: 1,
-        title:"选择接收用户",
+        title: "选择接收用户",
         skin: 'layui-layer-rim', //加上边框
         shade: 0,
         area: ['420px', '400px'], //宽高
@@ -93,7 +104,23 @@
         console.log(node)
         getChildrenUsers(node);
 
-        $("#AnnouncementEditDto_Title").val(selectedUserNames.join(','));
+        $("#names").val(selectedUserNames.join(','));
+        $("#users").children().remove();
+        $.each(selectedUsers, function (index, data) {
+          $("#users").append('<input name="AnnouncementEditDto.AnnouncementUsers[' +
+            index +
+            '].Id" type="hidden" value="">');
+          $("#users").append('<input name="AnnouncementEditDto.AnnouncementUsers[' +
+            index +
+            '].UserId" type="hidden" value="' +
+            data +
+            '">');
+          $("#users").append('<input name="AnnouncementEditDto.AnnouncementUsers[' +
+            index +
+            '].AnnouncementId" type="hidden" value="' +
+            $("#AnnouncementEditDto_Id").val() +
+            '">');
+        })
       })
 
       function getChildrenUsers(node) {
@@ -104,11 +131,11 @@
             selectedUserNames.push(node.displayName);
           } else {
             selectedUsers.splice($.inArray(node.id, selectedUsers), 1);
-            selectedUserNames.splice($.inArray(node.displayName, selectedUserNames),1);
+            selectedUserNames.splice($.inArray(node.displayName, selectedUserNames), 1);
           }
         }
         $.each(node.children,
-          function(index, child) {
+          function (index, child) {
             getChildrenUsers(child);
           });
       }

@@ -79,6 +79,11 @@
             /// 设备管控
             /// </summary>
             public const string Device_Manage = "Device.Manage";
+
+            /// <summary>
+            /// 消息通知
+            /// </summary>
+            public const string Announcement_Send = "Announcement.Send";
         }
 
     }

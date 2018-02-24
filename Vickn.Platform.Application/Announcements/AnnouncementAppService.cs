@@ -29,6 +29,7 @@ using Abp.Linq.Extensions;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.Announcements.Authorization;
 using Vickn.Platform.Announcements.Dtos;
+using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.Announcements
 {
@@ -39,15 +40,19 @@ namespace Vickn.Platform.Announcements
     public class AnnouncementAppService : PlatformAppServiceBase, IAnnouncementAppService
     {
 	    private readonly IRepository<Announcement,long> _announcementRepository;
+        private readonly IRepository<AnnouncementUser, long> _announcementUserRepository;
 	  	private readonly AnnouncementManager _announcementManager;
+        private readonly NotificationManager _notificationManager;
 
 	    /// <summary>
         /// 初始化通知公告服务实例
         /// </summary>
-        public AnnouncementAppService(IRepository<Announcement, long> announcementRepository,AnnouncementManager announcementManager)
+        public AnnouncementAppService(IRepository<Announcement, long> announcementRepository,AnnouncementManager announcementManager, IRepository<AnnouncementUser, long> announcementUserRepository, NotificationManager notificationManager)
         {
             _announcementRepository = announcementRepository;
             _announcementManager = announcementManager;
+            _announcementUserRepository = announcementUserRepository;
+            _notificationManager = notificationManager;
         }
 
         #region 通知公告管理
@@ -100,7 +105,10 @@ namespace Vickn.Platform.Announcements
             }
             else
             {
-                announcementEditDto = new AnnouncementEditDto();
+                announcementEditDto = new AnnouncementEditDto()
+                {
+                    AnnouncementUsers = new List<AnnouncementUserEditDto>()
+                };
             }
             return new AnnouncementForEdit { AnnouncementEditDto = announcementEditDto };
 		}
@@ -132,7 +140,13 @@ namespace Vickn.Platform.Announcements
             var entity = input.AnnouncementEditDto.MapTo<Announcement>();
 
             entity = await _announcementRepository.InsertAsync(entity);
-            return new AnnouncementForEdit { AnnouncementEditDto = entity.MapTo<AnnouncementEditDto>() };
+
+		    var result = entity.MapTo<AnnouncementEditDto>();
+
+            await _notificationManager.SendMessageAsync(
+		        input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
+		            .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, result.Title, entity.MapTo<AnnouncementDto>());
+            return new AnnouncementForEdit { AnnouncementEditDto = result };
 		}
 
         /// <summary>
@@ -143,10 +157,17 @@ namespace Vickn.Platform.Announcements
 		{
 		    //TODO: 更新前的逻辑判断，是否允许更新
 
+            await _announcementUserRepository.DeleteAsync(p=>p.AnnouncementId== input.AnnouncementEditDto.Id.Value);
+
 			var entity = await _announcementRepository.GetAsync(input.AnnouncementEditDto.Id.Value);
             input.AnnouncementEditDto.MapTo(entity);
+		    await _announcementRepository.UpdateAsync(entity);
 
-            await _announcementRepository.UpdateAsync(entity);
+            var result = entity.MapTo<AnnouncementDto>();
+
+		    await _notificationManager.SendMessageAsync(
+		        input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
+		            .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, result.Title, result);
 		}
 
         /// <summary>

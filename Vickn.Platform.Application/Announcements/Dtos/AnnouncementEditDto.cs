@@ -45,6 +45,7 @@ namespace Vickn.Platform.Announcements.Dtos
         [Required]
         public string Content { get; set; }
 
+        [DisplayName("通知用户")]
         public virtual List<AnnouncementUserEditDto> AnnouncementUsers { get; set; }
 
     }
