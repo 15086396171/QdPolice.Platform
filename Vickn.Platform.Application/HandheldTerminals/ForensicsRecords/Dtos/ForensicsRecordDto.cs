@@ -22,7 +22,7 @@ namespace Vickn.Platform.HandheldTerminals.Dtos
     /// 取证记录管理Dto
     /// </summary>
     [AutoMap(typeof(ForensicsRecord))]
-    public class ForensicsRecordDto : EntityDto<long>
+    public class ForensicsRecordDto : CreationAuditedEntityDto<long>
     {
         /// <summary>
         /// 路径

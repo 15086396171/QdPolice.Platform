@@ -62,7 +62,10 @@ namespace Vickn.Platform.HandheldTerminals
         /// </summary>
         public async Task<PagedResultDto<ForensicsRecordDto>> GetPagedAsync(GetForensicsRecordInput input)
         {
-            var query = _forensicsRecordRepository.GetAll();
+            var query = _forensicsRecordRepository.GetAll().Where(p=>p.DeviceId == input.DeviceId);
+            query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.Mode == input.FilterText)
+                .WhereIf(input.Type.HasValue, p => p.ForensicsRecordType == input.Type);
+
 
             //TODO:根据传入的参数添加过滤条件
 
