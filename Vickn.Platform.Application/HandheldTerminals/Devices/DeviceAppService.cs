@@ -80,10 +80,11 @@ namespace Vickn.Platform.HandheldTerminals.Devices
 
             foreach (var deviceDto in deviceDtos)
             {
-                if (_onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, deviceDto.User.Id)).Any())
-                {
-                    deviceDto.IsOnline = true;
-                }
+                if (deviceDto.User != null)
+                    if (_onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, deviceDto.User.Id)).Any())
+                    {
+                        deviceDto.IsOnline = true;
+                    }
             }
 
             return new PagedResultDto<DeviceDto>(
@@ -195,7 +196,7 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         public async Task ManageAsync(ManageInput input)
         {
             var device = await _deviceRepository.GetAsync(input.Id);
-            await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId,device.User.Id),PlatformConsts.NotificationConstNames.Device_Manage,input.Operation, device.MapTo<DeviceDto>());
+            await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId, device.User.Id), PlatformConsts.NotificationConstNames.Device_Manage, input.Operation, device.MapTo<DeviceDto>());
         }
 
         /// <summary>
