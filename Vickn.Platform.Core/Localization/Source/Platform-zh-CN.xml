@@ -199,5 +199,25 @@
     <text name="CreateAnnouncement" value="添加通知公告" />
     <text name="EditAnnouncement" value="编辑通知公告" />
     <text name="DeleteAnnouncement" value="删除通知公告" />
+
+    <text name="	ForensicsRecordHeaderInfo" value="取证记录信息列表" />
+    <text name="ForensicsRecordDeleteWarningMessage" value="取证记录名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="ForensicsRecordName" value="取证记录" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="ForensicsRecord.Src" value="路径" />
+    <text name="ForensicsRecord.Mode" value="模式" />
+    <text name="ForensicsRecord.Des" value="描述" />
+    <text name="ForensicsRecord.ForensicsRecordType" value="文件类型" />
+    <text name="ForensicsRecord.Device" value="Device" />
+    <text name="ForensicsRecord.DeviceId" value="DeviceId" />
+    <text name="ForensicsRecord.CreationTime" value="创建时间" />
+
+
+    <text name="ForensicsRecord" value="取证记录管理" />
+    <text name="CreateForensicsRecord" value="添加取证记录" />
+    <text name="EditForensicsRecord" value="编辑取证记录" />
+    <text name="DeleteForensicsRecord" value="删除取证记录" />
   </texts>
 </localizationDictionary>

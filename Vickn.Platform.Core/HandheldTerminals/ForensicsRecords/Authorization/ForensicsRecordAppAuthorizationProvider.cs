@@ -34,8 +34,8 @@ namespace Vickn.Platform.HandheldTerminals.Authorization
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
-            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages) 
-                ?? pages.CreateChildPermission(AppPermissions.Pages, L("Pages"));
+            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_HandheldTerminal) 
+                ?? pages.CreateChildPermission(AppPermissions.Pages_HandheldTerminal, L(AppPermissions.Pages_HandheldTerminal));
 
             var forensicsRecord = entityNameModel.CreateChildPermission(ForensicsRecordAppPermissions.ForensicsRecord , L("ForensicsRecord"));
             forensicsRecord.CreateChildPermission(ForensicsRecordAppPermissions.ForensicsRecord_CreateForensicsRecord, L("CreateForensicsRecord"));
