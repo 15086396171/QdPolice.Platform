@@ -2,7 +2,7 @@
   $(function () {
     var _tree = new OrganizationUnitTree();
     var $dataTable = $(".dataTable");
-    var _$ouId = $("<input></input>");
+    var _$ouId = $("#ouId");
 
     var _permissions = {
       create: abp.auth.hasPermission('Pages.User.CreateUser'),
@@ -132,6 +132,10 @@
         {
           actionName: "createAction",
           action: function () {
+            if (!_$ouId.val()) {
+              abp.message.warn("请选择组织");
+              return;
+            }
             window.location.href = abp.appPath + "Users/Create?ouId=" + _$ouId.val();
           }
         },

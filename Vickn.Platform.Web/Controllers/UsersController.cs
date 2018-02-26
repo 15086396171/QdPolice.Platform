@@ -21,12 +21,13 @@ namespace Vickn.Platform.Web.Controllers
             _userAppService = userAppService;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(long? ouId)
         {
+            ViewBag.ouId = ouId;
             return View();
         }
 
-        [AbpMvcAuthorize(UserAppPermissions.User_CreateUser,UserAppPermissions.User_EditUser)]
+        [AbpMvcAuthorize(UserAppPermissions.User_CreateUser, UserAppPermissions.User_EditUser)]
         public async Task<ActionResult> Create(long? id, long? ouId)
         {
             var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
@@ -43,7 +44,7 @@ namespace Vickn.Platform.Web.Controllers
                 return View(dto);
 
             await _userAppService.CreateOrUpdateUserAsync(dto);
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", new { ouId = dto.OuId });
         }
 
         public async Task<ActionResult> ChangeProfilePic()
