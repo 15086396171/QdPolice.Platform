@@ -97,6 +97,19 @@ namespace Vickn.Platform.HandheldTerminals
             entity = await _forensicsRecordRepository.InsertAsync(entity);
             return new ForensicsRecordForEdit { ForensicsRecordEditDto = entity.MapTo<ForensicsRecordEditDto>() };
         }
+
+        /// <summary>
+        /// 根据Id获取
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<ForensicsRecordDto> GetByIdAsync(EntityDto<long> input)
+        {
+            var forensicsRecord = await _forensicsRecordRepository.GetAsync(input.Id);
+
+            return forensicsRecord.MapTo<ForensicsRecordDto>();
+        }
+
         #endregion
 
     }

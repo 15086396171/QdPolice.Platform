@@ -1,0 +1,18 @@
+﻿@model Vickn.Platform.HandheldTerminals.Dtos.ForensicsRecordDto
+@{
+  Layout = null;
+}
+@*<video src="@Model.Src" autoplay="true"></video>*@
+<div id="video"></div>
+<link href="~/Content/Hplus/js/plugins/FZ-video/css/fz-video.css" rel="stylesheet" />
+<link href="~/Content/Hplus/js/plugins/FZ-video/font/iconfont.css" rel="stylesheet" />
+<script src="~/Content/Hplus/js/plugins/FZ-video/js/fz-video.js"></script>
+<script>
+  var FZ_VIDEO = new createVideo(
+    "video",  //容器的id
+    {
+      url: '@Model.Src',  //视频地址
+      autoplay:true          //是否自动播放
+    }
+  );
+</script>

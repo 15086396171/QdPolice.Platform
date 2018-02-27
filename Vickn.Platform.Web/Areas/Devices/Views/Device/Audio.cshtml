@@ -1,0 +1,13 @@
+﻿@model Vickn.Platform.HandheldTerminals.Dtos.ForensicsRecordDto
+
+<audio src="@Model.Src" preload="auto" />
+@Model.Des
+  @section scripts
+{
+<script src="~/Content/Hplus/js/plugins/audiojs/audiojs/audio.min.js"></script>
+    <script>
+      audiojs.events.ready(function() {
+        var as = audiojs.createAll();
+      });
+    </script>
+  }

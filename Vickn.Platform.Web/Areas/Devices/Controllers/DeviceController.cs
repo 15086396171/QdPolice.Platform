@@ -18,6 +18,7 @@ using Abp.Application.Services.Dto;
 using Abp.Runtime.Session;
 using Abp.Web.Mvc.Authorization;
 using Vickn.PlatfForm.Utils.Extensions;
+using Vickn.Platform.HandheldTerminals;
 using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
@@ -25,14 +26,16 @@ using Vickn.Platform.Web.Controllers;
 
 namespace Vickn.Platform.Web.Areas.Devices.Controllers
 {
-	[AbpMvcAuthorize(DeviceAppPermissions.Device)]
+    [AbpMvcAuthorize(DeviceAppPermissions.Device)]
     public class DeviceController : PlatformControllerBase
     {
         private readonly IDeviceAppService _deviceAppService;
+        private readonly IForensicsRecordAppService _forensicsRecordAppService;
 
-        public DeviceController(IDeviceAppService deviceAppService)
+        public DeviceController(IDeviceAppService deviceAppService, IForensicsRecordAppService forensicsRecordAppService)
         {
             _deviceAppService = deviceAppService;
+            _forensicsRecordAppService = forensicsRecordAppService;
         }
 
         public ActionResult Index()
@@ -40,20 +43,20 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             return View();
         }
 
-		[AbpMvcAuthorize(DeviceAppPermissions.Device_CreateDevice,DeviceAppPermissions.Device_EditDevice)]
+        [AbpMvcAuthorize(DeviceAppPermissions.Device_CreateDevice, DeviceAppPermissions.Device_EditDevice)]
         public async Task<ActionResult> Create(long? id)
         {
-			var deviceDto = await _deviceAppService.GetForEditAsync(new NullableIdDto<long>(id));
+            var deviceDto = await _deviceAppService.GetForEditAsync(new NullableIdDto<long>(id));
             return View(deviceDto);
         }
 
-		[HttpPost]
+        [HttpPost]
         public async Task<ActionResult> Create(DeviceForEdit deviceDto)
         {
             if (!CheckModelState(await _deviceAppService.CheckErrorAsync(deviceDto)))
             {
-			   return View(deviceDto);
-			 }
+                return View(deviceDto);
+            }
             await _deviceAppService.CreateOrUpdateAsync(deviceDto);
             return RedirectToAction("Index");
         }
@@ -67,6 +70,28 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
         public async Task<ActionResult> ShowFile(long id)
         {
             ViewBag.id = id;
+            return View();
+        }
+
+        public async Task<ActionResult> ShowFileDetails(long id)
+        {
+            var forensicsRecordDto = await _forensicsRecordAppService.GetByIdAsync(new EntityDto<long>(id));
+
+            switch (forensicsRecordDto.ForensicsRecordType)
+            {
+                case ForensicsRecordType.Audio:
+                    return View("Audio", forensicsRecordDto);
+                case ForensicsRecordType.Video:
+                    return View("Video", forensicsRecordDto);
+                case ForensicsRecordType.Picture:
+                    return View("Picture", forensicsRecordDto);
+            }
+
+            return View();
+        }
+
+        public ActionResult VideoCall()
+        {
             return View();
         }
     }

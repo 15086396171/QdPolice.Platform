@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -182,6 +183,17 @@ namespace Vickn.Platform.Users
             return entity.MapTo<UserListDto>();
         }
 
+        /// <summary>
+        /// 通过用户名获取用户信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<UserListDto> GetUserByNameAsync(EntityDto<string> input)
+        {
+            var user = await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.Id);
+            return user.MapTo<UserListDto>();
+        }
+
 
         /// <summary>
         /// 新增或更改用户管理
@@ -254,6 +266,48 @@ namespace Vickn.Platform.Users
             }
 
             return user.MapTo<UserEditDto>();
+        }
+
+        /// <summary>
+        /// 添加带密码的用户、导入使用
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task CreateManyWithPassword(UserEditDtoWithPassword input)
+        {
+            //TODO:新增前的逻辑判断，是否允许新增
+            var user = input.MapTo<User>();
+            user.TenantId = AbpSession.TenantId;
+            user.Password = new PasswordHasher().HashPassword(input.Password);
+            user.IsEmailConfirmed = true;
+            if (!user.PhoneNumber.IsNullOrEmpty())
+            {
+                user.EmailAddress = user.EmailAddress.IsNullOrEmpty()
+                    ? user.PhoneNumber + "@default.com"
+                    : user.EmailAddress;
+            }
+            else
+            {
+                user.EmailAddress = Guid.NewGuid().ToString("N").Truncate(6) + "@default.com";
+            }
+            user.Surname = user.Name;
+            // 默认启用
+            user.IsActive = true;
+
+            user.Roles = new List<UserRole>();
+
+            var roles = await _roleManager.Roles.Where(p => p.IsDefault).ToListAsync();
+
+            foreach (var role in roles)
+            {
+                user.Roles.Add(new UserRole
+                {
+                    RoleId = role.Id
+                });
+            }
+
+            user.Id = await _userRepository.InsertAndGetIdAsync(user);
+
         }
 
         /// <summary>

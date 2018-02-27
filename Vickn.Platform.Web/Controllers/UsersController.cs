@@ -1,10 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.Extensions;
 using Abp.Web.Mvc.Authorization;
+using Abp.Web.Security.AntiForgery;
+using NPOI.HSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.XSSF.UserModel;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
@@ -56,6 +62,85 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> MyInfo()
         {
             return View("_MyInfo", await _userAppService.GetMyInfoAsync());
+        }
+
+        [DisableAbpAntiForgeryTokenValidation]
+        public async Task<ActionResult> Import()
+        {
+            string filePath = string.Concat("/FileRecords/", DateTime.Now.ToString("yyyyMMdd"), "/");
+            string savePath = Server.MapPath(filePath);
+            if (!Directory.Exists(savePath))
+                Directory.CreateDirectory(savePath);
+
+            string fileNo = Guid.NewGuid().ToString("N");
+
+            var file = Request.Files[0];
+
+            var fileName = DateTime.Now.Ticks + "_" + file.FileName;
+            try
+            {
+                file.SaveAs(savePath + fileName);
+                //  return filePath + fileName;
+            }
+            catch (Exception)
+            {
+                return Json(new { });
+            }
+            FileStream fs = null;
+            IWorkbook workbook = null;
+            ISheet sheet = null;
+            IRow row = null;
+            ICell cell = null;
+            int startRow = 1;
+
+            List<UserEditDtoWithPassword> userEditDtos = new List<UserEditDtoWithPassword>();
+            try
+            {
+                using (fs = System.IO.File.OpenRead(savePath + fileName))
+                {
+                    if ((savePath + fileName).IndexOf(".xlsx") > 0)
+                    {
+                        workbook = new XSSFWorkbook(fs);
+                    }
+                    else if ((savePath + fileName).IndexOf(".xls", StringComparison.Ordinal) > 0)
+                        workbook = new HSSFWorkbook(fs);
+
+                    sheet = workbook.GetSheetAt(0); //读取第一个sheet，当然也可以循环读取每个sheet  
+
+                    int rowCount = sheet.LastRowNum;//总行数  
+
+                    for (int i = 0; i < rowCount; i++)
+                    {
+                        row = sheet.GetRow(i + 1);
+
+                        userEditDtos.Add(new UserEditDtoWithPassword()
+                        {
+                            Name = row.Cells[1].ToString().Trim(),
+                            UserName = row.Cells[2].ToString().Trim(),
+                             Password= row.Cells[3].ToString().Trim(),
+                             PoliceNo = row.Cells[4].ToString().Trim(),
+                             Position = row.Cells[5].ToString().Trim(),
+                             PhoneNumber = row.Cells[6].ToString().Trim(),
+                            // 默认字段
+                            ShouldChangePasswordOnNextLogin = true,
+                            IsActive = true,
+                        });
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+                fs?.Close();
+                return Json(new { });
+            }
+
+            foreach (var userEditDto in userEditDtos)
+            {
+                if (!userEditDto.UserName.IsNullOrEmpty())
+                    await _userAppService.CreateManyWithPassword(userEditDto);
+            }
+            return Json(new { });
         }
     }
 }

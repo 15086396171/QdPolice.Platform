@@ -20,18 +20,25 @@
         <div class="form-group">
           @if (IsGranted(UserAppPermissions.User_DeleteUser))
           {
-              <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+            <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
           }
           @if (IsGranted(UserAppPermissions.User_CreateUser))
           {
-              <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
-                <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
-              </a>
+            <a href="javascript:;" class="btn btn-primary" id="create" data-title="@ViewBag.createBtn">
+              <span class="glyphicon glyphicon-plus"></span> @ViewBag.createBtn
+            </a>
           }
           <input type="hidden" id="ouId" value="@ViewBag.ouId" />
           <input type="text" placeholder="@L("User.Name")" class="form-control" id="name" style="width: 250px;" />
           <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
           <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+        </div>
+      </div>
+      <div id="uploader" class="wu-example">
+        <!--用来存放文件信息-->
+        <div id="thelist" class="uploader-list"></div>
+        <div class="btns">
+          <div id="picker">导入用户</div>
         </div>
       </div>
     </div>
@@ -58,9 +65,11 @@
   </div>
 </div>
 @section styles{
+<link href="~/Content/Hplus/js/plugins/webuploader/webuploader.css" rel="stylesheet" />
   @Styles.Render("~/Bundles/lib/css/ztree/metro")
 }
 @section scripts{
+<script src="~/Content/Hplus/js/plugins/webuploader/webuploader.js"></script>
   @Scripts.Render("~/Bundles/lib/js/ztree/core")
   @Html.IncludeScript("~/Views/OrganizationUnits/_OrganizationUnitTree.js")
   @Html.IncludeScript("~/Views/Users/Index.js")

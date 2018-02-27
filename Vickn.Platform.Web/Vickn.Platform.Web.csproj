@@ -125,6 +125,9 @@
     <Reference Include="Hangfire.SqlServer, Version=1.6.14.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Hangfire.SqlServer.1.6.14\lib\net45\Hangfire.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <HintPath>..\packages\SharpZipLib.0.86.0\lib\20\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
     <Reference Include="JetBrains.Annotations, Version=11.0.0.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325, processorArchitecture=MSIL">
       <HintPath>..\packages\JetBrains.Annotations.11.0.0\lib\net20\JetBrains.Annotations.dll</HintPath>
     </Reference>
@@ -214,6 +217,18 @@
     <Reference Include="Nito.AsyncEx.Enlightenment, Version=4.0.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Nito.AsyncEx.4.0.1\lib\net45\Nito.AsyncEx.Enlightenment.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="NPOI, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OOXML, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OOXML.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXml4Net, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXml4Net.dll</HintPath>
+    </Reference>
+    <Reference Include="NPOI.OpenXmlFormats, Version=2.3.0.0, Culture=neutral, PublicKeyToken=0df73ec7942b34e1, processorArchitecture=MSIL">
+      <HintPath>..\packages\NPOI.2.3.0\lib\net40\NPOI.OpenXmlFormats.dll</HintPath>
     </Reference>
     <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -565,6 +580,13 @@
     <Content Include="Content\Hplus\js\jquery-ui-1.10.4.min.js" />
     <Content Include="Content\Hplus\js\jquery-ui.custom.min.js" />
     <Content Include="Content\Hplus\js\jquery.min.js" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\audiojs\audio.min.js" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\audiojs\audiojs.swf" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\audiojs\player-graphics.gif" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\includes\index.css" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\index.html" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\jq22com.mp3" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\www.jq22.com.txt" />
     <Content Include="Content\Hplus\js\plugins\beautifyhtml\beautifyhtml.js" />
     <Content Include="Content\Hplus\js\plugins\blueimp\jquery.blueimp-gallery.min.js" />
     <Content Include="Content\Hplus\js\plugins\bootstrap-table\bootstrap-table-mobile.min.js" />
@@ -814,6 +836,12 @@
     <Content Include="Content\Hplus\js\plugins\footable\footable.all.min.js" />
     <Content Include="Content\Hplus\js\plugins\fullcalendar\fullcalendar.min.js" />
     <Content Include="Content\Hplus\js\plugins\fullcalendar\moment.min.js" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\css\fz-video.css" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\font\iconfont.css" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\font\iconfont.svg" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\index.html" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\js\fz-video.js" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\www.jq22.com.txt" />
     <Content Include="Content\Hplus\js\plugins\gritter\images\gritter-light.png" />
     <Content Include="Content\Hplus\js\plugins\gritter\images\gritter.png" />
     <Content Include="Content\Hplus\js\plugins\gritter\images\ie-spacer.gif" />
@@ -1026,6 +1054,15 @@
     <Content Include="Areas\Devices\Views\Device\ShowFile.cshtml" />
     <Content Include="Areas\PrivatePhoneWhites\Views\PrivatePhoneWhite\Index_js.js" />
     <Content Include="Areas\Announcements\Views\Announcement\Index_js.js" />
+    <Content Include="Areas\Devices\Views\Device\Audio.cshtml" />
+    <Content Include="Areas\Devices\Views\Device\Video.cshtml" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\font\iconfont.eot" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\font\iconfont.ttf" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\font\iconfont.woff" />
+    <Content Include="Content\Hplus\js\plugins\FZ-video\jquery插件库.url" />
+    <Content Include="Areas\Devices\Views\Device\Picture.cshtml" />
+    <Content Include="Content\Hplus\js\plugins\audiojs\jquery插件库.url" />
+    <Content Include="Areas\Devices\Views\Device\VideoCall.cshtml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1444,6 +1481,25 @@
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\lib\jquery-2.2.1.js" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\wangEditor.js" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\wangEditor.min.js" />
+    <Content Include="Content\Hplus\js\plugins\video\call.html" />
+    <Content Include="Content\Hplus\js\plugins\video\callbak.html" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.admin.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.login.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.min.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.reset.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\style.css" />
+    <Content Include="Content\Hplus\js\plugins\video\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Hplus\js\plugins\video\js\sc.websocket.js" />
+    <Content Include="Content\Hplus\js\plugins\video\js\utils.js" />
+    <Content Include="Content\Hplus\js\plugins\video\newMessage.mp3" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\dependencies\adapter.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\dependencies\socket.io.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\nuve.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.ui.js" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\pscp.exe" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\putty.exe" />
     <Content Include="Views\Account\Login.css">
       <DependentUpon>Login.less</DependentUpon>
     </Content>
@@ -1588,6 +1644,9 @@
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.eot" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.ttf" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.woff" />
+    <Content Include="Content\Hplus\js\plugins\video\IEPluginSetup_v_3_0_8737_5.msi" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu.rar" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

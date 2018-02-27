@@ -36,6 +36,13 @@ namespace Vickn.Platform.HandheldTerminals
         /// </summary>
         Task<ForensicsRecordForEdit> CreateAsync(ForensicsRecordForEdit input);
 
+        /// <summary>
+        /// 根据Id获取
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ForensicsRecordDto> GetByIdAsync(EntityDto<long> input);
+
         #endregion
 
     }

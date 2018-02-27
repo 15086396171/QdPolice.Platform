@@ -27,6 +27,9 @@ namespace Vickn.Platform.Web
                 L(AppPermissions.Pages_HandheldTerminal),
                 icon: "icon-grid"
             );
+            var videoCall = new MenuItemDefinition("VideoCall",L("VideoCall"),
+                url:"/Devices/Device/VideoCall",
+                requiredPermissionName:AppPermissions.Pages_HandheldTerminal_VideoCall);
             var appWhiteList = new MenuItemDefinition(
                 AppWhiteListAppPermissions.AppWhiteList,
                 L("AppWhiteList"),
@@ -42,7 +45,9 @@ namespace Vickn.Platform.Web
                     "icon-star",
                     url: "/Devices/Device",
                     requiredPermissionName: DeviceAppPermissions.Device))
-                    .AddItem(appWhiteList);
+                    .AddItem(appWhiteList)
+                    .AddItem(videoCall)
+                    ;
 
             var announcement = new MenuItemDefinition(
                 AnnouncementAppPermissions.Announcement,
