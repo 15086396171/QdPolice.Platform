@@ -89,5 +89,10 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
 
             return View();
         }
+
+        public ActionResult VideoCall()
+        {
+            return View();
+        }
     }
 }

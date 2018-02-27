@@ -183,6 +183,17 @@ namespace Vickn.Platform.Users
             return entity.MapTo<UserListDto>();
         }
 
+        /// <summary>
+        /// 通过用户名获取用户信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<UserListDto> GetUserByNameAsync(EntityDto<string> input)
+        {
+            var user = await _userRepository.FirstOrDefaultAsync(p => p.UserName == input.Id);
+            return user.MapTo<UserListDto>();
+        }
+
 
         /// <summary>
         /// 新增或更改用户管理

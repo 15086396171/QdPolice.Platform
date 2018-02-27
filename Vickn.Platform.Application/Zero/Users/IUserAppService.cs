@@ -41,6 +41,13 @@ namespace Vickn.Platform.Users
         Task<UserListDto> GetUserByIdAsync(EntityDto<long> input);
 
         /// <summary>
+        /// 通过用户名获取用户信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<UserListDto> GetUserByNameAsync(EntityDto<string> input);
+
+        /// <summary>
         /// 新增或更改用户管理
         /// </summary>
         Task CreateOrUpdateUserAsync(GetUserForEdit input);

@@ -1056,6 +1056,7 @@
     <Content Include="Content\Hplus\js\plugins\FZ-video\jquery插件库.url" />
     <Content Include="Areas\Devices\Views\Device\Picture.cshtml" />
     <Content Include="Content\Hplus\js\plugins\audiojs\jquery插件库.url" />
+    <Content Include="Areas\Devices\Views\Device\VideoCall.cshtml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1474,6 +1475,25 @@
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\lib\jquery-2.2.1.js" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\wangEditor.js" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\js\wangEditor.min.js" />
+    <Content Include="Content\Hplus\js\plugins\video\call.html" />
+    <Content Include="Content\Hplus\js\plugins\video\callbak.html" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.admin.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.login.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.min.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\H-ui.reset.css" />
+    <Content Include="Content\Hplus\js\plugins\video\css\style.css" />
+    <Content Include="Content\Hplus\js\plugins\video\js\jquery-1.10.2.min.js" />
+    <Content Include="Content\Hplus\js\plugins\video\js\sc.websocket.js" />
+    <Content Include="Content\Hplus\js\plugins\video\js\utils.js" />
+    <Content Include="Content\Hplus\js\plugins\video\newMessage.mp3" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\dependencies\adapter.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\dependencies\socket.io.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\nuve.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.js" />
+    <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.ui.js" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\pscp.exe" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\putty.exe" />
     <Content Include="Views\Account\Login.css">
       <DependentUpon>Login.less</DependentUpon>
     </Content>
@@ -1618,6 +1638,9 @@
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.eot" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.ttf" />
     <Content Include="Scripts\wangEditor-2.1.23\dist\fonts\icomoon.woff" />
+    <Content Include="Content\Hplus\js\plugins\video\IEPluginSetup_v_3_0_8737_5.msi" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu.rar" />
+    <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

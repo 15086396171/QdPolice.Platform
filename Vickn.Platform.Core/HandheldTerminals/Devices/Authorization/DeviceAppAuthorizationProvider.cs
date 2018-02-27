@@ -37,6 +37,8 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Authorization
             var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_HandheldTerminal) 
                 ?? pages.CreateChildPermission(AppPermissions.Pages_HandheldTerminal, L(AppPermissions.Pages_HandheldTerminal));
 
+            entityNameModel.CreateChildPermission(AppPermissions.Pages_HandheldTerminal_VideoCall, L("VideoCall"));
+
             var device = entityNameModel.CreateChildPermission(DeviceAppPermissions.Device , L("Device"));
             device.CreateChildPermission(DeviceAppPermissions.Device_CreateDevice, L("CreateDevice"));
             device.CreateChildPermission(DeviceAppPermissions.Device_EditDevice, L("EditDevice"));           

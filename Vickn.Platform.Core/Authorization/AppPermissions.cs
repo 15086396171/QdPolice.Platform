@@ -19,5 +19,10 @@
         /// </summary>
         public const string Pages_HandheldTerminal = "Pages.HandheldTerminal";
 
+        /// <summary>
+        /// 视频对讲
+        /// </summary>
+        public const string Pages_HandheldTerminal_VideoCall = "Pages.HandheldTerminal.VideoCall";
+
     }
 }
