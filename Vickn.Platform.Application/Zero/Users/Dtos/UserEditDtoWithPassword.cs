@@ -26,7 +26,7 @@ namespace Vickn.Platform.Users.Dtos
     /// 用户管理编辑用Dto
     /// </summary>
     [AutoMap(typeof(User))]
-    public class UserEditDtoWithPassword
+    public class UserEditDto
     {
         /// <summary>
         ///   主键Id
@@ -63,7 +63,9 @@ namespace Vickn.Platform.Users.Dtos
         /// 电话号码.
         /// </summary>
         [DisplayName("电话号码")]
+        [Required]
         [MaxLength(20)]
+        [RegularExpression(RegularHelper.PhoneRegularExpression, ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>
@@ -83,8 +85,6 @@ namespace Vickn.Platform.Users.Dtos
 
         [DisplayName("是否启用")]
         public bool IsActive { get; set; }
-
-        public string Password { get; set; }
 
     }
 }

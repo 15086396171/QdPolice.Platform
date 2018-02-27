@@ -58,6 +58,13 @@ namespace Vickn.Platform.Users
         Task<UserEditDto> CreateUserAsync(GetUserForEdit input);
 
         /// <summary>
+        /// 添加带密码的用户、导入使用
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task CreateManyWithPassword(UserEditDtoWithPassword input);
+
+            /// <summary>
         /// 更新用户管理
         /// </summary>
         Task UpdateUserAsync(GetUserForEdit input);

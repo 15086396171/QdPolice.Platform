@@ -151,5 +151,52 @@
       _$ouId.val(node.Id);
       $dataTable.DataTable().draw();
     });
+
+    // 初始化Web Uploader
+    var $list = $("#thelist");
+    var uploader = WebUploader.create({
+
+      // 选完文件后，是否自动上传。
+      auto: true,
+
+      // swf文件路径
+      swf: '/Scripts/lib/webuploader/0.1.5/Uploader.swf',
+
+      // 文件接收服务端。
+      server: '/Users/Import',
+
+      // 选择文件的按钮。可选。
+      // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+      pick: '#picker',
+    });
+    uploader.on('uploadProgress', function (file, percentage) {
+      var $li = $('#' + file.id),
+        $percent = $li.find('.progress .progress-bar');
+
+      // 避免重复创建
+      if (!$percent.length) {
+        $percent = $('<div class="progress progress-striped active">' +
+          '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+          '</div>' +
+          '</div>').appendTo($li).find('.progress-bar');
+      }
+
+      $li.find('p.state').text('上传中');
+
+      $percent.css('width', percentage * 100 + '%');
+    });
+
+    uploader.on('uploadSuccess',
+      function (file, response) {
+        location.reload();
+      });
+    uploader.on('uploadError', function (file) {
+      abp.message.warn("导入出错，请检查导入的Excel");
+      $('#' + file.id).find('p.state').text('上传出错');
+    });
+
+    uploader.on('uploadComplete', function (file) {
+      $('#' + file.id).find('.progress').fadeOut();
+    });
   });
 })();

@@ -1,0 +1,11 @@
+﻿@model Vickn.Platform.HandheldTerminals.Dtos.ForensicsRecordDto
+
+<img src="@Model.Src" style="width: 100%;height: auto"/>
+
+@section scripts
+{
+  <script>
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.iframeAuto(index);
+  </script>
+}

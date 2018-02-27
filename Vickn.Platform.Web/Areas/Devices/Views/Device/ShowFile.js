@@ -34,72 +34,48 @@
         getData(null, $(this).data("type"));
       });
 
+      $("#files").on("click",
+        ".showFile",
+        function () {
+          var id = $(this).data("id");
+          var title = $(this).data("title");
+          var datatype = $(this).data("type");
+          if (datatype) {
+            window.open($(this).data("src"));
+          }
+          else {
+            var index = layer.open({
+              title: title,
+              type: 2,
+              maxmin: true,
+              shade: false,
+              area: ['50%', '40%'],
+              content: abp.appPath +
+              "Devices/device/ShowFileDetails/" + id,
+            });
+          }
+        });
+
       forensicsRecordService.getPagedAsync(input).done(function (result) {
         console.log(result);
         $("#files").children().remove();
         if (result.items.length == 0) {
-          $("#files").append(`<div class="file-box">
-  <div class="file">
-    <a href="javascript:;">
-      <span class="corner"></span>
-
-      <div class="icon">
-        <i class="fa fa-file"></i>
-      </div>
-      <div class="file-name">
-        没有文件
-        <br />
-      </div>
-    </a>
-  </div>
-</div>`);
+          $("#files").append('<div class="file-box"><div class="file"><a href="javascript:;"><span class="corner"></span><div class="icon"><i class="fa fa-file"></i></div><div class="file-name">没有文件<br /></div></a></div></div>');
         } else {
           $.each(result.items,
             function (index, data) {
               var icon = "fa-music";
               if (data.forensicsRecordType == 2) {
-                $("#files").append(`<div class="file-box">
-  <div class="file">
-    <a href="javascript:;">
-      <span class="corner"></span>
-
-      <div class="image">
-        <img alt="image" class="img-responsive" src="`+ data.src + `">
-      </div>
-      <div class="file-name">
-        `+ data.des + `
-        <br />
-        <small>添加时间：`+ foramtDate(data.creationTime) + `</small>
-      </div>
-    </a>
-  </div>
-</div>`);
+                $("#files").append('<div class="file-box"><div class="file"><a href="javascript:;" class="showFile" data-id="' + data.id + '" data-title="' + data.des + '" data-type="picture" data-src="' + data.src
+                  + '"><span class="corner"></span><div class="image"><img alt="image" class="img-responsive" src="' + data.src + '"></div><div class="file-name">' + data.des + '<br /><small>添加时间：' + foramtDate(data.creationTime)
+                  + '</small></div></a></div></div>');
               } else {
                 if (data.forensicsRecordType == 0) {
                 } else if (data.forensicsRecordType == 1) {
                   icon = "fa-film";
                 }
-                $("#files").append(`<div class="file-box">
-  <div class="file">
-    <a href="javascript:;">
-      <span class="corner"></span>
-      <div class="icon">
-        <i class="fa ` +
-                  icon +
-                  `"></i>
-      </div>
-      <div class="file-name">
-        ` +
-                  data.des +
-                  `
-        <br />
-        <small>添加时间：` +
-                  foramtDate(data.creationTime) +
-                  `</small>
-      </div>
-    </a>
-  </div>
-</div>`);
+                $("#files").append('<div class="file-box"><div class="file"><a href="javascript:;"  class="showFile"  data-id="' + data.id + '"  data-title="' + data.des + '"><span class="corner"></span><div class="icon"><i class="fa ' + icon
+                  +'"></i></div><div class="file-name">'+data.des +'<br /><small>添加时间：' +foramtDate(data.creationTime) +'</small></div></a></div></div>');
               }
             });
         }

@@ -293,6 +293,7 @@
     <Compile Include="Zero\Users\Dtos\ChangeProfilePicDto.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserForEdit.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserInput.cs" />
+    <Compile Include="Zero\Users\Dtos\UserEditDtoWithPassword.cs" />
     <Compile Include="Zero\Users\Dtos\UserEditDto.cs" />
     <Compile Include="Zero\Users\Dtos\UserListDto.cs" />
     <Compile Include="Zero\Users\Dtos\CreateUserInput.cs" />
