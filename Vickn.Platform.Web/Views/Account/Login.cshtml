@@ -7,36 +7,58 @@
 }
 @section Scripts
 {
-
-  @Html.IncludeScript("~/Views/Account/Login.js")
+    @Html.IncludeScript("~/Views/Account/Login.js")
 }
 
-<div class="middle-box text-center loginscreen  animated fadeInDown">
-  <div>
-    <h1 class="logo-name">V<small>ickn</small></h1>
-  </div>
-  <h3>欢迎登录</h3>
-  <form id="LoginForm" class="m-t" role="form" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
-    @if (Model.IsMultiTenancyEnabled)
+
+@section styles{
+
+    <link href="~/css/css.css" rel="stylesheet" />
+    @*<link href="~/css/jkreset1.0.css" rel="stylesheet" />*@
+}
+
+<div id="log-in-wp">
+   
+    <ul class="hzoom yahei log-way">
+        <li class="fl curr"></li>
+
+    </ul>
+    <form id="LoginForm" class="m-t" role="form" action="@(Url.Action("Login", "Account"))?returnUrl=@(Model.ReturnUrl)" method="POST">
+        @if (Model.IsMultiTenancyEnabled)
     {
         <div class="form-group">
-          <input type="text" class="form-control" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
+            <input type="text" class="form-control" id="TenancyName" placeholder="@L("TenancyName")" required maxlength="@Vickn.Platform.MultiTenancy.Tenant.MaxTenancyNameLength">
         </div>
 
-    }
-    else
-    {
-        <input type="hidden" id="TenancyName" value="">
-    }
-
-    <input type="checkbox" hidden="hidden" id="RememberMeInput">
-
-    <div class="form-group">
-      <input type="text" placeholder="@L("UserNameOrEmail")" class="form-control" id="EmailAddressInput" placeholder="@L("UserNameOrEmail")" required maxlength="@Vickn.Platform.Users.User.MaxEmailAddressLength">
+}
+else
+{
+    <input type="hidden" id="TenancyName" value="">
+}
+    <div class="log-form">
+    
+            <ul class="log-ul">
+                <li class="user">
+                    <input type="text" name="UserName" id="EmailAddressInput" class="clear-def-value ipt-1" placeholder="用户名">
+                </li>
+                <li class="pwd">
+                    <input type="password" name="UPassword" id="PasswordInput" class="clear-def-value ipt-1" placeholder="密码">
+                </li>
+                <li class="vrfy">
+                    <input type="text" name="Ucode" class="clear-def-value ipt-1" placeholder="验证码"><img src="/PublicFunction/AuthCode.ashx" id="Ucode" onclick="this.src = '/PublicFunction/AuthCode.ashx?i' + Math.random();">1234
+                </li>
+                <li class="sub">
+                    <input type="submit"  id="LoginButton" value="登&emsp;录">
+                </li>
+                <li class="fg-pwd"><a href="/Login/GetPassword">忘记密码？</a></li>
+            </ul>
+       
     </div>
-    <div class="form-group">
-      <input type="password" class="form-control" id="PasswordInput" placeholder="@L("Password")" required maxlength="@Vickn.Platform.Users.User.MaxPlainPasswordLength">
-    </div>
-    <button id="LoginButton" type="submit" class="btn btn-primary block full-width m-b"> &nbsp;登&nbsp;&nbsp;&nbsp;&nbsp;录&nbsp;</button>
-  </form>
+
+
+       
+    </form>
 </div>
+
+
+
