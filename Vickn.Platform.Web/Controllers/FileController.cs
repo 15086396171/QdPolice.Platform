@@ -117,5 +117,39 @@ namespace Vickn.Platform.Web.Controllers
             }
             return imgMemoryStream;
         }
+
+        [DisableAbpAntiForgeryTokenValidation]
+        [DontWrapResult]
+        public string UploadWang()
+        {
+            var file = Request.Files[0];
+
+            if (file == null || file.ContentLength == 0)
+                return "文件不存在";
+            string filePath = string.Concat("/Files/", DateTime.Now.ToString("yyyyMMdd"), "/");
+            string savePath = Server.MapPath(filePath);
+            if (!Directory.Exists(savePath))
+                Directory.CreateDirectory(savePath);
+
+            if (!file.FileName.Contains(".") ||
+                !"jpg|gif|png|bmp".Contains(file.FileName.Substring(file.FileName.LastIndexOf(".") + 1)))
+                return "只能上传图片";
+
+            var fileName = DateTime.Now.Ticks + "_" + file.FileName;
+            Stream sm = file.InputStream;
+            byte[] bt = new byte[sm.Length];
+            sm.Read(bt, 0, file.ContentLength);
+
+            try
+            {
+                file.SaveAs(savePath + fileName);
+                return filePath + fileName;
+            }
+            catch (Exception)
+            {
+                return "文件保存失败";
+            }
+
+        }
     }
 }
