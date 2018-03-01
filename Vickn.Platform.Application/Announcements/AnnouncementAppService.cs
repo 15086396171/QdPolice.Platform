@@ -33,20 +33,20 @@ using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.Announcements
 {
-	/// <summary>
+    /// <summary>
     /// 通知公告服务
     /// </summary>
     public class AnnouncementAppService : PlatformAppServiceBase, IAnnouncementAppService
     {
-	    private readonly IRepository<Announcement,long> _announcementRepository;
+        private readonly IRepository<Announcement, long> _announcementRepository;
         private readonly IRepository<AnnouncementUser, long> _announcementUserRepository;
-	  	private readonly AnnouncementManager _announcementManager;
+        private readonly AnnouncementManager _announcementManager;
         private readonly NotificationManager _notificationManager;
 
-	    /// <summary>
+        /// <summary>
         /// 初始化通知公告服务实例
         /// </summary>
-        public AnnouncementAppService(IRepository<Announcement, long> announcementRepository,AnnouncementManager announcementManager, IRepository<AnnouncementUser, long> announcementUserRepository, NotificationManager notificationManager)
+        public AnnouncementAppService(IRepository<Announcement, long> announcementRepository, AnnouncementManager announcementManager, IRepository<AnnouncementUser, long> announcementUserRepository, NotificationManager notificationManager)
         {
             _announcementRepository = announcementRepository;
             _announcementManager = announcementManager;
@@ -56,15 +56,15 @@ namespace Vickn.Platform.Announcements
 
         #region 通知公告管理
 
-		/// <summary>
+        /// <summary>
         /// 根据查询条件获取通知公告分页列表
         /// </summary>
         public async Task<PagedResultDto<AnnouncementDto>> GetPagedAsync(GetAnnouncementInput input)
-		{
-			 var query = _announcementRepository.GetAll();
+        {
+            var query = _announcementRepository.GetAll();
 
             //TODO:根据传入的参数添加过滤条件
-		    query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.Title.Contains(input.FilterText));
+            query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.Title.Contains(input.FilterText));
 
             var announcementCount = await query.CountAsync();
 
@@ -78,24 +78,41 @@ namespace Vickn.Platform.Announcements
             announcementCount,
             announcementDtos
             );
-		}
+        }
 
-		/// <summary>
+        /// <summary>
+        /// 获取最新的通知
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<ListResultDto<AnnouncementDto>> GetLastAsync(GetLastAnnouncentInput input)
+        {
+            var query = from anno in _announcementRepository.GetAll()
+                        join announcementUser in _announcementUserRepository.GetAll() on anno.Id equals announcementUser.AnnouncementId
+                        where announcementUser.UserId == AbpSession.UserId.Value
+                        select anno;
+
+            var announcements = await query.OrderByDescending(p => p.Id).Take(10).ToListAsync();
+
+            return new ListResultDto<AnnouncementDto>(announcements.MapTo<List<AnnouncementDto>>());
+        }
+
+        /// <summary>
         /// 通过指定id获取通知公告Dto信息
         /// </summary>
         public async Task<AnnouncementDto> GetByIdAsync(EntityDto<long> input)
-		{
-		    var entity = await _announcementRepository.GetAsync(input.Id);
+        {
+            var entity = await _announcementRepository.GetAsync(input.Id);
             return entity.MapTo<AnnouncementDto>();
-		}
+        }
 
         /// <summary>
         /// 通过Id获取通知公告信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
         public async Task<AnnouncementForEdit> GetForEditAsync(NullableIdDto<long> input)
-		{
-			AnnouncementEditDto announcementEditDto;
+        {
+            AnnouncementEditDto announcementEditDto;
 
             if (input.Id.HasValue)
             {
@@ -110,15 +127,15 @@ namespace Vickn.Platform.Announcements
                 };
             }
             return new AnnouncementForEdit { AnnouncementEditDto = announcementEditDto };
-		}
+        }
 
         /// <summary>
         /// 新增或更改通知公告
         /// </summary>
-		[AbpAuthorize(AnnouncementAppPermissions.Announcement_CreateAnnouncement,AnnouncementAppPermissions.Announcement_EditAnnouncement)]
+		[AbpAuthorize(AnnouncementAppPermissions.Announcement_CreateAnnouncement, AnnouncementAppPermissions.Announcement_EditAnnouncement)]
         public async Task CreateOrUpdateAsync(AnnouncementForEdit input)
-		{
-			 if (input.AnnouncementEditDto.Id.HasValue)
+        {
+            if (input.AnnouncementEditDto.Id.HasValue)
             {
                 await UpdateAsync(input);
             }
@@ -126,70 +143,74 @@ namespace Vickn.Platform.Announcements
             {
                 await CreateAsync(input);
             }
-		}
+        }
 
         /// <summary>
         /// 新增通知公告
         /// </summary>
 		[AbpAuthorize(AnnouncementAppPermissions.Announcement_CreateAnnouncement)]
         public async Task<AnnouncementForEdit> CreateAsync(AnnouncementForEdit input)
-		{
-			//TODO: 新增前的逻辑判断，是否允许新增
+        {
+            //TODO: 新增前的逻辑判断，是否允许新增
 
             var entity = input.AnnouncementEditDto.MapTo<Announcement>();
 
             entity = await _announcementRepository.InsertAsync(entity);
 
-		    var result = entity.MapTo<AnnouncementEditDto>();
-
             await _notificationManager.SendMessageAsync(
-		        input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
-		            .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, result.Title, entity.MapTo<AnnouncementDto>());
-            return new AnnouncementForEdit { AnnouncementEditDto = result };
-		}
+                input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
+                    .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, entity.Title, new
+                    {
+                        Title = entity.Title,
+                        CreationTime = entity.CreationTime
+                    });
+            return new AnnouncementForEdit { AnnouncementEditDto = entity.MapTo<AnnouncementEditDto>() };
+        }
 
         /// <summary>
         /// 修改通知公告
         /// </summary>
 		[AbpAuthorize(AnnouncementAppPermissions.Announcement_EditAnnouncement)]
         public async Task UpdateAsync(AnnouncementForEdit input)
-		{
-		    //TODO: 更新前的逻辑判断，是否允许更新
+        {
+            //TODO: 更新前的逻辑判断，是否允许更新
 
-            await _announcementUserRepository.DeleteAsync(p=>p.AnnouncementId== input.AnnouncementEditDto.Id.Value);
+            await _announcementUserRepository.DeleteAsync(p => p.AnnouncementId == input.AnnouncementEditDto.Id.Value);
 
-			var entity = await _announcementRepository.GetAsync(input.AnnouncementEditDto.Id.Value);
+            var entity = await _announcementRepository.GetAsync(input.AnnouncementEditDto.Id.Value);
             input.AnnouncementEditDto.MapTo(entity);
-		    await _announcementRepository.UpdateAsync(entity);
+            await _announcementRepository.UpdateAsync(entity);
 
-            var result = entity.MapTo<AnnouncementDto>();
-
-		    await _notificationManager.SendMessageAsync(
-		        input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
-		            .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, result.Title, result);
-		}
+            await _notificationManager.SendMessageAsync(
+                input.AnnouncementEditDto.AnnouncementUsers.Select(p => new UserIdentifier(AbpSession.TenantId, p.UserId))
+                    .ToArray(), PlatformConsts.NotificationConstNames.Announcement_Send, entity.Title, new
+                    {
+                        Title = entity.Title,
+                        CreationTime = entity.CreationTime
+                    });
+        }
 
         /// <summary>
         /// 删除通知公告
         /// </summary>
 		[AbpAuthorize(AnnouncementAppPermissions.Announcement_DeleteAnnouncement)]
         public async Task DeleteAsync(EntityDto<long> input)
-		{
-			//TODO: 删除前的逻辑判断，是否允许删除
+        {
+            //TODO: 删除前的逻辑判断，是否允许删除
 
             await _announcementRepository.DeleteAsync(input.Id);
-		}
+        }
 
         /// <summary>
         /// 批量删除通知公告
         /// </summary>
 		[AbpAuthorize(AnnouncementAppPermissions.Announcement_DeleteAnnouncement)]
         public async Task BatchDeleteAsync(List<long> input)
-		{
-		    //TODO: 批量删除前的逻辑判断，是否允许删除
+        {
+            //TODO: 批量删除前的逻辑判断，是否允许删除
 
             await _announcementRepository.DeleteAsync(s => input.Contains(s.Id));
-		}
+        }
 
         /// <summary>
         /// 自定义检查通知公告输入逻辑错误
@@ -197,11 +218,11 @@ namespace Vickn.Platform.Announcements
         /// <param name="input"></param>
         /// <returns></returns>
         public async Task<CustomerModelStateValidationDto> CheckErrorAsync(AnnouncementForEdit input)
-		{	
-			//TODO: 自定义逻辑判断是否有逻辑错误
+        {
+            //TODO: 自定义逻辑判断是否有逻辑错误
 
-			return new CustomerModelStateValidationDto() {HasModelError = false};
-		}
+            return new CustomerModelStateValidationDto() { HasModelError = false };
+        }
 
         #endregion
 

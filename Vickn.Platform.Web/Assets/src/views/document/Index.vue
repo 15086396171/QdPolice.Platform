@@ -23,10 +23,7 @@
     },
     methods: {
       async fecthData() {
-        let ret = await documentService.getPagedAsync({
-          maxResultCount: 100,
-          documentType: this.$route.params.type
-        });
+        let ret = await documentService.getLastAsync({});
         this.documents = ret.items
       }
     }

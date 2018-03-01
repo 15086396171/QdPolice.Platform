@@ -17,7 +17,7 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path: '/document/:type',
+      path: '/documents',
       component: function (reslove) {
         require(['../views/document/Index'], reslove);
       },

@@ -31,7 +31,13 @@ namespace Vickn.Platform.Announcements
         /// </summary>
         Task<PagedResultDto<AnnouncementDto>> GetPagedAsync(GetAnnouncementInput input);
 
-		 /// <summary>
+        /// <summary>
+        /// 获取最新的通知
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ListResultDto<Dtos.AnnouncementDto>> GetLastAsync(GetLastAnnouncentInput input);
+            /// <summary>
         /// 通过指定id获取通知公告Dto信息
         /// </summary>
         Task<AnnouncementDto> GetByIdAsync(EntityDto<long> input);

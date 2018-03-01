@@ -179,6 +179,7 @@
     <Compile Include="Announcements\Dtos\AnnouncementForEdit.cs" />
     <Compile Include="Announcements\Dtos\AnnouncementUserEditDto.cs" />
     <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
+    <Compile Include="Announcements\Dtos\GetLastAnnouncentInput.cs" />
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
