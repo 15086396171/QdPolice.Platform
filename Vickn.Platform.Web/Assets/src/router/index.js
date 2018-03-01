@@ -22,7 +22,7 @@ export default new Router({
         require(['../views/document/Index'], reslove);
       },
       meta: {
-        title:'帮助文档'
+        title:'通知公告'
       }
     },
     {
@@ -31,7 +31,7 @@ export default new Router({
         require(['../views/document/Details'], reslove);
       },
       meta: {
-        title: '帮助文档'
+        title: '通知公告'
       }
     },
     {
@@ -40,7 +40,7 @@ export default new Router({
         require(['../views/document/Details'], reslove);
       },
       meta: {
-        title: '帮助文档'
+        title: '通知公告'
       }
     },
   ]
