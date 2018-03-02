@@ -53,12 +53,20 @@
           </div>
 
           <div class="form-group">
-                @Html.LabelFor(model => model.UserEditDto.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.UserEditDto.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.UserEditDto.PhoneNumber, "", new { @class = "text-danger" })
-                </div>
+            @Html.LabelFor(model => model.UserEditDto.PhoneNumber, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              @Html.EditorFor(model => model.UserEditDto.PhoneNumber, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.UserEditDto.PhoneNumber, "", new { @class = "text-danger" })
             </div>
+          </div>
+          
+          <div class="form-group">
+            @Html.LabelFor(model => model.UserEditDto.Landline, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+              @Html.EditorFor(model => model.UserEditDto.Landline, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.UserEditDto.Landline, "", new { @class = "text-danger" })
+            </div>
+          </div>
 
           <div class="form-group">
             @Html.LabelFor(model => model.UserEditDto.EmailAddress, htmlAttributes: new { @class = "control-label col-md-2" })

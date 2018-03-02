@@ -17,6 +17,11 @@ namespace Vickn.Platform.Users
         public string PoliceNo { get; set; }
 
         /// <summary>
+        /// 座机
+        /// </summary>
+        public string Landline { get; set; }
+
+        /// <summary>
         /// 职务
         /// </summary>
         public string Position { get; set; }

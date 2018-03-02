@@ -66,6 +66,11 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("电话号码.")]
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// 座机号码
+        /// </summary>
+        public string Landline { get; set; }
         /// <summary>
         /// 是否启用
         /// </summary>

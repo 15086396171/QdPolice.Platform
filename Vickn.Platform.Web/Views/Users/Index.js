@@ -40,7 +40,7 @@
         { "data": "policeNo" },
         { "data": "position" },
         { "data": "phoneNumber" },
-        { "data": "emailAddress" },
+        { "data": "landline" },
         {
           "data": "isActive",
           render: function (data, type, row, meta) {
