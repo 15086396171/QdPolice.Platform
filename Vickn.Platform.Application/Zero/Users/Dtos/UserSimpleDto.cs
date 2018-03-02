@@ -34,5 +34,10 @@ namespace Vickn.Platform.Zero.Users.Dtos
         /// </summary>
         [DisplayName("电话号码.")]
         public string PhoneNumber { get; set; }
+
+        /// <summary>
+        /// 座机
+        /// </summary>
+        public string Landline { get; set; }
     }
 }
