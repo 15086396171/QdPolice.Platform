@@ -185,11 +185,11 @@ namespace Vickn.Platform.Chats
             {
                 var chatGroup =
                     await _chatGroupManager.InviteToGroupAsync(input.GroupId,
-                        input.UserIds.Select(p => p.Id).ToList());
+                        input.UserIds);
                 foreach (var inputUserId in input.UserIds)
                 {
                     var allByUserId =
-                        _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, inputUserId.Id));
+                        _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, inputUserId));
                     foreach (var onlineClient in allByUserId)
                     {
                         await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);

@@ -10,6 +10,6 @@ namespace Vickn.Platform.Chats.ChatGroups.Dtos
         /// </summary>
         public long GroupId { get; set; }
 
-        public List<EntityDto<long>> UserIds { get; set; }
+        public List<long> UserIds { get; set; }
     }
 }
