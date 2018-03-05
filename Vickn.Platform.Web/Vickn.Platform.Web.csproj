@@ -1500,6 +1500,7 @@
     <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.ui.js" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\pscp.exe" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\putty.exe" />
+    <Content Include="Update\update.xml" />
     <Content Include="Views\Account\Login.css">
       <DependentUpon>Login.less</DependentUpon>
     </Content>
@@ -1647,6 +1648,7 @@
     <Content Include="Content\Hplus\js\plugins\video\IEPluginSetup_v_3_0_8737_5.msi" />
     <Content Include="Content\Hplus\js\plugins\video\tahu.rar" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
+    <Content Include="Update\Police.apk" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />
