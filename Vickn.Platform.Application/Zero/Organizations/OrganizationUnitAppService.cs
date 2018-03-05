@@ -53,14 +53,26 @@ namespace Vickn.Platform.Organizations
         public async Task<List<OuWithUserDto>> GetOuWithUsersAsync()
         {
             // 只查询根节点
-            var query = _organizationUnitRepository.GetAll().Where(p=>!p.ParentId.HasValue);
-            var organizationUnits = await query.ToListAsync();
+            // 根据自己所在的组织，查询到根节点组织
+            var userOrganizationUnits = await _userOrganizationUnitRepository.GetAllListAsync(p => p.UserId == AbpSession.UserId);
 
-            var ouWithUserDtos = organizationUnits.MapTo<List<OuWithUserDto>>();
-
-            foreach (var ouWithUserDto in ouWithUserDtos)
+            List<OuWithUserDto> ouWithUserDtos = new List<OuWithUserDto>();
+            foreach (var userOrganizationUnit in userOrganizationUnits)
             {
-                await GetUsers(ouWithUserDto);
+                // 所在当前组织
+                var organizationUnit = await _organizationUnitRepository.GetAsync(userOrganizationUnit.OrganizationUnitId);
+
+                var codeZero = organizationUnit.Code.Split(".")[0];
+
+                var query = _organizationUnitRepository.GetAll().Where(p => p.Code== codeZero);
+                var organizationUnits = await query.ToListAsync();
+
+                ouWithUserDtos.AddRange(organizationUnits.MapTo<List<OuWithUserDto>>());
+
+                foreach (var ouWithUserDto in ouWithUserDtos)
+                {
+                    await GetUsers(ouWithUserDto);
+                }
             }
 
             return ouWithUserDtos;
@@ -69,10 +81,10 @@ namespace Vickn.Platform.Organizations
         public async Task GetUsers(OuWithUserDto dto)
         {
             var query = from uou in _userOrganizationUnitRepository.GetAll()
-                join ou in _organizationUnitRepository.GetAll() on uou.OrganizationUnitId equals ou.Id
-                join user in UserManager.Users on uou.UserId equals user.Id
-                where uou.OrganizationUnitId == dto.Id
-                select user;
+                        join ou in _organizationUnitRepository.GetAll() on uou.OrganizationUnitId equals ou.Id
+                        join user in UserManager.Users on uou.UserId equals user.Id
+                        where uou.OrganizationUnitId == dto.Id
+                        select user;
             var users = await query.ToListAsync();
 
             dto.Users = users.MapTo<List<UserSimpleDto>>();

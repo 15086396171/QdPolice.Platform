@@ -35,7 +35,6 @@ namespace Vickn.Platform.DataDictionaries
     /// <summary>
     /// 数据字典服务
     /// </summary>
-    [AbpAuthorize(DataDictionaryAppPermissions.DataDictionary)]
     public class DataDictionaryAppService : PlatformAppServiceBase, IDataDictionaryAppService
     {
         private readonly IRepository<DataDictionary, int> _dataDictionaryRepository;
