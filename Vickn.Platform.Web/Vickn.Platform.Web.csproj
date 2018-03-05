@@ -1560,6 +1560,7 @@
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
     <Compile Include="Controllers\DataDictionariesController.cs" />
     <Compile Include="Controllers\DataDictionaryItemsController.cs" />
@@ -1696,6 +1697,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
+    <Folder Include="Views\App\" />
     <Folder Include="_GeneratedCode\Announcements\Application\" />
     <Folder Include="_GeneratedCode\Announcements\Core\" />
     <Folder Include="_GeneratedCode\Announcements\EntityFramework\EntityMapper\" />

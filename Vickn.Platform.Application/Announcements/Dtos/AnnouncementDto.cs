@@ -11,6 +11,7 @@
 */
 
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
@@ -35,6 +36,7 @@ namespace Vickn.Platform.Announcements.Dtos
         /// </summary>
 		[DisplayName("内容")]
         public string Content { get; set; }
+        public bool IsRead { get; set; }
 
     }
 }

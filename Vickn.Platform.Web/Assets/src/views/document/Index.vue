@@ -1,17 +1,22 @@
 <template>
   <div>
     <group>
-      <cell v-for="(item,index) in documents" :key="item.id" :title="item.title" :link="'/docDetails/'+item.id"></cell>
+      <cell v-for="(item,index) in documents" :key="item.id" :title="item.title" :link="'/docDetails/'+item.id">
+        <div class="badge-value" v-if="!item.isRead">
+          <badge></badge>
+        </div>
+      </cell>
     </group>
   </div>
 </template>
 <script>
-  import { Group, Cell } from 'vux'
+  import { Group, Cell, Badge } from 'vux'
   import documentService from '../../services/document/documentService'
   export default {
     components: {
       Group,
       Cell,
+      Badge
     },
     data() {
       return {

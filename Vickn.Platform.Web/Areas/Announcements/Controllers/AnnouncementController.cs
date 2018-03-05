@@ -57,11 +57,5 @@ namespace Vickn.Platform.Web.Areas.Announcements.Controllers
             await _announcementAppService.CreateOrUpdateAsync(announcementDto);
             return RedirectToAction("Index");
         }
-
-        public ActionResult GetMyAnno()
-        {
-            return Redirect("/assets/dist/index.html#/documents");
-        }
-
     }
 }

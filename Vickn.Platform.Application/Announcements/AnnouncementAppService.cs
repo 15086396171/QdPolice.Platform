@@ -90,11 +90,21 @@ namespace Vickn.Platform.Announcements
             var query = from anno in _announcementRepository.GetAll()
                         join announcementUser in _announcementUserRepository.GetAll() on anno.Id equals announcementUser.AnnouncementId
                         where announcementUser.UserId == AbpSession.UserId.Value
-                        select anno;
+                        select new
+                        {
+                            Announcement = anno,
+                            IsRead = announcementUser.IsRead,
+                        };
 
-            var announcements = await query.OrderByDescending(p => p.Id).Take(10).ToListAsync();
+            var announcements = await query.OrderByDescending(p => p.Announcement.Id).Take(10).ToListAsync();
+            var announcementDtos = announcements.Select(p =>
+            {
+                var dto = p.Announcement.MapTo<AnnouncementDto>();
+                dto.IsRead = p.IsRead;
+                return dto;
+            });
 
-            return new ListResultDto<AnnouncementDto>(announcements.MapTo<List<AnnouncementDto>>());
+            return new ListResultDto<AnnouncementDto>(announcementDtos.OrderBy(p => p.IsRead).ToList());
         }
 
         /// <summary>
@@ -103,6 +113,9 @@ namespace Vickn.Platform.Announcements
         public async Task<AnnouncementDto> GetByIdAsync(EntityDto<long> input)
         {
             var entity = await _announcementRepository.GetAsync(input.Id);
+            var announcementUser = await _announcementUserRepository.FirstOrDefaultAsync(p => p.UserId == AbpSession.UserId && p.AnnouncementId == entity.Id);
+            announcementUser.IsRead = true;
+            await _announcementUserRepository.UpdateAsync(announcementUser);
             return entity.MapTo<AnnouncementDto>();
         }
 
