@@ -47,7 +47,7 @@ namespace Vickn.Platform.Organizations
         }
 
         /// <summary>
-        /// 获取组织和用户
+        /// 获取自己所在的组织和用户
         /// </summary>
         /// <returns></returns>
         public async Task<List<OuWithUserDto>> GetOuWithUsersAsync()
@@ -64,7 +64,7 @@ namespace Vickn.Platform.Organizations
 
                 var codeZero = organizationUnit.Code.Split(".")[0];
 
-                var query = _organizationUnitRepository.GetAll().Where(p => p.Code== codeZero);
+                var query = _organizationUnitRepository.GetAll().Where(p => p.Code == codeZero);
                 var organizationUnits = await query.ToListAsync();
 
                 ouWithUserDtos.AddRange(organizationUnits.MapTo<List<OuWithUserDto>>());
@@ -73,6 +73,25 @@ namespace Vickn.Platform.Organizations
                 {
                     await GetUsers(ouWithUserDto);
                 }
+            }
+
+            return ouWithUserDtos;
+        }
+
+        /// <summary>
+        /// 获取所有组织和用户
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<OuWithUserDto>> GetAllOuWithUsersAsync()
+        {
+            var query = _organizationUnitRepository.GetAll().Where(p => p.ParentId == null);
+            var organizationUnits = await query.ToListAsync();
+
+            var ouWithUserDtos = (organizationUnits.MapTo<List<OuWithUserDto>>());
+
+            foreach (var ouWithUserDto in ouWithUserDtos)
+            {
+                await GetUsers(ouWithUserDto);
             }
 
             return ouWithUserDtos;

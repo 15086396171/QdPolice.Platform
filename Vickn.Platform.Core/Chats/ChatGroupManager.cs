@@ -31,7 +31,7 @@ namespace Vickn.Platform.Chats
         public async Task<ChatGroup> CreateGroupAsync(UserIdentifier userIdentifier, string name)
         {
             if (_chatGroupRepository.FirstOrDefault(p => p.Name == name) != null)
-                throw new UserFriendlyException("房间名已存在");
+                throw new UserFriendlyException("房间名已存在，创建群失败");
 
             var chatGroup = new ChatGroup()
             {

@@ -16,6 +16,7 @@ using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
 using Abp.Web.Mvc.Authorization;
+using Abp.Web.Security.AntiForgery;
 using Vickn.Platform.Announcements;
 using Vickn.Platform.Announcements.Authorization;
 using Vickn.Platform.Announcements.Dtos;
@@ -45,16 +46,21 @@ namespace Vickn.Platform.Web.Areas.Announcements.Controllers
             return View(announcementDto);
         }
 
-		[HttpPost]
+        [HttpPost]
         [ValidateInput(false)]
         public async Task<ActionResult> Create(AnnouncementForEdit announcementDto)
         {
             if (!CheckModelState(await _announcementAppService.CheckErrorAsync(announcementDto)))
             {
-			   return View(announcementDto);
-			 }
+                return View(announcementDto);
+            }
             await _announcementAppService.CreateOrUpdateAsync(announcementDto);
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetMyAnno()
+        {
+            return Redirect("/assets/dist/index.html#/documents");
         }
 
     }

@@ -148,7 +148,9 @@ namespace Vickn.Platform.Chats
                 catch (UserFriendlyException e)
                 {
                     Clients.Client(Context.ConnectionId).showError(e.Message);
+                    return;
                 }
+
                 await uow.CompleteAsync();
 
                 await JoinGroups();

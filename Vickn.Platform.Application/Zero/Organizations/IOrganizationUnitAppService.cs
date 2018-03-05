@@ -15,12 +15,18 @@ namespace Vickn.Platform.Organizations
         Task<List<OrganizationUnitDto>> GetOrganizationUnitDto();
 
         /// <summary>
-        /// 获取组织和用户
+        /// 获取自己所在的组织和用户
         /// </summary>
         /// <returns></returns>
-        Task<List<OuWithUserDto>> GetOuWithUsersAsync(); 
+        Task<List<OuWithUserDto>> GetOuWithUsersAsync();
 
-            /// <summary>
+        /// <summary>
+        /// 获取所有组织和用户
+        /// </summary>
+        /// <returns></returns>
+        Task<List<OuWithUserDto>> GetAllOuWithUsersAsync();
+
+        /// <summary>
         /// 根据查询条件获取组织分页列表
         /// </summary>
         /// <param name="input"></param>

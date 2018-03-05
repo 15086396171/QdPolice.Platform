@@ -32,7 +32,7 @@
       $tree = $treeContainer;
       _nodeclickCallback = nodeclickCallback;
 
-      ouService.getOuWithUsersAsync().done(function (data) {
+      ouService.getAllOuWithUsersAsync().done(function (data) {
         console.log(data);
         $.each(data,
           function(index, ou) {
