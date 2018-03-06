@@ -296,9 +296,10 @@ namespace Vickn.Platform.Organizations
 
         public async Task AddUserToOuAsync(AddUserToOuInput input)
         {
-            foreach (var delUserId in input.DelUserIds)
+            foreach (var userOrganizationUnit in _userOrganizationUnitRepository.GetAllList(p=>p.OrganizationUnitId == input.OuId))
             {
-                await UserManager.RemoveFromOrganizationUnitAsync(delUserId, input.OuId);
+                if(!input.UserIds.Contains(userOrganizationUnit.UserId))
+                await _userOrganizationUnitRepository.DeleteAsync(userOrganizationUnit);
             }
             foreach (var userId in input.UserIds)
             {

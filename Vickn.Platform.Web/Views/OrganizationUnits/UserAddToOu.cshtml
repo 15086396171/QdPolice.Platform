@@ -1,5 +1,14 @@
 ﻿@using Abp.Web.Mvc.Extensions
 <div class="ibox-content">
+  <div class="form form-horizontal">
+    <div class="form-group">
+      <div class="col-md-2">
+        已选择：
+      </div>
+      <div id="chose" class="col-md-10">
+      </div>
+    </div>
+  </div>
   <div class="input-group">
     <input type="text" placeholder="@L("User.Name")" class="form-control" id="Name" />
     <input hidden value="@ViewBag.ouId" id="ouId" />
@@ -12,7 +21,7 @@
   <table class="table table-border dataTable">
     <thead>
       <tr class="text-c">
-        <th width="25"><input type="checkbox" class="checkall"></th>
+        <th width="25">@*<input type="checkbox" class="checkall">*@</th>
         <th>@L("User.Name")</th>
         <th>@L("User.UserName")</th>
       </tr>
