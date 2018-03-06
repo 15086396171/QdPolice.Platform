@@ -92,20 +92,21 @@ namespace Vickn.Platform.Web.Controllers
                 loginModel.TenancyName
                 );
 
-            if (loginResult.User.ShouldChangePasswordOnNextLogin)
-            {
-                loginResult.User.SetNewPasswordResetCode();
-                return Json(new AjaxResponse
-                {
-                    TargetUrl = Url.Action(
-                            "ResetPassword",
-                            new ResetPasswordViewModel
-                            {
-                                UserId = SimpleStringCipher.Instance.Encrypt(loginResult.User.Id.ToString()),
-                                ResetCode = loginResult.User.PasswordResetCode
-                            })
-                });
-            }
+            // 首次不修改密码
+            //if (loginResult.User.ShouldChangePasswordOnNextLogin)
+            //{
+            //    loginResult.User.SetNewPasswordResetCode();
+            //    return Json(new AjaxResponse
+            //    {
+            //        TargetUrl = Url.Action(
+            //                "ResetPassword",
+            //                new ResetPasswordViewModel
+            //                {
+            //                    UserId = SimpleStringCipher.Instance.Encrypt(loginResult.User.Id.ToString()),
+            //                    ResetCode = loginResult.User.PasswordResetCode
+            //                })
+            //    });
+            //}
 
             await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
 
