@@ -196,6 +196,7 @@ namespace Vickn.Platform.Chats
                     {
                         await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);
                         // 通知其他用户加入群组
+
                         Clients.Client(onlineClient.ConnectionId).joinGroup(chatGroup.MapTo<ChatGroupDto>());
                     }
                 }

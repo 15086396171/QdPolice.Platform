@@ -49,10 +49,10 @@ namespace Vickn.Platform.Chats
             return chatGroup;
         }
 
-        public async Task<ChatGroup> InviteToGroupAsync(long groupId, List<long> UserIds)
+        public async Task<ChatGroup> InviteToGroupAsync(long groupId, List<long> userIds)
         {
             var chatGroup = await _chatGroupRepository.GetAsync(groupId);
-            foreach (var userId in UserIds)
+            foreach (var userId in userIds)
             {
                 if (_chatUserRepository.FirstOrDefault(p => p.ChatGroupId == chatGroup.Id && p.UserId == userId) == null)
                 {
