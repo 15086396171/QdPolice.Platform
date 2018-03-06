@@ -74,7 +74,6 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("登录名")]
         [Required]
-        [RegularExpression(RegularHelper.UserNameRegularExpression, ErrorMessage = RegularHelper.UserNameErrorMsg)]
         public string UserName { get; set; }
 
         /// <summary>

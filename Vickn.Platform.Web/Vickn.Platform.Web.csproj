@@ -1670,6 +1670,7 @@
     <Content Include="Content\Hplus\js\plugins\video\tahu.rar" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
     <Content Include="Update\Police.apk" />
+    <Content Include="Template\导入模版.xlsx" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

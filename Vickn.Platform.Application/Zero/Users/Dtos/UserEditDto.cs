@@ -63,9 +63,7 @@ namespace Vickn.Platform.Users.Dtos
         /// 电话号码.
         /// </summary>
         [DisplayName("电话号码")]
-        [Required]
         [MaxLength(20)]
-        [RegularExpression(RegularHelper.PhoneRegularExpression, ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         [DisplayName("座机号码")]
@@ -76,7 +74,6 @@ namespace Vickn.Platform.Users.Dtos
         /// </summary>
         [DisplayName("登录名")]
         [Required]
-        [RegularExpression(RegularHelper.UserNameRegularExpression, ErrorMessage = RegularHelper.UserNameErrorMsg)]
         public string UserName { get; set; }
 
         /// <summary>

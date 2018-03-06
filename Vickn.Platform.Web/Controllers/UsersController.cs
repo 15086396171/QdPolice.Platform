@@ -94,6 +94,8 @@ namespace Vickn.Platform.Web.Controllers
             int startRow = 1;
 
             List<UserEditDtoWithPassword> userEditDtos = new List<UserEditDtoWithPassword>();
+            var userEditDto1 = new UserEditDtoWithPassword();
+
             try
             {
                 using (fs = System.IO.File.OpenRead(savePath + fileName))
@@ -112,33 +114,42 @@ namespace Vickn.Platform.Web.Controllers
                     for (int i = 0; i < rowCount; i++)
                     {
                         row = sheet.GetRow(i + 1);
-
-                        userEditDtos.Add(new UserEditDtoWithPassword()
+                        userEditDto1 = new UserEditDtoWithPassword()
                         {
                             Name = row.Cells[1].ToString().Trim(),
                             UserName = row.Cells[2].ToString().Trim(),
-                             Password= row.Cells[3].ToString().Trim(),
-                             PoliceNo = row.Cells[4].ToString().Trim(),
-                             Position = row.Cells[5].ToString().Trim(),
-                             PhoneNumber = row.Cells[6].ToString().Trim(),
+                            Password = row.Cells[3].ToString().Trim(),
+                            PoliceNo = row.Cells[4].ToString().Trim(),
+                            Position = row.Cells[5].ToString().Trim(),
+                            PhoneNumber = row.Cells[6].ToString().Trim(),
+                            Landline = row.Cells[6].ToString().Trim(),
                             // 默认字段
                             ShouldChangePasswordOnNextLogin = true,
                             IsActive = true,
-                        });
+                        };
+                        userEditDtos.Add(userEditDto1);
                     }
                 }
             }
             catch (Exception ex)
             {
-                throw ex;
                 fs?.Close();
-                return Json(new { });
+                return Json(new { error = ex.Message + userEditDto1.UserName });
             }
 
+            List<string> notImportUsers = new List<string>();
             foreach (var userEditDto in userEditDtos)
             {
-                if (!userEditDto.UserName.IsNullOrEmpty())
-                    await _userAppService.CreateManyWithPassword(userEditDto);
+                try
+                {
+                    userEditDto1 = userEditDto;
+                    if (!userEditDto.UserName.IsNullOrEmpty())
+                        await _userAppService.CreateManyWithPassword(userEditDto);
+                }
+                catch
+                {
+                    return Json(new { error = userEditDto1.UserName });
+                }
             }
             return Json(new { });
         }
