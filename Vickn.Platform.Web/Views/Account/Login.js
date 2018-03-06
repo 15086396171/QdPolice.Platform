@@ -3,7 +3,11 @@
         if (window.top !== window.self) { window.top.location = window.location; }
 
         $('#LoginButton').click(function (e) {
-            e.preventDefault();
+          e.preventDefault();
+          if (!$("#vCode").val()) {
+            abp.message.warn("验证码不能为空");
+            return;
+          }
             abp.ui.setBusy();
             abp.ajax({
                 url: abp.appPath + 'Account/Login',

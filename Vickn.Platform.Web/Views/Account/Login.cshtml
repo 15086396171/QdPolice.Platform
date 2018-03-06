@@ -45,7 +45,7 @@ else
                     <input type="password" name="UPassword" id="PasswordInput" class="clear-def-value ipt-1" placeholder="密码">
                 </li>
                 <li class="vrfy">
-                    <input type="text" name="Ucode" class="clear-def-value ipt-1" placeholder="验证码">@(new Random().Next(1000,9999))
+                    <input type="text" name="Ucode" id="vCode" class="clear-def-value ipt-1" placeholder="验证码">@(new Random().Next(1000,9999))
                 </li>
                 <li class="sub">
                     <input type="submit"  id="LoginButton" value="登&emsp;录">

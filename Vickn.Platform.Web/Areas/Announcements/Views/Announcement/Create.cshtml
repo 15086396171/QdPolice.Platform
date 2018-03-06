@@ -91,6 +91,10 @@
         shade: 0,
         area: ['420px', '400px'], //宽高
         content: $("#menuContent"),
+        btn: ["确定"],
+        yes: function (index) {
+          layer.close(index);
+        }
       });
     }
     $(document).ready(function () {
