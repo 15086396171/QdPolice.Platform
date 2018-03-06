@@ -84,6 +84,11 @@
             /// 消息通知
             /// </summary>
             public const string Announcement_Send = "Announcement.Send";
+
+            /// <summary>
+            /// 人脸切换
+            /// </summary>
+            public const string CameraChange = "CameraChange";
         }
 
     }
