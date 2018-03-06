@@ -95,7 +95,7 @@ namespace Vickn.Platform.Web.Controllers
 
             List<UserEditDtoWithPassword> userEditDtos = new List<UserEditDtoWithPassword>();
             var userEditDto1 = new UserEditDtoWithPassword();
-
+            int value;
             try
             {
                 using (fs = System.IO.File.OpenRead(savePath + fileName))
@@ -113,6 +113,7 @@ namespace Vickn.Platform.Web.Controllers
 
                     for (int i = 0; i < rowCount; i++)
                     {
+                        value = i;
                         row = sheet.GetRow(i + 1);
                         if (row.Cells[0].ToString().IsNullOrEmpty())
                         {
@@ -124,9 +125,8 @@ namespace Vickn.Platform.Web.Controllers
                             UserName = row.Cells[2].ToString().Trim(),
                             Password = row.Cells[3].ToString().Trim(),
                             PoliceNo = row.Cells[4].ToString().Trim(),
-                            Position = row.Cells[5].ToString().Trim(),
-                            PhoneNumber = row.Cells[6].ToString().Trim(),
-                            Landline = row.Cells[7].ToString().Trim(),
+                            PhoneNumber = row.Cells[5].ToString().Trim(),
+                            Landline = row.Cells[6].ToString().Trim(),
                             // 默认字段
                             ShouldChangePasswordOnNextLogin = true,
                             IsActive = true,
@@ -155,7 +155,7 @@ namespace Vickn.Platform.Web.Controllers
                     return Json(new { error = userEditDto1.UserName });
                 }
             }
-            return Json(new { });
+            return Json(new { success = true });
         }
     }
 }

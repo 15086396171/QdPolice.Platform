@@ -15,7 +15,7 @@
 
     <text name="IndexPage" value="首页"/>
     <text name="Search" value="搜索"/>
-    <text name="ReSearch" value="重置"/>
+    <text name="ReSearch" value="刷新"/>
     <text name="Reflash" value="刷新"/>
     <text name="BatchDelete" value="批量删除"/>
     <text name="ChangePassword" value="修改密码"/>

@@ -188,7 +188,13 @@
 
     uploader.on('uploadSuccess',
       function (file, response) {
-        location.reload();
+        //
+      
+        if (response.result.success) {
+          location.reload();
+        } else {
+          console.log(response);
+        }
       });
     uploader.on('uploadError', function (file) {
       abp.message.warn("导入出错，请检查导入的Excel");

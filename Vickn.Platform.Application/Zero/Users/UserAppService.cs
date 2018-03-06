@@ -276,6 +276,9 @@ namespace Vickn.Platform.Users
         public async Task CreateManyWithPassword(UserEditDtoWithPassword input)
         {
             //TODO:新增前的逻辑判断，是否允许新增
+            if (_userRepository.FirstOrDefault(p => p.UserName == input.UserName) != null)
+                return;
+
             var user = input.MapTo<User>();
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(input.Password);
