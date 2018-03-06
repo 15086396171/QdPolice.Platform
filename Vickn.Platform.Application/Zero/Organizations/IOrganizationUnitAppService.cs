@@ -2,6 +2,7 @@
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Vickn.Platform.Dtos;
 using Vickn.Platform.Organizations.Dto;
 
 namespace Vickn.Platform.Organizations
@@ -110,5 +111,12 @@ namespace Vickn.Platform.Organizations
         /// <param name="input"></param>
         /// <returns></returns>
         Task<bool> IsInOrganizationUnit(UserToOrganizationUnitInput input);
+
+        /// <summary>
+        /// 检查用户输入错误
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<CustomerModelStateValidationDto> CheckErrorAsync(GetOrganizationUnitForEditOutput input);
     }
 }

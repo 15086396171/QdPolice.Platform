@@ -13,7 +13,7 @@
         {
             HasModelError = hasModelError;
             Key = key;
-            ErrorMessage = ErrorMessage;
+            ErrorMessage = errorMsg;
         }
         /// <summary>
         /// 是否验证错误

@@ -11,6 +11,7 @@ using Abp.Domain.Uow;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
 using Abp.Organizations;
+using Vickn.Platform.Dtos;
 using Vickn.Platform.Organizations.Dto;
 using Vickn.Platform.Zero.Users.Dtos;
 
@@ -249,6 +250,20 @@ namespace Vickn.Platform.Organizations
         public async Task<bool> IsInOrganizationUnit(UserToOrganizationUnitInput input)
         {
             return await UserManager.IsInOrganizationUnitAsync(input.UserId, input.OrganizationUnitId);
+        }
+
+        /// <summary>
+        /// 检查用户输入错误
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<CustomerModelStateValidationDto> CheckErrorAsync(GetOrganizationUnitForEditOutput input)
+        {
+            if (_organizationUnitRepository.FirstOrDefault(p => p.ParentId == input.ParentId && p.DisplayName == input.DisplayName && p.Id != input.Id) != null)
+            {
+                return new CustomerModelStateValidationDto(true, "DisplayName", $"上级组织已存在\"{input.DisplayName}\"");
+            }
+            return new CustomerModelStateValidationDto();
         }
 
         private async Task<OrganizationUnitDto> CreateOrganizationUnitDto(OrganizationUnit organizationUnit)

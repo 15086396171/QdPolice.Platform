@@ -32,12 +32,12 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         // GET: OrganizationUnits
-       public ActionResult Index()
+        public ActionResult Index()
         {
             return View();
         }
 
-        [AbpMvcAuthorize(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit,OrganizationUnitAppPermissions.OrganizationUnit_EditOrganizationUnit)]
+        [AbpMvcAuthorize(OrganizationUnitAppPermissions.OrganizationUnit_CreateOrganizationUnit, OrganizationUnitAppPermissions.OrganizationUnit_EditOrganizationUnit)]
         public async Task<ActionResult> Create(long? parentId, int? id)
         {
             var result = await _organizationUnitAppService.GetOrganizationUnitForEditAsync(new NullableIdDto<long>(id));
@@ -48,7 +48,7 @@ namespace Vickn.Platform.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(GetOrganizationUnitForEditOutput output)
         {
-            if (!ModelState.IsValid)
+            if (!CheckModelState(await _organizationUnitAppService.CheckErrorAsync(output)))
             {
                 return View(output);
             }
