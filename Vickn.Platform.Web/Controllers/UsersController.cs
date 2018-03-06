@@ -114,6 +114,10 @@ namespace Vickn.Platform.Web.Controllers
                     for (int i = 0; i < rowCount; i++)
                     {
                         row = sheet.GetRow(i + 1);
+                        if (row.Cells[0].ToString().IsNullOrEmpty())
+                        {
+                            continue;
+                        }
                         userEditDto1 = new UserEditDtoWithPassword()
                         {
                             Name = row.Cells[1].ToString().Trim(),
@@ -122,7 +126,7 @@ namespace Vickn.Platform.Web.Controllers
                             PoliceNo = row.Cells[4].ToString().Trim(),
                             Position = row.Cells[5].ToString().Trim(),
                             PhoneNumber = row.Cells[6].ToString().Trim(),
-                            Landline = row.Cells[6].ToString().Trim(),
+                            Landline = row.Cells[7].ToString().Trim(),
                             // 默认字段
                             ShouldChangePasswordOnNextLogin = true,
                             IsActive = true,
