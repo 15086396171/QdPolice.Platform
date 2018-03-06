@@ -35,6 +35,9 @@
                 },
                 {
                     data: "name"
+                },
+              {
+                data: "userName"
                 }
             ]
         };

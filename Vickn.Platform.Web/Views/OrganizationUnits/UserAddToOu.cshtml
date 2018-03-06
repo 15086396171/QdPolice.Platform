@@ -1,24 +1,25 @@
 ﻿@using Abp.Web.Mvc.Extensions
 <div class="ibox-content">
-        <div class="input-group">
-            <input type="text" placeholder="@L("User.Name")" class="form-control" id="Name"/>
-            <input hidden value="@ViewBag.ouId" id="ouId" />
-            <span class="input-group-btn">
-                <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
-            </span>
-        </div>
-    </div>
+  <div class="input-group">
+    <input type="text" placeholder="@L("User.Name")" class="form-control" id="Name" />
+    <input hidden value="@ViewBag.ouId" id="ouId" />
+    <span class="input-group-btn">
+      <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+    </span>
+  </div>
+</div>
 <div class="ibox-content">
-    <table class="table table-border dataTable">
-        <thead>
-            <tr class="text-c">
-                <th width="25"><input type="checkbox" class="checkall"></th>
-                <th>@L("User.Name")</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
+  <table class="table table-border dataTable">
+    <thead>
+      <tr class="text-c">
+        <th width="25"><input type="checkbox" class="checkall"></th>
+        <th>@L("User.Name")</th>
+        <th>@L("User.UserName")</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
 </div>
 @section scripts{
-    @Html.IncludeScript("~/Views/OrganizationUnits/UserAddToOu.js")
+  @Html.IncludeScript("~/Views/OrganizationUnits/UserAddToOu.js")
 }
