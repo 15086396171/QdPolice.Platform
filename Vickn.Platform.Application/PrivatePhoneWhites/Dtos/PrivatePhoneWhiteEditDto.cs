@@ -44,7 +44,6 @@ namespace Vickn.Platform.PrivatePhoneWhites.Dtos
 		[DisplayName("电话号码")]
         [Required]
         [MaxLength(16)]
-		[RegularExpression(RegularHelper.PhoneRegularExpression, ErrorMessage = RegularHelper.PhoneErrorMsg)]
         public string PhoneNumber { get; set; }
 
         /// <summary>

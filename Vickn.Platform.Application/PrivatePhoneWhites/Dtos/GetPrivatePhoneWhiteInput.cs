@@ -28,6 +28,8 @@ namespace Vickn.Platform.PrivatePhoneWhites.Dtos
 		/// </summary>
 		public string FilterText { get; set; }
 
+        public long UserId { get; set; }
+
 		/// <summary>
 	    /// 用于排序的默认值
 		/// </summary>

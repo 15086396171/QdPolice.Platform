@@ -56,18 +56,18 @@ namespace Vickn.Platform.PrivatePhoneWhites
         #region 个人白名单管理
 
         /// <summary>
-        /// 获取个人的所有通话名单
+        /// 获取个人白名单
         /// </summary>
         /// <returns></returns>
         public async Task<ListResultDto<PhoneWhiteDto>> GetPhoneWhites()
         {
             List<PhoneWhiteDto> phoneWhiteDtos = new List<PhoneWhiteDto>();
-            phoneWhiteDtos.AddRange(_userRepository.GetAll().Select(p=>new PhoneWhiteDto()
-            {
-                Name = p.Name,
-                PhoneNumber = p.PhoneNumber,
-                PhoneWhiteType = PhoneWhiteType.Public
-            }).ToList());
+            //phoneWhiteDtos.AddRange(_userRepository.GetAll().Select(p=>new PhoneWhiteDto()
+            //{
+            //    Name = p.Name,
+            //    PhoneNumber = p.PhoneNumber,
+            //    PhoneWhiteType = PhoneWhiteType.Public
+            //}).ToList());
 
             phoneWhiteDtos.AddRange(_privatePhoneWhiteRepository.GetAllList(p=>p.UserId == AbpSession.UserId.Value).Select(p=>new PhoneWhiteDto()
             {
@@ -84,7 +84,7 @@ namespace Vickn.Platform.PrivatePhoneWhites
         /// </summary>
         public async Task<PagedResultDto<PrivatePhoneWhiteDto>> GetPagedAsync(GetPrivatePhoneWhiteInput input)
 		{
-			 var query = _privatePhoneWhiteRepository.GetAll();
+			 var query = _privatePhoneWhiteRepository.GetAll().Where(p=>p.UserId == input.UserId);
 
             //TODO:根据传入的参数添加过滤条件
 
