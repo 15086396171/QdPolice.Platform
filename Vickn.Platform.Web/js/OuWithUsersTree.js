@@ -28,6 +28,7 @@
         onCheck: zTreeOnClick,
       }
     };
+
     function init($treeContainer, nodeclickCallback) {
       $tree = $treeContainer;
       _nodeclickCallback = nodeclickCallback;
@@ -35,7 +36,7 @@
       ouService.getAllOuWithUsersAsync().done(function (data) {
         console.log(data);
         $.each(data,
-          function(index, ou) {
+          function (index, ou) {
             getUser(ou);
           });
         $.fn.zTree.init($tree, setting, data);
@@ -43,17 +44,18 @@
     }
 
     function getUser(ou) {
-      $.each(ou.children, function(index, child) {
-        getUser(child);
-      });
+      $.each(ou.children,
+        function (index, child) {
+          getUser(child);
+        });
 
       $.each(ou.users,
-        function(index, user) {
+        function (index, user) {
           ou.children.push({
             displayName: user.name,
             id: user.id,
             parentId: ou.id,
-            isUser:true,
+            isUser: true,
           });
         });
     }
@@ -61,9 +63,8 @@
     function zTreeOnClick(event, treeId, treeNode) {
       _nodeclickCallback(treeNode);
     };
-
     return {
-      init: init
+      init: init,
     }
   }
 }(jQuery)
