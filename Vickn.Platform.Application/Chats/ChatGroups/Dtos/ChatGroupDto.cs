@@ -6,7 +6,7 @@ using Vickn.Platform.Chats.ChatGroupUsers.Dtos;
 namespace Vickn.Platform.Chats.ChatGroups.Dtos
 {
     [AutoMapFrom(typeof(ChatGroup))]
-    public class ChatGroupDto:EntityDto<long>
+    public class ChatGroupDto:CreationAuditedEntityDto<long>
     {
         /// <summary>
         /// 群组名称

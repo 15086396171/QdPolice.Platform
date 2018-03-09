@@ -212,6 +212,11 @@ namespace Vickn.Platform.Chats
             }
         }
 
+        /// <summary>
+        /// 删除群组
+        /// </summary>
+        /// <param name="inputStr"></param>
+        /// <returns></returns>
         public async Task DeleteGroup(string inputStr)
         {
             using (var uow = UnitOfWorkManager.Begin())
@@ -224,8 +229,20 @@ namespace Vickn.Platform.Chats
             }
         }
 
-        public async Task LeaveGroup()
+        public async Task ExitGroup(string inputStr)
         {
+            using (var uow = UnitOfWorkManager.Begin())
+            {
+                ExitGroupInput input = JsonConvert.DeserializeObject<ExitGroupInput>(inputStr);
+                var chatGroup = await _chatGroupManager.ExitGroupAsync(input.GroupId, input.UserId);
+                await uow.CompleteAsync();
+
+                foreach (var onlineClient in _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, input.UserId)))
+                {
+                    Clients.Client(onlineClient.ConnectionId).deleteGroup(chatGroup.MapTo<ChatGroupDto>());
+                }
+                Clients.Group(chatGroup.Name).deleteUser(input);
+            }
 
         }
 

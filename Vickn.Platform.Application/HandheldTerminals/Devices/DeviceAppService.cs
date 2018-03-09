@@ -100,7 +100,12 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         public async Task<DeviceDto> GetByIdAsync(EntityDto<long> input)
         {
             var entity = await _deviceRepository.GetAsync(input.Id);
-            return entity.MapTo<DeviceDto>();
+            var deviceDto = entity.MapTo<DeviceDto>();
+            if (_onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, deviceDto.User.Id)).Any())
+            {
+                deviceDto.IsOnline = true;
+            }
+            return deviceDto;
         }
 
         /// <summary>

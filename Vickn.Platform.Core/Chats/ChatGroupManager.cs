@@ -95,10 +95,28 @@ namespace Vickn.Platform.Chats
             return await _chatGroupRepository.GetAsync(id);
         }
 
+        /// <summary>
+        ///  删除群组
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<ChatGroup> DeleteGroupAsync(long id)
         {
             var chatGroup = await _chatGroupRepository.GetAsync(id);
             await _chatGroupRepository.DeleteAsync(chatGroup);
+            return chatGroup;
+        }
+
+        /// <summary>
+        /// 退出群组
+        /// </summary>
+        /// <param name="groupId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        public async Task<ChatGroup> ExitGroupAsync(long groupId, long userId)
+        {
+            var chatGroup = await _chatGroupRepository.GetAsync(groupId);
+            await _chatUserRepository.DeleteAsync(p => p.ChatGroupId == groupId && p.UserId == userId);
             return chatGroup;
         }
     }
