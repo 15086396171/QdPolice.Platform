@@ -45,7 +45,7 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         {
         }
 
-        public async Task<DeviceLoginResult> DeviceLoginAsync(string imei, string appversion, string systemVersion, User user)
+        public async Task<DeviceLoginResult> DeviceLoginAsync(string imei, string appversion, string systemVersion,string status, User user)
         {
             var device = await _deviceRepository.FirstOrDefaultAsync(p => p.Imei == imei);
             if (device == null)
@@ -56,7 +56,8 @@ namespace Vickn.Platform.HandheldTerminals.Devices
                     User = user,
                     AppVersion = appversion,
                     SystemVersion = systemVersion,
-                    No = await GetNo()
+                    No = await GetNo(),
+                    Status =  status,
                 };
                 device.Id = await _deviceRepository.InsertAndGetIdAsync(device);
                 return new DeviceLoginResult()

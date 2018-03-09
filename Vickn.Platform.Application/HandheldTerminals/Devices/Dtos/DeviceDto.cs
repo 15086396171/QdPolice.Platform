@@ -57,5 +57,11 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// </summary>
         [DisplayName("系统版本")]
         public string SystemVersion { get; set; }
+
+        /// <summary>
+        /// 所处模式
+        /// </summary>
+        [DisplayName("所处模式")]
+        public string Status { get; set; }
     }
 }

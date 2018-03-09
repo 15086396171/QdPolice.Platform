@@ -147,11 +147,6 @@ namespace Vickn.Platform.Web.Controllers
             AuthenticationManager.SignIn(new AuthenticationProperties { IsPersistent = rememberMe }, identity);
         }
 
-        public ActionResult sendError()
-        {
-            throw new UserFriendlyException("asdsad");
-        }
-
         private Exception CreateExceptionForFailedLoginAttempt(AbpLoginResultType result, string usernameOrEmailAddress, string tenancyName)
         {
             switch (result)

@@ -29,5 +29,10 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// 系统版本
         /// </summary>
         public string SystemVersion { get; set; }
+
+        /// <summary>
+        /// 所处模式
+        /// </summary>
+        public string Status { get; set; }
     }
 }

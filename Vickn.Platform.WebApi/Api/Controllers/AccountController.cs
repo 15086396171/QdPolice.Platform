@@ -51,7 +51,7 @@ namespace Vickn.Platform.Api.Controllers
 
             var deviceLoginResult = await DeviceLogin(loginModel, loginResult);
 
-            loginResult.Identity.AddClaim(new Claim("DeviceId",deviceLoginResult.Device.Id.ToString()));
+            loginResult.Identity.AddClaim(new Claim("DeviceId", deviceLoginResult.Device.Id.ToString()));
             var ticket = new AuthenticationTicket(loginResult.Identity, new AuthenticationProperties());
 
             var currentUtc = new SystemClock().UtcNow;
@@ -63,7 +63,7 @@ namespace Vickn.Platform.Api.Controllers
 
         private async Task<DeviceLoginResult> DeviceLogin(LoginModel loginModel, AbpLoginResult<Tenant, User> loginResult)
         {
-            var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginModel.DeviceLoginModel.AppVersion, loginModel.DeviceLoginModel.SystemVersion, loginResult.User);
+            var deviceLoginResult = await _deviceManager.DeviceLoginAsync(loginModel.DeviceLoginModel.Imei, loginModel.DeviceLoginModel.AppVersion, loginModel.DeviceLoginModel.SystemVersion, loginModel.DeviceLoginModel.Status, loginResult.User);
             if (deviceLoginResult.DeviceLogin == DeviceLoginEnum.NotMe)
             {
                 throw new UserFriendlyException("登录失败", "设备已绑定其他账号");
