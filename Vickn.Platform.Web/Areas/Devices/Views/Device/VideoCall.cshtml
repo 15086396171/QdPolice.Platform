@@ -3,110 +3,116 @@
 
 @section styles
 {
-  @Styles.Render("~/Bundles/lib/css/ztree/metro")
-  <style>
-    textarea {
-      font-family: monospace;
-      margin: 2px;
-      height: 100px;
-      width: 250px;
-    }
+    @Styles.Render("~/Bundles/lib/css/ztree/metro")
+    <style>
+        textarea {
+            font-family: monospace;
+            margin: 2px;
+            height: 100px;
+            width: 250px;
+        }
 
-    div#send {
-      margin-right: 20px;
-    }
+        div#send {
+            margin-right: 20px;
+        }
 
-    div#receive {
-    }
+        div#receive {
+        }
 
-    div#sendreceive {
-      margin: 0 0 20px 0;
-    }
+        div#sendreceive {
+            margin: 0 0 20px 0;
+        }
 
-    h2 {
-      margin: 0 0 10px 0;
-    }
+        h2 {
+            margin: 0 0 10px 0;
+        }
 
-    div#local {
-      float: left;
-      margin-right: 20px;
-    }
+        div#local {
+            float: left;
+            margin-right: 20px;
+        }
 
-    div#remote {
-      float: left;
-    }
+        div#remote {
+            float: left;
+        }
 
-    div#screen {
-      float: left;
-    }
+        div#screen {
+            float: left;
+        }
 
-    div#videocontainer {
-      margin: 0 0 1px 0;
-      width: 1300px;
-      height: 700px;
-    }
-  </style>
+        div#videocontainer {
+            margin: 0 0 1px 0;
+            width: 1300px;
+            height: 700px;
+        }
+
+        #UILeft div {
+            padding-left: 10px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+        }
+    </style>
 }
 
 <table class="table table-border table-bordered table-bg">
-  <tr>
-    <td style="text-align:center" colspan="2 "><h1> 宁夏回族自治区戒毒管理局语音视频通信管理系统</h1></td>
-  </tr>
-  <!--<tr>
-            <td>
-                <div id="description">
-                    <p>请用最新版本的IE浏览器以及Chrome浏览器</p>
-                </div>
-            </td>
-        </tr>-->
-  <!--
-        <tr style="display:none">
-            <td style="text-align:center" colspan="2">
-            ID:
-                <input id="uid" type="text" class="input-text" style="width:150px" />
-                <button id="login" class="btn btn-primary radius">&nbsp; &nbsp;登陆 &nbsp;&nbsp;</button> &nbsp;&nbsp; &nbsp;
-                <button id="logoff" class="btn btn-primary radius">&nbsp;&nbsp;退出&nbsp;&nbsp;</button>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
-                &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
-            </td>
-        </tr>
-        -->
-  <tr>
-    <td style="text-align:center" colspan="2">
-      <div id="control">
-        <p></p>
-        <p>
-          被呼叫ID：
-          <select id="target-uid" style="width:150px" type="text"></select>
-          <button id="target-connect" class="btn btn-primary radius">&nbsp; &nbsp;呼叫&nbsp; &nbsp;</button>
+    <tr>
+        <td style="text-align:center" colspan="2 "><h1> 宁夏回族自治区戒毒管理局语音视频通信管理系统</h1></td>
+    </tr>
+    <!--<tr>
+              <td>
+                  <div id="description">
+                      <p>请用最新版本的IE浏览器以及Chrome浏览器</p>
+                  </div>
+              </td>
+          </tr>-->
+    <!--
+          <tr style="display:none">
+              <td style="text-align:center" colspan="2">
+              ID:
+                  <input id="uid" type="text" class="input-text" style="width:150px" />
+                  <button id="login" class="btn btn-primary radius">&nbsp; &nbsp;登陆 &nbsp;&nbsp;</button> &nbsp;&nbsp; &nbsp;
+                  <button id="logoff" class="btn btn-primary radius">&nbsp;&nbsp;退出&nbsp;&nbsp;</button>&nbsp;&nbsp; &nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                  &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+                  &nbsp; &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp; &nbsp;
+              </td>
+          </tr>
+          -->
+    @*<tr>
+          <td style="text-align:center" colspan="2">
+            <div id="control">
+              <p></p>
+              <p>
+                被呼叫ID：
+                <select id="target-uid" style="width:150px" type="text"></select>
+                <button id="target-connect" class="btn btn-primary radius">&nbsp; &nbsp;呼叫&nbsp; &nbsp;</button>
 
-          &nbsp; &nbsp;
-        </p>
-      </div>
-    </td>
-  </tr>
-  <!--
-        <tr>
-            <td style="text-align:center;width:50%"> 发送消息
-            <td style="text-align:center"> 接收消息 </td>
-        </tr>
-        -->
-  <!--
-        <tr>
-            <td style="text-align:center">
-                <div id="send">
-                    <textarea id="dataSent" style="width:550px" rows="5" cols="50"></textarea>
-                    <button id="data-send" class="btn btn-primary radius">发送消息</button>
-                </div>
-        </td>
-        -->
-  <!--
-            <td style="text-align:center">
-                <div id="receive">
-                    <textarea id="dataReceived" style="width:550px" rows="5" cols="50" disabled="true"></textarea>
-                </div>
-            </td>
-            -->
+                &nbsp; &nbsp;
+              </p>
+            </div>
+          </td>
+        </tr>*@
+    <!--
+          <tr>
+              <td style="text-align:center;width:50%"> 发送消息
+              <td style="text-align:center"> 接收消息 </td>
+          </tr>
+          -->
+    <!--
+          <tr>
+              <td style="text-align:center">
+                  <div id="send">
+                      <textarea id="dataSent" style="width:550px" rows="5" cols="50"></textarea>
+                      <button id="data-send" class="btn btn-primary radius">发送消息</button>
+                  </div>
+          </td>
+          -->
+    <!--
+              <td style="text-align:center">
+                  <div id="receive">
+                      <textarea id="dataReceived" style="width:550px" rows="5" cols="50" disabled="true"></textarea>
+                  </div>
+              </td>
+              -->
 
 </table>
 <!--<table class="table table-border table-bordered table-bg">
@@ -121,612 +127,723 @@
       </div></td>
   </tr>
 </table>-->
-<table class="table table-border table-bordered table-bg">
-    <caption align="top">
-        当前正在进行的监控
-    </caption>
-    <tr id="remotevideoTr">
+@*Left*@
+<div id="UILeft" style="float:left;border:1px solid #808080;min-height:520px;">
+    <div style="float:left;">
+        <input type="text" id="Text-CallUser" style="width:155px;" />
+        <input type="button" class="btn btn-primary" value="搜索" style="background-color: #1c84c6;
+    border-color: #1c84c6;" />
+    </div>
+
+    <div>
+        <select id="target-uid" style="width:215px" type="text"></select>
+
+    </div>
+
+
+    <div id="control">
+        <p></p>
+        <p>
+
+
+            <button id="target-connect" class="btn btn-primary radius">&nbsp; &nbsp;视频呼叫&nbsp; &nbsp;</button>
+            <button id="target-connect" class="btn btn-primary radius">&nbsp; &nbsp;消息发布&nbsp; &nbsp;</button>
+            &nbsp; &nbsp;
+        </p>
+    </div>
+
+    <div class="organizationUnit ztree" id="Ztrees"></div>
+</div>
+
+@*Left2*@
+<div id="UILeft2" style="float:left;min-width:300px;margin-left:10px; ">
+    <div style="background-color:#4ac1b2;width:130px;height:50px;">
+        <div style="padding-left:19px;padding-top:8px;color:#e2dede;">
+            总用户数：<sapn>99</sapn>人 <br />在线人数：<sapn>32</sapn>人
+        </div>
+
+    </div>
+
+    <table class="table table-border table-bordered table-bg">
+        <caption align="top">
+            当前正在进行的监控
+        </caption>
+        <tr id="remotevideoTr">
+            <!--
+                    <td>
+                        <div id="remote">
+                            <video width="320px" height="240px" id="remoteVideo" autoplay></video>
+
+                        </div>
+                    </td>
+                    -->
+        </tr>
         <!--
-                <td>
-                    <div id="remote">
-                        <video width="320px" height="240px" id="remoteVideo" autoplay></video>
+              <tr>
 
-                    </div>
-                </td>
-                -->
-    </tr>
-    <!--
-          <tr>
+                  <td>桌面  </td>
+                  <td>
+                      <div id="screen">
+                          <h2></h2>
+                          <video width="640px" height="480px" id="screenVideo" autoplay></video>
 
-              <td>桌面  </td>
-              <td>
-                  <div id="screen">
-                      <h2></h2>
-                      <video width="640px" height="480px" id="screenVideo" autoplay></video>
-
-                  </div>
-              </td>
+                      </div>
+                  </td>
 
 
-          </tr>
-           -->
+              </tr>
+               -->
 
-</table>
-<div class="organizationUnit ztree" style="float:left;"></div>
-@*<div style="width:50px;height:1000px;background-color:#2692b0;float:left;" >333</div>*@
+    </table>
+</div>
+
+
+
+
 
 
 <audio controls="controls" id="audio" style="display:none">
-  <source src="newMessage.mp3" type="audio/mp3" />
+    <source src="newMessage.mp3" type="audio/mp3" />
 </audio>
 <footer id="status"></footer>
 <div id="infoDiv"></div>
 
 @section scripts
 {
-  <script src="/Content/Hplus/js/plugins/video/js/utils.js" type="text/javascript"></script>
-  <script src="/Content/Hplus/js/plugins/video/sdk/dependencies/socket.io.js" type="text/javascript"></script>
-  <script src="/Content/Hplus/js/plugins/video/sdk/dependencies/adapter.js" type="text/javascript"></script>
-  <script src="/Content/Hplus/js/plugins/video/js/sc.websocket.js" type="text/javascript"></script>
-  <script src="/Content/Hplus/js/plugins/video/sdk/woogeen.sdk.js" type="text/javascript"></script>
+    <script src="/Content/Hplus/js/plugins/video/js/utils.js" type="text/javascript"></script>
+    <script src="/Content/Hplus/js/plugins/video/sdk/dependencies/socket.io.js" type="text/javascript"></script>
+    <script src="/Content/Hplus/js/plugins/video/sdk/dependencies/adapter.js" type="text/javascript"></script>
+    <script src="/Content/Hplus/js/plugins/video/js/sc.websocket.js" type="text/javascript"></script>
+    <script src="/Content/Hplus/js/plugins/video/sdk/woogeen.sdk.js" type="text/javascript"></script>
 
-  @Scripts.Render("~/Bundles/lib/js/ztree/core")
-@Html.IncludeScript("~/js/OuWithUsersTree.js")
-  <script type="text/javascript">
-    var ouTree = new OuWithUsersTree();
+    @Scripts.Render("~/Bundles/lib/js/ztree/core")
+    @Html.IncludeScript("~/js/OuWithUsersTree.js")
+    <script type="text/javascript">
+        //去掉默认的contextmenu事件，否则会和右键事件同时出现。
+        document.oncontextmenu = function (e) {
+            e.preventDefault();
+        };
+        var ouTree = new OuWithUsersTree();
+        var nodes = "";
+        ouTree.init($(".organizationUnit"), function (node) {
+          
+            var treeObj = $.fn.zTree.getZTreeObj("Ztrees");
+             nodes = treeObj.getCheckedNodes(true);
 
-    ouTree.init($(".organizationUnit"), function (node) {
-      console.log(node);
-    });
- 
+            document.getElementById("UILeft").onmousedown = function (e) {
+                if (e.button == 2) {
 
-    var isVideo = 1;
-    // Please  change 61.152.239.56 to signaling server's address.
-    var serverAddress = 'http://112.74.113.253:8095';
-    var p2p = new Woogeen.PeerClient({
-      iceServers: [
-        {
-          urls: "stun:112.74.113.253:3478",
-          urls: "stun:stun.qvod.com:3478",
-          urls: "stun:203.183.172.196:3478",
-          urls: "stun:stun.ekiga.net",
-          urls: "stun:numb.viagenie.ca",
-          urls: "stun:stun.voiparound.com",
-          urls: "stun:stun.voipbuster.com",
-          urls: "stun:stun.voipstunt.com",
-          urls: "stun:stun.voipcheap.com:3478",
-          urls: "stun:stun.sipgate.net",
-          urls: "stun:stun.jappix.com:3478",
-          urls: "stun:23.21.150.121:3478",
-          urls: "stun:iphone-stun.strato-iphone.de:3478",
-          urls: "stun:stun.schlund.de"
-
-        }, {
-          urls: ["turn:112.74.113.253:3478?transport=udp", "turn:112.74.113.253:3478?transport=tcp"],
-          credential: "master",
-          username: "woogeen"
-        }, {
-          urls: ["turn:numb.viagenie.ca"],
-          credential: "webrtc@live.com",
-          username: "muazkh"
-        }, {
-          urls: ["turn:192.158.29.39:3478?transport=udp"],
-          credential: "28224511:1379330808",
-          username: "JZEOEt2V3Qb0y27GRntt2u2PAYA="
-        }, {
-          urls: ["turn:192.158.29.39:3478?transport=tcp"],
-          credential: "28224511:1379330808",
-          username: "JZEOEt2V3Qb0y27GRntt2u2PAYA="
-        }
-      ]
-    }); // Initialize a Peer object
-    var localStream;
-    var publishedID;
-    //localStream=undefine;
-    // var localScreen;
+                    layer.msg('点击您想要的操作即可', {
+                        skin: 'layui-layer-molv' //样式类名  自定义样式
+                        , closeBtn: 1    // 是否显示关闭按钮
+                        , anim: 1 //动画类型
+                        , btn: ['视频呼叫', '消息发布'] //按钮
+                        , time: 10000 //2s后自动关闭
+                        , icon: 6    // icon
+                        , yes: function () {
+                            p2p.invite(nodes,
+                                function () {
+                                
+                                    console.log(nodes);
+                                    console.log('Invite success.');
+                                },
+                                function (err) {
+                                    console.log('Invite failed with message: ' + err.message);
+                                });
+                        }
+                        , btn2: function () {
+                            //获取被选中的复选框对应用户信息
+                            console.log(nodes);
+                            debugger;
+                            var userlist = "";
+                            for (var i = 0; i < nodes.length; i++) {
+                                if (nodes[i].userName != null) {
+                                    userlist += nodes[i].userName;
+                                    userlist += ",";
+                                };
+                            }
 
 
-    var getTargetId = function () {
-      return $('#target-uid').val();
-    };
-
-    p2p.connect({ host: serverAddress, token: '0000' }); // Connect to peer server
-    jQuery.support.cors = true;
-
-    var userService = abp.services.app.user;
-    userService.getUsers().done(function (result) {
-      $.each(result.items,
-        function (i, record) {
-          $('#target-uid').append("<option value='" + record.userName + "'>" + record.name + "</option>");
-        });
-    });
-
-    //jQuery.getJSON(url, function (data) {
-    //  var i = 0;
-    //  $.each(data, function (i, record) {
-    //    //  alert(i+"   "+record.IMEI);
-    //    $('#target-uid').append("<option value='" + record.IMEI + "'>" + record.UserName + " " + record.RealName + "</option>");
-
-    //  });
-    //});
-    //   alert("value1：" + data.value1 + " value2：" + data.value2);
-    //$.getJSON(url,
-    //function(data){
-
-    //$('#target-uid').append("<option value='"+1+"'>"+"222"+"</option>");
-    //var destlistCombo=document.getElementById("target-uid");
-
-    //$.each(data.items, function(i,item){
-    //  alert("success");
-    //$('#target-uid').append("<option value='"+i+"'>"+item.IMEI+"</option>");
-    //$('#target-uid').append("<option value='"+1+"'>"+"222"+"</option>");
-    //});
-
-    //}).fail( function(d, textStatus, error) {
-    //        console.error("getJSON failed, status: " + textStatus + ", error: "+error)
-    //  alert("getJSON failed, status: " + textStatus + ", error: "+error);
-    //    });
-    //.success(function() { alert("second success"); })
-    //.error(function() { alert("error"); })
-    //.complete(function() { alert("complete"); });
-
-    $(document).ready(function () {
-
-      if (localStream) {
-        // p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-        console.log("loalStream=true");
-        /*
-        p2p.publish(localStream, e.peerId);
-        */
-      } else {
-        console.log("loalStream=false");
-        Woogeen.LocalStream.create({
-          video: {
-            device: "camera",
-            resolution: "hd720p",
-            frameRate: [30, 30]
-
-          },
-          audio: true
-        },
-          function (err, stream) {
-            console.log("loalStream=failed");
-            if (err) {
-
-              return L.Logger.error('create LocalStream failed:', err);
-            }
-            localStream = stream;
-
-            $('#local').children('video').get(0).srcObject = localStream.mediaStream;
-
-            //p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-            console.log("loalStream=false and publish");
-          });
 
 
-      }
-      console.log(localStream);
 
-      $('#target-connect').click(function () {
+                            //信息发布弹框
+                            layer.open({
+                                type: 1
+                                , title: "信息发布" //不显示标题栏   title : false/标题
+                                , closeBtn: true
+                                , area: '600px;'
+                                , shade: 0
+                                , id: 'XXFB' //设定一个id，防止重复弹出
+                                , btn: ['确认发布', '关闭']
+                                , btnAlign: 'c', moveType: 1 //拖拽模式，0或者1
+                                , content: '<div style="padding: 50px; line-height: 22px; background-color: #393D49; color: #fff; font-weight: 300;height:350px;">发布对象: admin(123456)  <br/> <br/>消息内容:<br /><textarea style="width:500px;height:200px;color:black;font-size:15px;"></textarea> </div >'
+                                , yes: function () {
 
-        p2p.invite(getTargetId(),
-          function () {
-            console.log('Invite success.');
-          },
-          function (err) {
-            console.log('Invite failed with message: ' + err.message);
-          });
-        //p2p.publish(localStream,'865226011586729');
-        //console.log(Woogeen);
-        //console.log(p2p);
-        //console.log(localStream);
-        //p2p.unpublish(localStream,'867527027651425');
-        //p2p.publish(localStream,'867527027651425');
+                                }
+                            });
+                        }
+                    });
 
-
-        // p2p.stop($('#target-uid').val());
-        //	$('#remotevideoTr').children('td').each(function(i,v){
-        // 	$('#remotevideoTr').children('td').each(function(){
-
-
-      });
-
-      /*
-      $('#target-screen').click(function () {
-          Woogeen.LocalStream.create({
-              video: {
-                  device: "screen"
-              }
-          }, function (err, stream) {
-              if (err) {
-                  return L.Logger.error('create LocalStream failed:', err);
-              }
-              localScreen = stream;
-              p2p.publish(localScreen, $('#target-uid').val());  // Publish local stream to remote client
-          });
-      });
-*/
-
-      /*
-
-      $('#target-video-unpublish').click(function () {
-          $('#target-video-publish').prop('disabled', false);
-          $('#target-video-unpublish').prop('disabled', true);
-
-  //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-  $('#remotevideoTr').children("td").each(function(i,v){
-              if (1!=2){
-                 p2p.unpublish(localStream, $(v).id);
-            }
-        })
-
-
-          localStream.close();
-          localStream = undefined;
-      });
-
-      $('#target-video-publish').click(function () {
-          $('#target-video-unpublish').prop('disabled', false);
-          $('#target-video-publish').prop('disabled', true);
-          if (localStream) {
-             // p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-     $('#remotevideoTr').children("td").each(function(i,v){
-              if (1!=2){
-                 p2p.publish(localStream, $(v).id);
-            }
-           })
-
-          } else {
-              Woogeen.LocalStream.create({
-                  video: {
-                      device: "camera",
-                      resolution: "sif"
-                  },
-                  audio: true
-              }, function (err, stream) {
-                  if (err) {
-                      return L.Logger.error('create LocalStream failed:', err);
-                  }
-                  localStream = stream;
-                  if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
-                      attachMediaStream($('#local').children('canvas').get(0), localStream.mediaStream)  // Show local stream
-                  } else {
-                      attachMediaStream($('#local').children('video').get(0), localStream.mediaStream)  // Show local stream
-                  }
-                  //p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-
-      $('#remotevideoTr').children("td").each(function(i,v){
-                     if (1!=2){
-                     p2p.publish(localStream, $(v).id);
                 }
-                 })
+            }
+        });
+        
+       
+       
+       
+
+        //服务器IP配置
+        var isVideo = 1;
+        // Please  change 61.152.239.56 to signaling server's address.
+        var serverAddress = 'http://112.74.113.253:8095';
+        var p2p = new Woogeen.PeerClient({
+            iceServers: [
+                {
+                    urls: "stun:112.74.113.253:3478",
+                    urls: "stun:stun.qvod.com:3478",
+                    urls: "stun:203.183.172.196:3478",
+                    urls: "stun:stun.ekiga.net",
+                    urls: "stun:numb.viagenie.ca",
+                    urls: "stun:stun.voiparound.com",
+                    urls: "stun:stun.voipbuster.com",
+                    urls: "stun:stun.voipstunt.com",
+                    urls: "stun:stun.voipcheap.com:3478",
+                    urls: "stun:stun.sipgate.net",
+                    urls: "stun:stun.jappix.com:3478",
+                    urls: "stun:23.21.150.121:3478",
+                    urls: "stun:iphone-stun.strato-iphone.de:3478",
+                    urls: "stun:stun.schlund.de"
+
+                }, {
+                    urls: ["turn:112.74.113.253:3478?transport=udp", "turn:112.74.113.253:3478?transport=tcp"],
+                    credential: "master",
+                    username: "woogeen"
+                }, {
+                    urls: ["turn:numb.viagenie.ca"],
+                    credential: "webrtc@live.com",
+                    username: "muazkh"
+                }, {
+                    urls: ["turn:192.158.29.39:3478?transport=udp"],
+                    credential: "28224511:1379330808",
+                    username: "JZEOEt2V3Qb0y27GRntt2u2PAYA="
+                }, {
+                    urls: ["turn:192.158.29.39:3478?transport=tcp"],
+                    credential: "28224511:1379330808",
+                    username: "JZEOEt2V3Qb0y27GRntt2u2PAYA="
+                }
+            ]
+        }); // Initialize a Peer object
+        var localStream;
+        var publishedID;
+        //localStream=undefine;
+        // var localScreen;
 
 
-              });
-          }
-      });
+        //var getTargetId = function () {
+        //    return $('#target-uid').val();
+        //};
 
-*/
-      /*
-                  $('#target-disconnect').click(function () {
-                      p2p.stop($('#target-uid').val());  // Stop chat
-                  });
-                  */
+        p2p.connect({ host: serverAddress, token: '0000' }); // Connect to peer server
+        jQuery.support.cors = true;
 
-      /*
-      $('#login').click(function () {
-          p2p.connect({ host: serverAddress, token: $('#uid').val() });  // Connect to peer server
-          $('#uid').prop('disabled', true);
-      });
+        var userService = abp.services.app.user;
+        userService.getUsers().done(function (result) {
+            $.each(result.items,
+                function (i, record) {
+                    $('#target-uid').append("<option value='" + record.userName + "'>" + record.name + "</option>");
+                });
+        });
 
+        //jQuery.getJSON(url, function (data) {
+        //  var i = 0;
+        //  $.each(data, function (i, record) {
+        //    //  alert(i+"   "+record.IMEI);
+        //    $('#target-uid').append("<option value='" + record.IMEI + "'>" + record.UserName + " " + record.RealName + "</option>");
 
-      $('#logoff').click(function () {
-          p2p.disconnect();  // Disconnected from peer server.
-          $('#uid').prop('disabled', false);
-      });
+        //  });
+        //});
+        //   alert("value1：" + data.value1 + " value2：" + data.value2);
+        //$.getJSON(url,
+        //function(data){
 
-      $('#data-send').click(function () {
-          p2p.send($('#dataSent').val(), $('#target-uid').val());  // Send data to peer.
-      });
+        //$('#target-uid').append("<option value='"+1+"'>"+"222"+"</option>");
+        //var destlistCombo=document.getElementById("target-uid");
 
-*/
+        //$.each(data.items, function(i,item){
+        //  alert("success");
+        //$('#target-uid').append("<option value='"+i+"'>"+item.IMEI+"</option>");
+        //$('#target-uid').append("<option value='"+1+"'>"+"222"+"</option>");
+        //});
 
+        //}).fail( function(d, textStatus, error) {
+        //        console.error("getJSON failed, status: " + textStatus + ", error: "+error)
+        //  alert("getJSON failed, status: " + textStatus + ", error: "+error);
+        //    });
+        //.success(function() { alert("second success"); })
+        //.error(function() { alert("error"); })
+        //.complete(function() { alert("complete"); });
 
-    });
-    var user;
-    p2p.on('chat-invited',
-      function (e) { // Receive invitation from remote client.
-        //            $('#target-uid').val(e.senderId);
-        //  $('#target-uid').append("<option value='"+e.senderId+"'>"+e.senderId+"</option>");
-        //$('#target-uid').val(e.senderId);
-        audio.play();
-        var strName = e.senderId;
-        userService.getUserByNameAsync({ id: strName }).done(function (result) {
-          user = result;
-          if (confirm("有警务通" + result.name + "呼叫,接受吗？") == true) {
-            p2p.accept(e.senderId);
-          } else {
-            p2p.deny(e.senderId);
-          }
-        })
-      });
-
-    p2p.on('chat-accepted',
-      function (e) {
-      });
-
-    p2p.on('chat-denied',
-      function (e) {
-        console.log('Invitation to ' + e.senderId + ' has been denied.');
-      });
-
-    p2p.on('chat-started',
-      function (e) { // Chat started
-
-
-        console.log('chat started.');
-        //  $('#target-screen').prop('disabled', false);
-        //    $('#data-send').prop('disabled', false);
-        //   $('#target-video-publish').prop('disabled', false);
-
-        var td = document.createElement('td');
-        td.id = e.peerId;
-        //confirm(e.peerId);
-
-        var ppeerId = document.createElement('p');
-
-        ppeerId.innerHTML = '和' + user.name + '对话';
-
-        td.appendChild(ppeerId);
-        //		  ppeerId.appendTo(td).html(e.peerId);
-        td.appendChild(document.createElement("br"));
-
-        var divBtn = document.createElement("div");
-        //divBtn.appendChild(document.createElement(new Text(e.senderId)));
-
-        //var tempSpan = document.createElement(e.senderId);
-        //		  divBtn.appendChild(tempSpan);
-
-        var btnVideoOpen = document.createElement('input');
-        btnVideoOpen.type = 'button';
-        btnVideoOpen.value = '打开我的摄像头';
-        btnVideoOpen.disabled = 'false';
-        btnVideoOpen.border = "2px";
-        btnVideoOpen.id = e.peerId + 'btnVideoOpen';
-        btnVideoOpen.addEventListener('click',
-          function () {
+        $(document).ready(function () {
 
             if (localStream) {
-              // p2p.publish(localStream, e.peerId);
-              //p2p.unpublish(localStream, e.peerId);
-              console.log("publish  btnVideoOpen  publish");
-              /*
-               var successcallback=function(stats){
-                   console.log("stats:");
-                    var successcallback1=function(msg){
-                  console.log("error getting stats:"+msg);
-                  setTimeout(p2p.publish(localStream, e.peerId),2000);
-                    }
-                    var failurecallback1=function(msg){
-                  console.log("error getting stats:"+msg);
-                    }
-
-                   p2p.unpublish(localStream, e.peerId,successcallback1,failurecallback1);
-
-
-                      }
-                  var failurecallback=function(msg){
-                  console.log("error getting stats:"+msg);
-                    }
-                    */
-
-              // p2p.publish(localStream, e.peerId,successcallback,failurecallback);
-
-              if (publishedID) {
-                p2p.unpublish(localStream, publishedID);
-                $('#' + publishedID + 'btnVideoOpen').prop('disabled', false);
-                $('#' + publishedID + 'btnVideoClose').prop('disabled', true);
-
-              }
-              p2p.publish(localStream, e.peerId);
-              publishedID = e.peerId;
-              $('#' + e.peerId + 'btnVideoOpen').prop('disabled', true);
-              $('#' + e.peerId + 'btnVideoClose').prop('disabled', false);
-
-            }
-
-
-          });
-        divBtn.appendChild(btnVideoOpen);
-
-        var btnVideoClose = document.createElement('input');
-        btnVideoClose.type = 'button';
-        btnVideoClose.value = '关闭我的摄像头';
-        btnVideoClose.disabled = 'true';
-        btnVideoClose.border = "2px";
-        btnVideoClose.id = e.peerId + 'btnVideoClose';
-        btnVideoClose.addEventListener('click',
-          function () {
-            //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-            if (localStream) {
-
-              p2p.unpublish(localStream, e.peerId);
-              $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
-              $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
-            }
-            //  localStream.close();
-            //  localStream = undefined;
-          });
-        divBtn.appendChild(btnVideoClose);
-
-        var btnChatClose = document.createElement('input');
-        btnChatClose.type = 'button';
-        btnChatClose.value = '关闭对话';
-        btnChatClose.border = "2px";
-        btnChatClose.addEventListener('click',
-          function () {
-            p2p.stop(e.peerId); // Stop chat
-            //$('#'+e.senderId).remove();
-          });
-        divBtn.appendChild(btnChatClose);
-
-        td.appendChild(divBtn);
-
-
-        var divVideo = document.createElement("div");
-        //divVideo.id=e.steam.from+'stream';
-        var video = document.createElement("video");
-        video.setAttribute("width", "320px");
-        video.setAttribute("height", "240px");
-        video.setAttribute("autoplay", "autoplay");
-        divVideo.appendChild(video);
-
-        var canvas = document.createElement("canvas");
-        canvas.setAttribute("width", "320px");
-        canvas.setAttribute("height", "240px");
-        canvas.setAttribute("autoplay", "autoplay");
-        divVideo.appendChild(canvas);
-
-        td.appendChild(divVideo);
-        $('#' + e.peerId + ' canvas').hide();
-        $('#' + e.peerId + ' video').hide();
-
-        document.getElementById('remotevideoTr').appendChild(td);
-
-        $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
-        $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
-
-      });
-
-    p2p.on('stream-added',
-      function (e) { // A remote stream is available.
-        //console.log(e);
-
-        // tr.appendChild(td);
-        //tablehtml.appendChild(tr);
-
-        /*
-        if (e.stream.isScreen()) {
-            if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
-                $('#screen canvas').show();
-                attachRemoteMediaStream($('#screen canvas').get(0), e.stream.mediaStream, e.stream.mediaStream.attachedPCID);  // Show remote screen stream.
+                // p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+                console.log("loalStream=true");
+                /*
+                p2p.publish(localStream, e.peerId);
+                */
             } else {
-                $('#screen video').show();
-                attachMediaStream($('#screen video').get(0), e.stream.mediaStream);  // Show remote screen stream.
+                console.log("loalStream=false");
+                Woogeen.LocalStream.create({
+                    video: {
+                        device: "camera",
+                        resolution: "hd720p",
+                        frameRate: [30, 30]
+
+                    },
+                    audio: true
+                },
+                    function (err, stream) {
+                        console.log("loalStream=failed");
+                        if (err) {
+
+                            return L.Logger.error('create LocalStream failed:', err);
+                        }
+                        localStream = stream;
+
+                        $('#local').children('video').get(0).srcObject = localStream.mediaStream;
+
+                        //p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+                        console.log("loalStream=false and publish");
+                    });
+
+
             }
-        } else
-  */
-        if (e.stream.hasVideo()) {
-          /*
-          if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
-              $('#remote canvas').show();
-              attachRemoteMediaStream($('#remote canvas').get(0), e.stream.mediaStream, e.stream.mediaStream.attachedPCID);  // Show remote video stream.
-          } else {
-              $('#remote video').show();
-              attachMediaStream($('#remote video').get(0), e.stream.mediaStream);  // Show remote video stream.
-          }
-  */
+            console.log(localStream);
 
-          $('#' + e.stream.from + ' video').show();
-          $('#' + e.stream.from + ' video').get(0).srcObject = e.stream.mediaStream;
+            $('#target-connect').click(function () {
+
+                p2p.invite(getTargetId(),
+                    function () {
+                        console.log(userlist);
+                        console.log(nodes);
+                        console.log('Invite success.');
+                    },
+                    function (err) {
+                        console.log('Invite failed with message: ' + err.message);
+                    });
+                //p2p.publish(localStream,'865226011586729');
+                //console.log(Woogeen);
+                //console.log(p2p);
+                //console.log(localStream);
+                //p2p.unpublish(localStream,'867527027651425');
+                //p2p.publish(localStream,'867527027651425');
 
 
-        }
-        isVideo++;
-      });
+                // p2p.stop($('#target-uid').val());
+                //	$('#remotevideoTr').children('td').each(function(i,v){
+                // 	$('#remotevideoTr').children('td').each(function(){
 
-    p2p.on('stream-removed',
-      function (e) { // A remote stream is available.
-        // var stream = e.stream;
 
-        //			divVideo.id=e.steam.from+'stream';
-        /*
-        if (stream && stream.isScreen()) {
-            $("#screen canvas").hide();
-            $("#screen video").hide();
-        } else {
-  */
-        $('#' + e.stream.from + ' canvas').hide();
-        $('#' + e.steram.from + ' video').hide();
+            });
 
-        // $('#remotevideotable1').remove();
-        //	$('#'+e.stream.id()).hide();
-        //	$('#'+e.stream.from).remove();
-        //            }
-
-        console.log('Stream removed. Stream ID: ' + e.stream.from);
-      });
-
-    p2p.on('chat-stopped',
-      function (e) { // Chat stopped.
-        console.log('chat stopped.');
-        // $('#data-send').prop('disabled', true);
-        // $('#target-video-publish').prop('disabled', true);
-        //$('#target-video-unpublish').prop('disabled', true);
-        // $('#target-screen').prop('disabled', true);
-
-        /*
-  if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) { // If IE
-            $('#remote canvas').hide();
-        } else {
-            $('#remote video').hide();
-        }
-  */
-        //$('#remotevideotable1').remove();
-        //			$('#'+e.stream.id()+'001').hide();
-        // confirm(e.peerId);
-
-        $('#' + e.peerId).remove();
-
-        /*
-        if (localStream) {
-            localStream.close();
-            localStream = undefined;
-        }
-        if (localScreen) {
-            localScreen.close();
-            localScreen = undefined;
-        }
-  */
-        console.log('Chat stopped. Sender ID: ' + e.senderId + ', peer ID: ' + e.peerId);
-      });
-
-    p2p.on('data-received',
-      function (e) { // Received data from datachannel.
-        // $('#dataReceived').val(e.senderId + ': ' + e.data);
-      });
-
-    window.onbeforeunload = function () {
-
-      /*
-                 p2p.stop();
-                  if (localStream) {
-
-                     // p2p.unpublish(localStream, $('#target-uid').val());
-                      $('#remotevideoTr').children('td').each(function(i,v){
-                         if (1!=2){
-                             p2p.unpublish(localStream, $(v).id);
-                          }
-                      });
-                      //localStream.close();
-                      //localStream = undefined;
-                  }
+            /*
+            $('#target-screen').click(function () {
+                Woogeen.LocalStream.create({
+                    video: {
+                        device: "screen"
+                    }
+                }, function (err, stream) {
+                    if (err) {
+                        return L.Logger.error('create LocalStream failed:', err);
+                    }
+                    localScreen = stream;
+                    p2p.publish(localScreen, $('#target-uid').val());  // Publish local stream to remote client
+                });
+            });
       */
 
-      // p2p.stop($('#target-uid').val());
-      //	$('#remotevideoTr').children('td').each(function(i,v){
-      // 	$('#remotevideoTr').children('td').each(function(){
+            /*
 
-      $('#remotevideoTr').children("td").each(function () {
+            $('#target-video-unpublish').click(function () {
+                $('#target-video-publish').prop('disabled', false);
+                $('#target-video-unpublish').prop('disabled', true);
+
+        //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+        $('#remotevideoTr').children("td").each(function(i,v){
+                    if (1!=2){
+                       p2p.unpublish(localStream, $(v).id);
+                  }
+              })
 
 
-        p2p.unpublish(this.id);
-        p2p.stop(this.id);
+                localStream.close();
+                localStream = undefined;
+            });
 
-      });
-      localStream.close();
+            $('#target-video-publish').click(function () {
+                $('#target-video-unpublish').prop('disabled', false);
+                $('#target-video-publish').prop('disabled', true);
+                if (localStream) {
+                   // p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+           $('#remotevideoTr').children("td").each(function(i,v){
+                    if (1!=2){
+                       p2p.publish(localStream, $(v).id);
+                  }
+                 })
 
-    }
-  </script>
+                } else {
+                    Woogeen.LocalStream.create({
+                        video: {
+                            device: "camera",
+                            resolution: "sif"
+                        },
+                        audio: true
+                    }, function (err, stream) {
+                        if (err) {
+                            return L.Logger.error('create LocalStream failed:', err);
+                        }
+                        localStream = stream;
+                        if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
+                            attachMediaStream($('#local').children('canvas').get(0), localStream.mediaStream)  // Show local stream
+                        } else {
+                            attachMediaStream($('#local').children('video').get(0), localStream.mediaStream)  // Show local stream
+                        }
+                        //p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+
+            $('#remotevideoTr').children("td").each(function(i,v){
+                           if (1!=2){
+                           p2p.publish(localStream, $(v).id);
+                      }
+                       })
+
+
+                    });
+                }
+            });
+
+      */
+            /*
+                        $('#target-disconnect').click(function () {
+                            p2p.stop($('#target-uid').val());  // Stop chat
+                        });
+                        */
+
+            /*
+            $('#login').click(function () {
+                p2p.connect({ host: serverAddress, token: $('#uid').val() });  // Connect to peer server
+                $('#uid').prop('disabled', true);
+            });
+
+
+            $('#logoff').click(function () {
+                p2p.disconnect();  // Disconnected from peer server.
+                $('#uid').prop('disabled', false);
+            });
+
+            $('#data-send').click(function () {
+                p2p.send($('#dataSent').val(), $('#target-uid').val());  // Send data to peer.
+            });
+
+      */
+
+
+        });
+        var user;
+        p2p.on('chat-invited',
+            function (e) { // Receive invitation from remote client.
+                //            $('#target-uid').val(e.senderId);
+                //  $('#target-uid').append("<option value='"+e.senderId+"'>"+e.senderId+"</option>");
+                //$('#target-uid').val(e.senderId);
+                audio.play();
+                var strName = e.senderId;
+                userService.getUserByNameAsync({ id: strName }).done(function (result) {
+                    user = result;
+                    if (confirm("有警务通" + result.name + "呼叫,接受吗？") == true) {
+                        p2p.accept(e.senderId);
+                    } else {
+                        p2p.deny(e.senderId);
+                    }
+                })
+            });
+
+        p2p.on('chat-accepted',
+            function (e) {
+            });
+
+        p2p.on('chat-denied',
+            function (e) {
+                console.log('Invitation to ' + e.senderId + ' has been denied.');
+            });
+
+        p2p.on('chat-started',
+            function (e) { // Chat started
+
+
+                console.log('chat started.');
+                //  $('#target-screen').prop('disabled', false);
+                //    $('#data-send').prop('disabled', false);
+                //   $('#target-video-publish').prop('disabled', false);
+
+                var td = document.createElement('td');
+                td.id = e.peerId;
+                //confirm(e.peerId);
+
+                var ppeerId = document.createElement('p');
+
+                ppeerId.innerHTML = '和' + user.name + '对话';
+
+                td.appendChild(ppeerId);
+                //		  ppeerId.appendTo(td).html(e.peerId);
+                td.appendChild(document.createElement("br"));
+
+                var divBtn = document.createElement("div");
+                //divBtn.appendChild(document.createElement(new Text(e.senderId)));
+
+                //var tempSpan = document.createElement(e.senderId);
+                //		  divBtn.appendChild(tempSpan);
+
+                var btnVideoOpen = document.createElement('input');
+                btnVideoOpen.type = 'button';
+                btnVideoOpen.value = '打开我的摄像头';
+                btnVideoOpen.disabled = 'false';
+                btnVideoOpen.border = "2px";
+                btnVideoOpen.id = e.peerId + 'btnVideoOpen';
+                btnVideoOpen.addEventListener('click',
+                    function () {
+
+                        if (localStream) {
+                            // p2p.publish(localStream, e.peerId);
+                            //p2p.unpublish(localStream, e.peerId);
+                            console.log("publish  btnVideoOpen  publish");
+                            /*
+                             var successcallback=function(stats){
+                                 console.log("stats:");
+                                  var successcallback1=function(msg){
+                                console.log("error getting stats:"+msg);
+                                setTimeout(p2p.publish(localStream, e.peerId),2000);
+                                  }
+                                  var failurecallback1=function(msg){
+                                console.log("error getting stats:"+msg);
+                                  }
+
+                                 p2p.unpublish(localStream, e.peerId,successcallback1,failurecallback1);
+
+
+                                    }
+                                var failurecallback=function(msg){
+                                console.log("error getting stats:"+msg);
+                                  }
+                                  */
+
+                            // p2p.publish(localStream, e.peerId,successcallback,failurecallback);
+
+                            if (publishedID) {
+                                p2p.unpublish(localStream, publishedID);
+                                $('#' + publishedID + 'btnVideoOpen').prop('disabled', false);
+                                $('#' + publishedID + 'btnVideoClose').prop('disabled', true);
+
+                            }
+                            p2p.publish(localStream, e.peerId);
+                            publishedID = e.peerId;
+                            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', true);
+                            $('#' + e.peerId + 'btnVideoClose').prop('disabled', false);
+
+                        }
+
+
+                    });
+                divBtn.appendChild(btnVideoOpen);
+
+                var btnVideoClose = document.createElement('input');
+                btnVideoClose.type = 'button';
+                btnVideoClose.value = '关闭我的摄像头';
+                btnVideoClose.disabled = 'true';
+                btnVideoClose.border = "2px";
+                btnVideoClose.id = e.peerId + 'btnVideoClose';
+                btnVideoClose.addEventListener('click',
+                    function () {
+                        //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+                        if (localStream) {
+
+                            p2p.unpublish(localStream, e.peerId);
+                            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
+                            $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
+                        }
+                        //  localStream.close();
+                        //  localStream = undefined;
+                    });
+                divBtn.appendChild(btnVideoClose);
+
+                var btnChatClose = document.createElement('input');
+                btnChatClose.type = 'button';
+                btnChatClose.value = '关闭对话';
+                btnChatClose.border = "2px";
+                btnChatClose.addEventListener('click',
+                    function () {
+                        p2p.stop(e.peerId); // Stop chat
+                        //$('#'+e.senderId).remove();
+                    });
+                divBtn.appendChild(btnChatClose);
+
+                td.appendChild(divBtn);
+
+
+                var divVideo = document.createElement("div");
+                //divVideo.id=e.steam.from+'stream';
+                var video = document.createElement("video");
+                video.setAttribute("width", "320px");
+                video.setAttribute("height", "240px");
+                video.setAttribute("autoplay", "autoplay");
+                divVideo.appendChild(video);
+
+                var canvas = document.createElement("canvas");
+                canvas.setAttribute("width", "320px");
+                canvas.setAttribute("height", "240px");
+                canvas.setAttribute("autoplay", "autoplay");
+                divVideo.appendChild(canvas);
+
+                td.appendChild(divVideo);
+                $('#' + e.peerId + ' canvas').hide();
+                $('#' + e.peerId + ' video').hide();
+
+                document.getElementById('remotevideoTr').appendChild(td);
+
+                $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
+                $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
+
+            });
+
+        p2p.on('stream-added',
+            function (e) { // A remote stream is available.
+                //console.log(e);
+
+                // tr.appendChild(td);
+                //tablehtml.appendChild(tr);
+
+                /*
+                if (e.stream.isScreen()) {
+                    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
+                        $('#screen canvas').show();
+                        attachRemoteMediaStream($('#screen canvas').get(0), e.stream.mediaStream, e.stream.mediaStream.attachedPCID);  // Show remote screen stream.
+                    } else {
+                        $('#screen video').show();
+                        attachMediaStream($('#screen video').get(0), e.stream.mediaStream);  // Show remote screen stream.
+                    }
+                } else
+          */
+                if (e.stream.hasVideo()) {
+                    /*
+                    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {  // If IE
+                        $('#remote canvas').show();
+                        attachRemoteMediaStream($('#remote canvas').get(0), e.stream.mediaStream, e.stream.mediaStream.attachedPCID);  // Show remote video stream.
+                    } else {
+                        $('#remote video').show();
+                        attachMediaStream($('#remote video').get(0), e.stream.mediaStream);  // Show remote video stream.
+                    }
+            */
+
+                    $('#' + e.stream.from + ' video').show();
+                    $('#' + e.stream.from + ' video').get(0).srcObject = e.stream.mediaStream;
+
+
+                }
+                isVideo++;
+            });
+
+        p2p.on('stream-removed',
+            function (e) { // A remote stream is available.
+                // var stream = e.stream;
+
+                //			divVideo.id=e.steam.from+'stream';
+                /*
+                if (stream && stream.isScreen()) {
+                    $("#screen canvas").hide();
+                    $("#screen video").hide();
+                } else {
+          */
+                $('#' + e.stream.from + ' canvas').hide();
+                $('#' + e.steram.from + ' video').hide();
+
+                // $('#remotevideotable1').remove();
+                //	$('#'+e.stream.id()).hide();
+                //	$('#'+e.stream.from).remove();
+                //            }
+
+                console.log('Stream removed. Stream ID: ' + e.stream.from);
+            });
+
+        p2p.on('chat-stopped',
+            function (e) { // Chat stopped.
+                console.log('chat stopped.');
+                // $('#data-send').prop('disabled', true);
+                // $('#target-video-publish').prop('disabled', true);
+                //$('#target-video-unpublish').prop('disabled', true);
+                // $('#target-screen').prop('disabled', true);
+
+                /*
+          if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) { // If IE
+                    $('#remote canvas').hide();
+                } else {
+                    $('#remote video').hide();
+                }
+          */
+                //$('#remotevideotable1').remove();
+                //			$('#'+e.stream.id()+'001').hide();
+                // confirm(e.peerId);
+
+                $('#' + e.peerId).remove();
+
+                /*
+                if (localStream) {
+                    localStream.close();
+                    localStream = undefined;
+                }
+                if (localScreen) {
+                    localScreen.close();
+                    localScreen = undefined;
+                }
+          */
+                console.log('Chat stopped. Sender ID: ' + e.senderId + ', peer ID: ' + e.peerId);
+            });
+
+        p2p.on('data-received',
+            function (e) { // Received data from datachannel.
+                // $('#dataReceived').val(e.senderId + ': ' + e.data);
+            });
+
+        window.onbeforeunload = function () {
+
+            /*
+                       p2p.stop();
+                        if (localStream) {
+
+                           // p2p.unpublish(localStream, $('#target-uid').val());
+                            $('#remotevideoTr').children('td').each(function(i,v){
+                               if (1!=2){
+                                   p2p.unpublish(localStream, $(v).id);
+                                }
+                            });
+                            //localStream.close();
+                            //localStream = undefined;
+                        }
+            */
+
+            // p2p.stop($('#target-uid').val());
+            //	$('#remotevideoTr').children('td').each(function(i,v){
+            // 	$('#remotevideoTr').children('td').each(function(){
+
+            $('#remotevideoTr').children("td").each(function () {
+
+
+                p2p.unpublish(this.id);
+                p2p.stop(this.id);
+
+            });
+            localStream.close();
+
+        }
+    </script>
+
 
 }

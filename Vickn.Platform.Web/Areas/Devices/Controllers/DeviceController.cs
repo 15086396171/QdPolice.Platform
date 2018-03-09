@@ -94,5 +94,7 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
         {
             return View();
         }
+
+      
     }
 }

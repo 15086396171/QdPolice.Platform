@@ -56,6 +56,7 @@
             id: user.id,
             parentId: ou.id,
             isUser: true,
+            userName: user.userName
           });
         });
     }
