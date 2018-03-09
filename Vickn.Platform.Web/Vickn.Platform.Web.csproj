@@ -1079,7 +1079,7 @@
     <Content Include="Assets\dist\static\js\manifest.0cfae2138da1ea9818b4.js.map" />
     <Content Include="Assets\dist\static\js\vendor.2afdedc1cd53783a994a.js.map" />
     <Content Include="WebService\MainService.asmx" />
-    <Content Include="Areas\Devices\Views\Device\VideoCallCopy.cshtml" />
+    <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.unobtrusive.js" />
@@ -1470,7 +1470,6 @@
     <Content Include="Global.asax" />
     <Content Include="js\main.js" />
     <Content Include="log4net.config" />
-    <Content Include="Content\Hplus\js\plugins\zTree\v3\css\zTreeStyle\img\Thumbs.db" />
     <None Include="Properties\PublishProfiles\本地发布.pubxml" />
     <Content Include="Scripts\jquery-2.2.1.js" />
     <Content Include="Scripts\jquery-2.2.1.min.js" />
