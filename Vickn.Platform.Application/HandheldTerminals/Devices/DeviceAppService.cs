@@ -27,6 +27,7 @@ using Abp.Extensions;
 using Abp.Json;
 using Abp.Linq.Extensions;
 using Abp.RealTime;
+using Vickn.PlatfForm.Utils.Extensions;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
@@ -100,6 +101,17 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         {
             var entity = await _deviceRepository.GetAsync(input.Id);
             return entity.MapTo<DeviceDto>();
+        }
+
+        /// <summary>
+        /// 修改模式
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task UpdateStatusAsymc(DeviceStatusEditInput input)
+        {
+            var device = await _deviceRepository.GetAsync(AbpSession.GetDeviceId().Value);
+            device.Status = input.Status;
         }
 
         /// <summary>

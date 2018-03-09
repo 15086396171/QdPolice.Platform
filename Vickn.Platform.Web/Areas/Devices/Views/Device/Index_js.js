@@ -56,6 +56,7 @@
               return "否";
           }
         },
+        { "data": "status" },
         {
           "data": "id",
           render: function (data, type, row, meta) {

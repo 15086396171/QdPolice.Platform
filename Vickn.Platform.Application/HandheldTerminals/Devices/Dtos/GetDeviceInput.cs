@@ -28,9 +28,14 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
 		/// </summary>
 		public string FilterText { get; set; }
 
-		/// <summary>
-	    /// 用于排序的默认值
-		/// </summary>
+        /// <summary>
+        /// 所处模式
+        /// </summary>
+        public string Status { get; set; }
+
+        /// <summary>
+        /// 用于排序的默认值
+        /// </summary>
         public void Normalize()
         {
             if (string.IsNullOrEmpty(Sorting))

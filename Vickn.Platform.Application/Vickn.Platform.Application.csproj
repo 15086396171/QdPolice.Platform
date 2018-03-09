@@ -218,6 +218,7 @@
     <Compile Include="HandheldTerminals\Devices\Dtos\DeviceDto.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\DeviceEditDto.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\DeviceForEdit.cs" />
+    <Compile Include="HandheldTerminals\Devices\Dtos\DeviceStatusEditInput.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\GetDeviceInput.cs" />
     <Compile Include="HandheldTerminals\Devices\Dtos\ManageInput.cs" />
     <Compile Include="HandheldTerminals\Devices\IDeviceAppService.cs" />

@@ -37,6 +37,13 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         Task<DeviceDto> GetByIdAsync(EntityDto<long> input);
 
         /// <summary>
+        /// 修改模式
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task UpdateStatusAsymc(DeviceStatusEditInput input);
+
+        /// <summary>
         /// 通过Id获取设备信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>

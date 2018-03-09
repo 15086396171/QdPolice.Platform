@@ -14,6 +14,7 @@ namespace Vickn.Platform.Api.Models
         public string Password { get; set; }
 
         public DeviceLoginModel DeviceLoginModel { get; set; }
+
     }
 
     public class DeviceLoginModel{
@@ -28,5 +29,7 @@ namespace Vickn.Platform.Api.Models
         /// 系统版本
         /// </summary>
         public string SystemVersion { get; set; }
+
+        public string Status { get; set; }
     }
 }

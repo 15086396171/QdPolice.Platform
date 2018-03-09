@@ -9,6 +9,8 @@ using System.Web.Services;
 using Abp;
 using Abp.Dependency;
 using Abp.Domain.Uow;
+using Abp.Json;
+using Abp.Logging;
 using Abp.Runtime.Session;
 using Abp.Threading;
 using Newtonsoft.Json;
@@ -30,6 +32,7 @@ namespace Vickn.Platform.Web.WebService
         private readonly NotificationManager _notificationManager;
         private readonly UserManager _userManager;
         private IUnitOfWorkManager _unitOfWorkManager;
+
         public IAbpSession AbpSession { get; set; }
 
         public MainService()
@@ -38,7 +41,6 @@ namespace Vickn.Platform.Web.WebService
             _userManager = IocManager.Instance.Resolve<UserManager>();
             _unitOfWorkManager = IocManager.Instance.Resolve<IUnitOfWorkManager>();
             AbpSession = IocManager.Instance.Resolve<IAbpSession>();
-
         }
 
         [WebMethod]
@@ -70,10 +72,13 @@ namespace Vickn.Platform.Web.WebService
                 }
             };
 
-            StreamWriter sw = File.AppendText("D:\\haikangceshi.txt");
-            string w = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":" + JsonConvert.SerializeObject(obj, Formatting.None) + System.Environment.NewLine;
-            sw.Write(w);
-            sw.Close();
+            //StreamWriter sw = File.AppendText("D:\\haikangceshi.txt");
+            //string w = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss") + ":" + JsonConvert.SerializeObject(obj, Formatting.None) + System.Environment.NewLine;
+            //sw.Write(w);
+            //sw.Close();
+
+            LogHelper.Logger.Info(obj.ToJsonString());
+            
             using (var unitOfWork = _unitOfWorkManager.Begin())
             {
 
@@ -100,7 +105,7 @@ namespace Vickn.Platform.Web.WebService
                 };
 
                 HttpContext.Current.Response.ContentType = "application/json;charset=utf-8";
-                HttpContext.Current.Response.Write(returnObj);
+                HttpContext.Current.Response.Write(returnObj.ToJsonString());
                 HttpContext.Current.Response.End();
             }
         }
