@@ -4,6 +4,7 @@ using Abp.Auditing;
 using Abp.Web.Configuration;
 using Abp.Web.Mvc.Authorization;
 using Vickn.PlatfForm.Utils.Extensions;
+using Vickn.Platform.Announcements;
 
 namespace Vickn.Platform.Web.Controllers
 {
@@ -12,6 +13,8 @@ namespace Vickn.Platform.Web.Controllers
     public class HomeController : PlatformControllerBase
     {
         private readonly IAbpWebLocalizationConfiguration _webLocalizationConfiguration;
+       
+
         public HomeController(IAbpWebLocalizationConfiguration webLocalizationConfiguration)
         {
             _webLocalizationConfiguration = webLocalizationConfiguration;
@@ -21,8 +24,12 @@ namespace Vickn.Platform.Web.Controllers
             return View();
         }
 
+        //首页界面
         public ActionResult Welcome()
         {
+            //获取公告消息
+            
+
             return View();
         }
 
