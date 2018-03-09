@@ -544,6 +544,7 @@
     <Content Include="Content\Hplus\img\loading-upload.gif" />
     <Content Include="Content\Hplus\img\locked.png" />
     <Content Include="Content\Hplus\img\login-background.jpg" />
+    <Content Include="Content\Hplus\img\ooopic_1463538196.png" />
     <Content Include="Content\Hplus\img\p1.jpg" />
     <Content Include="Content\Hplus\img\p2.jpg" />
     <Content Include="Content\Hplus\img\p3.jpg" />
@@ -990,6 +991,7 @@
     <Content Include="Content\Hplus\typography.html" />
     <Content Include="Content\Hplus\webim.html" />
     <Content Include="Content\Hplus\widgets.html" />
+    <Content Include="Content\Mp3\BjSoound.mp3" />
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
     <Content Include="favicon.ico" />
