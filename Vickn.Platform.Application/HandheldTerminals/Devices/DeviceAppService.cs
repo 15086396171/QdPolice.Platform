@@ -100,7 +100,12 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         public async Task<DeviceDto> GetByIdAsync(EntityDto<long> input)
         {
             var entity = await _deviceRepository.GetAsync(input.Id);
-            return entity.MapTo<DeviceDto>();
+            var deviceDto = entity.MapTo<DeviceDto>();
+            if (_onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, deviceDto.User.Id)).Any())
+            {
+                deviceDto.IsOnline = true;
+            }
+            return deviceDto;
         }
 
         /// <summary>
@@ -208,7 +213,38 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         public async Task ManageAsync(ManageInput input)
         {
             var device = await _deviceRepository.GetAsync(input.Id);
-            await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId, device.User.Id), PlatformConsts.NotificationConstNames.Device_Manage, input.Operation, device.MapTo<DeviceDto>());
+            var obj = new
+            {
+                success = true,
+                error = new
+                {
+                    policeNo = device.User.PoliceNo,
+                    isIn = true,
+                    time = DateTime.Now
+                }
+            };
+            if (input.Operation == "changeMode")
+            {
+                if (device.Status != "生活模式")
+                    obj = new
+                    {
+                        success = true,
+                        error = new
+                        {
+                            policeNo = device.User.PoliceNo,
+                            isIn = false,
+                            time = DateTime.Now
+                        }
+                    };
+                await _notificationManager.SendMessageAsync(
+                    new UserIdentifier(AbpSession.TenantId, device.CreatorUserId.Value),
+                    PlatformConsts.NotificationConstNames.CameraChange,
+                    PlatformConsts.NotificationConstNames.CameraChange, obj);
+            }
+            else
+            {
+                await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId, device.User.Id), PlatformConsts.NotificationConstNames.Device_Manage, input.Operation, device.MapTo<DeviceDto>());
+            }
         }
 
         /// <summary>

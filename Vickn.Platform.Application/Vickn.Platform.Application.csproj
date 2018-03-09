@@ -183,6 +183,7 @@
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
+    <Compile Include="Chats\ChatGroups\Dtos\ExitGroupInput.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\InviteToGroupInput.cs" />
     <Compile Include="Chats\ChatGroupUsers\Dtos\ChatGroupUserDto.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\Dtos\GetDataDictoryItemsByDicKeyInput.cs" />
