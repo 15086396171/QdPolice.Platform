@@ -94,5 +94,12 @@ namespace Vickn.Platform.Chats
         {
             return await _chatGroupRepository.GetAsync(id);
         }
+
+        public async Task<ChatGroup> DeleteGroupAsync(long id)
+        {
+            var chatGroup = await _chatGroupRepository.GetAsync(id);
+            await _chatGroupRepository.DeleteAsync(chatGroup);
+            return chatGroup;
+        }
     }
 }

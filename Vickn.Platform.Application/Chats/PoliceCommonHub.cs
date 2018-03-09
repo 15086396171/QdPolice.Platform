@@ -33,10 +33,13 @@ namespace Vickn.Platform.Chats
         private readonly UserManager _userManager;
 
         public IUnitOfWorkManager UnitOfWorkManager { get; set; }
+
         /// <summary>
         /// Initializes a new instance of the <see cref="T:Abp.Web.SignalR.Hubs.AbpCommonHub" /> class.
         /// </summary>
-        public PoliceCommonHub(IOnlineClientManager onlineClientManager, ChatHistoryManager chatHistoryManager, ChatMessageManager chatMessageManager, ChatGroupManager chatGroupManager, UserManager userManager) : base(onlineClientManager)
+        public PoliceCommonHub(IOnlineClientManager onlineClientManager, ChatHistoryManager chatHistoryManager,
+            ChatMessageManager chatMessageManager, ChatGroupManager chatGroupManager, UserManager userManager) : base(
+            onlineClientManager)
         {
             _onlineClientManager = onlineClientManager;
             _chatHistoryManager = chatHistoryManager;
@@ -87,7 +90,8 @@ namespace Vickn.Platform.Chats
                 var chatMessageReceiveDto = chatMessage.MapTo<ChatMessageReceiveDto>();
 
                 chatMessageReceiveDto.FromUser =
-                    (await _userManager.GetUserByIdAsync(chatMessageReceiveDto.CreatorUserId.Value)).MapTo<UserSimpleDto>();
+                    (await _userManager.GetUserByIdAsync(chatMessageReceiveDto.CreatorUserId.Value))
+                    .MapTo<UserSimpleDto>();
 
                 if (chatMessageReceiveDto.ChatSendType == ChatSendType.Group)
                 {
@@ -99,8 +103,10 @@ namespace Vickn.Platform.Chats
                 else
                 {
                     chatMessageReceiveDto.ToUser =
-                        (await _userManager.GetUserByIdAsync(chatMessageReceiveDto.ToUserId.Value)).MapTo<UserSimpleDto>();
-                    var clients = _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, chatMessageReceiveDto.ToUserId.Value));
+                        (await _userManager.GetUserByIdAsync(chatMessageReceiveDto.ToUserId.Value))
+                        .MapTo<UserSimpleDto>();
+                    var clients = _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId,
+                        chatMessageReceiveDto.ToUserId.Value));
                     foreach (var onlineClient in clients)
                     {
                         Clients.Client(onlineClient.ConnectionId).getMessage(chatMessageReceiveDto);
@@ -127,6 +133,7 @@ namespace Vickn.Platform.Chats
                 await uow.CompleteAsync();
             }
         }
+
         #endregion
 
         #region 群组相关
@@ -204,6 +211,24 @@ namespace Vickn.Platform.Chats
                 await JoinGroups();
             }
         }
+
+        public async Task DeleteGroup(string inputStr)
+        {
+            using (var uow = UnitOfWorkManager.Begin())
+            {
+                EntityDto<long> groupId = JsonConvert.DeserializeObject<EntityDto<long>>(inputStr);
+                var chatGroup = await _chatGroupManager.DeleteGroupAsync(groupId.Id);
+                await uow.CompleteAsync();
+
+                Clients.Group(chatGroup.Name).deleteGroup(chatGroup.MapTo<ChatGroupDto>());
+            }
+        }
+
+        public async Task LeaveGroup()
+        {
+
+        }
+
         #endregion
     }
 }
