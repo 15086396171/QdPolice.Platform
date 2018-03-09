@@ -599,77 +599,77 @@
                 //var tempSpan = document.createElement(e.senderId);
                 //		  divBtn.appendChild(tempSpan);
 
-                var btnVideoOpen = document.createElement('input');
-                btnVideoOpen.type = 'button';
-                btnVideoOpen.value = '打开我的摄像头';
-                btnVideoOpen.disabled = 'false';
-                btnVideoOpen.border = "2px";
-                btnVideoOpen.id = e.peerId + 'btnVideoOpen';
-                btnVideoOpen.addEventListener('click',
-                    function () {
+                //var btnVideoOpen = document.createElement('input');
+                //btnVideoOpen.type = 'button';
+                //btnVideoOpen.value = '打开我的摄像头';
+                //btnVideoOpen.disabled = 'false';
+                //btnVideoOpen.border = "2px";
+                //btnVideoOpen.id = e.peerId + 'btnVideoOpen';
+                //btnVideoOpen.addEventListener('click',
+                //    function () {
 
-                        if (localStream) {
-                            // p2p.publish(localStream, e.peerId);
-                            //p2p.unpublish(localStream, e.peerId);
-                            console.log("publish  btnVideoOpen  publish");
-                            /*
-                             var successcallback=function(stats){
-                                 console.log("stats:");
-                                  var successcallback1=function(msg){
-                                console.log("error getting stats:"+msg);
-                                setTimeout(p2p.publish(localStream, e.peerId),2000);
-                                  }
-                                  var failurecallback1=function(msg){
-                                console.log("error getting stats:"+msg);
-                                  }
+                //        if (localStream) {
+                //            // p2p.publish(localStream, e.peerId);
+                //            //p2p.unpublish(localStream, e.peerId);
+                //            console.log("publish  btnVideoOpen  publish");
+                //            /*
+                //             var successcallback=function(stats){
+                //                 console.log("stats:");
+                //                  var successcallback1=function(msg){
+                //                console.log("error getting stats:"+msg);
+                //                setTimeout(p2p.publish(localStream, e.peerId),2000);
+                //                  }
+                //                  var failurecallback1=function(msg){
+                //                console.log("error getting stats:"+msg);
+                //                  }
 
-                                 p2p.unpublish(localStream, e.peerId,successcallback1,failurecallback1);
-
-
-                                    }
-                                var failurecallback=function(msg){
-                                console.log("error getting stats:"+msg);
-                                  }
-                                  */
-
-                            // p2p.publish(localStream, e.peerId,successcallback,failurecallback);
-
-                            if (publishedID) {
-                                p2p.unpublish(localStream, publishedID);
-                                $('#' + publishedID + 'btnVideoOpen').prop('disabled', false);
-                                $('#' + publishedID + 'btnVideoClose').prop('disabled', true);
-
-                            }
-                            p2p.publish(localStream, e.peerId);
-                            publishedID = e.peerId;
-                            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', true);
-                            $('#' + e.peerId + 'btnVideoClose').prop('disabled', false);
-
-                        }
+                //                 p2p.unpublish(localStream, e.peerId,successcallback1,failurecallback1);
 
 
-                    });
-                divBtn.appendChild(btnVideoOpen);
+                //                    }
+                //                var failurecallback=function(msg){
+                //                console.log("error getting stats:"+msg);
+                //                  }
+                //                  */
 
-                var btnVideoClose = document.createElement('input');
-                btnVideoClose.type = 'button';
-                btnVideoClose.value = '关闭我的摄像头';
-                btnVideoClose.disabled = 'true';
-                btnVideoClose.border = "2px";
-                btnVideoClose.id = e.peerId + 'btnVideoClose';
-                btnVideoClose.addEventListener('click',
-                    function () {
-                        //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
-                        if (localStream) {
+                //            // p2p.publish(localStream, e.peerId,successcallback,failurecallback);
 
-                            p2p.unpublish(localStream, e.peerId);
-                            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
-                            $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
-                        }
-                        //  localStream.close();
-                        //  localStream = undefined;
-                    });
-                divBtn.appendChild(btnVideoClose);
+                //            if (publishedID) {
+                //                p2p.unpublish(localStream, publishedID);
+                //                $('#' + publishedID + 'btnVideoOpen').prop('disabled', false);
+                //                $('#' + publishedID + 'btnVideoClose').prop('disabled', true);
+
+                //            }
+                //            p2p.publish(localStream, e.peerId);
+                //            publishedID = e.peerId;
+                //            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', true);
+                //            $('#' + e.peerId + 'btnVideoClose').prop('disabled', false);
+
+                //        }
+
+
+                //    });
+                //divBtn.appendChild(btnVideoOpen);
+
+                //var btnVideoClose = document.createElement('input');
+                //btnVideoClose.type = 'button';
+                //btnVideoClose.value = '关闭我的摄像头';
+                //btnVideoClose.disabled = 'true';
+                //btnVideoClose.border = "2px";
+                //btnVideoClose.id = e.peerId + 'btnVideoClose';
+                //btnVideoClose.addEventListener('click',
+                //    function () {
+                //        //p2p.unpublish(localStream, $('#target-uid').val());  // Publish local stream to remote client
+                //        if (localStream) {
+
+                //            p2p.unpublish(localStream, e.peerId);
+                //            $('#' + e.peerId + 'btnVideoOpen').prop('disabled', false);
+                //            $('#' + e.peerId + 'btnVideoClose').prop('disabled', true);
+                //        }
+                //        //  localStream.close();
+                //        //  localStream = undefined;
+                //    });
+                //divBtn.appendChild(btnVideoClose);
 
                 var btnChatClose = document.createElement('input');
                 btnChatClose.type = 'button';

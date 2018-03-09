@@ -1,69 +1,14 @@
 ﻿@{
     ViewBag.Title = "我的桌面";
 }
-<div id="div-all">
-    <div class="div-left">
-        <div class="div-title">
-            <img src="/Content/img/ooopic_1463537344.png" width="35" height="35">
-            <div>应用列表</div>
-        </div>
+<div>
 
-        <input type="hidden" value="" id="sortId">
-        <ul class="dragsort-ver ul-content-1" id="ul-content" style="" data-listidx="0">
-
-            <li class="li" id="15" data-itemidx="0" style="cursor: pointer;">
-                <a class="Access_Api" href="http://61.133.195.142:1155/Frame/Index?belongsSys=PolicePass" target="_blank" id="15">
-                    <img src="/Document/AppIcon/2018022411430085.jpg" alt="/Content/html_style/right-keyMenu/img/app/ap4.png">
-                    <div>
-                        <span>手持终端管理</span>
-                    </div>
-                </a>
-
-            </li>
-            <li class="li" id="16" data-itemidx="1" style="cursor: pointer;">
-                <a class="Access_Api" href="http://61.133.195.142:1155/video/call.html" target="_blank" id="16">
-                    <img src="/Document/AppIcon/2018022411436161.jpg" alt="/Content/html_style/right-keyMenu/img/app/ap4.png">
-                    <div>
-                        <span>视频对讲</span>
-                    </div>
-                </a>
-
-            </li>
-            <li class="li" id="82" data-itemidx="2" style="cursor: pointer;">
-                <!--判断排班系统是否有排班表推送-->
-                <a class="btn-login" id="82">
-                    <img src="/Document/AppIcon/2018022411424586.jpg" alt="/Content/html_style/right-keyMenu/img/app/ap4.png">
-                    <div>
-                        <span>排班管理</span>
-                    </div>
-                </a>
-
-            </li>
-        </ul>
-
-    </div>
-    <div class="div-right">
-        <div class="div-center">
-            <div class="div-title">
-                <img src="/Content/img/ooopic_1463537344.png" width="35" height="35">
-                <div>快捷功能</div>
-            </div>
-            <ul class="ul-content ul-function-menu" id="ul-content">
-                <li class="li-function sysset" data-value="0">
-                    <a>
-                        <img src="/Content/icon/ic/ooopic_1458697866.png" alt="">
-                        <div><span>系统设置</span> </div>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
+    @*消息公告*@
     <div class="div-buttom">
         <div class="div-title" style="">
-            <img src="/Content/img/ooopic_1463538196.png">
+            <img src="~/Content/Hplus/img/ooopic_1463538196.png" />
             <div>消息公告</div>
         </div>
         <ul id="ul-message"></ul>
     </div>
-
 </div>
