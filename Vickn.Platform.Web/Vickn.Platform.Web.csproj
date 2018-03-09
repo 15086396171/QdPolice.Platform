@@ -990,6 +990,7 @@
     <Content Include="Content\Hplus\typography.html" />
     <Content Include="Content\Hplus\webim.html" />
     <Content Include="Content\Hplus\widgets.html" />
+    <Content Include="Content\Mp3\BjSoound.mp3" />
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
     <Content Include="favicon.ico" />
