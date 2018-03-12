@@ -75,6 +75,10 @@ namespace Vickn.Platform.HandheldTerminals.Devices
                     DeviceLogin = DeviceLoginEnum.NotMe,
                 };
             }
+
+            device.Status = status;
+            device.AppVersion = appversion;
+            device.SystemVersion = systemVersion;
             return new DeviceLoginResult()
             {
                 Device = device,
