@@ -1,0 +1,12 @@
+﻿@model System.Collections.Generic.List<Vickn.Platform.Web.Areas.Devices.Models.OnlineUser>
+    
+<table>
+  @foreach (var  item in Model)
+  {
+    <tr>
+      <td>@item.Name</td>
+      <td>@item.Ipaddress</td>
+      <td>@item.ClientId</td>
+    </tr>
+  }
+</table>

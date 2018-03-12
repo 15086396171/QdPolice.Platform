@@ -12,16 +12,22 @@
 
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
+using Abp.RealTime;
 using Abp.Runtime.Session;
 using Abp.Web.Mvc.Authorization;
+using Castle.Components.DictionaryAdapter;
 using Vickn.PlatfForm.Utils.Extensions;
 using Vickn.Platform.HandheldTerminals;
 using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
+using Vickn.Platform.Users;
+using Vickn.Platform.Web.Areas.Devices.Models;
 using Vickn.Platform.Web.Controllers;
 
 namespace Vickn.Platform.Web.Areas.Devices.Controllers
@@ -31,11 +37,15 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
     {
         private readonly IDeviceAppService _deviceAppService;
         private readonly IForensicsRecordAppService _forensicsRecordAppService;
+        private readonly IOnlineClientManager _onlineClientManager;
+        private readonly UserManager _userManager;
 
-        public DeviceController(IDeviceAppService deviceAppService, IForensicsRecordAppService forensicsRecordAppService)
+        public DeviceController(IDeviceAppService deviceAppService, IForensicsRecordAppService forensicsRecordAppService, IOnlineClientManager onlineClientManager, UserManager userManager)
         {
             _deviceAppService = deviceAppService;
             _forensicsRecordAppService = forensicsRecordAppService;
+            _onlineClientManager = onlineClientManager;
+            _userManager = userManager;
         }
 
         public ActionResult Index()
@@ -71,6 +81,27 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
         {
             ViewBag.id = id;
             return View();
+        }
+
+        public async Task<ActionResult> OnlineClients()
+        {
+            var clients = _onlineClientManager.GetAllClients();
+            List<OnlineUser> onlineUsers = new EditableList<OnlineUser>();
+            foreach (var onlineClient in clients)
+            {
+                var user = await _userManager.Users.FirstOrDefaultAsync(p=>p.Id == onlineClient.UserId);
+                if (user != null)
+                {
+                    onlineUsers.Add(new OnlineUser()
+                    {
+                        Ipaddress =  onlineClient.IpAddress,
+                        ClientId = onlineClient.ConnectionId,
+                        Name = user.Name
+                    });
+                }
+            }
+
+            return View(onlineUsers);
         }
 
         public async Task<ActionResult> ShowFileDetails(long id)
