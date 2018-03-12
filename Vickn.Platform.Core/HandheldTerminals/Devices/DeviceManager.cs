@@ -17,6 +17,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
 using System.Threading.Tasks;
+using Abp.Extensions;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.HandheldTerminals.Devices
@@ -45,9 +46,10 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         {
         }
 
-        public async Task<DeviceLoginResult> DeviceLoginAsync(string imei, string appversion, string systemVersion,string status, User user)
+        public async Task<DeviceLoginResult> DeviceLoginAsync(string imei, string appversion, string systemVersion, string status, User user)
         {
             var device = await _deviceRepository.FirstOrDefaultAsync(p => p.Imei == imei);
+            status = status.IsNullOrEmpty() ? "安全模式" : status;
             if (device == null)
             {
                 device = new Device()
@@ -57,13 +59,13 @@ namespace Vickn.Platform.HandheldTerminals.Devices
                     AppVersion = appversion,
                     SystemVersion = systemVersion,
                     No = await GetNo(),
-                    Status =  status,
+                    Status = status,
                 };
                 device.Id = await _deviceRepository.InsertAndGetIdAsync(device);
                 return new DeviceLoginResult()
                 {
                     Device = device,
-                    DeviceLogin =  DeviceLoginEnum.Success,
+                    DeviceLogin = DeviceLoginEnum.Success,
                 };
             }
             if (device.CreatorUserId != user.Id)
