@@ -18,19 +18,19 @@
     });
 }
 
-<nav class="navbar-default navbar-static-side" role="navigation">
+<nav class="navbar-default navbar-static-side" role="navigation" >
     <div class="nav-close">
         <i class="fa fa-times-circle"></i>
     </div>
-    <div class="sidebar-collapse">
-        <ul class="nav" id="side-menu">
+    <div class="sidebar-collapse" style="background-color:#2b659a ;">
+        <ul class="nav" id="side-menu" >
             <li class="nav-header">
                 @Html.Action("UserMenuOrLoginLink", "Layout")
             </li>
             @foreach (var menuItem in Model.MainMenu.Items)
             {
-                <li>
-                    <a href="#"><i class="@menuItem.Icon"></i> <span class="nav-label">@menuItem.DisplayName</span><span class="fa arrow"></span></a>
+                <li style=" ">
+                    <a href="#"><i class="@menuItem.Icon"></i> <span class="nav-label" style="font-weight:bolder;font-size:16px;">@menuItem.DisplayName</span><span class="fa arrow"></span></a>
                     <ul class="nav nav-second-level">
                         @foreach (var subMenuItem in menuItem.Items)
                         {

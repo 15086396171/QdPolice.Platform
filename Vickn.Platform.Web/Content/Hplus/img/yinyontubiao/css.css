@@ -1,0 +1,138 @@
+﻿* {
+    margin: 0px;
+    padding: 0px;
+}
+
+/*div*/
+#div-all {
+    width: 98%;
+    height: 98%;
+    /*border:1px solid red;*/
+    margin:5px auto;
+    
+}
+
+    #div-all div {
+        float: left;
+    }
+.div-left {
+    width: 30%;
+    height: 100%;
+    overflow-y:auto;
+    border: 1px solid #D0D0D0;
+}
+
+.div-right {
+    width: 45%;
+    height: 100%;
+    position:relative;
+    left:10px;
+
+}
+
+.div-center {
+    width: 100%;
+    height: 100%;
+    overflow-y:auto;
+    border: 1px solid #D0D0D0;
+}
+
+.div-buttom {
+    width: 23%;
+    height: 100%;
+    float:left;
+    position:relative;
+    left:23px;
+    /*overflow-y:auto;*/
+    border: 1px solid #D0D0D0;
+}
+
+/*各模块标题*/
+.div-title {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #F5F5F5;
+    border-bottom: 1px solid #D0D0D0;
+}
+
+    .div-title img {
+        width: 30px;
+        height: 30px;
+        margin-top: 6px;
+        margin-left: 5px;
+        float: left;
+    }
+
+    .div-title div {
+        height: 40px;
+        line-height: 40px;
+        font-size: 18px;
+        float: left;
+        margin-left: 10px;
+        color: #666666;
+    }
+
+/*ul*/
+#ul-content {
+    height: 100%;
+    list-style: none;
+}
+.ul-content-1 {
+}
+
+    #ul-content li {
+        width: 100px;
+        height: 130px;
+        /*border:1px solid red;*/
+        /*border: 1px solid #8cb0ba;*/
+        float: left;
+        /*padding: 10px;*/
+        margin:10px;
+    }
+
+        #ul-content li a {
+            text-align: center;
+        }
+
+            #ul-content li a img {
+                width: 70px;
+                height: 70px;
+                margin-left: 15px;
+            }
+
+        #ul-content li div {
+        width:100%;
+        }
+
+/*消息公告*/
+#ul-message {
+    width: 100%;
+    /*height:100%;*/
+    /*margin-left:20px;*/
+    float:left;
+    list-style-type:square;
+    list-style-position:inside;
+}
+
+    #ul-message li {
+        min-width:99%;
+        min-height: 35px;
+        line-height:35px;
+        border:1px solid #fff;
+        padding-left:5px;
+    }
+        #ul-message li:hover {
+        background-color:#F5F5F5;
+        border:1px solid #337DAC;
+        }
+
+        #ul-message li a {
+            color: #666666;
+            text-decoration: none;
+        }
+
+        #ul-message li span {
+            color: #666666;
+            margin-left: 20px;
+        }

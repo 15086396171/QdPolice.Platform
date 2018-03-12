@@ -5,7 +5,7 @@
 
 @if (Model.LoginInformations != null)
 {
-    <div class="dropdown profile-element">
+    <div class="dropdown profile-element" >
         <span>
             @if (!Model.LoginInformations.User.ProfilePictureId.IsNullOrEmpty())
             {
@@ -37,6 +37,6 @@
             </li>
         </ul>
     </div>
-
+    <hr style="width:300px;margin-left:-30px;margin-top:16px;border:1px solid black"/>
 
 }

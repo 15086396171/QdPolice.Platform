@@ -544,7 +544,10 @@
     <Content Include="Content\Hplus\img\loading-upload.gif" />
     <Content Include="Content\Hplus\img\locked.png" />
     <Content Include="Content\Hplus\img\login-background.jpg" />
-    <Content Include="Content\Hplus\img\ooopic_1463538196.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\css.css" />
+    <Content Include="Content\Hplus\img\yinyontubiao\logo.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ooopic_1463537349.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ooopic_1463538196.png" />
     <Content Include="Content\Hplus\img\p1.jpg" />
     <Content Include="Content\Hplus\img\p2.jpg" />
     <Content Include="Content\Hplus\img\p3.jpg" />
@@ -562,6 +565,9 @@
     <Content Include="Content\Hplus\img\user.png" />
     <Content Include="Content\Hplus\img\webuploader.png" />
     <Content Include="Content\Hplus\img\wenku_logo.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ap1.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ap3.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ap9.png" />
     <Content Include="Content\Hplus\index.html" />
     <Content Include="Content\Hplus\index_v1.html" />
     <Content Include="Content\Hplus\index_v2.html" />
