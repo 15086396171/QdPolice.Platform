@@ -15,7 +15,7 @@
     <RootNamespace>Vickn.Platform.Web</RootNamespace>
     <AssemblyName>Vickn.Platform.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -1086,7 +1086,6 @@
     <Content Include="Assets\dist\static\js\app.7f911d682364197145eb.js.map" />
     <Content Include="Assets\dist\static\js\manifest.0cfae2138da1ea9818b4.js.map" />
     <Content Include="Assets\dist\static\js\vendor.2afdedc1cd53783a994a.js.map" />
-    <Content Include="WebService\MainService.asmx" />
     <Content Include="Areas\Devices\Views\Device\OnlineClients.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
@@ -1588,6 +1587,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
+    <Compile Include="Controllers\CamereChangeController.cs" />
     <Compile Include="Controllers\DataDictionariesController.cs" />
     <Compile Include="Controllers\DataDictionaryItemsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
@@ -1630,10 +1630,6 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
-    <Compile Include="WebService\MainService.asmx.cs">
-      <DependentUpon>MainService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1729,6 +1725,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
+    <Folder Include="Views\CamereChange\" />
     <Folder Include="_GeneratedCode\Announcements\Application\" />
     <Folder Include="_GeneratedCode\Announcements\Core\" />
     <Folder Include="_GeneratedCode\Announcements\EntityFramework\EntityMapper\" />
@@ -1754,7 +1751,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>false</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>61814</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
