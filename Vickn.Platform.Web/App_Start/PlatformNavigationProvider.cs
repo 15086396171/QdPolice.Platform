@@ -117,13 +117,13 @@ namespace Vickn.Platform.Web
                         url: "MainTenance",
                         requiredPermissionName: AppPermissions.Pages_Maintenance
                         ))
-                                            .AddItem(
-                    new MenuItemDefinition(
-                        "DatatableApi",
-                        L("DatatableApi"),
-                        url: "Document/DataTable",
-                        requiredPermissionName: AppPermissions.Pages_Api
-                        ))
+                    //                        .AddItem(
+                    //new MenuItemDefinition(
+                    //    "DatatableApi",
+                    //    L("DatatableApi"),
+                    //    url: "Document/DataTable",
+                    //    requiredPermissionName: AppPermissions.Pages_Api
+                    //    ))
                         ) // end:SystemManage
 
             #endregion

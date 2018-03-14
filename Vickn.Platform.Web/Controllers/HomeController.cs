@@ -27,9 +27,7 @@ namespace Vickn.Platform.Web.Controllers
         //首页界面
         public ActionResult Welcome()
         {
-            //获取公告消息
             
-
             return View();
         }
 

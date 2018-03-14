@@ -21,3 +21,6 @@ a, a:hover {
 .txt-small {
     font-size: small;
 }
+.ztree li a.curSelectedNode {
+    color: #1c84c6!important;
+}

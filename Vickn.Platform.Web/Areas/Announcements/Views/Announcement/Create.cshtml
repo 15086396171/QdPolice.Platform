@@ -96,8 +96,10 @@
           layer.close(index);
         }
       });
-    }
-    $(document).ready(function () {
+      }
+
+     
+      $(document).ready(function () {
       var selectedUsers = [];
       var selectedUserNames = [];
       var editor = new wangEditor('AnnouncementEditDto_Content');
@@ -107,9 +109,10 @@
       ouTree.init($(".organizationUnit"), function (node) {
         console.log(node)
         getChildrenUsers(node);
-
+        debugger;
         $("#names").val(selectedUserNames.join(','));
         $("#users").children().remove();
+
         $.each(selectedUsers, function (index, data) {
           $("#users").append('<input name="AnnouncementEditDto.AnnouncementUsers[' +
             index +

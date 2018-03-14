@@ -38,7 +38,7 @@ namespace Vickn.Platform
         protected virtual Task<Tenant> GetCurrentTenantAsync()
         {
             return TenantManager.GetByIdAsync(AbpSession.GetTenantId());
-        }
+         }
 
         protected virtual void CheckErrors(IdentityResult identityResult)
         {

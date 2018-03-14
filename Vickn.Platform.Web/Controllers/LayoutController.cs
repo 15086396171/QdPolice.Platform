@@ -71,8 +71,14 @@ namespace Vickn.Platform.Web.Controllers
                     IsMultiTenancyEnabled = _multiTenancyConfig.IsEnabled                    
                 };
             }
-
+            string userid = model.LoginInformations.User.Id.ToString();
+            Session["userId"] = userid;
             return PartialView("_UserMenuOrLoginLink", model);
+        }
+
+        public string getUserId()
+        {
+            return Session["userid"].ToString();
         }
     }
 }

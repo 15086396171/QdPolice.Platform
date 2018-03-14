@@ -109,5 +109,13 @@ namespace Vickn.Platform.Web.WebService
                 HttpContext.Current.Response.End();
             }
         }
+
+        //获取机关人员签到的用户Id,签到时间
+        //[WebMethod]
+        //public void GetSignInUser()
+        //{
+        //    IAttendanceService service = new AttendanceService();
+        //    service.Excute(HttpContext.Current);
+        //}
     }
 }
