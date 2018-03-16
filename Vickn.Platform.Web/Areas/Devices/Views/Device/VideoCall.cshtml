@@ -129,7 +129,7 @@
 </table>-->
 @*Left*@
 <div id="UILeft" style="float:left;border:1px solid #808080;min-height:80%;">
-    <div style="float:left;">
+    @*<div style="float:left;">
         <input type="text" id="Text-CallUser" style="width:155px;" />
         <input type="button" class="btn btn-primary" value="搜索" style="background-color: #1c84c6;
     border-color: #1c84c6;" />
@@ -138,7 +138,7 @@
     <div>
         <select id="target-uid" style="width:215px" type="text"></select>
 
-    </div>
+    </div>*@
 
 
 
@@ -147,12 +147,12 @@
 
 @*Left2*@
 <div id="UILeft2" style="float:left;min-width:300px;margin-left:10px; ">
-    <div style="background-color:#4ac1b2;width:130px;height:50px;">
+    @*<div style="background-color:#4ac1b2;width:130px;height:50px;">
         <div style="padding-left:19px;padding-top:8px;color:#e2dede;">
             总用户数：<sapn>99</sapn>人 <br />在线人数：<sapn>32</sapn>人
         </div>
 
-    </div>
+    </div>*@
 
     <table class="table table-border table-bordered table-bg">
         <caption align="top">
@@ -289,7 +289,14 @@
         //服务器IP配置
         var isVideo = 1;
         // Please  change 61.152.239.56 to signaling server's address.
-        var serverAddress = 'http://112.74.113.253:8095';
+        //获取当前的服务器IP
+        var hostport = window.location.host;
+        var newurl = {};
+        newurl = hostport.split(":");
+        var newurls = newurl[0];
+        var serverAddress = "http://" + newurls + ":8095";
+
+        //var serverAddress = 'http://112.74.113.253:8095';
         var p2p = new Woogeen.PeerClient({
             iceServers: [
                 {
