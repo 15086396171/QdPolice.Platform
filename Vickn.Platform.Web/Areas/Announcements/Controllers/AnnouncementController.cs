@@ -57,5 +57,15 @@ namespace Vickn.Platform.Web.Areas.Announcements.Controllers
             await _announcementAppService.CreateOrUpdateAsync(announcementDto);
             return RedirectToAction("Index");
         }
+
+        //通知公告查询
+        public async Task<ActionResult> SelectMessage(long id)
+        {
+            var announcementDto = await _announcementAppService.GetForEditAsync(new NullableIdDto<long>(id));
+
+            ViewBag.Title = announcementDto.AnnouncementEditDto.Title;
+            ViewBag.Content = announcementDto.AnnouncementEditDto.Content;
+            return View(announcementDto);
+        }
     }
 }
