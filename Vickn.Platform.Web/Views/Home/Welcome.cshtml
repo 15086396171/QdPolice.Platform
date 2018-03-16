@@ -91,9 +91,11 @@
     @*其他*@
     <div class="div-left" style="width:60%;margin-top:-250px;">
         <div class="div-title">
-             
+
+           
             <img src="/Content/Hplus/img/yinyontubiao/ooopic_1463537349.png" width="35" height="35" />
             <spn style="margin-left:8px;">其他</spn>
+
         </div>
         <ul id="ul-message" class="content" style="height:200px;overflow:auto;"></ul>
     </div>
@@ -113,7 +115,12 @@
             $.each(result.items,
                 function (index, data) {
                     console.log(index, data);
-                    $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a><img src='~/Content/Hplus/img/messagehint/ new_038.gif' /></li>");
+                  
+                    if (data.isRead == true) {
+                        $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a><img src='/Content/Hplus/img/messagehint/new_038.gif' /></li>");
+                    } else {
+                        $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a></li>");
+                    }
                 })
 
         });
