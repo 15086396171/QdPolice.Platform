@@ -544,6 +544,8 @@
     <Content Include="Content\Hplus\img\loading-upload.gif" />
     <Content Include="Content\Hplus\img\locked.png" />
     <Content Include="Content\Hplus\img\login-background.jpg" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ap2.png" />
+    <Content Include="Content\Hplus\img\yinyontubiao\ap6.png" />
     <Content Include="Content\Hplus\img\yinyontubiao\css.css" />
     <Content Include="Content\Hplus\img\yinyontubiao\logo.png" />
     <Content Include="Content\Hplus\img\yinyontubiao\ooopic_1463537349.png" />
