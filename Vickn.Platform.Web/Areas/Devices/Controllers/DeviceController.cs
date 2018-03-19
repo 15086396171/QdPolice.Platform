@@ -132,19 +132,6 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             return View();
         }
 
-        public async Task<ActionResult> updateuserRoles()
-        {
-            var userlist = await _userService.GetUsers();
-      
-           
-            foreach (var item in userlist.Items)
-            {
-                //var userRolesList = await _roleAppService.GetAsync(item.Id);
-
-
-            }
-
-            return View();
-        }
+    
     }
 }
