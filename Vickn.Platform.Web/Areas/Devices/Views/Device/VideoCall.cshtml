@@ -566,11 +566,12 @@
                 var strName = e.senderId;
                 userService.getUserByNameAsync({ id: strName }).done(function (result) {
                     user = result;
-                    if (confirm("有警务通" + result.name + "呼叫,接受吗？") == true) {
-                        p2p.accept(e.senderId);
-                    } else {
-                        p2p.deny(e.senderId);
-                    }
+                    p2p.accept(e.senderId);
+                    //if (confirm("有警务通" + result.name + "呼叫,接受吗？") == true) {
+                    //    p2p.accept(e.senderId);
+                    //} else {
+                    //    p2p.deny(e.senderId);
+                    //}
                 })
             });
 

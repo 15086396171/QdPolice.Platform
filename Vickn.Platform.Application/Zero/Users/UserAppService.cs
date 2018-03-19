@@ -405,7 +405,7 @@ namespace Vickn.Platform.Users
         /// </summary>
         /// <returns></returns>
         public async Task SetDefaultRolesAsync()
-        {
+        {   
             var users = await _userRepository.GetAllListAsync();
             var roles = await _roleManager.Roles.Where(p => p.IsDefault).ToListAsync();
             foreach (var user in users)

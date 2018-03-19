@@ -60,7 +60,7 @@ namespace Vickn.Platform.Organizations
             List<OuWithUserDto> ouWithUserDtos = new List<OuWithUserDto>();
             foreach (var userOrganizationUnit in userOrganizationUnits)
             {
-                // 所在当前组织
+                //所在当前组织
                 var organizationUnit = await _organizationUnitRepository.GetAsync(userOrganizationUnit.OrganizationUnitId);
 
                 var codeZero = organizationUnit.Code.Split(".")[0];
@@ -296,10 +296,10 @@ namespace Vickn.Platform.Organizations
 
         public async Task AddUserToOuAsync(AddUserToOuInput input)
         {
-            foreach (var userOrganizationUnit in _userOrganizationUnitRepository.GetAllList(p=>p.OrganizationUnitId == input.OuId))
+            foreach (var userOrganizationUnit in _userOrganizationUnitRepository.GetAllList(p => p.OrganizationUnitId == input.OuId))
             {
-                if(!input.UserIds.Contains(userOrganizationUnit.UserId))
-                await _userOrganizationUnitRepository.DeleteAsync(userOrganizationUnit);
+                if (!input.UserIds.Contains(userOrganizationUnit.UserId))
+                    await _userOrganizationUnitRepository.DeleteAsync(userOrganizationUnit);
             }
             foreach (var userId in input.UserIds)
             {
