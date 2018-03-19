@@ -58,6 +58,11 @@
     <tr>
         <td style="text-align:center" colspan="2 "><h1> 宁夏回族自治区戒毒管理局语音视频通信管理系统</h1></td>
     </tr>
+    <tr>
+        <td>
+            <input type="button" id="btnUpdateUserRoles" value="修改用户角色信息" class="badge-danger" />
+        </td>
+    </tr>
     <!--<tr>
               <td>
                   <div id="description">
@@ -130,15 +135,15 @@
 @*Left*@
 <div id="UILeft" style="float:left;border:1px solid #808080;min-height:80%;">
     @*<div style="float:left;">
-        <input type="text" id="Text-CallUser" style="width:155px;" />
-        <input type="button" class="btn btn-primary" value="搜索" style="background-color: #1c84c6;
-    border-color: #1c84c6;" />
-    </div>
+            <input type="text" id="Text-CallUser" style="width:155px;" />
+            <input type="button" class="btn btn-primary" value="搜索" style="background-color: #1c84c6;
+        border-color: #1c84c6;" />
+        </div>
 
-    <div>
-        <select id="target-uid" style="width:215px" type="text"></select>
+        <div>
+            <select id="target-uid" style="width:215px" type="text"></select>
 
-    </div>*@
+        </div>*@
 
 
 
@@ -148,11 +153,11 @@
 @*Left2*@
 <div id="UILeft2" style="float:left;min-width:300px;margin-left:10px; ">
     @*<div style="background-color:#4ac1b2;width:130px;height:50px;">
-        <div style="padding-left:19px;padding-top:8px;color:#e2dede;">
-            总用户数：<sapn>99</sapn>人 <br />在线人数：<sapn>32</sapn>人
-        </div>
+            <div style="padding-left:19px;padding-top:8px;color:#e2dede;">
+                总用户数：<sapn>99</sapn>人 <br />在线人数：<sapn>32</sapn>人
+            </div>
 
-    </div>*@
+        </div>*@
 
     <table class="table table-border table-bordered table-bg">
         <caption align="top">
@@ -195,8 +200,8 @@
     <source src="~/Content/Mp3/BjSoound.mp3" type="audio/mpeg" />
 </audio>
 @*<audio controls="controls" id="audio" style="display:none">
-    <source src="newMessage.mp3" type="audio/mp3" />
-</audio>*@
+        <source src="newMessage.mp3" type="audio/mp3" />
+    </audio>*@
 <footer id="status"></footer>
 <div id="infoDiv"></div>
 
@@ -237,7 +242,7 @@
                         time: 2000,
                     });
                     return;
-            }
+                }
 
                 layer.msg('点击您想要的操作即可', {
                     skin: 'layui-layer-molv' //样式类名  自定义样式
@@ -250,7 +255,7 @@
                         debugger;
                         console.log(userNames);
                         for (var i = 0; i < userNames.length; i++) {
-                           
+
                             p2p.invite(userNames[i],
                                 function () {
                                     console.log('Invite success.');
@@ -263,7 +268,7 @@
                     , btn2: function () {
                         //获取被选中的复选框对应用户信息
                         console.log(nodes);
-                       
+
                         //信息发布弹框
                         layer.open({
                             type: 1
@@ -385,6 +390,14 @@
         //.complete(function() { alert("complete"); });
 
         $(document).ready(function () {
+            //修改用户角色
+            btnUpdateUserRoles
+                & ("#btnUpdateUserRoles").click(function () {
+                    $.get("/Device/updateuserRoles", function () {
+                        alert("OK");
+                    })
+                })
+
 
             if (localStream) {
                 // p2p.publish(localStream, $('#target-uid').val());  // Publish local stream to remote client

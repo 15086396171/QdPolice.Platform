@@ -26,6 +26,7 @@ using Vickn.Platform.HandheldTerminals;
 using Vickn.Platform.HandheldTerminals.Devices;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
+using Vickn.Platform.Roles;
 using Vickn.Platform.Users;
 using Vickn.Platform.Web.Areas.Devices.Models;
 using Vickn.Platform.Web.Controllers;
@@ -39,13 +40,18 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
         private readonly IForensicsRecordAppService _forensicsRecordAppService;
         private readonly IOnlineClientManager _onlineClientManager;
         private readonly UserManager _userManager;
+        private UserAppService _userService;
+        private RoleAppService _roleAppService;
 
-        public DeviceController(IDeviceAppService deviceAppService, IForensicsRecordAppService forensicsRecordAppService, IOnlineClientManager onlineClientManager, UserManager userManager)
+        public DeviceController(IDeviceAppService deviceAppService, IForensicsRecordAppService forensicsRecordAppService, IOnlineClientManager onlineClientManager, UserManager userManager, UserAppService userService, RoleAppService roleAppService)
         {
             _deviceAppService = deviceAppService;
             _forensicsRecordAppService = forensicsRecordAppService;
             _onlineClientManager = onlineClientManager;
             _userManager = userManager;
+            _userService = userService;
+            _roleAppService = roleAppService;
+
         }
 
         public ActionResult Index()
@@ -89,12 +95,12 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             List<OnlineUser> onlineUsers = new EditableList<OnlineUser>();
             foreach (var onlineClient in clients)
             {
-                var user = await _userManager.Users.FirstOrDefaultAsync(p=>p.Id == onlineClient.UserId);
+                var user = await _userManager.Users.FirstOrDefaultAsync(p => p.Id == onlineClient.UserId);
                 if (user != null)
                 {
                     onlineUsers.Add(new OnlineUser()
                     {
-                        Ipaddress =  onlineClient.IpAddress,
+                        Ipaddress = onlineClient.IpAddress,
                         ClientId = onlineClient.ConnectionId,
                         Name = user.Name
                     });
@@ -126,6 +132,19 @@ namespace Vickn.Platform.Web.Areas.Devices.Controllers
             return View();
         }
 
+        public async Task<ActionResult> updateuserRoles()
+        {
+            var userlist = await _userService.GetUsers();
       
+           
+            foreach (var item in userlist.Items)
+            {
+                //var userRolesList = await _roleAppService.GetAsync(item.Id);
+
+
+            }
+
+            return View();
+        }
     }
 }

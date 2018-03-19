@@ -25,6 +25,7 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         [DontWrapResult]
+       
         public async Task<ActionResult> GetTreeData()
         {
             var result = await _organizationUnitAppService.GetOrganizationUnitDto();
