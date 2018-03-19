@@ -157,5 +157,11 @@ namespace Vickn.Platform.Web.Controllers
             }
             return Json(new { success = true });
         }
+
+        public async Task<ActionResult> SetRoles()
+        {
+            await _userAppService.SetDefaultRolesAsync();
+            return Json(new { success = true },JsonRequestBehavior.AllowGet);
+        }
     }
 }

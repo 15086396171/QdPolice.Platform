@@ -113,6 +113,12 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         Task ChangeProfilePic(ChangeProfilePicDto dto);
 
+        /// <summary>
+        /// 设置系统中所有用户的默认角色
+        /// </summary>
+        /// <returns></returns>
+        Task SetDefaultRolesAsync();
+
         #endregion
     }
 }
