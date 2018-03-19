@@ -41,7 +41,7 @@
     <text name="Operational" value="操作"/>
     
     <text name="SystemManage" value="系统管理" />
-    <text name="DatatableApi" value="datatableapi" />
+    <!--<text name="DatatableApi" value="datatableapi" />-->
     <text name="Api" value="Api" />
     <text name="Hangfire" value="Hangfire" />
 
