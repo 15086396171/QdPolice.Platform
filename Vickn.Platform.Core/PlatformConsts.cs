@@ -5,7 +5,7 @@
         public const string LocalizationSourceName = "Platform-zh-CN";
         //public const string LocalizationSourceName = "Platform-es";
 
-        public const string AppName = "Vickn移动警务管理平台";
+        public const string AppName = "移动警务管理平台";
         public const int DefaultPageSize = 15;
         public const int MaxPageSize = 65535;
 
