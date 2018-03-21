@@ -53,12 +53,10 @@ namespace Vickn.Platform.Chats
         public async Task<ChatGroup> InviteToGroupAsync(long groupId, List<long> userIds)
         {
             var chatGroup = await _chatGroupRepository.GetAsync(groupId);
-            Logger.Info("查找群组成功");
             foreach (var userId in userIds)
             {
                 if (_chatUserRepository.FirstOrDefault(p => p.ChatGroupId == chatGroup.Id && p.UserId == userId) == null)
                 {
-                    Logger.Info("用户不存在群组开始加入群组"+userId);
                     try
                     {
                         await _chatUserRepository.InsertAsync(new ChatGroupUser()
@@ -72,10 +70,8 @@ namespace Vickn.Platform.Chats
                         Logger.Error(e.Message);
                         throw;
                     }
-
                 }
             }
-            Logger.Info("添加完成，返回");
             return chatGroup;
         }
 
