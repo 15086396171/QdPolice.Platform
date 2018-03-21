@@ -248,7 +248,7 @@
                     , time: 2000 //2s后自动关闭
                     , icon: 6    // icon
                     , yes: function () {
-                        debugger;
+                      
                         console.log(userNames);
                         for (var i = 0; i < userNames.length; i++) {
 
@@ -559,9 +559,13 @@
                 //  $('#target-uid').append("<option value='"+e.senderId+"'>"+e.senderId+"</option>");
                 //$('#target-uid').val(e.senderId);
                 audio.play();
+                debugger;
+                console.log(e);
                 var strName = e.senderId;
+           
                 userService.getUserByNameAsync({ id: strName }).done(function (result) {
                     user = result;
+                    //alert(user.name)
                     p2p.accept(e.senderId);
                     //if (confirm("有警务通" + result.name + "呼叫,接受吗？") == true) {
                     //    p2p.accept(e.senderId);
@@ -583,7 +587,7 @@
         p2p.on('chat-started',
             function (e) { // Chat started
 
-
+                debugger;
                 console.log('chat started.');
                 //  $('#target-screen').prop('disabled', false);
                 //    $('#data-send').prop('disabled', false);
@@ -595,7 +599,7 @@
                 //confirm(e.peerId);
 
                 var ppeerId = document.createElement('p');
-
+                debugger;
                 ppeerId.innerHTML = '和' + user.name + '对话';
 
                 td.appendChild(ppeerId);
@@ -846,7 +850,7 @@
             $('#remotevideoTr').children("td").each(function () {
 
 
-                p2p.unpublish(this.id);
+                p2p.unpublish(this.id);v
                 p2p.stop(this.id);
 
             });

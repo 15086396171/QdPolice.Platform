@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
@@ -69,7 +70,7 @@ namespace Vickn.Platform.Organizations
                 var organizationUnits = await query.ToListAsync();
 
                 ouWithUserDtos.AddRange(organizationUnits.MapTo<List<OuWithUserDto>>());
-
+               
                 foreach (var ouWithUserDto in ouWithUserDtos)
                 {
                     await GetUsers(ouWithUserDto);
@@ -108,6 +109,7 @@ namespace Vickn.Platform.Organizations
             var users = await query.ToListAsync();
 
             dto.Users = users.MapTo<List<UserSimpleDto>>();
+            dto.Children = dto.Children.OrderBy(p => p.Id).ToList();
             foreach (var ouWithUserDto in dto.Children)
             {
                 await GetUsers(ouWithUserDto);
