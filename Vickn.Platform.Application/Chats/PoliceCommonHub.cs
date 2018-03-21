@@ -189,7 +189,7 @@ namespace Vickn.Platform.Chats
         /// <returns></returns>
         public async Task InviteToGroup(string inputStr)
         {
-            Logger.Info("开始拉人"+inputStr);
+            Logger.Info("开始拉人" + inputStr);
             InviteToGroupInput input = JsonConvert.DeserializeObject<InviteToGroupInput>(inputStr);
             Logger.Info("序列化完成");
             using (var uow = UnitOfWorkManager.Begin())
@@ -198,20 +198,37 @@ namespace Vickn.Platform.Chats
                 var chatGroup =
                     await _chatGroupManager.InviteToGroupAsync(input.GroupId,
                         input.UserIds);
+
+                await uow.CompleteAsync();
+                await JoinGroups();
+                Logger.Info("通知本人完成");
+
+                Logger.Info("返回，遍历在线用户发送通知");
                 foreach (var inputUserId in input.UserIds)
                 {
                     var allByUserId =
                         _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, inputUserId));
+                    Logger.Info($"获取到{inputUserId}的在线列表：" + allByUserId.Count);
                     foreach (var onlineClient in allByUserId)
                     {
-                        await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);
+                        Logger.Info("遍历用户");
+                        try
+                        {
+                            await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.Message);
+                        }
+
+                        Logger.Info("加入群组完成");
                         // 通知其他用户加入群组
 
                         Clients.Client(onlineClient.ConnectionId).joinGroup(chatGroup.MapTo<ChatGroupDto>());
+                        Logger.Info("发送加入群组完成");
                     }
                 }
-                await uow.CompleteAsync();
-                await JoinGroups();
+                Logger.Info("完成");
             }
         }
 
