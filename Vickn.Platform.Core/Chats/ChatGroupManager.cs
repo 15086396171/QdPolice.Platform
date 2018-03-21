@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,15 +53,26 @@ namespace Vickn.Platform.Chats
         public async Task<ChatGroup> InviteToGroupAsync(long groupId, List<long> userIds)
         {
             var chatGroup = await _chatGroupRepository.GetAsync(groupId);
+            Logger.Info("查找群组成功");
             foreach (var userId in userIds)
             {
                 if (_chatUserRepository.FirstOrDefault(p => p.ChatGroupId == chatGroup.Id && p.UserId == userId) == null)
                 {
-                    await _chatUserRepository.InsertAsync(new ChatGroupUser()
+                    Logger.Info("用户不存在群组开始加入群组");
+                    try
                     {
-                        UserId = userId,
-                        ChatGroupId = chatGroup.Id
-                    });
+                        await _chatUserRepository.InsertAsync(new ChatGroupUser()
+                        {
+                            UserId = userId,
+                            ChatGroupId = chatGroup.Id
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.Message);
+                        throw;
+                    }
+
                 }
             }
             return chatGroup;

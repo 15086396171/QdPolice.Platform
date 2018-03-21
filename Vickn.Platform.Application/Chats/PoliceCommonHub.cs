@@ -189,9 +189,12 @@ namespace Vickn.Platform.Chats
         /// <returns></returns>
         public async Task InviteToGroup(string inputStr)
         {
+            Logger.Info("开始拉人"+inputStr);
             InviteToGroupInput input = JsonConvert.DeserializeObject<InviteToGroupInput>(inputStr);
+            Logger.Info("序列化完成");
             using (var uow = UnitOfWorkManager.Begin())
             {
+                Logger.Info("开始");
                 var chatGroup =
                     await _chatGroupManager.InviteToGroupAsync(input.GroupId,
                         input.UserIds);
