@@ -110,6 +110,7 @@ namespace Vickn.Platform.Organizations
 
             dto.Users = users.MapTo<List<UserSimpleDto>>();
             dto.Children = dto.Children.OrderBy(p => p.Id).ToList();
+            dto.Users = dto.Users.OrderBy(p => p.Id).ToList();
             foreach (var ouWithUserDto in dto.Children)
             {
                 await GetUsers(ouWithUserDto);
