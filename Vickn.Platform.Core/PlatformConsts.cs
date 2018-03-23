@@ -58,6 +58,11 @@
             /// 业务
             /// </summary>
             public const string Business = "Business";
+
+            /// <summary>
+            /// 考勤管理
+            /// </summary>
+            public const string Attendance = "Attendance";
         }
         public static class UserConst
         {

@@ -181,6 +181,9 @@
     <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
     <Compile Include="Announcements\Dtos\GetLastAnnouncentInput.cs" />
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
+    <Compile Include="Attendances\KQDetails\Dtos\KqdetailDto.cs" />
+    <Compile Include="Attendances\KQDetails\IKqdetailAppService.cs" />
+    <Compile Include="Attendances\KQDetails\KqdetailAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ExitGroupInput.cs" />
