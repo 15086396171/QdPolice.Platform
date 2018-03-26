@@ -8,5 +8,6 @@ namespace Vickn.Platform.Attendences.Dtos
 {
    public class AttendanceForEdit
     {
+        public AttendancesEditDto AttendancesEditDto { get; set; }
     }
 }

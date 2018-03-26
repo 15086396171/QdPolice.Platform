@@ -1,22 +1,22 @@
 ﻿using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vickn.Platform.Attendances
+namespace Vickn.Platform.Attendances.KQDetails
 {
     /// <summary>
     /// 考勤明细
     /// </summary>
-   public class Detail:Entity
+ 
+    public class KqDetail:Entity
     {
         /// <summary>
         /// 用户Id
         /// </summary>
-       public int UserId { get; set; }
+        public int UserId { get; set; }
 
         /// <summary>
         /// 用户姓名
@@ -24,24 +24,9 @@ namespace Vickn.Platform.Attendances
         public string UserName { get; set; }
 
         /// <summary>
-        /// 手机串号（IMEI）
-        /// </summary>
-        public string PhoneNumber { get; set; }
-
-        /// <summary>
         /// 考勤机编号
         /// </summary>
         public string KQMachineNo { get; set; }
-
-        /// <summary>
-        /// 考勤机位置（取经纬度）
-        /// </summary>
-        public string KQMachinePosition { get; set; }
-
-        /// <summary>
-        /// 用户所属部门
-        /// </summary>
-        public string UserDepartment { get; set; }
 
         /// <summary>
         /// 上班签到时间
@@ -59,9 +44,14 @@ namespace Vickn.Platform.Attendances
         public int QDType { get; set; }
 
         /// <summary>
+        /// 签到方式是否为NFC（NFC或微信扫码）
+        /// </summary>
+        public int IsNFC { get; set; }
+
+
+        /// <summary>
         /// 备注
         /// </summary>
         public string Remark { get; set; }
-
     }
 }

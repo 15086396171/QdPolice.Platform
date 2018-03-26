@@ -16,7 +16,12 @@ namespace Vickn.Platform.Attendences
    public interface IAttendanceAppService: IApplicationService
     {
         #region 考勤签到管理
-        Task<AttendancesEditDto> CreateAsync(AttendancesEditDto input);
+        /// <summary>
+        ///  新增考勤黔到记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<AttendanceForEdit> CreateKqDetailAsync(AttendanceForEdit input);
         #endregion
     }
 }

@@ -135,6 +135,7 @@
     <Compile Include="EntityFramework\EntityMapper\Announcements\AnnouncementUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Announcements\AnnouncementCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\AppWhiteLists\AppWhiteListCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqDetailCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatHistoryCfg.cs" />

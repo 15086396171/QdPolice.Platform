@@ -3,9 +3,11 @@ using System.Data.Entity;
 using Abp.Zero.EntityFramework;
 using Vickn.Platform.Announcements;
 using Vickn.Platform.Announcements.EntityMapper;
+using Vickn.Platform.Attendances.KQDetails;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
+using Vickn.Platform.EntityFramework.EntityMapper.Attendances;
 using Vickn.Platform.FileRecords;
 using Vickn.Platform.FileRecords.EntityMapper;
 using Vickn.Platform.HandheldTerminals;
@@ -42,6 +44,11 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<Announcement> Announcements { get; set; }
 
         public IDbSet<AnnouncementUser> AnnouncementUsers { get; set; }
+
+        /// <summary>
+        /// 考勤明细
+        /// </summary>
+        public IDbSet<KqDetail> KqDetail { get; set; }
 
 
         /* NOTE: 
@@ -98,6 +105,7 @@ namespace Vickn.Platform.EntityFramework
 
             modelBuilder.Configurations.Add(new AnnouncementCfg());
             modelBuilder.Configurations.Add(new AnnouncementUserCfg());
+            modelBuilder.Configurations.Add(new KqDetailCfg());
 
         }
     }

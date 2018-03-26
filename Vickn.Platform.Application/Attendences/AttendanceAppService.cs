@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Vickn.Platform.Announcements.Dtos;
 using Vickn.Platform.Attendances;
+using Vickn.Platform.Attendances.KQDetails;
 using Vickn.Platform.Attendences.Dtos;
 
 namespace Vickn.Platform.Attendences
@@ -17,21 +18,24 @@ namespace Vickn.Platform.Attendences
     /// </summary>
     public class AttendanceAppService : PlatformAppServiceBase, IAttendanceAppService
     {
-        private readonly IRepository<Detail> _attendanceDetailRepository;
+        private readonly IRepository<KqDetail> _attendanceDetailRepository;
 
-        public  AttendanceAppService(IRepository<Detail> attendanceDetailRepository)
+        public  AttendanceAppService(IRepository<KqDetail> attendanceDetailRepository)
         {
             _attendanceDetailRepository = attendanceDetailRepository;
         }
 
 
-        public async Task<AttendancesEditDto> CreateAsync(AttendancesEditDto input)
+        /// <summary>
+        ///  新增考勤黔到记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<AttendanceForEdit> CreateKqDetailAsync(AttendanceForEdit input)
         {
-            var entity = input.AttendanceDto.MapTo<Detail>();
+            var entity = input.AttendancesEditDto.MapTo<KqDetail>();
             entity = await _attendanceDetailRepository.InsertAsync(entity);
-            return new AttendancesEditDto { AttendanceDto = entity.MapTo<AttendanceDto>() };
+            return new AttendanceForEdit { AttendancesEditDto = entity.MapTo<AttendancesEditDto>() };
         }
-
-        
     }
 }
