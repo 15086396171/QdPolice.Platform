@@ -133,6 +133,7 @@
     <Compile Include="Announcements\Authorization\AnnouncementAppAuthorizationProvider.cs" />
     <Compile Include="Announcements\Authorization\AnnouncementAppPermissions.cs" />
     <Compile Include="Announcements\_AnnouncementReadme.cs" />
+    <Compile Include="Attendances\KQDetails\KqAllDetail.cs" />
     <Compile Include="Attendances\KQDetails\KqDetail.cs" />
     <Compile Include="Attendances\KqMachines\Kqmachine.cs" />
     <Compile Include="Attendances\Leaves\entity.cs" />

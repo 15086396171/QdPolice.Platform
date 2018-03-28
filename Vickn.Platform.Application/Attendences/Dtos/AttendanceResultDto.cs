@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace Vickn.Platform.Attendences.Dtos
 {
-   public class AttendanceForEdit
+   public class AttendanceResultDto
     {
-        public AttendancesEditDto AttendancesEditDto { get; set; }
+        public string Result { get; set; }
 
-      
-     
+       
     }
 }

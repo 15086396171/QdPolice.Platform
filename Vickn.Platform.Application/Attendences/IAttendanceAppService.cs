@@ -21,7 +21,8 @@ namespace Vickn.Platform.Attendences
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<AttendanceForEdit> CreateKqDetailAsync(AttendanceForEdit input);
+        Task<AttendanceResultDto> CreateKqDetailAsync(AttendanceForEdit input);
+
         #endregion
     }
 }

@@ -46,10 +46,13 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<AnnouncementUser> AnnouncementUsers { get; set; }
 
         /// <summary>
-        /// 考勤明细
+        /// 考勤记录明细
         /// </summary>
         public IDbSet<KqDetail> KqDetail { get; set; }
-
+        /// <summary>
+        /// 所有考勤流水明细
+        /// </summary>
+        public IDbSet<KqAllDetail> KqAllDetails { get; set; }
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -106,6 +109,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new AnnouncementCfg());
             modelBuilder.Configurations.Add(new AnnouncementUserCfg());
             modelBuilder.Configurations.Add(new KqDetailCfg());
+            modelBuilder.Configurations.Add(new KqAllDetailCfg());
 
         }
     }

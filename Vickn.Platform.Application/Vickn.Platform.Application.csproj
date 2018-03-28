@@ -185,6 +185,7 @@
     <Compile Include="Attendences\Dtos\AttendanceDto.cs" />
     <Compile Include="Attendences\Dtos\AttendanceForEdit.cs" />
     <Compile Include="Attendences\Dtos\AttendancesEditDto.cs" />
+    <Compile Include="Attendences\Dtos\AttendanceResultDto.cs" />
     <Compile Include="Attendences\IAttendanceAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />

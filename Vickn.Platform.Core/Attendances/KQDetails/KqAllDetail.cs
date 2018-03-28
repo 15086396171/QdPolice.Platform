@@ -1,22 +1,15 @@
-﻿using Abp.AutoMapper;
-using Abp.Domain.Entities;
+﻿using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vickn.Platform.Attendances.KQDetails;
+using Vickn.Platform.Attendances.Leaves;
 
-namespace Vickn.Platform.Attendences.Dtos
+namespace Vickn.Platform.Attendances.KQDetails
 {
-    /// <summary>
-    /// 所有打卡签到记录明细
-    /// </summary>
-    [AutoMap(typeof(KqAllDetail))]
-    
-    public class AttendanceDto : Entity
+   public class KqAllDetail:Entity
     {
-
         /// <summary>
         /// 用户姓名
         /// </summary>
