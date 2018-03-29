@@ -6,22 +6,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vickn.Platform.Attendances.Rules
+
+namespace Vickn.Platform.Attendances.KqShifts
 {
-    /// <summary>
-    /// 考勤规则
-    /// </summary>
-   public class Rule: FullAuditedEntity<long>
+   public class KqShiftUser: FullAuditedEntity<long>
     {
         /// <summary>
-        /// 上班时间
+        /// 班次名称
         /// </summary>
-        public string WorkTime { get; set; }
+        public string ShiftName { get; set; }
 
         /// <summary>
-        /// 下班时间
+        /// 班次对应的用户名称
         /// </summary>
-        public string ClosingTime { get; set; }
+        public string UserName { get; set; }
 
+      
     }
 }

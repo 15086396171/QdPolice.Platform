@@ -11,7 +11,7 @@ namespace Vickn.Platform.Attendances.KqMachines
    /// <summary>
    /// 考勤机信息管理
    /// </summary>
-    public class Kqmachine :FullAuditedEntity<long>
+    public class KqMachine :FullAuditedEntity<long>
     {
         /// <summary>
         /// 考勤机编号

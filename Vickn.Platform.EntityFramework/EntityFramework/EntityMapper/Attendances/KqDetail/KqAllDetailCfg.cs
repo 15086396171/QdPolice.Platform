@@ -8,24 +8,21 @@ using Vickn.Platform.Attendances.KQDetails;
 
 namespace Vickn.Platform.EntityFramework.EntityMapper.Attendances
 {
-
-    /// <summary>
-    /// 黔东明细数据库映射配置
-    /// </summary>
-   public class KqDetailCfg : EntityTypeConfiguration<KqDetail>
+    //考勤所有流水记录
+  public  class KqAllDetailCfg: EntityTypeConfiguration<KqAllDetail>
     {
         /// <summary>
         ///  构造方法[默认链接字符串< see cref = "PlatformDbContext" /> ]
         /// </summary>
-        public KqDetailCfg()
+        public KqAllDetailCfg()
         {
-            ToTable("KqDetail", PlatformConsts.SchemaName.Attendance);
+            ToTable("KqAllDetail", PlatformConsts.SchemaName.Attendance);
 
             //TODO: 需要将以下文件注入到PlatformDbContext中
 
             //TODO: 自定义数据库映射
 
-         
+
         }
     }
 }

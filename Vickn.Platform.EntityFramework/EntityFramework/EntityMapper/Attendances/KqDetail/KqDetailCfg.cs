@@ -8,20 +8,24 @@ using Vickn.Platform.Attendances.KQDetails;
 
 namespace Vickn.Platform.EntityFramework.EntityMapper.Attendances
 {
-  public  class KqAllDetailCfg: EntityTypeConfiguration<KqAllDetail>
+
+    /// <summary>
+    /// 考勤明细数据库映射配置
+    /// </summary>
+   public class KqDetailCfg : EntityTypeConfiguration<KqDetail>
     {
         /// <summary>
         ///  构造方法[默认链接字符串< see cref = "PlatformDbContext" /> ]
         /// </summary>
-        public KqAllDetailCfg()
+        public KqDetailCfg()
         {
-            ToTable("KqAllDetail", PlatformConsts.SchemaName.Attendance);
+            ToTable("KqDetail", PlatformConsts.SchemaName.Attendance);
 
             //TODO: 需要将以下文件注入到PlatformDbContext中
 
             //TODO: 自定义数据库映射
-
-
+           
+         
         }
     }
 }

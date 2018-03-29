@@ -220,5 +220,7 @@
     <text name="EditForensicsRecord" value="编辑取证记录" />
     <text name="DeleteForensicsRecord" value="删除取证记录" />
     <text name="VideoCall" value="视频对讲" />
+
+    <text name="AttendanceRecord" value="考勤管理" />
   </texts>
 </localizationDictionary>

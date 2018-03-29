@@ -1090,6 +1090,8 @@
     <Content Include="Assets\dist\static\js\vendor.2afdedc1cd53783a994a.js.map" />
     <Content Include="Areas\Devices\Views\Device\OnlineClients.cshtml" />
     <Content Include="Areas\Announcements\Views\Announcement\SelectMessage.cshtml" />
+    <Content Include="Areas\Attendances\Views\web.config" />
+    <Content Include="Areas\Attendances\Views\Attendance\Index.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1585,6 +1587,8 @@
     <Compile Include="App_Start\PlatformWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Attendances\AttendancesAreaRegistration.cs" />
+    <Compile Include="Areas\Attendances\Controllers\AttendanceController.cs" />
     <Compile Include="Areas\Devices\Models\OnlineUser.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -1726,6 +1730,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Attendances\Views\Shared\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />

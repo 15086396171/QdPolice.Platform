@@ -4,10 +4,14 @@ using Abp.Zero.EntityFramework;
 using Vickn.Platform.Announcements;
 using Vickn.Platform.Announcements.EntityMapper;
 using Vickn.Platform.Attendances.KQDetails;
+using Vickn.Platform.Attendances.KqMachines;
+using Vickn.Platform.Attendances.KqShifts;
 using Vickn.Platform.Authorization.Roles;
 using Vickn.Platform.DataDictionaries;
 using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.EntityFramework.EntityMapper.Attendances;
+using Vickn.Platform.EntityFramework.EntityMapper.Attendances.Kqmachines;
+using Vickn.Platform.EntityFramework.EntityMapper.Attendances.KqShifts;
 using Vickn.Platform.FileRecords;
 using Vickn.Platform.FileRecords.EntityMapper;
 using Vickn.Platform.HandheldTerminals;
@@ -45,6 +49,7 @@ namespace Vickn.Platform.EntityFramework
 
         public IDbSet<AnnouncementUser> AnnouncementUsers { get; set; }
 
+        #region 考勤模块
         /// <summary>
         /// 考勤记录明细
         /// </summary>
@@ -53,6 +58,22 @@ namespace Vickn.Platform.EntityFramework
         /// 所有考勤流水明细
         /// </summary>
         public IDbSet<KqAllDetail> KqAllDetails { get; set; }
+        /// <summary>
+        /// 考勤机信息
+        /// </summary>
+        public IDbSet<KqMachine> Kqmachine { get; set; }
+
+        /// <summary>
+        /// 考勤班次信息
+        /// </summary>
+        public IDbSet<KqShift> KqShift { get; set; }
+
+        /// <summary>
+        /// 考勤班次信息
+        /// </summary>
+        public IDbSet<KqShiftUser> KqShiftUser { get; set; }
+        #endregion
+
 
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
@@ -108,8 +129,12 @@ namespace Vickn.Platform.EntityFramework
 
             modelBuilder.Configurations.Add(new AnnouncementCfg());
             modelBuilder.Configurations.Add(new AnnouncementUserCfg());
+
             modelBuilder.Configurations.Add(new KqDetailCfg());
             modelBuilder.Configurations.Add(new KqAllDetailCfg());
+            modelBuilder.Configurations.Add(new KqMachineCfg());
+            modelBuilder.Configurations.Add(new KqShiftCfg());
+            modelBuilder.Configurations.Add(new KqShiftUserCfg());
 
         }
     }
