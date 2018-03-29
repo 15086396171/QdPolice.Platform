@@ -13,11 +13,7 @@ namespace Vickn.Platform.Attendances.KQDetails
  
     public class KqDetail:Entity
     {
-        /// <summary>
-        /// 用户Id
-        /// </summary>
-        public int UserId { get; set; }
-
+       
         /// <summary>
         /// 用户姓名
         /// </summary>

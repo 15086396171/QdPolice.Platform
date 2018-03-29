@@ -22,13 +22,13 @@ namespace Vickn.Platform.Attendances.KQDetails
 
 
         /// <summary>
-        /// 签到方式是否为NFC（NFC或微信扫码）
+        /// 签到方式是否为NFC（NFC:0,门禁:1,微信扫码:2）
         /// </summary>
         public int IsNFC { get; set; }
 
         /// <summary>
         /// 签到地理位置
         /// </summary>
-        public int QDPostion { get; set; }
+        public string QDPostion { get; set; }
     }
 }

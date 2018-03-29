@@ -23,6 +23,11 @@ namespace Vickn.Platform.Attendences
         private readonly IRepository<KqDetail> _attendanceDetailRepository;
         private readonly IRepository<KqAllDetail> _attendanceAllDetailRepository;
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="attendanceDetailRepository"></param>
+        /// <param name="attendanceAllDetailRepository"></param>
         public  AttendanceAppService(IRepository<KqDetail> attendanceDetailRepository,IRepository<KqAllDetail> attendanceAllDetailRepository)
         {
             _attendanceDetailRepository = attendanceDetailRepository;
@@ -37,27 +42,74 @@ namespace Vickn.Platform.Attendences
         /// <returns></returns>
         public async Task<AttendanceResultDto> CreateKqDetailAsync(AttendanceForEdit input)
         {
+            #region 通过post获取用户信息
+            //int UserId = Convert.ToInt32(AbpSession.UserId);
+            var user = await GetCurrentUserAsync();
+            var NowUserName = user.Surname;
+            #endregion
+
+            #region 考勤流水，所有打卡记录都记录下来
+            KqAllDetail kqalldetail = new KqAllDetail()
+            {
+                UserName = NowUserName,
+                IsNFC = input.AttendancesEditDto.IsNFC,
+                QDTime = DateTime.Now,
+                QDPostion = input.AttendancesEditDto.QDPosition,
+
+            };
+
+            var kqalldetails = kqalldetail.MapTo<KqAllDetail>();
+            kqalldetails = await _attendanceAllDetailRepository.InsertAsync(kqalldetails);
+            #endregion
+
             #region 打卡业务逻辑处理
 
-            int UserId =Convert.ToInt32(AbpSession.UserId);
-            //string UserName = GetCurrentUserAsync().Result.UserName;
+            #region 判断是否为第一次打卡
+          
+         
+         
+            DateTime StartNowDate = DateTime.Today;
+            var AllKqList = await _attendanceDetailRepository.GetAllListAsync();
+            var UserKqToDayList = AllKqList.Where(p => p.UserName == NowUserName&&p.QDWorkTime!=null&&p.QDWorkTime> StartNowDate);
+            if (UserKqToDayList == null)//该用户今天为第一次打卡
+            {
+               
+                
+            }
+            else//该用户今天不是第一次打卡
+            {
+                
+            }
 
             #endregion
 
-            KqAllDetail kqalldetail = new KqAllDetail();
-            //{
-            //    IsNFC = input.AttendancesEditDto.IsNFC,
-            //    UserName = Convert.ToString(UserManager.FindByIdAsync(UserId).Result.Name),
-            //    QDTime = DateTime.Now,
-            //};
-            kqalldetail.UserName = GetCurrentUserAsync().Result.UserName;
+
+            #region 记录当天考勤情况
+            KqDetail kqdetail = new KqDetail()
+            {
+                UserName = NowUserName,
+                IsNFC = input.AttendancesEditDto.IsNFC,
+                QDClosingTime = DateTime.Now,
+                QDWorkTime = DateTime.Now,
+                Remark = "Ok",
+                QDType = 1,
+                KQMachineNo = input.AttendancesEditDto.QDPosition,
+
+            };
+            var kqdetails = kqdetail.MapTo<KqDetail>();
+            kqdetails = await _attendanceDetailRepository.InsertAsync(kqdetails);
+            #endregion
+
+
+            #endregion
+
+
+
+
 
 
             //var entity = input.AttendancesEditDto.MapTo<KqDetail>();
             //entity = await _attendanceDetailRepository.InsertAsync(entity);
-
-            //var Allentity = input.AttendancesEditDto.MapTo<KqAllDetail>();
-            //Allentity = await _attendanceAllDetailRepository.InsertAsync(Allentity);
 
             return new AttendanceResultDto()
             {

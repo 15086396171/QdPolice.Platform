@@ -17,7 +17,7 @@ namespace Vickn.Platform.Attendences
     {
         #region 考勤签到管理
         /// <summary>
-        ///  新增考勤黔到记录
+        ///  新增考勤签到记录
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>

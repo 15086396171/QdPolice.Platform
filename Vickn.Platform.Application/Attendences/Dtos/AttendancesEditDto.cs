@@ -18,5 +18,10 @@ namespace Vickn.Platform.Attendences.Dtos
         /// </summary>
         public int IsNFC { get; set; }
 
+        /// <summary>
+        /// 签到地理位置（用户微信扫码打卡）
+        /// </summary>
+        public string QDPosition { get; set; }
+
     }
 }
