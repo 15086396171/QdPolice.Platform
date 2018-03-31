@@ -1,17 +1,15 @@
-﻿using Abp.AutoMapper;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Vickn.Platform.Attendances;
-using Vickn.Platform.Attendances.KQDetails;
 
-namespace Vickn.Platform.Attendences.Dtos
+namespace Vickn.Platform.Attendences.KqDetails.Dtos
 {
-    [AutoMap(typeof(KqDetail))]
-    public class AttendancesEditDto
+    /// <summary>
+    /// 考勤app接口信息
+    /// </summary>
+    public class KqDetailEditDto
     {
         /// <summary>
         /// 签到方式是否为NFC（NFC或微信扫码或门禁）
@@ -22,6 +20,5 @@ namespace Vickn.Platform.Attendences.Dtos
         /// 签到地理位置（用户微信扫码打卡）
         /// </summary>
         public string QDPosition { get; set; }
-
     }
 }

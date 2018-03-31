@@ -136,6 +136,8 @@
     <Compile Include="Attendances\KqDetails\KqAllDetail.cs" />
     <Compile Include="Attendances\KqDetails\KqDetail.cs" />
     <Compile Include="Attendances\KqMachines\KqMachine.cs" />
+    <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppPermissions.cs" />
     <Compile Include="Attendances\KqShifts\KqShift.cs" />
     <Compile Include="Attendances\KqShifts\KqShiftUser.cs" />
     <Compile Include="Attendances\Leaves\Leave.cs" />
@@ -224,7 +226,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Source\Platform-zh-CN.xml" />
+    <EmbeddedResource Include="Localization\Source\Platform-zh-CN.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\Source\Platform-tr.xml" />
     <EmbeddedResource Include="Localization\Source\Platform.xml">
       <SubType>Designer</SubType>

@@ -4,11 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Vickn.Platform.Web.Areas.Attendances.Controllers
+namespace Vickn.Platform.Web.Areas.KqShifts.Controllers
 {
-    public class AttendanceController : Controller
+    public class KqShiftController : Controller
     {
-        // GET: Attendances/Attendance
+        // GET: KqShifts/KqShift
         public ActionResult Index()
         {
             return View();

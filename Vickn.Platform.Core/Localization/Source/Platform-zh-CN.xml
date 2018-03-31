@@ -36,10 +36,10 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="保持我的登录状态" />
     <text name="LogIn" value="登录" />
-    
+
     <text name="CreationTime" value="创建时间"/>
     <text name="Operational" value="操作"/>
-    
+
     <text name="SystemManage" value="系统管理" />
     <!--<text name="DatatableApi" value="datatableapi" />-->
     <text name="Api" value="Api" />
@@ -79,7 +79,7 @@
     <text name="CreateAuditLog" value="创建审计"/>
     <text name="DeleteAuditLog" value="删除审计"/>
     <text name="EditAuditLog" value="编辑审计"/>
-    
+
     <text name="Submit" value="保存"/>
     <text name="SureToDelete" value="确定删除数据？"/>
     <text name="Back" value="返回"/>
@@ -104,7 +104,7 @@
     <!-- 数据字典项管理 -->
     <text name="	DataDictionaryItemHeaderInfo" value="数据字典项信息列表" />
     <text name="DataDictionaryItemDeleteWarningMessage" value="数据字典项名称: {0} 将被删除,是否确定删除它。" />
-
+    手持终端管理
     <text name="DataDictionaryItemName" value="数据字典项" />
 
     <!--//用于表格展示的数据信息的标题-->
@@ -172,7 +172,7 @@
     <text name="PrivatePhoneWhite.UserId" value="所属人Id" />
     <text name="PrivatePhoneWhite.User" value="所属人" />
     <text name="PrivatePhoneWhite.CreationTime" value="创建时间" />
-				 
+
 
     <text name="PrivatePhoneWhite" value="个人白名单管理" />
     <text name="CreatePrivatePhoneWhite" value="添加个人白名单" />
@@ -221,6 +221,14 @@
     <text name="DeleteForensicsRecord" value="删除取证记录" />
     <text name="VideoCall" value="视频对讲" />
 
-    <text name="AttendanceRecord" value="考勤管理" />
+    <!-- 考勤管理 strart-->
+    <text name="Pages.AttendanceManage" value="考勤管理" />
+   
+    <text name="KqShift" value="考勤班次管理" />
+    <text name="CreateKqShift" value="添加考勤班次" />
+    <text name="EditKqShift" value="编辑考勤班次" />
+    <text name=" eleteKqShift" value="删除考勤班次" />
+   
+    <!-- 考勤管理 end-->
   </texts>
 </localizationDictionary>

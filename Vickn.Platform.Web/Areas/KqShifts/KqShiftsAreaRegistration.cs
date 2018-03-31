@@ -1,22 +1,22 @@
 ﻿using System.Web.Mvc;
 
-namespace Vickn.Platform.Web.Areas.Attendances
+namespace Vickn.Platform.Web.Areas.KqShifts
 {
-    public class AttendancesAreaRegistration : AreaRegistration 
+    public class KqShiftsAreaRegistration : AreaRegistration 
     {
         public override string AreaName 
         {
             get 
             {
-                return "Attendances";
+                return "KqShifts";
             }
         }
 
         public override void RegisterArea(AreaRegistrationContext context) 
         {
             context.MapRoute(
-                "Attendances_default",
-                "Attendances/{controller}/{action}/{id}",
+                "KqShifts_default",
+                "KqShifts/{controller}/{action}/{id}",
                 new { action = "Index", id = UrlParameter.Optional }
             );
         }
