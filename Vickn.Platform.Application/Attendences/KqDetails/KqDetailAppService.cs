@@ -6,7 +6,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vickn.Platform.Attendances.KQDetails;
-using Vickn.Platform.Attendences.Dtos;
 using Vickn.Platform.Attendences.KqDetails.Dtos;
 using Abp.Runtime.Session;
 
