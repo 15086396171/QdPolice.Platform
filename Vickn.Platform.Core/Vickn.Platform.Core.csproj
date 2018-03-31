@@ -133,12 +133,6 @@
     <Compile Include="Announcements\Authorization\AnnouncementAppAuthorizationProvider.cs" />
     <Compile Include="Announcements\Authorization\AnnouncementAppPermissions.cs" />
     <Compile Include="Announcements\_AnnouncementReadme.cs" />
-    <Compile Include="Attendances\AtUserTime.cs" />
-    <Compile Include="Attendances\Detail.cs" />
-    <Compile Include="Attendances\Leave.cs" />
-    <Compile Include="Attendances\PrimaryKey.cs" />
-    <Compile Include="Attendances\Rule.cs" />
-    <Compile Include="Attendances\Statisticl.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="Chats\ChatGroup.cs" />
@@ -259,7 +253,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Attendances\KQDetails\" />
     <Folder Include="HandheldTerminals\PhoneWhites\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
