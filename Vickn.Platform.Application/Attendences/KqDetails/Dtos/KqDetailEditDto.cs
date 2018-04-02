@@ -1,14 +1,17 @@
-﻿using System;
+﻿using Abp.AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vickn.Platform.Attendances.KQDetails;
 
 namespace Vickn.Platform.Attendences.KqDetails.Dtos
 {
     /// <summary>
     /// 考勤app接口信息
     /// </summary>
+    [AutoMap(typeof(KqDetail))]
     public class KqDetailEditDto
     {
         /// <summary>

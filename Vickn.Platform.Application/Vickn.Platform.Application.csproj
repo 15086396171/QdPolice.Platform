@@ -187,6 +187,13 @@
     <Compile Include="Attendences\KqDetails\Dtos\ResultDto.cs" />
     <Compile Include="Attendences\KqDetails\IKqDetailAppService.cs" />
     <Compile Include="Attendences\KqDetails\KqDetailAppService.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftForEidt.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftEditDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserEidtDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserForEidt.cs" />
+    <Compile Include="Attendences\KqShifts\IKqShiftAppService.cs" />
+    <Compile Include="Attendences\KqShifts\KqShiftAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ExitGroupInput.cs" />

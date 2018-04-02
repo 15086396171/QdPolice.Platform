@@ -1,15 +1,19 @@
-﻿using Abp.Domain.Entities;
-using Abp.Domain.Entities.Auditing;
+﻿using Abp.AutoMapper;
+using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Vickn.Platform.Attendances.KqShifts;
 
-
-namespace Vickn.Platform.Attendances.KqShifts
+namespace Vickn.Platform.Attendences.KqShifts.Dtos
 {
-   public class KqShiftUser: Entity
+    /// <summary>
+    /// 考勤班次对应用户管理编辑Dto
+    /// </summary>
+    [AutoMap(typeof(KqShiftUser))]
+    public class KqShiftUserEidtDto:Entity
     {
         /// <summary>
         /// 班次名称
@@ -21,6 +25,5 @@ namespace Vickn.Platform.Attendances.KqShifts
         /// </summary>
         public string UserName { get; set; }
 
-      
     }
 }
