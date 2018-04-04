@@ -19,7 +19,7 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// 获取所有的班次信息分页列表
         /// </summary>
         /// <returns></returns>
-        Task<PagedResultDto<KqShiftEditDto>> GetPagedAsync(GetAnnouncementInput input);
+        Task<PagedResultDto<KqShiftDto>> GetPagedAsync(GetKqShiftInputDto input);
 
         /// <summary>
         /// 通过指定id获取考勤班次Dto信息
@@ -36,7 +36,7 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// <summary>
         /// 修改考勤班次
         /// </summary>
-        Task UpdateAsync(AnnouncementForEdit input);
+        Task UpdateAsync(KqShiftForEidt input);
 
         /// <summary>
         /// 删除考勤班次
@@ -47,5 +47,12 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// 批量删除考勤班次
         /// </summary>
         Task BatchDeleteAsync(List<long> input);
+
+
+
+        /// <summary>
+        /// 新增或更改通知公告
+        /// </summary>
+        Task CreateOrUpdateAsync(KqShiftForEidt input);
     }
 }

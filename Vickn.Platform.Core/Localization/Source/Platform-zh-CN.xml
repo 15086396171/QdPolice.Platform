@@ -41,7 +41,7 @@
     <text name="Operational" value="操作"/>
 
     <text name="SystemManage" value="系统管理" />
-    <!--<text name="DatatableApi" value="datatableapi" />-->
+    <text name="DatatableApi" value="datatableapi" />
     <text name="Api" value="Api" />
     <text name="Hangfire" value="Hangfire" />
 
@@ -223,11 +223,17 @@
 
     <!-- 考勤管理 strart-->
     <text name="Pages.AttendanceManage" value="考勤管理" />
-   
+
+    <!--//考勤班次-->
+    <text name="KqShift.Name" value="班次名称" />
+    <text name="KqShift.WorkTime" value="上班时间" />
+    <text name="KqShift.ClosingTime" value="下班时间" />
+    <text name="KqShift.KqShiftUsers" value="KqShiftUsers" />
+
     <text name="KqShift" value="考勤班次管理" />
     <text name="CreateKqShift" value="添加考勤班次" />
     <text name="EditKqShift" value="编辑考勤班次" />
-    <text name=" eleteKqShift" value="删除考勤班次" />
+    <text name="DeleteKqShift" value="删除考勤班次" />
    
     <!-- 考勤管理 end-->
   </texts>

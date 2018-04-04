@@ -36,6 +36,7 @@ namespace Vickn.Platform.Web.Areas.Announcements.Controllers
 
         public ActionResult Index()
         {
+           
             return View();
         }
 

@@ -13,7 +13,7 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
     /// </summary>
     public class KqShiftForEidt 
     {
-        ///考班次实体
+        ///考勤班次实体
        public KqShiftEditDto KqShiftEditDto { get; set; }
     }
 }

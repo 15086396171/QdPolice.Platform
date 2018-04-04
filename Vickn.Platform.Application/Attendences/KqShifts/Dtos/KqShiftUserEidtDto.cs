@@ -2,10 +2,12 @@
 using Abp.Domain.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vickn.Platform.Attendances.KqShifts;
+using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Attendences.KqShifts.Dtos
 {
@@ -15,15 +17,19 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
     [AutoMap(typeof(KqShiftUser))]
     public class KqShiftUserEidtDto:Entity
     {
+        public long? Id { get; set; }
         /// <summary>
-        /// 班次名称
+        /// 用户Id
         /// </summary>
-        public string ShiftName { get; set; }
-
+        public long UserId { get; set; }
         /// <summary>
-        /// 班次对应的用户名称
+        /// 用户信息
         /// </summary>
-        public string UserName { get; set; }
+        public UserListDto User { get; set; }
+        /// <summary>
+        /// 考勤班次Id
+        /// </summary>
+        public long? KqShiftId { get; set; }
 
     }
 }

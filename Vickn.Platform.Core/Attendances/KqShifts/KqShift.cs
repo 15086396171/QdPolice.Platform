@@ -1,6 +1,8 @@
-﻿using Abp.Domain.Entities.Auditing;
+﻿using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,9 +24,9 @@ namespace Vickn.Platform.Attendances.KqShifts
         /// </summary>
         public string ClosingTime { get; set; }
         /// <summary>
-        /// 考勤班次对应用户
+        /// 考勤班次对应的用户列表
         /// </summary>
-        public KqShiftUser KqShiftUser { get; set; }
-  
+        [DisplayName("通知用户")]
+        public virtual List<KqShiftUser> KqShiftUser { get; set; }
     }
 }

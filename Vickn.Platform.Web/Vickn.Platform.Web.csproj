@@ -1092,6 +1092,7 @@
     <Content Include="Areas\Devices\Views\Device\OnlineClients.cshtml" />
     <Content Include="Areas\Announcements\Views\Announcement\SelectMessage.cshtml" />
     <Content Include="Areas\KqShifts\Views\web.config" />
+    <Content Include="Areas\KqShifts\Views\KqShift\_ViewStart.cshtml" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />

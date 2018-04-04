@@ -27,9 +27,6 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
         /// 下班时间
         /// </summary>
         public string ClosingTime { get; set; }
-        /// <summary>
-        /// 考勤班次对应用户
-        /// </summary>
-        public KqShiftUser KqShiftUser { get; set; }
+       
     }
 }

@@ -5,22 +5,19 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Attendances.KqShifts
 {
-   public class KqShiftUser: Entity
+   public class KqShiftUser:Entity<long>
+    
     {
-        /// <summary>
-        /// 班次名称
-        /// </summary>
-        public string ShiftName { get; set; }
+        public long UserId { get; set; }
 
-        /// <summary>
-        /// 班次对应的用户名称
-        /// </summary>
-        public string UserName { get; set; }
+        public virtual User User { get; set; }
 
-      
+        public long AnnouncementId { get; set; }
+
+       
     }
 }
