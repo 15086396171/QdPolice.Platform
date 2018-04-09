@@ -1,18 +1,19 @@
 ﻿(function () {
     $(function () {
         var $dataTable = $(".dataTable");
-        var _kqshiftsService = abp.services.app.attendences.kqshifts;
-
+        var _kqshiftsService = abp.services.app.kqshift;
+      
         var _permissions = {
             create: abp.auth.hasPermission('Pages.KqShift.CreateKqShift'),
             edit: abp.auth.hasPermission('Pages.KqShift.EditKqShift'),
             del: abp.auth.hasPermission('Pages.KqShift.DeleteKqShift'),
 
         };
-
+      
         var options = {
             listAction: {
-                url: abp.appPath + "api/services/app/attendences/kqshifts/getPagedAsync",
+                url: abp.appPath + "api/services/app/kqshift/getPagedAsync",
+               
                 filters: [
                     {
                         key: "filterText",
@@ -21,6 +22,7 @@
                 ],
                 ingore: []
             },
+            
             fileds: [
                 {
                     "data": "id",
@@ -28,13 +30,15 @@
                         return '<input type="checkbox" class="check-box" name="check-box" value="' + data + '">';
                     }
                 },
-                { "data": "title" },
+                { "data": "shiftName" },
+                { "data": "workTime" },
+                { "data": "closingTime" },
                 {
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
 
-                        $('<a title="查看" href="javascript:;" class="m-l-xs nodecoration details" data-title="查看" ><i class="glyphicon glyphicon-search"></i> </a>')
+                        $('<a title="班次人员" href="javascript:;" class="m-l-xs nodecoration shiftuser"><i class="glyphicon glyphicon-user"></i> </a>')
                             .appendTo($div);
 
                         if (_permissions.edit) {
@@ -53,11 +57,11 @@
             methods: [
                 {
                     actionName: "editAction",
-                    url: abp.appPath + "Announcements/announcement/create"
+                    url: abp.appPath + "KqShifts/KqShift/Create"
                 },
                 {
                     actionName: "deleteAction",
-                    url: abp.appPath + "api/services/app/announcement/deleteAsync"
+                    url: abp.appPath + "api/services/app/kqshift/deleteAsync"
                 },
                 {
                     actionName: "details",
@@ -78,11 +82,11 @@
             commonMethods: [
                 {
                     actionName: "createAction",
-                    url: abp.appPath + "Announcements/Announcement/Create"
+                    url: abp.appPath + "KqShifts/KqShift/Create"
                 },
                 {
                     actionName: "batchAction",
-                    url: abp.appPath + "api/services/app/announcement/batchDeleteAsync"
+                    url: abp.appPath + "api/services/app/kqshift/batchDeleteAsync"
                 }
             ]
         };

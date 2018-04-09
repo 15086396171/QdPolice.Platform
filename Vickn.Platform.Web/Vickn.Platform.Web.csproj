@@ -329,6 +329,7 @@
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
     <Content Include="Areas\Devices\Views\Device\Details.js" />
     <Content Include="Areas\Devices\Views\Device\ShowFile.js" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Create_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
@@ -1094,6 +1095,7 @@
     <Content Include="Areas\KqShifts\Views\web.config" />
     <Content Include="Areas\KqShifts\Views\KqShift\_ViewStart.cshtml" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index.cshtml" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Create.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />

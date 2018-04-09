@@ -14,12 +14,38 @@ namespace Vickn.Platform.Web.Areas.KqShifts.Controllers
 {
     public class KqShiftController : PlatformControllerBase
     {
+        private readonly  IKqShiftAppService _kqShiftAppService;
+
+        public KqShiftController(IKqShiftAppService kqShiftAppService)
+        {
+            _kqShiftAppService = kqShiftAppService;
+        }
+
         // GET: KqShifts/KqShift
         [AbpMvcAuthorize(KqShiftAppPermissions.KqShift)]
         public ActionResult Index()
         {
-            
+ 
             return View();
+        }
+
+        [AbpMvcAuthorize(KqShiftAppPermissions.KqShift_CreateKqShift, KqShiftAppPermissions.KqShift_EditKqShift)]
+        public async Task<ActionResult> Create(long? id)
+        {
+            var kqshiftDto = await _kqShiftAppService.GetForEditAsync(new NullableIdDto<long>(id));
+
+            return View();
+
+
+        }
+
+        public async Task<ActionResult> CreateKeep(KqShiftForEidt kqshiftDto)
+        {
+           
+            await _kqShiftAppService.CreateOrUpdateAsync(kqshiftDto);
+            return RedirectToAction("Index");
+
+           
         }
     }
 }

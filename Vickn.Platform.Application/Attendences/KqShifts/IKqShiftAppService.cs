@@ -51,8 +51,14 @@ namespace Vickn.Platform.Attendences.KqShifts
 
 
         /// <summary>
-        /// 新增或更改通知公告
+        /// 新增或更改考勤班次
         /// </summary>
         Task CreateOrUpdateAsync(KqShiftForEidt input);
+
+        /// <summary>
+        /// 通过Id获取考勤班次信息进行编辑或修改
+        /// Id为空时返回新对象 
+        /// </summary>
+        Task<KqShiftForEidt> GetForEditAsync(NullableIdDto<long> input);
     }
 }

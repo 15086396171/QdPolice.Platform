@@ -99,6 +99,28 @@ namespace Vickn.Platform.Attendences.KqShifts
             }
         }
 
+        /// <summary>
+        /// 通过Id获取考勤班次信息进行编辑或修改
+        /// Id为空时返回新对象 
+        /// </summary>
+        public async Task<KqShiftForEidt> GetForEditAsync(NullableIdDto<long> input)
+        {
+            KqShiftEditDto kqshiftEditDto;
+
+            if (input.Id.HasValue)
+            {
+                var entity = await _KqShiftRepository.GetAsync(input.Id.Value);
+                kqshiftEditDto = entity.MapTo<KqShiftEditDto>();
+            }
+            else
+            {
+                kqshiftEditDto = new KqShiftEditDto()
+                {
+                    KqShiftUsers = new List<KqShiftUserEidtDto>()
+                };
+            }
+            return new KqShiftForEidt { KqShiftEditDto = kqshiftEditDto };
+        }
 
 
         /// <summary>
@@ -120,14 +142,7 @@ namespace Vickn.Platform.Attendences.KqShifts
             var query = _KqShiftRepository.GetAll();
 
             //TODO:根据传入的参数添加过滤条件
-           
-
-            //query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.ShiftName.Contains(input.FilterText));
-
-            if (!input.FilterText.IsNullOrEmpty())
-            {
-                query = query.Where(p => p.ShiftName.Contains(input.FilterText));
-            }
+            query = query.WhereIf(!input.FilterText.IsNullOrEmpty(), p => p.ShiftName.Contains(input.FilterText));
 
             var kqshiftCount = await query.CountAsync();
 
@@ -135,6 +150,7 @@ namespace Vickn.Platform.Attendences.KqShifts
                 .PageBy(input).ToListAsync();
 
             var KqShiftDtos = kqshifts.MapTo<List<KqShiftDto>>();
+
             return new PagedResultDto<KqShiftDto>(
             kqshiftCount,
             KqShiftDtos

@@ -41,6 +41,8 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
         /// 考勤对应用户
         /// </summary>
         [DisplayName("考勤对应用户")]
-        public static List<KqShiftUserEidtDto> KqShiftUsers { get; set; }
+        public virtual List<KqShiftUserEidtDto> KqShiftUsers { get; set; }
+
+
     }
 }
