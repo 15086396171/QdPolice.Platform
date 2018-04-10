@@ -15,8 +15,11 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
     /// 考勤班次对应用户管理编辑Dto
     /// </summary>
     [AutoMap(typeof(KqShiftUser))]
-    public class KqShiftUserEidtDto:Entity
+    public class KqShiftUserEidtDto
     {
+        /// <summary>
+        /// 记录Id
+        /// </summary>
         public long? Id { get; set; }
         /// <summary>
         /// 用户Id

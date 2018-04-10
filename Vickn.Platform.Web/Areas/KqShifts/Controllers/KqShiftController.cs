@@ -33,13 +33,15 @@ namespace Vickn.Platform.Web.Areas.KqShifts.Controllers
         public async Task<ActionResult> Create(long? id)
         {
             var kqshiftDto = await _kqShiftAppService.GetForEditAsync(new NullableIdDto<long>(id));
-
-            return View();
+            
+            return View(kqshiftDto);
 
 
         }
 
-        public async Task<ActionResult> CreateKeep(KqShiftForEidt kqshiftDto)
+        [HttpPost]
+        [ValidateInput(false)]
+        public async Task<ActionResult> Create(KqShiftForEidt kqshiftDto)
         {
            
             await _kqShiftAppService.CreateOrUpdateAsync(kqshiftDto);

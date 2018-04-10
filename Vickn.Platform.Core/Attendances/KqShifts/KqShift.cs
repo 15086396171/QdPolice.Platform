@@ -26,7 +26,7 @@ namespace Vickn.Platform.Attendances.KqShifts
         /// <summary>
         /// 考勤班次对应的用户列表
         /// </summary>
-        [DisplayName("通知用户")]
-        public virtual List<KqShiftUser> KqShiftUser { get; set; }
+       
+        public virtual List<KqShiftUser> KqShiftUsers { get; set; }
     }
 }

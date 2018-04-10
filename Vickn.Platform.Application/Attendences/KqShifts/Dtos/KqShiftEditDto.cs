@@ -5,6 +5,7 @@ using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,20 +28,27 @@ namespace Vickn.Platform.Attendences.KqShifts.Dtos
         /// <summary>
         /// 班次名称
         /// </summary>
+        [DisplayName("班次名称")]
+        [Required]
         public string ShiftName { get; set; }
         /// <summary>
         /// 上班时间
         /// </summary>
-        public DateTime WorkTime { get; set; }
+        [DisplayName("上班时间")]
+        [Required]
+        public string WorkTime { get; set; }
         /// <summary>
         /// 下班时间
         /// </summary>
-        public DateTime ClosingTime { get; set; }
+        [DisplayName("下班时间")]
+        [Required]
+        public string ClosingTime { get; set; }
 
         /// <summary>
-        /// 考勤对应用户
+        /// 班次对应用户
         /// </summary>
-        [DisplayName("考勤对应用户")]
+        [DisplayName("班次对应用户")]
+
         public virtual List<KqShiftUserEidtDto> KqShiftUsers { get; set; }
 
 

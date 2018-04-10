@@ -1001,6 +1001,9 @@
     <Content Include="Content\Hplus\typography.html" />
     <Content Include="Content\Hplus\webim.html" />
     <Content Include="Content\Hplus\widgets.html" />
+    <Content Include="Content\LayDate\laydate.js" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.svg" />
+    <Content Include="Content\LayDate\theme\default\laydate.css" />
     <Content Include="Content\Mp3\BjSoound.mp3" />
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
@@ -1096,6 +1099,9 @@
     <Content Include="Areas\KqShifts\Views\KqShift\_ViewStart.cshtml" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index.cshtml" />
     <Content Include="Areas\KqShifts\Views\KqShift\Create.cshtml" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.eot" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.ttf" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.woff" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />

@@ -43,14 +43,9 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// </summary>
         public async Task<KqShiftForEidt> CreateAsync(KqShiftForEidt input)
         {
-           
-            //考勤班次
-            input.KqShiftEditDto.ShiftName = "机关人员";
-            input.KqShiftEditDto.WorkTime = DateTime.Now;
-            input.KqShiftEditDto.ClosingTime = DateTime.Now;
-
             var entity = input.KqShiftEditDto.MapTo<KqShift>();
             entity = await _KqShiftRepository.InsertAsync(entity);
+
             return new KqShiftForEidt { KqShiftEditDto = entity.MapTo<KqShiftEditDto>() };
 
         }

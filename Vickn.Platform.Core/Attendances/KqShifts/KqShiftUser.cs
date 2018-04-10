@@ -16,7 +16,7 @@ namespace Vickn.Platform.Attendances.KqShifts
 
         public virtual User User { get; set; }
 
-        public long AnnouncementId { get; set; }
+        public long KqShiftId { get; set; }
 
        
     }
