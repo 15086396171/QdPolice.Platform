@@ -13,7 +13,7 @@ using Vickn.Platform.Users.Dtos;
 
 namespace Vickn.Platform.Attendences.KqDetails
 {
-    public class KqDetailAppService : IKqDetailAppService
+    public class KqDetailAppService : PlatformAppServiceBase,IKqDetailAppService
     {
         private readonly IRepository<KqAllDetail> _KqAllDeatilRepository;
 
@@ -32,7 +32,10 @@ namespace Vickn.Platform.Attendences.KqDetails
         /// <returns></returns>
         public async Task<ResultDto> CreateAllDetailAsync(KqDetailForEidt input)
         {
+            var user = await GetCurrentUserAsync();
+            string NowUserName = user.Surname;
 
+            input.KqDetailEditDto.UserName = NowUserName;
             var entity = input.KqDetailEditDto.MapTo<KqAllDetail>();
             await _KqAllDeatilRepository.InsertAsync(entity);
             return new ResultDto()

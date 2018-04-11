@@ -43,6 +43,8 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// </summary>
         public async Task<KqShiftForEidt> CreateAsync(KqShiftForEidt input)
         {
+            var user = await GetCurrentUserAsync();
+            var NowUserName = user.Surname;
             var entity = input.KqShiftEditDto.MapTo<KqShift>();
             entity = await _KqShiftRepository.InsertAsync(entity);
             
