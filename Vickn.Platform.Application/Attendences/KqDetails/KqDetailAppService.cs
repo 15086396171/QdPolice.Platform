@@ -64,36 +64,36 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
 
-            DateTime StartNowDate = DateTime.Today;
-            var AllKqList = await _attendanceDetailRepository.GetAllListAsync();
-            var UserKqToDayList = AllKqList.Where(p => p.UserName == NowUserName && p.QDWorkTime != null && p.QDWorkTime > StartNowDate);
-            if (UserKqToDayList == null)//该用户今天为第一次打卡
-            {
+            //DateTime StartNowDate = DateTime.Today;
+            //var AllKqList = await _attendanceDetailRepository.GetAllListAsync();
+            //var UserKqToDayList = AllKqList.Where(p => p.UserName == NowUserName && p.QDWorkTime != null && p.QDWorkTime > StartNowDate);
+            //if (UserKqToDayList == null)//该用户今天为第一次打卡
+            //{
 
 
-            }
-            else//该用户今天不是第一次打卡
-            {
+            //}
+            //else//该用户今天不是第一次打卡
+            //{
 
-            }
+            //}
 
             #endregion
 
 
             #region 记录当天考勤情况
-            KqDetail kqdetail = new KqDetail()
-            {
-                UserName = NowUserName,
-                IsNFC = input.KqDetailEditDto.IsNFC,
-                QDClosingTime = DateTime.Now,
-                QDWorkTime = DateTime.Now,
-                Remark = "Ok",
-                QDType = 1,
-                KQMachineNo = input.KqDetailEditDto.QDPosition,
+            //KqDetail kqdetail = new KqDetail()
+            //{
+            //    UserName = NowUserName,
+            //    IsNFC = input.KqDetailEditDto.IsNFC,
+            //    QDClosingTime = DateTime.Now,
+            //    QDWorkTime = DateTime.Now,
+            //    Remark = "Ok",
+            //    QDType = 1,
+            //    KQMachineNo = input.KqDetailEditDto.QDPosition,
 
-            };
-            var kqdetails = kqdetail.MapTo<KqDetail>();
-            kqdetails = await _attendanceDetailRepository.InsertAsync(kqdetails);
+            //};
+            //var kqdetails = kqdetail.MapTo<KqDetail>();
+            //kqdetails = await _attendanceDetailRepository.InsertAsync(kqdetails);
             #endregion
 
 

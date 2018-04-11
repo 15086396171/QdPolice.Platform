@@ -30,7 +30,7 @@ namespace Vickn.Platform.Attendences.KqShifts
         private readonly IRepository<KqShift,long> _KqShiftRepository;
 
         /// <summary>
-        /// 初始化通知考勤班次服务实例
+        /// 初始化考勤班次服务实例
         /// </summary>
         public KqShiftAppService(IRepository<KqShift,long> KqShiftRepository)
         {

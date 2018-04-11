@@ -6,12 +6,12 @@ using System.Text;
 using System.Threading.Tasks;
 using Vickn.Platform.Dtos;
 
-namespace Vickn.Platform.Attendences.KqShifts.Dtos
+namespace Vickn.Platform.Attendences.KqMachines.Dtos
 {
     /// <summary>
-    /// 考勤班次查询参数Dto
+    /// 获取考勤机查询参数
     /// </summary>
-    public class GetKqShiftInputDto : PagedAndSortedInputDto, IShouldNormalize
+    public class GetKqMachineInputDto:PagedAndSortedInputDto, IShouldNormalize
     {
         //DOTO:在这里增加查询参数
 

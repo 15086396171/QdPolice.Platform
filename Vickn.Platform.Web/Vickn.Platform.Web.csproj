@@ -1102,6 +1102,9 @@
     <Content Include="Content\LayDate\theme\default\font\iconfont.eot" />
     <Content Include="Content\LayDate\theme\default\font\iconfont.ttf" />
     <Content Include="Content\LayDate\theme\default\font\iconfont.woff" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\_ViewStart.cshtml" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\Index.cshtml" />
+    <Content Include="Areas\KqMachines\Views\web.config" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1598,6 +1601,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Devices\Models\OnlineUser.cs" />
+    <Compile Include="Areas\KqMachines\Controllers\KqMachineController.cs" />
+    <Compile Include="Areas\KqMachines\KqMachinesAreaRegistration.cs" />
     <Compile Include="Areas\KqShifts\Controllers\KqShiftController.cs" />
     <Compile Include="Areas\KqShifts\KqShiftsAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
@@ -1740,6 +1745,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\KqMachines\Models\" />
+    <Folder Include="Areas\KqMachines\Views\Shared\" />
     <Folder Include="Areas\KqShifts\Models\" />
     <Folder Include="Areas\KqShifts\Views\Shared\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />

@@ -135,6 +135,8 @@
     <Compile Include="Announcements\_AnnouncementReadme.cs" />
     <Compile Include="Attendances\KqDetails\KqAllDetail.cs" />
     <Compile Include="Attendances\KqDetails\KqDetail.cs" />
+    <Compile Include="Attendances\KqMachines\Authorization\KqMachineAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\KqMachines\Authorization\KqMachineAppPermissions.cs" />
     <Compile Include="Attendances\KqMachines\KqMachine.cs" />
     <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppAuthorizationProvider.cs" />
     <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppPermissions.cs" />

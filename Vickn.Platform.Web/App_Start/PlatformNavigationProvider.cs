@@ -1,6 +1,8 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using Vickn.Platform.Announcements.Authorization;
+using Vickn.Platform.Attendances.KqMachines;
+using Vickn.Platform.Attendances.KqMachines.Authorization;
 using Vickn.Platform.Attendances.KqShifts.Authorization;
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
@@ -31,13 +33,28 @@ namespace Vickn.Platform.Web
                 );
 
             //考勤班次（二级菜单）
-            var kqshift = new MenuItemDefinition(KqShiftAppPermissions.KqShift, L("KqShift"), 
+            var kqshift = new MenuItemDefinition(KqShiftAppPermissions.KqShift, L("KqShift"),
                 url: "KqShifts/KqShift",
                 icon: "icon-grid",
                 requiredPermissionName: KqShiftAppPermissions.KqShift);
 
-            //考勤管理增加二级菜单（考勤班次）
-            attendance.AddItem(kqshift);
+            //考勤机信息（二级菜单）
+            var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
+                url: "KqMachines/KqMachine",
+                icon: "icon-grid",
+                requiredPermissionName: KqMachineAppPermissions.KqMachine);
+
+
+            ////考勤机信息（二级菜单）
+            //var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
+            //url: "KqMachines/KqMachine",
+            //    icon: "icon-grid",
+            //requiredPermissionName: KqMachineAppPermissions.KqMachine);
+
+
+            //考勤管理增加二级菜单
+            attendance.AddItem(kqshift) //考勤班次
+                      .AddItem(kqmachine);//考勤机信息
 
 
             //手持终端管理（一级菜单）
@@ -47,9 +64,9 @@ namespace Vickn.Platform.Web
                 icon: "icon-grid"
             );
             //视频对讲（二级菜单）
-            var videoCall = new MenuItemDefinition("VideoCall",L("VideoCall"),
-                url:"/Devices/Device/VideoCall",
-                requiredPermissionName:AppPermissions.Pages_HandheldTerminal_VideoCall);
+            var videoCall = new MenuItemDefinition("VideoCall", L("VideoCall"),
+                url: "/Devices/Device/VideoCall",
+                requiredPermissionName: AppPermissions.Pages_HandheldTerminal_VideoCall);
 
             //应用白名单（二级菜单）
             var appWhiteList = new MenuItemDefinition(
@@ -88,9 +105,9 @@ namespace Vickn.Platform.Web
                     requiredPermissionName: AnnouncementAppPermissions.Announcement));
 
             //所有的一级菜单
-            context.Manager.MainMenu    
+            context.Manager.MainMenu
                 .AddItem(device)
-                .AddItem(announcement)         
+                .AddItem(announcement)
                 .AddItem(attendance)
 
             #region 系统管理
@@ -145,13 +162,13 @@ namespace Vickn.Platform.Web
                         ))
                         )
 
-                    //                        .AddItem(
-                    //new MenuItemDefinition(
-                    //    "DatatableApi",
-                    //    L("DatatableApi"),
-                    //    url: "Document/DataTable",
-                    //    requiredPermissionName: AppPermissions.Pages_Api
-                    //    ))
+                //                        .AddItem(
+                //new MenuItemDefinition(
+                //    "DatatableApi",
+                //    L("DatatableApi"),
+                //    url: "Document/DataTable",
+                //    requiredPermissionName: AppPermissions.Pages_Api
+                //    ))
                 // end:SystemManage
 
             #endregion

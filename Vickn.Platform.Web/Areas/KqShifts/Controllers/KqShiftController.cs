@@ -29,6 +29,11 @@ namespace Vickn.Platform.Web.Areas.KqShifts.Controllers
             return View();
         }
 
+        /// <summary>
+        /// 添加或修改
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         [AbpMvcAuthorize(KqShiftAppPermissions.KqShift_CreateKqShift, KqShiftAppPermissions.KqShift_EditKqShift)]
         public async Task<ActionResult> Create(long? id)
         {
@@ -39,6 +44,11 @@ namespace Vickn.Platform.Web.Areas.KqShifts.Controllers
 
         }
 
+        /// <summary>
+        /// 保存添加或修改的信息
+        /// </summary>
+        /// <param name="kqshiftDto"></param>
+        /// <returns></returns>
         [HttpPost]
         [ValidateInput(false)]
         public async Task<ActionResult> Create(KqShiftForEidt kqshiftDto)

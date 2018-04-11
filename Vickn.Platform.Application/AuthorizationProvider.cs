@@ -1,5 +1,6 @@
 ﻿using Abp.Configuration.Startup;
 using Vickn.Platform.Announcements.Authorization;
+using Vickn.Platform.Attendances.KqMachines.Authorization;
 using Vickn.Platform.Attendances.KqShifts.Authorization;
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
@@ -36,6 +37,7 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<PrivatePhoneWhiteAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<AnnouncementAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqShiftAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<KqMachineAppAuthorizationProvider>();
 
         }
     }

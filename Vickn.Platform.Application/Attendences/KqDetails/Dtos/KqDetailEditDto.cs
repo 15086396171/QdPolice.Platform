@@ -11,7 +11,7 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
     /// <summary>
     /// 考勤app接口信息
     /// </summary>
-    [AutoMap(typeof(KqDetail))]
+    [AutoMap(typeof(KqAllDetail))]
     public class KqDetailEditDto
     {
         /// <summary>

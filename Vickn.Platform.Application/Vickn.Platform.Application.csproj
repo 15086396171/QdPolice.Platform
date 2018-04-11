@@ -187,6 +187,12 @@
     <Compile Include="Attendences\KqDetails\Dtos\ResultDto.cs" />
     <Compile Include="Attendences\KqDetails\IKqDetailAppService.cs" />
     <Compile Include="Attendences\KqDetails\KqDetailAppService.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\GetKqMachineInputDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineEditDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineForEidt.cs" />
+    <Compile Include="Attendences\KqMachines\IKqMachineAppService.cs" />
+    <Compile Include="Attendences\KqMachines\KqMachineAppService.cs" />
     <Compile Include="Attendences\KqShifts\Dtos\GetKqShiftInputDto.cs" />
     <Compile Include="Attendences\KqShifts\Dtos\KqShiftDto.cs" />
     <Compile Include="Attendences\KqShifts\Dtos\KqShiftForEidt.cs" />

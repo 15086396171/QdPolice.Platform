@@ -137,7 +137,7 @@
     <Compile Include="EntityFramework\EntityMapper\AppWhiteLists\AppWhiteListCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Attendances\KqDetail\KqAllDetailCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Attendances\KqDetail\KqDetailCfg.cs" />
-    <Compile Include="EntityFramework\EntityMapper\Attendances\Kqmachines\KqMachineCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqMachines\KqMachineCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Attendances\KqShifts\KqShiftCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Attendances\KqShifts\KqShiftUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupCfg.cs" />

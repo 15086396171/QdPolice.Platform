@@ -234,6 +234,16 @@
     <text name="CreateKqShift" value="添加考勤班次" />
     <text name="EditKqShift" value="编辑考勤班次" />
     <text name="DeleteKqShift" value="删除考勤班次" />
+    
+    <!--//考勤机信息-->
+    <text name="KqMachine.KQMachineNo" value="考勤机编号" />
+    <text name="KqMachine.KQMachinePosition" value="考勤机位置" />
+
+
+    <text name="KqMachine" value="考勤机管理" />
+    <text name="CreateKqMachine" value="添加考勤机信息" />
+    <text name="EditKqMachine" value="编辑考勤机信息" />
+    <text name="DeleteKqMachine" value="删除考勤机信息" />
    
     <!-- 考勤管理 end-->
   </texts>
