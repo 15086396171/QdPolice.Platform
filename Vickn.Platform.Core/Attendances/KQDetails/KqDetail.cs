@@ -44,10 +44,10 @@ namespace Vickn.Platform.Attendances.KQDetails
         /// </summary>
         public int IsNFC { get; set; }
 
-        /// <summary>
-        /// 签到地理位置
-        /// </summary>
-        public string QDPostion { get; set; }
+        ///// <summary>
+        ///// 签到地理位置
+        ///// </summary>
+        //public string QDPostion { get; set; }
 
         /// <summary>
         /// 备注

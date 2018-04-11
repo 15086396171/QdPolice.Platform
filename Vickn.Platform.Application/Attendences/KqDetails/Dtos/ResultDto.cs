@@ -7,13 +7,10 @@ using System.Threading.Tasks;
 namespace Vickn.Platform.Attendences.KqDetails.Dtos
 {
     /// <summary>
-    /// 接口返回结果
+    /// 签到结果Dto
     /// </summary>
-    public class ResultDto
+   public class ResultDto
     {
-        /// <summary>
-        /// 接口处理是否成功
-        /// </summary>
-        public bool Success { get; set; }
+        public bool IsOk { get; set; }
     }
 }

@@ -45,7 +45,7 @@ namespace Vickn.Platform.Attendences.KqShifts
         {
             var entity = input.KqShiftEditDto.MapTo<KqShift>();
             entity = await _KqShiftRepository.InsertAsync(entity);
-
+            
             return new KqShiftForEidt { KqShiftEditDto = entity.MapTo<KqShiftEditDto>() };
 
         }
