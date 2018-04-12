@@ -241,9 +241,9 @@
 
 
     <text name="KqMachine" value="考勤机管理" />
-    <text name="CreateKqMachine" value="添加考勤机信息" />
-    <text name="EditKqMachine" value="编辑考勤机信息" />
-    <text name="DeleteKqMachine" value="删除考勤机信息" />
+    <text name="CreateKqMachine" value="添加考勤机" />
+    <text name="EditKqMachine" value="编辑考勤机" />
+    <text name="DeleteKqMachine" value="删除考勤机" />
    
     <!-- 考勤管理 end-->
   </texts>

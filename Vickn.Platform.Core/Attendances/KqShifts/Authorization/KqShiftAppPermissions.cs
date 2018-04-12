@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Vickn.Platform.Attendances.KqShifts.Authorization
 {
-  public static  class KqShiftAppPermissions
+    public static class KqShiftAppPermissions
     {
         /// <summary>
         /// 班次管理权限

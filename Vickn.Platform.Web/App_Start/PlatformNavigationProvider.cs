@@ -40,16 +40,9 @@ namespace Vickn.Platform.Web
 
             //考勤机信息（二级菜单）
             var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
-                url: "KqMachines/KqMachine",
+            url: "KqMachines/KqMachine",
                 icon: "icon-grid",
-                requiredPermissionName: KqMachineAppPermissions.KqMachine);
-
-
-            ////考勤机信息（二级菜单）
-            //var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
-            //url: "KqMachines/KqMachine",
-            //    icon: "icon-grid",
-            //requiredPermissionName: KqMachineAppPermissions.KqMachine);
+            requiredPermissionName: KqMachineAppPermissions.KqMachine);
 
 
             //考勤管理增加二级菜单

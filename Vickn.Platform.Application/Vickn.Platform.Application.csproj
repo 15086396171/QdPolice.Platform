@@ -181,6 +181,7 @@
     <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
     <Compile Include="Announcements\Dtos\GetLastAnnouncentInput.cs" />
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailForEidt.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\ResultDto.cs" />

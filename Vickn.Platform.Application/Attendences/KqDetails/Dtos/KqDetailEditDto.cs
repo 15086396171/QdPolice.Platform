@@ -40,6 +40,6 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// <summary>
         /// 签到地理位置
         /// </summary>
-        public int QDPostion { get; set; }
+        public string QDPostion { get; set; }
     }
 }

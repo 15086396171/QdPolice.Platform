@@ -30,13 +30,20 @@ namespace Vickn.Platform.Attendences.KqDetails
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<ResultDto> CreateAllDetailAsync(KqDetailForEidt input)
+        public async Task<ResultDto> CreateAllDetailAsync(KqDetailDto input)
         {
             var user = await GetCurrentUserAsync();
             string NowUserName = user.Surname;
 
-            input.KqDetailEditDto.UserName = NowUserName;
-            var entity = input.KqDetailEditDto.MapTo<KqAllDetail>();
+            KqDetailEditDto KqAllDetaillist=new KqDetailEditDto();
+            KqAllDetaillist.UserName = NowUserName;
+            KqAllDetaillist.IsNFC = input.isNFC;
+            KqAllDetaillist.QDPostion = "未知";
+            KqAllDetaillist.QDTime=DateTime.Now;
+           
+
+            
+            var entity = KqAllDetaillist.MapTo<KqAllDetail>();
             await _KqAllDeatilRepository.InsertAsync(entity);
             return new ResultDto()
             {

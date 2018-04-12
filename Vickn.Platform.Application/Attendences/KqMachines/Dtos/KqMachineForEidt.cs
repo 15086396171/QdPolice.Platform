@@ -8,6 +8,6 @@ namespace Vickn.Platform.Attendences.KqMachines.Dtos
 {
    public class KqMachineForEidt
     {
-      
+      public  KqMachineDto KqMachineDto { get; set; }
     }
 }

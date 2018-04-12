@@ -15,30 +15,30 @@ namespace Vickn.Platform.Attendences.KqMachines
    public interface IKqMachineAppService: IApplicationService
     {
         /// <summary>
-        /// 获取所有的班次信息分页列表
+        /// 获取所有的考勤机信息分页列表
         /// </summary>
         /// <returns></returns>
         Task<PagedResultDto<KqMachineDto>> GetPagedAsync(GetKqMachineInputDto input);
 
         /// <summary>
-        /// 通过指定id获取考勤班次Dto信息
+        /// 通过指定id获取考勤机Dto信息
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<KqMachineDto> GetByIdAsync(EntityDto<long> input);
 
         /// <summary>
-        /// 新增考勤班次
+        /// 新增考勤机
         /// </summary>
         Task<KqMachineForEidt> CreateAsync(KqMachineForEidt input);
 
         /// <summary>
-        /// 修改考勤班次
+        /// 修改考勤机
         /// </summary>
         Task UpdateAsync(KqMachineForEidt input);
 
         /// <summary>
-        /// 删除考勤班次
+        /// 删除考勤机
         /// </summary>
         Task DeleteAsync(EntityDto<long> input);
 
@@ -53,7 +53,7 @@ namespace Vickn.Platform.Attendences.KqMachines
         Task CreateOrUpdateAsync(KqMachineForEidt input);
 
         /// <summary>
-        /// 通过Id获取考勤班次信息进行编辑或修改
+        /// 通过Id获取考勤机信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
         Task<KqMachineForEidt> GetForEditAsync(NullableIdDto<long> input);

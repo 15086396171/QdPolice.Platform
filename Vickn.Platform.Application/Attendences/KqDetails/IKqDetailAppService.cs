@@ -18,6 +18,6 @@ namespace Vickn.Platform.Attendences.KqDetails
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task<ResultDto> CreateAllDetailAsync(KqDetailForEidt input);
+        Task<ResultDto> CreateAllDetailAsync(KqDetailDto input);
   }
 }
