@@ -26,11 +26,20 @@ namespace Vickn.Platform.Attendences.KqMachines.Dtos
         /// <summary>
         /// 考勤机编号
         /// </summary>
+        [DisplayName("考勤机编号")]
         public int KQMachineNo { get; set; }
+
         /// <summary>
         /// 考勤机地理位置
         /// </summary>
         [Required]
+        [DisplayName("考勤机地理位置")]
         public string KQMachinePosition { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DisplayName("备注")]
+        public string Remark { get; set; }
     }
 }

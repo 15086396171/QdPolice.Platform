@@ -15,6 +15,7 @@ using Abp.Linq.Extensions;
 using Vickn.Platform.Attendances.KqMachines;
 using Vickn.Platform.Attendences.KqMachines.Dtos;
 using Vickn.Platform.Attendences.KqMachines;
+using Vickn.Platform.Dtos;
 
 namespace Vickn.Platform.Attendences.KqMachines
 {
@@ -39,18 +40,18 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public Task BatchDeleteAsync(List<long> input)
+        public async Task BatchDeleteAsync(List<long> input)
         {
-            throw new NotImplementedException();
+            await _kqMachineRepository.DeleteAsync(p => input.Contains(p.Id));
         }
         /// <summary>
         ///  新增考勤机
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task<KqMachineForEidt> CreateAsync(KqMachineForEidt input)
+        public async Task<KqMachineForEidt> CreateAsync(KqMachineDto input)
         {
-            var entity = input.KqMachineDto.MapTo<KqMachine>();
+            var entity = input.MapTo<KqMachine>();
             await _kqMachineRepository.InsertAsync(entity);
 
             return new KqMachineForEidt {KqMachineDto = entity.MapTo<KqMachineDto>()};
@@ -61,16 +62,16 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task CreateOrUpdateAsync(KqMachineForEidt input)
+        public async Task CreateOrUpdateAsync(KqMachineDto input)
         {
-            //if (input.KqMachineDto.Id.HasValue)
-            //{
-            //    await UpdateAsync(input);
-            //}
-            //else
-            //{
-            //    await DeleteAsync(input);
-            //}
+            if (input.Id.HasValue)
+            {
+                await UpdateAsync(input);
+            }
+            else
+            {
+                await CreateAsync(input);
+            }
         }
 
         /// <summary>
@@ -78,10 +79,10 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public async Task UpdateAsync(KqMachineForEidt input)
+        public async Task UpdateAsync(KqMachineDto input)
         {
-            var entity = await _kqMachineRepository.GetAsync(input.KqMachineDto.Id.Value);
-            input.KqMachineDto.MapTo(entity);
+            var entity = await _kqMachineRepository.GetAsync(input.Id.Value);
+            input.MapTo(entity);
             await _kqMachineRepository.UpdateAsync(entity);
         }
 
@@ -111,9 +112,38 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        public Task<KqMachineForEidt> GetForEditAsync(NullableIdDto<long> input)
+        public async Task<KqMachineDto> GetForEditAsync(NullableIdDto<long> input)
         {
-            throw new NotImplementedException();
+            KqMachineDto kqmachineEditDto;
+
+            if (input.Id.HasValue)
+            {
+                var entity = await _kqMachineRepository.GetAsync(input.Id.Value);
+                kqmachineEditDto = entity.MapTo<KqMachineDto>();
+            }
+            else
+            {
+                kqmachineEditDto = new KqMachineDto();
+                //考勤机编号+1
+                var allList = await _kqMachineRepository.GetAllListAsync();
+                if (allList.Count == 0)
+                {
+                  
+                    kqmachineEditDto.KQMachineNo = 1001;
+                }
+                else
+                {
+                    var allKqMachineCount = allList.Count();
+                    int kqmachineno = allList[allKqMachineCount - 1].KQMachineNo + 1;
+                    kqmachineEditDto.KQMachineNo = kqmachineno;
+                }
+               
+
+               
+
+            }
+
+            return kqmachineEditDto;
         }
 
         /// <summary>
@@ -139,6 +169,6 @@ namespace Vickn.Platform.Attendences.KqMachines
             );
         }
 
-       
+      
     }
 }

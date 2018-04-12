@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Vickn.Platform.Attendences.KqMachines.Dtos;
+using Vickn.Platform.Dtos;
 
 namespace Vickn.Platform.Attendences.KqMachines
 {
@@ -30,12 +31,12 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// <summary>
         /// 新增考勤机
         /// </summary>
-        Task<KqMachineForEidt> CreateAsync(KqMachineForEidt input);
+        Task<KqMachineForEidt> CreateAsync(KqMachineDto input);
 
         /// <summary>
         /// 修改考勤机
         /// </summary>
-        Task UpdateAsync(KqMachineForEidt input);
+        Task UpdateAsync(KqMachineDto input);
 
         /// <summary>
         /// 删除考勤机
@@ -50,12 +51,14 @@ namespace Vickn.Platform.Attendences.KqMachines
         /// <summary>
         /// 新增或更改考勤机
         /// </summary>
-        Task CreateOrUpdateAsync(KqMachineForEidt input);
+        Task CreateOrUpdateAsync(KqMachineDto input);
 
         /// <summary>
         /// 通过Id获取考勤机信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        Task<KqMachineForEidt> GetForEditAsync(NullableIdDto<long> input);
+        Task<KqMachineDto> GetForEditAsync(NullableIdDto<long> input);
+
+       
     }
 }

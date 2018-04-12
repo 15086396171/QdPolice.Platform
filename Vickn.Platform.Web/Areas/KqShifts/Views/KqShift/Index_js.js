@@ -38,8 +38,8 @@
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
 
-                        $('<a title="班次人员" href="javascript:;" class="m-l-xs nodecoration shiftuser"><i class="glyphicon glyphicon-user"></i> </a>')
-                            .appendTo($div);
+                        //$('<a title="班次人员" href="javascript:;" class="m-l-xs nodecoration shiftuser"><i class="glyphicon glyphicon-user"></i> </a>')
+                        //    .appendTo($div);
 
                         if (_permissions.edit) {
 
@@ -62,21 +62,8 @@
                 {
                     actionName: "deleteAction",
                     url: abp.appPath + "api/services/app/kqshift/deleteAsync"
-                },
-                {
-                    actionName: "details",
-                    selector: "a.details",
-                    action: function (data) {
-                        var index = layer.open({
-                            title: "",
-                            type: 2,
-                            area: ['90%', '550px'],
-                            content: abp.appPath +
-                            "Announcements/announcement/SelectMessage/" + data.id //这里content是一个URL，如果你不想让iframe出现滚动条，你还可以content: ['http://sentsin.com', 'no']
-                        });
-                        layer.full(index);
-                    }
                 }
+                
 
             ],
             commonMethods: [

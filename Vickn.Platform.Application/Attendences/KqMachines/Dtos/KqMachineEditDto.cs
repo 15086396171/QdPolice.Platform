@@ -31,5 +31,11 @@ namespace Vickn.Platform.Attendences.KqMachines.Dtos
         [DisplayName("考勤机地理位置")]
         [Required]
         public string KQMachinePosition { get; set; }
+
+        /// <summary>
+        /// 备注
+        /// </summary>
+        [DisplayName("备注")]
+        public string Remark { get; set; }
     }
 }

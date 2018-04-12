@@ -1106,6 +1106,7 @@
     <Content Include="Areas\KqMachines\Views\KqMachine\_ViewStart.cshtml" />
     <Content Include="Areas\KqMachines\Views\KqMachine\Index.cshtml" />
     <Content Include="Areas\KqMachines\Views\web.config" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\Create.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />

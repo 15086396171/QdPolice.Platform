@@ -4,6 +4,7 @@
 @using System.Web.UI.WebControls.Expressions
 @using Abp.Authorization
 @using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.Attendances.KqMachines.Authorization
 @using Vickn.Platform.Attendances.KqShifts.Authorization;
 
 
@@ -17,13 +18,13 @@
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
-                @if (IsGranted(KqShiftAppPermissions.KqShift_CreateKqShift))
+                @if (IsGranted(KqMachineAppPermissions.KqMachine_CreateKqMachine))
                 {
                     <a href="javascript:;" class="btn btn-primary" id="create">
                         <span class="glyphicon glyphicon-plus"></span> @L("CreateKqMachine")
                     </a>
                 }
-                @if (IsGranted(KqShiftAppPermissions.KqShift_DeleteKqShift))
+                @if (IsGranted(KqMachineAppPermissions.KqMachine_DeleteKqMachine))
                 {
                     <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
                 }
@@ -39,6 +40,7 @@
                     <th width="25"><input type="checkbox" class="checkall"></th>
                     <th>@L("KqMachine.KQMachineNo")</th>
                     <th>@L("KqMachine.KQMachinePosition")</th>
+                    <th>@L("Remark")</th>
                     <th>@L("Operational")</th>
                 </tr>
             </thead>
