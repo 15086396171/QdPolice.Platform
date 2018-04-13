@@ -183,7 +183,10 @@
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDtos.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailForEidt.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqRecordEditDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqRecordForEidt.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\ResultDto.cs" />
     <Compile Include="Attendences\KqDetails\IKqDetailAppService.cs" />
     <Compile Include="Attendences\KqDetails\KqDetailAppService.cs" />

@@ -35,7 +35,7 @@
                 { "data": "closingTime" },
                 {
                     "data": "id",
-                    render: function (data, type, row, meta) {
+                    render: function (data, type, row, meta) { 
                         var $div = $('<div></div>');
 
                         //$('<a title="班次人员" href="javascript:;" class="m-l-xs nodecoration shiftuser"><i class="glyphicon glyphicon-user"></i> </a>')

@@ -14,10 +14,27 @@ namespace Vickn.Platform.Attendences.KqDetails
   public  interface IKqDetailAppService:IApplicationService
   {
         /// <summary>
-        /// 添加考勤流水记录
+        /// 新增考勤流水记录
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<ResultDto> CreateAllDetailAsync(KqDetailDto input);
-  }
+
+        /// <summary>
+        /// 新增或修改考勤记录信息
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task CreateOrUpdateAsync(KqDetailEditDtos input);
+
+      /// <summary>
+      /// 新增考勤记录(第一次打卡)
+      /// </summary>
+      Task CreateAsync(KqDetailEditDtos input);
+
+        /// <summary>
+        /// 修改考勤记录(二次打卡)
+        /// </summary>
+        Task UpdateAsync(int KqRecordId, KqDetailEditDtos input);
+    }
 }

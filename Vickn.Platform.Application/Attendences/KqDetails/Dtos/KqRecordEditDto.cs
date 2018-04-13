@@ -1,19 +1,27 @@
-﻿using Abp.Domain.Entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.AutoMapper;
+using Vickn.Platform.Attendances.KQDetails;
 
-namespace Vickn.Platform.Attendances.KQDetails
+namespace Vickn.Platform.Attendences.KqDetails.Dtos
 {
+
     /// <summary>
-    /// 考勤明细
+    /// 考勤记录Dto
     /// </summary>
- 
-    public class KqDetail:Entity
+    [AutoMap(typeof(KqDetail))]
+    public class KqRecordEditDto
     {
-       
+
+        /// <summary>
+        ///   主键Id
+        /// </summary>
+        [DisplayName("主键Id")]
+        public long? Id { get; set; }
         /// <summary>
         /// 用户姓名
         /// </summary>
@@ -26,13 +34,12 @@ namespace Vickn.Platform.Attendances.KQDetails
 
         /// <summary>
         /// 上班签到时间
-        /// </summary>  
+        /// </summary>
         public DateTime QDWorkTime { get; set; }
 
         /// <summary>
         /// 下班签到时间
         /// </summary>
-        
         public DateTime? QDClosingTime { get; set; }
 
         /// <summary>
@@ -44,6 +51,8 @@ namespace Vickn.Platform.Attendances.KQDetails
         /// 签到方式是否为NFC（NFC或微信扫码）
         /// </summary>
         public int? IsNFC { get; set; }
+
+
 
         /// <summary>
         /// 备注
