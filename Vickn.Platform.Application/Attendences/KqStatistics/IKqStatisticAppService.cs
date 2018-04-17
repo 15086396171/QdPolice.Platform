@@ -18,13 +18,19 @@ namespace Vickn.Platform.Attendences.KqStatistics
         Task<List<KqStatisticEditDto>> GetKqStatisticAsync(GetKqStatisticInputDto input);
 
         /// <summary>
-        /// app获取考勤Dto
+        /// app获取考勤Dto（一个月）
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
 
         Task< List<KqAppResultYMdDto>> GetAppKqStatisticAsync(GetKqStatisticAppDto input);
 
-       
-   }
+       /// <summary>
+       /// app获取考勤Dto（一天）
+       /// </summary>
+       /// <param name="input"></param>
+       /// <returns></returns>
+
+       Task<List<KqStatisticYMdDto>> GetAppKqRecordAsync(GetKqStatisticAppDto input);
+    }
 }

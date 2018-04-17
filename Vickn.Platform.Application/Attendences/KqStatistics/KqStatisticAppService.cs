@@ -135,5 +135,29 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             return kqList;
         }
+
+        public async Task<List<KqStatisticYMdDto>> GetAppKqRecordAsync(GetKqStatisticAppDto input)
+        {
+            var StartTime = input.Date + " 00:00:00";
+            DateTime StartTimes = Convert.ToDateTime(StartTime);
+            DateTime EndTimes = StartTimes.AddDays(1).AddSeconds(-1);
+            var entity = await _KqDetailRepository.GetAllListAsync(p =>
+                p.UserName == input.UserName && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
+
+            List<KqStatisticYMdDto> kqList = new List<KqStatisticYMdDto>();
+            for (int i = 0; i < entity.Count(); i++)
+            {
+                KqStatisticYMdDto list = new KqStatisticYMdDto();
+               
+                list.DateWork = entity[i].QDWorkTime.ToString("HH:mm:ss");
+                list.DateColsing = entity[i].QDClosingTime.ToString("HH:mm:ss");
+               
+
+                kqList.Add(list);
+
+            }
+
+            return kqList;
+        }
     }
 }

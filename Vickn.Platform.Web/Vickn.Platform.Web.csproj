@@ -329,6 +329,7 @@
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
     <Content Include="Areas\Devices\Views\Device\Details.js" />
     <Content Include="Areas\Devices\Views\Device\ShowFile.js" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\Index_js.js" />
     <Content Include="Areas\KqMachines\Views\KqMachine\Index_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Create_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />

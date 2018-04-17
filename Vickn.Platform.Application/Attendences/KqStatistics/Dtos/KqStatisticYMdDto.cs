@@ -8,5 +8,11 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
 {
    public class KqStatisticYMdDto
     {
+
+        public string DateWork { get; set; }
+
+        public string DateColsing { get; set; }
+
+ 
     }
 }

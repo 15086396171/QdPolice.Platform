@@ -38,10 +38,10 @@ namespace Vickn.Platform.Attendences.KqDetails
         /// </summary>
         Task UpdateAsync(int KqRecordId, KqDetailEditDtos input);
 
-        ///// <summary>
-        ///// 获取所有的考勤流水信息分页列表
-        ///// </summary>
-        ///// <returns></returns>
-        //Task<PagedResultDto<KqDetailEditDto>> GetPagedAsync(GetKqDetailInputDto input);
+        /// <summary>
+        /// 获取所有的考勤流水信息分页列表
+        /// </summary>
+        /// <returns></returns>
+        Task<PagedResultDto<KqDetailEditDto>> GetPagedAsync(GetKqDetailInputDto input);
     }
 }

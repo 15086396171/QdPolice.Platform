@@ -3,7 +3,7 @@
 @using System.Web.UI.WebControls.Expressions
 @using Abp.Authorization
 @using Abp.Web.Mvc.Extensions
-@using Vickn.Platform.Attendances.Statisticls.Authorization;
+@using Vickn.Platform.Attendances.KqDetails.Authorization
 
 
 
@@ -12,12 +12,17 @@
         <div class="form-inline">
             <div class="form-group">
                 <label>@L("FilterText")</label>
-                <input type="text" placeholder="@L("User.Name")" class="form-control" id="filterText" style="width: 250px;" />
+                <input type="text" placeholder="@L("User.Name")" class="form-control" id="filterText" style="width: 150px;" />
+                
+                <label>@L("StartTime")</label>
+                <input type="text" Id="time1" class="form-control" style="width: 150px;" />
+                <label>@L("EndTime")</label>
+                <input type="text" Id="time2" class="form-control" style="width: 150px;" />
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
-                <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+                <button type="submit" class="btn btn-success"  ><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
 
-              
+
 
 
             </div>
@@ -33,7 +38,7 @@
                     <th>@L("QDTime")</th>
                     <th>@L("QDType")</th>
                     <th>@L("QDPosition")</th>
-                   
+
                 </tr>
             </thead>
             <tbody></tbody>
@@ -41,11 +46,18 @@
     </div>
 </div>
 
+
+
 @section styles{
 
+    <link href="~/Content/LayDate/theme/default/laydate.css" rel="stylesheet" />
 }
 
-@section scripts{
-    @Html.IncludeScript("~/Areas/KqShifts/Views/KqShift/index_js.js")
-}
+@section scripts
+{
 
+
+    <script src="~/Areas/KqDetails/Views/KqDetail/Index_js.js"></script>
+    <script src="~/Content/LayDate/laydate.js"></script>
+
+}

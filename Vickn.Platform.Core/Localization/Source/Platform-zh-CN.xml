@@ -257,8 +257,9 @@
     <text name="KqDetail" value="考勤流水" />
     <text name="QDTime" value="签到时间" />
     <text name="QDType" value="签到方式" />
-  
-  
+    <text name="QDPosition" value="签到位置" />
+    <text name="StartTime" value="开始时间" />
+    <text name="EndTime" value="终止时间" />
 
 
     <!-- 考勤管理 end-->

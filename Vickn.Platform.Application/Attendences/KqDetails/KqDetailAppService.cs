@@ -1,12 +1,23 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
+using System.Linq.Dynamic;
+using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
+using Abp.Authorization;
 using Abp.AutoMapper;
+using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
+using Abp.Extensions;
+using Abp.Linq.Extensions;
 using Vickn.Platform.Attendances.KQDetails;
 using Vickn.Platform.Attendances.KqMachines;
 using Vickn.Platform.Attendances.KqShifts;
 using Vickn.Platform.Attendences.KqDetails.Dtos;
+using Vickn.Platform.Attendences.KqMachines.Dtos;
+
 
 namespace Vickn.Platform.Attendences.KqDetails
 {
@@ -235,14 +246,35 @@ namespace Vickn.Platform.Attendences.KqDetails
 
         }
 
-        //public async Task<PagedResultDto<KqDetailEditDto>> GetPagedAsync(GetKqDetailInputDto input)
-        //{
-        //    var entity =
-        //        await _KqAllDeatilRepository.GetAllListAsync(
-        //            p => p.QDTime > input.StartTime && p.QDTime < input.EndTime);
 
-        //    return new {KqDetailForEidt= KqDetailForEidt }
-        //}
+        /// <summary>
+        /// 根据条件查询考勤Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<KqDetailEditDto>> GetPagedAsync(GetKqDetailInputDto input)
+        {
+
+            var query = _KqAllDeatilRepository.GetAll();
+
+            //TODO:根据传入的参数添加过滤条件
+            query = query.WhereIf(!input.UserName.IsNullOrEmpty(), p => p.UserName.Contains(input.UserName));
+
+            //query = query.Where(p => p.QDTime < input.EndTime && p.QDTime > input.StartTime);
+
+            var kqdetailCount = await query.CountAsync();
+
+            var kqdetails = await query.OrderBy(input.Sorting)
+                .PageBy(input).ToListAsync();
+
+            var KqDetailDtos = kqdetails.MapTo<List<KqDetailEditDto>>();
+
+            return new PagedResultDto<KqDetailEditDto>(
+                kqdetailCount,
+                KqDetailDtos
+            );
+
+        }
     }
 
 }

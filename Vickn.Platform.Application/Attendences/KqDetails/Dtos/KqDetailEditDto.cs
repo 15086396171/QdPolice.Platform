@@ -24,22 +24,26 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// <summary>
         /// 用户姓名
         /// </summary>
+        [DisplayName("姓名")]
         public string UserName { get; set; }
 
         /// <summary>
         /// 签到时间
         /// </summary>
+        [DisplayName("签到时间")]
         public DateTime QDTime { get; set; }
 
 
         /// <summary>
         /// 签到方式是否为NFC（NFC或微信扫码）
         /// </summary>
+        [DisplayName("签到方式")]
         public int IsNFC { get; set; }
 
         /// <summary>
         /// 签到地理位置
         /// </summary>
+        [DisplayName("地理位置")]
         public string QDPostion { get; set; }
     }
 }

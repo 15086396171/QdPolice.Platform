@@ -11,7 +11,7 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         public string UserName { get; set; }
 
         /// <summary>
-        /// 年月
+        /// 日期
         /// </summary>
         public string Date { get; set; }
         
