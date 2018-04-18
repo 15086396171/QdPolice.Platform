@@ -260,12 +260,18 @@ namespace Vickn.Platform.Attendences.KqDetails
             //TODO:根据传入的参数添加过滤条件
             query = query.WhereIf(!input.UserName.IsNullOrEmpty(), p => p.UserName.Contains(input.UserName));
 
-            //query = query.Where(p => p.QDTime < input.EndTime && p.QDTime > input.StartTime);
+            if (input.StartTime != null)
+            {
+                query = query.Where(p => p.QDTime < input.EndTime && p.QDTime > input.StartTime);
+            }
+           
 
             var kqdetailCount = await query.CountAsync();
 
             var kqdetails = await query.OrderBy(input.Sorting)
                 .PageBy(input).ToListAsync();
+
+           
 
             var KqDetailDtos = kqdetails.MapTo<List<KqDetailEditDto>>();
 

@@ -12,6 +12,7 @@ namespace Vickn.Platform.Web.Areas.KqDetails.Controllers
         // GET: KqDetails/KqDetail
         public ActionResult Index()
         {
+           
             return View();
         }
     }

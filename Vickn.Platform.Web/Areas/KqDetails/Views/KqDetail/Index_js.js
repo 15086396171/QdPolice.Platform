@@ -2,29 +2,27 @@
 
 function LayDate() {
     laydate.render({
-        elem: '#time1' //指定元素
+        elem: '#StartTime' //指定元素
   
     });
 
     laydate.render({
-        elem: '#time2' //指定元素
+        elem: '#EndTime' //指定元素
  
     });
 }
 
 
 
-(function () {
+
+
     $(function () {
+        LayDate();
+
         var $dataTable = $(".dataTable");
         var _kqdetailsService = abp.services.app.kqdetail;
 
-        var _permissions = {
-            create: abp.auth.hasPermission('Pages.KqShift.CreateKqShift'),
-            edit: abp.auth.hasPermission('Pages.KqShift.EditKqShift'),
-            del: abp.auth.hasPermission('Pages.KqShift.DeleteKqShift'),
-
-        };
+      
 
         var options = {
             listAction: {
@@ -32,81 +30,53 @@ function LayDate() {
 
                 filters: [
                     {
-                        key: "filterText",
-                        selector: $("#filterText")
+                        key: "UserName",
+                        selector: $("#UserName")
+                    },
+                    {
+                        key:  "StartTime",
+                        selector: $("#StartTime")
+                    },
+                    {
+                        key: "EndTime",
+                        selector: $("#EndTime")
                     },
                 ],
                 ingore: []
             },
 
             fileds: [
-                {
-                    "data": "id",
-                    render: function (data, type, row, meta) {
-                        return '<input type="checkbox" class="check-box" name="check-box" value="' + data + '">';
-                    }
-                },
+               
                 { "data": "userName" },
-                { "data": "qDTime" },
-                { "data": "isNFC" },-
-
-
-
-                //{ "data": "userName" },
-
-                //{ "data": "qDTime" },
-                //{ "data": "isNFC" },
-                //{ "data": "qDPostion" },
-
                 {
-                    "data": "id",
+                    "data": "qdTime",
                     render: function (data, type, row, meta) {
-                        var $div = $('<div></div>');
-
-                        //$('<a title="班次人员" href="javascript:;" class="m-l-xs nodecoration shiftuser"><i class="glyphicon glyphicon-user"></i> </a>')
-                        //    .appendTo($div);
-
-                        if (_permissions.edit) {
-
-                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
-                                .appendTo($div);
-                        }
-                        if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
-                                .appendTo($div);
-                        }
-                        return $div.html();
+                      
+                        if (data)
+                            return moment(data).format("YYYY-MM-DD HH:mm:ss");
+                        else return "";
                     }
-                }
-            ],
-            methods: [
-                {
-                    actionName: "editAction",
-                    url: abp.appPath + "KqShifts/KqShift/Create"
                 },
                 {
-                    actionName: "deleteAction",
-                    url: abp.appPath + "api/services/app/kqshift/deleteAsync"
-                }
-
-
-            ],
-            commonMethods: [
-                {
-                    actionName: "createAction",
-                    url: abp.appPath + "KqShifts/KqShift/Create"
+                    "data": "isNFC",
+                    render: function (data, type, row, meta) {
+                        if (data === "0") return "微信扫码签到";
+                        else if (data == "1") return "警务通签到";
+                        else return "门禁签到";
+                    }
                 },
-                {
-                    actionName: "batchAction",
-                    url: abp.appPath + "api/services/app/kqshift/batchDeleteAsync"
-                }
+                //{ "data": "qDPostion" }
+
+
+              
             ]
+           
+           
         };
         $dataTable.createDatatable(options);
 
         // TODO: 页面其他处理
 
     });
-})();
 
 
