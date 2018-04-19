@@ -1,111 +1,63 @@
-﻿using Abp.Domain.Repositories;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Linq.Dynamic;
 using System.Text;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.Authorization.Users;
+using Abp.AutoMapper;
+using Abp.Collections.Extensions;
+using Abp.Domain.Repositories;
+using Abp.Extensions;
+using Abp.Linq.Extensions;
+using Abp.Organizations;
 using Vickn.Platform.Attendances.KQDetails;
 using Vickn.Platform.Attendences.KqStatistics.Dtos;
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Attendences.KqStatistics
 {
     public class KqStatisticAppService : IKqStatisticAppService
     {
         private readonly IRepository<KqDetail> _KqDetailRepository;
+        private readonly IRepository<User, long> _Usersrepository;
+        private readonly IRepository<OrganizationUnit, long> _organizationUnitRepository;
+        private readonly IRepository<UserOrganizationUnit, long> _userOrganizationUnitRepository;
+        private IKqStatisticAppService _kqStatisticAppServiceImplementation;
 
-        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository)
+        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository, IRepository<User, long> Usersrepository, IRepository<OrganizationUnit, long> organizationUnitRepository, IRepository<UserOrganizationUnit, long> userOrganizationUnitRepository)
         {
             _KqDetailRepository = KqDetailRepository;
-        }
-
-
-        /// <summary>
-        /// 考勤统计DTo
-        /// </summary>
-        public async Task<List<KqStatisticEditDto>> GetKqStatisticAsync(GetKqStatisticInputDto input)
-        {
-            List<KqStatisticEditDto> KqRecordlist = new List<KqStatisticEditDto>();
-            if (input == null)
-            {
-                //默认查询当天的数据
-                var NowKqList = await _KqDetailRepository.GetAllListAsync(p => p.QDWorkTime > DateTime.Today);
-
-                for (int i = 0; i < NowKqList.Count(); i++)
-                {
-                    KqStatisticEditDto list = new KqStatisticEditDto();
-                    list.NormalDay = NowKqList[i].QDType == 0 ? 1 : 0;
-                    list.LateDay = NowKqList[i].QDType == 1 ? 1 : 0;
-                    list.LeaveEarlyDay = NowKqList[i].QDType == 2 ? 1 : 0;
-                    list.AbsenteeismDay = NowKqList[i].QDType == 3 ? 1 : 0;
-                    list.UserName = input.UserName;
-                    list.GroupName = "";
-                    KqRecordlist.Add(list);
-                }
-            }
-            else
-            {
-
-
-                if (!string.IsNullOrEmpty(input.UserName))
-                {
-                    var KqList = await _KqDetailRepository.GetAllListAsync(p => p.UserName == input.UserName || p.QDWorkTime < input.StartTime && p.QDWorkTime < input.EndTime);
-                    
-                    for (int i = 0; i < KqList.Count(); i++)
-                    {
-                        KqStatisticEditDto list = new KqStatisticEditDto();
-                        list.NormalDay = list.NormalDay;
-                        list.LateDay = KqList[i].QDType == 1 ? 1 : 0;
-                        list.LeaveEarlyDay = KqList[i].QDType == 2 ? 1 : 0;
-                        list.AbsenteeismDay = KqList[i].QDType == 3 ? 1 : 0;
-                        list.UserName = input.UserName;
-                        list.GroupName = "";
-                        KqRecordlist.Add(list);
-                    }
-                }
-
-                if (input.StartTime == null)
-                {
-                    var KqList = await _KqDetailRepository.GetAllListAsync(p => p.QDWorkTime < input.StartTime && p.QDWorkTime < input.EndTime);
-                    for (int i = 0; i < KqList.Count(); i++)
-                    {
-                        KqStatisticEditDto list = new KqStatisticEditDto();
-                        list.NormalDay = KqList[i].QDType == 0 ? 1 : 0;
-                        list.LateDay = KqList[i].QDType == 1 ? 1 : 0;
-                        list.LeaveEarlyDay = KqList[i].QDType == 2 ? 1 : 0;
-                        list.AbsenteeismDay = KqList[i].QDType == 3 ? 1 : 0;
-                        list.UserName = input.UserName;
-                        list.GroupName = "";
-                        KqRecordlist.Add(list);
-                    }
-                }
-
-
-
-            }
-
-
-
-
-            return KqRecordlist;
-
+            _Usersrepository = Usersrepository;
+            _organizationUnitRepository = organizationUnitRepository;
+            _userOrganizationUnitRepository = userOrganizationUnitRepository;
         }
 
 
 
+
+
         /// <summary>
-        /// app获取考勤Dto
+        /// app获取考勤Dto(一个月)
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         public async Task<List<KqAppResultYMdDto>> GetAppKqStatisticAsync(GetKqStatisticAppDto input)
         {
             var StartTime = input.Date + "/01 00:00:00";
+
             DateTime StartTimes = Convert.ToDateTime(StartTime);
+
             DateTime EndTimes = StartTimes.AddMonths(1).AddHours(-1);
+
             var entity = await _KqDetailRepository.GetAllListAsync(p =>
                 p.UserName == input.UserName && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
 
             List<KqAppResultYMdDto> kqList = new List<KqAppResultYMdDto>();
+
             for (int i = 0; i < entity.Count(); i++)
             {
                 KqAppResultYMdDto list = new KqAppResultYMdDto();
@@ -130,34 +82,274 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 }
 
                 kqList.Add(list);
-                
+
             }
 
             return kqList;
         }
 
+        /// <summary>
+        /// app获取考勤Dto（一天）
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
         public async Task<List<KqStatisticYMdDto>> GetAppKqRecordAsync(GetKqStatisticAppDto input)
         {
             var StartTime = input.Date + " 00:00:00";
+
             DateTime StartTimes = Convert.ToDateTime(StartTime);
+
             DateTime EndTimes = StartTimes.AddDays(1).AddSeconds(-1);
+
             var entity = await _KqDetailRepository.GetAllListAsync(p =>
                 p.UserName == input.UserName && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
-
             List<KqStatisticYMdDto> kqList = new List<KqStatisticYMdDto>();
+            var listcount = entity.Count();
+            if (listcount != 0)
+            {
+
+                KqStatisticYMdDto list = new KqStatisticYMdDto();
+                list.DateWork = entity[0].QDWorkTime.ToString("HH:mm:ss");
+                list.DateColsing = entity[0].QDClosingTime.ToString("HH:mm:ss");
+                kqList.Add(list);
+
+            }
+            else
+            {
+
+                KqStatisticYMdDto list = new KqStatisticYMdDto();
+                list.DateWork = "--:--:--";
+                list.DateColsing = "--:--:--";
+
+                kqList.Add(list);
+            }
+
+
+            return kqList;
+        }
+
+
+        /// <summary>
+        /// 根据条件查询考勤Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<PagedResultDto<KqStatisicListDto>> GetKqStatisticAsync(GetKqStatisticInputDto input)
+        {
+            //判断时间是否为null
+            if (input.EndTime == null || input.StartTime == null)
+            {
+                input.StartTime = input.EndTime = null;
+            }
+            else
+            {
+                input.EndTime.Value.AddDays(1);
+            }
+
+            #region 查询条件判断
+
+            List<KqDetail> entity = new List<KqDetail>();
+            if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
+            {
+                entity = _KqDetailRepository.GetAllList(p =>
+                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName == input.UserName);
+            }
+            else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
+            {
+                if (input.StartTime != null && input.EndTime != null)
+                {
+
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                }
+                else
+                {
+                    entity = _KqDetailRepository.GetAllList(p => p.UserName == input.UserName);
+                }
+
+
+            }
+            else
+            {
+                entity = _KqDetailRepository.GetAllList();
+            }
+
+            #endregion
+
+            #region 统计整理考勤数据
+
+            List<KqStatisicListDto> KqStatisticList = new List<KqStatisicListDto>();
+            for (int i = 0; i < entity.ToList().Count(); i++)
+            {
+                KqStatisicListDto list = new KqStatisicListDto();
+                if (i == 0)
+                {
+                    int count = entity.Count() - 1;
+                    if (count != i)
+                    {
+
+                    }
+                    else
+                    {
+                        list.UserName = entity.ToList()[i].UserName;
+                        var userName = entity.ToList()[i].UserName;
+
+                        long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+                        long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+                        list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+                        list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+                        list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+                        list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+                        list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+                        KqStatisticList.Add(list);
+                    }
+                }
+                else
+                {
+                    int count = entity.Count() - 1;
+                    if (i != count)
+                    {
+                        if (entity.ToList()[i].UserName != entity.ToList()[i + 1].UserName)
+                        {
+                            list.UserName = entity.ToList()[i].UserName;
+                            var userName = entity.ToList()[i].UserName;
+
+                            long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+                            long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+                            list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+                            list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+                            list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+                            list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+                            list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+                            KqStatisticList.Add(list);
+                        }
+
+                    }
+                    else
+                    {
+                        list.UserName = entity.ToList()[i].UserName;
+                        var userName = entity.ToList()[i].UserName;
+
+                        long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+                        long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+                        list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+                        list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+                        list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+                        list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+                        list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+                        KqStatisticList.Add(list);
+                    }
+
+                }
+
+
+            }
+
+            #endregion
+
+
+
+            ////TODO:根据传入的参数添加过滤条件
+            int kqStatisticCount = KqStatisticList.Count();
+            var kqStatisticL = KqStatisticList.OrderBy(p => p.UserName).ToList();
+            var KqStatistics = kqStatisticL.MapTo<List<KqStatisicListDto>>();
+            return new PagedResultDto<KqStatisicListDto>(kqStatisticCount, kqStatisticL);
+
+
+        }
+
+        /// <summary>
+        /// 根据用户姓名条件查该用户考勤明细Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+
+        public async Task<PagedResultDto<KqDetailStatisticListDto>> GetKqDetailStatisticAsync(GetKqStatisticInputDto input)
+        {
+            //判断时间是否为null
+            if (input.EndTime == null || input.StartTime == null)
+            {
+                input.StartTime = input.EndTime = null;
+            }
+            else
+            {
+                input.EndTime.Value.AddDays(1);
+            }
+
+            #region 查询条件判断
+
+            List<KqDetail> entity = new List<KqDetail>();
+            if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
+            {
+                entity = _KqDetailRepository.GetAllList(p =>
+                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName == input.UserName);
+            }
+            else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
+            {
+                if (input.StartTime != null && input.EndTime != null)
+                {
+
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                }
+                else
+                {
+                    entity = _KqDetailRepository.GetAllList(p => p.UserName == input.UserName);
+                }
+
+
+            }
+            else
+            {
+                entity = _KqDetailRepository.GetAllList();
+            }
+
+            #endregion
+
+
+
+
+
+
+
+            List<KqDetailStatisticListDto> kqList = new List<KqDetailStatisticListDto>();
+
             for (int i = 0; i < entity.Count(); i++)
             {
-                KqStatisticYMdDto list = new KqStatisticYMdDto();
-               
+                KqDetailStatisticListDto list = new KqDetailStatisticListDto();
+                list.UserName = entity[i].UserName;
+                list.DateYMD = entity[i].QDWorkTime.ToString("yyyy-MM-dd");
                 list.DateWork = entity[i].QDWorkTime.ToString("HH:mm:ss");
                 list.DateColsing = entity[i].QDClosingTime.ToString("HH:mm:ss");
-               
+                if (entity[i].QDType == 0)
+                {
+                    list.QDType = "正常";
+                }
+                if (entity[i].QDType == 1)
+                {
+                    list.QDType = "迟到";
+                }
+                if (entity[i].QDType == 2)
+                {
+                    list.QDType = "早退";
+                }
+                if (entity[i].QDType == 3)
+                {
+                    list.QDType = "缺勤";
+                }
 
                 kqList.Add(list);
 
             }
 
-            return kqList;
+
+
+
+
+
+            ////TODO:根据传入的参数添加过滤条件
+            int kqStatisticCount = kqList.Count();
+            var kqStatisticL = kqList.OrderBy(p => p.UserName).ToList();
+            var KqStatistics = kqStatisticL.MapTo<List<KqDetailStatisticListDto>>();
+            return new PagedResultDto<KqDetailStatisticListDto>(kqStatisticCount, kqStatisticL);
         }
     }
 }

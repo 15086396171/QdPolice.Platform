@@ -333,6 +333,7 @@
     <Content Include="Areas\KqMachines\Views\KqMachine\Index_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Create_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail_js.js" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Index_js.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
@@ -1115,6 +1116,7 @@
     <Content Include="Areas\KqDetails\Views\KqDetail\_ViewStart.cshtml" />
     <Content Include="Areas\KqDetails\Views\web.config" />
     <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1552,6 +1554,7 @@
     <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.ui.js" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\pscp.exe" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\putty.exe" />
+    <Content Include="Update\KqApp\kqAppUpdate.xml" />
     <Content Include="Update\update.xml" />
     <Content Include="Views\Account\Login.css">
       <DependentUpon>Login.less</DependentUpon>
@@ -1713,6 +1716,7 @@
     <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
     <Content Include="Update\Police.apk" />
     <Content Include="Template\导入模版.xlsx" />
+    <Content Include="Update\KqApp\kqApp.apk" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

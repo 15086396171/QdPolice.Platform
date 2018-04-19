@@ -261,7 +261,11 @@
     <text name="StartTime" value="开始时间" />
     <text name="EndTime" value="终止时间" />
 
+    <text name="QDTypes" value="签到类型" />
+    <text name="QDDate" value="签到日期" />
 
+    <text name="KqMonth" value="考勤月统计" />
+    <text name="KqYear" value="考勤年统计" />
     <!-- 考勤管理 end-->
   </texts>
 </localizationDictionary>

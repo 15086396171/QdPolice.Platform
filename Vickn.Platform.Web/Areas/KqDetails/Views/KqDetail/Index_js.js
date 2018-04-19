@@ -1,23 +1,10 @@
 ﻿
 
-function LayDate() {
-    laydate.render({
-        elem: '#StartTime' //指定元素
-  
-    });
-
-    laydate.render({
-        elem: '#EndTime' //指定元素
- 
-    });
-}
-
-
 
 
 
     $(function () {
-        LayDate();
+
 
         var $dataTable = $(".dataTable");
         var _kqdetailsService = abp.services.app.kqdetail;
@@ -60,11 +47,11 @@ function LayDate() {
                 {
                     "data": "isNFC",
                     render: function (data, type, row, meta) {
-                        if (data === "0") return "微信扫码签到";
+                        if (data == "0") return "微信扫码签到";
                         else if (data == "1") return "警务通签到";
                         else return "门禁签到";
                     }
-                },
+                }
                 //{ "data": "qDPostion" }
 
 
