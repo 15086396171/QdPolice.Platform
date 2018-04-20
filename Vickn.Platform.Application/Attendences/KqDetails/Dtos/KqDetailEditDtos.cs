@@ -39,6 +39,6 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// <summary>
         /// 考勤班次Id
         /// </summary>
-        public long KqShiftId { get; set; }
+        public long? KqShiftId { get; set; }
     }
 }

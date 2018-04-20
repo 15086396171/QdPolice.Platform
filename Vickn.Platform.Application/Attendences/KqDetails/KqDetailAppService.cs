@@ -52,26 +52,38 @@ namespace Vickn.Platform.Attendences.KqDetails
             await _KqAllDeatilRepository.InsertAsync(entity);
             #endregion
 
-            #region 查看此用户是否有所属的考勤班次
-            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.User.UserName == NowUserName);
+            #region 查看此用户是否有绑定的考勤班次
+            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == user.Id);
             if (KqShiftUser == null)
             {
-                var LogContent = NowUserName + "没有绑定考勤班次.";
+                var LogContent = NowUserName + "用户,目前还没有绑定考勤班次.";
                 Logger.Info(LogContent);
+
+
             }
+
             else
             {
-                var KqShiftId = KqShiftUser.KqShiftId;
+                var IsKqShift = await _KqShiftRepository.FirstOrDefaultAsync(p => p.Id == KqShiftUser.KqShiftId);
+                if (IsKqShift == null)
+                {
+                    var LogContent2 = NowUserName + "用户,目前还没有绑定考勤班次.";
+                    Logger.Info(LogContent2);
+                }
+                else
+                {
+                    KqDetailEditDtos KqDetaillist = new KqDetailEditDtos();
+                    KqDetaillist.UserName = NowUserName;
+                    KqDetaillist.IsNFC = input.isNFC;
+                    KqDetaillist.QDPostion = "";
+                    KqDetaillist.QDTime = NowTime;
+                    KqDetaillist.KqShiftId = KqShiftUser.KqShiftId;
 
-                KqDetailEditDtos KqDetaillist = new KqDetailEditDtos();
-                KqDetaillist.UserName = NowUserName;
-                KqDetaillist.IsNFC = input.isNFC;
-                KqDetaillist.QDPostion = "";
-                KqDetaillist.QDTime = NowTime;
-                KqDetaillist.KqShiftId =KqShiftId ;
+                    //新增或修改此用户当天的考勤记录
+                    await CreateOrUpdateAsync(KqDetaillist);
+                }
 
-                //新增或修改此用户当天的考勤记录
-                await CreateOrUpdateAsync(KqDetaillist);
+
             }
             #endregion
 
@@ -101,7 +113,7 @@ namespace Vickn.Platform.Attendences.KqDetails
             }
             else
             {
-                await UpdateAsync(entity.Id,input);
+                await UpdateAsync(entity.Id, input);
             }
         }
 
@@ -113,7 +125,7 @@ namespace Vickn.Platform.Attendences.KqDetails
         public async Task CreateAsync(KqDetailEditDtos input)
         {
 
-           
+
             //不同打卡方式(IsNFC(微信扫码：0，警务通NFC：1，门禁：2))
             if (input.IsNFC == 0)
             {
@@ -121,7 +133,7 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
             }
-           
+
             else if (input.IsNFC == 1)
             {
                 KqRecordEditDto kqrecord = new KqRecordEditDto();
@@ -137,7 +149,7 @@ namespace Vickn.Platform.Attendences.KqDetails
                 await _KqDetailRepository.InsertAsync(kqrecordDto);
 
             }
-            
+
             else
             {
                 //此功能暂不考虑
@@ -157,8 +169,12 @@ namespace Vickn.Platform.Attendences.KqDetails
 
             //获得用户班次信息
             var KqShift = await _KqShiftRepository.FirstOrDefaultAsync(p => p.Id == input.KqShiftId);
-            var workTime = KqShift.WorkTime;
-            var closingTime = KqShift.ClosingTime;
+
+            string NowYMD = DateTime.Now.ToString("yyyy/MM/dd");
+            //班次上班时间
+            DateTime TodayWorkTime = Convert.ToDateTime(NowYMD + " " + KqShift.WorkTime + ":00");
+            //班次下班时间
+            DateTime TodayClosingTime = Convert.ToDateTime(NowYMD + " " + KqShift.ClosingTime + ":00");
 
             //获得用户今天打卡记录信息
             var KqRecordDto = await _KqDetailRepository.FirstOrDefaultAsync(p => p.Id == KqRecordId);
@@ -166,43 +182,57 @@ namespace Vickn.Platform.Attendences.KqDetails
             #region 不同打卡方式(微信扫码：0，警务通NFC：1，门禁：2)
             //微信打卡
             if (input.IsNFC == 0)
-                {
-                    //根据用户使用微信打卡离设定打卡二维码之间的距离是否超过50m，来判断打卡是否有效
-
-
-                }
-                //警务通NFC打卡
-                else if (input.IsNFC == 1)
-                {
-                    KqRecordEditDto kqrecord = new KqRecordEditDto();
-                    //kqrecord.UserName = input.UserName;
-                    //kqrecord.IsNFC = input.IsNFC;
-                    //kqrecord.KQMachineNo = "";
-                    //kqrecord.Remark = "";
-                    //kqrecord.QDWorkTime = DateTime.Now;
-                    //kqrecord.QDClosingTime = null;
-                    //kqrecord.QDType = null;
-
-                    //第一次打卡时间
-                    var QDWorkTime = KqRecordDto.QDWorkTime.ToString("HH:mm:ss");
-
-                    //if (KqRecordDto.QDWorkTime>KqShift.WorkTime)
-
-                    var kqrecordDto = kqrecord.MapTo<KqDetail>();
-                    await _KqDetailRepository.UpdateAsync(kqrecordDto);
-
-                }
-                //门禁打卡
-                else
-                {
-                    //此功能暂不考虑
-                }
-
-                #endregion
-
+            {
+                //根据用户使用微信打卡离设定打卡二维码之间的距离是否超过50m，来判断打卡是否有效
 
 
             }
+            //警务通NFC打卡
+            else if (input.IsNFC == 1)
+            {
+
+                //签到类型（QDType（正常：0，迟到：1，早退：2，缺勤：3，请假：4）），
+                //当第一次打卡时间超过班次上班打卡时间
+                if (KqRecordDto.QDWorkTime > TodayWorkTime)
+                {
+                    //当第一次打卡时间超过班次下班打卡时间
+                    if (KqRecordDto.QDWorkTime > TodayClosingTime)
+                    {
+
+                        KqRecordDto.QDType = 3;
+                    }
+                    else
+                    {
+                        KqRecordDto.QDClosingTime = DateTime.Now;
+                        KqRecordDto.QDType = 1;
+                    }
+                }
+                else
+                {
+                    KqRecordDto.QDClosingTime = DateTime.Now;
+                    if (KqRecordDto.QDClosingTime < TodayClosingTime)
+                    {
+                        KqRecordDto.QDType = 2;
+                    }
+                    else
+                    {
+                        KqRecordDto.QDType = 0;
+                    }
+                }
+                await _KqDetailRepository.UpdateAsync(KqRecordDto);
+
+            }
+            //门禁打卡
+            else
+            {
+                //此功能暂不考虑
+            }
+
+            #endregion
+
+
+
         }
-    
+    }
+
 }

@@ -49,6 +49,11 @@ namespace Vickn.Platform.Api.Controllers
                 loginModel.TenancyName
                 );
 
+            if (loginModel.DeviceLoginModel==null)
+            {
+                return new AjaxResponse(true);
+            }
+
             var deviceLoginResult = await DeviceLogin(loginModel, loginResult);
 
             loginResult.Identity.AddClaim(new Claim("DeviceId", deviceLoginResult.Device.Id.ToString()));
@@ -57,6 +62,7 @@ namespace Vickn.Platform.Api.Controllers
             var currentUtc = new SystemClock().UtcNow;
             ticket.Properties.IssuedUtc = currentUtc;
             ticket.Properties.ExpiresUtc = currentUtc.Add(TimeSpan.FromDays(100));
+
 
             return new AjaxResponse(OAuthBearerOptions.AccessTokenFormat.Protect(ticket));
         }
