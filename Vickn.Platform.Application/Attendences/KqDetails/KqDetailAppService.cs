@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Domain.Repositories;
 using Vickn.Platform.Attendances.KQDetails;
@@ -198,7 +199,7 @@ namespace Vickn.Platform.Attendences.KqDetails
                     //当第一次打卡时间超过班次下班打卡时间
                     if (KqRecordDto.QDWorkTime > TodayClosingTime)
                     {
-
+                        KqRecordDto.QDClosingTime = DateTime.Now;
                         KqRecordDto.QDType = 3;
                     }
                     else
@@ -233,6 +234,15 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
         }
+
+        //public async Task<PagedResultDto<KqDetailEditDto>> GetPagedAsync(GetKqDetailInputDto input)
+        //{
+        //    var entity =
+        //        await _KqAllDeatilRepository.GetAllListAsync(
+        //            p => p.QDTime > input.StartTime && p.QDTime < input.EndTime);
+
+        //    return new {KqDetailForEidt= KqDetailForEidt }
+        //}
     }
 
 }

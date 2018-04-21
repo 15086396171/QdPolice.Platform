@@ -332,6 +332,7 @@
     <Content Include="Areas\KqMachines\Views\KqMachine\Index_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Create_js.js" />
     <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Index_js.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
     <Content Include="Assets\build\check-versions.js" />
@@ -1107,6 +1108,12 @@
     <Content Include="Areas\KqMachines\Views\KqMachine\Index.cshtml" />
     <Content Include="Areas\KqMachines\Views\web.config" />
     <Content Include="Areas\KqMachines\Views\KqMachine\Create.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\_ViewStart.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\web.config" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Index.cshtml" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\_ViewStart.cshtml" />
+    <Content Include="Areas\KqDetails\Views\web.config" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1603,10 +1610,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
     <Compile Include="Areas\Devices\Models\OnlineUser.cs" />
+    <Compile Include="Areas\KqDetails\Controllers\KqDetailController.cs" />
+    <Compile Include="Areas\KqDetails\KqDetailsAreaRegistration.cs" />
     <Compile Include="Areas\KqMachines\Controllers\KqMachineController.cs" />
     <Compile Include="Areas\KqMachines\KqMachinesAreaRegistration.cs" />
     <Compile Include="Areas\KqShifts\Controllers\KqShiftController.cs" />
     <Compile Include="Areas\KqShifts\KqShiftsAreaRegistration.cs" />
+    <Compile Include="Areas\KqStatistics\Controllers\KqStatisticController.cs" />
+    <Compile Include="Areas\KqStatistics\KqStatisticsAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
@@ -1747,10 +1758,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\KqDetails\Models\" />
+    <Folder Include="Areas\KqDetails\Views\Shared\" />
     <Folder Include="Areas\KqMachines\Models\" />
     <Folder Include="Areas\KqMachines\Views\Shared\" />
     <Folder Include="Areas\KqShifts\Models\" />
     <Folder Include="Areas\KqShifts\Views\Shared\" />
+    <Folder Include="Areas\KqStatistics\Models\" />
+    <Folder Include="Areas\KqStatistics\Views\Shared\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />

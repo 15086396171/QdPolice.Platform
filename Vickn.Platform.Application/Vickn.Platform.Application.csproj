@@ -181,6 +181,7 @@
     <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
     <Compile Include="Announcements\Dtos\GetLastAnnouncentInput.cs" />
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\GetKqDetailInputDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDto.cs" />
     <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDtos.cs" />
@@ -204,6 +205,13 @@
     <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserForEidt.cs" />
     <Compile Include="Attendences\KqShifts\IKqShiftAppService.cs" />
     <Compile Include="Attendences\KqShifts\KqShiftAppService.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticInputDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticAppDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqStatisticEditDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqAppResultYMdDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqStatisticYMdDto.cs" />
+    <Compile Include="Attendences\KqStatistics\IKqStatisticAppService.cs" />
+    <Compile Include="Attendences\KqStatistics\KqStatisticAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ExitGroupInput.cs" />

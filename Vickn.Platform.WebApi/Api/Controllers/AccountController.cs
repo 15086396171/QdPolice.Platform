@@ -49,14 +49,20 @@ namespace Vickn.Platform.Api.Controllers
                 loginModel.TenancyName
                 );
 
-            if (loginModel.DeviceLoginModel==null)
+            Logger.Info("来自考勤app的登陆请求");
+            if (loginModel.LoginType == "Kq")
             {
-                return new AjaxResponse(true);
+                
+
+            }
+            else
+            {
+                var deviceLoginResult = await DeviceLogin(loginModel, loginResult);
+
+                loginResult.Identity.AddClaim(new Claim("DeviceId", deviceLoginResult.Device.Id.ToString()));
             }
 
-            var deviceLoginResult = await DeviceLogin(loginModel, loginResult);
-
-            loginResult.Identity.AddClaim(new Claim("DeviceId", deviceLoginResult.Device.Id.ToString()));
+           
             var ticket = new AuthenticationTicket(loginResult.Identity, new AuthenticationProperties());
 
             var currentUtc = new SystemClock().UtcNow;

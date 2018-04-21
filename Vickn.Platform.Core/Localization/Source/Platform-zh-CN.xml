@@ -240,12 +240,27 @@
     <text name="KqMachine.KQMachinePosition" value="考勤机位置" />
     <text name="Remark" value="备注" />
 
-   
     <text name="KqMachine" value="考勤机管理" />
     <text name="CreateKqMachine" value="添加考勤机" />
     <text name="EditKqMachine" value="编辑考勤机" />
     <text name="DeleteKqMachine" value="删除考勤机" />
-   
+
+    <!--//考勤统计-->
+    <text name="KqStatistic" value="考勤信息统计管理" />
+    <text name="GroupName" value="所属部门" />
+    <text name="Normal.days" value="正常天数" />
+    <text name="Late.days" value="迟到天数" />
+    <text name="LeaveEarly.days" value="早退天数" />
+    <text name="Absenteeism.days" value="缺勤天数" />
+
+    <!--//考勤明细-->
+    <text name="KqDetail" value="考勤流水" />
+    <text name="QDTime" value="签到时间" />
+    <text name="QDType" value="签到方式" />
+  
+  
+
+
     <!-- 考勤管理 end-->
   </texts>
 </localizationDictionary>

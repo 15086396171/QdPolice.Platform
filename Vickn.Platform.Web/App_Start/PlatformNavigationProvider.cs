@@ -1,9 +1,11 @@
 ﻿using Abp.Application.Navigation;
 using Abp.Localization;
 using Vickn.Platform.Announcements.Authorization;
+using Vickn.Platform.Attendances.KqDetails.Authorization;
 using Vickn.Platform.Attendances.KqMachines;
 using Vickn.Platform.Attendances.KqMachines.Authorization;
 using Vickn.Platform.Attendances.KqShifts.Authorization;
+using Vickn.Platform.Attendances.Statisticls.Authorization;
 using Vickn.Platform.AuditLogs.Authorization;
 using Vickn.Platform.Authorization;
 using Vickn.Platform.Authorization.Roles.Authorization;
@@ -44,10 +46,24 @@ namespace Vickn.Platform.Web
                 icon: "icon-grid",
             requiredPermissionName: KqMachineAppPermissions.KqMachine);
 
+            //考勤统计信息（二级菜单）
+            var kqstatistics = new MenuItemDefinition(KqStatisticAppPermissions.KqStatistic, L("KqStatistic"),
+                url: "KqStatistics/KqStatistic",
+                icon: "icon-grid",
+                requiredPermissionName: KqStatisticAppPermissions.KqStatistic);
+
+            //考勤明细信息（二级菜单）
+            var kqdetails = new MenuItemDefinition(KqDetailAppPermissions.KqDetail, L("KqDetail"),
+                url: "KqDetails/KqDetail",
+                icon: "icon-grid",
+                requiredPermissionName: KqDetailAppPermissions.KqDetail);
+
 
             //考勤管理增加二级菜单
             attendance.AddItem(kqshift) //考勤班次
-                      .AddItem(kqmachine);//考勤机信息
+                .AddItem(kqmachine) //考勤机信息
+                .AddItem(kqstatistics) //考勤机信息
+                .AddItem(kqdetails);//考勤明细
 
 
             //手持终端管理（一级菜单）
@@ -155,7 +171,7 @@ namespace Vickn.Platform.Web
                         ))
                         )
 
-                //                        .AddItem(
+                //  .AddItem(
                 //new MenuItemDefinition(
                 //    "DatatableApi",
                 //    L("DatatableApi"),

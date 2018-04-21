@@ -33,7 +33,7 @@ namespace Vickn.Platform.Attendances.KQDetails
         /// 下班签到时间
         /// </summary>
         
-        public DateTime? QDClosingTime { get; set; }
+        public DateTime QDClosingTime { get; set; }
 
         /// <summary>
         /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4）

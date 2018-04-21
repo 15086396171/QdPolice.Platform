@@ -9,7 +9,7 @@ namespace Vickn.Platform.Attendances.KqMachines.Authorization
     public static class KqMachineAppPermissions
     {
         /// <summary>
-        /// 考勤机管理创建权限
+        /// 考勤机管理查看权限
         /// </summary>
         public const string KqMachine = "Page.KqMachine";
 
