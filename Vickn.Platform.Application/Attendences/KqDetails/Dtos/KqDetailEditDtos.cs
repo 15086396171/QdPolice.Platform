@@ -37,8 +37,14 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public string QDPostion { get; set; }
 
         /// <summary>
+        /// 外出事由
+        /// </summary>
+        public string OutgoingCause { get; set; }
+
+        /// <summary>
         /// 考勤班次Id
         /// </summary>
         public long? KqShiftId { get; set; }
+
     }
 }

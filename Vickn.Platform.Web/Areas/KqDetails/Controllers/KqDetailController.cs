@@ -20,5 +20,7 @@ namespace Vickn.Platform.Web.Areas.KqDetails.Controllers
             ViewBag.EndTime = d2.ToString("yyyy-MM-dd");
             return View();
         }
+
+       
     }
 }

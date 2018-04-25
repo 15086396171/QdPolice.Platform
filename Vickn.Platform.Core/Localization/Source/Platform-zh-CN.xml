@@ -262,10 +262,14 @@
     <text name="QDPosition" value="签到位置" />
     <text name="StartTime" value="开始时间" />
     <text name="EndTime" value="终止时间" />
+    <text name="OutgoingCauseWork" value="上班外出事由" />
+    <text name="OutgoingCauseClosing" value="下班外出事由" />
+    <text name="QDPostionWork" value="上班打卡位置" />
+    <text name="QDPostionClosing" value="下班打卡位置" />
 
     <text name="QDTypes" value="签到类型" />
     <text name="QDDate" value="签到日期" />
-
+    
     <text name="KqWeek" value="考勤周统计" />
     <text name="KqMonth" value="考勤月统计" />
     <text name="KqYear" value="考勤年统计" />

@@ -16,9 +16,9 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// </summary>
         public string UserName { get; set; }
         /// <summary>
-        /// 部门名称
+        /// 考勤班次名称
         /// </summary>
-        public string GroupName { get; set; }
+        public string KqShiftName { get; set; }
         /// <summary>
         /// 正常天数
         /// </summary>

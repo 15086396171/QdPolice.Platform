@@ -24,17 +24,17 @@ namespace Vickn.Platform.Attendences.KqShifts
     /// </summary>
     public class KqShiftAppService : PlatformAppServiceBase, IKqShiftAppService
     {
-      
-
 
         private readonly IRepository<KqShift,long> _KqShiftRepository;
+        private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
 
         /// <summary>
         /// 初始化考勤班次服务实例
         /// </summary>
-        public KqShiftAppService(IRepository<KqShift,long> KqShiftRepository)
+        public KqShiftAppService(IRepository<KqShift,long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository)
         {
             _KqShiftRepository = KqShiftRepository;
+            _KqShiftUserRepository = KqShiftUserRepository;
         }
 
 
@@ -59,6 +59,9 @@ namespace Vickn.Platform.Attendences.KqShifts
         public async Task DeleteAsync(EntityDto<long> input)
         {
             await _KqShiftRepository.DeleteAsync(input.Id);
+            await _KqShiftUserRepository.DeleteAsync(p => p.KqShiftId == input.Id);
+
+
         }
 
         /// <summary>
@@ -66,7 +69,8 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// </summary>
         public async Task BatchDeleteAsync(List<long> input)
         {
-            await _KqShiftRepository.DeleteAsync(s => input.Contains(s.Id));
+            await _KqShiftRepository.DeleteAsync(p => input.Contains(p.Id));
+            await _KqShiftUserRepository.DeleteAsync(p => input.Contains(p.KqShiftId));
         }
 
         /// <summary>

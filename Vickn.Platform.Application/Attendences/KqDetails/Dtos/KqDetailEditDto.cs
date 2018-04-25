@@ -45,5 +45,11 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// </summary>
         [DisplayName("地理位置")]
         public string QDPostion { get; set; }
+
+        /// <summary>
+        /// 外出事由
+        /// </summary>
+        [DisplayName("外出事由")]
+        public string OutgoingCause { get; set; }
     }
 }

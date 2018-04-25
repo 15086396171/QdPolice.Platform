@@ -28,8 +28,11 @@ $(function () {
         fileds: [
             { "data": "userName" },
             { "data": "dateYMD" },
-            { "data": "dateWork" },
+            { "data": "outgoingCauseWork" },
+            { "data": "qdPostionWork" },
             { "data": "dateColsing" },
+            { "data": "outgoingCauseClosing" },
+            { "data": "qdPostionClosing" },
             { "data": "qdType" }
 
 

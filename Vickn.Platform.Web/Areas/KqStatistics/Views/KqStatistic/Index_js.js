@@ -99,7 +99,7 @@ function DataList() {
 
         fileds: [
             { "data": "userName" },
-            { "data": "groupName" },
+            { "data": "kqShiftName" },
             { "data": "normalDay" },
             { "data": "lateDay" },
             { "data": "leaveEarlyDay" },
@@ -110,6 +110,7 @@ function DataList() {
                 "data": "id",
                 render: function (data, type, row, meta) {
                     var $div = $('<div></div>');
+                 
 
                     $('<a title="查看" href="javascript:;" class="m-l-xs nodecoration details" data-title="查看" ><i class="glyphicon glyphicon-search"></i> </a>')
                         .appendTo($div);

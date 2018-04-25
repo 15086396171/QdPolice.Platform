@@ -1015,6 +1015,9 @@
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Images\KqDK\logo.png" />
+    <Content Include="Images\KqDK\pw.png" />
+    <Content Include="Images\KqDK\user.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\Login\log-in-wp宁夏.jpg" />
     <Content Include="Images\Login\pwd.png" />
@@ -1587,6 +1590,7 @@
     <Content Include="js\datatable.extend.js" />
     <Content Include="Views\Users\Index.js" />
     <Content Include="Views\Users\ChangeProfilePic.js" />
+    <Content Include="Views\WeiXingDK\Login_js.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1643,6 +1647,7 @@
     <Compile Include="Controllers\SignalrTestController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WeiXingDKController.cs" />
     <Compile Include="Models\Account\ResetPasswordFormViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\FileRecord\FileUploadViewModel.cs" />
@@ -1727,6 +1732,8 @@
     <Content Include="Views\Users\ChangeProfilePic.cshtml" />
     <Content Include="Views\Users\Test.cshtml" />
     <Content Include="Views\SignalrTest\Index.cshtml" />
+    <Content Include="Views\WeiXingDK\Index.cshtml" />
+    <Content Include="Views\WeiXingDK\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

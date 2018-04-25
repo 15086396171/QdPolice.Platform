@@ -33,9 +33,30 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public string KQMachineNo { get; set; }
 
         /// <summary>
+        /// 上班签到方式是否为NFC（NFC或微信扫码）
+        /// </summary>
+        public int? IsNFCWork { get; set; }
+
+        /// <summary>
         /// 上班签到时间
         /// </summary>
         public DateTime QDWorkTime { get; set; }
+
+        /// <summary>
+        /// 上班签到地理位置
+        /// </summary>
+        public string QDPostionWork { get; set; }
+
+        /// <summary>
+        /// 上班外出事由
+        /// </summary>
+     
+        public string OutgoingCauseWork { get; set; }
+
+        /// <summary>
+        /// 下班签到方式是否为NFC（NFC或微信扫码）
+        /// </summary>
+        public int? IsNFCClosing { get; set; }
 
         /// <summary>
         /// 下班签到时间
@@ -43,16 +64,22 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public DateTime? QDClosingTime { get; set; }
 
         /// <summary>
+        /// 下班签到地理位置
+        /// </summary>
+        public string QDPostionClosing { get; set; }
+
+        /// <summary>
+        /// 下班外出事由
+        /// </summary>
+      
+        public string OutgoingCauseClosing { get; set; }
+
+        /// <summary>
         /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4，异常：5）
         /// </summary>
         public int? QDType { get; set; }
 
-        /// <summary>
-        /// 签到方式是否为NFC（NFC或微信扫码）
-        /// </summary>
-        public int? IsNFC { get; set; }
-
-
+        
 
         /// <summary>
         /// 备注

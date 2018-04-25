@@ -30,5 +30,12 @@ namespace Vickn.Platform.Attendances.KQDetails
         /// 签到地理位置
         /// </summary>
         public string QDPostion { get; set; }
+
+        /// <summary>
+        /// 外出事由
+        /// </summary>
+        public string OutgoingCause { get; set; }
+
+        
     }
 }
