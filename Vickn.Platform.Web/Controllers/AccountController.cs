@@ -28,6 +28,8 @@ using Vickn.Platform.Web.Models.Account;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using System.Text;
+using Newtonsoft.Json;
 
 namespace Vickn.Platform.Web.Controllers
 {
@@ -108,6 +110,16 @@ namespace Vickn.Platform.Web.Controllers
             //    });
             //}
 
+            if (loginModel.TenancyName == "Kq")
+            {
+                if (loginResult.Result == Abp.Authorization.AbpLoginResultType.Success)
+                {
+                    Session["UserName"] = loginModel.UsernameOrEmailAddress;
+                    return Json(new AjaxResponse { TargetUrl = "/WeiXingDK/Index" });
+
+                }
+            }
+
             await SignInAsync(loginResult.User, loginResult.Identity, loginModel.RememberMe);
 
             if (string.IsNullOrWhiteSpace(returnUrl))
@@ -119,6 +131,8 @@ namespace Vickn.Platform.Web.Controllers
             {
                 returnUrl = returnUrl + returnUrlHash;
             }
+
+
 
             return Json(new AjaxResponse { TargetUrl = returnUrl });
         }
@@ -134,6 +148,8 @@ namespace Vickn.Platform.Web.Controllers
                 default:
                     throw CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
             }
+
+
         }
 
         private async Task SignInAsync(User user, ClaimsIdentity identity = null, bool rememberMe = false)
@@ -177,6 +193,12 @@ namespace Vickn.Platform.Web.Controllers
         }
 
         #endregion
+
+        public string KqZSGetUserName()
+        {
+            string username = Session["UserName"].ToString();
+            return username;
+        }
 
         #region ResetPassword
 

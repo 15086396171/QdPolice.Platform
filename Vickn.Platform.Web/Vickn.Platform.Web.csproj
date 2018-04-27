@@ -1590,6 +1590,7 @@
     <Content Include="js\datatable.extend.js" />
     <Content Include="Views\Users\Index.js" />
     <Content Include="Views\Users\ChangeProfilePic.js" />
+    <Content Include="Views\WeiXingDK\Index_js.js" />
     <Content Include="Views\WeiXingDK\Login_js.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>

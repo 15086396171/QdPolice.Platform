@@ -22,6 +22,13 @@ namespace Vickn.Platform.Attendences.KqDetails
         Task<ResultDto> CreateAllDetailAsync(KqDetailDto input);
 
         /// <summary>
+        /// 从微信接收数据新增考勤流水记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<ResultDto> CreateWeiXingAllDetailAsync(KqDetailWeiXingDto input);
+
+        /// <summary>
         /// 新增或修改考勤记录信息
         /// </summary>
         /// <param name="input"></param>

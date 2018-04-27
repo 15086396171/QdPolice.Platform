@@ -78,6 +78,7 @@ namespace Vickn.Platform.Attendences.KqShifts
         /// </summary>
         public async Task UpdateAsync(KqShiftForEidt input)
         {
+            await _KqShiftUserRepository.DeleteAsync(p => p.KqShiftId == input.KqShiftEditDto.Id.Value);
             var entity = await _KqShiftRepository.GetAsync(input.KqShiftEditDto.Id.Value);
             input.KqShiftEditDto.MapTo(entity);
 

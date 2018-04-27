@@ -7,7 +7,7 @@
     <meta content="yes" name="apple-mobile-web-app-capable" />
     <meta content="black" name="apple-mobile-web-app-status-bar-style" />
     <meta content="telephone=no" name="format-detection" />
-    <title>无标题文档</title>
+    <title>移动警务打卡助手登陆</title>
     <style>
         body {
             margin: 0;
@@ -17,6 +17,7 @@
         }
 
         .form_login {
+            
             max-width: 640px;
             margin: auto;
             text-align: center;
@@ -75,7 +76,7 @@
         }
 
         .form_footer {
-            margin-top: 100px;
+            margin-top: 60px;
             font-size: 12px;
             color: #5B809A;
         }
@@ -83,30 +84,35 @@
 </head>
 
 <body>
-    <div class="form_login">
+    <div class="form_login" style="margin-left:-15px;margin-top:-50px;">
 
-        <div class="form_logo"> <img src="~/Images/KqDK/logo.png" /></div>
+        @*<div class="form_logo"> <img src="~/Images/KqDK/logo.png" /></div>*@
         <form method="post" role="form" id="form_login">
 
             <div class="form-group">
+                <span style="font-size:50px;font-family:幼圆;color:#337ab7;font-weight:bold;">移 动 警 务</span>
+            </div>
+
+            <div class="form-group">
+                <span style="font-size:20px;font-family:幼圆;color:#337ab7;font-weight:bold;">考勤签到小助手</span>
+            </div>
+
+            <div class="form-group">
                 <i class="fa fa-user"></i>
-                <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off">
+                <input type="text" class="form-control" name="username" id="username" placeholder="Username" autocomplete="off" />
             </div>
 
             <div class="form-group">
                 <i class="fa fa-key"></i>
-                <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
+                <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off" />
             </div>
-            <div class="form-group" style="height:25px; line-height:25px; text-align:left;">
-                <input type="checkbox" class="" name="checkbox" id="checkbox" placeholder="checkbox" autocomplete="off">
-                <span class="checkfont">记住我的帐号</span>
-            </div>
+
             <div class="form-group">
                 <button type="button" id="btnlogin" class="btn btn-primary btn-block btn-login">登录</button>
             </div>
 
         </form>
-        <div class="form_footer">2018 黔东强制隔离戒毒所版权所有</div>
+        <div class="form_footer" >2018 黔东强制隔离戒毒所版权所有</div>
     </div>
 </body>
 </html>

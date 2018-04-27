@@ -284,10 +284,29 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 list.UserName = entity[i].UserName;
                 list.DateYMD = entity[i].QDWorkTime.ToString("yyyy-MM-dd");
                 list.DateWork = entity[i].QDWorkTime.ToString("HH:mm:ss");
-                list.QDPostionWork = entity[i].QDPostionWork;
+                if (entity[i].QDPostionWork != "")
+                {
+                    string[] str = entity[i].QDPostionWork.Split(',');
+                    list.QDPostionWork = str[0];
+                }
+                else
+                {
+                    list.QDPostionWork = entity[i].QDPostionWork;
+                }
+              
+
                 list.OutgoingCauseWork = entity[i].OutgoingCauseWork;
                 list.DateColsing = entity[i].QDClosingTime.ToString("HH:mm:ss");
-                list.QDPostionClosing = entity[i].QDPostionClosing;
+          
+                if (entity[i].QDPostionClosing != "")
+                {
+                    string[] str = entity[i].QDPostionClosing.Split(',');
+                    list.QDPostionClosing = str[0];
+                }
+                else
+                {
+                    list.QDPostionClosing = entity[i].QDPostionClosing;
+                }
                 list.OutgoingCauseClosing = entity[i].OutgoingCauseClosing;
                 if (entity[i].QDType == 0)
                 {

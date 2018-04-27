@@ -47,12 +47,12 @@
                 {
                     "data": "isNFC",
                     render: function (data, type, row, meta) {
-                        if (data == "0") return "微信扫码签到";
-                        else if (data == "1") return "警务通签到";
-                        else return "门禁签到";
+                        if (data == "0") return "微信打卡";
+                        else if (data == "1") return "NFC打卡";
+                        else return "门禁刷卡";
                     }
-                }
-                //{ "data": "qDPostion" }
+                },
+                { "data": "qdPostion" }
 
 
               

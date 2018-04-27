@@ -1,4 +1,6 @@
 ﻿$(function () {
+
+
    
     $("#btnlogin").click(function () {
 
@@ -22,13 +24,22 @@
 
       
        
-        $.post("/WeiXingDK/IsLoginSucces", { username: username, password: password }, function (data) {
-
-            
-        })
+        abp.ajax({
+            url: abp.appPath + 'Account/Login',
+            type: 'POST',
+            data: JSON.stringify({
+                tenancyName:"Kq",
+                usernameOrEmailAddress: username,
+                password: password,
+              
+               
+            })
+        }).fail(function () {
+            abp.ui.clearBusy();
+        });
     })
    
 
-    //action = "~/Views/WeiXingDK/Login.cshtml"
+
 
 })

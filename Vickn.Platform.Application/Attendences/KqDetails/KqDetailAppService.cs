@@ -17,7 +17,7 @@ using Vickn.Platform.Attendances.KqMachines;
 using Vickn.Platform.Attendances.KqShifts;
 using Vickn.Platform.Attendences.KqDetails.Dtos;
 using Vickn.Platform.Attendences.KqMachines.Dtos;
-
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Attendences.KqDetails
 {
@@ -27,18 +27,18 @@ namespace Vickn.Platform.Attendences.KqDetails
         private readonly IRepository<KqDetail> _KqDetailRepository;
         private readonly IRepository<KqShift, long> _KqShiftRepository;
         private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
-        private readonly IRepository<KqMachine, long> _KqMachineRepository;
+        private readonly IRepository<User, long> _UsersRepository;
 
         /// <summary>
         /// 初始化考勤班次服务实例
         /// </summary>
-        public KqDetailAppService(IRepository<KqAllDetail> KqAllDeatilRepository, IRepository<KqDetail> KqDetailRepository, IRepository<KqShift, long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository, IRepository<KqMachine, long> KqMachineRepository)
+        public KqDetailAppService(IRepository<KqAllDetail> KqAllDeatilRepository, IRepository<KqDetail> KqDetailRepository, IRepository<KqShift, long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository, IRepository<User, long> UsersRepository)
         {
             _KqAllDeatilRepository = KqAllDeatilRepository;
             _KqDetailRepository = KqDetailRepository;
             _KqShiftRepository = KqShiftRepository;
             _KqShiftUserRepository = KqShiftUserRepository;
-            _KqMachineRepository = KqMachineRepository;
+            _UsersRepository = UsersRepository;
         }
 
         /// <summary>
@@ -88,7 +88,7 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
             #region 查看此用户是否有绑定的考勤班次
-            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == user.Id && p.KqShiftId != null);
+            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == user.Id);
             if (KqShiftUser == null)
             {
                 var LogContent = NowUserName + "用户,目前还没有绑定考勤班次.";
@@ -121,8 +121,9 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
                 }
-                #endregion
             }
+            #endregion
+
 
 
             #region 判断今天是否为周末
@@ -200,6 +201,25 @@ namespace Vickn.Platform.Attendences.KqDetails
                 await _KqDetailRepository.InsertAsync(kqrecordDto);
 
             }
+            else if (input.IsNFC == 0)
+            {
+                KqRecordEditDto kqrecord = new KqRecordEditDto();
+                kqrecord.UserName = input.UserName;
+                kqrecord.IsNFCWork = input.IsNFC;
+                kqrecord.KQMachineNo = "";
+                kqrecord.Remark = "";
+                kqrecord.QDWorkTime = input.QDTime;
+                kqrecord.QDClosingTime = DateTime.Today;
+                kqrecord.QDPostionWork = input.QDPostion;
+                kqrecord.OutgoingCauseWork = input.OutgoingCause;
+                kqrecord.QDPostionClosing = "";
+                kqrecord.OutgoingCauseClosing = "";
+                kqrecord.IsNFCClosing = 88;
+                kqrecord.QDType = 5;
+
+                var kqrecordDto = kqrecord.MapTo<KqDetail>();
+                await _KqDetailRepository.InsertAsync(kqrecordDto);
+            }
             else
             {
                 //门禁:2,暂不考虑
@@ -229,55 +249,63 @@ namespace Vickn.Platform.Attendences.KqDetails
 
             //获得用户今天打卡记录信息
             var KqRecordDto = await _KqDetailRepository.FirstOrDefaultAsync(p => p.Id == KqRecordId);
-            KqRecordDto.QDPostionClosing = "黔东戒毒所";
-            KqRecordDto.OutgoingCauseClosing = "无";
+
 
             #region 不同打卡方式(微信扫码：0，警务通NFC：1，门禁：2)
             //微信打卡
 
             //警务通NFC打卡
-            if (input.IsNFC == 1)
+            if (input.IsNFC == 0)
             {
+               
+                KqRecordDto.QDPostionClosing = input.QDPostion;
+                KqRecordDto.OutgoingCauseClosing = input.OutgoingCause;
+            }
+            else if (input.IsNFC == 1)
+            {
+                KqRecordDto.QDPostionClosing = "黔东戒毒所";
+                KqRecordDto.OutgoingCauseClosing = "无";
+            }
+            else
+            {
+                return;
+            }
 
-                //签到类型（QDType（正常：0，迟到：1，早退：2，缺勤：3，请假：4）），
-                //当第一次打卡时间超过班次上班打卡时间
-                if (KqRecordDto.QDWorkTime > TodayWorkTime)
+            //签到类型（QDType（正常：0，迟到：1，早退：2，缺勤：3，请假：4）），
+            //当第一次打卡时间超过班次上班打卡时间
+            if (KqRecordDto.QDWorkTime > TodayWorkTime)
+            {
+                //当第一次打卡时间超过班次下班打卡时间
+                if (KqRecordDto.QDWorkTime > TodayClosingTime)
                 {
-                    //当第一次打卡时间超过班次下班打卡时间
-                    if (KqRecordDto.QDWorkTime > TodayClosingTime)
-                    {
-                        KqRecordDto.QDClosingTime = DateTime.Now;
+                    KqRecordDto.QDClosingTime = DateTime.Now;
 
-                        KqRecordDto.QDType = 3;
-                    }
-                    else
-                    {
-                        KqRecordDto.QDClosingTime = DateTime.Now;
-
-                        KqRecordDto.QDType = 1;
-                    }
+                    KqRecordDto.QDType = 3;
                 }
                 else
                 {
                     KqRecordDto.QDClosingTime = DateTime.Now;
-                    if (KqRecordDto.QDClosingTime < TodayClosingTime)
-                    {
 
-                        KqRecordDto.QDType = 2;
-                    }
-                    else
-                    {
-                        KqRecordDto.QDType = 0;
-                    }
+                    KqRecordDto.QDType = 1;
                 }
-                await _KqDetailRepository.UpdateAsync(KqRecordDto);
-
             }
-            //门禁打卡
             else
             {
-                //此功能暂不考虑
+                KqRecordDto.QDClosingTime = DateTime.Now;
+                if (KqRecordDto.QDClosingTime < TodayClosingTime)
+                {
+
+                    KqRecordDto.QDType = 2;
+                }
+                else
+                {
+                    KqRecordDto.QDType = 0;
+                }
             }
+            await _KqDetailRepository.UpdateAsync(KqRecordDto);
+
+
+
 
             #endregion
 
@@ -319,6 +347,73 @@ namespace Vickn.Platform.Attendences.KqDetails
                 KqDetailDtos
             );
 
+        }
+
+        /// <summary>
+        /// 从微信接收数据新增考勤流水记录
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task<ResultDto> CreateWeiXingAllDetailAsync(KqDetailWeiXingDto input)
+        {
+            //获得用户信息
+            
+            string NowUserName = input.UserName;
+            //当前打卡时间
+            DateTime NowTime = DateTime.Now;
+
+            #region 考勤流水存入数据库
+            KqDetailEditDto KqAllDetaillist = new KqDetailEditDto();
+            KqAllDetaillist.UserName = NowUserName;
+            KqAllDetaillist.IsNFC = input.isNFC;
+            KqAllDetaillist.QDPostion = input.Position;
+            KqAllDetaillist.OutgoingCause = input.OutGoingCause;
+            KqAllDetaillist.QDTime = NowTime;
+            var entity = KqAllDetaillist.MapTo<KqAllDetail>();
+            await _KqAllDeatilRepository.InsertAsync(entity);
+            #endregion
+
+
+
+
+            #region 查看此用户是否有绑定的考勤班次
+            long userid =  _UsersRepository.FirstOrDefault(p=>p.UserName==NowUserName).Id;
+            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == userid);
+            if (KqShiftUser == null)
+            {
+                var LogContent = NowUserName + "用户,目前还没有绑定考勤班次.";
+                Logger.Info(LogContent);
+            }
+
+            else
+            {
+                var IsKqShift = await _KqShiftRepository.FirstOrDefaultAsync(p => p.Id == KqShiftUser.KqShiftId && p.IsDeleted == false);
+                if (IsKqShift == null)
+                {
+                    var LogContent2 = NowUserName + "用户,绑定的考勤班次已经被删除.";
+                    Logger.Info(LogContent2);
+                }
+                else
+                {
+                    KqDetailEditDtos KqDetaillist = new KqDetailEditDtos();
+                    KqDetaillist.UserName = NowUserName;
+                    KqDetaillist.IsNFC = input.isNFC;
+                    KqDetaillist.QDPostion = input.Position;
+                    KqDetaillist.QDTime = NowTime;
+                    KqDetaillist.OutgoingCause = input.OutGoingCause;
+                    KqDetaillist.KqShiftId = KqShiftUser.KqShiftId;
+
+                    //新增或修改此用户当天的考勤记录
+                    await CreateOrUpdateAsync(KqDetaillist);
+                }
+            }
+            #endregion
+
+
+            return new ResultDto()
+            {
+                IsOk = true
+            };
         }
     }
 
