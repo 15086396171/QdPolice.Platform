@@ -37,10 +37,24 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
 
         /// <summary>
-        /// 根据用户姓名条件查该用户考勤明细Dto
+        /// 根据用户姓名条件分页查询该用户考勤明细Dto
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
         Task<PagedResultDto<KqDetailStatisticListDto>> GetKqDetailStatisticAsync(GetKqStatisticInputDto input);
+
+        /// <summary>
+        /// 根据用户姓名条件导出该用户考勤明细Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<List<KqDetailStatisticListDto>> ExportKqDetailStatisticAsync(GetExportKqStatisticDto input);
+
+        /// <summary>
+        /// 根据用户姓名条件导出该用户考勤统计Dto
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task<List<KqStatisicListDto>> ExportKqStatisticAsync(GetExportKqStatisticDto input);
     }
 }

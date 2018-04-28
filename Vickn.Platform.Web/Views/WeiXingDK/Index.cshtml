@@ -97,13 +97,13 @@
         .outgoing_cause {
             margin-top: 70px;
             width: 340px;
-            height: 200px;
+            height: 100px;
         }
     </style>
 </head>
 
 <body>
-    <div class="form_login" style="margin-left:-15px;margin-top:-80px;">
+    <div class="form_login" style="margin-left:-15px;margin-top:-100px;">
 
         @*<div class="form_logo"> <img src="~/Images/KqDK/logo.png" /></div>*@
         <form method="post" role="form" id="form_login">
@@ -116,9 +116,22 @@
                 <span class="kqzs_names">考勤签到小助手</span>
             </div>
 
-            <div class="form-group" style="margin-top:0px;color:#337ab7">
-                当前位置:<span id="location" Remark="">正在获取中...</span>
+            <div class="form-group" style="margin-top:0px;color:#337ab7;text-align:left;">
+                <div style="margin-left:10px;color:#0160A0">打卡位置:</div>
+                <div style="margin-left:10px;" id="location" Remark="">正在获取中...</div>
             </div>
+
+
+            <div class="form-group" style="margin-top:0px;color:#337ab7">
+                <div style="text-align:left;margin-left:10px;">
+                    姓名：<span id="username"></span>
+                </div>
+
+                <div style="text-align:right;margin-top:-20px;margin-right:10px;">
+                    日期：<span id="nowdate"></span>
+                </div>
+            </div>
+
 
             <div class="form-group" style="margin-top:-100px;">
                 <textarea class="outgoing_cause" id="outgoingcause" placeholder="请在这里输入您此次的外出事由"></textarea>
@@ -126,19 +139,22 @@
 
 
 
-            <div class="form-group" style="margin-top:240px;">
+
+
+            <div class="form-group" style="margin-top:140px;">
                 <button type="button" id="btnlogin" class="btn btn-primary btn-block btn-login">打卡签到</button>
             </div>
+
 
 
             @*<div class="form-group" style="height:200px;" id="iCenter">
             <button type="button" id="2" class="btn btn-primary btn-block btn-login">GPS</button>
         </div>*@
 
-            
+
         </form>
         <div class="form_footer">2018 黔东强制隔离戒毒所版权所有</div>
-       
+
 
     </div>
 </body>

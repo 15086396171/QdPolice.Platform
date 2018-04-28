@@ -4,7 +4,7 @@
 $(function () {
     DataList();
 
-
+    //月
     $("#Btnkqmonth").click(function () {
 
         var date = new Date();
@@ -18,7 +18,7 @@ $(function () {
         $("#EndTime").val(EndTime);
         $("#search").click();
     });
-
+    //年
     $("#Btnkqyear").click(function () {
 
         var now = new Date();
@@ -30,6 +30,7 @@ $(function () {
         $("#EndTime").val(EndTime);
         $("#search").click();
     });
+    //周
     $("#Btnkqweek").click(function () {
    
 
@@ -162,3 +163,13 @@ function DataList() {
 
     $dataTable.createDatatable(option);
 }
+
+function Export() {
+
+    var UserName = $("#UserName").val();
+    var StartTime = $("#StartTime").val();
+    var EndTime = $("#EndTime").val();
+    window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime;
+
+}
+

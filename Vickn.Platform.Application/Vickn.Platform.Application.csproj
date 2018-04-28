@@ -206,6 +206,7 @@
     <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserForEidt.cs" />
     <Compile Include="Attendences\KqShifts\IKqShiftAppService.cs" />
     <Compile Include="Attendences\KqShifts\KqShiftAppService.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetExportKqStatisticDto.cs" />
     <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticInputDto.cs" />
     <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticAppDto.cs" />
     <Compile Include="Attendences\KqStatistics\Dtos\KqDetailStatisticListDto.cs" />

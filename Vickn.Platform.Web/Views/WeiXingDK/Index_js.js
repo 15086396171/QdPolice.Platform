@@ -2,11 +2,26 @@
 
     var lng = "";
     var lat = "";
-    //baiduDingWei();
+
+
     gaodeDingWei();
+    getDate();
+
+    //获取当前登陆用户的用户名
+    $.get("/Account/KqZSGetUserName", function (data) {
+
+        $("#username").html(data);
+
+    })
+
+
+
+
     $("#btnlogin").click(function () {
 
-        var outgoincause = $("#outgoingcause").val();
+        var outgoincausetxt = $("#outgoingcause").val();
+        outgoincause = outgoincausetxt.replace(/(^\s*)|(\s*$)/g, "")
+
         //经纬度
         var JWD = $("#location").attr("Remark");
         var position = $("#location").html() + ",地理位置：(" + JWD + ")";
@@ -15,29 +30,38 @@
             alert("您当前还没有成功定位");
             return;
         }
+        debugger;
+        console.log(outgoincause);
 
         if (outgoincause == "") {
-            alert("外出事由不能为空");
-            return;
+
+            outgoincause = "无";
+
+            //alert("外出事由不能为空");
+            //return;
+
         }
 
-        $.get("/Account/KqZSGetUserName", function (data) {
 
-            var username = data;
 
-            abp.ajax({
-                url: abp.appPath + 'api/services/app/kqDetail/CreateWeiXingAllDetailAsync',
-                type: 'POST',
-                data: JSON.stringify({
-                    IsNFC: "0", OutGoingCause: outgoincause, Position: position, UserName: username
 
-                })
-            }).fail(function () {
-                abp.ui.clearBusy();
-            });
-        })
-       
-        alert("打卡成功");
+        var username = $("#username").html();
+
+        abp.ajax({
+            url: abp.appPath + 'api/services/app/kqDetail/CreateWeiXingAllDetailAsync',
+            type: 'POST',
+            data: JSON.stringify({
+                IsNFC: "0", OutGoingCause: outgoincause, Position: position, UserName: username
+
+            })
+        }).fail(function () {
+            abp.ui.clearBusy();
+        });
+
+        var d = new Date();
+        var nowtime = d.getHours() + ":" + d.getMinutes()
+
+        alert("打卡成功(时间:" + nowtime + ")");
 
         window.location.href = "javascript:WeixinJSBridge.call('closeWindow');";
     });
@@ -61,7 +85,7 @@ function baiduDingWei() {
             map.addOverlay(mk);
             map.panTo(r.point);
 
-            
+
 
             lng = r.point.lng;
             lat = r.point.lat;
@@ -69,7 +93,7 @@ function baiduDingWei() {
             geocoder.getLocation(r.point,
                 function (result) {
                     abp.ui.clearBusy();
-                    
+
 
                     $("#location").html(result.formattedAddress);
                     $("#location").attr("Remark", lng + "," + lat);
@@ -121,4 +145,11 @@ function onComplete(obj) {
 function onError(obj) {
     alert(obj.info + '--' + obj.message);
     console.log(obj);
+}
+
+//获得当前日期
+function getDate() {
+    var date = new Date();
+    var nowdate = date.getFullYear() + "-" + (date.getMonth() + 1) + "-" + date.getDate();
+    $("#nowdate").html(nowdate);
 }
