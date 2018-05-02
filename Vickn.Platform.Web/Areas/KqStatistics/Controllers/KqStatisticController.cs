@@ -125,7 +125,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             }
             else
             {
-
+                input.EndTime = input.EndTime.Value.AddDays(-1);
                 string date1 = input.StartTime.Value.ToString("yyyy-MM-dd");
 
                 string date2 = input.EndTime.Value.ToString("yyyy-MM-dd");
@@ -258,11 +258,11 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 rowCell6.CellStyle = ContentStyle;
 
                 var rowCell7 = row.CreateCell(col++);
-                rowCell7.SetCellValue(dt.Result[i].QDPostionClosing);
+                rowCell7.SetCellValue(dt.Result[i].OutgoingCauseClosing);
                 rowCell7.CellStyle = ContentStyle;
 
                 var rowCell8 = row.CreateCell(col++);
-                rowCell8.SetCellValue(dt.Result[i].OutgoingCauseClosing);
+                rowCell8.SetCellValue(dt.Result[i].QDPostionClosing);
                 rowCell8.CellStyle = ContentStyle;
 
                 var rowCell9 = row.CreateCell(col++);
@@ -357,6 +357,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             }
             else
             {
+                input.EndTime = input.EndTime.Value.AddDays(-1);
 
                 string date1 = input.StartTime.Value.ToString("yyyy-MM-dd");
 

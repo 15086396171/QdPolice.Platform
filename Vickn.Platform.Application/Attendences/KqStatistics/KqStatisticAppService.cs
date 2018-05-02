@@ -156,14 +156,14 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
+                    p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
                 if (input.StartTime != null && input.EndTime != null)
                 {
 
-                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime);
                 }
                 else
                 {
@@ -237,7 +237,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             }
             else
             {
-                input.EndTime.Value.AddDays(1);
+                input.EndTime =input.EndTime.Value.AddDays(1);
             }
 
             #region 查询条件判断
@@ -246,14 +246,14 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
+                    p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
                 if (input.StartTime != null && input.EndTime != null)
                 {
 
-                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime);
                 }
                 else
                 {
@@ -349,7 +349,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             }
             else
             {
-                input.EndTime.Value.AddDays(1);
+                input.EndTime = input.EndTime.Value.AddDays(1);
             }
 
             #region 查询条件判断
@@ -358,14 +358,14 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
+                    p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
                 if (input.StartTime != null && input.EndTime != null)
                 {
 
-                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime);
                 }
                 else
                 {
@@ -470,14 +470,14 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
+                    p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
                 if (input.StartTime != null && input.EndTime != null)
                 {
 
-                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime);
+                    entity = _KqDetailRepository.GetAllList(p => p.QDWorkTime < input.EndTime && p.QDWorkTime > input.StartTime);
                 }
                 else
                 {

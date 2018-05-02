@@ -137,10 +137,11 @@ function GetStrLength(str) {
 }
 
 function Export() {
-    
+   
     var UserName = $("#UserName").val();
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
     window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime;
+ 
 
 }
