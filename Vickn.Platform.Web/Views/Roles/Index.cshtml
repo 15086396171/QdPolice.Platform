@@ -48,7 +48,7 @@
     </table>
 </div>
 
-<div class="modal inmodal fade" id="modal-setPermission" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal inmodal fade" id="modal-setPermission" tabindex="-1" role="dialog" aria-hidden="true" style="height:700px;">
     <div class="modal-dialog">
         <div class="modal-content radius">
             <div class="modal-header">
@@ -64,6 +64,12 @@
         </div>
     </div>
 </div>
+
+<style>
+    .modal-backdrop {
+        top: 1000px;
+    }
+</style>
 
 @section styles{
     @Styles.Render("~/Bundles/lib/css/jstree")
