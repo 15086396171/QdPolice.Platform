@@ -13,6 +13,7 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.Schedules.SchedulingPosts.Authorization;
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Web
@@ -27,6 +28,28 @@ namespace Vickn.Platform.Web
     {
         public override void SetNavigation(INavigationProviderContext context)
         {
+            #region 排班管理
+
+            //排班管理（一级菜单）
+            var schedule = new MenuItemDefinition(
+                AppPermissions.Pages_ScheduleManage,
+                L(AppPermissions.Pages_ScheduleManage),
+                icon: "icon-grid"
+                );
+
+            //岗位设置
+            var schedulingPost = new MenuItemDefinition(
+                SchedulingPostAppPermissions.SchedulingPost,
+                L("SchedulingPost"),
+                url: "SchedulingPosts/SchedulingPost",
+                icon: "icon-grid",
+                 requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
+                );
+
+            schedule.AddItem(schedulingPost);
+            #endregion
+
+            #region 考勤管理
             //考勤管理（一级菜单）
             var attendance = new MenuItemDefinition(
                 AppPermissions.Pages_AttendanceManage,
@@ -64,8 +87,10 @@ namespace Vickn.Platform.Web
                 .AddItem(kqmachine) //考勤机信息
                 .AddItem(kqstatistics) //考勤机信息
                 .AddItem(kqdetails);//考勤明细
+            #endregion
 
 
+            #region 手持终端管理
             //手持终端管理（一级菜单）
             var device = new MenuItemDefinition(
                 AppPermissions.Pages_HandheldTerminal,
@@ -96,8 +121,10 @@ namespace Vickn.Platform.Web
                     requiredPermissionName: DeviceAppPermissions.Device))
                     .AddItem(appWhiteList)
                     .AddItem(videoCall)
-                    ;
+            #endregion
 
+                    ;
+            #region 通知公告管理
             //通知公告管理（一级菜单）
             var announcement = new MenuItemDefinition(
                 AnnouncementAppPermissions.Announcement,
@@ -112,12 +139,15 @@ namespace Vickn.Platform.Web
                     "icon-star",
                     "announcements/announcement",
                     requiredPermissionName: AnnouncementAppPermissions.Announcement));
+            #endregion
+
 
             //所有的一级菜单
             context.Manager.MainMenu
                 .AddItem(device)
                 .AddItem(announcement)
                 .AddItem(attendance)
+                .AddItem(schedule)
 
             #region 系统管理
                 .AddItem(

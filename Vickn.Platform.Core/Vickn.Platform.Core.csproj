@@ -198,6 +198,12 @@
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhite.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteManager.cs" />
     <Compile Include="PrivatePhoneWhites\_PrivatePhoneWhiteReadme.cs" />
+    <Compile Include="Schedules\PlatoonGroups\PlatoonGroup.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Authorization\SchedulingPostAppAuthorizationProvider.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Authorization\SchedulingPostAppPermissions.cs" />
+    <Compile Include="Schedules\SchedulingPosts\SchedulingPost.cs" />
+    <Compile Include="Schedules\SchedulingPosts\SchedulingPostManager.cs" />
+    <Compile Include="Schedules\SchedulingPosts\_SchedulingPostReadme.cs" />
     <Compile Include="Zero\Notifications\INotificationManager.cs" />
     <Compile Include="Zero\Notifications\NotificationManager.cs" />
     <Compile Include="Zero\Roles\Authorization\RoleAppAuthorizationProvider.cs" />

@@ -29,5 +29,10 @@
         /// </summary>
         public const string Pages_AttendanceManage = "Pages.AttendanceManage";
 
+        /// <summary>
+        /// 排班管理
+        /// </summary>
+        public const string Pages_ScheduleManage = "Pages.ScheduleManage";
+
     }
 }

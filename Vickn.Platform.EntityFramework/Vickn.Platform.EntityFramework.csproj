@@ -151,6 +151,7 @@
     <Compile Include="EntityFramework\EntityMapper\FileRecords\FileRecordCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\ForensicsRecords\ForensicsRecordCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PrivatePhoneWhites\PrivatePhoneWhiteCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Schedules\SchedulingPosts\SchedulingPostCfg.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.Chat.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.cs" />
     <Compile Include="EntityFramework\Repositories\PlatformRepositoryBase.cs" />

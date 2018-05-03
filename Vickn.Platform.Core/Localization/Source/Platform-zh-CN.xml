@@ -274,7 +274,19 @@
     <text name="KqYear" value="考勤年统计" />
     <text name="Export" value="导出" />
 
-    
     <!-- 考勤管理 end-->
+   
+    <!--排班管理-->
+    <text name="Pages.ScheduleManage" value="排班管理" />
+    <!--岗位设置-->
+    <text name="SchedulingPost.PostName" value="岗位名称" />
+    <text name="SchedulingPost.LastModificationTime" value="更新时间" />
+    <text name="SchedulingPost.CreationTime" value="创建时间" />
+
+    <text name="SchedulingPost" value="岗位设置管理" />
+    <text name="CreateSchedulingPost" value="添加岗位设置" />
+    <text name="EditSchedulingPost" value="编辑岗位设置" />
+    <text name="DeleteSchedulingPost" value="删除岗位设置" />
+    <!--排班管理-->
   </texts>
 </localizationDictionary>

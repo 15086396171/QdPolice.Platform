@@ -63,6 +63,12 @@
             /// 考勤管理
             /// </summary>
             public const string Attendance = "Attendance";
+
+            /// <summary>
+            /// 排班管理
+            /// </summary>
+            public const string Schedule = "Schedule";
+            
         }
         public static class UserConst
         {

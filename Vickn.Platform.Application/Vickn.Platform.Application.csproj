@@ -294,6 +294,12 @@
     <Compile Include="PrivatePhoneWhites\IPrivatePhoneWhiteAppService.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteAppService.cs" />
     <Compile Include="RealTime\MySignalrRealTimeNotifier.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Dtos\GetSchedulingPostInput.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Dtos\SchedulingPostDto.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Dtos\SchedulingPostEditDto.cs" />
+    <Compile Include="Schedules\SchedulingPosts\Dtos\SchedulingPostForEdit.cs" />
+    <Compile Include="Schedules\SchedulingPosts\ISchedulingPostAppService.cs" />
+    <Compile Include="Schedules\SchedulingPosts\SchedulingPostAppService.cs" />
     <Compile Include="Zero\Organizations\Dto\AddUserToOuInput.cs" />
     <Compile Include="Zero\Organizations\Dto\CreateOrganizationUnitInput.cs" />
     <Compile Include="Zero\Organizations\Dto\GetOrganizationUnitForEditOutput.cs" />
