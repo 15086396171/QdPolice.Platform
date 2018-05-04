@@ -278,6 +278,7 @@
    
     <!--排班管理-->
     <text name="Pages.ScheduleManage" value="排班管理" />
+    
     <!--岗位设置-->
     <text name="SchedulingPost.PostName" value="岗位名称" />
     <text name="SchedulingPost.LastModificationTime" value="更新时间" />
@@ -287,6 +288,17 @@
     <text name="CreateSchedulingPost" value="添加岗位设置" />
     <text name="EditSchedulingPost" value="编辑岗位设置" />
     <text name="DeleteSchedulingPost" value="删除岗位设置" />
+
+    <!--排班组设置-->
+    <text name="PlatoonGroup.PlatoonGroupName" value="排班组名称" />
+    <text name="PlatoonGroup.LastModificationTime" value="最后编辑时间" />
+    <text name="PlatoonGroup.CreationTime" value="创建时间" />
+
+
+    <text name="PlatoonGroup" value="排班组管理" />
+    <text name="CreatePlatoonGroup" value="添加排班组" />
+    <text name="EditPlatoonGroup" value="编辑排班组" />
+    <text name="DeletePlatoonGroup" value="删除排班组" />
     <!--排班管理-->
   </texts>
 </localizationDictionary>

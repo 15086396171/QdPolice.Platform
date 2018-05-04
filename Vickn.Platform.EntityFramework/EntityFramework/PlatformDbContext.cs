@@ -12,6 +12,7 @@ using Vickn.Platform.DataDictionaries.EntityMapper;
 using Vickn.Platform.EntityFramework.EntityMapper.Attendances;
 using Vickn.Platform.EntityFramework.EntityMapper.Attendances.Kqmachines;
 using Vickn.Platform.EntityFramework.EntityMapper.Attendances.KqShifts;
+using Vickn.Platform.EntityFramework.EntityMapper.Schedules.PlatoonGroups;
 using Vickn.Platform.FileRecords;
 using Vickn.Platform.FileRecords.EntityMapper;
 using Vickn.Platform.HandheldTerminals;
@@ -23,6 +24,8 @@ using Vickn.Platform.HandheldTerminals.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.PrivatePhoneWhites;
 using Vickn.Platform.PrivatePhoneWhites.EntityMapper;
+using Vickn.Platform.Schedules.PlatoonGroups;
+using Vickn.Platform.Schedules.PlatoonGroups.EntityMapper;
 using Vickn.Platform.Schedules.SchedulingPosts;
 using Vickn.Platform.Schedules.SchedulingPosts.EntityMapper;
 using Vickn.Platform.Users;
@@ -80,6 +83,12 @@ namespace Vickn.Platform.EntityFramework
 
         //岗位设置
         public IDbSet<SchedulingPost> SchedulingPost { get; set; }
+
+        ////排班组管理
+        //public IDbSet<PlatoonGroup> PlatoonGroup { get; set; }
+
+        ////排班组组员
+        //public IDbSet<GroupMember> GroupMember { get; set; }
         #endregion
 
 
@@ -144,6 +153,8 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new KqShiftCfg());
             modelBuilder.Configurations.Add(new KqShiftUserCfg());
             modelBuilder.Configurations.Add(new SchedulingPostCfg());
+            //modelBuilder.Configurations.Add(new PlatoonGroupCfg());
+            //modelBuilder.Configurations.Add(new GroupMemberCfg());
 
         }
     }
