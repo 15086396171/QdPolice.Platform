@@ -1685,12 +1685,6 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\Dtos\GetPlatoonGroupInput.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\Dtos\PlatoonGroupDto.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\Dtos\PlatoonGroupEditDto.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\Dtos\PlatoonGroupForEdit.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\IPlatoonGroupAppService.cs" />
-    <Compile Include="_GeneratedCode\PlatoonGroups\Application\PlatoonGroups\PlatoonGroupAppService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1798,6 +1792,8 @@
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />
+    <Folder Include="_GeneratedCode\Areas\" />
+    <Folder Include="_GeneratedCode\PlatoonGroups\Application\" />
     <Folder Include="_GeneratedCode\PlatoonGroups\Core\PlatoonGroups\" />
     <Folder Include="_GeneratedCode\PlatoonGroups\EntityFramework\EntityMapper\" />
   </ItemGroup>

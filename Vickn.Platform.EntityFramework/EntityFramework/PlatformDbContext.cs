@@ -153,8 +153,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new KqShiftCfg());
             modelBuilder.Configurations.Add(new KqShiftUserCfg());
             modelBuilder.Configurations.Add(new SchedulingPostCfg());
-            //modelBuilder.Configurations.Add(new PlatoonGroupCfg());
-            //modelBuilder.Configurations.Add(new GroupMemberCfg());
+            
 
         }
     }
