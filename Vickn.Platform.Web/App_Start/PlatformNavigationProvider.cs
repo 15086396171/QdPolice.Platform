@@ -13,6 +13,7 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.Schedules.PlatoonGroups.Authorization;
 using Vickn.Platform.Schedules.SchedulingPosts.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -38,7 +39,7 @@ namespace Vickn.Platform.Web
                 );
 
             //岗位设置
-            var schedulingPost = new MenuItemDefinition(
+            var schedulingpost = new MenuItemDefinition(
                 SchedulingPostAppPermissions.SchedulingPost,
                 L("SchedulingPost"),
                 url: "SchedulingPosts/SchedulingPost",
@@ -46,7 +47,20 @@ namespace Vickn.Platform.Web
                  requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
                 );
 
-            schedule.AddItem(schedulingPost);
+            //排班组管理
+            var platoongroup = new MenuItemDefinition(
+                PlatoonGroupAppPermissions.PlatoonGroup,
+                L("PlatoonGroup"),
+                url: "PlatoonGroups/PlatoonGroup",
+                icon: "icon-grid",
+                 requiredPermissionName: PlatoonGroupAppPermissions.PlatoonGroup
+                );
+
+
+
+            schedule.AddItem(schedulingpost)
+                    .AddItem(platoongroup);
+
             #endregion
 
             #region 考勤管理

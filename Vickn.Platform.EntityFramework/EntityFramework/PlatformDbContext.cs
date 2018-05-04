@@ -84,11 +84,11 @@ namespace Vickn.Platform.EntityFramework
         //岗位设置
         public IDbSet<SchedulingPost> SchedulingPost { get; set; }
 
-        ////排班组管理
-        //public IDbSet<PlatoonGroup> PlatoonGroup { get; set; }
+        //排班组管理
+        public IDbSet<PlatoonGroup> PlatoonGroup { get; set; }
 
         ////排班组组员
-        //public IDbSet<GroupMember> GroupMember { get; set; }
+        public IDbSet<GroupMember> GroupMember { get; set; }
         #endregion
 
 
@@ -153,7 +153,9 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new KqShiftCfg());
             modelBuilder.Configurations.Add(new KqShiftUserCfg());
             modelBuilder.Configurations.Add(new SchedulingPostCfg());
-            
+
+            modelBuilder.Configurations.Add(new PlatoonGroupCfg());
+            modelBuilder.Configurations.Add(new GroupMemberCfg());
 
         }
     }

@@ -3,28 +3,28 @@
 @using System.Web.UI.WebControls.Expressions
 @using Abp.Authorization
 @using Abp.Web.Mvc.Extensions
-@using Vickn.Platform.Schedules.SchedulingPosts.Authorization
+@using Vickn.Platform.Schedules.PlatoonGroups.Authorization
 @{
-    ViewBag.Menu = L("SchedulingPosts");
-    ViewBag.SubMenu = L("SchedulingPost");
+    ViewBag.Menu = L("PlatoonGroups");
+    ViewBag.SubMenu = L("PlatoonGroup");
 }
 
 <div class="row animated fadeInRight">
         <div class="ibox-content">
             <div class="form-inline">
                 <div class="form-group">
-                    <label>@L("SchedulingPost.PostName")</label>
+                    <label>@L("PlatoonGroup.PlatoonGroupName")</label>
                     <input type="text" placeholder="@L("FilterText")" class="form-control" id="filterText" style="width: 250px;" />
 
 					 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                     <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
-                   @if (IsGranted(SchedulingPostAppPermissions.SchedulingPost_CreateSchedulingPost))
+                   @if (IsGranted(PlatoonGroupAppPermissions.PlatoonGroup_CreatePlatoonGroup))
                     {
                         <a href="javascript:;" class="btn btn-primary" id="create" >
-                            <span class="glyphicon glyphicon-plus"></span> @L("CreateSchedulingPost")
+                            <span class="glyphicon glyphicon-plus"></span> @L("CreatePlatoonGroup")
                         </a>
                     }
-					@if (IsGranted(SchedulingPostAppPermissions.SchedulingPost_DeleteSchedulingPost))
+					@if (IsGranted(PlatoonGroupAppPermissions.PlatoonGroup_DeletePlatoonGroup))
                     {
                         <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
                     }
@@ -38,8 +38,9 @@
                 <thead>
                     <tr>
                         <th width="25"><input type="checkbox" class="checkall"></th>
-                        <th>@L("SchedulingPost.PostName")</th>
-                        <th>@L("Operational")</th>
+                                              <th>@L("PlatoonGroup.PlatoonGroupName")</th>
+                                             <th>@L("PlatoonGroup.GroupLeaderName")</th>
+                                          <th>@L("Operational")</th>
                     </tr>
                 </thead>
                 <tbody></tbody>
@@ -52,6 +53,6 @@
 }
 
 @section scripts{
-    @Html.IncludeScript("~/Areas/SchedulingPosts/Views/SchedulingPost/index_js.js")
+    @Html.IncludeScript("~/Areas/PlatoonGroups/Views/PlatoonGroup/index_js.js")
 }
 

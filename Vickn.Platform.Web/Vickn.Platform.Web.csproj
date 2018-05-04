@@ -1128,6 +1128,7 @@
     <Content Include="Areas\SchedulingPosts\Views\SchedulingPost\Create.cshtml" />
     <Content Include="Areas\SchedulingPosts\Views\SchedulingPost\Index.cshtml" />
     <Content Include="Areas\SchedulingPosts\Views\web.config" />
+    <Content Include="Areas\PlatoonGroups\Views\PlatoonGroup\Index_js.js" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1619,6 +1620,10 @@
     <Content Include="Areas\Announcements\Views\Announcement\Create.cshtml" />
     <Content Include="Areas\Announcements\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Announcements\Views\web.config" />
+    <Content Include="Areas\PlatoonGroups\Views\PlatoonGroup\Index.cshtml" />
+    <Content Include="Areas\PlatoonGroups\Views\PlatoonGroup\Create.cshtml" />
+    <Content Include="Areas\PlatoonGroups\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PlatoonGroups\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1685,6 +1690,8 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
+    <Compile Include="Areas\PlatoonGroups\Controllers\PlatoonGroupController.cs" />
+    <Compile Include="Areas\PlatoonGroups\PlatoonGroupsAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1793,9 +1800,6 @@
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />
     <Folder Include="_GeneratedCode\Areas\" />
-    <Folder Include="_GeneratedCode\PlatoonGroups\Application\" />
-    <Folder Include="_GeneratedCode\PlatoonGroups\Core\PlatoonGroups\" />
-    <Folder Include="_GeneratedCode\PlatoonGroups\EntityFramework\EntityMapper\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

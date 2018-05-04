@@ -294,6 +294,12 @@
     <Compile Include="PrivatePhoneWhites\IPrivatePhoneWhiteAppService.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteAppService.cs" />
     <Compile Include="RealTime\MySignalrRealTimeNotifier.cs" />
+    <Compile Include="Schedules\PlatoonGroups\Dtos\GetPlatoonGroupInput.cs" />
+    <Compile Include="Schedules\PlatoonGroups\Dtos\PlatoonGroupDto.cs" />
+    <Compile Include="Schedules\PlatoonGroups\Dtos\PlatoonGroupEditDto.cs" />
+    <Compile Include="Schedules\PlatoonGroups\Dtos\PlatoonGroupForEdit.cs" />
+    <Compile Include="Schedules\PlatoonGroups\IPlatoonGroupAppService.cs" />
+    <Compile Include="Schedules\PlatoonGroups\PlatoonGroupAppService.cs" />
     <Compile Include="Schedules\SchedulingPosts\Dtos\GetSchedulingPostInput.cs" />
     <Compile Include="Schedules\SchedulingPosts\Dtos\SchedulingPostDto.cs" />
     <Compile Include="Schedules\SchedulingPosts\Dtos\SchedulingPostEditDto.cs" />

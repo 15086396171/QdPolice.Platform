@@ -284,15 +284,15 @@
     <text name="SchedulingPost.LastModificationTime" value="更新时间" />
     <text name="SchedulingPost.CreationTime" value="创建时间" />
 
-    <text name="SchedulingPost" value="岗位设置管理" />
-    <text name="CreateSchedulingPost" value="添加岗位设置" />
-    <text name="EditSchedulingPost" value="编辑岗位设置" />
-    <text name="DeleteSchedulingPost" value="删除岗位设置" />
+    <text name="SchedulingPost" value="岗位管理" />
+    <text name="CreateSchedulingPost" value="添加岗位" />
+    <text name="EditSchedulingPost" value="编辑岗位" />
+    <text name="DeleteSchedulingPost" value="删除岗位" />
 
     <!--排班组设置-->
     <text name="PlatoonGroup.PlatoonGroupName" value="排班组名称" />
-    <text name="PlatoonGroup.LastModificationTime" value="最后编辑时间" />
-    <text name="PlatoonGroup.CreationTime" value="创建时间" />
+   <text name="PlatoonGroup.GroupLeaderName" value="组长名称" />
+   <text name="PlatoonGroup.GroupMembersName" value="组员名称" />
 
 
     <text name="PlatoonGroup" value="排班组管理" />
