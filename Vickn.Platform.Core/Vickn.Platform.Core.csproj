@@ -168,6 +168,7 @@
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
     <Compile Include="BusinessExceptions\ErrorCode.cs" />
+    <Compile Include="EntityTools\EntityBase.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppAuthorizationProvider.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppPermissions.cs" />
     <Compile Include="FileRecords\FileRecord.cs" />
@@ -198,11 +199,6 @@
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhite.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhiteManager.cs" />
     <Compile Include="PrivatePhoneWhites\_PrivatePhoneWhiteReadme.cs" />
-    <Compile Include="Schedules\SchedulingPosts\Authorization\SchedulingPostAppAuthorizationProvider.cs" />
-    <Compile Include="Schedules\SchedulingPosts\Authorization\SchedulingPostAppPermissions.cs" />
-    <Compile Include="Schedules\SchedulingPosts\SchedulingPost.cs" />
-    <Compile Include="Schedules\SchedulingPosts\SchedulingPostManager.cs" />
-    <Compile Include="Schedules\SchedulingPosts\_SchedulingPostReadme.cs" />
     <Compile Include="Zero\Notifications\INotificationManager.cs" />
     <Compile Include="Zero\Notifications\NotificationManager.cs" />
     <Compile Include="Zero\Roles\Authorization\RoleAppAuthorizationProvider.cs" />
@@ -276,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HandheldTerminals\PhoneWhites\" />
+    <Folder Include="Schedules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

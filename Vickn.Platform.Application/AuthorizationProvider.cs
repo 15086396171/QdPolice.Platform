@@ -12,8 +12,6 @@ using Vickn.Platform.HandheldTerminals.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.PrivatePhoneWhites.Authorization;
-
-using Vickn.Platform.Schedules.SchedulingPosts.Authorization;
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform
@@ -44,7 +42,7 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<KqMachineAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqStatisticAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqDetailAppAuthorizationProvider>();
-            Configuration.Authorization.Providers.Add<SchedulingPostAppAuthorizationProvider>();
+        
           
             
         }

@@ -23,8 +23,6 @@ using Vickn.Platform.HandheldTerminals.EntityMapper;
 using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.PrivatePhoneWhites;
 using Vickn.Platform.PrivatePhoneWhites.EntityMapper;
-using Vickn.Platform.Schedules.SchedulingPosts;
-using Vickn.Platform.Schedules.SchedulingPosts.EntityMapper;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.EntityFramework
@@ -79,7 +77,7 @@ namespace Vickn.Platform.EntityFramework
         #region 排交班管理模块
 
         //岗位设置
-        public IDbSet<SchedulingPost> SchedulingPost { get; set; }
+        //public IDbSet<SchedulingPost> SchedulingPost { get; set; }
 
    
         #endregion
@@ -145,7 +143,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new KqMachineCfg());
             modelBuilder.Configurations.Add(new KqShiftCfg());
             modelBuilder.Configurations.Add(new KqShiftUserCfg());
-            modelBuilder.Configurations.Add(new SchedulingPostCfg());
+          
 
       
 

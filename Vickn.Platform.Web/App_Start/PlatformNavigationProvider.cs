@@ -13,7 +13,7 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
-using Vickn.Platform.Schedules.SchedulingPosts.Authorization;
+
 using Vickn.Platform.Users.Authorization;
 
 namespace Vickn.Platform.Web
@@ -37,20 +37,20 @@ namespace Vickn.Platform.Web
                 icon: "icon-grid"
                 );
 
-            //岗位设置
-            var schedulingpost = new MenuItemDefinition(
-                SchedulingPostAppPermissions.SchedulingPost,
-                L("SchedulingPost"),
-                url: "SchedulingPosts/SchedulingPost",
-                icon: "icon-grid",
-                 requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
-                );
+            ////岗位设置
+            //var schedulingpost = new MenuItemDefinition(
+            //    SchedulingPostAppPermissions.SchedulingPost,
+            //    L("SchedulingPost"),
+            //    url: "SchedulingPosts/SchedulingPost",
+            //    icon: "icon-grid",
+            //     requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
+            //    );
 
 
 
 
 
-            schedule.AddItem(schedulingpost);
+            //schedule.AddItem(schedulingpost);
                  
 
             #endregion

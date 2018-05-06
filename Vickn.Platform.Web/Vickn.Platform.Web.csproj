@@ -338,7 +338,6 @@
     <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail_js.js" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Index_js.js" />
-    <Content Include="Areas\SchedulingPosts\Views\SchedulingPost\Index_js.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
     <Content Include="Assets\build\check-versions.js" />
@@ -1124,10 +1123,6 @@
     <Content Include="Areas\KqDetails\Views\web.config" />
     <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
-    <Content Include="Areas\SchedulingPosts\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\SchedulingPosts\Views\SchedulingPost\Create.cshtml" />
-    <Content Include="Areas\SchedulingPosts\Views\SchedulingPost\Index.cshtml" />
-    <Content Include="Areas\SchedulingPosts\Views\web.config" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1635,8 +1630,6 @@
     <Compile Include="Areas\KqShifts\KqShiftsAreaRegistration.cs" />
     <Compile Include="Areas\KqStatistics\Controllers\KqStatisticController.cs" />
     <Compile Include="Areas\KqStatistics\KqStatisticsAreaRegistration.cs" />
-    <Compile Include="Areas\SchedulingPosts\Controllers\SchedulingPostController.cs" />
-    <Compile Include="Areas\SchedulingPosts\SchedulingPostsAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
