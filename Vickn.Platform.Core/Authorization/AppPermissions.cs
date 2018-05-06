@@ -32,7 +32,7 @@
         /// <summary>
         /// 排班管理
         /// </summary>
-        public const string Pages_ScheduleManage = "Pages.ScheduleManage";
+        public const string Pages_PbManagement = "Pages.PbManagement";
 
     }
 }

@@ -1,0 +1,58 @@
+﻿@using System.Web.Optimization
+@using System.Web.Optimization
+@using System.Web.UI.WebControls
+@using System.Web.UI.WebControls.Expressions
+@using Abp.Authorization
+@using Abp.Web.Mvc.Extensions
+@using Vickn.Platform.PbManagement.Positions.Authorization
+@{
+    ViewBag.Menu = L("Positions");
+    ViewBag.SubMenu = L("Position");
+}
+
+<div class="row animated fadeInRight">
+  <div class="ibox-content">
+    <div class="form-inline">
+      <div class="form-group">
+        <label>@L("FilterText")</label>
+        <input type="text" placeholder="@L("FilterText")" class="form-control" id="filterText" style="width: 250px;" />
+
+        <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+        <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+        @if (IsGranted(PositionAppPermissions.Position_CreatePosition))
+        {
+            <a href="javascript:;" class="btn btn-primary" id="create">
+              <span class="glyphicon glyphicon-plus"></span> @L("CreatePosition")
+            </a>
+        }
+        @if (IsGranted(PositionAppPermissions.Position_DeletePosition))
+        {
+            <a href="javascript:;" class="btn btn-danger" id="batchDelete"><span class="glyphicon glyphicon-trash"></span> @L("BatchDelete")</a>
+        }
+
+      </div>
+    </div>
+  </div>
+
+  <div class="ibox-content">
+    <table class="table table-border table-bordered table-hover table-bg dataTable">
+      <thead>
+        <tr>
+          <th width="25"><input type="checkbox" class="checkall"></th>
+          <th>@L("Position.Name")</th>
+          <th>@L("Operational")</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</div>
+
+@section styles{
+
+}
+
+@section scripts{
+  @Html.IncludeScript("~/Areas/Positions/Views/Position/index_js.js")
+}
+

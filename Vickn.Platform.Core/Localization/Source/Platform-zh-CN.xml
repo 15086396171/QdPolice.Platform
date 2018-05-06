@@ -275,30 +275,23 @@
     <text name="Export" value="导出" />
 
     <!-- 考勤管理 end-->
-   
-    <!--排班管理-->
-    <text name="Pages.ScheduleManage" value="排班管理" />
-    
-    <!--岗位设置-->
-    <text name="SchedulingPost.PostName" value="岗位名称" />
-    <text name="SchedulingPost.LastModificationTime" value="更新时间" />
-    <text name="SchedulingPost.CreationTime" value="创建时间" />
 
-    <text name="SchedulingPost" value="岗位管理" />
-    <text name="CreateSchedulingPost" value="添加岗位" />
-    <text name="EditSchedulingPost" value="编辑岗位" />
-    <text name="DeleteSchedulingPost" value="删除岗位" />
+    <!-- 岗位管理 -->
 
-    <!--排班组设置-->
-    <text name="PlatoonGroup.PlatoonGroupName" value="排班组名称" />
-   <text name="PlatoonGroup.GroupLeaderName" value="组长名称" />
-   <text name="PlatoonGroup.GroupMembersName" value="组员名称" />
+    <text name="	PositionHeaderInfo" value="岗位信息列表" />
+    <text name="PositionDeleteWarningMessage" value="岗位名称: {0} 将被删除,是否确定删除它。" />
 
+    <text name="PositionName" value="岗位" />
+    <text name="Pages.PbManagement" value="排班管理" />
 
-    <text name="PlatoonGroup" value="排班组管理" />
-    <text name="CreatePlatoonGroup" value="添加排班组" />
-    <text name="EditPlatoonGroup" value="编辑排班组" />
-    <text name="DeletePlatoonGroup" value="删除排班组" />
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="Position.Name" value="岗位名称" />
+    <text name="Position.LastModificationTime" value="最后编辑时间" />
+    <text name="Position.CreationTime" value="创建时间" />
+    <text name="Position" value="岗位管理" />
+    <text name="CreatePosition" value="添加岗位" />
+    <text name="EditPosition" value="编辑岗位" />
+    <text name="DeletePosition" value="删除岗位" />
     <!--排班管理-->
   </texts>
 </localizationDictionary>

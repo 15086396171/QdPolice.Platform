@@ -74,15 +74,6 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<KqShiftUser> KqShiftUser { get; set; }
         #endregion
 
-        #region 排交班管理模块
-
-        //岗位设置
-        //public IDbSet<SchedulingPost> SchedulingPost { get; set; }
-
-   
-        #endregion
-
-
         /* NOTE: 
          *   Setting "Default" to base class helps us when working migration commands on Package Manager Console.
          *   But it may cause problems when working Migrate.exe of EF. If you will apply migrations on command line, do not
@@ -123,6 +114,7 @@ namespace Vickn.Platform.EntityFramework
 
             PlatformConfiguration(modelBuilder);
             ChatConfiguration(modelBuilder);
+            PbManagementConfiguration(modelBuilder);
         }
 
         private void PlatformConfiguration(DbModelBuilder modelBuilder)
@@ -143,9 +135,6 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new KqMachineCfg());
             modelBuilder.Configurations.Add(new KqShiftCfg());
             modelBuilder.Configurations.Add(new KqShiftUserCfg());
-          
-
-      
 
         }
     }

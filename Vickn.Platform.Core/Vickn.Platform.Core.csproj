@@ -168,7 +168,6 @@
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
     <Compile Include="BusinessExceptions\ErrorCode.cs" />
-    <Compile Include="EntityTools\EntityBase.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppAuthorizationProvider.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppPermissions.cs" />
     <Compile Include="FileRecords\FileRecord.cs" />
@@ -194,6 +193,16 @@
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
+    <Compile Include="PbManagement\PbPositions\PbPosition.cs" />
+    <Compile Include="PbManagement\PbTitles\PbTitle.cs" />
+    <Compile Include="PbManagement\PositionPbMaps\PositionPbMap.cs" />
+    <Compile Include="PbManagement\PositionPbTimes\PositionPbTime.cs" />
+    <Compile Include="PbManagement\PositionPbs\PositionPb.cs" />
+    <Compile Include="PbManagement\Positions\Authorization\PositionAppAuthorizationProvider.cs" />
+    <Compile Include="PbManagement\Positions\Authorization\PositionAppPermissions.cs" />
+    <Compile Include="PbManagement\Positions\Position.cs" />
+    <Compile Include="PbManagement\Positions\PositionManager.cs" />
+    <Compile Include="PbManagement\Positions\_PositionReadme.cs" />
     <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppAuthorizationProvider.cs" />
     <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppPermissions.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhite.cs" />
@@ -272,7 +281,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HandheldTerminals\PhoneWhites\" />
-    <Folder Include="Schedules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

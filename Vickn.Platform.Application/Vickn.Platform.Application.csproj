@@ -286,6 +286,12 @@
     <Compile Include="Notifications\Dto\UpdateNotificationSettingsInput.cs" />
     <Compile Include="Notifications\INotificationAppService.cs" />
     <Compile Include="Notifications\NotificationAppService.cs" />
+    <Compile Include="PbManagement\Positions\Dtos\GetPositionInput.cs" />
+    <Compile Include="PbManagement\Positions\Dtos\PositionDto.cs" />
+    <Compile Include="PbManagement\Positions\Dtos\PositionEditDto.cs" />
+    <Compile Include="PbManagement\Positions\Dtos\PositionForEdit.cs" />
+    <Compile Include="PbManagement\Positions\IPositionAppService.cs" />
+    <Compile Include="PbManagement\Positions\PositionAppService.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\GetPrivatePhoneWhiteInput.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\PhoneWhiteDto.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\PrivatePhoneWhiteDto.cs" />

@@ -15,7 +15,7 @@
     <RootNamespace>Vickn.Platform.Web</RootNamespace>
     <AssemblyName>Vickn.Platform.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
@@ -1123,6 +1123,7 @@
     <Content Include="Areas\KqDetails\Views\web.config" />
     <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
+    <Content Include="Areas\Positions\Views\Position\Index_js.js" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1614,6 +1615,10 @@
     <Content Include="Areas\Announcements\Views\Announcement\Create.cshtml" />
     <Content Include="Areas\Announcements\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Announcements\Views\web.config" />
+    <Content Include="Areas\Positions\Views\Position\Index.cshtml" />
+    <Content Include="Areas\Positions\Views\Position\Create.cshtml" />
+    <Content Include="Areas\Positions\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Positions\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1678,6 +1683,8 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
+    <Compile Include="Areas\Positions\Controllers\PositionController.cs" />
+    <Compile Include="Areas\Positions\PositionsAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1786,6 +1793,9 @@
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />
     <Folder Include="_GeneratedCode\Areas\" />
+    <Folder Include="_GeneratedCode\Positions\Application\" />
+    <Folder Include="_GeneratedCode\Positions\Core\" />
+    <Folder Include="_GeneratedCode\Positions\EntityFramework\EntityMapper\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
