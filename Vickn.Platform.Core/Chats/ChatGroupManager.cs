@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
@@ -56,11 +57,19 @@ namespace Vickn.Platform.Chats
             {
                 if (_chatUserRepository.FirstOrDefault(p => p.ChatGroupId == chatGroup.Id && p.UserId == userId) == null)
                 {
-                    await _chatUserRepository.InsertAsync(new ChatGroupUser()
+                    try
                     {
-                        UserId = userId,
-                        ChatGroupId = chatGroup.Id
-                    });
+                        await _chatUserRepository.InsertAsync(new ChatGroupUser()
+                        {
+                            UserId = userId,
+                            ChatGroupId = chatGroup.Id
+                        });
+                    }
+                    catch (Exception e)
+                    {
+                        Logger.Error(e.Message);
+                        throw;
+                    }
                 }
             }
             return chatGroup;

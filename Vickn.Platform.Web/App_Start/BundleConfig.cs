@@ -85,7 +85,7 @@ namespace Vickn.Platform.Web
                         /*   <!-- 自定义js -->*/
                         "~/Content/Hplus/js/hplus.js",
                         "~/Content/Hplus/js/contabs.js",
-                        "~/Content/Hplus/js/content.js",
+                        //"~/Content/Hplus/js/content.js",
 
                           /*   <!-- 第三方插件 -->*/
                           "~/Content/Hplus/js/plugins/iCheck/icheck.min.js",

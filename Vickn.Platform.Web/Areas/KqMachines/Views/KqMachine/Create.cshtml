@@ -1,0 +1,57 @@
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Attendences.KqMachines.Dtos.KqMachineDto
+
+<div class="row animated fadeInRight">
+    <div class="ibox-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+            <div class="form-horizontal">
+
+                <div class="hidden">
+
+                    @Html.HiddenFor(model => model.Id)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KQMachineNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KQMachineNo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                        @Html.ValidationMessageFor(model => model.KQMachineNo, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KQMachinePosition, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KQMachinePosition, new { htmlAttributes = new { @class = "form-control", placeholder = "如：26.6470200000,106.6302400000", } })
+                        @Html.ValidationMessageFor(model => model.KQMachinePosition, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+               
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Remark, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Remark, new { htmlAttributes = new { @class = "form-control", placeholder = "如：戒毒一所", } })
+                        @Html.ValidationMessageFor(model => model.Remark, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+
+                @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+            </div>
+
+
+        }
+    </div>
+</div>
+
+
+

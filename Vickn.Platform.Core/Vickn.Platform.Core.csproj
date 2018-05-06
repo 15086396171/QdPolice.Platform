@@ -133,6 +133,21 @@
     <Compile Include="Announcements\Authorization\AnnouncementAppAuthorizationProvider.cs" />
     <Compile Include="Announcements\Authorization\AnnouncementAppPermissions.cs" />
     <Compile Include="Announcements\_AnnouncementReadme.cs" />
+    <Compile Include="Attendances\KqDetails\Authorization\KqDetailAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\KqDetails\Authorization\KqDetailAppPermissions.cs" />
+    <Compile Include="Attendances\KqDetails\KqAllDetail.cs" />
+    <Compile Include="Attendances\KqDetails\KqDetail.cs" />
+    <Compile Include="Attendances\KqMachines\Authorization\KqMachineAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\KqMachines\Authorization\KqMachineAppPermissions.cs" />
+    <Compile Include="Attendances\KqMachines\KqMachine.cs" />
+    <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\KqShifts\Authorization\KqShiftAppPermissions.cs" />
+    <Compile Include="Attendances\KqShifts\KqShift.cs" />
+    <Compile Include="Attendances\KqShifts\KqShiftUser.cs" />
+    <Compile Include="Attendances\Leaves\Leave.cs" />
+    <Compile Include="Attendances\Statisticls\Authorization\KqStatisticAppAuthorizationProvider.cs" />
+    <Compile Include="Attendances\Statisticls\Authorization\KqStatisticAppPermissions.cs" />
+    <Compile Include="Attendances\Statisticls\Statisticl.cs" />
     <Compile Include="Authorization\PermissionChecker.cs" />
     <Compile Include="BusinessExceptions\BusinessException.cs" />
     <Compile Include="Chats\ChatGroup.cs" />
@@ -153,6 +168,7 @@
     <Compile Include="DataDictionaries\DataDictionaryItems\DataDictionaryItemManager.cs" />
     <Compile Include="DataDictionaries\DataDictionaryItems\_DataDictionaryItemReadme.cs" />
     <Compile Include="BusinessExceptions\ErrorCode.cs" />
+    <Compile Include="EntityTools\EntityBase.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppAuthorizationProvider.cs" />
     <Compile Include="FileRecords\Authorization\FileRecordAppPermissions.cs" />
     <Compile Include="FileRecords\FileRecord.cs" />
@@ -217,7 +233,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Localization\Source\Platform-zh-CN.xml" />
+    <EmbeddedResource Include="Localization\Source\Platform-zh-CN.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Localization\Source\Platform-tr.xml" />
     <EmbeddedResource Include="Localization\Source\Platform.xml">
       <SubType>Designer</SubType>
@@ -254,6 +272,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="HandheldTerminals\PhoneWhites\" />
+    <Folder Include="Schedules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

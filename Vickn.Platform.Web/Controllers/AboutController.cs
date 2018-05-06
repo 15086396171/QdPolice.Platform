@@ -6,6 +6,9 @@ namespace Vickn.Platform.Web.Controllers
     {
         public ActionResult Index()
         {
+
+            
+
             Logger.Debug("/About/Index has been visited");
             return View();
         }

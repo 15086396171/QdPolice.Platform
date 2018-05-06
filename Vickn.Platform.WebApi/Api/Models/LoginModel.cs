@@ -13,6 +13,8 @@ namespace Vickn.Platform.Api.Models
         [Required]
         public string Password { get; set; }
 
+        public string LoginType { get; set; }
+
         public DeviceLoginModel DeviceLoginModel { get; set; }
 
     }

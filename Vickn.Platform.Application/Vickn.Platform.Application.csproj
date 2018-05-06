@@ -181,6 +181,41 @@
     <Compile Include="Announcements\Dtos\GetAnnouncementInput.cs" />
     <Compile Include="Announcements\Dtos\GetLastAnnouncentInput.cs" />
     <Compile Include="Announcements\IAnnouncementAppService.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\GetKqDetailInputDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailEditDtos.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailForEidt.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqDetailWeiXingDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqRecordEditDto.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\KqRecordForEidt.cs" />
+    <Compile Include="Attendences\KqDetails\Dtos\ResultDto.cs" />
+    <Compile Include="Attendences\KqDetails\IKqDetailAppService.cs" />
+    <Compile Include="Attendences\KqDetails\KqDetailAppService.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\GetKqMachineInputDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineEditDto.cs" />
+    <Compile Include="Attendences\KqMachines\Dtos\KqMachineForEidt.cs" />
+    <Compile Include="Attendences\KqMachines\IKqMachineAppService.cs" />
+    <Compile Include="Attendences\KqMachines\KqMachineAppService.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\GetKqShiftInputDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftForEidt.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftEditDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserEidtDto.cs" />
+    <Compile Include="Attendences\KqShifts\Dtos\KqShiftUserForEidt.cs" />
+    <Compile Include="Attendences\KqShifts\IKqShiftAppService.cs" />
+    <Compile Include="Attendences\KqShifts\KqShiftAppService.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetExportKqStatisticDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticInputDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\GetKqStatisticAppDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqDetailStatisticListDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqStatisicListDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqStatisticEditDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqAppResultYMdDto.cs" />
+    <Compile Include="Attendences\KqStatistics\Dtos\KqStatisticYMdDto.cs" />
+    <Compile Include="Attendences\KqStatistics\IKqStatisticAppService.cs" />
+    <Compile Include="Attendences\KqStatistics\KqStatisticAppService.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ChatMessageGroupDto.cs" />
     <Compile Include="Chats\ChatGroups\Dtos\ExitGroupInput.cs" />
@@ -332,6 +367,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Chats\ChatHistories\" />
+    <Folder Include="Schedules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

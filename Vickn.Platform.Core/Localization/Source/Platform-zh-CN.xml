@@ -104,7 +104,7 @@
     <!-- 数据字典项管理 -->
     <text name="	DataDictionaryItemHeaderInfo" value="数据字典项信息列表" />
     <text name="DataDictionaryItemDeleteWarningMessage" value="数据字典项名称: {0} 将被删除,是否确定删除它。" />
-
+    手持终端管理
     <text name="DataDictionaryItemName" value="数据字典项" />
 
     <!--//用于表格展示的数据信息的标题-->
@@ -220,5 +220,85 @@
     <text name="EditForensicsRecord" value="编辑取证记录" />
     <text name="DeleteForensicsRecord" value="删除取证记录" />
     <text name="VideoCall" value="视频对讲" />
+
+    <!-- 考勤管理 strart-->
+    <text name="Pages.AttendanceManage" value="考勤管理" />
+
+    <!--//考勤班次-->
+    <text name="KqShift.Name" value="班次名称" />
+    <text name="KqShift.WorkTime" value="上班时间" />
+    <text name="KqShift.ClosingTime" value="下班时间" />
+    <text name="KqShift.KqShiftUsers" value="KqShiftUsers" />
+
+    <text name="KqShift" value="考勤班次管理" />
+    <text name="CreateKqShift" value="添加考勤班次" />
+    <text name="EditKqShift" value="编辑考勤班次" />
+    <text name="DeleteKqShift" value="删除考勤班次" />
+    
+    <!--//考勤机信息-->
+    <text name="KqMachine.KQMachineNo" value="考勤机编号" />
+    <text name="KqMachine.KQMachinePosition" value="考勤机位置" />
+    <text name="Remark" value="备注" />
+
+    <text name="KqMachine" value="考勤机管理" />
+    <text name="CreateKqMachine" value="添加考勤机" />
+    <text name="EditKqMachine" value="编辑考勤机" />
+    <text name="DeleteKqMachine" value="删除考勤机" />
+
+    <!--//考勤统计-->
+    <text name="KqStatistic" value="考勤信息统计管理" />
+    <text name="GroupName" value="所属部门" />
+    <text name="Normal.days" value="正常天数" />
+    <text name="Late.days" value="迟到天数" />
+    <text name="LeaveEarly.days" value="早退天数" />
+    <text name="Absenteeism.days" value="缺勤天数" />
+      <text name="Abnormal.days" value="异常天数" />
+
+
+    <!--//考勤明细-->
+    <text name="KqDetail" value="考勤流水" />
+    <text name="QDTime" value="签到时间" />
+    <text name="QDType" value="签到方式" />
+    <text name="QDPosition" value="签到位置" />
+    <text name="StartTime" value="开始时间" />
+    <text name="EndTime" value="终止时间" />
+    <text name="OutgoingCauseWork" value="上班外出事由" />
+    <text name="OutgoingCauseClosing" value="下班外出事由" />
+    <text name="QDPostionWork" value="上班打卡位置" />
+    <text name="QDPostionClosing" value="下班打卡位置" />
+    <text name="QDTypes" value="签到类型" />
+    <text name="QDDate" value="签到日期" />
+    
+    <text name="KqWeek" value="考勤周统计" />
+    <text name="KqMonth" value="考勤月统计" />
+    <text name="KqYear" value="考勤年统计" />
+    <text name="Export" value="导出" />
+
+    <!-- 考勤管理 end-->
+   
+    <!--排班管理-->
+    <text name="Pages.ScheduleManage" value="排班管理" />
+    
+    <!--岗位设置-->
+    <text name="SchedulingPost.PostName" value="岗位名称" />
+    <text name="SchedulingPost.LastModificationTime" value="更新时间" />
+    <text name="SchedulingPost.CreationTime" value="创建时间" />
+
+    <text name="SchedulingPost" value="岗位管理" />
+    <text name="CreateSchedulingPost" value="添加岗位" />
+    <text name="EditSchedulingPost" value="编辑岗位" />
+    <text name="DeleteSchedulingPost" value="删除岗位" />
+
+    <!--排班组设置-->
+    <text name="PlatoonGroup.PlatoonGroupName" value="排班组名称" />
+   <text name="PlatoonGroup.GroupLeaderName" value="组长名称" />
+   <text name="PlatoonGroup.GroupMembersName" value="组员名称" />
+
+
+    <text name="PlatoonGroup" value="排班组管理" />
+    <text name="CreatePlatoonGroup" value="添加排班组" />
+    <text name="EditPlatoonGroup" value="编辑排班组" />
+    <text name="DeletePlatoonGroup" value="删除排班组" />
+    <!--排班管理-->
   </texts>
 </localizationDictionary>

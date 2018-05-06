@@ -6,6 +6,7 @@
     #div-all div {
         float: left;
     }
+
     .div-title {
         width: 100%;
         height: 40px;
@@ -13,7 +14,10 @@
         background-color: #F5F5F5;
         border-bottom: 1px solid #D0D0D0;
     }
-    .div-left{ color: #464646; text-decoration: none;
+
+    .div-left {
+        color: #464646;
+        text-decoration: none;
     }
 </style>
 
@@ -28,7 +32,7 @@
         <input type="hidden" value="" id="sortId">
         <ul class="dragsort-ver ul-content-1" id="ul-content" style="" data-listidx="0">
 
-            <li class="li"  data-itemidx="0" style="cursor: pointer;">
+            <li class="li" data-itemidx="0" style="cursor: pointer;">
                 <a class="Access_Api" href="/Users" data-index="7">
                     <img src="~/Content/Hplus/img/yinyontubiao/ap1.png" alt="/Content/html_style/right-keyMenu/img/app/ap4.png" />
 
@@ -38,7 +42,7 @@
                 </a>
 
             </li>
-            <li class="li"  data-itemidx="1" style="cursor: pointer;">
+            <li class="li" data-itemidx="1" style="cursor: pointer;">
                 <a class="Access_Api" href="/Devices/Device/VideoCall" data-index="5">
                     <img src="~/Content/Hplus/img/yinyontubiao/ap2.png" alt="/Content/html_style/right-keyMenu/img/app/ap4.png" />
 
@@ -48,7 +52,7 @@
                 </a>
 
             </li>
-            <li class="li"  data-itemidx="2" style="cursor: pointer;">
+            <li class="li" data-itemidx="2" style="cursor: pointer;">
                 <!--判断排班系统是否有排班表推送-->
                 <a class="btn-login" href="/Devices/Device" data-index="3">
 
@@ -60,7 +64,7 @@
                 </a>
 
             </li>
-            <li class="li"  data-itemidx="2" style="cursor: pointer;">
+            <li class="li" data-itemidx="2" style="cursor: pointer;">
                 <!--判断排班系统是否有排班表推送-->
                 <a class="btn-login" id="PBGL" href="#" target="_blank" data-index="3">
 
@@ -92,7 +96,7 @@
     <div class="div-left" style="width:60%;margin-top:-250px;">
         <div class="div-title">
 
-           
+
             <img src="/Content/Hplus/img/yinyontubiao/ooopic_1463537349.png" width="35" height="35" />
             <spn style="margin-left:8px;">其他</spn>
 
@@ -102,46 +106,49 @@
 </div>
 
 @section scripts{
-<script>
-    $(function () {
-        var announcementService = abp.services.app.announcement;
-        var input = {};
+    <script>
+        $(function () {
 
-        announcementService.getPagedAsync(input).done(function (result) {
-
-            console.log(result);
           
 
-            $.each(result.items,
-                function (index, data) {
-                    console.log(index, data);
-                  
-                    if (data.isRead == true) {
-                        $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a><img src='/Content/Hplus/img/messagehint/new_038.gif' /></li>");
-                    } else {
-                        $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a></li>");
-                    }
-                })
+            var announcementService = abp.services.app.announcement;
+            var input = {};
 
-        });
+            announcementService.getPagedAsync(input).done(function (result) {
 
-        //获取当前用户Id,用户操作老平台的排班管理
-        $.post("/Layout/getUserId", function (data) {
-            //$("#PBGL").attr("href", "http://localhost:42137/WebApi/Index?userid=" + data + "")
+                console.log(result);
+
+
+                $.each(result.items,
+                    function (index, data) {
+                        console.log(index, data);
+
+                        if (data.isRead == true) {
+                            $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a><img src='/Content/Hplus/img/messagehint/new_038.gif' /></li>");
+                        } else {
+                            $(".title").append("<li><a onclick='getXXGG(" + data.id + ")' > " + data.title + "</a></li>");
+                        }
+                    })
+
+            });
+
+            //获取当前用户Id,用户操作老平台的排班管理
+            $.post("/Layout/getUserId", function (data) {
+                //$("#PBGL").attr("href", "http://localhost:42137/WebApi/Index?userid=" + data + "")
+            })
         })
-    })
-    function getXXGG(data) {
+        function getXXGG(data) {
 
-        window.location = "/Announcements/announcement/SelectMessage/" + data + ""
-       
-    }
+            window.location = "/Announcements/announcement/SelectMessage/" + data + ""
 
-    function tsUser() {
-      
-       
-       
-    }
+        }
+
+        function tsUser() {
 
 
-</script>
+
+        }
+
+
+    </script>
 }

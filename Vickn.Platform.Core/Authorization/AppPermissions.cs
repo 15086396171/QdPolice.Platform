@@ -24,5 +24,15 @@
         /// </summary>
         public const string Pages_HandheldTerminal_VideoCall = "Pages.HandheldTerminal.VideoCall";
 
+        /// <summary>
+        /// 考勤管理
+        /// </summary>
+        public const string Pages_AttendanceManage = "Pages.AttendanceManage";
+
+        /// <summary>
+        /// 排班管理
+        /// </summary>
+        public const string Pages_ScheduleManage = "Pages.ScheduleManage";
+
     }
 }

@@ -329,6 +329,15 @@
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
     <Content Include="Areas\Devices\Views\Device\Details.js" />
     <Content Include="Areas\Devices\Views\Device\ShowFile.js" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\Holiday.xml">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Areas\KqDetails\Views\KqDetail\Index_js.js" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\Index_js.js" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Create_js.js" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Index_js.js" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail_js.js" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Index_js.js" />
     <Content Include="Assets\.postcssrc.js" />
     <Content Include="Assets\build\build.js" />
     <Content Include="Assets\build\check-versions.js" />
@@ -544,7 +553,6 @@
     <Content Include="Content\Hplus\img\loading-upload.gif" />
     <Content Include="Content\Hplus\img\locked.png" />
     <Content Include="Content\Hplus\img\login-background.jpg" />
-    <Content Include="Content\Hplus\img\messagehint\new_038.gif" />
     <Content Include="Content\Hplus\img\yinyontubiao\ap2.png" />
     <Content Include="Content\Hplus\img\yinyontubiao\ap6.png" />
     <Content Include="Content\Hplus\img\yinyontubiao\css.css" />
@@ -1000,10 +1008,16 @@
     <Content Include="Content\Hplus\typography.html" />
     <Content Include="Content\Hplus\webim.html" />
     <Content Include="Content\Hplus\widgets.html" />
+    <Content Include="Content\LayDate\laydate.js" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.svg" />
+    <Content Include="Content\LayDate\theme\default\laydate.css" />
     <Content Include="Content\Mp3\BjSoound.mp3" />
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Images\KqDK\logo.png" />
+    <Content Include="Images\KqDK\pw.png" />
+    <Content Include="Images\KqDK\user.png" />
     <Content Include="Images\loading.gif" />
     <Content Include="Images\Login\log-in-wp宁夏.jpg" />
     <Content Include="Images\Login\pwd.png" />
@@ -1089,8 +1103,26 @@
     <Content Include="Assets\dist\static\js\app.7f911d682364197145eb.js.map" />
     <Content Include="Assets\dist\static\js\manifest.0cfae2138da1ea9818b4.js.map" />
     <Content Include="Assets\dist\static\js\vendor.2afdedc1cd53783a994a.js.map" />
-    <Content Include="WebService\MainService.asmx" />
+    <Content Include="Areas\Devices\Views\Device\OnlineClients.cshtml" />
     <Content Include="Areas\Announcements\Views\Announcement\SelectMessage.cshtml" />
+    <Content Include="Areas\KqShifts\Views\web.config" />
+    <Content Include="Areas\KqShifts\Views\KqShift\_ViewStart.cshtml" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Index.cshtml" />
+    <Content Include="Areas\KqShifts\Views\KqShift\Create.cshtml" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.eot" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.ttf" />
+    <Content Include="Content\LayDate\theme\default\font\iconfont.woff" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\_ViewStart.cshtml" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\Index.cshtml" />
+    <Content Include="Areas\KqMachines\Views\web.config" />
+    <Content Include="Areas\KqMachines\Views\KqMachine\Create.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\_ViewStart.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\web.config" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Index.cshtml" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\_ViewStart.cshtml" />
+    <Content Include="Areas\KqDetails\Views\web.config" />
+    <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
+    <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1528,6 +1560,7 @@
     <Content Include="Content\Hplus\js\plugins\video\sdk\woogeen.sdk.ui.js" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\pscp.exe" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\putty.exe" />
+    <Content Include="Update\KqApp\kqAppUpdate.xml" />
     <Content Include="Update\update.xml" />
     <Content Include="Views\Account\Login.css">
       <DependentUpon>Login.less</DependentUpon>
@@ -1557,6 +1590,8 @@
     <Content Include="js\datatable.extend.js" />
     <Content Include="Views\Users\Index.js" />
     <Content Include="Views\Users\ChangeProfilePic.js" />
+    <Content Include="Views\WeiXingDK\Index_js.js" />
+    <Content Include="Views\WeiXingDK\Login_js.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1586,10 +1621,20 @@
     <Compile Include="App_Start\PlatformWebModule.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.cs" />
+    <Compile Include="Areas\Devices\Models\OnlineUser.cs" />
+    <Compile Include="Areas\KqDetails\Controllers\KqDetailController.cs" />
+    <Compile Include="Areas\KqDetails\KqDetailsAreaRegistration.cs" />
+    <Compile Include="Areas\KqMachines\Controllers\KqMachineController.cs" />
+    <Compile Include="Areas\KqMachines\KqMachinesAreaRegistration.cs" />
+    <Compile Include="Areas\KqShifts\Controllers\KqShiftController.cs" />
+    <Compile Include="Areas\KqShifts\KqShiftsAreaRegistration.cs" />
+    <Compile Include="Areas\KqStatistics\Controllers\KqStatisticController.cs" />
+    <Compile Include="Areas\KqStatistics\KqStatisticsAreaRegistration.cs" />
     <Compile Include="Controllers\AboutController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AppController.cs" />
     <Compile Include="Controllers\AuditLogsController.cs" />
+    <Compile Include="Controllers\CamereChangeController.cs" />
     <Compile Include="Controllers\DataDictionariesController.cs" />
     <Compile Include="Controllers\DataDictionaryItemsController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
@@ -1603,6 +1648,7 @@
     <Compile Include="Controllers\SignalrTestController.cs" />
     <Compile Include="Controllers\TenantsController.cs" />
     <Compile Include="Controllers\UsersController.cs" />
+    <Compile Include="Controllers\WeiXingDKController.cs" />
     <Compile Include="Models\Account\ResetPasswordFormViewModel.cs" />
     <Compile Include="Models\Account\ResetPasswordViewModel.cs" />
     <Compile Include="Models\FileRecord\FileUploadViewModel.cs" />
@@ -1632,10 +1678,6 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
-    <Compile Include="WebService\MainService.asmx.cs">
-      <DependentUpon>MainService.asmx</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1683,6 +1725,7 @@
     <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
     <Content Include="Update\Police.apk" />
     <Content Include="Template\导入模版.xlsx" />
+    <Content Include="Update\KqApp\kqApp.apk" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />
@@ -1690,6 +1733,8 @@
     <Content Include="Views\Users\ChangeProfilePic.cshtml" />
     <Content Include="Views\Users\Test.cshtml" />
     <Content Include="Views\SignalrTest\Index.cshtml" />
+    <Content Include="Views\WeiXingDK\Index.cshtml" />
+    <Content Include="Views\WeiXingDK\Login.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1729,11 +1774,17 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\KqDetails\Models\" />
+    <Folder Include="Areas\KqDetails\Views\Shared\" />
+    <Folder Include="Areas\KqMachines\Models\" />
+    <Folder Include="Areas\KqMachines\Views\Shared\" />
+    <Folder Include="Areas\KqShifts\Models\" />
+    <Folder Include="Areas\KqShifts\Views\Shared\" />
+    <Folder Include="Areas\KqStatistics\Models\" />
+    <Folder Include="Areas\KqStatistics\Views\Shared\" />
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
-    <Folder Include="_GeneratedCode\Announcements\Application\" />
-    <Folder Include="_GeneratedCode\Announcements\Core\" />
-    <Folder Include="_GeneratedCode\Announcements\EntityFramework\EntityMapper\" />
+    <Folder Include="Views\CamereChange\" />
     <Folder Include="_GeneratedCode\Areas\" />
   </ItemGroup>
   <ItemGroup>
@@ -1756,7 +1807,16 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <SaveServerSettingsInUserFile>True</SaveServerSettingsInUserFile>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>61814</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:61780/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
         </WebProjectProperties>
       </FlavorProperties>
     </VisualStudio>

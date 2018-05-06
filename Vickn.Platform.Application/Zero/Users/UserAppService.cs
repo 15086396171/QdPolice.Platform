@@ -400,6 +400,29 @@ namespace Vickn.Platform.Users
             user.ProfilePictureId = dto.ProfilePictureId;
         }
 
+        /// <summary>
+        /// 设置系统中所有用户的默认角色
+        /// </summary>
+        /// <returns></returns>
+        public async Task SetDefaultRolesAsync()
+        {   
+            var users = await _userRepository.GetAllListAsync();
+            var roles = await _roleManager.Roles.Where(p => p.IsDefault).ToListAsync();
+            foreach (var user in users)
+            {
+                foreach (var role in roles)
+                {
+                    if (user.Roles.FirstOrDefault(p => p.RoleId == role.Id) == null)
+                    {
+                        user.Roles.Add(new UserRole()
+                        {
+                            RoleId = role.Id
+                        });
+                    }
+                }
+            }
+        }
+
         #endregion
     }
 }

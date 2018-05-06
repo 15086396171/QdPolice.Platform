@@ -21,6 +21,8 @@ namespace Vickn.Platform.Authorization
 
             pages.CreateChildPermission(AppPermissions.Pages_Maintenance, L("Maintenance"));
 
+          
+
             pages.CreateChildPermission(AppPermissions.Pages_Api, L("Api"));
 
             ////Host permissions

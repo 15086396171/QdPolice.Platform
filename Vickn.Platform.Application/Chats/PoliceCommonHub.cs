@@ -195,20 +195,30 @@ namespace Vickn.Platform.Chats
                 var chatGroup =
                     await _chatGroupManager.InviteToGroupAsync(input.GroupId,
                         input.UserIds);
+
+                await uow.CompleteAsync();
+                await JoinGroups();
+
                 foreach (var inputUserId in input.UserIds)
                 {
                     var allByUserId =
                         _onlineClientManager.GetAllByUserId(new UserIdentifier(AbpSession.TenantId, inputUserId));
                     foreach (var onlineClient in allByUserId)
                     {
-                        await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);
+                        try
+                        {
+                            await Groups.Add(onlineClient.ConnectionId, chatGroup.Name);
+                        }
+                        catch (Exception e)
+                        {
+                            Logger.Error(e.Message);
+                        }
+
                         // 通知其他用户加入群组
 
                         Clients.Client(onlineClient.ConnectionId).joinGroup(chatGroup.MapTo<ChatGroupDto>());
                     }
                 }
-                await uow.CompleteAsync();
-                await JoinGroups();
             }
         }
 

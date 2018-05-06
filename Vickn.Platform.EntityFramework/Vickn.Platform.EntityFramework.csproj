@@ -135,6 +135,11 @@
     <Compile Include="EntityFramework\EntityMapper\Announcements\AnnouncementUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Announcements\AnnouncementCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\AppWhiteLists\AppWhiteListCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqDetail\KqAllDetailCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqDetail\KqDetailCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqMachines\KqMachineCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqShifts\KqShiftCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\Attendances\KqShifts\KqShiftUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatGroupUserCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\Chats\ChatHistoryCfg.cs" />
@@ -170,6 +175,9 @@
       <Project>{17298ea0-af73-4f30-b6f1-2066100d7d74}</Project>
       <Name>Vickn.Platform.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="EntityFramework\EntityMapper\Schedules\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />

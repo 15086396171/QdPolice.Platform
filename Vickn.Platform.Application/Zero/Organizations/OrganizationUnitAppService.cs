@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Linq.Dynamic;
@@ -60,7 +61,7 @@ namespace Vickn.Platform.Organizations
             List<OuWithUserDto> ouWithUserDtos = new List<OuWithUserDto>();
             foreach (var userOrganizationUnit in userOrganizationUnits)
             {
-                // 所在当前组织
+                //所在当前组织
                 var organizationUnit = await _organizationUnitRepository.GetAsync(userOrganizationUnit.OrganizationUnitId);
 
                 var codeZero = organizationUnit.Code.Split(".")[0];
@@ -69,7 +70,7 @@ namespace Vickn.Platform.Organizations
                 var organizationUnits = await query.ToListAsync();
 
                 ouWithUserDtos.AddRange(organizationUnits.MapTo<List<OuWithUserDto>>());
-
+               
                 foreach (var ouWithUserDto in ouWithUserDtos)
                 {
                     await GetUsers(ouWithUserDto);
@@ -108,6 +109,8 @@ namespace Vickn.Platform.Organizations
             var users = await query.ToListAsync();
 
             dto.Users = users.MapTo<List<UserSimpleDto>>();
+            dto.Children = dto.Children.OrderBy(p => p.Id).ToList();
+            dto.Users = dto.Users.OrderBy(p => p.Id).ToList();
             foreach (var ouWithUserDto in dto.Children)
             {
                 await GetUsers(ouWithUserDto);
@@ -296,10 +299,10 @@ namespace Vickn.Platform.Organizations
 
         public async Task AddUserToOuAsync(AddUserToOuInput input)
         {
-            foreach (var userOrganizationUnit in _userOrganizationUnitRepository.GetAllList(p=>p.OrganizationUnitId == input.OuId))
+            foreach (var userOrganizationUnit in _userOrganizationUnitRepository.GetAllList(p => p.OrganizationUnitId == input.OuId))
             {
-                if(!input.UserIds.Contains(userOrganizationUnit.UserId))
-                await _userOrganizationUnitRepository.DeleteAsync(userOrganizationUnit);
+                if (!input.UserIds.Contains(userOrganizationUnit.UserId))
+                    await _userOrganizationUnitRepository.DeleteAsync(userOrganizationUnit);
             }
             foreach (var userId in input.UserIds)
             {

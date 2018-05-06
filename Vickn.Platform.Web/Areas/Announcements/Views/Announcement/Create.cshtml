@@ -14,51 +14,58 @@
 
         @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
 
-        <div class="form-horizontal">
+      <div class="form-horizontal">
 
           <div class="hidden">
-            @Html.HiddenFor(model => model.AnnouncementEditDto.Id)
+              @Html.HiddenFor(model => model.AnnouncementEditDto.Id)
           </div>
 
           <div class="form-group">
-            @Html.LabelFor(model => model.AnnouncementEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-              @Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Title, "", new { @class = "text-danger" })
-            </div>
-          </div>
-
-          <div class="form-group">
-            @Html.LabelFor(model => model.AnnouncementEditDto.Content, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-              @Html.TextAreaFor(model => model.AnnouncementEditDto.Content, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Content, "", new { @class = "text-danger" })
-            </div>
-          </div>
-
-          <div class="form-group">
-            @Html.LabelFor(model => model.AnnouncementEditDto.AnnouncementUsers, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-              @*@Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })*@
-
-              <input type="text" readonly="readonly" class="form-control" value="@(string.Join(",",Model.AnnouncementEditDto.AnnouncementUsers.Select(p => p.User.Name)))" id="names" onclick="showMenu()" />
-              <div id="users">
-                @for (int i = 0; i < Model.AnnouncementEditDto.AnnouncementUsers.Count; i++)
-                {
-                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].Id)
-                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].UserId)
-                    @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].AnnouncementId)
-
-                    @*<input name="AnnouncementEditDto.AnnouncementUsers[0].Id" type="hidden" value="false">*@
-                }
+              @Html.LabelFor(model => model.AnnouncementEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+              <div class="col-md-8">
+                  @Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control" } })
+                  @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Title, "", new { @class = "text-danger" })
               </div>
-              @Html.ValidationMessageFor(model => model.AnnouncementEditDto.AnnouncementUsers, "", new { @class = "text-danger" })
-            </div>
+          </div>
+
+          <div class="form-group">
+              @Html.LabelFor(model => model.AnnouncementEditDto.Content, htmlAttributes: new { @class = "control-label col-md-2" })
+              <div class="col-md-8">
+                  @Html.TextAreaFor(model => model.AnnouncementEditDto.Content, new { htmlAttributes = new { @class = "form-control" } })
+                  @Html.ValidationMessageFor(model => model.AnnouncementEditDto.Content, "", new { @class = "text-danger" })
+              </div>
+          </div>
+
+          <div class="form-group">
+              @Html.LabelFor(model => model.AnnouncementEditDto.AnnouncementUsers, htmlAttributes: new { @class = "control-label col-md-2" })
+              <div class="col-md-8">
+                  @*@Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })*@
+
+                  <input type="text" readonly="readonly" class="form-control" value="@(string.Join(",",Model.AnnouncementEditDto.AnnouncementUsers.Select(p => p.User.Name)))" id="names" onclick="showMenu()" />
+                  <div id="users">
+                      @for (int i = 0; i < Model.AnnouncementEditDto.AnnouncementUsers.Count; i++)
+                {
+                  @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].Id)
+                  @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].UserId)
+                  @Html.HiddenFor(model => model.AnnouncementEditDto.AnnouncementUsers[i].AnnouncementId)
+
+                  @*<input name="AnnouncementEditDto.AnnouncementUsers[0].Id" type="hidden" value="false">*@
+        }
+                  </div>
+                  @Html.ValidationMessageFor(model => model.AnnouncementEditDto.AnnouncementUsers, "", new { @class = "text-danger" })
+              </div>
+          </div>
+          <div class="hr-line-dashed"></div>
+          <div class="form-group">
+              <div class="col-sm-4 col-sm-offset-2">
+                  <button class="btn btn-primary" type="button" id="btnKeep">保存</button>
+                  @Html.ActionLink("取消", "Index", null, new { @class = "btn btn-white" })
+              </div>
           </div>
 
 
-          @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
-        </div>
+          @*@Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")*@
+      </div>
 
         <div id="menuContent" class="menuContent" style="display: none;">
           <div class="organizationUnit ztree"></div>
@@ -96,10 +103,24 @@
           layer.close(index);
         }
       });
-      }
-
-     
+    }
       $(document).ready(function () {
+          $("#btnKeep").click(function () {
+              var selectUser = $("#names").val();
+              if (selectUser == "") {
+                 
+                  layer.alert('公开用户不能为空', {
+                      skin: 'layui-layer-lan'
+                      , closeBtn: 0
+                      , anim: 4 //动画类型
+                  });
+ 
+              }
+              else {
+                  $("form").submit();
+              }
+          })
+
       var selectedUsers = [];
       var selectedUserNames = [];
       var editor = new wangEditor('AnnouncementEditDto_Content');
@@ -109,10 +130,9 @@
       ouTree.init($(".organizationUnit"), function (node) {
         console.log(node)
         getChildrenUsers(node);
-        debugger;
+
         $("#names").val(selectedUserNames.join(','));
         $("#users").children().remove();
-
         $.each(selectedUsers, function (index, data) {
           $("#users").append('<input name="AnnouncementEditDto.AnnouncementUsers[' +
             index +

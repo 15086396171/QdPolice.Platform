@@ -1,0 +1,110 @@
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.Attendences.KqShifts.Dtos.KqShiftForEidt
+
+<div class="row animated fadeInRight">
+    <div class="ibox-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+            <div class="form-horizontal">
+
+                <div class="hidden">
+
+                    @Html.HiddenFor(model => model.KqShiftEditDto.Id)
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KqShiftEditDto.ShiftName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KqShiftEditDto.ShiftName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.KqShiftEditDto.ShiftName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                @*<div class="form-group">
+                        @Html.LabelFor(model => model.KqShiftEditDto.WorkTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                        <div class="col-md-8">
+                            @Html.EditorFor(model => model.KqShiftEditDto.WorkTime, new { htmlAttributes = new { @class = "form-control", placeholder = "09:00" } })
+                            @Html.ValidationMessageFor(model => model.KqShiftEditDto.WorkTime, "", new { @class = "text-danger" })
+                        </div>
+                    </div>*@
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KqShiftEditDto.WorkTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KqShiftEditDto.WorkTime, new { htmlAttributes = new { @class = "form-control", placeholder = "09:00",Id="time1" } })
+                        @Html.ValidationMessageFor(model => model.KqShiftEditDto.WorkTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KqShiftEditDto.ClosingTime, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.KqShiftEditDto.ClosingTime, new { htmlAttributes = new { @class = "form-control", placeholder = "17:00", Id = "time2" } })
+                        @Html.ValidationMessageFor(model => model.KqShiftEditDto.ClosingTime, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.KqShiftEditDto.KqShiftUsers, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @*@Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })*@
+
+                        <input type="text" readonly="readonly" class="form-control" value="@(string.Join(",",Model.KqShiftEditDto.KqShiftUsers.Select(p => p.User.Name)))" id="names" onclick="showMenu()" />
+                        <div id="users">
+                            @for (int i = 0; i < Model.KqShiftEditDto.KqShiftUsers.Count; i++)
+                            {
+                                @Html.HiddenFor(model => model.KqShiftEditDto.KqShiftUsers[i].Id)
+                                @Html.HiddenFor(model => model.KqShiftEditDto.KqShiftUsers[i].UserId)
+                                @Html.HiddenFor(model => model.KqShiftEditDto.KqShiftUsers[i].KqShiftId)
+
+                                @*<input name="AnnouncementEditDto.AnnouncementUsers[0].Id" type="hidden" value="false">*@
+                            }
+                        </div>
+                        @Html.ValidationMessageFor(model => model.KqShiftEditDto.KqShiftUsers, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="hr-line-dashed"></div>
+
+
+
+                <div class="form-group">
+                    <div class="col-sm-4 col-sm-offset-2">
+                        <button class="btn btn-primary" type="button" id="btnKeep">保存</button>
+                        @Html.ActionLink("取消", "Index", null, new { @class = "btn btn-white" })
+                    </div>
+                </div>
+
+
+
+                @*@Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")*@
+            </div>
+
+            <div id="menuContent" class="menuContent" style="display: none;">
+                <div class="organizationUnit ztree"></div>
+            </div>
+        }
+    </div>
+</div>
+
+@section styles{
+
+    @Styles.Render("~/Bundles/lib/css/ztree/metro")
+<link href="~/Content/LayDate/theme/default/laydate.css" rel="stylesheet" />
+}
+
+@section scripts
+{
+    
+    @Scripts.Render("~/Bundles/lib/js/ztree/core")
+    @Html.IncludeScript("~/js/OuWithUsersTree.js")
+    <script src="~/Areas/KqShifts/Views/KqShift/Create_js.js"></script>
+    <script src="~/Content/LayDate/laydate.js"></script>
+
+}

@@ -7,7 +7,7 @@ namespace Vickn.Platform.Users
 {
     public class User : AbpUser<User>
     {
-        public const string DefaultPassword = "666666";
+        public const string DefaultPassword = "88888888";
 
         public virtual string ProfilePictureId { get; set; }
 
