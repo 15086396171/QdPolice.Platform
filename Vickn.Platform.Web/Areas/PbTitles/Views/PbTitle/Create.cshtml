@@ -1,0 +1,54 @@
+﻿@model Vickn.Platform.PbManagement.PbTitles.Dtos.PbTitleForEdit
+
+@{
+    ViewBag.Menu = L("PbTitles");
+    ViewBag.SubMenu = L("PbTitle");
+}
+<div class="ibox-content">
+  @using (Html.BeginForm())
+  {
+      @Html.AntiForgeryToken()
+
+      @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+      <div class="form-horizontal">
+
+        <div class="hidden">
+          @Html.HiddenFor(model => model.PbTitleEditDto.Id)
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.PbTitleEditDto.Title, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-8">
+            @Html.EditorFor(model => model.PbTitleEditDto.Title, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.PbTitleEditDto.Title, "", new { @class = "text-danger" })
+          </div>
+        </div>
+
+        <div class="form-group">
+          @Html.LabelFor(model => model.PbTitleEditDto.Month, htmlAttributes: new { @class = "control-label col-md-2" })
+          <div class="col-md-8">
+            @Html.EditorFor(model => model.PbTitleEditDto.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.PbTitleEditDto.Month != null ? Model.PbTitleEditDto.Month.ToString("yyyy-MM") : null } })
+            @Html.ValidationMessageFor(model => model.PbTitleEditDto.Month, "", new { @class = "text-danger" })
+          </div>
+        </div>
+
+
+        @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+      </div>
+  }
+</div>
+
+
+@section styles{
+  <style>
+  </style>
+}
+
+@section scripts{
+  <script>
+
+  </script>
+}
+
+

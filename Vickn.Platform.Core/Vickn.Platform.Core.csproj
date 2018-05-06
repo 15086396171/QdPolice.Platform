@@ -194,7 +194,11 @@
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
     <Compile Include="PbManagement\PbPositions\PbPosition.cs" />
+    <Compile Include="PbManagement\PbTitles\Authorization\PbTitleAppAuthorizationProvider.cs" />
+    <Compile Include="PbManagement\PbTitles\Authorization\PbTitleAppPermissions.cs" />
     <Compile Include="PbManagement\PbTitles\PbTitle.cs" />
+    <Compile Include="PbManagement\PbTitles\PbTitleManager.cs" />
+    <Compile Include="PbManagement\PbTitles\_PbTitleReadme.cs" />
     <Compile Include="PbManagement\PositionPbMaps\PositionPbMap.cs" />
     <Compile Include="PbManagement\PositionPbTimes\PositionPbTime.cs" />
     <Compile Include="PbManagement\PositionPbs\PositionPb.cs" />

@@ -13,6 +13,7 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.PbManagement.PbTitles.Authorization;
 using Vickn.Platform.PbManagement.Positions.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -37,6 +38,14 @@ namespace Vickn.Platform.Web
                 icon: "icon-grid"
                 );
 
+            var pbTitle = new MenuItemDefinition(
+                PbTitleAppPermissions.PbTitle,
+                L("PbTitle"),
+                url: "pbTitles/pbTitle",
+                icon: "icon-grid",
+                requiredPermissionName: PbTitleAppPermissions.PbTitle
+            );
+
             var position = new MenuItemDefinition(
                 PositionAppPermissions.Position,
                 L("Position"),
@@ -45,6 +54,7 @@ namespace Vickn.Platform.Web
                 requiredPermissionName: PositionAppPermissions.Position
             );
 
+            schedule.AddItem(pbTitle);
             schedule.AddItem(position);
             ////岗位设置
             //var schedulingpost = new MenuItemDefinition(

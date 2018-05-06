@@ -150,6 +150,11 @@
     <Compile Include="EntityFramework\EntityMapper\Devices\DeviceCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\FileRecords\FileRecordCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\ForensicsRecords\ForensicsRecordCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbMapCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbTimeCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PbPositionCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PbTitleCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\Positions\PositionCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PrivatePhoneWhites\PrivatePhoneWhiteCfg.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.Chat.cs" />
