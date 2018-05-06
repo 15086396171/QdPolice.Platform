@@ -1,4 +1,6 @@
 ﻿@model Vickn.Platform.Schedules.SchedulingPosts.Dtos.SchedulingPostForEdit
+@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
 
 @{
     ViewBag.Menu = L("SchedulingPosts");
@@ -13,35 +15,48 @@
 
         <div class="form-horizontal">
 
-		<div class="hidden">
-			@Html.HiddenFor(model => model.SchedulingPostEditDto.Id)
-		            </div>
+            <div class="hidden">
+                @Html.HiddenFor(model => model.SchedulingPostEditDto.Id)
+            </div>
 
-			  				  <div class="form-group">
+            <div class="form-group">
                 @Html.LabelFor(model => model.SchedulingPostEditDto.PostName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
                     @Html.EditorFor(model => model.SchedulingPostEditDto.PostName, new { htmlAttributes = new { @class = "form-control" } })
                     @Html.ValidationMessageFor(model => model.SchedulingPostEditDto.PostName, "", new { @class = "text-danger" })
                 </div>
-				  </div>
+            </div>
 
-                    
-            @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
-    </div>
-    }
+
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn btn-primary" type="button" id="btnKeep">保存</button>
+                    @Html.ActionLink("取消", "Index", null, new { @class = "btn btn-white" })
+                </div>
+            </div>
+
         </div>
+
+        <div id="menuContent" class="menuContent" style="display: none;">
+            <div class="organizationUnit ztree"></div>
+        </div>
+    }
+</div>
+
+
+
 
 
 @section styles{
-	<style>
 
-	</style>
+    @Styles.Render("~/Bundles/lib/css/ztree/metro")
+
 }
 
-@section scripts{
-   <script>
+@section scripts
+{
 
-   </script>
+    @Scripts.Render("~/Bundles/lib/js/ztree/core")
+    @Html.IncludeScript("~/js/OuWithUsersTree.js")
+    <script src="~/Areas/SchedulingPosts/Views/SchedulingPost/Create_js.js"></script>
 }
-
-

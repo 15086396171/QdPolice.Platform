@@ -13,7 +13,6 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
-using Vickn.Platform.Schedules.PlatoonGroups.Authorization;
 using Vickn.Platform.Schedules.SchedulingPosts.Authorization;
 using Vickn.Platform.Users.Authorization;
 
@@ -47,19 +46,12 @@ namespace Vickn.Platform.Web
                  requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
                 );
 
-            //排班组管理
-            var platoongroup = new MenuItemDefinition(
-                PlatoonGroupAppPermissions.PlatoonGroup,
-                L("PlatoonGroup"),
-                url: "PlatoonGroups/PlatoonGroup",
-                icon: "icon-grid",
-                 requiredPermissionName: PlatoonGroupAppPermissions.PlatoonGroup
-                );
 
 
 
-            schedule.AddItem(schedulingpost)
-                    .AddItem(platoongroup);
+
+            schedule.AddItem(schedulingpost);
+                 
 
             #endregion
 
