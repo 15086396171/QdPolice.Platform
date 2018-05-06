@@ -312,5 +312,27 @@
     <text name="CreatePbTitle" value="添加排班标题" />
     <text name="EditPbTitle" value="编辑排班标题" />
     <text name="DeletePbTitle" value="删除排班标题" />
+
+    <!-- 排班岗位管理 -->
+
+
+    <text name="	PbPositionHeaderInfo" value="排班岗位信息列表" />
+    <text name="PbPositionDeleteWarningMessage" value="排班岗位名称: {0} 将被删除,是否确定删除它。" />
+
+    <text name="PbPositionName" value="排班岗位" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="PbPosition.PbTitleId" value="值班标题" />
+    <text name="PbPosition.PositionId" value="岗位ID" />
+    <text name="PbPosition.Position" value="岗位" />
+    <text name="PbPosition.IsTrue" value="是否已排班" />
+    <text name="PbPosition.Month" value="月份" />
+    <text name="PbPosition.PositionPbs" value="PositionPbs" />
+
+
+    <text name="PbPosition" value="排班岗位管理" />
+    <text name="CreatePbPosition" value="添加排班岗位" />
+    <text name="EditPbPosition" value="编辑排班岗位" />
+    <text name="DeletePbPosition" value="删除排班岗位" />
   </texts>
 </localizationDictionary>

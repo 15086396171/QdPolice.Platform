@@ -7,6 +7,7 @@
       create: abp.auth.hasPermission('Pages.PbTitle.CreatePbTitle'),
       edit: abp.auth.hasPermission('Pages.PbTitle.EditPbTitle'),
       del: abp.auth.hasPermission('Pages.PbTitle.DeletePbTitle'),
+      pbManage: abp.auth.hasPermission("Pages.PbPosition")
     };
 
     var options = {
@@ -61,7 +62,7 @@
           actionName: "pbManageAction",
           selector: "a.pbManage",
           action: function (data) {
-            location.href = abp.appPath + "PbTitles/pbTitle/pbManage?pbTitleId=" + data.id;
+            location.href = abp.appPath + "pbPositions/pbPosition/?pbTitleId=" + data.id;
           }
         },
         {

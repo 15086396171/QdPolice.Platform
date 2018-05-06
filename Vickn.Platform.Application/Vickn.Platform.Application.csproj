@@ -286,6 +286,12 @@
     <Compile Include="Notifications\Dto\UpdateNotificationSettingsInput.cs" />
     <Compile Include="Notifications\INotificationAppService.cs" />
     <Compile Include="Notifications\NotificationAppService.cs" />
+    <Compile Include="PbManagement\PbPositions\Dtos\GetPbPositionInput.cs" />
+    <Compile Include="PbManagement\PbPositions\Dtos\PbPositionDto.cs" />
+    <Compile Include="PbManagement\PbPositions\Dtos\PbPositionEditDto.cs" />
+    <Compile Include="PbManagement\PbPositions\Dtos\PbPositionForEdit.cs" />
+    <Compile Include="PbManagement\PbPositions\IPbPositionAppService.cs" />
+    <Compile Include="PbManagement\PbPositions\PbPositionAppService.cs" />
     <Compile Include="PbManagement\PbTitles\Dtos\GetPbTitleInput.cs" />
     <Compile Include="PbManagement\PbTitles\Dtos\PbTitleDto.cs" />
     <Compile Include="PbManagement\PbTitles\Dtos\PbTitleEditDto.cs" />

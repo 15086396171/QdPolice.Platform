@@ -1125,6 +1125,7 @@
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
     <Content Include="Areas\Positions\Views\Position\Index_js.js" />
     <Content Include="Areas\PbTitles\Views\PbTitle\Index_js.js" />
+    <Content Include="Areas\PbPositions\Views\PbPosition\Index_js.js" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1624,6 +1625,9 @@
     <Content Include="Areas\PbTitles\Views\PbTitle\Create.cshtml" />
     <Content Include="Areas\PbTitles\Views\_ViewStart.cshtml" />
     <Content Include="Areas\PbTitles\Views\web.config" />
+    <Content Include="Areas\PbPositions\Views\PbPosition\Index.cshtml" />
+    <Content Include="Areas\PbPositions\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\PbPositions\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1692,6 +1696,8 @@
     <Compile Include="Areas\Positions\PositionsAreaRegistration.cs" />
     <Compile Include="Areas\PbTitles\Controllers\PbTitleController.cs" />
     <Compile Include="Areas\PbTitles\PbTitlesAreaRegistration.cs" />
+    <Compile Include="Areas\PbPositions\Controllers\PbPositionController.cs" />
+    <Compile Include="Areas\PbPositions\PbPositionsAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
