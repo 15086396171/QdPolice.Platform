@@ -25,13 +25,6 @@
                     </div>
                 </div>
 
-                @*<div class="form-group">
-                        @Html.LabelFor(model => model.KqShiftEditDto.WorkTime, htmlAttributes: new { @class = "control-label col-md-2" })
-                        <div class="col-md-8">
-                            @Html.EditorFor(model => model.KqShiftEditDto.WorkTime, new { htmlAttributes = new { @class = "form-control", placeholder = "09:00" } })
-                            @Html.ValidationMessageFor(model => model.KqShiftEditDto.WorkTime, "", new { @class = "text-danger" })
-                        </div>
-                    </div>*@
 
                 <div class="form-group">
                     @Html.LabelFor(model => model.KqShiftEditDto.WorkTime, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -53,7 +46,7 @@
                 <div class="form-group">
                     @Html.LabelFor(model => model.KqShiftEditDto.KqShiftUsers, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-8">
-                        @*@Html.EditorFor(model => model.AnnouncementEditDto.Title, new { htmlAttributes = new { @class = "form-control",onclick="showMenu()" } })*@
+                  
 
                         <input type="text" readonly="readonly" class="form-control" value="@(string.Join(",",Model.KqShiftEditDto.KqShiftUsers.Select(p => p.User.Name)))" id="names" onclick="showMenu()" />
                         <div id="users">
@@ -63,7 +56,7 @@
                                 @Html.HiddenFor(model => model.KqShiftEditDto.KqShiftUsers[i].UserId)
                                 @Html.HiddenFor(model => model.KqShiftEditDto.KqShiftUsers[i].KqShiftId)
 
-                                @*<input name="AnnouncementEditDto.AnnouncementUsers[0].Id" type="hidden" value="false">*@
+                  
                             }
                         </div>
                         @Html.ValidationMessageFor(model => model.KqShiftEditDto.KqShiftUsers, "", new { @class = "text-danger" })

@@ -1126,6 +1126,7 @@
     <Content Include="Areas\Positions\Views\Position\Index_js.js" />
     <Content Include="Areas\PbTitles\Views\PbTitle\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Index_js.js" />
+    <Content Include="Areas\PbPositions\Views\PbPosition\Import.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1805,7 +1806,6 @@
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />
-    <Folder Include="_GeneratedCode\Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -36,6 +36,8 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// </summary>
         Task<PbPositionDto> GetByIdAsync(EntityDto<int> input);
 
+   
+
         /// <summary>
         /// 通过Id获取排班岗位信息进行编辑或修改
         /// Id为空时返回新对象 

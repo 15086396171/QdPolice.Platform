@@ -12,6 +12,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq.Dynamic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Abp.Application.Services.Dto;
@@ -20,6 +21,15 @@ using Vickn.Platform.PbManagement.PbPositions;
 using Vickn.Platform.PbManagement.PbPositions.Authorization;
 using Vickn.Platform.PbManagement.PbPositions.Dtos;
 using Vickn.Platform.Web.Controllers;
+using NPOI.XSSF.UserModel;
+using NPOI.SS.UserModel;
+using NPOI.HSSF.UserModel;
+using Vickn.Platform.PbManagement.PbTitles;
+using Vickn.Platform.PbManagement.PositionPbs.Dtos;
+using Vickn.Platform.PbManagement.PositionPbTimes;
+using Vickn.Platform.PbManagement.PositionPbTimes.Dtos;
+using Vickn.Platform.PbManagement.PositionPbs;
+using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 {
@@ -27,17 +37,175 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
     public class PbPositionController : PlatformControllerBase
     {
         private readonly IPbPositionAppService _pbPositionAppService;
+        private readonly IPbTitleAppService _pbTitleAppService;
+        private readonly IUserAppService _userAppService;
 
-        public PbPositionController(IPbPositionAppService pbPositionAppService)
+        public PbPositionController(IPbPositionAppService pbPositionAppService, IPbTitleAppService pbTitleAppService, IUserAppService userAppService)
         {
             _pbPositionAppService = pbPositionAppService;
-
+            _pbTitleAppService = pbTitleAppService;
+            _userAppService = userAppService;
         }
 
         public ActionResult Index(int pbTitleId)
         {
             ViewBag.pbTitleId = pbTitleId;
             return View();
+        }
+
+        public async Task<ActionResult> Import(int pbPostionId)
+        {
+
+
+            EntityDto<int> input = new EntityDto();
+            input.Id = pbPostionId;
+            var pbPosition = await _pbPositionAppService.GetByIdAsync(input);
+            return View(pbPosition);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> PbImport(int pbPositionId)
+        {
+            var file = Request.Files[0];
+
+            try
+            {
+                IWorkbook workbook = null;
+                ISheet sheet = null;
+                IRow row = null;
+                ICell cell = null;
+                int startRow = 1;
+
+                if (file.FileName.IndexOf(".xlsx", StringComparison.Ordinal) > 0)
+                {
+                    workbook = new XSSFWorkbook(file.InputStream);
+                }
+                else if (file.FileName.IndexOf(".xls", StringComparison.Ordinal) > 0)
+                    workbook = new HSSFWorkbook(file.InputStream);
+                else
+                {
+                    return Json(new { success = false, msg = "上传文件格式不正确！" });
+                }
+
+                sheet = workbook.GetSheetAt(0); //读取第一个sheet，当然也可以循环读取每个sheet  
+
+                int rowCount = sheet.LastRowNum;//总行数  
+
+                List<PbPositionDto> positionPbS = new List<PbPositionDto>();
+              
+
+                var pbPosition = await _pbPositionAppService.GetByIdAsync(new EntityDto<int> { Id = pbPositionId });
+
+                var pbTitle = await _pbTitleAppService.GetByIdAsync(new EntityDto(pbPosition.PbTitleId));
+                for (int i = 0; i < rowCount - 2; i++)
+                {
+                    row = sheet.GetRow(i + 2);
+
+                    // 日期
+
+                    var dateStr = row.Cells[0].ToString();
+                    if (string.IsNullOrWhiteSpace(dateStr))
+                    {
+                        continue;
+                    }
+
+                    var date = Convert.ToInt32(dateStr);
+
+                    PositionPbDto positionPb = new PositionPbDto()
+                    {
+
+                        PbPositionId = pbPositionId,
+                        DutyDate = pbTitle.Month.Date.AddDays(1 - pbTitle.Month.Day - 1 + date),
+                        PositionPbTimes = new List<PositionPbTimeDto>()
+                    };
+
+                    for (int j = 0; j < 5; j++)
+                    {
+                        var positionPbTime = PositionPbTime(row, positionPb, j);
+
+                        if (positionPbTime != null)
+                        {
+                            positionPb.PositionPbTimes.Add(positionPbTime);
+                        }
+                    }
+                    positionPbS.Add(positionPb);
+                }
+
+                // 生成其余空的天
+                int days = System.Threading.Thread.CurrentThread.CurrentUICulture.Calendar.GetDaysInMonth(pbPosition.Month.Year, pbPosition.Month.Month);
+                for (int i = 1; i < days + 1; i++)
+                {
+                    //var positionPb = positionPbS.FirstOrDefault(p => p.DutyDate.Day == i);
+                    var positionPb = positionPbS.Find(p => p.DutyDate.Day == i);
+                    if (positionPb == null)
+                    {
+                        positionPb = new PositionPb()
+                        {
+                            PositionId = pbPosition.Id,
+                            PbPositionId = pbPositionId,
+           
+                            DutyDate = pbTitle.Month.Date.AddDays(1 - pbTitle.Month.Day - 1 + i),
+                        };
+                        positionPbS.Add(positionPb);
+                    }
+                }
+
+                pbPosition.IsTrue = true;
+                db.Entry(pbPosition).State = EntityState.Modified;
+                db.PositionPbs.AddRange(positionPbS);
+
+                db.SaveChanges();
+            }
+            catch (Exception exception)
+            {
+                return Json(new
+                {
+                    success = false,
+                    msg = exception.Message
+                });
+            }
+
+            return Json(new { msg = "导入成功" });
+        }
+
+        private PositionPbTimeDto PositionPbTime(IRow row, PositionPbDto positionPb, int index)
+        {
+            var namesStr = row.Cells[index * 3 + 1].ToString();
+
+            if (string.IsNullOrWhiteSpace(namesStr))
+                return null;
+
+            // 班次1
+            var names = namesStr.Split(new char[] { '、' }, StringSplitOptions.RemoveEmptyEntries);
+
+            List<User> users = db.UserInfo.Where(p => names.Contains(p.RealName)).ToList();
+
+            if (!users.Any())
+                throw new NotImplementedException("未找到用户：" + namesStr);
+            var startTimeStr = row.Cells[index * 3 + 2].ToString();
+            var startTime = DateTime.Parse(startTimeStr);
+            var endTime = DateTime.Parse(row.Cells[index * 3 + 3].ToString());
+
+            PositionPbTime positionPbTime = new PositionPbTime()
+            {
+                // PositionPbId = 
+                StartTime = positionPb.DutyDate.Date.AddHours(startTime.Hour).AddMinutes(startTime.Minute),
+                EndTime = positionPb.DutyDate.Date.AddHours(endTime.Hour).AddMinutes(endTime.Minute),
+                IsPbGroup = false,
+                UserId = users[0].Id,
+                RealName = string.Join(",", users.Select(p => p.RealName).ToList()),
+                PositionPbMaps = users.Select(p => new PositionPbMap()
+                {
+                    RealName = p.RealName,
+                    UserId = p.Id,
+                }).ToList()
+            };
+            // 跨天
+            if (positionPbTime.EndTime <= positionPbTime.StartTime)
+            {
+                positionPbTime.EndTime = positionPbTime.EndTime.AddDays(1);
+            }
+            return positionPbTime;
         }
 
     }

@@ -16,6 +16,8 @@ using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Vickn.Platform.PbManagement.Positions.Dtos;
+using Vickn.Platform.PbManagement.PositionPbs.Dtos;
+using System.Collections.Generic;
 
 namespace Vickn.Platform.PbManagement.PbPositions.Dtos
 {
@@ -40,7 +42,21 @@ namespace Vickn.Platform.PbManagement.PbPositions.Dtos
         /// <summary>
         /// 岗位 
         /// </summary>
+       	[DisplayName("岗位")]
         public PositionDto Position { get; set; }
 
+        /// <summary>
+        /// 值班标题
+        /// </summary>
+        public int PbTitleId { get; set; }
+
+        /// <summary>
+        /// 值班日期
+        /// </summary>
+        [DisplayName("值班日期")]
+        [Description("值班日期")]
+        public DateTime DutyDate { get; set; }
+
+        public virtual ICollection<PositionPbDto> PositionPbDtos { get; set; }
     }
 }

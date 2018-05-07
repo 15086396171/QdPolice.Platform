@@ -1,0 +1,72 @@
+﻿@model Vickn.Platform.PbManagement.PbPositions.Dtos.PbPositionDto
+
+
+
+
+<div class="row animated fadeInRight">
+  <div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form-horizontal">
+
+          <div class="hidden">
+
+            @Html.HiddenFor(model => model.Id)
+          </div>
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
+              @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+
+          <div class="form-group">
+            @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-8">
+              @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
+              @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
+            </div>
+          </div>
+
+
+          <div class="hr-line-dashed"></div>
+
+          <div class="form-group">
+            <div class="col-sm-4 col-sm-offset-2">
+              <button class="btn btn-primary" type="button" onclick="ImportPb(@Model.Id)">导入</button>
+            </div>
+          </div>
+
+        </div>
+
+       
+    }
+  </div>
+</div>
+
+
+
+
+
+
+@section styles{
+  <style>
+  </style>
+}
+
+@section scripts{
+  <script>
+    function ImportPb(data) {
+      window.location = "/PbPosition/PbImport?pbPositionId=" + data;
+    }
+  </script>
+}
+
+
