@@ -4,7 +4,7 @@
 * 版      本 :      v1.0.0.0
 * 文 件  名 :     GetPositionPbInput.cs
 * 描      述 :     单个岗位下排班时间管理Dto
-* 创建时间 :     2018/5/6 17:14:52
+* 创建时间 :     2018/5/7 13:34:38
 * ===============================================================================
 * Copyright © Vickn 2017 . All rights reserved.
 * ===============================================================================
@@ -15,9 +15,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using System.Collections.Generic;
-using Vickn.Platform.PbManagement.PositionPbTimes;
-using Vickn.Platform.PbManagement.PositionPbTimes.Dtos;
 
 namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
 {
@@ -39,6 +36,5 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
 		[DisplayName("值班日期")]
         public DateTime DutyDate { get; set; }
 
-        public virtual ICollection<PositionPbTimeDto> PositionPbTimes { get; set; }
     }
 }

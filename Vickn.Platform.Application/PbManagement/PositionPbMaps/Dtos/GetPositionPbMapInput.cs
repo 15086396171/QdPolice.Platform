@@ -1,10 +1,10 @@
 ﻿/*
-* 命名空间 :     Vickn.Platform.PbManagement.PositionPbs.Dtos
-* 类 名  称 :     GetPositionPbInput
+* 命名空间 :     Vickn.Platform.PbManagement.PositionPbMaps.Dtos
+* 类 名  称 :     GetPositionPbMapInput
 * 版      本 :      v1.0.0.0
-* 文 件  名 :     GetPositionPbInput.cs
-* 描      述 :     单个岗位下排班时间管理分页排序查询输入Dto
-* 创建时间 :     2018/5/7 13:34:38
+* 文 件  名 :     GetPositionPbMapInput.cs
+* 描      述 :     排班人员管理分页排序查询输入Dto
+* 创建时间 :     2018/5/7 10:29:07
 * ===============================================================================
 * Copyright © Vickn 2017 . All rights reserved.
 * ===============================================================================
@@ -14,12 +14,12 @@ using System;
 using Abp.Runtime.Validation;
 using Vickn.Platform.Dtos;
  
-namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
+namespace Vickn.Platform.PbManagement.PositionPbMaps.Dtos
 {
      /// <summary>
-    /// 单个岗位下排班时间管理查询Dto
+    /// 排班人员管理查询Dto
     /// </summary>
-    public class GetPositionPbInput : PagedAndSortedInputDto,IShouldNormalize
+    public class GetPositionPbMapInput : PagedAndSortedInputDto,IShouldNormalize
     {
 		//DOTO:在这里增加查询参数
 

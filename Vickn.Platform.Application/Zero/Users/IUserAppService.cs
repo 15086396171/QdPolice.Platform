@@ -16,6 +16,12 @@ namespace Vickn.Platform.Users
         Task RemoveFromRole(long userId, string roleName);
 
         /// <summary>
+        /// 获取用户列表信息
+        /// </summary>
+        /// <returns></returns>
+       Task< List<UserListDto>> GetUserslist();
+
+        /// <summary>
         /// 获取用户列表
         /// </summary>
         /// <returns></returns>
@@ -119,6 +125,7 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         Task SetDefaultRolesAsync();
 
+      
         #endregion
     }
 }

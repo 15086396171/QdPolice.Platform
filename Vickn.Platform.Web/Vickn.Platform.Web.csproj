@@ -15,7 +15,7 @@
     <RootNamespace>Vickn.Platform.Web</RootNamespace>
     <AssemblyName>Vickn.Platform.Web</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <UseIISExpress>false</UseIISExpress>
+    <UseIISExpress>true</UseIISExpress>
     <IISExpressSSLPort />
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />

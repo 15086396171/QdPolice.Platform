@@ -31,6 +31,13 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         public int PbPositionId { get; set; }
 
         /// <summary>
+        /// 岗位Id
+        /// </summary>
+        public int PositionId { get; set; }
+
+
+
+        /// <summary>
         /// 值班日期
         /// </summary>
         public DateTime DutyDate { get; set; }

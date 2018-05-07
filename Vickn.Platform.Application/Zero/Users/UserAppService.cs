@@ -66,6 +66,9 @@ namespace Vickn.Platform.Users
                 );
         }
 
+
+
+
         public async Task CreateUser(CreateUserInput input)
         {
             var user = input.MapTo<User>();
@@ -405,7 +408,7 @@ namespace Vickn.Platform.Users
         /// </summary>
         /// <returns></returns>
         public async Task SetDefaultRolesAsync()
-        {   
+        {
             var users = await _userRepository.GetAllListAsync();
             var roles = await _roleManager.Roles.Where(p => p.IsDefault).ToListAsync();
             foreach (var user in users)
@@ -422,6 +425,19 @@ namespace Vickn.Platform.Users
                 }
             }
         }
+
+        public async Task<List<UserListDto>> GetUserslist()
+        {
+
+
+            var users = await _userRepository.GetAllListAsync();
+
+            return new List<UserListDto>(
+                users.MapTo<List<UserListDto>>());
+        }
+
+      
+
 
         #endregion
     }

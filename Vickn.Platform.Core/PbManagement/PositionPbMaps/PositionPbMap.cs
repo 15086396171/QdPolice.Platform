@@ -29,7 +29,7 @@ namespace Vickn.Platform.PbManagement.PositionPbMaps
         /// <summary>
         /// 所属时间段
         /// </summary>
-        public int PositionPbTimeV3Id { get; set; }
+        public int PositionPbTimeId { get; set; }
 
     }
 }

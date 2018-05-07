@@ -23,6 +23,6 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
     /// </summary>
     public class PositionPbTimeForEdit
     {
-		public PositionPbTimeEditDto PositionPbTimeEditDto { get; set; } 
+		public PositionPbTimeEditDto PositionPbTimeEditDtos { get; set; } 
     }
 }

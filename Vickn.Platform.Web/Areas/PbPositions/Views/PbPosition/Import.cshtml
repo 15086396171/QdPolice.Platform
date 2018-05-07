@@ -4,51 +4,55 @@
 
 
 <div class="row animated fadeInRight">
-  <div class="ibox-content">
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div class="ibox-content">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+            @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
 
-        <div class="form-horizontal">
+            <div class="form-horizontal">
 
-          <div class="hidden">
+                <div class="hidden">
 
-            @Html.HiddenFor(model => model.Id)
-          </div>
+                    @Html.HiddenFor(model => model.Id)
+                </div>
 
-          <div class="form-group">
-            @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-              @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
-              @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-8">
+                        @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
+                        @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="hr-line-dashed"></div>
+
+                <div class="form-group">
+                    <div id="uploader" class="wu-example">
+                        <!--用来存放文件信息-->
+                        <div id="thelist" class="uploader-list"></div>
+                        <div class="btns">
+                            <div id="picker" Remark="@Model.Id">导入用户</div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
-          </div>
 
 
-          <div class="form-group">
-            @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-8">
-              @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
-              @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
-            </div>
-          </div>
-
-
-          <div class="hr-line-dashed"></div>
-
-          <div class="form-group">
-            <div class="col-sm-4 col-sm-offset-2">
-              <button class="btn btn-primary" type="button" onclick="ImportPb(@Model.Id)">导入</button>
-            </div>
-          </div>
-
-        </div>
-
-       
-    }
-  </div>
+        }
+    </div>
 </div>
 
 
@@ -57,16 +61,72 @@
 
 
 @section styles{
-  <style>
-  </style>
+    <link href="~/Content/Hplus/js/plugins/webuploader/webuploader.css" rel="stylesheet" />
 }
 
 @section scripts{
-  <script>
-    function ImportPb(data) {
-      window.location = "/PbPosition/PbImport?pbPositionId=" + data;
-    }
-  </script>
+    <script src="~/Content/Hplus/js/plugins/webuploader/webuploader.js"></script>
+    <script>
+
+
+        $(function () {
+
+     
+            // 初始化Web Uploader
+            var $list = $("#thelist");
+            var uploader = WebUploader.create({
+
+                // 选完文件后，是否自动上传。
+                auto: true,
+
+                // swf文件路径
+                swf: '/Scripts/lib/webuploader/0.1.5/Uploader.swf',
+
+                // 文件接收服务端。
+                server: '/PbPositions/PbPosition/PbImportXX?pbPositionId=' + $("#picker").attr("Remark"),
+
+                // 选择文件的按钮。可选。
+                // 内部根据当前运行是创建，可能是input元素，也可能是flash.
+                pick: '#picker',
+            });
+            uploader.on('uploadProgress', function (file, percentage) {
+                var $li = $('#' + file.id),
+                    $percent = $li.find('.progress .progress-bar');
+
+                // 避免重复创建
+                if (!$percent.length) {
+                    $percent = $('<div class="progress progress-striped active">' +
+                        '<div class="progress-bar" role="progressbar" style="width: 0%">' +
+                        '</div>' +
+                        '</div>').appendTo($li).find('.progress-bar');
+                }
+
+                $li.find('p.state').text('上传中');
+
+                $percent.css('width', percentage * 100 + '%');
+            });
+
+            uploader.on('uploadSuccess',
+                function (file, response) {
+                    //
+
+                    if (response.result.success) {
+                        location.reload();
+                    } else {
+                        console.log(response);
+                    }
+                });
+            uploader.on('uploadError', function (file) {
+                abp.message.warn("导入出错，请检查导入的Excel");
+                $('#' + file.id).find('p.state').text('上传出错');
+            });
+
+            uploader.on('uploadComplete', function (file) {
+                $('#' + file.id).find('.progress').fadeOut();
+            });
+        })
+
+    </script>
 }
 
 

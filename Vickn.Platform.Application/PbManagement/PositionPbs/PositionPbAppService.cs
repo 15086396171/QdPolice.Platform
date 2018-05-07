@@ -4,7 +4,7 @@
 * 版      本 :      v1.0.0.0
 * 文 件  名 :     PositionPbAppService.cs
 * 描      述 :     单个岗位下排班时间服务
-* 创建时间 :     2018/5/6 17:14:54
+* 创建时间 :     2018/5/7 13:34:38
 * ===============================================================================
 * Copyright © Vickn 2017 . All rights reserved.
 * ===============================================================================
@@ -181,6 +181,14 @@ namespace Vickn.Platform.PbManagement.PositionPbs
 
 			return new CustomerModelStateValidationDto() {HasModelError = false};
 		}
+
+        public async Task<PositionPbForEdit> PbImportAsync(PositionPbForEdit input)
+        {
+            var entity = input.PositionPbEditDto.MapTo<PositionPb>();
+
+            entity = await _positionPbRepository.InsertAsync(entity);
+            return new PositionPbForEdit { PositionPbEditDto = entity.MapTo<PositionPbEditDto>() };
+        }
 
         #endregion
 

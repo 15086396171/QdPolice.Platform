@@ -4,7 +4,7 @@
 * 版      本 :      v1.0.0.0
 * 文 件  名 :     IPositionPbAppService.cs
 * 描      述 :     单个岗位下排班时间服务接口
-* 创建时间 :     2018/5/6 17:14:53
+* 创建时间 :     2018/5/7 13:34:38
 * ===============================================================================
 * Copyright © Vickn 2017 . All rights reserved.
 * ===============================================================================
@@ -25,6 +25,8 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     public interface IPositionPbAppService : IApplicationService
     {
         #region 单个岗位下排班时间管理
+
+
 
 		/// <summary>
         /// 根据查询条件获取单个岗位下排班时间分页列表
@@ -74,7 +76,14 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// <returns></returns>
         Task<CustomerModelStateValidationDto> CheckErrorAsync(PositionPbForEdit input);
 
+
+
         #endregion
+
+        /// <summary>
+        /// 排班信息导入
+        /// </summary>
+        Task<PositionPbForEdit> PbImportAsync(PositionPbForEdit input);
 
     }
 }
