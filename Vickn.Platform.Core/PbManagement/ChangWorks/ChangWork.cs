@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace Vickn.Platform.PbManagement.ChangWorks
 {
-    public class ChangWorkV3 : Entity
+    public class ChangWork : Entity
     {
         [Required, DisplayName("值班时间")]
-        public int PositionPbMapV3Id { get; set; }
+        public int PositionPbMapId { get; set; }
 
         [Required, DisplayName("换班时间")]
-        public int BePositionPbMapV3Id { get; set; }
+        public int BePositionPbMapId { get; set; }
 
         [Required]
         public int UserId { get; set; }
@@ -72,13 +72,13 @@ namespace Vickn.Platform.PbManagement.ChangWorks
 
         public int UserId { get; set; }
 
-        public int PositionPbMapV3Id { get; set; }
+        public int PositionPbMapId { get; set; }
 
-        public int PositionPbV3Id { get; set; }
+        public int PositionPbId { get; set; }
 
-        public int PositionV3Id { get; set; }
+        public int PositionId { get; set; }
 
-        public string PositionV3Name { get; set; }
+        public string PositionName { get; set; }
 
         public DateTime Time { get; set; }
 

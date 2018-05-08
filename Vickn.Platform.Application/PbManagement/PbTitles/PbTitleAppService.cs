@@ -59,6 +59,8 @@ namespace Vickn.Platform.PbManagement.PbTitles
 		{
 			 var query = _pbTitleRepository.GetAll();
 
+            query = query.Where(p => p.Title.Contains(input.FilterText));
+
             //TODO:根据传入的参数添加过滤条件
 
             var pbTitleCount = await query.CountAsync();

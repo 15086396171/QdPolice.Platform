@@ -17,35 +17,35 @@ using Vickn.Platform.Authorization;
 
 namespace Vickn.Platform.PbManagement.PositionPbs.Authorization
 {
-	/// <summary>
+    /// <summary>
     /// 权限配置
     /// 给单个岗位下排班时间权限默认设置服务
     /// See <see cref="PositionPbAppPermissions"/> for all permission names.
-	/// </summary>
+    /// </summary>
     public class PositionPbAppAuthorizationProvider : AuthorizationProvider
     {
-	     /// <summary>
+        /// <summary>
         /// This method is called once on application startup to allow to define permissions.
         /// </summary>
         /// <param name="context">Permission definition context</param>
         public override void SetPermissions(IPermissionDefinitionContext context)
         {
-		    //在这里配置了单个岗位下排班时间的权限。
+            //在这里配置了单个岗位下排班时间的权限。
 
             var pages = context.GetPermissionOrNull(AppPermissions.Pages) ?? context.CreatePermission(AppPermissions.Pages, L("Pages"));
 
-            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages) 
-                ?? pages.CreateChildPermission(AppPermissions.Pages, L("Pages"));
+            var entityNameModel = pages.Children.FirstOrDefault(p => p.Name == AppPermissions.Pages_PbManagement)
+                        ?? pages.CreateChildPermission(AppPermissions.Pages_PbManagement, L(AppPermissions.Pages_PbManagement));
 
-            var positionPb = entityNameModel.CreateChildPermission(PositionPbAppPermissions.PositionPb , L("PositionPb"));
+            var positionPb = entityNameModel.CreateChildPermission(PositionPbAppPermissions.PositionPb, L("PositionPb"));
             positionPb.CreateChildPermission(PositionPbAppPermissions.PositionPb_CreatePositionPb, L("CreatePositionPb"));
-            positionPb.CreateChildPermission(PositionPbAppPermissions.PositionPb_EditPositionPb, L("EditPositionPb"));           
-            positionPb.CreateChildPermission(PositionPbAppPermissions. PositionPb_DeletePositionPb, L("DeletePositionPb"));
-		}
+            positionPb.CreateChildPermission(PositionPbAppPermissions.PositionPb_EditPositionPb, L("EditPositionPb"));
+            positionPb.CreateChildPermission(PositionPbAppPermissions.PositionPb_DeletePositionPb, L("DeletePositionPb"));
+        }
 
-		private static ILocalizableString L(string name)
-		{
+        private static ILocalizableString L(string name)
+        {
             return new LocalizableString(name, PlatformConsts.LocalizationSourceName);
-	    }
-	}
+        }
+    }
 }

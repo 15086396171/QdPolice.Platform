@@ -25,10 +25,11 @@ using Abp.Configuration;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
-
+using Vickn.Platform.Attendences.KqDetails.Dtos;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.PbManagement.PositionPbs.Authorization;
 using Vickn.Platform.PbManagement.PositionPbs.Dtos;
+using Vickn.Platform.PbManagement.Positions;
 
 namespace Vickn.Platform.PbManagement.PositionPbs
 {
@@ -39,15 +40,17 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     public class PositionPbAppService : PlatformAppServiceBase, IPositionPbAppService
     {
 	    private readonly IRepository<PositionPb,int> _positionPbRepository;
-	  	private readonly PositionPbManager _positionPbManager;
+        private readonly IRepository<Position, int> _positionRepository;
+        private readonly PositionPbManager _positionPbManager;
 
 	    /// <summary>
         /// 初始化单个岗位下排班时间服务实例
         /// </summary>
-        public PositionPbAppService(IRepository<PositionPb, int> positionPbRepository,PositionPbManager positionPbManager)
+        public PositionPbAppService(IRepository<PositionPb, int> positionPbRepository,PositionPbManager positionPbManager, IRepository<Position, int> positionRepository)
         {
             _positionPbRepository = positionPbRepository;
             _positionPbManager = positionPbManager;
+            _positionRepository = positionRepository;
         }
 
         #region 单个岗位下排班时间管理
@@ -58,6 +61,11 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         public async Task<PagedResultDto<PositionPbDto>> GetPagedAsync(GetPositionPbInput input)
 		{
 			 var query = _positionPbRepository.GetAll();
+        
+            
+
+          
+           
 
             //TODO:根据传入的参数添加过滤条件
 
@@ -110,7 +118,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
 		[AbpAuthorize(PositionPbAppPermissions.PositionPb_CreatePositionPb,PositionPbAppPermissions.PositionPb_EditPositionPb)]
         public async Task CreateOrUpdateAsync(PositionPbForEdit input)
 		{
-			 if (input.PositionPbEditDto.Id.HasValue)
+			 if (input.PositionPbEditDto.Id!=0)
             {
                 await UpdateAsync(input);
             }
@@ -142,7 +150,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
 		{
 		    //TODO: 更新前的逻辑判断，是否允许更新
 
-			var entity = await _positionPbRepository.GetAsync(input.PositionPbEditDto.Id.Value);
+			var entity = await _positionPbRepository.GetAsync(input.PositionPbEditDto.Id);
             input.PositionPbEditDto.MapTo(entity);
 
             await _positionPbRepository.UpdateAsync(entity);
@@ -182,12 +190,12 @@ namespace Vickn.Platform.PbManagement.PositionPbs
 			return new CustomerModelStateValidationDto() {HasModelError = false};
 		}
 
-        public async Task<PositionPbForEdit> PbImportAsync(PositionPbForEdit input)
+        public async Task<ResultDto> PbImportAsync(PositionPbEditDto input)
         {
-            var entity = input.PositionPbEditDto.MapTo<PositionPb>();
+            var entity = input.MapTo<PositionPb>();
 
             entity = await _positionPbRepository.InsertAsync(entity);
-            return new PositionPbForEdit { PositionPbEditDto = entity.MapTo<PositionPbEditDto>() };
+            return new ResultDto() { IsOk = true };
         }
 
         #endregion

@@ -41,6 +41,10 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         /// </summary>
         public DateTime EndTime { get; set; }
 
+        public long UserId { get; set; }
+
+        public string RealName { get; set; }
+
         /// <summary>
         /// 人员安排
         /// </summary>

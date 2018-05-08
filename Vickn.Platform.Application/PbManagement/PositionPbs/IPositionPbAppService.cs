@@ -16,13 +16,14 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Vickn.Platform.PbManagement.PositionPbs.Dtos;
 using Vickn.Platform.Dtos;
+using Vickn.Platform.Attendences.KqDetails.Dtos;
 
 namespace Vickn.Platform.PbManagement.PositionPbs
 {
      /// <summary>
     /// 单个岗位下排班时间服务接口
     /// </summary>
-    public interface IPositionPbAppService : IApplicationService
+    public interface IPositionPbAppService: IApplicationService
     {
         #region 单个岗位下排班时间管理
 
@@ -83,7 +84,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// <summary>
         /// 排班信息导入
         /// </summary>
-        Task<PositionPbForEdit> PbImportAsync(PositionPbForEdit input);
+        Task<ResultDto> PbImportAsync(PositionPbEditDto input);
 
     }
 }

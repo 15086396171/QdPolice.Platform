@@ -16,6 +16,7 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
+using Abp.Domain.Entities;
 using Vickn.Platform.PbManagement.PositionPbTimes.Dtos;
 
 namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
@@ -24,15 +25,8 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
     /// 单个岗位下排班时间管理编辑Dto
     /// </summary>
     [AutoMap(typeof(PositionPb))]
-    public class PositionPbEditDto
+    public class PositionPbEditDto:Entity
     {
-	    /// <summary>
-        ///   主键Id
-        /// </summary>
-        [DisplayName("主键Id")]
-		public int? Id{get;set;}
-
-       
 
         /// <summary>
         /// 单个岗位排班标题Id
@@ -51,7 +45,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
         /// </summary>
         public int PositionId { get; set; }
 
-        public ICollection<ImportPositionPbTimeDto> ImportPositionPbTimeDtos { get; set; }
+        public ICollection<ImportPositionPbTimeDto> PositionPbTimes { get; set; }
 
     }
 }

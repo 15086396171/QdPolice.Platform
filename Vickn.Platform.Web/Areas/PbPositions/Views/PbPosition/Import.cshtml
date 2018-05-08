@@ -11,44 +11,50 @@
 
             @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
 
-            <div class="form-horizontal">
+        <div class="form-horizontal">
 
-                <div class="hidden">
+            <div class="hidden">
 
-                    @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.Id)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
                 </div>
+            </div>
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
-                    </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
+                    @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
                 </div>
+            </div>
+
+           
+
+            <div class="hr-line-dashed"></div>
 
 
-                <div class="form-group">
-                    @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
-                    <div class="col-md-8">
-                        @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
-                        @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-
-
-                <div class="hr-line-dashed"></div>
-
-                <div class="form-group">
-                    <div id="uploader" class="wu-example">
-                        <!--用来存放文件信息-->
-                        <div id="thelist" class="uploader-list"></div>
-                        <div class="btns">
-                            <div id="picker" Remark="@Model.Id">导入用户</div>
+      
+                <div class="col-sm-4 col-sm-offset-2">
+                    <div class="form-group">
+                        <div id="uploader" class="wu-example">
+                            <!--用来存放文件信息-->
+                            <div id="thelist" class="uploader-list"></div>
+                            <div class="btns">
+                                <div id="picker" Remark="@Model.Id">导入排班信息</div>
+                            </div>
                         </div>
                     </div>
                 </div>
+       
 
-            </div>
+        </div>
 
 
         }

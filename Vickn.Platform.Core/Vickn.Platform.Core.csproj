@@ -193,6 +193,7 @@
     <Compile Include="MainTenance\AppFolders\AppFolders.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
+    <Compile Include="PbManagement\ChangeWorkNotifis\ChangeWorkNotifi.cs" />
     <Compile Include="PbManagement\ChangWorks\ChangeWork.cs" />
     <Compile Include="PbManagement\ChangWorks\ChangWork.cs" />
     <Compile Include="PbManagement\PbPositions\Authorization\PbPositionAppAuthorizationProvider.cs" />

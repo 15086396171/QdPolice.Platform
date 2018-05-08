@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Abp.AutoMapper;
+using Abp.Domain.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
@@ -8,10 +10,14 @@ using Vickn.Platform.PbManagement.PositionPbMaps.Dtos;
 
 namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
 {
-   public class ImportPositionPbTimeDto
+    /// <summary>
+    /// 排班岗位时间表Dto
+    /// </summary>
+    [AutoMap(typeof(PositionPbTime))]
+    public class ImportPositionPbTimeDto:Entity
     {
         [Description("岗位排班Id")]
-        public long PositionPbId { get; set; }
+        public int PositionPbId { get; set; }
 
         public bool IsDuty { get; set; }
         /// <summary>

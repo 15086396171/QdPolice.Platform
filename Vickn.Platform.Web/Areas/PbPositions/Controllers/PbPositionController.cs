@@ -180,7 +180,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
                         PbPositionId = pbPositionId,
                         DutyDate = pbTitle.Month.Date.AddDays(1 - pbTitle.Month.Day - 1 + date),
-                        ImportPositionPbTimeDtos = new List<ImportPositionPbTimeDto>()
+                        PositionPbTimes = new List<ImportPositionPbTimeDto>()
                     };
 
                     for (int j = 0; j < 5; j++)
@@ -189,7 +189,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
                         if (positionPbTime != null)
                         {
-                            positionPb.ImportPositionPbTimeDtos.Add(positionPbTime);
+                            positionPb.PositionPbTimes.Add(positionPbTime);
                         }
                     }
                     positionPbS.Add(positionPb);
@@ -216,8 +216,8 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
                 for (int i = 0; i < positionPbS.Count; i++)
                 {
-                    PositionPbForEdit entity = new PositionPbForEdit();
-                    entity.PositionPbEditDto = positionPbS[i];
+                    PositionPbEditDto entity = new PositionPbEditDto();
+                    entity = positionPbS[i];
                     await _positionPbAppService.PbImportAsync(entity);
                 }
 
