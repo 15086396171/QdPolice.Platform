@@ -14,6 +14,7 @@ using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.PbManagement.PbPositions.Authorization;
 using Vickn.Platform.PbManagement.PbTitles.Authorization;
 using Vickn.Platform.PbManagement.PositionPbs.Authorization;
+using Vickn.Platform.PbManagement.PositionPbTimes.Authorization;
 using Vickn.Platform.PbManagement.Positions.Authorization;
 using Vickn.Platform.PrivatePhoneWhites.Authorization;
 using Vickn.Platform.Users.Authorization;
@@ -41,13 +42,21 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<ForensicsRecordAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<AppWhiteListAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PrivatePhoneWhiteAppAuthorizationProvider>();
+
+            //考勤管理
+            KqManagementAuthorizationProviders(Configuration);
+
+            //排班管理
+            PbManagementAuthorizationProviders(Configuration);
+        }
+
+        private void KqManagementAuthorizationProviders(IAbpStartupConfiguration Configuration)
+        {
             Configuration.Authorization.Providers.Add<AnnouncementAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqShiftAppAuthorizationProvider>();
-            Configuration.Authorization.Providers.Add<KqMachineAppAuthorizationProvider>();
+            //Configuration.Authorization.Providers.Add<KqMachineAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqStatisticAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<KqDetailAppAuthorizationProvider>();
-
-            PbManagementAuthorizationProviders(Configuration);
         }
 
         private void PbManagementAuthorizationProviders(IAbpStartupConfiguration Configuration)
@@ -56,6 +65,7 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<PbTitleAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PbPositionAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PositionPbAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<PositionPbTimeAppAuthorizationProvider>();
             
         }
     }

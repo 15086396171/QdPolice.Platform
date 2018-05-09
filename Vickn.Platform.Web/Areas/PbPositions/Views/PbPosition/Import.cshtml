@@ -21,7 +21,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Position, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.Position.Name, new { htmlAttributes = new { @class = "form-control", readOnly = "true" } })
                     @Html.ValidationMessageFor(model => model.Position, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -30,7 +30,7 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Month, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control", onclick = "laydate({format:'YYYY-MM'})", Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null } })
+                    @Html.EditorFor(model => model.Month, new { htmlAttributes = new { @class = "form-control",  Value = Model.Month != null ? Model.Month.ToString("yyyy-MM") : null }, readOnly = "true" })
                     @Html.ValidationMessageFor(model => model.Month, "", new { @class = "text-danger" })
                 </div>
             </div>
@@ -77,7 +77,7 @@
 
         $(function () {
 
-     
+            debugger;
             // 初始化Web Uploader
             var $list = $("#thelist");
             var uploader = WebUploader.create({
@@ -112,9 +112,8 @@
                 $percent.css('width', percentage * 100 + '%');
             });
 
-            uploader.on('uploadSuccess',
-                function (file, response) {
-                    //
+            uploader.on('uploadSuccess',function (file, response) {
+        
 
                     if (response.result.success) {
                         location.reload();
@@ -122,6 +121,7 @@
                         console.log(response);
                     }
                 });
+
             uploader.on('uploadError', function (file) {
                 abp.message.warn("导入出错，请检查导入的Excel");
                 $('#' + file.id).find('p.state').text('上传出错');

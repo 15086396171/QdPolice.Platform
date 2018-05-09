@@ -27,7 +27,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     {
         #region 单个岗位下排班时间管理
 
-
+        
 
 		/// <summary>
         /// 根据查询条件获取单个岗位下排班时间分页列表
@@ -85,6 +85,12 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// 排班信息导入
         /// </summary>
         Task<ResultDto> PbImportAsync(PositionPbEditDto input);
+
+        /// <summary>
+        /// 查看岗位排班信息
+        /// </summary>
+        /// <returns></returns>
+        Task<PositionPbListForEdit> GetPositionPbListAsync(GetPositonPbListInput input);
 
     }
 }

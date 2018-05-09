@@ -1,0 +1,178 @@
+﻿@using System.Web.Optimization
+@using Abp.Web.Mvc.Extensions
+@model Vickn.Platform.PbManagement.PositionPbs.Dtos.PositionPbListForEdit
+
+
+<div class="cl pd-5 bg-1 bk-gray mt-20">
+    <span class="l">
+        <span><span class="des-Today">&nbsp;&nbsp;&nbsp;&nbsp;</span>:今天</span>
+        <span><span class="des-Normal">&nbsp;&nbsp;&nbsp;&nbsp;</span>:日常规则</span>
+        <span><span class="des-Holiday">&nbsp;&nbsp;&nbsp;&nbsp;</span>:节假日规则</span>
+        <span><span class="des-Special">&nbsp;&nbsp;&nbsp;&nbsp;</span>:特殊规则</span>
+        <span><span class="des-Weekend">&nbsp;&nbsp;&nbsp;&nbsp;</span>:周末规则</span>
+    </span>
+   
+    <span class="r"  style="margin-left:600px;">日期：@Model.NowDateMonth</span>
+    <span class="r"  style="margin-left:0px;">本月数:@Model.Count 天 </span>
+    
+</div>
+
+<div class="div-title">
+    <ul>
+        <li class="li-title">日</li>
+        <li class="li-title">一</li>
+        <li class="li-title">二</li>
+        <li class="li-title">三</li>
+        <li class="li-title">四</li>
+        <li class="li-title">五</li>
+        <li class="li-title">六</li>
+    </ul>
+</div>
+<div class="div-content">
+    <ul>
+        @{
+            int i = 1;
+            int j = 1;
+            foreach (var item in Model.PositionPbListDtos)
+            {
+                if (i > 7)
+                {
+                    if (item.DutyDate.Day == DateTime.Now.Day)
+                    {
+                        <li class="li-day clear day-today ">
+                            <div class="day-holiday">@item.DutyDate.Day @*@item.Calendar*@</div>
+
+                            <ul class="ul-children">
+                                @foreach (var itemUser in item.PositionPbTimes)
+                                {
+                                    <li><a class="a-group" href="javascript:void(0)" data-positionpbtimev3id="@itemUser.PositionPbId"><span>@itemUser.UserName (@itemUser.StartTime 至 @itemUser.EndTime)</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="li-day clear ">
+                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+
+                            <ul class="ul-children">
+                                @foreach (var itemUser in item.PositionPbTimes)
+                                {
+                                    <li><a class="a-group" href="javascript:void(0)" data-positionpbtimev3id="@itemUser.PositionPbId"><span>@itemUser.UserName (@itemUser.StartTime 至 @itemUser.EndTime)</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    i = 2;
+                }
+                else
+                {
+                    //定位月份的第一天所在星期
+                    if (j == 1)
+                    {
+                        for (int num = 0; num < (int)item.DutyDate.DayOfWeek; num++)
+                        {
+                            <li class="li-day"></li>
+                            i += 1;
+                        }
+                    }
+                    if (item.DutyDate.Day == DateTime.Now.Day)
+                    {
+                        <li class="li-day day-today ">
+                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+
+                            <ul class="ul-children">
+                                @foreach (var itemUser in item.PositionPbTimes)
+                                {
+                                    <li><a class="a-group" href="javascript:void(0)"  data-positionpbtimev3id="@itemUser.PositionPbId"><span>@itemUser.UserName (@itemUser.StartTime 至 @itemUser.EndTime)</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    else
+                    {
+                        <li class="li-day ">
+                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+
+                            <ul class="ul-children">
+                                @foreach (var itemUser in item.PositionPbTimes)
+                                {
+                                    <li><a class="a-group" href="javascript:void(0)"  data-positionpbtimev3id="@itemUser.PositionPbId"><span>@itemUser.UserName (@itemUser.StartTime 至 @itemUser.EndTime)</span></a></li>
+                                }
+                            </ul>
+                        </li>
+                    }
+                    i += 1;
+                }
+                j += 1;
+            }
+        }
+    </ul>
+</div>
+
+<script>
+    $(document).ready(function () {
+        //$(".a-group").click(function () {
+        //  //var isPbGroup = $(this).data("isgroup");
+        //  //if (isPbGroup === "False")
+        //  //    return;
+
+        //  var positionpbtimev3Id = $(this).data("positionpbtimev3id");
+
+        //  //layer.open({
+        //  //    title: "查看成员",
+        //  //    type: 2,
+        //  //    //area: ['700px', '500px'],
+        //  //    area: ['60%', '80%'],
+        //  //    maxmin: false,
+        //  //    content: "/PbManagementV3/PositionPbMapV3/MiniIndex?positionPbTimeV3Id="+positionpbtimev3Id,
+        //  //    btn: ["关闭"],
+        //  //    end: function () {
+        //  //    }
+        //  //});
+        //  var cls = layer.open({
+        //    title: "请选择处理人员",
+        //    type: 2,
+        //    area: ['500px', '60%'],
+        //    maxmin: false,
+        //    //content: $("#div_allUser"),
+        //    content: '/PbManagementV3/PostSettingV3/UserTree?postSettingId=0',
+        //    btn: ["确定", "取消选择"],
+        //    yes: function (index, layero) {
+        //      var idStr = "";
+        //      var userNameStr = "";
+
+        //      var iframeWin = window[layero.find('iframe')[0]['name']];
+        //      var result = iframeWin.GetSortedIds();
+
+        //      console.log(result);
+
+        //      //$.each(result, function (i, data) {
+        //      //  if (data.IsUser === true) {
+        //      //    idStr += data.UserId + ",";
+        //      //    userNameStr += data.Name + ",";
+        //      //  }
+        //      //});
+        //      //$("#People").val(idStr);
+        //      //$("#username").val(userNameStr);
+        //      console.log(idStr);
+
+        //      $.post("/PbManagementV3/PositionPbV3/ChangePeople",
+        //        { positionPbTimeV3Id: positionpbtimev3Id, userIds: result },
+        //        function () {
+        //          location.reload();
+        //        });
+
+        //      layer.close(index);
+        //    },
+        //    cancel: function (index, layero) {
+        //    }
+        //  });
+        //});
+    });
+</script>
+
+@section styles{
+
+    <link href="~/Content/Pbmanagerment/css/Calendar.css" rel="stylesheet" />
+}

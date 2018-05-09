@@ -1,0 +1,132 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+
+.ul-index-search {
+    min-height: 70px;
+}
+
+    .ul-index-search li {
+        min-width: 100px;
+        line-height: 35px;
+        float: left;
+        margin-left: 10px;
+    }
+
+
+/*-------------日历样式--------------*/
+.div-title {
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #0978A6;
+}
+
+.div-content {
+    width: 100%;
+}
+
+ul {
+    list-style: none;
+}
+
+    ul .li-title {
+        float: left;
+        width: 14.2%;
+        height: 40px;
+        text-align: center;
+        color: white;
+        font-weight: 800;
+        /*border: 1px solid green;*/
+    }
+
+    ul .li-day {
+        width: 14.2%;
+        min-height: 130px;
+        box-shadow: 0px 0px 1px #65aee5;
+        /*border: 1px solid #6cadd3;*/
+        float: left;
+    }
+
+        ul .li-day:hover {
+            background-color: rgba(13, 62, 75, 0.10);
+        }
+
+.day-holiday {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #ffd800;
+}
+
+.day-special {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #ff6a00;
+    color: white;
+}
+
+.day-nomal {
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    background-color: #808080;
+    color: white;
+}
+
+.day-today {
+    background-color: #f26c6c;
+}
+
+.des-Normal {
+    background-color: #808080;
+    color: #808080;
+}
+
+.des-Today {
+    background-color: #f26c6c;
+    color: #f26c6c;
+}
+
+.des-Weekend {
+    background-color: #00bfff;
+    color: #00bfff;
+}
+
+.des-Weekend {
+    background-color: #00bfff;
+    color: #00bfff;
+}
+
+.Weekend {
+    background-color: #00bfff;
+}
+
+.des-Special {
+    background-color: #c71585;
+    color: #c71585;
+}
+
+.Special {
+    background-color: #c71585;
+}
+
+.des-Holiday {
+    background-color: #00ff7f;
+    color: #00ff7f;
+}
+
+.Holiday {
+    background-color: #00ff7f;
+}
+
+.clear {
+    clear: both;
+}
+
+.ul-children li {
+    padding-top: 5px;
+    padding-left: 10px;
+}

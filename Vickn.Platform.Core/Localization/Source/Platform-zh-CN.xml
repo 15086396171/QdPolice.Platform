@@ -308,7 +308,7 @@
     <text name="PbTitle.CreationTime" value="创建时间" />
 
 
-    <text name="PbTitle" value="排班标题管理" />
+    <text name="PbTitle" value="排班标题(表)管理" />
     <text name="CreatePbTitle" value="添加排班标题" />
     <text name="EditPbTitle" value="编辑排班标题" />
     <text name="DeletePbTitle" value="删除排班标题" />
@@ -334,5 +334,35 @@
     <text name="CreatePbPosition" value="添加排班岗位" />
     <text name="EditPbPosition" value="编辑排班岗位" />
     <text name="DeletePbPosition" value="删除排班岗位" />
+
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="PositionPbTime.IsDuty" value="是否已值班" />
+    <text name="PositionPbTime.PositionPbId" value="PositionPbId" />
+    <text name="PositionPbTime.StartTime" value="上班时间" />
+    <text name="PositionPbTime.EndTime" value="下班时间" />
+    <text name="PositionPbTime.UserId" value="UserId" />
+    <text name="PositionPbTime.RealName" value="RealName" />
+    <text name="PositionPbTime.PositionPbMaps" value="人员安排" />
+
+
+    <text name="PositionPbTime" value="当天上下班时间管理" />
+    <text name="CreatePositionPbTime" value="添加当天上下班时间" />
+    <text name="EditPositionPbTime" value="编辑当天上下班时间" />
+    <text name="DeletePositionPbTime" value="删除当天上下班时间" />
+
+
+    <!-- 单个岗位下排班时间english管理 -->
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="PositionPb.PbPositionId" value="单个岗位排班标题Id" />
+    <text name="PositionPb.DutyDate" value="值班日期" />
+    <text name="PositionPb.PositionPbTimes" value="PositionPbTimes" />
+
+
+    <text name="PositionPb" value="单个岗位下排班时间管理" />
+    <text name="CreatePositionPb" value="添加单个岗位下排班时间" />
+    <text name="EditPositionPb" value="编辑单个岗位下排班时间" />
+    <text name="DeletePositionPb" value="删除单个岗位下排班时间" />
+    
   </texts>
 </localizationDictionary>

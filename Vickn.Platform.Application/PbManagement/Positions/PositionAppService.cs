@@ -59,6 +59,8 @@ namespace Vickn.Platform.PbManagement.Positions
 		{
 			 var query = _positionRepository.GetAll();
 
+            query = query.Where(p => p.Name.Contains(input.FilterText));
+
             //TODO:根据传入的参数添加过滤条件
 
             var positionCount = await query.CountAsync();

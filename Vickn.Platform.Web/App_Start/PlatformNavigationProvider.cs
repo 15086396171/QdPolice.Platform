@@ -88,11 +88,11 @@ namespace Vickn.Platform.Web
                 icon: "icon-grid",
                 requiredPermissionName: KqShiftAppPermissions.KqShift);
 
-            //考勤机信息（二级菜单）
-            var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
-            url: "KqMachines/KqMachine",
-                icon: "icon-grid",
-            requiredPermissionName: KqMachineAppPermissions.KqMachine);
+            ////考勤机信息（二级菜单）
+            //var kqmachine = new MenuItemDefinition(KqMachineAppPermissions.KqMachine, L("KqMachine"),
+            //url: "KqMachines/KqMachine",
+            //    icon: "icon-grid",
+            //requiredPermissionName: KqMachineAppPermissions.KqMachine);
 
             //考勤统计信息（二级菜单）
             var kqstatistics = new MenuItemDefinition(KqStatisticAppPermissions.KqStatistic, L("KqStatistic"),
@@ -109,7 +109,7 @@ namespace Vickn.Platform.Web
 
             //考勤管理增加二级菜单
             attendance.AddItem(kqshift) //考勤班次
-                .AddItem(kqmachine) //考勤机信息
+                //.AddItem(kqmachine) //考勤机信息
                 .AddItem(kqstatistics) //考勤机信息
                 .AddItem(kqdetails);//考勤明细
             #endregion

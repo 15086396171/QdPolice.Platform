@@ -1012,6 +1012,7 @@
     <Content Include="Content\LayDate\theme\default\font\iconfont.svg" />
     <Content Include="Content\LayDate\theme\default\laydate.css" />
     <Content Include="Content\Mp3\BjSoound.mp3" />
+    <Content Include="Content\Pbmanagerment\css\Calendar.css" />
     <Content Include="css\css.css" />
     <Content Include="css\jkreset1.0.css" />
     <Content Include="favicon.ico" />
@@ -1019,7 +1020,7 @@
     <Content Include="Images\KqDK\pw.png" />
     <Content Include="Images\KqDK\user.png" />
     <Content Include="Images\loading.gif" />
-    <Content Include="Images\Login\log-in-wp宁夏.jpg" />
+    <Content Include="Images\Login\log-in-wp黔东强制戒毒.jpg" />
     <Content Include="Images\Login\pwd.png" />
     <Content Include="Images\Login\user.png" />
     <Content Include="Images\Login\vrfy.png" />
@@ -1127,6 +1128,7 @@
     <Content Include="Areas\PbTitles\Views\PbTitle\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Import.cshtml" />
+    <Content Include="Areas\PbPositions\Views\PbPosition\SelectPb.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1744,9 +1746,9 @@
     <Content Include="Content\Hplus\js\plugins\video\IEPluginSetup_v_3_0_8737_5.msi" />
     <Content Include="Content\Hplus\js\plugins\video\tahu.rar" />
     <Content Include="Content\Hplus\js\plugins\video\tahu\CS_WebRTC_Conference_Server_Peer.v3.0.tgz" />
-    <Content Include="Update\Police.apk" />
     <Content Include="Template\导入模版.xlsx" />
     <Content Include="Update\KqApp\kqApp.apk" />
+    <Content Include="Update\Police.apk" />
     <None Include="Views\Roles\Create.cshtml" />
     <Content Include="Views\Roles\_SetPermissions.cshtml" />
     <Content Include="Views\Users\_MyInfo.cshtml" />

@@ -30,6 +30,9 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
 		[DisplayName("是否已值班")]
         public bool IsDuty { get; set; }
 
+        /// <summary>
+        /// 排班岗位Id
+        /// </summary>
         public int PositionPbId { get; set; }
 
         /// <summary>

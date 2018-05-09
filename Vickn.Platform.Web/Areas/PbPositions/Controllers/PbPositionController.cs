@@ -48,6 +48,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
         private readonly IPbTitleAppService _pbTitleAppService;
         private readonly IUserAppService _userAppService;
         private readonly IPositionPbAppService _positionPbAppService;
+        
 
         public PbPositionController(IPbPositionAppService pbPositionAppService, IPbTitleAppService pbTitleAppService, IUserAppService userAppService, IPositionPbAppService positionPbAppService)
         {
@@ -57,12 +58,14 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
             _positionPbAppService = positionPbAppService;
         }
 
+        //排班岗位
         public ActionResult Index(int pbTitleId)
         {
             ViewBag.pbTitleId = pbTitleId;
             return View();
         }
 
+        //导入页面
         public async Task<ActionResult> Import(int pbPostionId)
         {
 
@@ -73,55 +76,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
             return View(pbPosition);
         }
 
-
-
-
-        private async Task<ImportPositionPbTimeDto> PositionPbTime(IRow row, PositionPbEditDto positionPb, int index)
-        {
-            var namesStr = row.Cells[index * 3 + 1].ToString();
-
-            if (string.IsNullOrWhiteSpace(namesStr))
-                return null;
-
-            // 班次1
-            var names = namesStr.Split(new char[] { '、' }, StringSplitOptions.RemoveEmptyEntries);
-
-
-
-            List<UserListDto> users = await _userAppService.GetUserslist();
-            users = users.Where(p => names.Contains(p.UserName)).ToList();
-
-
-            if (!users.Any())
-                throw new NotImplementedException("未找到用户：" + namesStr);
-            var startTimeStr = row.Cells[index * 3 + 2].ToString();
-            var startTime = DateTime.Parse(startTimeStr);
-            var endTime = DateTime.Parse(row.Cells[index * 3 + 3].ToString());
-
-            ImportPositionPbTimeDto positionPbTime = new ImportPositionPbTimeDto()
-            {
-
-                StartTime = positionPb.DutyDate.Date.AddHours(startTime.Hour).AddMinutes(startTime.Minute),
-                EndTime = positionPb.DutyDate.Date.AddHours(endTime.Hour).AddMinutes(endTime.Minute),
-
-                UserId = users[0].Id,
-                //RealName = string.Join(",", users.Select(p => p.RealName).ToList()),
-                RealName = string.Join(",", users.Select(p => p.UserName).ToList()),
-
-                PositionPbMaps = users.Select(p => new PositionPbMapDto()
-                {
-                    RealName = p.UserName,
-                    UserId = p.Id,
-                }).ToList()
-            };
-            // 跨天
-            if (positionPbTime.EndTime <= positionPbTime.StartTime)
-            {
-                positionPbTime.EndTime = positionPbTime.EndTime.AddDays(1);
-            }
-            return positionPbTime;
-        }
-
+        //排班信息导入
         [DisableAbpAntiForgeryTokenValidation]
         public async Task<ActionResult> PbImportXX(int pbPositionId)
         {
@@ -236,5 +191,61 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
         }
 
+        private async Task<ImportPositionPbTimeDto> PositionPbTime(IRow row, PositionPbEditDto positionPb, int index)
+        {
+            var namesStr = row.Cells[index * 3 + 1].ToString();
+
+            if (string.IsNullOrWhiteSpace(namesStr))
+                return null;
+
+            // 班次1
+            var names = namesStr.Split(new char[] { '、' }, StringSplitOptions.RemoveEmptyEntries);
+
+
+
+            List<UserListDto> users = await _userAppService.GetUserslist();
+            users = users.Where(p => names.Contains(p.UserName)).ToList();
+
+
+            if (!users.Any())
+                throw new NotImplementedException("未找到用户：" + namesStr);
+            var startTimeStr = row.Cells[index * 3 + 2].ToString();
+            var startTime = DateTime.Parse(startTimeStr);
+            var endTime = DateTime.Parse(row.Cells[index * 3 + 3].ToString());
+
+            ImportPositionPbTimeDto positionPbTime = new ImportPositionPbTimeDto()
+            {
+
+                StartTime = positionPb.DutyDate.Date.AddHours(startTime.Hour).AddMinutes(startTime.Minute),
+                EndTime = positionPb.DutyDate.Date.AddHours(endTime.Hour).AddMinutes(endTime.Minute),
+
+                UserId = users[0].Id,
+                //RealName = string.Join(",", users.Select(p => p.RealName).ToList()),
+                RealName = string.Join(",", users.Select(p => p.UserName).ToList()),
+
+                PositionPbMaps = users.Select(p => new PositionPbMapDto()
+                {
+                    RealName = p.UserName,
+                    UserId = p.Id,
+                }).ToList()
+            };
+            // 跨天
+            if (positionPbTime.EndTime <= positionPbTime.StartTime)
+            {
+                positionPbTime.EndTime = positionPbTime.EndTime.AddDays(1);
+            }
+            return positionPbTime;
+        }
+
+        //
+        public async Task< ActionResult> SelectPb(int pbPostionId)
+        {
+
+
+            var query = await _positionPbAppService.GetPositionPbListAsync(
+                new GetPositonPbListInput {PbPositionId = pbPostionId});
+
+            return View(query);
+        }
     }
 }
