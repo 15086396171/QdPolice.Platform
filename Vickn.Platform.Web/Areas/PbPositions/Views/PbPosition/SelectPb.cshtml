@@ -40,7 +40,7 @@
                     if (item.DutyDate.Day == DateTime.Now.Day)
                     {
                         <li class="li-day clear day-today ">
-                            <div class="day-holiday">@item.DutyDate.Day @*@item.Calendar*@</div>
+                            <div class="day-holiday">@item.DutyDate.Day</div>
 
                             <ul class="ul-children">
                                 @foreach (var itemUser in item.PositionPbTimes)
@@ -53,7 +53,7 @@
                     else
                     {
                         <li class="li-day clear ">
-                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+                            <div class="day-nomal">@item.DutyDate.Day </div>
 
                             <ul class="ul-children">
                                 @foreach (var itemUser in item.PositionPbTimes)
@@ -79,7 +79,7 @@
                     if (item.DutyDate.Day == DateTime.Now.Day)
                     {
                         <li class="li-day day-today ">
-                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+                            <div class="day-nomal">@item.DutyDate.Day</div>
 
                             <ul class="ul-children">
                                 @foreach (var itemUser in item.PositionPbTimes)
@@ -92,7 +92,7 @@
                     else
                     {
                         <li class="li-day ">
-                            <div class="day-nomal">@item.DutyDate.Day @*@item.Calendar*@</div>
+                            <div class="day-nomal">@item.DutyDate.Day </div>
 
                             <ul class="ul-children">
                                 @foreach (var itemUser in item.PositionPbTimes)
