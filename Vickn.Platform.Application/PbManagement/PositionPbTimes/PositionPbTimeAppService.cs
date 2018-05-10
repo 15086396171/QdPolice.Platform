@@ -27,11 +27,13 @@ using Abp.Extensions;
 using Abp.Linq.Extensions;
 
 using Vickn.Platform.Dtos;
+using Vickn.Platform.PbManagement.PbPositions;
 using Vickn.Platform.PbManagement.PositionPbMaps;
 using Vickn.Platform.PbManagement.PositionPbMaps.Dtos;
 using Vickn.Platform.PbManagement.PositionPbs;
 using Vickn.Platform.PbManagement.PositionPbTimes.Authorization;
 using Vickn.Platform.PbManagement.PositionPbTimes.Dtos;
+using Vickn.Platform.PbManagement.Positions;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.PbManagement.PositionPbTimes
@@ -42,21 +44,27 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
     [AbpAuthorize(PositionPbTimeAppPermissions.PositionPbTime)]
     public class PositionPbTimeAppService : PlatformAppServiceBase, IPositionPbTimeAppService
     {
+        private readonly PositionPbTimeManager _positionPbTimeManager;
         private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
         private readonly IRepository<PositionPbMap, int> _postionPbMapsRepository;
-        private readonly PositionPbTimeManager _positionPbTimeManager;
-  
-             
+        private readonly IRepository<PositionPb, int> _positionPbRepository;
+        private readonly IRepository<PbPosition, int> _pbPositionRepository;
+        private readonly IRepository<Position, int> _positionRepository;
+
+        
+
 
         /// <summary>
         /// 初始化当天上下班时间服务实例
         /// </summary>
-        public PositionPbTimeAppService(IRepository<PositionPbTime, int> positionPbTimeRepository, PositionPbTimeManager positionPbTimeManager, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb> userReppository)
+        public PositionPbTimeAppService(IRepository<PositionPbTime, int> positionPbTimeRepository, PositionPbTimeManager positionPbTimeManager, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb> userReppository, IRepository<PositionPb, int> positionPbRepository, IRepository<PbPosition, int> pbPositionRepository, IRepository<Position, int> positionRepository)
         {
             _positionPbTimeRepository = positionPbTimeRepository;
             _positionPbTimeManager = positionPbTimeManager;
             _postionPbMapsRepository = postionPbMapsRepository;
-          
+            _positionPbRepository = positionPbRepository;
+            _pbPositionRepository = pbPositionRepository;
+            _positionRepository = positionRepository;
         }
 
         #region 当天上下班时间管理
@@ -223,45 +231,36 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         ///  根据用户查询获取当月值班列表详情
         /// </summary>
         /// <returns></returns>
-        public async Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync()
+        public async Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync(AppGetPositionPbDto input)
         {
-            var userid = (await GetCurrentUserAsync()).Id;
 
-            DateTime now = DateTime.Now;
-            DateTime d1 = new DateTime(now.Year, now.Month, 1);
-            DateTime d2 = d1.AddMonths(1);
 
-            var query = _positionPbTimeRepository.GetAll().ToList();
-            query = query.Where(p => p.UserId == userid && p.StartTime > d1 && p.EndTime < d2).ToList();
+            var querylist = _positionPbTimeRepository.GetAll().ToList();
+            querylist = querylist.Where(p => p.StartTime > input.PbDate&&p.StartTime<input.PbDate.AddDays(1)).ToList();
 
-            List<AppPositionPbTimeDetailDto> querylist = new List<AppPositionPbTimeDetailDto>();
-            for (int i = 0; i < query.Count(); i++)
+
+            List<AppPositionPbTimeDetailDto> querylists = new List<AppPositionPbTimeDetailDto>();
+            foreach (var query in querylist)
             {
                 AppPositionPbTimeDetailDto item = new AppPositionPbTimeDetailDto();
-                item.PositionPbId = query[i].Id;
-                item.StartTime = query[i].StartTime.ToString("yyyy.MM.dd");
-                item.EndTime = query[i].EndTime.ToString("yyyy.MM.dd");
-                item.RealName = query[i].RealName;
-                item.UserId = query[i].UserId;
-                item.IsDuty = query[i].IsDuty;
 
-                var positionpbmapQuery = _postionPbMapsRepository.GetAll().ToList().Where(p => p.PositionPbTimeId == query[i].Id).ToList();
-                List<PositionPbMapDto> positionpbmap = new List<PositionPbMapDto>();
-                for (int j = 0; j < positionpbmapQuery.Count(); j++)
-                {
-                    PositionPbMapDto list = new PositionPbMapDto();
-                    list.Id = positionpbmapQuery[j].Id;
-                    list.PositionPbTimeId = positionpbmapQuery[j].PositionPbTimeId;
-                    list.UserId = positionpbmapQuery[j].UserId;
-                    list.RealName = positionpbmapQuery[j].User.UserName;
-                    positionpbmap.Add(list);
-                }
-                item.PositionPbMaps = positionpbmap;
-                
-                querylist.Add(item);
+                item.StartTime = query.StartTime.ToString("yyyy.MM.dd HH:mm");
+                item.EndTime = query.EndTime.ToString("yyyy.MM.dd HH:mm");
+                item.UserName = query.RealName;
+
+                var PbPositionId = _positionPbRepository.GetAllList().Where(p=>p.Id==query.PositionPbId).ToList()[0].PbPositionId;
+                var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
+                var positionName = _positionRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
+
+                item.positionPbName = positionName;
+
+
+
+
+                querylists.Add(item);
             }
 
-            return querylist;
+            return querylists;
         }
 
         #endregion

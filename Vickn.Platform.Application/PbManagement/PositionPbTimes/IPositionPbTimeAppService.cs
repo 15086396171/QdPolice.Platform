@@ -89,7 +89,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         /// <summary>
         /// 根据用户查询获取当月值班列表详情
         /// </summary>
-        Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync();
+        Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync(AppGetPositionPbDto input);
         #endregion
     }
 }

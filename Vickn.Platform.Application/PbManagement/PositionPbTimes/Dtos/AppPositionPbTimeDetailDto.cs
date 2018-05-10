@@ -13,10 +13,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
     /// </summary>
    public class AppPositionPbTimeDetailDto
     {
-        [Description("岗位排班Id")]
-        public int PositionPbId { get; set; }
-
-        public bool IsDuty { get; set; }
+     
         /// <summary>
         /// 上班时间
         /// </summary>
@@ -28,10 +25,15 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
         [Description("下班时间")]
         public string EndTime { get; set; }
 
-        public long UserId { get; set; }
+        /// <summary>
+        /// 用户名
+        /// </summary>
+        public string UserName { get; set; }
 
-        public string RealName { get; set; }
+        /// <summary>
+        /// 岗位
+        /// </summary>
+        public string positionPbName { get; set; }
 
-        public ICollection<PositionPbMapDto> PositionPbMaps { get; set; }
     }
 }
