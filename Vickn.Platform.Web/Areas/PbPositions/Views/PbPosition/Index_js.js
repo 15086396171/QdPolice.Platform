@@ -60,15 +60,23 @@
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
 
-                        if (_permissions.edit) {
-                            $('<a title="排班导入" href="javascript:;" class="m-l-xs nodecoration Import" data-title="排班导入" ><i class="glyphicon glyphicon-import"></i> </a>')
-                                .appendTo($div);
-                        }
-                        if (_permissions.edit) {
-                            $('<a title="查看排班" href="javascript:;" class="m-l-xs nodecoration Select" data-title="查看排班" ><i class="glyphicon glyphicon-calendar"></i> </a>')
-                                .appendTo($div);
-                        }
+                        var isPb = row.isTrue;
 
+                        if (isPb == true) {
+                            if (_permissions.edit) {
+                                $(
+                                        '<a title="查看排班" href="javascript:;" class="m-l-xs nodecoration Select" data-title="查看排班" ><i class="glyphicon glyphicon-calendar"></i> </a>')
+                                    .appendTo($div);
+                            }
+                        } else {
+                            if (_permissions.edit) {
+                                $('<a title="排班导入" href="javascript:;" class="m-l-xs nodecoration Import" data-title="排班导入" ><i class="glyphicon glyphicon-import"></i> </a>')
+                                    .appendTo($div);
+                            }
+                        }
+                        
+
+            
 
                         //if (_permissions.edit) {
                         //  $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')

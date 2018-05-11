@@ -60,6 +60,11 @@ namespace Vickn.Platform.PbManagement.PbPositions
         Task UpdateAsync(PbPositionForEdit input);
 
         /// <summary>
+        /// 修改排班岗位
+        /// </summary>
+        Task DtoUpdateAsync(PbPositionDto input);
+
+        /// <summary>
         /// 删除排班岗位
         /// </summary>
         Task DeleteAsync(EntityDto<int> input);

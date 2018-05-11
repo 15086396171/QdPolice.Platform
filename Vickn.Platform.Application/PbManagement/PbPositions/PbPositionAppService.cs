@@ -190,6 +190,16 @@ namespace Vickn.Platform.PbManagement.PbPositions
             return new CustomerModelStateValidationDto() { HasModelError = false };
         }
 
+        public async Task DtoUpdateAsync(PbPositionDto input)
+        {
+            var entity = await _pbPositionRepository.GetAsync(input.Id);
+            entity.IsTrue = true;
+            input.MapTo(entity);
+
+            await _pbPositionRepository.UpdateAsync(entity);
+
+        }
+
         #endregion
 
     }

@@ -115,6 +115,8 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
                 var pbPosition = await _pbPositionAppService.GetByIdAsync(new EntityDto<int> { Id = pbPositionId });
 
+              
+
                 var pbTitle = await _pbTitleAppService.GetByIdAsync(new EntityDto(pbPosition.PbTitleId));
                 for (int i = 0; i < rowCount - 2; i++)
                 {
@@ -176,6 +178,8 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
                     await _positionPbAppService.PbImportAsync(entity);
                 }
 
+                pbPosition.IsTrue = true;
+                await _pbPositionAppService.DtoUpdateAsync(pbPosition);
             }
 
             catch (Exception exception)
