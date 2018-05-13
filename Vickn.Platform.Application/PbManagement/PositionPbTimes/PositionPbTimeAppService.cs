@@ -216,15 +216,36 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             query = query.Where(p => p.UserId == userid&&p.StartTime>d1&&p.EndTime<d2).ToList();
 
             List<AppPositionPbTimeDto> querylist = new List<AppPositionPbTimeDto>();
+
             for (int i = 0; i < query.Count(); i++)
             {
                 AppPositionPbTimeDto item = new AppPositionPbTimeDto();
 
-                item.StartTime = query[i].StartTime.ToString("yyyy.MM.dd");
+                item.StartTime = int.Parse(query[i].StartTime.ToString("dd"));
                 querylist.Add(item);
             }
-            
-            return querylist;
+
+            List<AppPositionPbTimeDto> newquerylist = new List<AppPositionPbTimeDto>();
+            int MonthDay = DateTime.DaysInMonth(now.Year, now.Month);
+            for (int i = 0; i < MonthDay; i++)
+            {
+                AppPositionPbTimeDto newitem = new AppPositionPbTimeDto();
+
+                var count = querylist.Where(p => p.StartTime == i);
+                if (count.Count() == 1)
+                {
+                    newitem.StartTime = i;
+
+                }
+                else
+                {
+                    newitem.StartTime = 0;
+                }
+
+                newquerylist.Add(newitem);
+            }
+
+            return newquerylist;
         }
 
         /// <summary>
@@ -236,7 +257,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
 
 
             var querylist = _positionPbTimeRepository.GetAll().ToList();
-            querylist = querylist.Where(p => p.StartTime > input.PbDate&&p.StartTime<input.PbDate.AddDays(1)).ToList();
+            querylist = querylist.Where(p => p.StartTime > input.PbDate&&p.StartTime<input.PbDate.AddDays(1)).OrderBy(p=>p.PositionPbId).ToList();
 
 
             List<AppPositionPbTimeDetailDto> querylists = new List<AppPositionPbTimeDetailDto>();
@@ -257,6 +278,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 querylists.Add(item);
             }
 
+            querylists.OrderByDescending(p => p.positionPbName);
             return querylists;
         }
 

@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Abp.Application.Services.Dto;
 using Abp.Extensions;
 using Abp.Web.Mvc.Authorization;
@@ -11,6 +12,8 @@ using Abp.Web.Security.AntiForgery;
 using NPOI.HSSF.UserModel;
 using NPOI.SS.UserModel;
 using NPOI.XSSF.UserModel;
+using Vickn.Platform.DataDictionaries;
+using Vickn.Platform.DataDictionaries.Dtos;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
@@ -21,10 +24,12 @@ namespace Vickn.Platform.Web.Controllers
     public class UsersController : PlatformControllerBase
     {
         private readonly IUserAppService _userAppService;
+        private readonly IDataDictionaryAppService _dataDictionaryAppService;
 
-        public UsersController(IUserAppService userAppService)
+        public UsersController(IUserAppService userAppService, IDataDictionaryAppService dataDictionaryAppService)
         {
             _userAppService = userAppService;
+            _dataDictionaryAppService = dataDictionaryAppService;
         }
 
         public ActionResult Index(long? ouId)
@@ -38,7 +43,26 @@ namespace Vickn.Platform.Web.Controllers
         {
             var result = await _userAppService.GetUserForEditAsync(new NullableIdDto<long>(id));
             if (!result.UserEditDto.Id.HasValue)
+
                 result.OuId = ouId;
+
+            var dataName = "Post.Rank";
+            GetDataDictoryItemsByDicKeyInput input = new GetDataDictoryItemsByDicKeyInput();
+            input.DicKey = dataName;
+            result.DataDictionaryItems = await _dataDictionaryAppService.GetDataDictionaryItemsByDicName(input);
+            var userList = result.DataDictionaryItems;
+            ViewBag.Position = new SelectList(userList.Items, "Value", "DisplayName");
+
+          
+            //if (result.UserEditDto.Id.HasValue)
+            //{
+            //    List<SelectListItem> list = new List<SelectListItem> {
+            //        new SelectListItem { Text = result.UserEditDto.Position, Value = "0",Selected = true},
+
+            //        ViewBag.Position = new SelectList(userList.Items, "Value", "DisplayName");
+
+            //}
+
 
             return View(result);
         }
@@ -46,6 +70,7 @@ namespace Vickn.Platform.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(GetUserForEdit dto)
         {
+            dto.UserEditDto.Position = Request["Position"];
             if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
                 return View(dto);
 
@@ -161,7 +186,7 @@ namespace Vickn.Platform.Web.Controllers
         public async Task<ActionResult> SetRoles()
         {
             await _userAppService.SetDefaultRolesAsync();
-            return Json(new { success = true },JsonRequestBehavior.AllowGet);
+            return Json(new { success = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

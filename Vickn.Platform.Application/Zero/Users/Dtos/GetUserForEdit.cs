@@ -7,11 +7,14 @@
 // Copyright © YoYoCms@中国.2017-01-17T22:21:11. All Rights Reserved.
 //<生成时间>2017-01-17T22:21:11</生成时间>
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
 using Abp.Extensions;
+using Vickn.Platform.DataDictionaries;
+using Vickn.Platform.DataDictionaries.Dtos;
 using Vickn.Platform.Users;
 
 namespace Vickn.Platform.Users.Dtos
@@ -35,5 +38,12 @@ namespace Vickn.Platform.Users.Dtos
         /// 组织Id
         /// </summary>
         public long? OuId { get; set; }
+
+
+        /// <summary>
+        ///职位
+        /// </summary>
+        [DisplayName("登录名")]
+        public ListResultDto<DataDictionaryItem> DataDictionaryItems { get; set; }
     }
 }

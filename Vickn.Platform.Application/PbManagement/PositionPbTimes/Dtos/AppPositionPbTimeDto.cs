@@ -14,7 +14,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes.Dtos
         /// <summary>
         /// 上班时间
         /// </summary>
-        public string StartTime { get; set; }
+        public int StartTime { get; set; }
 
 
     }

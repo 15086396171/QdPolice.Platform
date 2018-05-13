@@ -22,6 +22,7 @@ using Vickn.Platform.Dtos;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
 using Vickn.Platform.Zero.Users.Dtos;
+using Vickn.Platform.DataDictionaries;
 
 namespace Vickn.Platform.Users
 {
@@ -32,14 +33,16 @@ namespace Vickn.Platform.Users
         private readonly RoleManager _roleManager;
         private readonly IRepository<UserOrganizationUnit, long> _userOrganizationRepository;
         private readonly IRepository<UserRole, long> _userRoleRepository;
+        private readonly IRepository<DataDictionary> _dataDictionaryRepository;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
             _roleManager = roleManager;
             _userOrganizationRepository = userOrganizationRepository;
             _userRoleRepository = userRoleRepository;
+            _dataDictionaryRepository = dataDictionaryRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -170,6 +173,8 @@ namespace Vickn.Platform.Users
                     }
                 }
             }
+
+          
             output.UserRoleDtos = userRoleDtos;
             output.UserEditDto = userEditDto;
             return output;
