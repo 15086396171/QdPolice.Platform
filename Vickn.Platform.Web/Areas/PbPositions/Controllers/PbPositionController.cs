@@ -249,6 +249,8 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
             var query = await _positionPbAppService.GetPositionPbListAsync(
                 new GetPositonPbListInput {PbPositionId = pbPostionId});
 
+            
+
             return View(query);
         }
     }

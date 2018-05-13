@@ -244,8 +244,8 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             {
                 AppPositionPbTimeDetailDto item = new AppPositionPbTimeDetailDto();
 
-                item.StartTime = query.StartTime.ToString("yyyy.MM.dd HH:mm");
-                item.EndTime = query.EndTime.ToString("yyyy.MM.dd HH:mm");
+                item.StartTime = query.StartTime.ToString("MM月dd日 HH:mm");
+                item.EndTime = query.EndTime.ToString("MM月dd日 HH:mm");
                 item.UserName = query.RealName;
 
                 var PbPositionId = _positionPbRepository.GetAllList().Where(p=>p.Id==query.PositionPbId).ToList()[0].PbPositionId;
@@ -253,9 +253,6 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 var positionName = _positionRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
 
                 item.positionPbName = positionName;
-
-
-
 
                 querylists.Add(item);
             }
