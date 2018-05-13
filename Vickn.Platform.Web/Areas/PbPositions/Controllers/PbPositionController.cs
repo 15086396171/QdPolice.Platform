@@ -241,15 +241,17 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
             return positionPbTime;
         }
 
-        //
+        //查看排班信息
         public async Task< ActionResult> SelectPb(int pbPostionId)
         {
 
-
+            //排班信息
             var query = await _positionPbAppService.GetPositionPbListAsync(
                 new GetPositonPbListInput {PbPositionId = pbPostionId});
 
-            
+            //岗位名称
+            var Position = await _pbPositionAppService.GetByIdAsync(new EntityDto<int> {Id = pbPostionId});
+            ViewBag.positionName = Position.Position.Name;
 
             return View(query);
         }
