@@ -195,7 +195,8 @@
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
     <Compile Include="PbManagement\ChangeWorkNotifis\ChangeWorkNotifi.cs" />
     <Compile Include="PbManagement\ChangWorks\ChangeWork.cs" />
-    <Compile Include="PbManagement\ChangWorks\ChangWork.cs" />
+    <Compile Include="PbManagement\ChangWorks\ChangeWorkStatus.cs" />
+    <Compile Include="PbManagement\ChangWorks\ChangeWorkStatusHelpercs.cs" />
     <Compile Include="PbManagement\PbPositions\Authorization\PbPositionAppAuthorizationProvider.cs" />
     <Compile Include="PbManagement\PbPositions\Authorization\PbPositionAppPermissions.cs" />
     <Compile Include="PbManagement\PbPositions\PbPosition.cs" />

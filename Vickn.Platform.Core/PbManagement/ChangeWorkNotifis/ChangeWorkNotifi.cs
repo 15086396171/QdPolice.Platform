@@ -1,21 +1,18 @@
-﻿using Abp.Domain.Entities;
+﻿using Abp.Domain.Entities.Auditing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vickn.Platform.PbManagement.ChangeWorkNotifi
+namespace Vickn.Platform.PbManagement.ChangeWorkNotifis
 {
-    /// <summary>
-    /// 通知用户换班成功/失败
-    /// </summary>
-    public class ChangeWorkNotifi:Entity
+   public class ChangeWorkNotifi: FullAuditedEntity<long>
     {
 
         public int UserId { get; set; }
 
-        public int ChangeWorkId { get; set; }
+        public int ChangeWorkV3Id { get; set; }
 
         /// <summary>
         /// 换班成功、失败
