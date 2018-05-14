@@ -194,9 +194,13 @@
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppAuthorizationProvider.cs" />
     <Compile Include="MainTenance\AuditLogs\Authorization\Authorization\AuditLogAppPermissions.cs" />
     <Compile Include="PbManagement\ChangeWorkNotifis\ChangeWorkNotifi.cs" />
-    <Compile Include="PbManagement\ChangWorks\ChangeWork.cs" />
-    <Compile Include="PbManagement\ChangWorks\ChangeWorkStatus.cs" />
-    <Compile Include="PbManagement\ChangWorks\ChangeWorkStatusHelpercs.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Authorization\ChangeWorkAppAuthorizationProvider.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Authorization\ChangeWorkAppPermissions.cs" />
+    <Compile Include="PbManagement\ChangeWorks\ChangeWork.cs" />
+    <Compile Include="PbManagement\ChangeWorks\ChangeWorkManager.cs" />
+    <Compile Include="PbManagement\ChangeWorks\ChangeWorkStatus.cs" />
+    <Compile Include="PbManagement\ChangeWorks\ChangeWorkStatusHelpercs.cs" />
+    <Compile Include="PbManagement\ChangeWorks\_ChangeWorkReadme.cs" />
     <Compile Include="PbManagement\PbPositions\Authorization\PbPositionAppAuthorizationProvider.cs" />
     <Compile Include="PbManagement\PbPositions\Authorization\PbPositionAppPermissions.cs" />
     <Compile Include="PbManagement\PbPositions\PbPosition.cs" />

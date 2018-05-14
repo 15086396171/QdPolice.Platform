@@ -11,6 +11,7 @@ using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.PbPositions.Authorization;
 using Vickn.Platform.PbManagement.PbTitles.Authorization;
 using Vickn.Platform.PbManagement.PositionPbs.Authorization;
@@ -66,7 +67,10 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<PbPositionAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PositionPbAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PositionPbTimeAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<ChangeWorkAppAuthorizationProvider>();
+
             
+
         }
     }
 }

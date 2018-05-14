@@ -13,6 +13,7 @@ using Vickn.Platform.DataDictionaries.Authorization;
 using Vickn.Platform.HandheldTerminals.AppWhiteLists.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
+using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.PbTitles.Authorization;
 using Vickn.Platform.PbManagement.Positions.Authorization;
 using Vickn.Platform.Users.Authorization;
@@ -32,12 +33,13 @@ namespace Vickn.Platform.Web
             #region 排班管理
 
             //排班管理（一级菜单）
-            var schedule = new MenuItemDefinition(
+            var Pbmanagement = new MenuItemDefinition(
                 AppPermissions.Pages_PbManagement,
                 L(AppPermissions.Pages_PbManagement),
                 icon: "icon-grid"
                 );
 
+            //排班标题
             var pbTitle = new MenuItemDefinition(
                 PbTitleAppPermissions.PbTitle,
                 L("PbTitle"),
@@ -46,6 +48,7 @@ namespace Vickn.Platform.Web
                 requiredPermissionName: PbTitleAppPermissions.PbTitle
             );
 
+            //排班岗位
             var position = new MenuItemDefinition(
                 PositionAppPermissions.Position,
                 L("Position"),
@@ -54,22 +57,27 @@ namespace Vickn.Platform.Web
                 requiredPermissionName: PositionAppPermissions.Position
             );
 
-            schedule.AddItem(pbTitle);
-            schedule.AddItem(position);
-            ////岗位设置
-            //var schedulingpost = new MenuItemDefinition(
-            //    SchedulingPostAppPermissions.SchedulingPost,
-            //    L("SchedulingPost"),
-            //    url: "SchedulingPosts/SchedulingPost",
-            //    icon: "icon-grid",
-            //     requiredPermissionName: SchedulingPostAppPermissions.SchedulingPost
-            //    );
+            //换班管理
+            var changeWork = new MenuItemDefinition(
+                ChangeWorkAppPermissions.ChangeWork,
+                L("ChangeWork"),
+                url: "/ChangeWorks/ChangeWork",
+                icon: "icon-grid",
+                requiredPermissionName: ChangeWorkAppPermissions.ChangeWork
+            );
+
+
+
+            Pbmanagement.AddItem(pbTitle);
+            Pbmanagement.AddItem(position);
+            Pbmanagement.AddItem(changeWork);
+   
 
 
 
 
 
-            //schedule.AddItem(schedulingpost);
+
 
 
             #endregion
@@ -172,7 +180,7 @@ namespace Vickn.Platform.Web
                 .AddItem(device)
                 .AddItem(announcement)
                 .AddItem(attendance)
-                .AddItem(schedule)
+                .AddItem(Pbmanagement)
 
             #region 系统管理
                 .AddItem(

@@ -286,6 +286,12 @@
     <Compile Include="Notifications\Dto\UpdateNotificationSettingsInput.cs" />
     <Compile Include="Notifications\INotificationAppService.cs" />
     <Compile Include="Notifications\NotificationAppService.cs" />
+    <Compile Include="PbManagement\ChangeWorks\ChangeWorkAppService.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Dtos\ChangeWorkDto.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Dtos\ChangeWorkEditDto.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Dtos\ChangeWorkForEdit.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Dtos\GetChangeWorkInput.cs" />
+    <Compile Include="PbManagement\ChangeWorks\IChangeWorkAppService.cs" />
     <Compile Include="PbManagement\PbPositions\Dtos\GetPbPositionInput.cs" />
     <Compile Include="PbManagement\PbPositions\Dtos\PbPositionDto.cs" />
     <Compile Include="PbManagement\PbPositions\Dtos\PbPositionEditDto.cs" />

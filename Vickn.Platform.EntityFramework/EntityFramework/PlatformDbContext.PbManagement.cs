@@ -5,6 +5,8 @@ using System.Linq;
 using System.Reflection.Emit;
 using System.Text;
 using System.Threading.Tasks;
+using Vickn.Platform.PbManagement.ChangeWorks;
+using Vickn.Platform.PbManagement.ChangeWorks.EntityMapper;
 using Vickn.Platform.PbManagement.PbPositions;
 using Vickn.Platform.PbManagement.PbTitles;
 using Vickn.Platform.PbManagement.PbTitles.EntityMapper;
@@ -30,6 +32,10 @@ namespace Vickn.Platform.EntityFramework
 
         public IDbSet<PositionPbMap> PbTimes { get; set; }
 
+        public IDbSet<ChangeWork> ChangeWorks { get; set; }
+
+       
+
         private void PbManagementConfiguration(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new PositionCfg());
@@ -38,6 +44,7 @@ namespace Vickn.Platform.EntityFramework
             modelBuilder.Configurations.Add(new PositionPbCfg());
             modelBuilder.Configurations.Add(new PositionPbTimeCfg());
             modelBuilder.Configurations.Add(new PositionPbMapCfg());
+            modelBuilder.Configurations.Add(new ChangeWorkCfg());
 
         }
     }

@@ -1129,6 +1129,7 @@
     <Content Include="Areas\PbPositions\Views\PbPosition\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Import.cshtml" />
     <Content Include="Areas\PbPositions\Views\PbPosition\SelectPb.cshtml" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\Index_js.js" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1631,6 +1632,10 @@
     <Content Include="Areas\PbPositions\Views\PbPosition\Index.cshtml" />
     <Content Include="Areas\PbPositions\Views\_ViewStart.cshtml" />
     <Content Include="Areas\PbPositions\Views\web.config" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\Index.cshtml" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\Create.cshtml" />
+    <Content Include="Areas\ChangeWorks\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\ChangeWorks\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1701,6 +1706,8 @@
     <Compile Include="Areas\PbTitles\PbTitlesAreaRegistration.cs" />
     <Compile Include="Areas\PbPositions\Controllers\PbPositionController.cs" />
     <Compile Include="Areas\PbPositions\PbPositionsAreaRegistration.cs" />
+    <Compile Include="Areas\ChangeWorks\ChangeWorksAreaRegistration.cs" />
+    <Compile Include="Areas\ChangeWorks\Controllers\ChangeWorkController.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />
@@ -1808,6 +1815,7 @@
     <Folder Include="Content\Hplus\js\plugins\demo\" />
     <Folder Include="Views\App\" />
     <Folder Include="Views\CamereChange\" />
+    <Folder Include="_GeneratedCode\Areas\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vickn.Platform.PbManagement.ChangWorks
+namespace Vickn.Platform.PbManagement.ChangeWorks
 {
    public class ChangeWorkStatusHelpercs
     {

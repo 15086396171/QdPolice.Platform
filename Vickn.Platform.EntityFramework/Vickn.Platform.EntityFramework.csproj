@@ -150,6 +150,7 @@
     <Compile Include="EntityFramework\EntityMapper\Devices\DeviceCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\FileRecords\FileRecordCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\ForensicsRecords\ForensicsRecordCfg.cs" />
+    <Compile Include="EntityFramework\EntityMapper\PbManagement\ChangeWorks\ChangeWorkCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbMapCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbTimeCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbCfg.cs" />
@@ -183,9 +184,7 @@
       <Name>Vickn.Platform.Core</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="EntityFramework\EntityMapper\Schedules\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

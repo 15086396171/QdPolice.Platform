@@ -1,4 +1,4 @@
-﻿namespace Vickn.Platform.PbManagement.ChangWorks
+﻿namespace Vickn.Platform.PbManagement.ChangeWorks
 {
     public enum ChangeWorkStatus
     {

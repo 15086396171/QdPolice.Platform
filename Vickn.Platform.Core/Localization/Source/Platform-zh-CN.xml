@@ -364,5 +364,33 @@
     <text name="EditPositionPb" value="编辑单个岗位下排班时间" />
     <text name="DeletePositionPb" value="删除单个岗位下排班时间" />
     
+    <!--换班-->
+    <text name="ChangeWorkName" value="换班" />
+
+    <!--//用于表格展示的数据信息的标题-->
+ 
+
+    <text name="ChangeWork.UserName" value="发起人" />
+   
+    <text name="ChangeWork.BeUserName" value="被换班人" />
+    <text name="ChangeWork.Reason" value="换班原因" />
+    <text name="ChangeWork.TimeStr" value="值班时间" />
+    <text name="ChangeWork.BeTimeStr" value="被换班时间" />
+    <text name="ChangeWork.PositionName" value="发起人排班岗位" />
+    <text name="ChangeWork.BePositionName" value="被换班人排班岗位" />
+    <text name="ChangeWork.Status" value="换班结果" />
+    <text name="ChangeWork.StatusDes" value="审批状态" />
+   
+    <text name="ChangeWork.Leader" value="审批人" />
+    <text name="ChangeWork.IsOnDuty" value="是否值班中换班" />
+   
+    <text name="ChangeWork.CreationTime" value="发起时间" />
+
+
+    <text name="ChangeWork" value="换班管理" />
+    <text name="CreateChangeWork" value="添加换班" />
+    <text name="EditChangeWork" value="编辑换班" />
+    <text name="DeleteChangeWork" value="删除换班" />
+    
   </texts>
 </localizationDictionary>

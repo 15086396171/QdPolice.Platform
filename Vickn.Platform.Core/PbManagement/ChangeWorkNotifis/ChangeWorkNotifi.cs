@@ -12,7 +12,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorkNotifis
 
         public int UserId { get; set; }
 
-        public int ChangeWorkV3Id { get; set; }
+        public int ChangeWorkId { get; set; }
 
         /// <summary>
         /// 换班成功、失败

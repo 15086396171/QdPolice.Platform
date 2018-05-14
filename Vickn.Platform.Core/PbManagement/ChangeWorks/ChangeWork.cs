@@ -7,16 +7,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Vickn.Platform.PbManagement.ChangWorks
+namespace Vickn.Platform.PbManagement.ChangeWorks
 {
     public class ChangeWork: FullAuditedEntity<long>
     {
     
         [Required, DisplayName("值班时间")]
-        public int PositionPbMapV3Id { get; set; }
+        public int PositionPbMapId { get; set; }
 
         [Required, DisplayName("换班时间")]
-        public int BePositionPbMapV3Id { get; set; }
+        public int BePositionPbMapId { get; set; }
 
         [Required]
         public int UserId { get; set; }
@@ -52,7 +52,8 @@ namespace Vickn.Platform.PbManagement.ChangWorks
 
         [Required]
         [DisplayName("换班进行状态")]
-        public ChangeWorkStatus Status { get; set; }
+        //public ChangeWorkStatus Status { get; set; }
+        public string Status { get; set; }
 
         [DisplayName("状态")]
         [Required]
