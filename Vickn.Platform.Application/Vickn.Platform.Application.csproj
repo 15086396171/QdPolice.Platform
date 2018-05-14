@@ -322,10 +322,13 @@
     <Compile Include="PbManagement\PositionPbTimes\Dtos\AppPositionPbTimeDetailDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\AppPositionPbTimeDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\GetPositionPbTimeInput.cs" />
+    <Compile Include="PbManagement\PositionPbTimes\Dtos\GetPositionUserPbTimeListDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\ImportPositionPbTimeDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbTimeDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbTimeEditDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbTimeForEdit.cs" />
+    <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbTimeListDto.cs" />
+    <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbUserTimeListDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\IPositionPbTimeAppService.cs" />
     <Compile Include="PbManagement\PositionPbTimes\PositionPbTimeAppService.cs" />
     <Compile Include="PbManagement\Positions\Dtos\GetPositionInput.cs" />

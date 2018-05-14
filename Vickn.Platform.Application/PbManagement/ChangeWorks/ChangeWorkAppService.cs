@@ -29,7 +29,12 @@ using Abp.Linq.Extensions;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.ChangeWorks.Dtos;
-using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
+using Vickn.Platform.PbManagement.PbPositions;
+using Vickn.Platform.Users;
+using Vickn.Platform.PbManagement.PositionPbs;
+using Vickn.Platform.PbManagement.PositionPbMaps;
+using Vickn.Platform.PbManagement.PositionPbTimes;
+using Vickn.Platform.PbManagement.Positions;
 
 namespace Vickn.Platform.PbManagement.ChangeWorks
 {
@@ -39,16 +44,28 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 	[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork)]
     public class ChangeWorkAppService : PlatformAppServiceBase, IChangeWorkAppService
     {
-	    private readonly IRepository<ChangeWork,long> _changeWorkRepository;
-	  	private readonly ChangeWorkManager _changeWorkManager;
+        private readonly ChangeWorkManager _changeWorkManager;
+        private readonly IRepository<ChangeWork,long> _changeWorkRepository;
+        private readonly IRepository<User, long> _userRepository;
+        private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
+        private readonly IRepository<PositionPbMap, int> _postionPbMapsRepository;
+        private readonly IRepository<PositionPb, int> _positionPbRepository;
+        private readonly IRepository<PbPosition, int> _pbPositionRepository;
+        private readonly IRepository<Position, int> _positionsRepository;
 
-	    /// <summary>
+        /// <summary>
         /// 初始化换班服务实例
         /// </summary>
-        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository,ChangeWorkManager changeWorkManager)
+        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository,ChangeWorkManager changeWorkManager, IRepository<User, long> userRepository, IRepository<PositionPb> positionRepository, IRepository<PositionPbTime, int> positionPbTimeRepository, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb, int> positionPbRepository, IRepository<PbPosition, int> pbPositionRepository, IRepository<Position, int> positionsRepository)
         {
             _changeWorkRepository = changeWorkRepository;
             _changeWorkManager = changeWorkManager;
+            _userRepository = userRepository;
+            _positionPbTimeRepository = positionPbTimeRepository;
+            _postionPbMapsRepository = postionPbMapsRepository;
+            _positionPbRepository = positionPbRepository;
+            _pbPositionRepository = pbPositionRepository;
+            _positionsRepository = positionsRepository;
         }
 
         #region 换班管理
@@ -100,7 +117,21 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
             }
             else
             {
+
+                var user = await GetCurrentUserAsync();
+         
+
                 changeWorkEditDto = new ChangeWorkEditDto();
+              
+                changeWorkEditDto.UserName = user.UserName;
+
+                var PositionPbTId = _positionPbTimeRepository.GetAllList().Where(p => p.UserId == user.Id).ToList()[0].PositionPbId;
+                var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == PositionPbTId).ToList()[0].PbPositionId;
+                var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
+                var positionName = _positionsRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
+
+                changeWorkEditDto.PositionName = positionName;
+                changeWorkEditDto.BePositionName = positionName;
             }
             return new ChangeWorkForEdit { ChangeWorkEditDto = changeWorkEditDto };
 		}
@@ -113,10 +144,19 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 		{
 			 if (input.ChangeWorkEditDto.Id.HasValue)
             {
+              
                 await UpdateAsync(input);
             }
             else
             {
+                input.ChangeWorkEditDto.UserId = (_userRepository.GetAllList()).Where(p => p.UserName == input.ChangeWorkEditDto.UserName).ToList()[0].Id;
+                input.ChangeWorkEditDto.PositionPbMapId = (_postionPbMapsRepository.GetAllList()).Where(p => p.UserId == input.ChangeWorkEditDto.UserId).ToList()[0].Id;
+                input.ChangeWorkEditDto.BeUserId = (_userRepository.GetAllList()).Where(p => p.UserName == input.ChangeWorkEditDto.BeUserName).ToList()[0].Id;
+                input.ChangeWorkEditDto.BePositionPbMapId = (_postionPbMapsRepository.GetAllList()).Where(p => p.UserId == input.ChangeWorkEditDto.BeUserId).ToList()[0].Id;
+                input.ChangeWorkEditDto.LeaderId = (_userRepository.GetAllList()).Where(p => p.UserName == input.ChangeWorkEditDto.Leader).ToList()[0].Id;
+                input.ChangeWorkEditDto.IsOnDuty = false;
+                input.ChangeWorkEditDto.Status = "审批中";
+                input.ChangeWorkEditDto.StatusDes = "发起换班";
                 await CreateAsync(input);
             }
 		}
@@ -129,6 +169,8 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 		{
 			//TODO: 新增前的逻辑判断，是否允许新增
 
+            
+		  
             var entity = input.ChangeWorkEditDto.MapTo<ChangeWork>();
 
             entity = await _changeWorkRepository.InsertAsync(entity);

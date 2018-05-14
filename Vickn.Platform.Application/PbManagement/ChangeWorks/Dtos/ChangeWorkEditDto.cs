@@ -46,7 +46,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         /// 发起人Id
         /// </summary>
         [Required]
-        public int UserId { get; set; }
+        public long UserId { get; set; }
 
         [Required]
         [DisplayName("发起人")]
@@ -54,10 +54,10 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
 
         [Required]
         [DisplayName("被换班人Id")]
-        public int BeUserId { get; set; }
+        public long BeUserId { get; set; }
 
         [Required]
-        [DisplayName("发起人姓名")]
+        [DisplayName("被换班人")]
         public string BeUserName { get; set; }
 
         [Required]
@@ -65,7 +65,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         public string Reason { get; set; }
 
         [Required]
-        [DisplayName("值班时间")]
+        [DisplayName("发起人值班时间")]
         public string TimeStr { get; set; }
 
         [Required]
@@ -81,15 +81,22 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         public string BePositionName { get; set; }
 
         [Required]
+        [DisplayName("换班进行状态")]
+
+        public string Status { get; set; }
+
+        [Required]
         [DisplayName("审批状态")]
         public string StatusDes { get; set; }
 
-        public int LeaderId { get; set; }
+        
 
-        [DisplayName("发起人")]
+        public long LeaderId { get; set; }
+
+        [DisplayName("审批人")]
         public string Leader { get; set; }
 
-        [DisplayName("发起人")]
+        [DisplayName("是否值班中换班")]
         public bool IsOnDuty { get; set; }
 
     }

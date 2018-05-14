@@ -76,18 +76,34 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         /// <returns></returns>
         Task<CustomerModelStateValidationDto> CheckErrorAsync(PositionPbTimeForEdit input);
 
+
+        /// <summary>
+        /// 根据用户查询获取当月值班列表
+        /// </summary>
+        Task<List<PositionPbTimeListDto>> GetAllAsync();
+
+        /// <summary>
+        /// 查询获取当月除发起人外所有未值班列表
+        /// </summary>
+        Task<List<PositionPbTimeListDto>> GetAllForUserDutyAsync();
+
+        /// <summary>
+        /// 查询当月所有未值班列表
+        /// </summary>
+        Task<List<PositionPbUserTimeListDto>> GetUserAllForDutyAsync(GetPositionUserPbTimeListDto input);
+
         #endregion
 
 
         #region 警务通
         /// <summary>
-        /// 根据用户查询获取当月值班列表
+        /// app根据用户查询获取当月值班列表
         /// </summary>
         Task<List<AppPositionPbTimeDto>> AppGetAllAsync();
 
 
         /// <summary>
-        /// 根据用户查询获取当月值班列表详情
+        /// app查询获取当月所有值班列表详情
         /// </summary>
         Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync(AppGetPositionPbDto input);
         #endregion

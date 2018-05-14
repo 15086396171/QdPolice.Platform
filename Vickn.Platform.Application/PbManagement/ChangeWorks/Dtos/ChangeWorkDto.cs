@@ -46,6 +46,12 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
 
         public string BePositionName { get; set; }
 
+
+       
+        [DisplayName("换班进行状态")]
+        public string Status { get; set; }
+
+
         public string StatusDes { get; set; }
 
         public int LeaderId { get; set; }

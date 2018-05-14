@@ -12,7 +12,7 @@
         @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
 
         <div class="form-horizontal">
-
+           
             <div class="hidden">
                 @Html.HiddenFor(model => model.ChangeWorkEditDto.Id)
             </div>
@@ -20,8 +20,43 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.ChangeWorkEditDto.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.TimeStr, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.DropDownList("PbTime", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.TimeStr, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.PositionName, htmlAttributes: new { @class = "control-label col-md-2", })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.PositionName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.PositionName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.Reason, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.Reason, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.Reason, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.BeTimeStr, htmlAttributes: new { @class = "control-label col-md-2",  })
+                <div class="col-md-8">
+
+                    @Html.DropDownList("BePbTime", null, htmlAttributes: new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.BeTimeStr, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -34,38 +69,6 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.Reason, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.Reason, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.Reason, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.TimeStr, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.TimeStr, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.TimeStr, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.BeTimeStr, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.BeTimeStr, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.BeTimeStr, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.PositionName, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.PositionName, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.PositionName, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
                 @Html.LabelFor(model => model.ChangeWorkEditDto.BePositionName, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
                     @Html.EditorFor(model => model.ChangeWorkEditDto.BePositionName, new { htmlAttributes = new { @class = "form-control" } })
@@ -73,31 +76,19 @@
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.StatusDes, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.StatusDes, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.StatusDes, "", new { @class = "text-danger" })
-                </div>
-            </div>
+       
+
+        
 
             <div class="form-group">
                 @Html.LabelFor(model => model.ChangeWorkEditDto.Leader, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-8">
-                    @Html.EditorFor(model => model.ChangeWorkEditDto.Leader, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.Leader, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
                     @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.Leader, "", new { @class = "text-danger" })
                 </div>
             </div>
 
-            <div class="form-group">
-                @Html.LabelFor(model => model.ChangeWorkEditDto.IsOnDuty, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-8 skin-minimal">
-                    <div class="check-box">
-                        @Html.EditorFor(model => model.ChangeWorkEditDto.IsOnDuty, new { htmlAttributes = new { @class = "form-control" } })
-                        @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.IsOnDuty, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
+
 
 
             @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
@@ -112,9 +103,8 @@
 }
 
 @section scripts{
-    <script>
 
-    </script>
+    <script src="~/Areas/ChangeWorks/Views/ChangeWork/Create_js.js"></script>
+
+   
 }
-
-

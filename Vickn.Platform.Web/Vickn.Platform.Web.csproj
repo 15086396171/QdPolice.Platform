@@ -327,6 +327,7 @@
     <Content Include="Abp\Framework\styles\abp.mixings.css" />
     <Content Include="Abp\Framework\styles\abp.mixings.min.css" />
     <Content Include="Abp\Framework\styles\utils\ie10fix.css" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\Create_js.js" />
     <Content Include="Areas\Devices\Views\Device\Details.js" />
     <Content Include="Areas\Devices\Views\Device\ShowFile.js" />
     <Content Include="Areas\KqDetails\Views\KqDetail\Holiday.xml">
@@ -1130,6 +1131,7 @@
     <Content Include="Areas\PbPositions\Views\PbPosition\Import.cshtml" />
     <Content Include="Areas\PbPositions\Views\PbPosition\SelectPb.cshtml" />
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\Index_js.js" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\GetTimeUser.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />

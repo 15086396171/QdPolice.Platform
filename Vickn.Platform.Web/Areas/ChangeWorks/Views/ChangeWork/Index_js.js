@@ -29,11 +29,11 @@
                 },
                 { "data": "userName" },
                 { "data": "timeStr" },
-                { "data": "beUserName" },
                 { "data": "reason" },
-
-                { "data": "beTimeStr" },
                 { "data": "positionName" },
+
+                { "data": "beUserName" },
+                { "data": "beTimeStr" },
                 { "data": "bePositionName" },
                 { "data": "status" },
                 { "data": "statusDes" },

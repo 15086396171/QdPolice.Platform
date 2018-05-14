@@ -51,7 +51,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         private readonly IRepository<PbPosition, int> _pbPositionRepository;
         private readonly IRepository<Position, int> _positionRepository;
 
-        
+
 
 
         /// <summary>
@@ -199,9 +199,113 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             return new CustomerModelStateValidationDto() { HasModelError = false };
         }
 
+        /// <summary>
+        /// 根据用户获取本月未值班的排班信息
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<PositionPbTimeListDto>> GetAllAsync()
+        {
+
+
+            var userid = (await GetCurrentUserAsync()).Id;
+
+            DateTime now = DateTime.Now;
+            DateTime d1 = new DateTime(now.Year, now.Month, 1);
+            DateTime d2 = d1.AddMonths(1);
+            DateTime d3 = DateTime.Today;
+
+            var query = _positionPbTimeRepository.GetAll().ToList();
+            query = query.Where(p => p.UserId == userid && p.StartTime > d3 && p.EndTime < d2).ToList();
+
+            List<PositionPbTimeListDto> querylist = new List<PositionPbTimeListDto>();
+
+            for (int i = 0; i < query.Count(); i++)
+            {
+                PositionPbTimeListDto item = new PositionPbTimeListDto();
+
+                item.PbTime = query[i].StartTime.ToString("yyyy年MM月dd日 HH:mm") + "--" + query[i].EndTime.ToString("HH:mm");
+                querylist.Add(item);
+            }
+
+
+
+            return querylist;
+        }
 
         /// <summary>
-        ///  根据用户查询获取当月值班列表
+        /// 查询获取当月除发起人外所有未值班列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<PositionPbTimeListDto>> GetAllForUserDutyAsync()
+        {
+            var user = await GetCurrentUserAsync();
+
+            DateTime now = DateTime.Now;
+            DateTime d1 = new DateTime(now.Year, now.Month, 1);
+            DateTime d2 = d1.AddMonths(1);
+            DateTime d3 = DateTime.Today;
+
+            var query = _positionPbTimeRepository.GetAll().ToList();
+            query = query.Where(p => p.StartTime > d3 && p.EndTime < d2&& p.RealName!=user.UserName).ToList();
+
+            List<PositionPbTimeListDto> querylist = new List<PositionPbTimeListDto>();
+
+            for (int i = 0; i < query.Count(); i++)
+            {
+                PositionPbTimeListDto item = new PositionPbTimeListDto();
+
+                item.PbTime = query[i].StartTime.ToString("yyyy年MM月dd日") ;
+                querylist.Add(item);
+            }
+
+
+
+            return querylist;
+        }
+
+        /// <summary>
+        /// 查询当月所有未值班用户信息列表
+        /// </summary>
+        public async Task<List<PositionPbUserTimeListDto>> GetUserAllForDutyAsync(GetPositionUserPbTimeListDto input)
+        {
+            var user = await GetCurrentUserAsync();
+
+            DateTime now = DateTime.Now;
+            DateTime d1 = new DateTime(now.Year, now.Month, 1);
+            DateTime d2 = d1.AddMonths(1);
+            DateTime d3 = input.Date;
+
+            var query = _positionPbTimeRepository.GetAll().ToList();
+            query = query.Where(p => p.StartTime > d3 && p.EndTime < d2 && p.RealName != user.UserName).ToList();
+
+            List<PositionPbUserTimeListDto> querylist = new List<PositionPbUserTimeListDto>();
+
+            for (int i = 0; i < query.Count(); i++)
+            {
+                PositionPbUserTimeListDto item = new PositionPbUserTimeListDto();
+
+                item.PositionPbTimeId = query[i].Id;
+                item.UserName = query[i].RealName;
+                item.WorkTime = query[i].StartTime.ToString("yyyy年MM月dd日 HH:mm")+"--"+ query[i].EndTime.ToString("HH:mm");
+                //获取岗位名称
+                var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == query[i].PositionPbId).ToList()[0].PbPositionId;
+                var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
+                var positionName = _positionRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
+                item.PositionName = positionName;
+
+                querylist.Add(item);
+            }
+
+
+
+            return querylist;
+        }
+
+
+        #region 警务通 
+
+        /// <summary>
+        ///  app根据用户查询获取当月值班列表
         /// </summary>
         /// <returns></returns>
         public async Task<List<AppPositionPbTimeDto>> AppGetAllAsync()
@@ -213,7 +317,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             DateTime d2 = d1.AddMonths(1);
 
             var query = _positionPbTimeRepository.GetAll().ToList();
-            query = query.Where(p => p.UserId == userid&&p.StartTime>d1&&p.EndTime<d2).ToList();
+            query = query.Where(p => p.UserId == userid && p.StartTime > d1 && p.EndTime < d2).ToList();
 
             List<AppPositionPbTimeDto> querylist = new List<AppPositionPbTimeDto>();
 
@@ -249,7 +353,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         }
 
         /// <summary>
-        ///  根据用户查询获取当月值班列表详情
+        ///  app查询获取当月所有值班列表详情
         /// </summary>
         /// <returns></returns>
         public async Task<List<AppPositionPbTimeDetailDto>> AppGetAllDetailAsync(AppGetPositionPbDto input)
@@ -257,7 +361,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
 
 
             var querylist = _positionPbTimeRepository.GetAll().ToList();
-            querylist = querylist.Where(p => p.StartTime > input.PbDate&&p.StartTime<input.PbDate.AddDays(1)).OrderBy(p=>p.PositionPbId).ToList();
+            querylist = querylist.Where(p => p.StartTime > input.PbDate && p.StartTime < input.PbDate.AddDays(1)).OrderBy(p => p.PositionPbId).ToList();
 
 
             List<AppPositionPbTimeDetailDto> querylists = new List<AppPositionPbTimeDetailDto>();
@@ -269,7 +373,8 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 item.EndTime = query.EndTime.ToString("MM月dd日 HH:mm");
                 item.UserName = query.RealName;
 
-                var PbPositionId = _positionPbRepository.GetAllList().Where(p=>p.Id==query.PositionPbId).ToList()[0].PbPositionId;
+                //获取岗位名称
+                var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == query.PositionPbId).ToList()[0].PbPositionId;
                 var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
                 var positionName = _positionRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
 
@@ -281,6 +386,9 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             querylists.OrderByDescending(p => p.positionPbName);
             return querylists;
         }
+
+        
+        #endregion
 
         #endregion
 

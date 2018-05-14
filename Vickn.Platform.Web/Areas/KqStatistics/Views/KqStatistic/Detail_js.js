@@ -3,10 +3,6 @@
 
 $(function () {
 
-    //$("#btnExport").click(function () {
-
-    //})
-
     var $dataTable = $(".dataTable");
     var _kqstatisticsService = abp.services.app.kqstatistic;
 
