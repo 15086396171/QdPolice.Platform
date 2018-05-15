@@ -25,7 +25,7 @@
 
             @foreach (var str in Model) {
                 <tr>
-                    <td><input type="radio"  name="check" remark="@str.UserName" value="@str.PositionPbTimeId"></td>
+                    <td><input type="radio"  name="check" remark="@str.UserName" Time="@str.WorkTime" value="@str.PositionPbTimeId"></td>
                     <td> @str.UserName</td>
                     <td> @str.PositionName</td>
                     <td> @str.WorkTime</td>

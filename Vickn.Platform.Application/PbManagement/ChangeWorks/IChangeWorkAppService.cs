@@ -19,19 +19,19 @@ using Vickn.Platform.Dtos;
 
 namespace Vickn.Platform.PbManagement.ChangeWorks
 {
-     /// <summary>
+    /// <summary>
     /// 换班服务接口
     /// </summary>
     public interface IChangeWorkAppService : IApplicationService
     {
         #region 换班管理
 
-		/// <summary>
+        /// <summary>
         /// 根据查询条件获取换班分页列表
         /// </summary>
         Task<PagedResultDto<ChangeWorkDto>> GetPagedAsync(GetChangeWorkInput input);
 
-		 /// <summary>
+        /// <summary>
         /// 通过指定id获取换班Dto信息
         /// </summary>
         Task<ChangeWorkDto> GetByIdAsync(EntityDto<long> input);
@@ -57,6 +57,8 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// </summary>
         Task UpdateAsync(ChangeWorkForEdit input);
 
+
+
         /// <summary>
         /// 删除换班
         /// </summary>
@@ -73,6 +75,30 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// <param name="input"></param>
         /// <returns></returns>
         Task<CustomerModelStateValidationDto> CheckErrorAsync(ChangeWorkForEdit input);
+
+        /// <summary>
+        /// app获取换班数据
+        /// </summary>
+        Task<AppChangeWorkEditDto> AppGetChangeWorkDto();
+
+
+
+
+        #endregion
+
+        #region 业务逻辑处理
+
+        /// <summary>
+        /// 领导同意换班
+        /// </summary>
+        Task LeaderAgreeChangeWorkAsync(ChangeWorkForEdit input);
+
+        /// <summary>
+        /// 领导不同意换班
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task LeaderNotAgreeChangeWorkAsync(ChangeWorkForEdit input);
 
         #endregion
 

@@ -13,19 +13,14 @@
         BeAfterShift,
 
         /// <summary>
-        /// 被换班人同意
-        /// </summary>
-        BeShiftPass,
-
-        /// <summary>
-        /// 换班完成
-        /// </summary>
-        BeSuccess,
-
-        /// <summary>
         /// 被换班人不同意
         /// </summary>
         BeShiftNotPass,
+
+        /// <summary>
+        /// 被换班人同意
+        /// </summary>
+        BeShiftPass,
 
         /// <summary>
         /// 领导同意
@@ -36,6 +31,11 @@
         /// 领导不同意
         /// </summary>
         BeLeaderNotPass,
-    
-}
+
+        /// <summary>
+        /// 换班完成
+        /// </summary>
+        BeSuccess,
+
+    }
 }

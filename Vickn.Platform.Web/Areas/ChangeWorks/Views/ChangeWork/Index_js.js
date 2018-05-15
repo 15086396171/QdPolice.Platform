@@ -16,7 +16,7 @@
                     {
                         key: "filterText",
                         selector: $("#filterText")
-                    },
+                    }
                 ],
                 ingore: []
             },
@@ -31,11 +31,10 @@
                 { "data": "timeStr" },
                 { "data": "reason" },
                 { "data": "positionName" },
-
                 { "data": "beUserName" },
                 { "data": "beTimeStr" },
                 { "data": "bePositionName" },
-                { "data": "status" },
+                { "data": "status", "className":"status_red" },
                 { "data": "statusDes" },
                 { "data": "leader" },
                 {
@@ -51,14 +50,34 @@
                     "data": "id",
                     render: function (data, type, row, meta) {
                         var $div = $('<div></div>');
-                        if (_permissions.edit) {
-                            $('<a title="编辑" href="javascript:;" class="m-l-xs nodecoration edit" data-title="编辑" ><i class="glyphicon glyphicon-pencil"></i> </a>')
-                                .appendTo($div);
+                        
+                        if (row.status== "待领导审核") {
+                            if (_permissions.edit) {
+                                $(
+                                    '<a title="同意换班" href="javascript:;" class="m-l-xs nodecoration edit" data-title="同意换班" ><i class="glyphicon glyphicon-ok"></i> </a>')
+                                    .appendTo($div);
+
+
+                                $(
+                                    '<a title="不同意换班" href="javascript:;" class="m-l-xs nodecoration remove" data-title="不同意换班" ><i class="glyphicon glyphicon-remove"></i> </a>')
+                                    .appendTo($div);
+                            }
+
+
+
                         }
-                        if (_permissions.del) {
-                            $('<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
-                                .appendTo($div);
+
+
+
+                        if (row.status!= "换班完成") {
+                            if (_permissions.del) {
+                                $(
+                                    '<a title="删除" href="javascript:;" class="m-l-xs nodecoration delete"><i class="glyphicon glyphicon-trash"></i> </a>')
+                                    .appendTo($div);
+                            }
                         }
+
+
                         return $div.html();
                     }
                 }
@@ -66,7 +85,12 @@
             methods: [
                 {
                     actionName: "editAction",
-                    url: abp.appPath + "ChangeWorks/changeWork/create"
+                    url: abp.appPath + "api/services/app/changeWork/leaderAgreeChangeWorkAsync"
+                },
+                {
+                    actionName: "removeAction",
+                   
+                    url: abp.appPath + "api/services/app/changeWork/leaderNotAgreeChangeWorkAsync"
                 },
                 {
                     actionName: "deleteAction",

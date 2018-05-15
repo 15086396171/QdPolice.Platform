@@ -23,6 +23,7 @@ using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
 using Vickn.Platform.Zero.Users.Dtos;
 using Vickn.Platform.DataDictionaries;
+using Abp.Organizations;
 
 namespace Vickn.Platform.Users
 {
@@ -34,8 +35,10 @@ namespace Vickn.Platform.Users
         private readonly IRepository<UserOrganizationUnit, long> _userOrganizationRepository;
         private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IRepository<DataDictionary> _dataDictionaryRepository;
+        private readonly IRepository<OrganizationUnit, long> _OrganizationUnitsRepository;
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository)
+
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
@@ -43,6 +46,7 @@ namespace Vickn.Platform.Users
             _userOrganizationRepository = userOrganizationRepository;
             _userRoleRepository = userRoleRepository;
             _dataDictionaryRepository = dataDictionaryRepository;
+            _OrganizationUnitsRepository = organizationUnitsRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -174,7 +178,7 @@ namespace Vickn.Platform.Users
                 }
             }
 
-          
+
             output.UserRoleDtos = userRoleDtos;
             output.UserEditDto = userEditDto;
             return output;
@@ -257,7 +261,7 @@ namespace Vickn.Platform.Users
             var user = input.UserEditDto.MapTo<User>();
 
 
-            
+
 
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);
@@ -447,7 +451,43 @@ namespace Vickn.Platform.Users
                 users.MapTo<List<UserListDto>>());
         }
 
-      
+        /// <summary>
+        /// 获取用户领导人信息
+        /// </summary>
+        /// <typeparam name="UserLeadersListDto"></typeparam>
+        /// <returns></returns>
+        public async Task<List<UserLeadersListDto>> GetUserLeaders()
+        {
+            var user = await GetCurrentUserAsync();
+            var userOrganization = await _userOrganizationRepository.GetAllListAsync();
+            var organizationId = userOrganization.Where(p => p.UserId == user.Id).ToList()[0].OrganizationUnitId;
+
+            var rganizationUnit = await _OrganizationUnitsRepository.GetAsync(organizationId);
+            //部门名称
+            var rganizationUnitName = rganizationUnit.DisplayName;
+            long rganizationUnitId = rganizationUnit.Id;
+
+            var userOrganizationlist = userOrganization.Where(p => p.OrganizationUnitId == rganizationUnitId);
+
+
+
+            List<UserLeadersListDto> userLeaderlist = new List<UserLeadersListDto>();
+            foreach (var item in userOrganizationlist)
+            {
+                UserLeadersListDto userLeader = new UserLeadersListDto();
+                userLeader.UserId = item.UserId;
+                userLeader.UserName = (await _userRepository.GetAsync(item.UserId)).UserName;
+                userLeader.UserPosition = (await _userRepository.GetAsync(item.UserId)).Position;
+                userLeader.UserNameAndPosition = (await _userRepository.GetAsync(item.UserId)).UserName + "--" + (await _userRepository.GetAsync(item.UserId)).Position;
+                userLeaderlist.Add(userLeader);
+            }
+
+            userLeaderlist = userLeaderlist.Where(p => p.UserPosition == "队长"||p.UserPosition=="副队长"||p.UserPosition=="教导员").ToList();
+
+            return userLeaderlist;
+        }
+
+
 
 
         #endregion

@@ -64,11 +64,10 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         [DisplayName("换班原因")]
         public string Reason { get; set; }
 
-        [Required]
         [DisplayName("发起人值班时间")]
         public string TimeStr { get; set; }
 
-        [Required]
+       
         [DisplayName("被换班人值班时间")]
         public string BeTimeStr { get; set; }
 
@@ -80,13 +79,13 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         [DisplayName("被换班人岗位")]
         public string BePositionName { get; set; }
 
-        [Required]
-        [DisplayName("换班进行状态")]
+       
+        [DisplayName("审批状态")]
 
         public string Status { get; set; }
 
-        [Required]
-        [DisplayName("审批状态")]
+      
+        [DisplayName("审批描述")]
         public string StatusDes { get; set; }
 
         
@@ -94,6 +93,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         public long LeaderId { get; set; }
 
         [DisplayName("审批人")]
+      
         public string Leader { get; set; }
 
         [DisplayName("是否值班中换班")]

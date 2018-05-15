@@ -14,6 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using System.Web.UI.WebControls;
 using Abp.Application.Services.Dto;
 using Abp.Web.Mvc.Authorization;
 using Vickn.Platform.PbManagement.ChangeWorks;
@@ -21,7 +22,9 @@ using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.ChangeWorks.Dtos;
 using Vickn.Platform.PbManagement.PositionPbTimes;
 using Vickn.Platform.PbManagement.PositionPbTimes.Dtos;
+using Vickn.Platform.Users;
 using Vickn.Platform.Web.Controllers;
+using Vickn.Platform.Zero.Users.Dtos;
 
 namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
 {
@@ -30,11 +33,13 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
     {
         private readonly IChangeWorkAppService _changeWorkAppService;
         private readonly IPositionPbTimeAppService _positionPbTimeAppService;
+        private readonly IUserAppService _userAppService;
 
-        public ChangeWorkController(IChangeWorkAppService changeWorkAppService, IPositionPbTimeAppService positionPbTimeAppService)
+        public ChangeWorkController(IChangeWorkAppService changeWorkAppService, IPositionPbTimeAppService positionPbTimeAppService, IUserAppService userAppService)
         {
             _changeWorkAppService = changeWorkAppService;
             _positionPbTimeAppService = positionPbTimeAppService;
+            _userAppService = userAppService;
         }
 
         public ActionResult Index()
@@ -50,8 +55,15 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
             {
                 var positionPbTimeList = await _positionPbTimeAppService.GetAllAsync();
                 ViewBag.PbTime = new SelectList(positionPbTimeList, "PbTime", "PbTime");
+
                 var bePositionPbTimeList = await _positionPbTimeAppService.GetAllForUserDutyAsync();
                 ViewBag.BePbTime = new SelectList(bePositionPbTimeList, "PbTime", "PbTime");
+
+                var LeaderList = await _userAppService.GetUserLeaders();
+
+                ViewBag.Leader = new SelectList(LeaderList, "UserNameAndPosition", "UserNameAndPosition");
+
+               
             }
 
             return View(changeWorkDto);
@@ -64,6 +76,11 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
             {
                 return View(changeWorkDto);
             }
+
+            changeWorkDto.ChangeWorkEditDto.Leader = Request["Leader"];
+            changeWorkDto.ChangeWorkEditDto.TimeStr = Request["PbTime"]; 
+            changeWorkDto.ChangeWorkEditDto.BeTimeStr = Request["BePbTime"];
+
             await _changeWorkAppService.CreateOrUpdateAsync(changeWorkDto);
             return RedirectToAction("Index");
         }

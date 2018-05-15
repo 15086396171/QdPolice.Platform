@@ -21,10 +21,12 @@
                     var body = layer.getChildFrame('body', index);
                     var selected = body.find("input[name='check']:checked");
                     var username = $(selected).attr("Remark");
+                    var time = $(selected).attr("Time");
 
                    
                     $('#ChangeWorkEditDto_BeUserName').val(username);
-
+                    $('#ChangeWorkEditDto_TimeStr').text(time);
+                   
 
                     layer.close(index);
                     //按钮【按钮一】的回调

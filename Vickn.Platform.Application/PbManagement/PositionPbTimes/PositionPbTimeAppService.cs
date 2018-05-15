@@ -51,7 +51,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         private readonly IRepository<PbPosition, int> _pbPositionRepository;
         private readonly IRepository<Position, int> _positionRepository;
 
-
+      
 
 
         /// <summary>
@@ -223,7 +223,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             {
                 PositionPbTimeListDto item = new PositionPbTimeListDto();
 
-                item.PbTime = query[i].StartTime.ToString("yyyy年MM月dd日 HH:mm") + "--" + query[i].EndTime.ToString("HH:mm");
+                item.PbTime = query[i].StartTime.ToString("MM月dd日 HH:mm") + "--" + query[i].EndTime.ToString("MM月dd日 HH:mm");
                 querylist.Add(item);
             }
 
@@ -246,7 +246,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             DateTime d3 = DateTime.Today;
 
             var query = _positionPbTimeRepository.GetAll().ToList();
-            query = query.Where(p => p.StartTime > d3 && p.EndTime < d2&& p.RealName!=user.UserName).ToList();
+            query = query.Where(p => p.StartTime > d3 && p.EndTime < d2 && p.RealName != user.UserName).ToList();
 
             List<PositionPbTimeListDto> querylist = new List<PositionPbTimeListDto>();
 
@@ -254,10 +254,11 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             {
                 PositionPbTimeListDto item = new PositionPbTimeListDto();
 
-                item.PbTime = query[i].StartTime.ToString("yyyy年MM月dd日") ;
+                item.PbTime = query[i].StartTime.ToString("yyyy年MM月dd日");
+
                 querylist.Add(item);
             }
-
+            querylist = querylist.GroupBy(t => t.PbTime).Select(t => t.First()).ToList();
 
 
             return querylist;
@@ -276,6 +277,15 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             var query = _positionPbTimeRepository.GetAll().ToList();
             query = query.Where(p => p.StartTime > d2 && p.EndTime < d3 && p.RealName != user.UserName).ToList();
 
+            var UserPositionPbId = (_positionPbTimeRepository.GetAllList()).Where(p => p.UserId == user.Id).ToList()[0]
+                .PositionPbId;
+            var UserPbPositionId =
+                _positionPbRepository.GetAllList().Where(p => p.Id == UserPositionPbId).ToList()[0]
+                    .PbPositionId;
+            var UserPositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == UserPbPositionId).ToList()[0].PositionId;
+            var UserpositionName = _positionRepository.GetAllList().Where(p => p.Id == UserPositionId).ToList()[0].Name;
+
+
             List<PositionPbUserTimeListDto> querylist = new List<PositionPbUserTimeListDto>();
 
             for (int i = 0; i < query.Count(); i++)
@@ -284,7 +294,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
 
                 item.PositionPbTimeId = query[i].Id;
                 item.UserName = query[i].RealName;
-                item.WorkTime = query[i].StartTime.ToString("yyyy年MM月dd日 HH:mm")+"--"+ query[i].EndTime.ToString("HH:mm");
+                item.WorkTime = query[i].StartTime.ToString("MM月dd日 HH:mm") + "--" + query[i].EndTime.ToString("MM月dd日 HH:mm");
                 //获取岗位名称
                 var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == query[i].PositionPbId).ToList()[0].PbPositionId;
                 var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
@@ -294,7 +304,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 querylist.Add(item);
             }
 
-
+            querylist = querylist.Where(p => p.PositionName == UserpositionName).ToList();
 
             return querylist;
         }
@@ -385,7 +395,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             return querylists;
         }
 
-        
+
         #endregion
 
         #endregion

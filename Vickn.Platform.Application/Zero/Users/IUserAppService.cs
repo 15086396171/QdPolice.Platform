@@ -125,7 +125,13 @@ namespace Vickn.Platform.Users
         /// <returns></returns>
         Task SetDefaultRolesAsync();
 
-      
+        /// <summary>
+        /// 获取用户领导人信息
+        /// </summary>
+        /// <typeparam name="UserLeadersListDto"></typeparam>
+        /// <returns></returns>
+       Task<List<UserLeadersListDto>> GetUserLeaders();
+
         #endregion
     }
 }

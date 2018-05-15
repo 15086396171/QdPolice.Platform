@@ -378,8 +378,8 @@
     <text name="ChangeWork.BeTimeStr" value="被换班时间" />
     <text name="ChangeWork.PositionName" value="发起人排班岗位" />
     <text name="ChangeWork.BePositionName" value="被换班人排班岗位" />
-    <text name="ChangeWork.Status" value="换班结果" />
-    <text name="ChangeWork.StatusDes" value="审批状态" />
+    <text name="ChangeWork.Status" value="审批状态" />
+    <text name="ChangeWork.StatusDes" value="审批描述" />
    
     <text name="ChangeWork.Leader" value="审批人" />
     <text name="ChangeWork.IsOnDuty" value="是否值班中换班" />
