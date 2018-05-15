@@ -208,6 +208,9 @@ namespace Vickn.Platform.Users
         /// </summary>
         public async Task CreateOrUpdateUserAsync(GetUserForEdit input)
         {
+            var query = _dataDictionaryRepository.GetAllList(p => p.Key == "Post.Rank").ToList();
+            var Positionlist = query[0].DataDictionaryItems;
+            input.UserEditDto.PositionId = Positionlist.Where(p => p.DisplayName == input.UserEditDto.Position).ToList()[0].Value;
             if (input.UserEditDto.Id.HasValue)
             {
                 await UpdateUserAsync(input);
@@ -252,6 +255,9 @@ namespace Vickn.Platform.Users
         {
             //TODO:新增前的逻辑判断，是否允许新增
             var user = input.UserEditDto.MapTo<User>();
+
+
+            
 
             user.TenantId = AbpSession.TenantId;
             user.Password = new PasswordHasher().HashPassword(User.DefaultPassword);

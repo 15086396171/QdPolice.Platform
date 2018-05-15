@@ -26,6 +26,11 @@ namespace Vickn.Platform.Users
         /// </summary>
         public string Position { get; set; }
 
+        /// <summary>
+        /// 职务Id
+        /// </summary>
+        public string PositionId { get; set; }
+
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 
         public static string CreateRandomPassword()

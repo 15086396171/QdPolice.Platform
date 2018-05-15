@@ -264,19 +264,17 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         }
 
         /// <summary>
-        /// 查询当月所有未值班用户信息列表
+        /// 查询所选日期未值班用户信息列表
         /// </summary>
         public async Task<List<PositionPbUserTimeListDto>> GetUserAllForDutyAsync(GetPositionUserPbTimeListDto input)
         {
             var user = await GetCurrentUserAsync();
 
-            DateTime now = DateTime.Now;
-            DateTime d1 = new DateTime(now.Year, now.Month, 1);
-            DateTime d2 = d1.AddMonths(1);
-            DateTime d3 = input.Date;
+            DateTime d2 = input.Date;
+            DateTime d3 = d2.AddDays(1);
 
             var query = _positionPbTimeRepository.GetAll().ToList();
-            query = query.Where(p => p.StartTime > d3 && p.EndTime < d2 && p.RealName != user.UserName).ToList();
+            query = query.Where(p => p.StartTime > d2 && p.EndTime < d3 && p.RealName != user.UserName).ToList();
 
             List<PositionPbUserTimeListDto> querylist = new List<PositionPbUserTimeListDto>();
 

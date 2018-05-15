@@ -30,6 +30,11 @@ namespace Vickn.Platform.Zero.Users.Dtos
         public string Position { get; set; }
 
         /// <summary>
+        /// 职务Id
+        /// </summary>
+        public string PositionId { get; set; }
+
+        /// <summary>
         /// 电话号码.
         /// </summary>
         [DisplayName("电话号码.")]

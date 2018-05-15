@@ -51,7 +51,7 @@ namespace Vickn.Platform.Web.Controllers
             input.DicKey = dataName;
             result.DataDictionaryItems = await _dataDictionaryAppService.GetDataDictionaryItemsByDicName(input);
             var userList = result.DataDictionaryItems;
-            ViewBag.Position = new SelectList(userList.Items, "Value", "DisplayName");
+            ViewBag.Position = new SelectList(userList.Items, "DisplayName", "DisplayName");
 
           
             //if (result.UserEditDto.Id.HasValue)

@@ -88,7 +88,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         Task<List<PositionPbTimeListDto>> GetAllForUserDutyAsync();
 
         /// <summary>
-        /// 查询当月所有未值班列表
+        /// 查询所选日期未值班列表
         /// </summary>
         Task<List<PositionPbUserTimeListDto>> GetUserAllForDutyAsync(GetPositionUserPbTimeListDto input);
 

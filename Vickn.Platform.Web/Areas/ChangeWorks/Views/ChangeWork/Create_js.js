@@ -22,9 +22,10 @@
                     var selected = body.find("input[name='check']:checked");
                     var username = $(selected).attr("Remark");
 
-                    //window.parent.$("#ChangeWorkEditDto_BeUserName").val(username);
-                    parent.$('#ChangeWorkEditDto_BeUserName').val(username);
-                 
+                   
+                    $('#ChangeWorkEditDto_BeUserName').val(username);
+
+
                     layer.close(index);
                     //按钮【按钮一】的回调
                 }

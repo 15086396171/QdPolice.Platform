@@ -60,6 +60,11 @@ namespace Vickn.Platform.Users.Dtos
         public string Position { get; set; }
 
         /// <summary>
+        /// 职务
+        /// </summary>
+        public string PositionId { get; set; }
+
+        /// <summary>
         /// 电话号码.
         /// </summary>
         [DisplayName("电话号码")]
