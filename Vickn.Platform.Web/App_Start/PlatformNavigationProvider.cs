@@ -17,6 +17,7 @@ using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.PbTitles.Authorization;
 using Vickn.Platform.PbManagement.Positions.Authorization;
 using Vickn.Platform.Users.Authorization;
+using Vickn.Platform.Zero.UserPositions.Authorization;
 
 namespace Vickn.Platform.Web
 {
@@ -174,6 +175,18 @@ namespace Vickn.Platform.Web
                     requiredPermissionName: AnnouncementAppPermissions.Announcement));
             #endregion
 
+            #region 用户职位管理
+
+            var userPosition = new MenuItemDefinition(
+                UserPositionAppPermissions.UserPosition,
+                L("UserPosition"),
+                url: "/UserPositions/UserPosition",
+                icon: "icon-grid",
+                requiredPermissionName: UserPositionAppPermissions.UserPosition
+            );
+
+            #endregion
+
 
             //所有的一级菜单
             context.Manager.MainMenu
@@ -190,6 +203,7 @@ namespace Vickn.Platform.Web
                         icon: "fa fa-gear",
                         requiredPermissionName: AppPermissions.Pages_SystemManage
                         )
+                        .AddItem(userPosition)
                         .AddItem(
                     new MenuItemDefinition(
                         "User",

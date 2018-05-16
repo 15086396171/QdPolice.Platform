@@ -29,7 +29,7 @@ namespace Vickn.Platform.Users
         /// <summary>
         /// 职务Id
         /// </summary>
-        public string PositionId { get; set; }
+        public long PositionId { get; set; }
 
         public virtual bool ShouldChangePasswordOnNextLogin { get; set; }
 

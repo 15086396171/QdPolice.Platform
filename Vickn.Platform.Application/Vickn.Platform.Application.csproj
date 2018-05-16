@@ -380,6 +380,12 @@
     <Compile Include="MainTenance\Caching\Dto\CacheDto.cs" />
     <Compile Include="MainTenance\Caching\ICachingAppService.cs" />
     <Compile Include="Zero\Sessions\Dto\CultureInput.cs" />
+    <Compile Include="Zero\UserPositions\Dtos\GetUserPositionInput.cs" />
+    <Compile Include="Zero\UserPositions\Dtos\UserPositionDto.cs" />
+    <Compile Include="Zero\UserPositions\Dtos\UserPositionEditDto.cs" />
+    <Compile Include="Zero\UserPositions\Dtos\UserPositionForEdit.cs" />
+    <Compile Include="Zero\UserPositions\IUserPositionAppService.cs" />
+    <Compile Include="Zero\UserPositions\UserPositionAppService.cs" />
     <Compile Include="Zero\Users\Dtos\ChangeProfilePicDto.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserForEdit.cs" />
     <Compile Include="Zero\Users\Dtos\GetUserInput.cs" />

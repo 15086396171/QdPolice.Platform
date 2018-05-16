@@ -1132,6 +1132,7 @@
     <Content Include="Areas\PbPositions\Views\PbPosition\SelectPb.cshtml" />
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\Index_js.js" />
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\GetTimeUser.cshtml" />
+    <Content Include="Areas\UserPositions\Views\UserPosition\Index_js.js" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />
@@ -1638,6 +1639,10 @@
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\Create.cshtml" />
     <Content Include="Areas\ChangeWorks\Views\_ViewStart.cshtml" />
     <Content Include="Areas\ChangeWorks\Views\web.config" />
+    <Content Include="Areas\UserPositions\Views\UserPosition\Index.cshtml" />
+    <Content Include="Areas\UserPositions\Views\UserPosition\Create.cshtml" />
+    <Content Include="Areas\UserPositions\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\UserPositions\Views\web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
@@ -1710,6 +1715,8 @@
     <Compile Include="Areas\PbPositions\PbPositionsAreaRegistration.cs" />
     <Compile Include="Areas\ChangeWorks\ChangeWorksAreaRegistration.cs" />
     <Compile Include="Areas\ChangeWorks\Controllers\ChangeWorkController.cs" />
+    <Compile Include="Areas\UserPositions\Controllers\UserPositionController.cs" />
+    <Compile Include="Areas\UserPositions\UserPositionsAreaRegistration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Views\web.config" />

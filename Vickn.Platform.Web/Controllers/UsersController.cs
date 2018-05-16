@@ -17,6 +17,7 @@ using Vickn.Platform.DataDictionaries.Dtos;
 using Vickn.Platform.Users;
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Users.Dtos;
+using Vickn.Platform.Zero.UserPositions;
 
 namespace Vickn.Platform.Web.Controllers
 {
@@ -25,11 +26,13 @@ namespace Vickn.Platform.Web.Controllers
     {
         private readonly IUserAppService _userAppService;
         private readonly IDataDictionaryAppService _dataDictionaryAppService;
+        private readonly IUserPositionAppService _userPositionAppService;
 
-        public UsersController(IUserAppService userAppService, IDataDictionaryAppService dataDictionaryAppService)
+        public UsersController(IUserAppService userAppService, IDataDictionaryAppService dataDictionaryAppService, IUserPositionAppService userPositionAppService)
         {
             _userAppService = userAppService;
             _dataDictionaryAppService = dataDictionaryAppService;
+            _userPositionAppService = userPositionAppService;
         }
 
         public ActionResult Index(long? ouId)
@@ -46,12 +49,8 @@ namespace Vickn.Platform.Web.Controllers
 
                 result.OuId = ouId;
 
-            var dataName = "Post.Rank";
-            GetDataDictoryItemsByDicKeyInput input = new GetDataDictoryItemsByDicKeyInput();
-            input.DicKey = dataName;
-            result.DataDictionaryItems = await _dataDictionaryAppService.GetDataDictionaryItemsByDicName(input);
-            var userList = result.DataDictionaryItems;
-            ViewBag.Position = new SelectList(userList.Items, "DisplayName", "DisplayName");
+            var positionList = await _userPositionAppService.GetAllListAsync();
+            ViewBag.Position = new SelectList(positionList, "PositionName", "PositionName");
 
           
             //if (result.UserEditDto.Id.HasValue)
@@ -70,9 +69,11 @@ namespace Vickn.Platform.Web.Controllers
         [HttpPost]
         public async Task<ActionResult> Create(GetUserForEdit dto)
         {
+
             dto.UserEditDto.Position = Request["Position"];
             if (!CheckModelState(await _userAppService.CheckErrorAsync(dto)))
                 return View(dto);
+
 
             await _userAppService.CreateOrUpdateUserAsync(dto);
             return RedirectToAction("Index", new { ouId = dto.OuId });

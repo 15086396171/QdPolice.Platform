@@ -61,7 +61,7 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
 
                 var LeaderList = await _userAppService.GetUserLeaders();
 
-                ViewBag.Leader = new SelectList(LeaderList, "UserNameAndPosition", "UserNameAndPosition");
+                ViewBag.Leader = new SelectList(LeaderList, "UserName", "UserNameAndPosition");
 
                
             }

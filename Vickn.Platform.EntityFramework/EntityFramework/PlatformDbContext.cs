@@ -24,6 +24,7 @@ using Vickn.Platform.MultiTenancy;
 using Vickn.Platform.PrivatePhoneWhites;
 using Vickn.Platform.PrivatePhoneWhites.EntityMapper;
 using Vickn.Platform.Users;
+using Vickn.Platform.Zero.UserPositions;
 
 namespace Vickn.Platform.EntityFramework
 {
@@ -48,6 +49,8 @@ namespace Vickn.Platform.EntityFramework
         public IDbSet<Announcement> Announcements { get; set; }
 
         public IDbSet<AnnouncementUser> AnnouncementUsers { get; set; }
+
+        public IDbSet<UserPosition> UserPositions { get; set; }
 
         #region 考勤模块
         /// <summary>

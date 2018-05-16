@@ -1,0 +1,55 @@
+﻿@model Vickn.Platform.Zero.UserPositions.Dtos.UserPositionForEdit
+
+@{
+    ViewBag.Menu = L("UserPositions");
+    ViewBag.SubMenu = L("UserPosition");
+}
+<div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form-horizontal">
+
+		<div class="hidden">
+			@Html.HiddenFor(model => model.UserPositionEditDto.Id)
+		            </div>
+
+			  				  <div class="form-group">
+                @Html.LabelFor(model => model.UserPositionEditDto.PositionName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.UserPositionEditDto.PositionName, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserPositionEditDto.PositionName, "", new { @class = "text-danger" })
+                </div>
+				  </div>
+
+                    				  <div class="form-group">
+                @Html.LabelFor(model => model.UserPositionEditDto.RankOfPosition, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.UserPositionEditDto.RankOfPosition, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.UserPositionEditDto.RankOfPosition, "", new { @class = "text-danger" })
+                </div>
+				  </div>
+
+                    
+            @Html.Partial("/Views/Common/_FooterWithSaveAndCancel.cshtml")
+    </div>
+    }
+        </div>
+
+
+@section styles{
+	<style>
+
+	</style>
+}
+
+@section scripts{
+   <script>
+
+   </script>
+}
+
+

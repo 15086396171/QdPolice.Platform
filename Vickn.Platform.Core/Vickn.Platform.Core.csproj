@@ -253,6 +253,11 @@
     <Compile Include="Zero\Roles\Role.cs" />
     <Compile Include="Zero\Roles\RoleManager.cs" />
     <Compile Include="Zero\Roles\RoleStore.cs" />
+    <Compile Include="Zero\UserPositions\Authorization\UserPositionAppAuthorizationProvider.cs" />
+    <Compile Include="Zero\UserPositions\Authorization\UserPositionAppPermissions.cs" />
+    <Compile Include="Zero\UserPositions\UserPosition.cs" />
+    <Compile Include="Zero\UserPositions\UserPositionManager.cs" />
+    <Compile Include="Zero\UserPositions\_UserPositionReadme.cs" />
     <Compile Include="Zero\Users\Authorization\UserAppAuthorizationProvider.cs" />
     <Compile Include="Zero\Users\Authorization\UserAppPermissions.cs" />
     <Compile Include="Zero\Users\User.cs" />

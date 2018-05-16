@@ -24,6 +24,7 @@ using Vickn.Platform.Users.Dtos;
 using Vickn.Platform.Zero.Users.Dtos;
 using Vickn.Platform.DataDictionaries;
 using Abp.Organizations;
+using Vickn.Platform.Zero.UserPositions;
 
 namespace Vickn.Platform.Users
 {
@@ -36,9 +37,10 @@ namespace Vickn.Platform.Users
         private readonly IRepository<UserRole, long> _userRoleRepository;
         private readonly IRepository<DataDictionary> _dataDictionaryRepository;
         private readonly IRepository<OrganizationUnit, long> _OrganizationUnitsRepository;
+        private readonly IRepository<UserPosition, long> _userPositionRepository;
 
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository, IRepository<UserPosition, long> userPositionRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
@@ -47,6 +49,7 @@ namespace Vickn.Platform.Users
             _userRoleRepository = userRoleRepository;
             _dataDictionaryRepository = dataDictionaryRepository;
             _OrganizationUnitsRepository = organizationUnitsRepository;
+            _userPositionRepository = userPositionRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -212,9 +215,9 @@ namespace Vickn.Platform.Users
         /// </summary>
         public async Task CreateOrUpdateUserAsync(GetUserForEdit input)
         {
-            var query = _dataDictionaryRepository.GetAllList(p => p.Key == "Post.Rank").ToList();
-            var Positionlist = query[0].DataDictionaryItems;
-            input.UserEditDto.PositionId = Positionlist.Where(p => p.DisplayName == input.UserEditDto.Position).ToList()[0].Value;
+             
+           
+            input.UserEditDto.PositionId = _userPositionRepository.GetAllList(p => p.PositionName == input.UserEditDto.Position).ToList()[0].Id;
             if (input.UserEditDto.Id.HasValue)
             {
                 await UpdateUserAsync(input);

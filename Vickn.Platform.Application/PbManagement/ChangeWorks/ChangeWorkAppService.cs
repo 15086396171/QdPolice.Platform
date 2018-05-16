@@ -165,7 +165,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
                 input.ChangeWorkEditDto.LeaderId = (_userRepository.GetAllList()).Where(p => p.UserName == input.ChangeWorkEditDto.Leader).ToList()[0].Id;
                 input.ChangeWorkEditDto.IsOnDuty = false;
                 input.ChangeWorkEditDto.Status = "发起换班";
-                input.ChangeWorkEditDto.StatusDes = "";
+                input.ChangeWorkEditDto.StatusDes = "未填写意见";
                 await CreateAsync(input);
             }
 		}
@@ -185,13 +185,13 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
             entity = await _changeWorkRepository.InsertAsync(entity);
 
 
-            await _notificationManager.SendMessageAsync(
-                ( new UserIdentifier(AbpSession.TenantId, (await GetCurrentUserAsync()).Id))
-                    , PlatformConsts.NotificationConstNames.Announcement_Send, entity.Reason, new
-                    {
-                        Title = entity.Reason,
-                        CreationTime = entity.CreationTime
-                    });
+            //await _notificationManager.SendMessageAsync(
+            //    ( new UserIdentifier(AbpSession.TenantId, (await GetCurrentUserAsync()).Id))
+            //        , PlatformConsts.NotificationConstNames.Announcement_Send, entity.Reason, new
+            //        {
+            //            Title = entity.Reason,
+            //            CreationTime = entity.CreationTime
+            //        });
 
             return new ChangeWorkForEdit { ChangeWorkEditDto = entity.MapTo<ChangeWorkEditDto>() };
 		}

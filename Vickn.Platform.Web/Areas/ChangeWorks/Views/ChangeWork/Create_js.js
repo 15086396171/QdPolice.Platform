@@ -25,7 +25,7 @@
 
                    
                     $('#ChangeWorkEditDto_BeUserName').val(username);
-                    $('#ChangeWorkEditDto_TimeStr').text(time);
+                    $('#ChangeWorkEditDto_BeTimeStr').val(time);
                    
 
                     layer.close(index);

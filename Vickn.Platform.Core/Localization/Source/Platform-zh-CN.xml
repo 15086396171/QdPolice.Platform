@@ -394,5 +394,21 @@
     <text name="EditChangeWork" value="编辑换班" />
     <text name="DeleteChangeWork" value="删除换班" />
     
+    
+    <!--职位-->
+    <text name="UserPositionName" value="职位信息" />
+
+    <!--//用于表格展示的数据信息的标题-->
+    <text name="UserPosition.PositionName" value="职位名称" />
+    <text name="UserPosition.RankOfPosition" value="职位等级" />
+    <text name="UserPosition.LastModificationTime" value="最后编辑时间" />
+    <text name="UserPosition.CreationTime" value="创建时间" />
+				 
+
+    <text name="UserPosition" value="职位管理" />
+    <text name="CreateUserPosition" value="添加职位信息" />
+    <text name="EditUserPosition" value="编辑职位信息" />
+    <text name="DeleteUserPosition" value="删除职位信息" />
+
   </texts>
 </localizationDictionary>

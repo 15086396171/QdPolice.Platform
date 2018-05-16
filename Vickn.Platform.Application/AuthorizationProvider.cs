@@ -19,6 +19,7 @@ using Vickn.Platform.PbManagement.PositionPbTimes.Authorization;
 using Vickn.Platform.PbManagement.Positions.Authorization;
 using Vickn.Platform.PrivatePhoneWhites.Authorization;
 using Vickn.Platform.Users.Authorization;
+using Vickn.Platform.Zero.UserPositions.Authorization;
 
 namespace Vickn.Platform
 {
@@ -43,6 +44,7 @@ namespace Vickn.Platform
             Configuration.Authorization.Providers.Add<ForensicsRecordAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<AppWhiteListAppAuthorizationProvider>();
             Configuration.Authorization.Providers.Add<PrivatePhoneWhiteAppAuthorizationProvider>();
+            Configuration.Authorization.Providers.Add<UserPositionAppAuthorizationProvider>();
 
             //考勤管理
             KqManagementAuthorizationProviders(Configuration);

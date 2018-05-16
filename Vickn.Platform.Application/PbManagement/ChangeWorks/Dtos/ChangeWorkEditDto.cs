@@ -53,7 +53,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         public string UserName { get; set; }
 
         [Required]
-        [DisplayName("被换班人Id")]
+        [DisplayName("换班人Id")]
         public long BeUserId { get; set; }
 
         [Required]
@@ -64,19 +64,22 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         [DisplayName("换班原因")]
         public string Reason { get; set; }
 
-        [DisplayName("发起人值班时间")]
+        [DisplayName("值班时间")]
         public string TimeStr { get; set; }
 
-       
-        [DisplayName("被换班人值班时间")]
+        [DisplayName("换班日期")]
+        public string BeDate { get; set; }
+
+        [DisplayName("换班时间")]
+        [Required]
         public string BeTimeStr { get; set; }
 
         [Required]
-        [DisplayName("发起人岗位")]
+        [DisplayName("值班岗位")]
         public string PositionName { get; set; }
 
         [Required]
-        [DisplayName("被换班人岗位")]
+        [DisplayName("换班岗位")]
         public string BePositionName { get; set; }
 
        

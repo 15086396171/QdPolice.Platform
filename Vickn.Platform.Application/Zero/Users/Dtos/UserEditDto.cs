@@ -60,9 +60,9 @@ namespace Vickn.Platform.Users.Dtos
         public string Position { get; set; }
 
         /// <summary>
-        /// 职务
+        /// 职务Id
         /// </summary>
-        public string PositionId { get; set; }
+        public long PositionId { get; set; }
 
         /// <summary>
         /// 电话号码.
