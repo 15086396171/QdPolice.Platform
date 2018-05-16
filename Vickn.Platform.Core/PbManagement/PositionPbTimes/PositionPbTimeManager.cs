@@ -21,12 +21,12 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
     /// </summary>
     public class PositionPbTimeManager : IDomainService
     {
-        private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
+        private readonly IRepository<PositionPbTime, long> _positionPbTimeRepository;
 
         /// <summary>
         /// 初始化PositionPbTimeManager管理实例
         /// </summary>
-        public PositionPbTimeManager(IRepository<PositionPbTime, int> positionPbTimeRepository)
+        public PositionPbTimeManager(IRepository<PositionPbTime, long> positionPbTimeRepository)
         {
             _positionPbTimeRepository = positionPbTimeRepository;
         }

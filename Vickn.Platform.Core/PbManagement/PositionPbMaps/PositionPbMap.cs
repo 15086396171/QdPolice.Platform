@@ -20,7 +20,7 @@ namespace Vickn.Platform.PbManagement.PositionPbMaps
     /// <summary>
     /// 排班人员
     /// </summary>
-    public class PositionPbMap : Entity
+    public class PositionPbMap : Entity<long>
     {
         public long UserId { get; set; }
 

@@ -1125,7 +1125,6 @@
     <Content Include="Areas\KqDetails\Views\web.config" />
     <Content Include="Areas\KqDetails\Views\KqDetail\Index.cshtml" />
     <Content Include="Areas\KqStatistics\Views\KqStatistic\Detail.cshtml" />
-    <Content Include="Areas\Positions\Views\Position\Index_js.js" />
     <Content Include="Areas\PbTitles\Views\PbTitle\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Index_js.js" />
     <Content Include="Areas\PbPositions\Views\PbPosition\Import.cshtml" />
@@ -1625,10 +1624,6 @@
     <Content Include="Areas\Announcements\Views\Announcement\Create.cshtml" />
     <Content Include="Areas\Announcements\Views\_ViewStart.cshtml" />
     <Content Include="Areas\Announcements\Views\web.config" />
-    <Content Include="Areas\Positions\Views\Position\Index.cshtml" />
-    <Content Include="Areas\Positions\Views\Position\Create.cshtml" />
-    <Content Include="Areas\Positions\Views\_ViewStart.cshtml" />
-    <Content Include="Areas\Positions\Views\web.config" />
     <Content Include="Areas\PbTitles\Views\PbTitle\Index.cshtml" />
     <Content Include="Areas\PbTitles\Views\PbTitle\Create.cshtml" />
     <Content Include="Areas\PbTitles\Views\_ViewStart.cshtml" />
@@ -1708,8 +1703,6 @@
     <Compile Include="Areas\PrivatePhoneWhites\PrivatePhoneWhitesAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\AnnouncementsAreaRegistration.cs" />
     <Compile Include="Areas\Announcements\Controllers\AnnouncementController.cs" />
-    <Compile Include="Areas\Positions\Controllers\PositionController.cs" />
-    <Compile Include="Areas\Positions\PositionsAreaRegistration.cs" />
     <Compile Include="Areas\PbTitles\Controllers\PbTitleController.cs" />
     <Compile Include="Areas\PbTitles\PbTitlesAreaRegistration.cs" />
     <Compile Include="Areas\PbPositions\Controllers\PbPositionController.cs" />

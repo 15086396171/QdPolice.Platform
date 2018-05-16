@@ -16,7 +16,6 @@ using Abp.Application.Services;
 using Abp.Application.Services.Dto;
 using Vickn.Platform.Zero.UserPositions.Dtos;
 using Vickn.Platform.Dtos;
-using Vickn.Platform.PbManagement.Positions.Dtos;
 
 namespace Vickn.Platform.Zero.UserPositions
 {

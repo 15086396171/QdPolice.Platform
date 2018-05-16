@@ -30,7 +30,7 @@ using Vickn.Platform.Dtos;
 using Vickn.Platform.PbManagement.PositionPbs.Authorization;
 using Vickn.Platform.PbManagement.PositionPbs.Dtos;
 using Vickn.Platform.PbManagement.PositionPbTimes;
-using Vickn.Platform.PbManagement.Positions;
+
 
 namespace Vickn.Platform.PbManagement.PositionPbs
 {
@@ -41,19 +41,19 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     public class PositionPbAppService : PlatformAppServiceBase, IPositionPbAppService
     {
         private readonly PositionPbManager _positionPbManager;
-        private readonly IRepository<PositionPb, int> _positionPbRepository;
-        private readonly IRepository<Position, int> _positionRepository;
-        private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
+        private readonly IRepository<PositionPb, long> _positionPbRepository;
+       
+        private readonly IRepository<PositionPbTime, long> _positionPbTimeRepository;
 
 
         /// <summary>
         /// 初始化单个岗位下排班时间服务实例
         /// </summary>
-        public PositionPbAppService(IRepository<PositionPb, int> positionPbRepository, PositionPbManager positionPbManager, IRepository<Position, int> positionRepository, IRepository<PositionPbTime, int> positionPbTimeRepository)
+        public PositionPbAppService(IRepository<PositionPb, long> positionPbRepository, PositionPbManager positionPbManager,IRepository<PositionPbTime, long> positionPbTimeRepository)
         {
             _positionPbRepository = positionPbRepository;
             _positionPbManager = positionPbManager;
-            _positionRepository = positionRepository;
+          
             _positionPbTimeRepository = positionPbTimeRepository;
         }
 
@@ -86,7 +86,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// <summary>
         /// 通过指定id获取单个岗位下排班时间Dto信息
         /// </summary>
-        public async Task<PositionPbDto> GetByIdAsync(EntityDto<int> input)
+        public async Task<PositionPbDto> GetByIdAsync(EntityDto<long> input)
         {
             var entity = await _positionPbRepository.GetAsync(input.Id);
             return entity.MapTo<PositionPbDto>();
@@ -96,7 +96,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// 通过Id获取单个岗位下排班时间信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        public async Task<PositionPbForEdit> GetForEditAsync(NullableIdDto<int> input)
+        public async Task<PositionPbForEdit> GetForEditAsync(NullableIdDto<long> input)
         {
             PositionPbEditDto positionPbEditDto;
 
@@ -160,7 +160,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// 删除单个岗位下排班时间
         /// </summary>
 		[AbpAuthorize(PositionPbAppPermissions.PositionPb_DeletePositionPb)]
-        public async Task DeleteAsync(EntityDto<int> input)
+        public async Task DeleteAsync(EntityDto<long> input)
         {
             //TODO: 删除前的逻辑判断，是否允许删除
 
@@ -171,7 +171,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// 批量删除单个岗位下排班时间
         /// </summary>
 		[AbpAuthorize(PositionPbAppPermissions.PositionPb_DeletePositionPb)]
-        public async Task BatchDeleteAsync(List<int> input)
+        public async Task BatchDeleteAsync(List<long> input)
         {
             //TODO: 批量删除前的逻辑判断，是否允许删除
 

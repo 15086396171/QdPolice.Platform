@@ -21,12 +21,12 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     /// </summary>
     public class PositionPbManager : IDomainService
     {
-        private readonly IRepository<PositionPb, int> _positionPbRepository;
+        private readonly IRepository<PositionPb, long> _positionPbRepository;
 
         /// <summary>
         /// 初始化PositionPbManager管理实例
         /// </summary>
-        public PositionPbManager(IRepository<PositionPb, int> positionPbRepository)
+        public PositionPbManager(IRepository<PositionPb, long> positionPbRepository)
         {
             _positionPbRepository = positionPbRepository;
         }

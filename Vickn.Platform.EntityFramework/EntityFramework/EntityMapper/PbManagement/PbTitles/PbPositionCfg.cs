@@ -36,7 +36,7 @@ namespace Vickn.Platform.PbManagement.PbTitles.EntityMapper
 
 		    //TODO: 自定义数据库映射
 
-		    HasRequired(p => p.Position).WithMany().HasForeignKey(p => p.PositionId);
+		  
 		}
     }
 }

@@ -37,13 +37,13 @@ namespace Vickn.Platform.PbManagement.PositionPbs
 		 /// <summary>
         /// 通过指定id获取单个岗位下排班时间Dto信息
         /// </summary>
-        Task<PositionPbDto> GetByIdAsync(EntityDto<int> input);
+        Task<PositionPbDto> GetByIdAsync(EntityDto<long> input);
 
         /// <summary>
         /// 通过Id获取单个岗位下排班时间信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        Task<PositionPbForEdit> GetForEditAsync(NullableIdDto<int> input);
+        Task<PositionPbForEdit> GetForEditAsync(NullableIdDto<long> input);
 
         /// <summary>
         /// 新增或更改单个岗位下排班时间
@@ -63,12 +63,12 @@ namespace Vickn.Platform.PbManagement.PositionPbs
         /// <summary>
         /// 删除单个岗位下排班时间
         /// </summary>
-        Task DeleteAsync(EntityDto<int> input);
+        Task DeleteAsync(EntityDto<long> input);
 
         /// <summary>
         /// 批量删除单个岗位下排班时间
         /// </summary>
-        Task BatchDeleteAsync(List<int> input);
+        Task BatchDeleteAsync(List<long> input);
 
         /// <summary>
         /// 自定义检查单个岗位下排班时间输入逻辑错误

@@ -39,13 +39,13 @@ namespace Vickn.Platform.PbManagement.PbPositions
     [AbpAuthorize(PbPositionAppPermissions.PbPosition)]
     public class PbPositionAppService : PlatformAppServiceBase, IPbPositionAppService
     {
-        private readonly IRepository<PbPosition, int> _pbPositionRepository;
+        private readonly IRepository<PbPosition, long> _pbPositionRepository;
         private readonly PbPositionManager _pbPositionManager;
 
         /// <summary>
         /// 初始化排班岗位服务实例
         /// </summary>
-        public PbPositionAppService(IRepository<PbPosition, int> pbPositionRepository, PbPositionManager pbPositionManager)
+        public PbPositionAppService(IRepository<PbPosition, long> pbPositionRepository, PbPositionManager pbPositionManager)
         {
             _pbPositionRepository = pbPositionRepository;
             _pbPositionManager = pbPositionManager;
@@ -58,6 +58,7 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// </summary>
         public async Task<PagedResultDto<PbPositionDto>> GetPagedAsync(GetPbPositionInput input)
         {
+
             var query = _pbPositionRepository.GetAll().Where(p => p.PbTitleId == input.PbTitleId);
 
             if (!query.Any())
@@ -67,6 +68,8 @@ namespace Vickn.Platform.PbManagement.PbPositions
             }
 
             query = _pbPositionRepository.GetAll().Where(p => p.PbTitleId == input.PbTitleId);
+
+
             //TODO:根据传入的参数添加过滤条件
 
             var pbPositionCount = await query.CountAsync();
@@ -160,7 +163,7 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// 删除排班岗位
         /// </summary>
 		[AbpAuthorize(PbPositionAppPermissions.PbPosition_DeletePbPosition)]
-        public async Task DeleteAsync(EntityDto<int> input)
+        public async Task DeleteAsync(EntityDto<long> input)
         {
             //TODO: 删除前的逻辑判断，是否允许删除
 
@@ -171,7 +174,7 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// 批量删除排班岗位
         /// </summary>
 		[AbpAuthorize(PbPositionAppPermissions.PbPosition_DeletePbPosition)]
-        public async Task BatchDeleteAsync(List<int> input)
+        public async Task BatchDeleteAsync(List<long> input)
         {
             //TODO: 批量删除前的逻辑判断，是否允许删除
 

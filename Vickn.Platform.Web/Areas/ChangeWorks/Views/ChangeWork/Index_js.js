@@ -87,6 +87,9 @@
                         });
                         layer.full(index);
                     }
+
+
+                   
                 },
                 {
                     actionName: "deleteAction",

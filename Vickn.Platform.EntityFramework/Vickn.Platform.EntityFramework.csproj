@@ -156,7 +156,6 @@
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PositionPbCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PbPositionCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PbManagement\PbTitles\PbTitleCfg.cs" />
-    <Compile Include="EntityFramework\EntityMapper\PbManagement\Positions\PositionCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\PrivatePhoneWhites\PrivatePhoneWhiteCfg.cs" />
     <Compile Include="EntityFramework\EntityMapper\UserPositions\UserPositionCfg.cs" />
     <Compile Include="EntityFramework\PlatformDbContext.Chat.cs" />

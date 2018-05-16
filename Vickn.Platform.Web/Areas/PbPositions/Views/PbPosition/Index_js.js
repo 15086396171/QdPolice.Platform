@@ -32,13 +32,8 @@
                     }
                 },
                 {
-                    data: "position",
-                    render: function (data) {
-                        if (data)
-                            return data.name;
-
-                        return "";
-                    }
+                    data: "organizationUnitName"
+                  
                 },
                 {
                     "data": "isTrue",

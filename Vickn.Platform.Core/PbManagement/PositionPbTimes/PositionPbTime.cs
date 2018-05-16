@@ -22,14 +22,14 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
     /// <summary>
     /// 当天上下班时间
     /// </summary>
-    public class PositionPbTime : Entity
+    public class PositionPbTime : Entity<long>
     {
         /// <summary>
         /// 是否已值班
         /// </summary>
         public bool IsDuty { get; set; }
 
-        public int PositionPbId { get; set; }
+        public long PositionPbId { get; set; }
 
         /// <summary>
         /// 上班时间

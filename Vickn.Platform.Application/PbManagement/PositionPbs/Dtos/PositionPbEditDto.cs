@@ -43,7 +43,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
         /// <summary>
         /// 岗位Id
         /// </summary>
-        public int PositionId { get; set; }
+        public long PositionId { get; set; }
 
         public ICollection<ImportPositionPbTimeDto> PositionPbTimes { get; set; }
 

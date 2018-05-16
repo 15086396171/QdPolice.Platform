@@ -15,8 +15,9 @@ using Abp.Domain.Services;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Abp.Zero.Configuration;
 using Vickn.Platform.PbManagement.PbTitles;
-using Vickn.Platform.PbManagement.Positions;
+using Abp.Organizations;
 
 namespace Vickn.Platform.PbManagement.PbPositions
 {
@@ -25,18 +26,20 @@ namespace Vickn.Platform.PbManagement.PbPositions
     /// </summary>
     public class PbPositionManager : IDomainService
     {
-        private readonly IRepository<PbPosition, int> _pbPositionRepository;
-        private readonly IRepository<Position> _positionRepository;
+        private readonly IRepository<PbPosition, long> _pbPositionRepository;
+     
         private readonly IRepository<PbTitle> _pbTitleRepository;
+        private readonly IRepository<OrganizationUnit, long> _organizationUnitsRepository;
 
         /// <summary>
         /// 初始化PbPositionManager管理实例
         /// </summary>
-        public PbPositionManager(IRepository<PbPosition, int> pbPositionRepository, IRepository<Position> positionRepository, IRepository<PbTitle> pbTitleRepository)
+        public PbPositionManager(IRepository<PbPosition, long> pbPositionRepository,  IRepository<PbTitle> pbTitleRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository)
         {
             _pbPositionRepository = pbPositionRepository;
-            _positionRepository = positionRepository;
+         
             _pbTitleRepository = pbTitleRepository;
+            _organizationUnitsRepository = organizationUnitsRepository;
         }
 
         //TODO:编写领域业务代码
@@ -51,11 +54,13 @@ namespace Vickn.Platform.PbManagement.PbPositions
         public async Task GeneratePoPositions(int pbTitleId)
         {
             var pbTitle = await _pbTitleRepository.GetAsync(pbTitleId);
-            foreach (var position in _positionRepository.GetAllList())
+            foreach (var organization in _organizationUnitsRepository.GetAllList())
             {
+
                 await _pbPositionRepository.InsertAsync(new PbPosition()
                 {
-                    PositionId = position.Id,
+                    OrganizationUnitName=organization.DisplayName,
+                    OrganizationUnitId = organization.Id,
                     Month = pbTitle.Month,
                     PbTitleId = pbTitleId
                 });

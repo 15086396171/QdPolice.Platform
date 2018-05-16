@@ -13,14 +13,14 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
     /// 单个岗位下排班时间管理Dto
     /// </summary>
     [AutoMap(typeof(PositionPb))]
-    public class PositionPbListDto : EntityDto<int>
+    public class PositionPbListDto : EntityDto<long>
     {
 
         /// <summary>
         /// 单个岗位排班标题Id
         /// </summary>
         [DisplayName("单个岗位排班标题Id")]
-        public int PbPositionId { get; set; }
+        public long PbPositionId { get; set; }
 
         /// <summary>
         /// 值班日期

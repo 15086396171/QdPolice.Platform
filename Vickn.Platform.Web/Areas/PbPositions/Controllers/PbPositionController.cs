@@ -192,7 +192,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
             }
 
             return Json(new { msg = "导入成功" });
-
+            
         }
 
         private async Task<ImportPositionPbTimeDto> PositionPbTime(IRow row, PositionPbEditDto positionPb, int index)
@@ -251,7 +251,7 @@ namespace Vickn.Platform.Web.Areas.PbPositions.Controllers
 
             //岗位名称
             var Position = await _pbPositionAppService.GetByIdAsync(new EntityDto<int> {Id = pbPostionId});
-            ViewBag.positionName = Position.Position.Name;
+            ViewBag.positionName = Position.OrganizationUnitName;
 
             return View(query);
         }

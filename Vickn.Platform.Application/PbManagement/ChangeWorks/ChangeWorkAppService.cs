@@ -34,8 +34,8 @@ using Vickn.Platform.Users;
 using Vickn.Platform.PbManagement.PositionPbs;
 using Vickn.Platform.PbManagement.PositionPbMaps;
 using Vickn.Platform.PbManagement.PositionPbTimes;
-using Vickn.Platform.PbManagement.Positions;
 using Vickn.Platform.Zero.Notifications;
+using Abp.Organizations;
 
 namespace Vickn.Platform.PbManagement.ChangeWorks
 {
@@ -49,11 +49,11 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         private readonly NotificationManager _notificationManager;
         private readonly IRepository<ChangeWork, long> _changeWorkRepository;
         private readonly IRepository<User, long> _userRepository;
-        private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
-        private readonly IRepository<PositionPbMap, int> _postionPbMapsRepository;
-        private readonly IRepository<PositionPb, int> _positionPbRepository;
-        private readonly IRepository<PbPosition, int> _pbPositionRepository;
-        private readonly IRepository<Position, int> _positionsRepository;
+        private readonly IRepository<PositionPbTime, long> _positionPbTimeRepository;
+        private readonly IRepository<PositionPbMap,long> _postionPbMapsRepository;
+        private readonly IRepository<PositionPb, long> _positionPbRepository;
+        private readonly IRepository<PbPosition, long> _pbPositionRepository;
+        private readonly IRepository<OrganizationUnit,long> _organizationUnitsRepository;
 
         private readonly IPositionPbTimeAppService _positionPbTimeAppService;
         private readonly IUserAppService _userAppService;
@@ -61,7 +61,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// <summary>
         /// 初始化换班服务实例
         /// </summary>
-        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository, ChangeWorkManager changeWorkManager, IRepository<User, long> userRepository, IRepository<PositionPb> positionRepository, IRepository<PositionPbTime, int> positionPbTimeRepository, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb, int> positionPbRepository, IRepository<PbPosition, int> pbPositionRepository, IRepository<Position, int> positionsRepository, IPositionPbTimeAppService positionPbTimeAppService, IUserAppService userAppService, NotificationManager notificationManager)
+        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository, ChangeWorkManager changeWorkManager, IRepository<User, long> userRepository, IRepository<PositionPb,long> positionRepository, IRepository<PositionPbTime, long> positionPbTimeRepository, IRepository<PositionPbMap,long> postionPbMapsRepository, IRepository<PositionPb, long> positionPbRepository, IRepository<PbPosition, long> pbPositionRepository, IPositionPbTimeAppService positionPbTimeAppService, IUserAppService userAppService, NotificationManager notificationManager, IRepository<OrganizationUnit, long> organizationUnitsRepository)
         {
             _changeWorkRepository = changeWorkRepository;
             _changeWorkManager = changeWorkManager;
@@ -70,10 +70,11 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
             _postionPbMapsRepository = postionPbMapsRepository;
             _positionPbRepository = positionPbRepository;
             _pbPositionRepository = pbPositionRepository;
-            _positionsRepository = positionsRepository;
+         
             _positionPbTimeAppService = positionPbTimeAppService;
             _userAppService = userAppService;
             _notificationManager = notificationManager;
+            _organizationUnitsRepository = organizationUnitsRepository;
         }
 
         #region 换班管理
@@ -138,8 +139,8 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 
                 var PositionPbTId = _positionPbTimeRepository.GetAllList().Where(p => p.UserId == user.Id).ToList()[0].PositionPbId;
                 var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == PositionPbTId).ToList()[0].PbPositionId;
-                var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
-                var positionName = _positionsRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
+                var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].OrganizationUnitId;
+                var positionName = _organizationUnitsRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].DisplayName;
 
                 changeWorkEditDto.PositionName = positionName;
                 changeWorkEditDto.BePositionName = positionName;
@@ -257,8 +258,8 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
             //获得用户排班岗位
             var PositionPbTId = _positionPbTimeRepository.GetAllList().Where(p => p.UserId == user.Id).ToList()[0].PositionPbId;
             var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == PositionPbTId).ToList()[0].PbPositionId;
-            var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].PositionId;
-            var positionName = _positionsRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].Name;
+            var PositionId = _pbPositionRepository.GetAllList().Where(p => p.Id == PbPositionId).ToList()[0].OrganizationUnitId;
+            var positionName = _organizationUnitsRepository.GetAllList().Where(p => p.Id == PositionId).ToList()[0].DisplayName;
 
             //获得用户今天到月底排班时间
 

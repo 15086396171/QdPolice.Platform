@@ -27,7 +27,6 @@ using Abp.Extensions;
 using Abp.Linq.Extensions;
 
 using Vickn.Platform.Dtos;
-using Vickn.Platform.PbManagement.Positions.Dtos;
 using Vickn.Platform.Zero.UserPositions.Authorization;
 using Vickn.Platform.Zero.UserPositions.Dtos;
 

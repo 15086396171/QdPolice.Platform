@@ -34,13 +34,13 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         /// 发起人岗位排班Id
         /// </summary>
         [Required]
-        public int PositionPbMapId { get; set; }
+        public long PositionPbMapId { get; set; }
 
         /// <summary>
         /// 被换班人岗位排班Id
         /// </summary>
         [Required]
-        public int BePositionPbMapId { get; set; }
+        public long BePositionPbMapId { get; set; }
 
         /// <summary>
         /// 发起人Id

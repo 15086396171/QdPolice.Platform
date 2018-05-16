@@ -222,11 +222,6 @@
     <Compile Include="PbManagement\PositionPbs\PositionPb.cs" />
     <Compile Include="PbManagement\PositionPbTimes\PositionPbTimeManager.cs" />
     <Compile Include="PbManagement\PositionPbTimes\_PositionPbTimeReadme.cs" />
-    <Compile Include="PbManagement\Positions\Authorization\PositionAppAuthorizationProvider.cs" />
-    <Compile Include="PbManagement\Positions\Authorization\PositionAppPermissions.cs" />
-    <Compile Include="PbManagement\Positions\Position.cs" />
-    <Compile Include="PbManagement\Positions\PositionManager.cs" />
-    <Compile Include="PbManagement\Positions\_PositionReadme.cs" />
     <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppAuthorizationProvider.cs" />
     <Compile Include="PrivatePhoneWhites\Authorization\PrivatePhoneWhiteAppPermissions.cs" />
     <Compile Include="PrivatePhoneWhites\PrivatePhoneWhite.cs" />

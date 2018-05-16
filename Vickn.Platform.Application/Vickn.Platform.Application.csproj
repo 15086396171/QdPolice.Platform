@@ -333,12 +333,6 @@
     <Compile Include="PbManagement\PositionPbTimes\Dtos\PositionPbUserTimeListDto.cs" />
     <Compile Include="PbManagement\PositionPbTimes\IPositionPbTimeAppService.cs" />
     <Compile Include="PbManagement\PositionPbTimes\PositionPbTimeAppService.cs" />
-    <Compile Include="PbManagement\Positions\Dtos\GetPositionInput.cs" />
-    <Compile Include="PbManagement\Positions\Dtos\PositionDto.cs" />
-    <Compile Include="PbManagement\Positions\Dtos\PositionEditDto.cs" />
-    <Compile Include="PbManagement\Positions\Dtos\PositionForEdit.cs" />
-    <Compile Include="PbManagement\Positions\IPositionAppService.cs" />
-    <Compile Include="PbManagement\Positions\PositionAppService.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\GetPrivatePhoneWhiteInput.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\PhoneWhiteDto.cs" />
     <Compile Include="PrivatePhoneWhites\Dtos\PrivatePhoneWhiteDto.cs" />

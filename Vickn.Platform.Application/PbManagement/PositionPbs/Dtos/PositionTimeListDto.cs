@@ -25,7 +25,7 @@ namespace Vickn.Platform.PbManagement.PositionPbs.Dtos
         /// <summary>
         /// 岗位排班Id
         /// </summary>
-        public int PositionPbId { get; set; }
+        public long PositionPbId { get; set; }
 
     }
 }

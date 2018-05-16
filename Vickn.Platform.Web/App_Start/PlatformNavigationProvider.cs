@@ -15,7 +15,7 @@ using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.OrganizationUnits.Authorization;
 using Vickn.Platform.PbManagement.ChangeWorks.Authorization;
 using Vickn.Platform.PbManagement.PbTitles.Authorization;
-using Vickn.Platform.PbManagement.Positions.Authorization;
+
 using Vickn.Platform.Users.Authorization;
 using Vickn.Platform.Zero.UserPositions.Authorization;
 
@@ -49,14 +49,7 @@ namespace Vickn.Platform.Web
                 requiredPermissionName: PbTitleAppPermissions.PbTitle
             );
 
-            //排班岗位
-            var position = new MenuItemDefinition(
-                PositionAppPermissions.Position,
-                L("Position"),
-                url: "/positions/position",
-                icon: "icon-grid",
-                requiredPermissionName: PositionAppPermissions.Position
-            );
+          
 
             //换班管理
             var changeWork = new MenuItemDefinition(
@@ -69,9 +62,8 @@ namespace Vickn.Platform.Web
 
 
 
-            Pbmanagement.AddItem(pbTitle);
-            Pbmanagement.AddItem(position);
-            Pbmanagement.AddItem(changeWork);
+            Pbmanagement.AddItem(pbTitle)
+                         .AddItem(changeWork);
    
 
 

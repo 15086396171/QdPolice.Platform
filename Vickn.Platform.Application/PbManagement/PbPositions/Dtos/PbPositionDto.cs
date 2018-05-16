@@ -15,7 +15,6 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Abp.Application.Services.Dto;
 using Abp.AutoMapper;
-using Vickn.Platform.PbManagement.Positions.Dtos;
 using Vickn.Platform.PbManagement.PositionPbs.Dtos;
 using System.Collections.Generic;
 
@@ -25,7 +24,7 @@ namespace Vickn.Platform.PbManagement.PbPositions.Dtos
     /// 排班岗位管理Dto
     /// </summary>
     [AutoMap(typeof(PbPosition))]
-    public class PbPositionDto : EntityDto<int>
+    public class PbPositionDto : EntityDto<long>
     {
         /// <summary>
         /// 是否已排班
@@ -39,11 +38,12 @@ namespace Vickn.Platform.PbManagement.PbPositions.Dtos
 		[DisplayName("月份")]
         public DateTime Month { get; set; }
 
+
         /// <summary>
-        /// 岗位 
+        /// 部门名称
         /// </summary>
-       	[DisplayName("岗位")]
-        public PositionDto Position { get; set; }
+        [DisplayName("部门名称")]
+        public string OrganizationUnitName { get; set; }
 
         /// <summary>
         /// 值班标题

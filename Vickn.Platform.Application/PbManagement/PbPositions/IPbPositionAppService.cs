@@ -67,12 +67,12 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// <summary>
         /// 删除排班岗位
         /// </summary>
-        Task DeleteAsync(EntityDto<int> input);
+        Task DeleteAsync(EntityDto<long> input);
 
         /// <summary>
         /// 批量删除排班岗位
         /// </summary>
-        Task BatchDeleteAsync(List<int> input);
+        Task BatchDeleteAsync(List<long> input);
 
         /// <summary>
         /// 自定义检查排班岗位输入逻辑错误

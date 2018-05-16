@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using Abp.Domain.Entities;
+using Abp.Domain.Entities.Auditing;
+using Abp.Organizations;
 using Vickn.Platform.PbManagement.PositionPbs;
-using Vickn.Platform.PbManagement.Positions;
+
 
 namespace Vickn.Platform.PbManagement.PbPositions
 {
@@ -12,7 +14,7 @@ namespace Vickn.Platform.PbManagement.PbPositions
     /// 作者：dark_yx
     /// 创建时间：2016/5/24
     /// </summary>
-    public class PbPosition : Entity
+    public class PbPosition : FullAuditedEntity<long>
     {
         /// <summary>
         /// 值班标题
@@ -22,12 +24,14 @@ namespace Vickn.Platform.PbManagement.PbPositions
         /// <summary>
         /// 岗位ID
         /// </summary>
-        public int PositionId { get; set; }
+        public long OrganizationUnitId { get; set; }
+
+     
 
         /// <summary>
-        /// 岗位 
+        /// 岗位ID
         /// </summary>
-        public virtual Position Position { get; set; }
+        public string OrganizationUnitName { get; set; }
 
         /// <summary>
         /// 是否已排班

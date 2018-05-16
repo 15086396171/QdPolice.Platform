@@ -36,13 +36,13 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
 		 /// <summary>
         /// 通过指定id获取当天上下班时间Dto信息
         /// </summary>
-        Task<PositionPbTimeDto> GetByIdAsync(EntityDto<int> input);
+        Task<PositionPbTimeDto> GetByIdAsync(EntityDto<long> input);
 
         /// <summary>
         /// 通过Id获取当天上下班时间信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
-        Task<PositionPbTimeForEdit> GetForEditAsync(NullableIdDto<int> input);
+        Task<PositionPbTimeForEdit> GetForEditAsync(NullableIdDto<long> input);
 
         /// <summary>
         /// 新增或更改当天上下班时间
@@ -62,12 +62,12 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
         /// <summary>
         /// 删除当天上下班时间
         /// </summary>
-        Task DeleteAsync(EntityDto<int> input);
+        Task DeleteAsync(EntityDto<long> input);
 
         /// <summary>
         /// 批量删除当天上下班时间
         /// </summary>
-        Task BatchDeleteAsync(List<int> input);
+        Task BatchDeleteAsync(List<long> input);
 
         /// <summary>
         /// 自定义检查当天上下班时间输入逻辑错误

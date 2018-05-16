@@ -22,18 +22,18 @@ namespace Vickn.Platform.PbManagement.PositionPbs
     /// <summary>
     /// 单个岗位下排班时间
     /// </summary>
-    public class PositionPb : Entity
+    public class PositionPb : Entity<long>
     {
 
         /// <summary>
         /// 单个岗位排班标题Id
         /// </summary>
-        public int PbPositionId { get; set; }
+        public long PbPositionId { get; set; }
 
         /// <summary>
-        /// 岗位Id
+        /// 部门Id
         /// </summary>
-        public int PositionId { get; set; }
+        public long OrganazationUnitId { get; set; }
 
 
 
