@@ -67,7 +67,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks.Dtos
         [DisplayName("值班时间")]
         public string TimeStr { get; set; }
 
-        [DisplayName("换班日期")]
+        [DisplayName("发起时间")]
         public string BeDate { get; set; }
 
         [DisplayName("换班时间")]

@@ -39,15 +39,15 @@ using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.PbManagement.ChangeWorks
 {
-	/// <summary>
+    /// <summary>
     /// 换班服务
     /// </summary>
-	[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork)]
+    [AbpAuthorize(ChangeWorkAppPermissions.ChangeWork)]
     public class ChangeWorkAppService : PlatformAppServiceBase, IChangeWorkAppService
     {
         private readonly ChangeWorkManager _changeWorkManager;
         private readonly NotificationManager _notificationManager;
-        private readonly IRepository<ChangeWork,long> _changeWorkRepository;
+        private readonly IRepository<ChangeWork, long> _changeWorkRepository;
         private readonly IRepository<User, long> _userRepository;
         private readonly IRepository<PositionPbTime, int> _positionPbTimeRepository;
         private readonly IRepository<PositionPbMap, int> _postionPbMapsRepository;
@@ -61,7 +61,7 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// <summary>
         /// 初始化换班服务实例
         /// </summary>
-        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository,ChangeWorkManager changeWorkManager, IRepository<User, long> userRepository, IRepository<PositionPb> positionRepository, IRepository<PositionPbTime, int> positionPbTimeRepository, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb, int> positionPbRepository, IRepository<PbPosition, int> pbPositionRepository, IRepository<Position, int> positionsRepository, IPositionPbTimeAppService positionPbTimeAppService, IUserAppService userAppService, NotificationManager notificationManager)
+        public ChangeWorkAppService(IRepository<ChangeWork, long> changeWorkRepository, ChangeWorkManager changeWorkManager, IRepository<User, long> userRepository, IRepository<PositionPb> positionRepository, IRepository<PositionPbTime, int> positionPbTimeRepository, IRepository<PositionPbMap, int> postionPbMapsRepository, IRepository<PositionPb, int> positionPbRepository, IRepository<PbPosition, int> pbPositionRepository, IRepository<Position, int> positionsRepository, IPositionPbTimeAppService positionPbTimeAppService, IUserAppService userAppService, NotificationManager notificationManager)
         {
             _changeWorkRepository = changeWorkRepository;
             _changeWorkManager = changeWorkManager;
@@ -78,13 +78,13 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 
         #region 换班管理
 
-		/// <summary>
+        /// <summary>
         /// 根据查询条件获取换班分页列表
         /// </summary>
         public async Task<PagedResultDto<ChangeWorkDto>> GetPagedAsync(GetChangeWorkInput input)
-		{
-			 var query = _changeWorkRepository.GetAll();
-		    query = query.Where(p => p.UserName.Contains(input.FilterText) || p.BeUserName.Contains(input.FilterText));
+        {
+            var query = _changeWorkRepository.GetAll();
+            query = query.Where(p => p.UserName.Contains(input.FilterText) || p.BeUserName.Contains(input.FilterText));
 
             //TODO:根据传入的参数添加过滤条件
 
@@ -100,38 +100,40 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
             changeWorkCount,
             changeWorkDtos
             );
-		}
+        }
 
-		/// <summary>
+        /// <summary>
         /// 通过指定id获取换班Dto信息
         /// </summary>
         public async Task<ChangeWorkDto> GetByIdAsync(EntityDto<long> input)
-		{
-		    var entity = await _changeWorkRepository.GetAsync(input.Id);
+        {
+            var entity = await _changeWorkRepository.GetAsync(input.Id);
             return entity.MapTo<ChangeWorkDto>();
-		}
+        }
 
         /// <summary>
         /// 通过Id获取换班信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>
         public async Task<ChangeWorkForEdit> GetForEditAsync(NullableIdDto<long> input)
-		{
-			ChangeWorkEditDto changeWorkEditDto;
+        {
+            ChangeWorkEditDto changeWorkEditDto;
 
             if (input.Id.HasValue)
             {
                 var entity = await _changeWorkRepository.GetAsync(input.Id.Value);
                 changeWorkEditDto = entity.MapTo<ChangeWorkEditDto>();
+                changeWorkEditDto.BeDate =
+                    _changeWorkRepository.GetAll().Where(p => p.Id == input.Id).ToList()[0].CreationTime.ToString("yyyy年MM月dd日 HH:mm");
             }
             else
             {
 
                 var user = await GetCurrentUserAsync();
-         
+
 
                 changeWorkEditDto = new ChangeWorkEditDto();
-              
+
                 changeWorkEditDto.UserName = user.UserName;
 
                 var PositionPbTId = _positionPbTimeRepository.GetAllList().Where(p => p.UserId == user.Id).ToList()[0].PositionPbId;
@@ -141,19 +143,20 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
 
                 changeWorkEditDto.PositionName = positionName;
                 changeWorkEditDto.BePositionName = positionName;
+              
             }
             return new ChangeWorkForEdit { ChangeWorkEditDto = changeWorkEditDto };
-		}
+        }
 
         /// <summary>
         /// 新增或更改换班
         /// </summary>
-		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_CreateChangeWork,ChangeWorkAppPermissions.ChangeWork_EditChangeWork)]
+		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_CreateChangeWork, ChangeWorkAppPermissions.ChangeWork_EditChangeWork)]
         public async Task CreateOrUpdateAsync(ChangeWorkForEdit input)
-		{
-			 if (input.ChangeWorkEditDto.Id.HasValue)
+        {
+            if (input.ChangeWorkEditDto.Id.HasValue)
             {
-              
+
                 await UpdateAsync(input);
             }
             else
@@ -168,69 +171,69 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
                 input.ChangeWorkEditDto.StatusDes = "未填写意见";
                 await CreateAsync(input);
             }
-		}
+        }
 
         /// <summary>
         /// 新增换班
         /// </summary>
 		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_CreateChangeWork)]
         public async Task<ChangeWorkForEdit> CreateAsync(ChangeWorkForEdit input)
-		{
-			//TODO: 新增前的逻辑判断，是否允许新增
+        {
+            //TODO: 新增前的逻辑判断，是否允许新增
 
-            
-		  
+
+
             var entity = input.ChangeWorkEditDto.MapTo<ChangeWork>();
 
             entity = await _changeWorkRepository.InsertAsync(entity);
 
-
-            //await _notificationManager.SendMessageAsync(
-            //    ( new UserIdentifier(AbpSession.TenantId, (await GetCurrentUserAsync()).Id))
-            //        , PlatformConsts.NotificationConstNames.Announcement_Send, entity.Reason, new
-            //        {
-            //            Title = entity.Reason,
-            //            CreationTime = entity.CreationTime
-            //        });
+            var Title = "发起排班";
+            await _notificationManager.SendMessageAsync(
+                (new UserIdentifier(AbpSession.TenantId, (await GetCurrentUserAsync()).Id))
+                    , PlatformConsts.NotificationConstNames.Announcement_Send, Title, new
+                    {
+                        Title = Title,
+                        CreationTime = entity.CreationTime
+                    });
 
             return new ChangeWorkForEdit { ChangeWorkEditDto = entity.MapTo<ChangeWorkEditDto>() };
-		}
+        }
 
         /// <summary>
         /// 修改换班
         /// </summary>
 		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_EditChangeWork)]
         public async Task UpdateAsync(ChangeWorkForEdit input)
-		{
-		    //TODO: 更新前的逻辑判断，是否允许更新
+        {
+            //TODO: 更新前的逻辑判断，是否允许更新
 
-			var entity = await _changeWorkRepository.GetAsync(input.ChangeWorkEditDto.Id.Value);
+            var entity = await _changeWorkRepository.GetAsync(input.ChangeWorkEditDto.Id.Value);
             input.ChangeWorkEditDto.MapTo(entity);
 
             await _changeWorkRepository.UpdateAsync(entity);
-		}
+        }
 
         /// <summary>
         /// 删除换班
         /// </summary>
 		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_DeleteChangeWork)]
         public async Task DeleteAsync(EntityDto<long> input)
-		{
-			//TODO: 删除前的逻辑判断，是否允许删除
+        {
+            //TODO: 删除前的逻辑判断，是否允许删除
 
             await _changeWorkRepository.DeleteAsync(input.Id);
-		}
+        }
 
         /// <summary>
         /// 批量删除换班
         /// </summary>
 		[AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_DeleteChangeWork)]
         public async Task BatchDeleteAsync(List<long> input)
-		{
-		    //TODO: 批量删除前的逻辑判断，是否允许删除
+        {
+            //TODO: 批量删除前的逻辑判断，是否允许删除
 
             await _changeWorkRepository.DeleteAsync(s => input.Contains(s.Id));
-		}
+        }
 
         /// <summary>
         /// 自定义检查换班输入逻辑错误
@@ -238,17 +241,17 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// <param name="input"></param>
         /// <returns></returns>
         public async Task<CustomerModelStateValidationDto> CheckErrorAsync(ChangeWorkForEdit input)
-		{	
-			//TODO: 自定义逻辑判断是否有逻辑错误
+        {
+            //TODO: 自定义逻辑判断是否有逻辑错误
 
-			return new CustomerModelStateValidationDto() {HasModelError = false};
-		}
+            return new CustomerModelStateValidationDto() { HasModelError = false };
+        }
 
         /// <summary>
         /// app获取换班信息
         /// </summary>
         /// <returns></returns>
-       public async Task<AppChangeWorkEditDto> AppGetChangeWorkDto()
+        public async Task<AppChangeWorkEditDto> AppGetChangeWorkDto()
         {
             var user = await GetCurrentUserAsync();
             //获得用户排班岗位
@@ -273,17 +276,13 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// 领导同意换班
         /// </summary>
         [AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_EditChangeWork)]
-        public async Task LeaderAgreeChangeWorkAsync(ChangeWorkForEdit input)
+        public async Task LeaderAgreeChangeWorkAsync(EntityDto<long> input)
         {
             //TODO: 更新前的逻辑判断，是否允许更新
-            
 
-            var entity = await _changeWorkRepository.GetAsync(input.ChangeWorkEditDto.Id.Value);
-
-            input.ChangeWorkEditDto.StatusDes = "换班完成";
-
-            input.ChangeWorkEditDto.MapTo(entity);
-
+           
+            var entity = await _changeWorkRepository.GetAsync(input.Id);
+            entity.Status = "领导同意";
             await _changeWorkRepository.UpdateAsync(entity);
         }
 
@@ -291,18 +290,35 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// 领导不同意换班
         /// </summary>
         [AbpAuthorize(ChangeWorkAppPermissions.ChangeWork_EditChangeWork)]
-        public async Task LeaderNotAgreeChangeWorkAsync(ChangeWorkForEdit input)
+        public async Task LeaderNotAgreeChangeWorkAsync(EntityDto<long> input)
         {
             //TODO: 更新前的逻辑判断，是否允许更新
 
-
-            var entity = await _changeWorkRepository.GetAsync(input.ChangeWorkEditDto.Id.Value);
-
-            input.ChangeWorkEditDto.StatusDes = "领导不同意";
-
-            input.ChangeWorkEditDto.MapTo(entity);
-
+        
+            var entity = await _changeWorkRepository.GetAsync(input.Id);
+            entity.Status = "领导不同意";
             await _changeWorkRepository.UpdateAsync(entity);
+        }
+
+        /// <summary>
+        /// app发起人提交换班信息
+        /// </summary>
+        public async Task<AppChangeWorkDto> AppInitiatorSubmitShiftInformationAsync(AppChangeWorkDto input)
+        {
+          
+            ChangeWorkEditDto query = new ChangeWorkEditDto();
+            query.UserName = input.UserName;
+            query.TimeStr = input.TimeStr;
+            query.Reason = input.Reason;
+            query.PositionName = input.PositionName;
+            query.BeUserName = input.BeUserName;
+            query.BeTimeStr = input.BeTimeStrs;
+            query.BePositionName = input.BePositionName;
+            query.Leader = input.Leaders;
+
+         
+            await CreateOrUpdateAsync(new ChangeWorkForEdit(){ChangeWorkEditDto=query});
+            return input;
         }
 
         #endregion

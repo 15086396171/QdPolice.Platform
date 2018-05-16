@@ -1,13 +1,12 @@
 ﻿$(function () {
 
 
-   
-    $("#btnlogin").click(function () {
+    $("#btnlogin").click(function() {
 
 
         var username = $("#username").val();
         var password = $("#password").val();
-       
+
         if (username == "" && password == "") {
             alert("用户名和密码不能为空！");
             return;
@@ -22,24 +21,21 @@
             return;
         }
 
-      
-       
+
         abp.ajax({
             url: abp.appPath + 'Account/Login',
             type: 'POST',
             data: JSON.stringify({
-                tenancyName:"Kq",
+                tenancyName: "Kq",
                 usernameOrEmailAddress: username,
                 password: password,
-              
-               
+
+
             })
-        }).fail(function () {
+        }).fail(function() {
             abp.ui.clearBusy();
         });
-    })
-   
-
+    });
 
 
 })

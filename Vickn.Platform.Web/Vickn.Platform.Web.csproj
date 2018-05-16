@@ -1133,6 +1133,7 @@
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\Index_js.js" />
     <Content Include="Areas\ChangeWorks\Views\ChangeWork\GetTimeUser.cshtml" />
     <Content Include="Areas\UserPositions\Views\UserPosition\Index_js.js" />
+    <Content Include="Areas\ChangeWorks\Views\ChangeWork\ChangeWorkToExamine.cshtml" />
     <None Include="Properties\PublishProfiles\112_2888.pubxml" />
     <None Include="Scripts\jquery.validation\1.14.0\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validation\1.14.0\jquery.validate.js" />

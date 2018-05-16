@@ -372,11 +372,11 @@
 
     <text name="ChangeWork.UserName" value="发起人" />
    
-    <text name="ChangeWork.BeUserName" value="被换班人" />
+    <text name="ChangeWork.BeUserName" value="换班人" />
     <text name="ChangeWork.Reason" value="换班原因" />
     <text name="ChangeWork.TimeStr" value="值班时间" />
-    <text name="ChangeWork.BeTimeStr" value="被换班时间" />
-    <text name="ChangeWork.PositionName" value="发起人排班岗位" />
+    <text name="ChangeWork.BeTimeStr" value="换班时间" />
+    <text name="ChangeWork.PositionName" value="排班岗位" />
     <text name="ChangeWork.BePositionName" value="被换班人排班岗位" />
     <text name="ChangeWork.Status" value="审批状态" />
     <text name="ChangeWork.StatusDes" value="审批描述" />

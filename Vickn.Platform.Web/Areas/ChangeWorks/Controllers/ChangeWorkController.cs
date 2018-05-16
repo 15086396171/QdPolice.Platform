@@ -79,7 +79,7 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
 
             changeWorkDto.ChangeWorkEditDto.Leader = Request["Leader"];
             changeWorkDto.ChangeWorkEditDto.TimeStr = Request["PbTime"]; 
-            changeWorkDto.ChangeWorkEditDto.BeTimeStr = Request["BePbTime"];
+           
 
             await _changeWorkAppService.CreateOrUpdateAsync(changeWorkDto);
             return RedirectToAction("Index");
@@ -90,6 +90,36 @@ namespace Vickn.Platform.Web.Areas.ChangeWorks.Controllers
             var list = await _positionPbTimeAppService.GetUserAllForDutyAsync(
                 new GetPositionUserPbTimeListDto {Date = Time});
             return View(list);
+        }
+
+        public async Task<ActionResult> ChangeWorkToExamine (long id)
+        {
+
+           
+
+            var changeWorkDto = await _changeWorkAppService.GetForEditAsync(new NullableIdDto<long>(id));
+
+          
+
+            return View(changeWorkDto);
+
+          
+
+        }
+
+        public async Task<ActionResult> IsAgreen(long id,string IsAgreeStr)
+        {
+           
+            if (IsAgreeStr == "同意")
+            {
+                await _changeWorkAppService.LeaderAgreeChangeWorkAsync(new EntityDto<long> { Id = id });
+            }
+            else
+            {
+                await _changeWorkAppService.LeaderNotAgreeChangeWorkAsync(new EntityDto<long> { Id = id });
+            }
+
+            return RedirectToAction("Index");
         }
 
     }

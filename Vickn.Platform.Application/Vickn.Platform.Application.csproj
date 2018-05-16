@@ -287,6 +287,7 @@
     <Compile Include="Notifications\INotificationAppService.cs" />
     <Compile Include="Notifications\NotificationAppService.cs" />
     <Compile Include="PbManagement\ChangeWorks\ChangeWorkAppService.cs" />
+    <Compile Include="PbManagement\ChangeWorks\Dtos\AppChangeWorkDto.cs" />
     <Compile Include="PbManagement\ChangeWorks\Dtos\AppChangeWorkEditDto.cs" />
     <Compile Include="PbManagement\ChangeWorks\Dtos\ChangeWorkDto.cs" />
     <Compile Include="PbManagement\ChangeWorks\Dtos\ChangeWorkEditDto.cs" />

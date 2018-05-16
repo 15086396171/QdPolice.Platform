@@ -82,7 +82,10 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         Task<AppChangeWorkEditDto> AppGetChangeWorkDto();
 
 
-
+        /// <summary>
+        /// app发起人提交换班信息
+        /// </summary>
+        Task<AppChangeWorkDto> AppInitiatorSubmitShiftInformationAsync(AppChangeWorkDto input);
 
         #endregion
 
@@ -91,14 +94,14 @@ namespace Vickn.Platform.PbManagement.ChangeWorks
         /// <summary>
         /// 领导同意换班
         /// </summary>
-        Task LeaderAgreeChangeWorkAsync(ChangeWorkForEdit input);
+        Task LeaderAgreeChangeWorkAsync(EntityDto<long> input);
 
         /// <summary>
         /// 领导不同意换班
         /// </summary>
         /// <param name="input"></param>
         /// <returns></returns>
-        Task LeaderNotAgreeChangeWorkAsync(ChangeWorkForEdit input);
+        Task LeaderNotAgreeChangeWorkAsync(EntityDto<long> input);
 
         #endregion
 

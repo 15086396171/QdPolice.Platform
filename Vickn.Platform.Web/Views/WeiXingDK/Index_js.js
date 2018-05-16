@@ -8,11 +8,12 @@
     getDate();
 
     //获取当前登陆用户的用户名
-    $.get("/Account/KqZSGetUserName", function (data) {
+    $.get("/Account/KqZSGetUserName",
+        function(data) {
 
-        $("#username").html(data);
+            $("#username").html(data);
 
-    })
+        });
 
 
 

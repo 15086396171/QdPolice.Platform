@@ -1,0 +1,136 @@
+﻿@model Vickn.Platform.PbManagement.ChangeWorks.Dtos.ChangeWorkForEdit
+
+@{
+    ViewBag.Menu = L("ChangeWorks");
+    ViewBag.SubMenu = L("ChangeWork");
+}
+<div class="ibox-content">
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        @Html.ValidationSummary(true, "", new { @class = "alert alert-danger summary-validation-error" })
+
+        <div class="form-horizontal">
+
+            <div class="hidden">
+                @Html.HiddenFor(model => model.ChangeWorkEditDto.Id)
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.UserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.UserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.BeDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.BeDate, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.BeDate, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.PositionName, htmlAttributes: new { @class = "control-label col-md-2", })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.PositionName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.PositionName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.Reason, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.Reason, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.Reason, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.TimeStr, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                  
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.TimeStr, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.TimeStr, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.BeUserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.BeUserName, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.BeUserName, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+         
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.BeTimeStr, htmlAttributes: new { @class = "control-label col-md-2", })
+                <div class="col-md-8">
+
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.BeTimeStr, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.BeTimeStr, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.ChangeWorkEditDto.Leader, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-8">
+                 
+                    @Html.EditorFor(model => model.ChangeWorkEditDto.Leader, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.ChangeWorkEditDto.Leader, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            
+            <div class="form-group">
+                <label class="control-label col-md-2" >是否同意</label>
+                <div class="col-md-8">
+                    <select class="form-control valid" id="IsAgree" name="IsAgree" aria-invalid="false">
+                        <option value="同意">同意</option>
+                        <option value="不同意">不同意</option>
+                     
+                    </select>
+                    <span class="field-validation-valid text-danger" data-valmsg-for="ChangeWorkEditDto.Leader" data-valmsg-replace="true"></span>
+                </div>
+            </div>
+
+
+
+            <div class="form-group">
+                <div class="col-sm-4 col-sm-offset-2">
+                    <button class="btn btn-primary" onclick="SubmitSH(@Model.ChangeWorkEditDto.Id)" type="button">提交</button>
+                   
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+
+@section styles{
+    <style>
+    </style>
+}
+
+@section scripts{
+
+ 
+    <script>
+        
+
+        function SubmitSH(data) {
+     
+
+            window.location.href = abp.appPath + "ChangeWorks/ChangeWork/IsAgreen?id=" + data + "&&IsAgreeStr=" + $("#IsAgree").val();
+            
+        }
+    </script>
+
+}
