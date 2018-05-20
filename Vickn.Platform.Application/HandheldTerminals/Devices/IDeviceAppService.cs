@@ -44,6 +44,15 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         Task UpdateStatusAsymc(DeviceStatusEditInput input);
 
         /// <summary>
+        /// 修改地理位置
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        Task GeographicalPosition(DeviceGeographicalPositionEditInput input);
+
+        
+
+        /// <summary>
         /// 通过Id获取设备信息进行编辑或修改
         /// Id为空时返回新对象 
         /// </summary>

@@ -35,8 +35,11 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// </summary>
         public string Status { get; set; }
 
-     
+        /// <summary>
+        /// 地理位置
+        /// </summary>
+        public string GeographicalPosition { get; set; }
 
-        
+
     }
 }

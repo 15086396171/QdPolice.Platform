@@ -57,6 +57,7 @@
           }
         },
         { "data": "status" },
+        { "data": "geographicalPosition" },
         {
           "data": "id",
           render: function (data, type, row, meta) {

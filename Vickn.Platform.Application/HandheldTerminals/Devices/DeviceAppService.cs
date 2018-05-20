@@ -259,6 +259,19 @@ namespace Vickn.Platform.HandheldTerminals.Devices
             return new CustomerModelStateValidationDto() { HasModelError = false };
         }
 
+        /// <summary>
+        /// 修改地理位置
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public async Task GeographicalPosition(DeviceGeographicalPositionEditInput input)
+        {
+
+            var entity = await _deviceRepository.GetAsync(AbpSession.GetDeviceId().Value);
+            entity.GeographicalPosition = input.GeographicalPosition;
+            await _deviceRepository.UpdateAsync(entity);
+        }
+
         #endregion
 
     }

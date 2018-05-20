@@ -14,6 +14,9 @@ namespace Vickn.Platform.Web
             );
 
             base.Application_Start(sender, e);
+
+
+
         }
     }
 }

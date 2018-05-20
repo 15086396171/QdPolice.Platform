@@ -63,5 +63,12 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// </summary>
         [DisplayName("所处模式")]
         public string Status { get; set; }
+
+        /// <summary>
+        /// 地理位置
+        /// </summary>
+        [DisplayName("地理位置")]
+        public string GeographicalPosition { get; set; }
+        
     }
 }
