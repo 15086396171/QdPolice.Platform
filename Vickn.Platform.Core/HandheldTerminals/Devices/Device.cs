@@ -34,5 +34,9 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// 所处模式
         /// </summary>
         public string Status { get; set; }
+
+     
+
+        
     }
 }

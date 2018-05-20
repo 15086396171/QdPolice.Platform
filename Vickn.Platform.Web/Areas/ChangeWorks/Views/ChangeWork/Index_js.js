@@ -109,6 +109,19 @@
         };
         $dataTable.createDatatable(options);
 
+        $("#btnChangeWorkRule").click(function () {
+
+
+            layer.msg('(1)值班前换班：换班双方相互确认，系统后台值班表自动更新;(2)值班中换班：换班双方相互确认外，还需当班领导确认，确认完毕后，系统后台值班表自动更新.', {
+                skin: 'layui-layer-molv' //样式类名  自定义样式
+                , closeBtn: 1    // 是否显示关闭按钮
+                , anim: 1 //动画类型
+
+                , time: 10000 //2s后自动关闭
+                , icon: 6    // icon
+
+            });
+        });
         // TODO: 页面其他处理
 
     });

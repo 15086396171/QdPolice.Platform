@@ -366,7 +366,8 @@
     
     <!--换班-->
     <text name="ChangeWorkName" value="换班" />
-
+    <text name="ChangeWorkRule" value="换班规则" />
+    
     <!--//用于表格展示的数据信息的标题-->
  
 
