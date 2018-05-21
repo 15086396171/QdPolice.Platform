@@ -376,7 +376,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
             var userOrganizationUnitlist = _userOrganizationUnitRepository.GetAll();
             long OrganizationUnitId = userOrganizationUnitlist.Where(p => p.UserId == user.Id).ToList()[0].OrganizationUnitId;
             var OrganizationUnit = _organizationUnitRepository.GetAll();
-          var  OrganizationUnitName= OrganizationUnit.Where(p => p.Id == OrganizationUnitId).ToList()[0].DisplayName;
+            var OrganizationUnitName = OrganizationUnit.Where(p => p.Id == OrganizationUnitId).ToList()[0].DisplayName;
 
 
             List<AppPositionPbTimeDetailDto> querylists = new List<AppPositionPbTimeDetailDto>();
@@ -387,7 +387,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 item.StartTime = query.StartTime.ToString("MM月dd日 HH:mm");
                 item.EndTime = query.EndTime.ToString("MM月dd日 HH:mm");
                 item.UserName = query.RealName;
-             
+
 
                 //根据排班岗位Id获取岗位名称
                 var PbPositionId = _positionPbRepository.GetAllList().Where(p => p.Id == query.PositionPbId).ToList()[0].PbPositionId;
@@ -401,7 +401,7 @@ namespace Vickn.Platform.PbManagement.PositionPbTimes
                 {
                     querylists.Add(item);
                 }
-                querylists.Add(item);
+               
 
             }
 
