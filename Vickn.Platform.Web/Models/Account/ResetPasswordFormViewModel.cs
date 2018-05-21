@@ -21,6 +21,7 @@ namespace Vickn.Platform.Web.Models.Account
         
         [Required]
         [DisableAuditing]
+    
         public string Password { get; set; }
     }
 }

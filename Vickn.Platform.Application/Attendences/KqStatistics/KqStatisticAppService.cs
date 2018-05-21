@@ -29,13 +29,13 @@ namespace Vickn.Platform.Attendences.KqStatistics
         private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
         private IKqStatisticAppService _kqStatisticAppServiceImplementation;
 
-        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository, IRepository<User, long> Usersrepository, IRepository<KqShift, long> KqShiftUnitRepository,  IRepository<KqShiftUser, long> KqShiftUserRepository)
+        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository, IRepository<User, long> Usersrepository, IRepository<KqShift, long> KqShiftUnitRepository, IRepository<KqShiftUser, long> KqShiftUserRepository)
         {
             _KqDetailRepository = KqDetailRepository;
             _Usersrepository = Usersrepository;
             _KqShiftUnitRepository = KqShiftUnitRepository;
             _KqShiftUserRepository = KqShiftUserRepository;
-          
+
         }
 
 
@@ -237,7 +237,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             }
             else
             {
-                input.EndTime =input.EndTime.Value.AddDays(1);
+                input.EndTime = input.EndTime.Value.AddDays(1);
             }
 
             #region 查询条件判断
@@ -287,11 +287,11 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 {
                     list.QDPostionWork = entity[i].QDPostionWork;
                 }
-              
+
 
                 list.OutgoingCauseWork = entity[i].OutgoingCauseWork;
                 list.DateColsing = entity[i].QDClosingTime.ToString("HH:mm:ss");
-          
+
                 if (entity[i].QDPostionClosing != "")
                 {
                     string[] str = entity[i].QDPostionClosing.Split(',');
@@ -302,28 +302,71 @@ namespace Vickn.Platform.Attendences.KqStatistics
                     list.QDPostionClosing = entity[i].QDPostionClosing;
                 }
                 list.OutgoingCauseClosing = entity[i].OutgoingCauseClosing;
-                if (entity[i].QDType == 0)
+
+                if (input.IsUnusual == "异常")
                 {
-                    list.QDType = "正常";
+                    if (entity[i].QDType == 5)
+                    {
+                        list.QDType = "异常";
+                        kqList.Add(list);
+                    }
+
                 }
-                if (entity[i].QDType == 1)
+                else if (input.IsUnusual == "非异常")
                 {
-                    list.QDType = "迟到";
+
+
+                    if (entity[i].QDType != 5)
+                    {
+                        if (entity[i].QDType == 0)
+                        {
+                            list.QDType = "正常";
+                        }
+                        if (entity[i].QDType == 1)
+                        {
+                            list.QDType = "迟到";
+                        }
+                        if (entity[i].QDType == 2)
+                        {
+                            list.QDType = "早退";
+                        }
+                        if (entity[i].QDType == 3)
+                        {
+                            list.QDType = "缺勤";
+                        }
+
+                        kqList.Add(list);
+                    }
+
+
                 }
-                if (entity[i].QDType == 2)
+                else
                 {
-                    list.QDType = "早退";
-                }
-                if (entity[i].QDType == 3)
-                {
-                    list.QDType = "缺勤";
-                }
-                if (entity[i].QDType == 5)
-                {
-                    list.QDType = "异常";
+                    if (entity[i].QDType == 0)
+                    {
+                        list.QDType = "正常";
+                    }
+                    if (entity[i].QDType == 1)
+                    {
+                        list.QDType = "迟到";
+                    }
+                    if (entity[i].QDType == 2)
+                    {
+                        list.QDType = "早退";
+                    }
+                    if (entity[i].QDType == 3)
+                    {
+                        list.QDType = "缺勤";
+                    }
+                    if (entity[i].QDType == 5)
+                    {
+                        list.QDType = "异常";
+                    }
+                    kqList.Add(list);
                 }
 
-                kqList.Add(list);
+
+
 
             }
 
@@ -414,28 +457,69 @@ namespace Vickn.Platform.Attendences.KqStatistics
                     list.QDPostionClosing = entity[i].QDPostionClosing;
                 }
                 list.OutgoingCauseClosing = entity[i].OutgoingCauseClosing;
-                if (entity[i].QDType == 0)
+                if (input.IsUnusual == "异常")
                 {
-                    list.QDType = "正常";
+                    if (entity[i].QDType == 5)
+                    {
+                        list.QDType = "异常";
+                        kqList.Add(list);
+                    }
+
                 }
-                if (entity[i].QDType == 1)
+                else if (input.IsUnusual == "非异常")
                 {
-                    list.QDType = "迟到";
+
+
+                    if (entity[i].QDType != 5)
+                    {
+                        if (entity[i].QDType == 0)
+                        {
+                            list.QDType = "正常";
+                        }
+                        if (entity[i].QDType == 1)
+                        {
+                            list.QDType = "迟到";
+                        }
+                        if (entity[i].QDType == 2)
+                        {
+                            list.QDType = "早退";
+                        }
+                        if (entity[i].QDType == 3)
+                        {
+                            list.QDType = "缺勤";
+                        }
+
+                        kqList.Add(list);
+                    }
+
+
                 }
-                if (entity[i].QDType == 2)
+                else
                 {
-                    list.QDType = "早退";
-                }
-                if (entity[i].QDType == 3)
-                {
-                    list.QDType = "缺勤";
-                }
-                if (entity[i].QDType == 5)
-                {
-                    list.QDType = "异常";
+                    if (entity[i].QDType == 0)
+                    {
+                        list.QDType = "正常";
+                    }
+                    if (entity[i].QDType == 1)
+                    {
+                        list.QDType = "迟到";
+                    }
+                    if (entity[i].QDType == 2)
+                    {
+                        list.QDType = "早退";
+                    }
+                    if (entity[i].QDType == 3)
+                    {
+                        list.QDType = "缺勤";
+                    }
+                    if (entity[i].QDType == 5)
+                    {
+                        list.QDType = "异常";
+                    }
+                    kqList.Add(list);
                 }
 
-                kqList.Add(list);
+
 
             }
 

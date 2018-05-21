@@ -22,6 +22,12 @@ $(function () {
                     key: "EndTime",
                     selector: $("#EndTime")
                 }
+                ,
+                {
+                    key: "IsUnusual",
+                    selector: $("#IsUnusual")
+                }
+
             ]
         },
 
@@ -137,7 +143,8 @@ function Export() {
     var UserName = $("#UserName").val();
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
-    window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime;
+    var IsUnusual = $("#IsUnusual").val();
+    window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual;
  
 
 }

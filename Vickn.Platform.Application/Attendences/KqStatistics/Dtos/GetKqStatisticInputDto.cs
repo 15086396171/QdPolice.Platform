@@ -26,6 +26,11 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         public DateTime? EndTime { get; set; }
 
         /// <summary>
+        /// 签到类型
+        /// </summary>
+        public string IsUnusual { get; set; }
+
+        /// <summary>
         /// 用于排序的默认值
         /// </summary>
         public void Normalize()

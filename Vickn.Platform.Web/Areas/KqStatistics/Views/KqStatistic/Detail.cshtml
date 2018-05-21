@@ -10,7 +10,7 @@
 <div class="row animated fadeInRight">
     <div class="ibox-content">
         <div class="form-inline">
-          
+
             <div class="form-group">
                 <label>@L("User.Name")</label>
                 <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 250px;" />
@@ -19,9 +19,22 @@
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
 
+                签到类型：
+                <select class="form-control valid" id="IsUnusual" name="IsUnusual" aria-invalid="false">
+
+                    <option value="所有">所有</option>
+                    <option value="异常">异常</option>
+                    <option value="非异常">非异常</option>
+
+                </select>
+
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
-                
+
+
+                <span class="field-validation-valid text-danger" data-valmsg-for="DataDictionaryItems" data-valmsg-replace="true"></span>
+
+
                 <a href="javascript:;" class="btn btn-danger" onclick="Export()"><span class="glyphicon glyphicon"></span> @L("Export")</a>
             </div>
         </div>
@@ -35,7 +48,7 @@
                     <th>@L("QDDate")</th>
                     <th>@L("KqShift.WorkTime")</th>
                     <th>@L("OutgoingCauseWork")</th>
-                    <th >@L("QDPostionWork")</th>
+                    <th>@L("QDPostionWork")</th>
                     <th>@L("KqShift.ClosingTime")</th>
                     <th>@L("OutgoingCauseClosing")</th>
                     <th>@L("QDPostionClosing")</th>

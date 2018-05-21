@@ -31,6 +31,7 @@ using Vickn.PlatfForm.Utils.Extensions;
 using Vickn.Platform.Dtos;
 using Vickn.Platform.HandheldTerminals.Devices.Authorization;
 using Vickn.Platform.HandheldTerminals.Devices.Dtos;
+using Vickn.Platform.Users;
 using Vickn.Platform.Zero.Notifications;
 
 namespace Vickn.Platform.HandheldTerminals.Devices
@@ -42,18 +43,20 @@ namespace Vickn.Platform.HandheldTerminals.Devices
     public class DeviceAppService : PlatformAppServiceBase, IDeviceAppService
     {
         private readonly IRepository<Device, long> _deviceRepository;
+        private readonly IRepository<User, long> _userRepository;
         private readonly DeviceManager _deviceManager;
         private readonly IOnlineClientManager _onlineClientManager;
         private readonly NotificationManager _notificationManager;
         /// <summary>
         /// 初始化设备服务实例
         /// </summary>
-        public DeviceAppService(IRepository<Device, long> deviceRepository, DeviceManager deviceManager, IOnlineClientManager onlineClientManager, NotificationManager notificationManager)
+        public DeviceAppService(IRepository<Device, long> deviceRepository, DeviceManager deviceManager, IOnlineClientManager onlineClientManager, NotificationManager notificationManager, IRepository<User, long> userRepository)
         {
             _deviceRepository = deviceRepository;
             _deviceManager = deviceManager;
             _onlineClientManager = onlineClientManager;
             _notificationManager = notificationManager;
+            _userRepository = userRepository;
         }
 
         #region 设备管理
@@ -223,7 +226,16 @@ namespace Vickn.Platform.HandheldTerminals.Devices
                     time = DateTime.Now
                 }
             };
-            if (input.Operation == "changeMode")
+
+            if (input.Operation == "unlock")
+            {
+               
+                var entity = await _userRepository.GetAsync(device.CreatorUserId.Value);
+                entity.IsLockoutEnabled = false;
+                entity = entity.MapTo<User>();
+                await _userRepository.UpdateAsync(entity);
+            }
+            else if (input.Operation == "changeMode")
             {
                 if (device.Status != "生活模式")
                     obj = new
@@ -241,6 +253,7 @@ namespace Vickn.Platform.HandheldTerminals.Devices
                     PlatformConsts.NotificationConstNames.CameraChange,
                     PlatformConsts.NotificationConstNames.CameraChange, obj);
             }
+
             else
             {
                 await _notificationManager.SendMessageAsync(new UserIdentifier(AbpSession.TenantId, device.User.Id), PlatformConsts.NotificationConstNames.Device_Manage, input.Operation, device.MapTo<DeviceDto>());

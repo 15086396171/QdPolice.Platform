@@ -23,5 +23,11 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// 终止时间
         /// </summary>
         public DateTime? EndTime { get; set; }
+
+
+        /// <summary>
+        /// 签到类型
+        /// </summary>
+        public string IsUnusual { get; set; }
     }
 }

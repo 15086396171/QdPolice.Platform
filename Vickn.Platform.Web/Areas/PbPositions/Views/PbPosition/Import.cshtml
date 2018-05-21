@@ -58,7 +58,7 @@
 
                 <div class="col-sm-4 col-sm-offset-2">
                     <div class="form-group">
-                        <a href="" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-download"></span>下载排班信息导入模板</a>
+                        <a href="" id="btnLode" class="btn btn-primary"><span class="glyphicon glyphicon-cloud-download"></span>下载排班信息导入模板</a>
                     </div>
                 </div>
             </div>
@@ -90,6 +90,7 @@
             newurl = hostport.split(":");
             var newurls = newurl[0];
             var serverAddress = "http://" + newurls + ":1156/Content/Pbmanagerment/排班表导入模版.xlsx";
+            $("#btnLode").attr("href", serverAddress);
 
             // 初始化Web Uploader
             var $list = $("#thelist");

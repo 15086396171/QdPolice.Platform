@@ -40,6 +40,11 @@ namespace Vickn.Platform.HandheldTerminals.Devices
         /// </summary>
         public string GeographicalPosition { get; set; }
 
+        /// <summary>
+        /// root状态
+        /// </summary>
+        public bool IsRoot { get; set; }
+
 
     }
 }

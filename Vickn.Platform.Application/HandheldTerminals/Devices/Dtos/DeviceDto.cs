@@ -69,6 +69,11 @@ namespace Vickn.Platform.HandheldTerminals.Devices.Dtos
         /// </summary>
         [DisplayName("地理位置")]
         public string GeographicalPosition { get; set; }
-        
+
+        /// <summary>
+        /// root状态
+        /// </summary>
+        public bool IsRoot { get; set; }
+
     }
 }
