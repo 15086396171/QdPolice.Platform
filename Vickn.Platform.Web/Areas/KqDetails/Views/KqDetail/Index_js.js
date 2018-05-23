@@ -28,6 +28,10 @@
                         key: "EndTime",
                         selector: $("#EndTime")
                     },
+                    {
+                        key: "IsNFC",
+                        selector: $("#IsNFC")
+                    }
                 ],
                 ingore: []
             },

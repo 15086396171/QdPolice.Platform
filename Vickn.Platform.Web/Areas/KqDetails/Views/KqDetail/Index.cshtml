@@ -18,6 +18,16 @@
                 <input type="text" Id="StartTime" value="@ViewBag.StartTime" onclick="laydate()" class="form-control" style="width: 150px;" />
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
+                签到方式：
+                <select class="form-control valid" id="IsNFC" name="IsNFC" aria-invalid="false">
+
+                    <option value="所有">所有</option>
+                    <option value="0">微信打卡</option>
+                    <option value="1">NFC打卡</option>
+                    <option value="2">门禁刷卡</option>
+
+
+                </select>
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success"  id="search" ><span class="glyphicon glyphicon-search"></span> @L("Search")</button>

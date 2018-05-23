@@ -305,23 +305,9 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
                 if (input.IsUnusual == "异常")
                 {
-                    if (entity[i].QDType == 5)
+                    if (entity[i].QDType != 0)
                     {
-                        list.QDType = "异常";
-                        kqList.Add(list);
-                    }
 
-                }
-                else if (input.IsUnusual == "非异常")
-                {
-
-
-                    if (entity[i].QDType != 5)
-                    {
-                        if (entity[i].QDType == 0)
-                        {
-                            list.QDType = "正常";
-                        }
                         if (entity[i].QDType == 1)
                         {
                             list.QDType = "迟到";
@@ -334,6 +320,25 @@ namespace Vickn.Platform.Attendences.KqStatistics
                         {
                             list.QDType = "缺勤";
                         }
+                        if (entity[i].QDType == 5)
+                        {
+                            list.QDType = "异常";
+                        }
+                        kqList.Add(list);
+                    }
+
+                }
+                else if (input.IsUnusual == "正常")
+                {
+
+
+                    if (entity[i].QDType == 0)
+                    {
+                        if (entity[i].QDType == 0)
+                        {
+                            list.QDType = "正常";
+                        }
+
 
                         kqList.Add(list);
                     }
@@ -459,23 +464,9 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 list.OutgoingCauseClosing = entity[i].OutgoingCauseClosing;
                 if (input.IsUnusual == "异常")
                 {
-                    if (entity[i].QDType == 5)
+                    if (entity[i].QDType != 0)
                     {
-                        list.QDType = "异常";
-                        kqList.Add(list);
-                    }
 
-                }
-                else if (input.IsUnusual == "非异常")
-                {
-
-
-                    if (entity[i].QDType != 5)
-                    {
-                        if (entity[i].QDType == 0)
-                        {
-                            list.QDType = "正常";
-                        }
                         if (entity[i].QDType == 1)
                         {
                             list.QDType = "迟到";
@@ -488,6 +479,25 @@ namespace Vickn.Platform.Attendences.KqStatistics
                         {
                             list.QDType = "缺勤";
                         }
+                        if (entity[i].QDType == 5)
+                        {
+                            list.QDType = "异常";
+                        }
+                        kqList.Add(list);
+                    }
+
+                }
+                else if (input.IsUnusual == "正常")
+                {
+
+
+                    if (entity[i].QDType == 0)
+                    {
+                        if (entity[i].QDType == 0)
+                        {
+                            list.QDType = "正常";
+                        }
+
 
                         kqList.Add(list);
                     }

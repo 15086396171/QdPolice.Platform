@@ -332,6 +332,12 @@ namespace Vickn.Platform.Attendences.KqDetails
                 query = query.Where(p => p.QDTime <= input.EndTime && p.QDTime > input.StartTime);
             }
 
+            if (input.IsNFC != "所有")
+            {
+                int IsNFC = Convert.ToInt32(input.IsNFC);
+                query = query.Where(p => p.IsNFC== IsNFC);
+            }
+
 
             var kqdetailCount = await query.CountAsync();
 

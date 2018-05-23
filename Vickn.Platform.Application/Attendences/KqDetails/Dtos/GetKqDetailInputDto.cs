@@ -26,6 +26,13 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public DateTime? EndTime { get; set; }
 
         /// <summary>
+        /// 签到打卡方式
+        /// </summary>
+        public string IsNFC { get; set; }
+
+        
+
+        /// <summary>
         /// 用于排序的默认值
         /// </summary>
         public void Normalize()

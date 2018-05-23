@@ -41,7 +41,7 @@ namespace Vickn.Platform.HandheldTerminals.AppWhiteLists.EntityMapper
 			Property(a => a.PackageName).HasMaxLength(64);
 		    // 文件
 			Property(a => a.Src).HasMaxLength(128);
-		    Property(a => a.Version).HasMaxLength(10);
+		    Property(a => a.Version).HasMaxLength(64);
 		}
     }
 }
