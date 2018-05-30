@@ -54,7 +54,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             DateTime EndTimes = StartTimes.AddMonths(1).AddHours(-1);
 
             var entity = await _KqDetailRepository.GetAllListAsync(p =>
-                p.UserName == input.UserName && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
+                p.UserName.Contains(input.UserName) && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
 
             List<KqAppResultYMdDto> kqList = new List<KqAppResultYMdDto>();
 
@@ -102,7 +102,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             DateTime EndTimes = StartTimes.AddDays(1).AddSeconds(-1);
 
             var entity = await _KqDetailRepository.GetAllListAsync(p =>
-                p.UserName == input.UserName && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
+                p.UserName.Contains(input.UserName) && p.QDWorkTime > StartTimes && p.QDWorkTime < EndTimes);
             List<KqStatisticYMdDto> kqList = new List<KqStatisticYMdDto>();
             var listcount = entity.Count();
             if (listcount != 0)
@@ -143,7 +143,8 @@ namespace Vickn.Platform.Attendences.KqStatistics
             }
             else
             {
-                input.EndTime.Value.AddDays(1);
+                input.EndTime = input.EndTime.Value.AddDays(1);
+
             }
 
             #region 查询条件判断
@@ -152,7 +153,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName == input.UserName);
+                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
@@ -163,7 +164,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 }
                 else
                 {
-                    entity = _KqDetailRepository.GetAllList(p => p.UserName == input.UserName);
+                    entity = _KqDetailRepository.GetAllList(p => p.UserName.Contains(input.UserName));
                 }
 
 
@@ -173,76 +174,147 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 entity = _KqDetailRepository.GetAllList();
             }
 
+            entity = entity.OrderBy(p => p.UserName).ToList();
+
+            var entityUserlist = (from d in entity
+                                  group d by d.UserName).ToList();
             #endregion
+
+
 
             #region 统计整理考勤数据
 
             List<KqStatisicListDto> KqStatisticList = new List<KqStatisicListDto>();
-            for (int i = 0; i < entity.ToList().Count(); i++)
+            for (int i = 0; i < entityUserlist.Count(); i++)
             {
                 KqStatisicListDto list = new KqStatisicListDto();
-                if (i == 0)
-                {
-                    int count = entity.Count() - 1;
-                    if (count != i)
-                    {
 
-                    }
-                    else
-                    {
-                        list.UserName = entity.ToList()[i].UserName;
-                        var userName = entity.ToList()[i].UserName;
+                list.UserName = entityUserlist[i].Key;
+                var userName = entityUserlist[i].Key;
 
-                        long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
-                        long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
-                        list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
-                        list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
-                        list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
-                        list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
-                        list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
-                        KqStatisticList.Add(list);
-                    }
-                }
-                else
-                {
-                    int count = entity.Count() - 1;
-                    if (i != count)
-                    {
-                        if (entity.ToList()[i].UserName != entity.ToList()[i + 1].UserName)
-                        {
-                            list.UserName = entity.ToList()[i].UserName;
-                            var userName = entity.ToList()[i].UserName;
-
-                            long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
-                            long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
-                            list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
-                            list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
-                            list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
-                            list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
-                            list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
-                            KqStatisticList.Add(list);
-                        }
-
-                    }
-                    else
-                    {
-                        list.UserName = entity.ToList()[i].UserName;
-                        var userName = entity.ToList()[i].UserName;
-
-                        long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
-                        long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
-                        list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
-                        list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
-                        list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
-                        list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
-                        list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
-                        KqStatisticList.Add(list);
-                    }
-
-                }
+                long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+                long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+                list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+                list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+                list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+                list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+                list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+                list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+                KqStatisticList.Add(list);
 
 
             }
+
+            #region 原
+            //for (int i = 0; i < entity.Count(); i++)
+            //{
+            //    KqStatisicListDto list = new KqStatisicListDto();
+            //    if (i == 0)
+            //    {
+            //        int count = entity.Count() - 1;
+            //        if (count == i)
+            //        {
+            //            list.UserName = entity[i].UserName;
+            //            var userName = entity[i].UserName;
+
+            //            long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+            //            long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+            //            list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+            //            list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+            //            list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+            //            list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+            //            list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+            //            list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+            //            KqStatisticList.Add(list);
+            //        }
+
+
+
+            //    }
+            //    else
+            //    {
+            //        int count = entity.Count() - 1;
+            //        if (i != count)
+            //        {
+            //            if (entity[i - 1].UserName != entity[i].UserName)
+            //            {
+            //                var isHasList = KqStatisticList.Where(p => p.UserName == entity[i - 1].UserName);
+            //                if (isHasList == null)
+            //                {
+            //                    list.UserName = entity[i - 1].UserName;
+            //                    var userName = entity[i - 1].UserName;
+
+            //                    long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+            //                    long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+            //                    list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+            //                    list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+            //                    list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+            //                    list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+            //                    list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+            //                    list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+            //                    KqStatisticList.Add(list);
+            //                }
+
+            //            }
+
+            //            if (entity[i].UserName != entity[i + 1].UserName)
+            //            {
+            //                list.UserName = entity[i].UserName;
+            //                var userName = entity[i].UserName;
+
+            //                long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+            //                long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+            //                list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+            //                list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+            //                list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+            //                list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+            //                list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+            //                list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+            //                KqStatisticList.Add(list);
+            //            }
+
+            //        }
+            //        else
+            //        {
+            //            if (entity[i - 1].UserName != entity[i].UserName)
+            //            {
+            //                list.UserName = entity[i].UserName;
+            //                var userName = entity[i].UserName;
+
+            //                long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+            //                long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+            //                list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+            //                list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+            //                list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+            //                list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+            //                list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+            //                list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+            //                KqStatisticList.Add(list);
+            //            }
+            //            else
+            //            {
+            //                list.UserName = entity[i].UserName;
+            //                var userName = entity[i].UserName;
+
+            //                long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+            //                long GroupId = _userOrganizationUnitRepository.FirstOrDefault(p => p.UserId == UserId).OrganizationUnitId;
+            //                list.GroupName = _organizationUnitRepository.FirstOrDefault(p => p.Id == GroupId).DisplayName;
+            //                list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+            //                list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
+            //                list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
+            //                list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
+            //                list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
+            //                KqStatisticList.Add(list);
+            //            }
+
+            //        }
+
+            //    }
+
+
+            //}
+            #endregion
+
 
             #endregion
 
@@ -281,7 +353,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             if (!string.IsNullOrEmpty(input.UserName) && input.StartTime != null && input.EndTime != null)
             {
                 entity = _KqDetailRepository.GetAllList(p =>
-                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName == input.UserName);
+                    p.QDWorkTime <= input.EndTime && p.QDWorkTime > input.StartTime && p.UserName.Contains(input.UserName));
             }
             else if (!string.IsNullOrEmpty(input.UserName) || input.StartTime != null && input.EndTime != null)
             {
@@ -292,7 +364,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 }
                 else
                 {
-                    entity = _KqDetailRepository.GetAllList(p => p.UserName == input.UserName);
+                    entity = _KqDetailRepository.GetAllList(p => p.UserName.Contains(input.UserName));
                 }
 
 
@@ -334,6 +406,10 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 if (entity[i].QDType == 3)
                 {
                     list.QDType = "缺勤";
+                }
+                if (entity[i].QDType == 5)
+                {
+                    list.QDType = "异常";
                 }
 
                 kqList.Add(list);

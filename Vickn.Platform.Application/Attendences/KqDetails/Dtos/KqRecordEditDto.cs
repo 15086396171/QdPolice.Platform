@@ -43,7 +43,7 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public DateTime? QDClosingTime { get; set; }
 
         /// <summary>
-        /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4）
+        /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4，异常：5）
         /// </summary>
         public int? QDType { get; set; }
 

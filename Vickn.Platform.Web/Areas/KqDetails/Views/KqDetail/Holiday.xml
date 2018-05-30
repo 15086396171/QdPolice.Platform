@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<holiday>
+  <year value="2018">
+    <date>0101</date>
+    
+    <date>0215</date>
+    <date>0216</date>
+    <date>0217</date>
+    <date>0218</date>
+    <date>0219</date>
+    <date>0220</date>
+    <date>0221</date>
+    
+    <date>0405</date>
+    <date>0406</date>
+    <date>0407</date>
+    
+    <date>0429</date>
+    <date>0430</date>
+    <date>0501</date>
+
+    <date>0616</date>
+    <date>0617</date>
+    <date>0618</date>
+
+    <date>0922</date>
+    <date>0923</date>
+    <date>0924</date>
+
+    <date>1001</date>
+    <date>1002</date>
+    <date>1003</date>
+    <date>1004</date>
+    <date>1005</date>
+    <date>1006</date>
+    <date>1007</date>
+  
+  </year>
+  <year value="2019">
+    <date>
+      "0101",
+
+      "0215",
+      "0216",
+      "0217",
+      "0218",
+      "0219",
+      "0220",
+      "0221",
+
+      "0405",
+      "0406",
+      "0407",
+
+      "0429",
+      "0430",
+      "0501",
+
+      "0616",
+      "0617",
+      "0618",
+
+      "0922",
+      "0923",
+      "0924",
+
+      "1001",
+      "1002",
+      "1003",
+      "1004",
+      "1005",
+      "1006",
+      "1007",
+    </date>
+  </year>
+</holiday>

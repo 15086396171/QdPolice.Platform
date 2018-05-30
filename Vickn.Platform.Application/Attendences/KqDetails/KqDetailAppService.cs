@@ -50,7 +50,7 @@ namespace Vickn.Platform.Attendences.KqDetails
         {
             //获得用户信息
             var user = await GetCurrentUserAsync();
-            string NowUserName = user.Surname;
+            string NowUserName = user.UserName;
             //当前打卡时间
             DateTime NowTime = DateTime.Now;
 
@@ -64,39 +64,80 @@ namespace Vickn.Platform.Attendences.KqDetails
             await _KqAllDeatilRepository.InsertAsync(entity);
             #endregion
 
-            #region 查看此用户是否有绑定的考勤班次
-            var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == user.Id);
-            if (KqShiftUser == null)
-            {
-                var LogContent = NowUserName + "用户,目前还没有绑定考勤班次.";
-                Logger.Info(LogContent);
 
+            #region 判断今天是否为节假日(若isHoliday=true,则今天为节假日)
+            string[] Holiday = {"0101", "0215","0216","0217","0218",
+      "0219", "0220", "0221","0405", "0406", "0407","0429", "0430","0501","0616","0617", "0618", "0922","0923",
+      "0924","1001","1002","1003","1004", "1005","1006", "1007" };
+            bool isHoliday = false;
+            for (int i = 0; i < Holiday.Length; i++)
+            {
+                string nowHoliday = DateTime.Now.ToString("yyyy") + Holiday[i];
+                string nowDate = DateTime.Now.ToString("yyyyMMdd");
+                if (nowDate == nowHoliday)
+                {
+                    //节假日打卡不记录考勤记录信息
+                    isHoliday = true;
+                }
 
             }
 
-            else
+
+            #endregion
+
+            //今天不是节假日
+            if (isHoliday == false)
             {
-                var IsKqShift = await _KqShiftRepository.FirstOrDefaultAsync(p => p.Id == KqShiftUser.KqShiftId);
-                if (IsKqShift == null)
+                #region 查看此用户是否有绑定的考勤班次
+                var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == user.Id && p.KqShiftId != null);
+                if (KqShiftUser == null)
                 {
-                    var LogContent2 = NowUserName + "用户,目前还没有绑定考勤班次.";
-                    Logger.Info(LogContent2);
+                    var LogContent = NowUserName + "用户,目前还没有绑定考勤班次.";
+                    Logger.Info(LogContent);
+
+
                 }
+
                 else
                 {
-                    KqDetailEditDtos KqDetaillist = new KqDetailEditDtos();
-                    KqDetaillist.UserName = NowUserName;
-                    KqDetaillist.IsNFC = input.isNFC;
-                    KqDetaillist.QDPostion = "";
-                    KqDetaillist.QDTime = NowTime;
-                    KqDetaillist.KqShiftId = KqShiftUser.KqShiftId;
+                    var IsKqShift = await _KqShiftRepository.FirstOrDefaultAsync(p => p.Id == KqShiftUser.KqShiftId && p.IsDeleted == false);
+                    if (IsKqShift == null)
+                    {
+                        var LogContent2 = NowUserName + "用户,目前还没有绑定考勤班次.";
+                        Logger.Info(LogContent2);
+                    }
+                    else
+                    {
+                        KqDetailEditDtos KqDetaillist = new KqDetailEditDtos();
+                        KqDetaillist.UserName = NowUserName;
+                        KqDetaillist.IsNFC = input.isNFC;
+                        KqDetaillist.QDPostion = "";
+                        KqDetaillist.QDTime = NowTime;
+                        KqDetaillist.KqShiftId = KqShiftUser.KqShiftId;
 
-                    //新增或修改此用户当天的考勤记录
-                    await CreateOrUpdateAsync(KqDetaillist);
+
+
+                        //新增或修改此用户当天的考勤记录
+                        await CreateOrUpdateAsync(KqDetaillist);
+                    }
+
+
                 }
-
-
+                #endregion
             }
+
+
+            #region 判断今天是否为周末
+            //string isWeek = DateTime.Now.DayOfWeek.ToString();
+            //if (isWeek == "Saturday" || isWeek == "Sunday")
+            //{
+
+            //    //周末打卡不记录考勤记录信息
+            //}
+            //else
+            //{
+
+            //}
             #endregion
 
 
@@ -148,14 +189,16 @@ namespace Vickn.Platform.Attendences.KqDetails
 
             else if (input.IsNFC == 1)
             {
+
+
                 KqRecordEditDto kqrecord = new KqRecordEditDto();
                 kqrecord.UserName = input.UserName;
                 kqrecord.IsNFC = input.IsNFC;
                 kqrecord.KQMachineNo = "";
                 kqrecord.Remark = "";
                 kqrecord.QDWorkTime = input.QDTime;
-                kqrecord.QDClosingTime = null;
-                kqrecord.QDType = null;
+                kqrecord.QDClosingTime = DateTime.Today;
+                kqrecord.QDType = 5;
 
                 var kqrecordDto = kqrecord.MapTo<KqDetail>();
                 await _KqDetailRepository.InsertAsync(kqrecordDto);
@@ -262,16 +305,16 @@ namespace Vickn.Platform.Attendences.KqDetails
 
             if (input.StartTime != null)
             {
-                query = query.Where(p => p.QDTime < input.EndTime && p.QDTime > input.StartTime);
+                query = query.Where(p => p.QDTime <= input.EndTime && p.QDTime > input.StartTime);
             }
-           
+
 
             var kqdetailCount = await query.CountAsync();
 
             var kqdetails = await query.OrderBy(input.Sorting)
                 .PageBy(input).ToListAsync();
 
-           
+
 
             var KqDetailDtos = kqdetails.MapTo<List<KqDetailEditDto>>();
 

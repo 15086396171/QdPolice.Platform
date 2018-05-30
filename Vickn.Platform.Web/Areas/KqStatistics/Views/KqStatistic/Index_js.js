@@ -6,9 +6,69 @@ $(function () {
 
 
     $("#Btnkqmonth").click(function () {
-       
-        $("#StartTime").val("2018-05-01");
-        $("#EndTime").val("2018-05-31");
+
+        var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth() + 1;
+        var StartTime = year + '-' + month + '-01';//当月第一天  
+        var day = new Date(year, month, 0);
+        var EndTime = year + '-' + month + '-' + day.getDate();//当月最后一天  
+
+        $("#StartTime").val(StartTime);
+        $("#EndTime").val(EndTime);
+        $("#search").click();
+    });
+
+    $("#Btnkqyear").click(function () {
+
+        var now = new Date();
+        var year = now.getFullYear();
+        var StartTime = year + "-01-01";
+        var EndTime = year + "-12-31";
+
+        $("#StartTime").val(StartTime);
+        $("#EndTime").val(EndTime);
+        $("#search").click();
+    });
+    $("#Btnkqweek").click(function () {
+   
+
+        var now = new Date();
+        var nowTime = now.getTime();
+        var day = now.getDay();
+        var oneDayLong = 24 * 60 * 60 * 1000;
+
+        var MondayTime = nowTime - (day - 1) * oneDayLong;
+        var SundayTime = nowTime + (7 - day) * oneDayLong;
+
+
+        var StartTimes = new Date(MondayTime);
+        var EndTimes = new Date(SundayTime);
+
+        var y = StartTimes.getFullYear();
+        var m = StartTimes.getMonth() + 1;
+        if (m < 10) {
+            m = "0" + m;
+        }
+        var d = StartTimes.getDate();
+        if (d < 10) {
+            d = "0" + d;
+        }
+        var StartTime = y + "-" + m + "-" + d;
+
+        var y2 = EndTimes.getFullYear();
+        var m2 = EndTimes.getMonth() + 1;
+        if (m2 < 10) {
+            m2 = "0" + m2;
+        }
+        var d2 = EndTimes.getDate();
+        if (d2 < 10) {
+            d2 = "0" + d2;
+        }
+        var EndTime = y2 + "-" + m2 + "-" + d2;
+
+        $("#StartTime").val(StartTime);
+        $("#EndTime").val(EndTime);
         $("#search").click();
     });
 });
@@ -44,6 +104,8 @@ function DataList() {
             { "data": "lateDay" },
             { "data": "leaveEarlyDay" },
             { "data": "absenteeismDay" },
+            { "data": "abnormalDay" },
+
             {
                 "data": "id",
                 render: function (data, type, row, meta) {

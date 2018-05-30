@@ -35,5 +35,10 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// 缺勤
         /// </summary>
         public int AbsenteeismDay { get; set; }
+
+        /// <summary>
+        /// 异常
+        /// </summary>
+        public int AbnormalDay { get; set; }
     }
 }

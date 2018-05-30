@@ -11,21 +11,23 @@
     <div class="ibox-content">
         <div class="form-inline">
             <div class="form-group">
-                <label>@L("FilterText")</label>
-                <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 250px;" />
+                <label>@L("User.Name")</label>
+                <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 150px;" />
                 <label>@L("StartTime")</label>
                 <input type="text" Id="StartTime" onclick="laydate()" value="@ViewBag.StartTime" class="form-control" style="width: 150px;" />
                 <label>@L("EndTime")</label>
-                <input type="text" Id="EndTime" onclick="laydate()"  value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
+                <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
 
+                <a href="javascript:;" class="btn btn-default" style="background-color:#136874;" id="Btnkqweek"><span class="glyphicon glyphicon"></span> @L("KqWeek")</a>
+
                 <a href="javascript:;" class="btn btn-primary" id="Btnkqmonth">
-                    <span class="glyphicon glyphicon-plus"></span> @L("KqMonth")
+                    <span class="glyphicon glyphicon"></span> @L("KqMonth")
                 </a>
 
-                <a href="javascript:;" class="btn btn-danger" id="Btnkqyear"><span class="glyphicon glyphicon-trash"></span> @L("KqYear")</a>
+                <a href="javascript:;" class="btn btn-danger" id="Btnkqyear"><span class="glyphicon glyphicon"></span> @L("KqYear")</a>
 
 
             </div>
@@ -43,6 +45,7 @@
                     <th>@L("Late.days")</th>
                     <th>@L("LeaveEarly.days")</th>
                     <th>@L("Absenteeism.days")</th>
+                    <th>@L("Abnormal.days")</th>
                     <th>@L("Operational")</th>
                 </tr>
             </thead>

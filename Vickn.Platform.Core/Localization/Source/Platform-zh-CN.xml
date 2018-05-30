@@ -252,6 +252,8 @@
     <text name="Late.days" value="迟到天数" />
     <text name="LeaveEarly.days" value="早退天数" />
     <text name="Absenteeism.days" value="缺勤天数" />
+      <text name="Abnormal.days" value="异常天数" />
+
 
     <!--//考勤明细-->
     <text name="KqDetail" value="考勤流水" />
@@ -264,6 +266,7 @@
     <text name="QDTypes" value="签到类型" />
     <text name="QDDate" value="签到日期" />
 
+    <text name="KqWeek" value="考勤周统计" />
     <text name="KqMonth" value="考勤月统计" />
     <text name="KqYear" value="考勤年统计" />
     <!-- 考勤管理 end-->
