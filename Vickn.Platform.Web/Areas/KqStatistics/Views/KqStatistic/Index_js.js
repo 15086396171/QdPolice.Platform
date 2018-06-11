@@ -32,7 +32,7 @@ $(function () {
     });
     //周
     $("#Btnkqweek").click(function () {
-   
+
 
         var now = new Date();
         var nowTime = now.getTime();
@@ -94,6 +94,10 @@ function DataList() {
                 {
                     key: "EndTime",
                     selector: $("#EndTime")
+                } ,
+                {
+                    key: "KqShiftName",
+                    selector: $("#KqShiftName")
                 }
             ]
         },
@@ -111,7 +115,7 @@ function DataList() {
                 "data": "id",
                 render: function (data, type, row, meta) {
                     var $div = $('<div></div>');
-                 
+
 
                     $('<a title="查看" href="javascript:;" class="m-l-xs nodecoration details" data-title="查看" ><i class="glyphicon glyphicon-search"></i> </a>')
                         .appendTo($div);
@@ -169,7 +173,8 @@ function Export() {
     var UserName = $("#UserName").val();
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
-    window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime;
+    var KqShiftName=$("#KqShiftName").val();
+    window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&KqShiftName=" + KqShiftName;
 
 }
 

@@ -252,7 +252,7 @@
     <text name="Late.days" value="迟到天数" />
     <text name="LeaveEarly.days" value="早退天数" />
     <text name="Absenteeism.days" value="缺勤天数" />
-      <text name="Abnormal.days" value="异常天数" />
+      <text name="Abnormal.days" value="缺卡天数" />
 
 
     <!--//考勤明细-->

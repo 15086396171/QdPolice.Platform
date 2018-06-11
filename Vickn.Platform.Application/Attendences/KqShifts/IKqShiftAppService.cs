@@ -22,6 +22,13 @@ namespace Vickn.Platform.Attendences.KqShifts
         Task<PagedResultDto<KqShiftDto>> GetPagedAsync(GetKqShiftInputDto input);
 
         /// <summary>
+        /// 获取所有的班次信息列表
+        /// </summary>
+        /// <returns></returns>
+        Task<List<KqShiftDto>> GetAllAsync();
+
+
+        /// <summary>
         /// 通过指定id获取考勤班次Dto信息
         /// </summary>
         /// <param name="input"></param>

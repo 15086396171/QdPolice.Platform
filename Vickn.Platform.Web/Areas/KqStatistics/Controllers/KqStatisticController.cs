@@ -10,6 +10,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vickn.Platform.Attendances.KQDetails;
+using Vickn.Platform.Attendences.KqShifts;
 using Vickn.Platform.Attendences.KqStatistics;
 using Vickn.Platform.Attendences.KqStatistics.Dtos;
 using Vickn.Platform.Web.Controllers;
@@ -19,10 +20,12 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
     public class KqStatisticController : PlatformControllerBase
     {
         private readonly IKqStatisticAppService _kqStatisticAppService;
+        private readonly IKqShiftAppService _kqShiftAppService;
 
-        public KqStatisticController(IKqStatisticAppService kqStatisticAppService)
+        public KqStatisticController(IKqStatisticAppService kqStatisticAppService, IKqShiftAppService kqShiftAppService)
         {
             _kqStatisticAppService = kqStatisticAppService;
+            _kqShiftAppService = kqShiftAppService;
         }
 
         // GET: KqStatistics/KqStatistic
@@ -31,9 +34,12 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             DateTime now = DateTime.Today;
             DateTime d1 = new DateTime(now.Year, now.Month, 1);
             DateTime d2 = d1.AddMonths(1).AddDays(-1);
-
+      
             ViewBag.StartTime = d1.ToString("yyyy-MM-dd");
             ViewBag.EndTime = d2.ToString("yyyy-MM-dd");
+
+            var kqshiftList = _kqShiftAppService.GetAllAsync().Result.ToList();
+            ViewBag.KqShiftName = kqshiftList;
             return View();
         }
 
@@ -446,7 +452,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             cell6.CellStyle = ContentStyle;
 
             var cell7 = tableTitleRow.CreateCell(6);
-            cell7.SetCellValue("异常");
+            cell7.SetCellValue("缺卡");
             cell7.CellStyle = ContentStyle;
 
         

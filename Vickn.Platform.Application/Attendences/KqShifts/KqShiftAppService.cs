@@ -25,13 +25,13 @@ namespace Vickn.Platform.Attendences.KqShifts
     public class KqShiftAppService : PlatformAppServiceBase, IKqShiftAppService
     {
 
-        private readonly IRepository<KqShift,long> _KqShiftRepository;
+        private readonly IRepository<KqShift, long> _KqShiftRepository;
         private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
 
         /// <summary>
         /// 初始化考勤班次服务实例
         /// </summary>
-        public KqShiftAppService(IRepository<KqShift,long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository)
+        public KqShiftAppService(IRepository<KqShift, long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository)
         {
             _KqShiftRepository = KqShiftRepository;
             _KqShiftUserRepository = KqShiftUserRepository;
@@ -47,7 +47,7 @@ namespace Vickn.Platform.Attendences.KqShifts
             var NowUserName = user.Surname;
             var entity = input.KqShiftEditDto.MapTo<KqShift>();
             entity = await _KqShiftRepository.InsertAsync(entity);
-            
+
             return new KqShiftForEidt { KqShiftEditDto = entity.MapTo<KqShiftEditDto>() };
 
         }
@@ -82,10 +82,10 @@ namespace Vickn.Platform.Attendences.KqShifts
             var entity = await _KqShiftRepository.GetAsync(input.KqShiftEditDto.Id.Value);
             input.KqShiftEditDto.MapTo(entity);
 
-       
+
 
             await _KqShiftRepository.UpdateAsync(entity);
-           
+
         }
 
         /// <summary>
@@ -162,6 +162,25 @@ namespace Vickn.Platform.Attendences.KqShifts
             );
         }
 
-       
+        /// <summary>
+        /// 获取所有的班次信息列表
+        /// </summary>
+        /// <returns></returns>
+        public async Task<List<KqShiftDto>> GetAllAsync()
+        {
+            var query = _KqShiftRepository.GetAll();
+            query = query.Where(p => p.IsDeleted == false);
+            List<KqShiftDto> list = new List<KqShiftDto>();
+            foreach (var item in query)
+            {
+                KqShiftDto dto = new KqShiftDto();
+                dto.Id = item.Id;
+                dto.ShiftName = item.ShiftName;
+                dto.WorkTime = item.WorkTime;
+                dto.ClosingTime = item.ClosingTime;
+                list.Add(dto);
+            }
+            return list;
+        }
     }
 }

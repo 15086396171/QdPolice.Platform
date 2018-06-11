@@ -31,6 +31,12 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         public string IsUnusual { get; set; }
 
         /// <summary>
+        /// 签到班次名称
+        /// </summary>
+        public string KqShiftName { get; set; }
+        
+
+        /// <summary>
         /// 用于排序的默认值
         /// </summary>
         public void Normalize()

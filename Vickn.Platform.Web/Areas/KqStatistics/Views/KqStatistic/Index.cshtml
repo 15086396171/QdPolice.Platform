@@ -7,6 +7,7 @@
 
 
 
+
 <div class="row animated fadeInRight">
     <div class="ibox-content">
         <div class="form-inline">
@@ -17,6 +18,15 @@
                 <input type="text" Id="StartTime" onclick="laydate()" value="@ViewBag.StartTime" class="form-control" style="width: 150px;" />
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
+                <label>@L("KqShift.Name")</label>
+
+                <select class="form-control valid" id="KqShiftName" name="KqShiftName" aria-invalid="false">
+                    @foreach (var item in ViewBag.KqShiftName)
+                    {
+                        <option value="@item.ShiftName">@item.ShiftName</option>
+
+                    }
+                </select>
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>

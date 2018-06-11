@@ -29,5 +29,12 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// 签到类型
         /// </summary>
         public string IsUnusual { get; set; }
+
+
+        /// <summary>
+        /// 考勤班次名称
+        /// </summary>
+        public string KqShiftName { get; set; }
+
     }
 }

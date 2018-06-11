@@ -177,6 +177,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 entity = _KqDetailRepository.GetAllList();
             }
 
+
             entity = entity.OrderBy(p => p.UserName).ToList();
 
             var entityUserlist = (from d in entity
@@ -211,7 +212,10 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             #endregion
 
-
+            if (!string.IsNullOrEmpty(input.KqShiftName))
+            {
+                KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
+            }
 
             ////TODO:根据传入的参数添加过滤条件
             int kqStatisticCount = KqStatisticList.Count();
@@ -322,7 +326,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                         }
                         if (entity[i].QDType == 5)
                         {
-                            list.QDType = "异常";
+                            list.QDType = "缺卡";
                         }
                         kqList.Add(list);
                     }
@@ -365,7 +369,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                     }
                     if (entity[i].QDType == 5)
                     {
-                        list.QDType = "异常";
+                        list.QDType = "缺卡";
                     }
                     kqList.Add(list);
                 }
@@ -481,7 +485,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                         }
                         if (entity[i].QDType == 5)
                         {
-                            list.QDType = "异常";
+                            list.QDType = "缺卡";
                         }
                         kqList.Add(list);
                     }
@@ -524,7 +528,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
                     }
                     if (entity[i].QDType == 5)
                     {
-                        list.QDType = "异常";
+                        list.QDType = "缺卡";
                     }
                     kqList.Add(list);
                 }
@@ -616,6 +620,11 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             }
 
+            if (!string.IsNullOrEmpty(input.KqShiftName))
+            {
+                KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
+            }
+         
 
             #endregion
             return KqStatisticList;

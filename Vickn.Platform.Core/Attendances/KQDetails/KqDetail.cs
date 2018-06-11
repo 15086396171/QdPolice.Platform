@@ -68,7 +68,7 @@ namespace Vickn.Platform.Attendances.KQDetails
         public string OutgoingCauseClosing { get; set; }
 
         /// <summary>
-        /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4）
+        /// 签到类型（正常：0，迟到：1，早退：2，缺勤：3，请假：4,缺卡:5）
         /// </summary>
         public int? QDType { get; set; }
 
