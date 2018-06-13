@@ -1,4 +1,5 @@
 ﻿using Abp.Domain.Repositories;
+using Microsoft.Owin.Security.Provider;
 using NPOI.HSSF.UserModel;
 using NPOI.HSSF.Util;
 using NPOI.SS.UserModel;
@@ -284,6 +285,18 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             string fileName = $"{titleName}.xls";
             //定义输出类型为excel
             Response.ContentType = "application/vnd.ms-excel";
+            //区分浏览器导出转码格式
+            if (Request.ServerVariables["http_user_agent"].ToString().IndexOf("Firefox") != -1)
+            {
+                fileName = "=?UTF-8?B?" + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(fileName)) + "?=";
+            }
+            else
+            {
+                fileName = System.Web.HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+                fileName = fileName.Replace("+", "%20");
+            }
+
+            //判断浏览器分开处理
             //确保浏览器弹出下载对话框
             Response.AddHeader("Content-Disposition", $"attachment;filename={fileName}");
             //为程序加速
@@ -294,6 +307,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             //如果 Response.Buffer 已设置为 TRUE，则调用 Response.End 将缓冲输出
             Response.End();
         }
+
 
         
         //考勤统计导出
@@ -508,6 +522,16 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             string fileName = $"{titleName}.xls";
             //定义输出类型为excel
             Response.ContentType = "application/vnd.ms-excel";
+            //区分浏览器导出文件名转码格式
+            if (Request.ServerVariables["http_user_agent"].ToString().IndexOf("Firefox") != -1)
+            {
+                fileName = "=?UTF-8?B?" + Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(fileName)) + "?=";
+            }
+            else
+            {
+                fileName = System.Web.HttpUtility.UrlEncode(fileName, System.Text.Encoding.UTF8);
+                fileName = fileName.Replace("+", "%20");
+            }
             //确保浏览器弹出下载对话框
             Response.AddHeader("Content-Disposition", $"attachment;filename={fileName}");
             //为程序加速

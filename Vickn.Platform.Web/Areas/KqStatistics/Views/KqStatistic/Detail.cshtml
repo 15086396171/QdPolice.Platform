@@ -12,6 +12,7 @@
         <div class="form-inline">
 
             <div class="form-group">
+                <a href="@Url.Action("Index","KqStatistic",new {Area="KqStatistics"})" class="btn btn-default"><i class="fa fa-close">@L("Back")</i></a>
                 <label>@L("User.Name")</label>
                 <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 250px;" />
                 <label>@L("StartTime")</label>
