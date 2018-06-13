@@ -15,6 +15,12 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// 姓名
         /// </summary>
         public string UserName { get; set; }
+
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string GroupName { get; set; }
+        
         /// <summary>
         /// 考勤班次名称
         /// </summary>

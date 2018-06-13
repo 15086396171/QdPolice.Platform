@@ -19,7 +19,6 @@
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
                 <label>@L("KqShift.Name")</label>
-
                 <select class="form-control valid" id="KqShiftName" name="KqShiftName" aria-invalid="false">
                     @foreach (var item in ViewBag.KqShiftName)
                     {
@@ -52,6 +51,7 @@
                 <tr>
 
                     <th>@L("User.Name")</th>
+                    <th>@L("GroupName")</th>
                     <th>@L("KqShift.Name")</th>
                     <th>@L("Normal.days")</th>
                     <th>@L("Late.days")</th>

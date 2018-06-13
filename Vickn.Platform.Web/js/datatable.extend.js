@@ -154,20 +154,23 @@
             }
         });
         $("#research").click(function () {
-            if (options.listAction.research) {
-                options.listAction.research();
-            }
-            else {
-                if (options.listAction.filters) {
-                    $.each(options.listAction.filters,
-                        function (index, value) {
-                            if (options.listAction.ignore && $.inArray(value.key, options.listAction.ignore) >= 0);
-                            else
-                                $(value.selector).val("");
-                        });
-                }
-                $(options.target).search();
-            }
+            location.reload(); 
+
+            //重置,清空数据
+            //if (options.listAction.research) {
+            //    options.listAction.research();
+            //}
+            //else {
+            //    if (options.listAction.filters) {
+            //        $.each(options.listAction.filters,
+            //            function (index, value) {
+            //                if (options.listAction.ignore && $.inArray(value.key, options.listAction.ignore) >= 0);
+            //                else
+            //                    $(value.selector).val("");
+            //            });
+            //    }
+            //    $(options.target).search();
+            //}
         });
         if (!options.commonMethods)
             return;

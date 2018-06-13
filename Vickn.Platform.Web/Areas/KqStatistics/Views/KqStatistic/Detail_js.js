@@ -26,13 +26,21 @@ $(function () {
                 {
                     key: "IsUnusual",
                     selector: $("#IsUnusual")
+                },
+                {
+                    key: "KqShiftName",
+                    selector: $("#KqShiftName")
                 }
+
+                
 
             ]
         },
 
         fileds: [
             { "data": "userName" },
+            { "data": "groupName" },
+            { "data": "kqShiftName" },
             { "data": "dateYMD" },
             { "data": "dateWork" },
             {
@@ -144,7 +152,8 @@ function Export() {
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
     var IsUnusual = $("#IsUnusual").val();
-    window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual;
+    var KqShiftName = $("#KqShiftName").val();
+    window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual + "&KqShiftName=" + KqShiftName;
  
 
 }

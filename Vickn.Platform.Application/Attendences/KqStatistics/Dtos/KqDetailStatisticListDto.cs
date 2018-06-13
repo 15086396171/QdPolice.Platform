@@ -14,6 +14,16 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         public string UserName { get; set; }
 
         /// <summary>
+        /// 考勤班次名称
+        /// </summary>
+        public string KqShiftName { get; set; }
+
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string GroupName { get; set; }
+
+        /// <summary>
         /// 签到日期（yyyy-MM-dd）
         /// </summary>
         public string DateYMD { get; set; }

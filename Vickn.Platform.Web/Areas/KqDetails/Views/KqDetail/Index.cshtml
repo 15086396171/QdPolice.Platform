@@ -12,13 +12,13 @@
         <div class="form-inline">
             <div class="form-group">
                 <label>@L("User.Name")</label>
-                <input type="text" placeholder="@L("User.Name")"   class="form-control" id="UserName" style="width: 150px;" />
-                
+                <input type="text" placeholder="@L("User.Name")" class="form-control" id="UserName" style="width: 150px;" />
+
                 <label>@L("StartTime")</label>
                 <input type="text" Id="StartTime" value="@ViewBag.StartTime" onclick="laydate()" class="form-control" style="width: 150px;" />
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
-                签到方式：
+                <label>@L("QDType")</label>
                 <select class="form-control valid" id="IsNFC" name="IsNFC" aria-invalid="false">
 
                     <option value="所有">所有</option>
@@ -28,9 +28,18 @@
 
 
                 </select>
+                <label>@L("KqShift.Name")</label>
 
-                <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
-                <button type="button" class="btn btn-success"  id="search" ><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
+                <select class="form-control valid" id="KqShiftName" name="KqShiftName" aria-invalid="false">
+                    @foreach (var item in ViewBag.KqShiftName)
+        {
+            <option value="@item.ShiftName">@item.ShiftName</option>
+
+}
+                </select>
+
+                <button type="button" class="btn btn-default" id="research" ><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
+                <button type="button" class="btn btn-success" id="search"><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
 
 
 
@@ -43,10 +52,13 @@
         <table class="table table-bordered table-hover dataTable">
             <thead>
                 <tr>
-                    
+
                     <th>@L("User.Name")</th>
+                    <th>@L("GroupName")</th>
+                    <th>@L("KqShift.Name")</th>
                     <th>@L("QDTime")</th>
                     <th>@L("QDType")</th>
+                    <th>@L("OutgoingCause")</th>
                     <th>@L("QDPosition")</th>
 
                 </tr>

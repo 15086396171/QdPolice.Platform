@@ -30,7 +30,13 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// </summary>
         public string IsNFC { get; set; }
 
+        /// <summary>
+        /// 班次名称
+        /// </summary>
+        public string KqShiftName { get; set; }
+
         
+
 
         /// <summary>
         /// 用于排序的默认值

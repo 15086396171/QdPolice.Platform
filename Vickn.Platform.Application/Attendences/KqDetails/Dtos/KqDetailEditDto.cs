@@ -28,6 +28,12 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         public string UserName { get; set; }
 
         /// <summary>
+        /// 所属部门
+        /// </summary>
+        [DisplayName("所属部门")]
+        public string OrganizationUnitName { get; set; }
+
+        /// <summary>
         /// 签到时间
         /// </summary>
         [DisplayName("签到时间")]
@@ -51,5 +57,13 @@ namespace Vickn.Platform.Attendences.KqDetails.Dtos
         /// </summary>
         [DisplayName("外出事由")]
         public string OutgoingCause { get; set; }
+
+
+        /// <summary>
+        /// 班次名称
+        /// </summary>
+        [DisplayName("班次名称")]
+        public string ShiftName { get; set; }
+        
     }
 }

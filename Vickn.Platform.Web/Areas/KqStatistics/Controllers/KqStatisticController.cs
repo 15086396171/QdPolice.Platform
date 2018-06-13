@@ -62,6 +62,8 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 ViewBag.EndTime = EndTime;
             }
             ViewBag.UserName = UserName;
+            var kqshiftList = _kqShiftAppService.GetAllAsync().Result.ToList();
+            ViewBag.KqShiftName = kqshiftList;
             return View();
         }
 
@@ -108,16 +110,19 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             ContentStyle.SetFont(Contentfont);
 
             //设置列的宽度
-            sheet1.SetColumnWidth(0, 30 * 100);
-            sheet1.SetColumnWidth(1, 30 * 100);
-            sheet1.SetColumnWidth(2, 30 * 100);
-            sheet1.SetColumnWidth(3, 30 * 250);
-            sheet1.SetColumnWidth(4, 30 * 250);
-            sheet1.SetColumnWidth(5, 30 * 100);
-            sheet1.SetColumnWidth(6, 30 * 250);
-            sheet1.SetColumnWidth(7, 30 * 250);
-            sheet1.SetColumnWidth(8, 30 * 100);
-            sheet1.SetColumnWidth(9, 30 * 100);
+            int sheetWidthNum = 0;
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 250);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 250);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 250);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 250);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 100);
 
             #region 第一行
 
@@ -149,13 +154,13 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             cellTitl.SetCellValue(titleName);
 
 
-            var cellTitl2 = row0.CreateCell(7);
+            var cellTitl2 = row0.CreateCell(9);
 
             cellTitl2.SetCellValue(date);
 
             //解决标题只有第一列有部分边框的问题
 
-            CellRangeAddress region = new CellRangeAddress(0, 0, 0, 6);
+            CellRangeAddress region = new CellRangeAddress(0, 0, 0, 8);
             for (int i = region.FirstRow; i <= region.LastRow; i++)
             {
                 IRow row1 = HSSFCellUtil.GetRow(i, sheet1);
@@ -171,9 +176,9 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             //设置一个合并单元格区域，使用上下左右定义CellRangeAddress区域
             //CellRangeAddress四个参数为：起始行，结束行，起始列，结束列
             //--sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 34));
-            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 6));
+            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 8));
 
-            CellRangeAddress region2 = new CellRangeAddress(0, 0, 7, 8);
+            CellRangeAddress region2 = new CellRangeAddress(0, 0, 9, 10);
             for (int i = region2.FirstRow; i <= region2.LastRow; i++)
             {
                 IRow row2 = HSSFCellUtil.GetRow(i, sheet1);
@@ -184,7 +189,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                     singleCell2.CellStyle = ContentStyle;
                 }
             }
-            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 7, 8));
+            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 9, 10));
 
             #endregion
 
@@ -199,37 +204,46 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             //添加样式
             cell.CellStyle = ContentStyle;
 
-            var cell2 = tableTitleRow.CreateCell(1);
-            cell2.SetCellValue("签到日期");
+            int cellNum = 1;
+            var cell2 = tableTitleRow.CreateCell(cellNum++);
+            cell2.SetCellValue("所属部门");
             cell2.CellStyle = ContentStyle;
 
-            var cell3 = tableTitleRow.CreateCell(2);
-            cell3.SetCellValue("上班时间");
+            var cell3= tableTitleRow.CreateCell(cellNum++);
+            cell3.SetCellValue("班次名称");
             cell3.CellStyle = ContentStyle;
 
-            var cell4 = tableTitleRow.CreateCell(3);
-            cell4.SetCellValue("上班外出事由");
+            var cell4 = tableTitleRow.CreateCell(cellNum++);
+            cell4.SetCellValue("签到日期");
             cell4.CellStyle = ContentStyle;
 
-            var cell5 = tableTitleRow.CreateCell(4);
-            cell5.SetCellValue("上班打卡位置");
+            var cell5 = tableTitleRow.CreateCell(cellNum++);
+            cell5.SetCellValue("上班时间");
             cell5.CellStyle = ContentStyle;
 
-            var cell6 = tableTitleRow.CreateCell(5);
-            cell6.SetCellValue("下班时间");
+            var cell6 = tableTitleRow.CreateCell(cellNum++);
+            cell6.SetCellValue("上班外出事由");
             cell6.CellStyle = ContentStyle;
 
-            var cell7 = tableTitleRow.CreateCell(6);
-            cell7.SetCellValue("下班外出事由");
+            var cell7 = tableTitleRow.CreateCell(cellNum++);
+            cell7.SetCellValue("上班打卡位置");
             cell7.CellStyle = ContentStyle;
 
-            var cell8 = tableTitleRow.CreateCell(7);
-            cell8.SetCellValue("下班打卡位置");
+            var cell8 = tableTitleRow.CreateCell(cellNum++);
+            cell8.SetCellValue("下班时间");
             cell8.CellStyle = ContentStyle;
 
-            var cell9 = tableTitleRow.CreateCell(8);
-            cell9.SetCellValue("签到类型");
+            var cell9 = tableTitleRow.CreateCell(cellNum++);
+            cell9.SetCellValue("下班外出事由");
             cell9.CellStyle = ContentStyle;
+
+            var cell10 = tableTitleRow.CreateCell(cellNum++);
+            cell10.SetCellValue("下班打卡位置");
+            cell10.CellStyle = ContentStyle;
+
+            var cell11 = tableTitleRow.CreateCell(cellNum++);
+            cell11.SetCellValue("签到类型");
+            cell11.CellStyle = ContentStyle;
 
             //遍历数据
             for (int i = 0; i < dt.Result.Count; i++)
@@ -245,36 +259,44 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 rowCell1.CellStyle = ContentStyle;
 
                 var rowCell2 = row.CreateCell(col++);
-                rowCell2.SetCellValue(dt.Result[i].DateYMD);
+                rowCell2.SetCellValue(dt.Result[i].GroupName);
                 rowCell2.CellStyle = ContentStyle;
 
                 var rowCell3 = row.CreateCell(col++);
-                rowCell3.SetCellValue(dt.Result[i].DateWork);
+                rowCell3.SetCellValue(dt.Result[i].KqShiftName);
                 rowCell3.CellStyle = ContentStyle;
 
                 var rowCell4 = row.CreateCell(col++);
-                rowCell4.SetCellValue(dt.Result[i].OutgoingCauseWork);
+                rowCell4.SetCellValue(dt.Result[i].DateYMD);
                 rowCell4.CellStyle = ContentStyle;
 
                 var rowCell5 = row.CreateCell(col++);
-                rowCell5.SetCellValue(dt.Result[i].QDPostionWork);
+                rowCell5.SetCellValue(dt.Result[i].DateWork);
                 rowCell5.CellStyle = ContentStyle;
 
                 var rowCell6 = row.CreateCell(col++);
-                rowCell6.SetCellValue(dt.Result[i].DateColsing);
+                rowCell6.SetCellValue(dt.Result[i].OutgoingCauseWork);
                 rowCell6.CellStyle = ContentStyle;
 
                 var rowCell7 = row.CreateCell(col++);
-                rowCell7.SetCellValue(dt.Result[i].OutgoingCauseClosing);
+                rowCell7.SetCellValue(dt.Result[i].QDPostionWork);
                 rowCell7.CellStyle = ContentStyle;
 
                 var rowCell8 = row.CreateCell(col++);
-                rowCell8.SetCellValue(dt.Result[i].QDPostionClosing);
+                rowCell8.SetCellValue(dt.Result[i].DateColsing);
                 rowCell8.CellStyle = ContentStyle;
 
                 var rowCell9 = row.CreateCell(col++);
-                rowCell9.SetCellValue(dt.Result[i].QDType);
+                rowCell9.SetCellValue(dt.Result[i].OutgoingCauseClosing);
                 rowCell9.CellStyle = ContentStyle;
+
+                var rowCell10 = row.CreateCell(col++);
+                rowCell10.SetCellValue(dt.Result[i].QDPostionClosing);
+                rowCell10.CellStyle = ContentStyle;
+
+                var rowCell11 = row.CreateCell(col++);
+                rowCell11.SetCellValue(dt.Result[i].QDType);
+                rowCell11.CellStyle = ContentStyle;
             }
 
             //创建一个ms流对象
@@ -353,16 +375,18 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             ContentStyle.SetFont(Contentfont);
 
             //设置列的宽度
-            sheet1.SetColumnWidth(0, 30 * 150);
-            sheet1.SetColumnWidth(1, 30 * 250);
-            sheet1.SetColumnWidth(2, 30 * 150);
-            sheet1.SetColumnWidth(3, 30 * 150);
-            sheet1.SetColumnWidth(4, 30 * 150);
-            sheet1.SetColumnWidth(5, 30 * 150);
-            sheet1.SetColumnWidth(6, 30 * 150);
-            sheet1.SetColumnWidth(7, 30 * 150);
-            sheet1.SetColumnWidth(8, 30 * 150);
-            sheet1.SetColumnWidth(9, 30 * 150);
+            int sheetWidthNum = 0;
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 250);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
+            sheet1.SetColumnWidth(sheetWidthNum++, 30 * 150);
 
             #region 第一行
 
@@ -395,13 +419,13 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             cellTitl.SetCellValue(titleName);
 
 
-            var cellTitl2 = row0.CreateCell(5);
+            var cellTitl2 = row0.CreateCell(6);
 
             cellTitl2.SetCellValue(date);
 
             //解决标题只有第一列有部分边框的问题
 
-            CellRangeAddress region = new CellRangeAddress(0, 0, 0, 4);
+            CellRangeAddress region = new CellRangeAddress(0, 0, 0, 5);
             for (int i = region.FirstRow; i <= region.LastRow; i++)
             {
                 IRow row1 = HSSFCellUtil.GetRow(i, sheet1);
@@ -417,9 +441,9 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             //设置一个合并单元格区域，使用上下左右定义CellRangeAddress区域
             //CellRangeAddress四个参数为：起始行，结束行，起始列，结束列
             //--sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 34));
-            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 4));
+            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 0, 5));
 
-            CellRangeAddress region2 = new CellRangeAddress(0, 0, 5, 6);
+            CellRangeAddress region2 = new CellRangeAddress(0, 0, 6, 7);
             for (int i = region2.FirstRow; i <= region2.LastRow; i++)
             {
                 IRow row2 = HSSFCellUtil.GetRow(i, sheet1);
@@ -430,13 +454,13 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                     singleCell2.CellStyle = ContentStyle;
                 }
             }
-            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 5, 6));
+            sheet1.AddMergedRegion(new CellRangeAddress(0, 0, 6, 7));
 
             #endregion
 
 
 
-            //创建第2行
+            //创建第2行2
             IRow tableTitleRow = sheet1.CreateRow(1);
             //创建第2行中的第一列
             var cell = tableTitleRow.CreateCell(0);
@@ -445,29 +469,34 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             //添加样式
             cell.CellStyle = ContentStyle;
 
-            var cell2 = tableTitleRow.CreateCell(1);
-            cell2.SetCellValue("考勤班次名称");
+            int cellNum = 1;
+            var cell2 = tableTitleRow.CreateCell(cellNum++);
+            cell2.SetCellValue("所属部门");
             cell2.CellStyle = ContentStyle;
 
-            var cell3 = tableTitleRow.CreateCell(2);
-            cell3.SetCellValue("正常天数");
+            var cell3 = tableTitleRow.CreateCell(cellNum++);
+            cell3.SetCellValue("考勤班次名称");
             cell3.CellStyle = ContentStyle;
 
-            var cell4 = tableTitleRow.CreateCell(3);
-            cell4.SetCellValue("迟到天数");
+            var cell4 = tableTitleRow.CreateCell(cellNum++);
+            cell4.SetCellValue("正常天数");
             cell4.CellStyle = ContentStyle;
 
-            var cell5 = tableTitleRow.CreateCell(4);
-            cell5.SetCellValue("早退");
+            var cell5 = tableTitleRow.CreateCell(cellNum++);
+            cell5.SetCellValue("迟到天数");
             cell5.CellStyle = ContentStyle;
 
-            var cell6 = tableTitleRow.CreateCell(5);
-            cell6.SetCellValue("缺勤");
+            var cell6 = tableTitleRow.CreateCell(cellNum++);
+            cell6.SetCellValue("早退");
             cell6.CellStyle = ContentStyle;
 
-            var cell7 = tableTitleRow.CreateCell(6);
-            cell7.SetCellValue("缺卡");
+            var cell7 = tableTitleRow.CreateCell(cellNum++);
+            cell7.SetCellValue("缺勤");
             cell7.CellStyle = ContentStyle;
+
+            var cell8 = tableTitleRow.CreateCell(cellNum++);
+            cell8.SetCellValue("缺卡");
+            cell8.CellStyle = ContentStyle;
 
         
 
@@ -487,28 +516,32 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 rowCell1.CellStyle = ContentStyle;
 
                 var rowCell2 = row.CreateCell(col++);
-                rowCell2.SetCellValue(dt.Result[i].KqShiftName);
+                rowCell2.SetCellValue(dt.Result[i].GroupName);
                 rowCell2.CellStyle = ContentStyle;
 
                 var rowCell3 = row.CreateCell(col++);
-                rowCell3.SetCellValue(dt.Result[i].NormalDay);
+                rowCell3.SetCellValue(dt.Result[i].KqShiftName);
                 rowCell3.CellStyle = ContentStyle;
 
                 var rowCell4 = row.CreateCell(col++);
-                rowCell4.SetCellValue(dt.Result[i].LateDay);
+                rowCell4.SetCellValue(dt.Result[i].NormalDay);
                 rowCell4.CellStyle = ContentStyle;
 
                 var rowCell5 = row.CreateCell(col++);
-                rowCell5.SetCellValue(dt.Result[i].LeaveEarlyDay);
+                rowCell5.SetCellValue(dt.Result[i].LateDay);
                 rowCell5.CellStyle = ContentStyle;
 
                 var rowCell6 = row.CreateCell(col++);
-                rowCell6.SetCellValue(dt.Result[i].AbsenteeismDay);
+                rowCell6.SetCellValue(dt.Result[i].LeaveEarlyDay);
                 rowCell6.CellStyle = ContentStyle;
 
                 var rowCell7 = row.CreateCell(col++);
-                rowCell7.SetCellValue(dt.Result[i].AbnormalDay);
+                rowCell7.SetCellValue(dt.Result[i].AbsenteeismDay);
                 rowCell7.CellStyle = ContentStyle;
+
+                var rowCell8 = row.CreateCell(col++);
+                rowCell8.SetCellValue(dt.Result[i].AbnormalDay);
+                rowCell8.CellStyle = ContentStyle;
 
               
 

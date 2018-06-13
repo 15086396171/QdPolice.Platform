@@ -14,20 +14,26 @@
             <div class="form-group">
                 <a href="@Url.Action("Index","KqStatistic",new {Area="KqStatistics"})" class="btn btn-default"><i class="fa fa-close">@L("Back")</i></a>
                 <label>@L("User.Name")</label>
-                <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 250px;" />
+                <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 150px;" />
                 <label>@L("StartTime")</label>
                 <input type="text" Id="StartTime" onclick="laydate()" value="@ViewBag.StartTime" class="form-control" style="width: 150px;" />
                 <label>@L("EndTime")</label>
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
+                <label>@L("KqShift.Name")</label>
+                <select class="form-control valid" id="KqShiftName" name="KqShiftName" aria-invalid="false">
+                    @foreach (var item in ViewBag.KqShiftName)
+                    {
+                        <option value="@item.ShiftName">@item.ShiftName</option>
 
-                签到类型：
+                    }
+                </select>
+                <label>@L("QDType")</label>
                 <select class="form-control valid" id="IsUnusual" name="IsUnusual" aria-invalid="false">
-
                     <option value="所有">所有</option>
                     <option value="正常">正常</option>
                     <option value="异常">异常</option>
-
                 </select>
+
 
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
@@ -46,6 +52,8 @@
             <thead>
                 <tr>
                     <th>@L("User.Name")</th>
+                    <th>@L("GroupName")</th>
+                    <th>@L("KqShift.Name")</th>
                     <th>@L("QDDate")</th>
                     <th>@L("KqShift.WorkTime")</th>
                     <th>@L("OutgoingCauseWork")</th>

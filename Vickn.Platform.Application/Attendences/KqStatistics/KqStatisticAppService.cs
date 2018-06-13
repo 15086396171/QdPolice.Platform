@@ -27,15 +27,20 @@ namespace Vickn.Platform.Attendences.KqStatistics
         private readonly IRepository<User, long> _Usersrepository;
         private readonly IRepository<KqShift, long> _KqShiftUnitRepository;
         private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
+        private readonly IRepository<OrganizationUnit, long> _OrganizationUnitRepository;
+        private readonly IRepository<UserOrganizationUnit, long> _UserOrganizationUnitRepository;
+        private readonly IRepository<User, long> _UsersRepository;
         private IKqStatisticAppService _kqStatisticAppServiceImplementation;
 
-        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository, IRepository<User, long> Usersrepository, IRepository<KqShift, long> KqShiftUnitRepository, IRepository<KqShiftUser, long> KqShiftUserRepository)
+        public KqStatisticAppService(IRepository<KqDetail> KqDetailRepository, IRepository<User, long> Usersrepository, IRepository<KqShift, long> KqShiftUnitRepository, IRepository<KqShiftUser, long> KqShiftUserRepository, IRepository<OrganizationUnit, long> OrganizationUnitRepository, IRepository<UserOrganizationUnit, long> UserOrganizationUnitRepository, IRepository<User, long> UsersRepository)
         {
             _KqDetailRepository = KqDetailRepository;
             _Usersrepository = Usersrepository;
             _KqShiftUnitRepository = KqShiftUnitRepository;
             _KqShiftUserRepository = KqShiftUserRepository;
-
+            _OrganizationUnitRepository = OrganizationUnitRepository;
+            _UserOrganizationUnitRepository = UserOrganizationUnitRepository;
+            _UsersRepository = UsersRepository;
         }
 
 
@@ -184,7 +189,22 @@ namespace Vickn.Platform.Attendences.KqStatistics
                                   group d by d.UserName).ToList();
             #endregion
 
+            #region 用户对应部门
 
+            var groups = _OrganizationUnitRepository.GetAll();
+            var userGroups = _UserOrganizationUnitRepository.GetAll();
+            var users = _UsersRepository.GetAll();
+
+            //用户对应部门列表
+            var userGroupList = from a in groups
+                                join b in userGroups on a.Id equals b.OrganizationUnitId
+                                join c in users on b.UserId equals c.Id
+                                select new
+                                {
+                                    c.UserName,
+                                    a.DisplayName
+                                };
+            #endregion
 
             #region 统计整理考勤数据
 
@@ -195,11 +215,12 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
                 list.UserName = entityUserlist[i].Key;
                 var userName = entityUserlist[i].Key;
-
                 long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
                 long KqShiftId = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId).KqShiftId;
                 list.KqShiftName = _KqShiftUnitRepository.FirstOrDefault(p => p.Id == KqShiftId).ShiftName;
                 list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
+                var groupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
+                list.GroupName = groupName;
                 list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
                 list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
                 list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
@@ -273,13 +294,47 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             #endregion
 
+            #region 用户对应部门
 
+            var groups = _OrganizationUnitRepository.GetAll();
+            var userGroups = _UserOrganizationUnitRepository.GetAll();
+            var users = _UsersRepository.GetAll();
+
+            //用户对应部门列表
+            var userGroupList = from a in groups
+                                join b in userGroups on a.Id equals b.OrganizationUnitId
+                                join c in users on b.UserId equals c.Id
+                                select new
+                                {
+                                    c.UserName,
+                                    a.DisplayName
+                                };
+            #endregion
+
+            #region 用户对应考勤班次
+            var kqShifts = _KqShiftUnitRepository.GetAll();
+            var kqShiftUsers = _KqShiftUserRepository.GetAll();
+            //用户对应考勤班次列表
+            var userKqShiftList = from a in kqShifts
+                                  join b in kqShiftUsers on a.Id equals b.KqShiftId
+                                  join c in users on b.UserId equals c.Id
+                                  select new
+                                  {
+                                      c.UserName,
+                                      a.ShiftName
+                                  };
+            #endregion
+
+            //返回实体数据遍历
             List<KqDetailStatisticListDto> kqList = new List<KqDetailStatisticListDto>();
 
             for (int i = 0; i < entity.Count(); i++)
             {
                 KqDetailStatisticListDto list = new KqDetailStatisticListDto();
                 list.UserName = entity[i].UserName;
+                var userName= entity[i].UserName;
+                list.GroupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
+                list.KqShiftName = userKqShiftList.FirstOrDefault(p => p.UserName == userName).ShiftName;
                 list.DateYMD = entity[i].QDWorkTime.ToString("yyyy-MM-dd");
                 list.DateWork = entity[i].QDWorkTime.ToString("HH:mm:ss");
                 if (entity[i].QDPostionWork != "")
@@ -379,6 +434,11 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             }
 
+            if (!string.IsNullOrEmpty(input.KqShiftName))
+            {
+                kqList = kqList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
+            }
+          
 
             ////TODO:根据传入的参数添加过滤条件
             int kqStatisticCount = kqList.Count();
@@ -433,6 +493,36 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             #endregion
 
+            #region 用户对应部门
+
+            var groups = _OrganizationUnitRepository.GetAll();
+            var userGroups = _UserOrganizationUnitRepository.GetAll();
+            var users = _UsersRepository.GetAll();
+
+            //用户对应部门列表
+            var userGroupList = from a in groups
+                                join b in userGroups on a.Id equals b.OrganizationUnitId
+                                join c in users on b.UserId equals c.Id
+                                select new
+                                {
+                                    c.UserName,
+                                    a.DisplayName
+                                };
+            #endregion
+
+            #region 用户对应考勤班次
+            var kqShifts = _KqShiftUnitRepository.GetAll();
+            var kqShiftUsers = _KqShiftUserRepository.GetAll();
+            //用户对应考勤班次列表
+            var userKqShiftList = from a in kqShifts
+                                  join b in kqShiftUsers on a.Id equals b.KqShiftId
+                                  join c in users on b.UserId equals c.Id
+                                  select new
+                                  {
+                                      c.UserName,
+                                      a.ShiftName
+                                  };
+            #endregion
 
             List<KqDetailStatisticListDto> kqList = new List<KqDetailStatisticListDto>();
 
@@ -440,6 +530,9 @@ namespace Vickn.Platform.Attendences.KqStatistics
             {
                 KqDetailStatisticListDto list = new KqDetailStatisticListDto();
                 list.UserName = entity[i].UserName;
+                var userName = entity[i].UserName;
+                list.GroupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
+                list.KqShiftName = userKqShiftList.FirstOrDefault(p => p.UserName == userName).ShiftName;
                 list.DateYMD = entity[i].QDWorkTime.ToString("yyyy-MM-dd");
                 list.DateWork = entity[i].QDWorkTime.ToString("HH:mm:ss");
                 if (entity[i].QDPostionWork != "")
@@ -451,8 +544,6 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 {
                     list.QDPostionWork = entity[i].QDPostionWork;
                 }
-
-
                 list.OutgoingCauseWork = entity[i].OutgoingCauseWork;
                 list.DateColsing = entity[i].QDClosingTime.ToString("HH:mm:ss");
 
@@ -533,11 +624,12 @@ namespace Vickn.Platform.Attendences.KqStatistics
                     kqList.Add(list);
                 }
 
-
-
             }
 
-
+            if (!string.IsNullOrEmpty(input.KqShiftName))
+            {
+                kqList = kqList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
+            }
             ////TODO:根据传入的参数添加过滤条件
             //var kqStatistic = kqList.OrderBy(p => p.UserName).ToList();
 
@@ -595,7 +687,22 @@ namespace Vickn.Platform.Attendences.KqStatistics
                                   group d by d.UserName).ToList();
             #endregion
 
+            #region 用户对应部门
 
+            var groups = _OrganizationUnitRepository.GetAll();
+            var userGroups = _UserOrganizationUnitRepository.GetAll();
+            var users = _UsersRepository.GetAll();
+
+            //用户对应部门列表
+            var userGroupList = from a in groups
+                                join b in userGroups on a.Id equals b.OrganizationUnitId
+                                join c in users on b.UserId equals c.Id
+                                select new
+                                {
+                                    c.UserName,
+                                    a.DisplayName
+                                };
+            #endregion
 
             #region 统计整理考勤数据
 
@@ -610,6 +717,8 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
                 long KqShiftId = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId).KqShiftId;
                 list.KqShiftName = _KqShiftUnitRepository.FirstOrDefault(p => p.Id == KqShiftId).ShiftName;
+                var groupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
+                list.GroupName = groupName;
                 list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
                 list.LateDay = entity.Count(p => p.QDType == 1 && p.UserName == userName);
                 list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);

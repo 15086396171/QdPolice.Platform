@@ -104,13 +104,13 @@ function DataList() {
 
         fileds: [
             { "data": "userName" },
+            { "data": "groupName" },
             { "data": "kqShiftName" },
             { "data": "normalDay" },
             { "data": "lateDay" },
             { "data": "leaveEarlyDay" },
             { "data": "absenteeismDay" },
             { "data": "abnormalDay" },
-
             {
                 "data": "id",
                 render: function (data, type, row, meta) {
@@ -173,7 +173,8 @@ function Export() {
     var UserName = $("#UserName").val();
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
-    var KqShiftName=$("#KqShiftName").val();
+    var KqShiftName = $("#KqShiftName").val();
+    var KqShiftName = $("#KqShiftName").val();
     window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&KqShiftName=" + KqShiftName;
 
 }

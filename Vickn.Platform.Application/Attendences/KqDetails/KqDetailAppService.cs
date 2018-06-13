@@ -7,11 +7,13 @@ using System.Text;
 using System.Threading.Tasks;
 using Abp.Application.Services.Dto;
 using Abp.Authorization;
+using Abp.Authorization.Users;
 using Abp.AutoMapper;
 using Abp.Collections.Extensions;
 using Abp.Domain.Repositories;
 using Abp.Extensions;
 using Abp.Linq.Extensions;
+using Abp.Organizations;
 using Vickn.Platform.Attendances.KQDetails;
 using Vickn.Platform.Attendances.KqMachines;
 using Vickn.Platform.Attendances.KqShifts;
@@ -28,17 +30,21 @@ namespace Vickn.Platform.Attendences.KqDetails
         private readonly IRepository<KqShift, long> _KqShiftRepository;
         private readonly IRepository<KqShiftUser, long> _KqShiftUserRepository;
         private readonly IRepository<User, long> _UsersRepository;
+        private readonly IRepository<OrganizationUnit, long> _OrganizationUnitRepository;
+        private readonly IRepository<UserOrganizationUnit, long> _UserOrganizationUnitRepository;
 
         /// <summary>
         /// 初始化考勤班次服务实例
         /// </summary>
-        public KqDetailAppService(IRepository<KqAllDetail> KqAllDeatilRepository, IRepository<KqDetail> KqDetailRepository, IRepository<KqShift, long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository, IRepository<User, long> UsersRepository)
+        public KqDetailAppService(IRepository<KqAllDetail> KqAllDeatilRepository, IRepository<KqDetail> KqDetailRepository, IRepository<KqShift, long> KqShiftRepository, IRepository<KqShiftUser, long> KqShiftUserRepository, IRepository<User, long> UsersRepository, IRepository<OrganizationUnit, long> OrganizationUnitRepository, IRepository<UserOrganizationUnit, long> UserOrganizationUnitRepository)
         {
             _KqAllDeatilRepository = KqAllDeatilRepository;
             _KqDetailRepository = KqDetailRepository;
             _KqShiftRepository = KqShiftRepository;
             _KqShiftUserRepository = KqShiftUserRepository;
             _UsersRepository = UsersRepository;
+            _OrganizationUnitRepository = OrganizationUnitRepository;
+            _UserOrganizationUnitRepository = UserOrganizationUnitRepository;
         }
 
         /// <summary>
@@ -257,7 +263,7 @@ namespace Vickn.Platform.Attendences.KqDetails
             //警务通NFC打卡
             if (input.IsNFC == 0)
             {
-               
+
                 KqRecordDto.QDPostionClosing = input.QDPostion;
                 KqRecordDto.OutgoingCauseClosing = input.OutgoingCause;
             }
@@ -324,6 +330,7 @@ namespace Vickn.Platform.Attendences.KqDetails
 
             var query = _KqAllDeatilRepository.GetAll();
 
+
             //TODO:根据传入的参数添加过滤条件
             query = query.WhereIf(!input.UserName.IsNullOrEmpty(), p => p.UserName.Contains(input.UserName));
 
@@ -335,13 +342,58 @@ namespace Vickn.Platform.Attendences.KqDetails
             if (input.IsNFC != "所有")
             {
                 int IsNFC = Convert.ToInt32(input.IsNFC);
-                query = query.Where(p => p.IsNFC== IsNFC);
+                query = query.Where(p => p.IsNFC == IsNFC);
             }
 
+            var groups = _OrganizationUnitRepository.GetAll();
+            var userGroups = _UserOrganizationUnitRepository.GetAll();
+            var users = _UsersRepository.GetAll();
+            var kqShifts = _KqShiftRepository.GetAll();
+            var kqShiftUsers = _KqShiftUserRepository.GetAll();
 
-            var kqdetailCount = await query.CountAsync();
+            //用户对应部门列表
+            var userGroupList = from a in groups
+                                join b in userGroups on a.Id equals b.OrganizationUnitId
+                                join c in users on b.UserId equals c.Id
+                                select new
+                                {
+                                    c.UserName,
+                                    a.DisplayName
+                                };
 
-            var kqdetails = await query.OrderBy(input.Sorting)
+            //用户对应考勤班次列表
+            var userKqShiftList = from a in kqShifts
+                                  join b in kqShiftUsers on a.Id equals b.KqShiftId
+                                  join c in users on b.UserId equals c.Id
+                                  select new
+                                  {
+                                      c.UserName,
+                                      a.ShiftName
+                                  };
+            //返回结果列表
+            var querys = from a in query
+                         join b in userGroupList on a.UserName equals b.UserName
+                         join c in userKqShiftList on a.UserName equals c.UserName
+                         select new KqDetailEditDto
+                         {
+                             Id = a.Id,
+                             UserName = a.UserName,
+                             QDTime = a.QDTime,
+                             QDPostion = a.QDPostion,
+                             OutgoingCause = a.OutgoingCause,
+                             IsNFC = a.IsNFC,
+                             OrganizationUnitName = b.DisplayName,
+                             ShiftName=c.ShiftName
+                         };
+
+            if (!string.IsNullOrEmpty(input.KqShiftName))
+            {
+                querys = querys.Where(p => p.ShiftName == input.KqShiftName);
+            }
+
+            var kqdetailCount = await querys.CountAsync();
+
+            var kqdetails = await querys.OrderBy(input.Sorting)
                 .PageBy(input).ToListAsync();
 
 
@@ -363,7 +415,7 @@ namespace Vickn.Platform.Attendences.KqDetails
         public async Task<ResultDto> CreateWeiXingAllDetailAsync(KqDetailWeiXingDto input)
         {
             //获得用户信息
-            
+
             string NowUserName = input.UserName;
             //当前打卡时间
             DateTime NowTime = DateTime.Now;
@@ -383,7 +435,7 @@ namespace Vickn.Platform.Attendences.KqDetails
 
 
             #region 查看此用户是否有绑定的考勤班次
-            long userid =  _UsersRepository.FirstOrDefault(p=>p.UserName==NowUserName).Id;
+            long userid = _UsersRepository.FirstOrDefault(p => p.UserName == NowUserName).Id;
             var KqShiftUser = await _KqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == userid);
             if (KqShiftUser == null)
             {

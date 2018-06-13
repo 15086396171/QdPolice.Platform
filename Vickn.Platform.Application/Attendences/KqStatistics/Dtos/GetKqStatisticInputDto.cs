@@ -34,7 +34,12 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// 签到班次名称
         /// </summary>
         public string KqShiftName { get; set; }
-        
+
+        /// <summary>
+        /// 部门名称
+        /// </summary>
+        public string GroupName { get; set; }
+
 
         /// <summary>
         /// 用于排序的默认值

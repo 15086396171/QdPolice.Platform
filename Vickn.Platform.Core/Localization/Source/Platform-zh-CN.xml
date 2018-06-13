@@ -274,6 +274,8 @@
     <text name="KqYear" value="考勤年统计" />
     <text name="Export" value="导出" />
 
+    <text name="OutgoingCause" value="外出事由" />
+
     <!-- 考勤管理 end-->
 
     <!-- 岗位管理 -->
