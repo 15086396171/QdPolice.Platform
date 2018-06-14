@@ -1,134 +1,138 @@
 ﻿
+(function () {
+    $(function () {
 
 
-$(function () {
 
-    var $dataTable = $(".dataTable");
-    var _kqstatisticsService = abp.services.app.kqstatistic;
+        var $dataTable = $(".dataTable");
+        var _kqstatisticsService = abp.services.app.kqstatistic;
 
-    var option = {
-        listAction: {
-            url: abp.appPath + "api/services/app/kqstatistic/getKqDetailStatisticAsync",
-            filters: [
+        var option = {
+            listAction: {
+                url: abp.appPath + "api/services/app/kqstatistic/getKqDetailStatisticAsync",
+                filters: [
+                    {
+                        key: "UserName",
+                        selector: $("#UserName")
+                    },
+                    {
+                        key: "StartTime",
+                        selector: $("#StartTime")
+                    },
+                    {
+                        key: "EndTime",
+                        selector: $("#EndTime")
+                    }
+                    ,
+                    {
+                        key: "IsUnusual",
+                        selector: $("#IsUnusual")
+                    },
+                    {
+                        key: "KqShiftName",
+                        selector: $("#KqShiftName")
+                    }
+
+
+
+                ]
+            },
+
+            fileds: [
+                { "data": "userName" },
+                { "data": "groupName" },
+                { "data": "kqShiftName" },
+                { "data": "dateYMD" },
+                { "data": "dateWork" },
                 {
-                    key: "UserName",
-                    selector: $("#UserName")
+                    "data": "outgoingCauseWork",
+                    render: function (data, type, row, meta) {
+
+                        var str = GetStrLength(data);
+                        if (str <= 16) return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseWork" >' + data + ' </a></div>').html();
+                        else return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseWork" >' + data.substring(0, 9) + "..." + ' </a></div>').html();
+                    }
                 },
                 {
-                    key: "StartTime",
-                    selector: $("#StartTime")
+                    "data": "qdPostionWork",
+                    render: function (data, type, row, meta) {
+
+                        return $('<div ><a title="' + data + '" class="m-l-xs nodecoration qdpostionwork" >' + data.substring(0, 9) + "..." + ' </a></div>').html();
+
+                    }
+                },
+                { "data": "dateColsing" },
+                {
+                    "data": "outgoingCauseClosing",
+                    render: function (data, type, row, meta) {
+                        var str = GetStrLength(data);
+                        if (str <= 16) return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseClosing" >' + data + ' </a></div>').html();
+                        return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseClosing">' + data.substring(0, 9) + "..." + ' </a></div>').html();
+                    }
                 },
                 {
-                    key: "EndTime",
-                    selector: $("#EndTime")
-                }
-                ,
+                    "data": "qdPostionClosing",
+                    render: function (data, type, row, meta) {
+                        return $('<div><a title="' + data + '" class="m-l-xs nodecoration qdpostionclosing">' + data.substring(0, 9) + "..." + ' </a></div>').html();
+                    }
+                },
+                { "data": "qdType" }
+
+
+            ],
+
+            methods: [
                 {
-                    key: "IsUnusual",
-                    selector: $("#IsUnusual")
+                    actionName: "qdpostionworkAction",
+                    selector: "a.qdpostionwork",
+                    event: "click",
+                    action: function (data, tr) {
+                        // TODO:处理自定义事件
+                        SelectContent(data.qdPostionWork)
+                    },
                 },
                 {
-                    key: "KqShiftName",
-                    selector: $("#KqShiftName")
-                }
-
-                
-
-            ]
-        },
-
-        fileds: [
-            { "data": "userName" },
-            { "data": "groupName" },
-            { "data": "kqShiftName" },
-            { "data": "dateYMD" },
-            { "data": "dateWork" },
-            {
-                "data": "outgoingCauseWork",
-                render: function (data, type, row, meta) {
-
-                    var str = GetStrLength(data);
-                    if (str <= 16) return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseWork" >' + data + ' </a></div>').html();
-                    else return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseWork" >' + data.substring(0, 9) + "..." + ' </a></div>').html();
-                }
-            },
-            {
-                "data": "qdPostionWork",
-                render: function (data, type, row, meta) {
-
-                    return $('<div ><a title="' + data + '" class="m-l-xs nodecoration qdpostionwork" >' + data.substring(0, 9) + "..." + ' </a></div>').html();
-
-                }
-            },
-            { "data": "dateColsing" },
-            {
-                "data": "outgoingCauseClosing",
-                render: function (data, type, row, meta) {
-                    var str = GetStrLength(data);
-                    if (str <= 16) return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseClosing" >' + data + ' </a></div>').html();
-                    return $('<div><a title="' + data + '" class="m-l-xs nodecoration outgoingCauseClosing">' + data.substring(0, 9) + "..." + ' </a></div>').html();
-                }
-            },
-            {
-                "data": "qdPostionClosing",
-                render: function (data, type, row, meta) {
-                    return $('<div><a title="' + data + '" class="m-l-xs nodecoration qdpostionclosing">' + data.substring(0, 9) + "..." + ' </a></div>').html();
-                }
-            },
-            { "data": "qdType" }
-
-
-        ],
-
-        methods: [
-            {
-                actionName: "qdpostionworkAction",
-                selector: "a.qdpostionwork",
-                event: "click",
-                action: function (data, tr) {
-                    // TODO:处理自定义事件
-                    SelectContent(data.qdPostionWork)
+                    actionName: "qdpostionclosingAction",
+                    selector: "a.qdpostionclosing",
+                    event: "click",
+                    action: function (data, tr) {
+                        // TODO:处理自定义事件
+                        SelectContent(data.qdPostionClosing)
+                    },
                 },
-            },
-            {
-                actionName: "qdpostionclosingAction",
-                selector: "a.qdpostionclosing",
-                event: "click",
-                action: function (data, tr) {
-                    // TODO:处理自定义事件
-                    SelectContent(data.qdPostionClosing)
+                {
+                    actionName: "outgoingCauseWorkAction",
+                    selector: "a.outgoingCauseWork",
+                    event: "click",
+                    action: function (data, tr) {
+                        // TODO:处理自定义事件
+                        SelectContent(data.outgoingCauseWork)
+                    },
                 },
-            },
-            {
-                actionName: "outgoingCauseWorkAction",
-                selector: "a.outgoingCauseWork",
-                event: "click",
-                action: function (data, tr) {
-                    // TODO:处理自定义事件
-                    SelectContent(data.outgoingCauseWork)
+                {
+                    actionName: "outgoingCauseClosingAction",
+                    selector: "a.outgoingCauseClosing",
+                    event: "click",
+                    action: function (data, tr) {
+                        // TODO:处理自定义事件
+                        SelectContent(data.outgoingCauseClosing)
+                    },
                 },
-            },
-            {
-                actionName: "outgoingCauseClosingAction",
-                selector: "a.outgoingCauseClosing",
-                event: "click",
-                action: function (data, tr) {
-                    // TODO:处理自定义事件
-                    SelectContent(data.outgoingCauseClosing)
-                },
-            },
 
-        ],
+            ],
 
-        
-    }
 
-    $dataTable.createDatatable(option);
-});
+        }
+
+        $dataTable.createDatatable(option);
+    });
+
+})()
+
 
 //弹框查看详情
 function SelectContent(data) {
-    layer.msg(''+data+'', {
+    layer.msg('' + data + '', {
         skin: 'layui-layer-molv' //样式类名  自定义样式
         , closeBtn: 1    // 是否显示关闭按钮
         , anim: 1 //动画类型
@@ -141,19 +145,26 @@ function SelectContent(data) {
 
 //获取字符串长度
 function GetStrLength(str) {
-   
-        return str.replace(/[\u0391-\uFFE5]/g, "aa").length;  //先把中文替换成两个字节的英文，在计算长度
-   
+
+    return str.replace(/[\u0391-\uFFE5]/g, "aa").length;  //先把中文替换成两个字节的英文，在计算长度
+
 }
 
+//导出
 function Export() {
-   
+
     var UserName = $("#UserName").val();
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
     var IsUnusual = $("#IsUnusual").val();
     var KqShiftName = $("#KqShiftName").val();
     window.location.href = "/KqStatistics/KqStatistic/KqDetailExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual + "&KqShiftName=" + KqShiftName;
- 
 
+
+}
+
+/*关闭当前页*/
+function closeCurrentPage() {
+    var index = parent.layer.getFrameIndex(window.name);
+    parent.layer.close(index);
 }

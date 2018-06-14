@@ -36,10 +36,10 @@
 
         if (outgoincause == "") {
 
-            outgoincause = "无";
+            //outgoincause = "无";
 
-            //alert("外出事由不能为空");
-            //return;
+            alert("外出事由不能为空");
+            return;
 
         }
 

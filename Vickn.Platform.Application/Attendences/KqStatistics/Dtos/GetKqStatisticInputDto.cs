@@ -25,10 +25,6 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// </summary>
         public DateTime? EndTime { get; set; }
 
-        /// <summary>
-        /// 签到类型
-        /// </summary>
-        public string IsUnusual { get; set; }
 
         /// <summary>
         /// 签到班次名称
@@ -40,7 +36,12 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
         /// </summary>
         public string GroupName { get; set; }
 
+        /// <summary>
+        /// 是否异常
+        /// </summary>
+        public string IsUnusual { get; set; }
 
+        
         /// <summary>
         /// 用于排序的默认值
         /// </summary>

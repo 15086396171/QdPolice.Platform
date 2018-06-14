@@ -225,17 +225,33 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 list.LeaveEarlyDay = entity.Count(p => p.QDType == 2 && p.UserName == userName);
                 list.AbsenteeismDay = entity.Count(p => p.QDType == 3 && p.UserName == userName);
                 list.AbnormalDay = entity.Count(p => p.QDType == 5 && p.UserName == userName);
-                KqStatisticList.Add(list);
 
+
+
+                KqStatisticList.Add(list);
 
             }
 
 
             #endregion
-
+            //根据考勤班次名称过滤集合
             if (!string.IsNullOrEmpty(input.KqShiftName))
             {
                 KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
+            }
+
+            //根据考勤是否异常过滤集合
+            if (input.IsUnusual == "正常")
+            {
+                KqStatisticList = KqStatisticList.Where(p => p.NormalDay != 0 && p.LateDay == 0 && p.LeaveEarlyDay == 0 && p.AbsenteeismDay == 0 && p.AbnormalDay == 0).ToList();
+            }
+            else if (input.IsUnusual == "异常")
+            {
+                KqStatisticList = KqStatisticList.Where(p=>p.LateDay != 0|| p.LeaveEarlyDay != 0 || p.AbsenteeismDay != 0 || p.AbnormalDay != 0).ToList();
+            }
+            else
+            {
+                //所有
             }
 
             ////TODO:根据传入的参数添加过滤条件
@@ -332,7 +348,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             {
                 KqDetailStatisticListDto list = new KqDetailStatisticListDto();
                 list.UserName = entity[i].UserName;
-                var userName= entity[i].UserName;
+                var userName = entity[i].UserName;
                 list.GroupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
                 list.KqShiftName = userKqShiftList.FirstOrDefault(p => p.UserName == userName).ShiftName;
                 list.DateYMD = entity[i].QDWorkTime.ToString("yyyy-MM-dd");
@@ -438,7 +454,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             {
                 kqList = kqList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
             }
-          
+
 
             ////TODO:根据传入的参数添加过滤条件
             int kqStatisticCount = kqList.Count();
@@ -733,7 +749,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             {
                 KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
             }
-         
+
 
             #endregion
             return KqStatisticList;

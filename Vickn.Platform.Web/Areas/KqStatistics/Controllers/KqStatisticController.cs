@@ -44,7 +44,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             return View();
         }
 
-        public ActionResult Detail(string UserName = "", string StartTime = "", string EndTime = "")
+        public ActionResult Detail(string UserName = "", string StartTime = "", string EndTime = "",string IsUnusual="")
         {
             if (string.IsNullOrEmpty(StartTime) || string.IsNullOrEmpty(EndTime))
             {
@@ -62,6 +62,13 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 ViewBag.EndTime = EndTime;
             }
             ViewBag.UserName = UserName;
+
+            //List<string> IsUnusuallist = new List<string>();
+            //IsUnusuallist.Add(IsUnusual);
+            //IsUnusuallist.Add("正常");
+            //IsUnusuallist.Add("异常");
+            //ViewBag.IsUnusual = IsUnusuallist;
+
             var kqshiftList = _kqShiftAppService.GetAllAsync().Result.ToList();
             ViewBag.KqShiftName = kqshiftList;
             return View();

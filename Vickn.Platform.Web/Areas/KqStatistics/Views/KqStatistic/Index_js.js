@@ -98,7 +98,12 @@ function DataList() {
                 {
                     key: "KqShiftName",
                     selector: $("#KqShiftName")
+                },
+                {
+                    key: "IsUnusual",
+                    selector: $("#IsUnusual")
                 }
+                
             ]
         },
 
@@ -134,6 +139,7 @@ function DataList() {
                 action: function (data) {
                     var StartTime = $("#StartTime").val();
                     var EndTime = $("#EndTime").val();
+                    var IsUnusual= $("#IsUnusual").val();
 
                     var index = layer.open({
                         title: "",
@@ -141,7 +147,7 @@ function DataList() {
                         area: ['90%', '550px'],
                         content: abp.appPath +
 
-                        "KqStatistics/KqStatistic/Detail?UserName=" + data.userName + "&StartTime=" + StartTime + "&EndTime=" + EndTime
+                        "KqStatistics/KqStatistic/Detail?UserName=" + data.userName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual
                     });
 
                     layer.full(index);
@@ -150,17 +156,7 @@ function DataList() {
 
         ]
 
-        //,
-        //commonMethods: [
-        //    {
-        //        actionName: "kqmonthAction",
-        //        url: abp.appPath + "api/services/app/kqstatistic/getKqMonthStatisticAsync"
-        //    },
-        //    {
-        //        actionName: "kqyearAction",
-        //        url: abp.appPath + "api/services/app/kqstatistic/getKqYearStatisticAsync"
-        //    }
-        //]
+ 
     }
 
     console.info(option);
@@ -174,7 +170,8 @@ function Export() {
     var StartTime = $("#StartTime").val();
     var EndTime = $("#EndTime").val();
     var KqShiftName = $("#KqShiftName").val();
-    var KqShiftName = $("#KqShiftName").val();
+    var IsUnusual = $("#IsUnusual").val();
+    alert(IsUnusual);
     window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&KqShiftName=" + KqShiftName;
 
 }

@@ -12,7 +12,8 @@
         <div class="form-inline">
 
             <div class="form-group">
-                <a href="@Url.Action("Index","KqStatistic",new {Area="KqStatistics"})" class="btn btn-default"><i class="fa fa-close">@L("Back")</i></a>
+
+                <button type="button" class="btn btn-default" onclick="closeCurrentPage();"><i class="fa fa-close">@L("Back")</i></button>
                 <label>@L("User.Name")</label>
                 <input type="text" placeholder="@L("FilterText")" class="form-control" id="UserName" value="@ViewBag.UserName" style="width: 150px;" />
                 <label>@L("StartTime")</label>
@@ -28,10 +29,11 @@
                     }
                 </select>
                 <label>@L("QDType")</label>
-                <select class="form-control valid" id="IsUnusual" name="IsUnusual" aria-invalid="false">
+                <select class="form-control valid" id="IsUnusual" name="IsUnusual"  aria-invalid="false">
                     <option value="所有">所有</option>
                     <option value="正常">正常</option>
                     <option value="异常">异常</option>
+              
                 </select>
 
 
