@@ -11,7 +11,9 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Vickn.Platform.Attendances.KQDetails;
+using Vickn.Platform.Attendances.KqShifts;
 using Vickn.Platform.Attendences.KqShifts;
+using Vickn.Platform.Attendences.KqShifts.Dtos;
 using Vickn.Platform.Attendences.KqStatistics;
 using Vickn.Platform.Attendences.KqStatistics.Dtos;
 using Vickn.Platform.Web.Controllers;
@@ -35,16 +37,29 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             DateTime now = DateTime.Today;
             DateTime d1 = new DateTime(now.Year, now.Month, 1);
             DateTime d2 = d1.AddMonths(1).AddDays(-1);
-      
+
             ViewBag.StartTime = d1.ToString("yyyy-MM-dd");
             ViewBag.EndTime = d2.ToString("yyyy-MM-dd");
 
+
+            KqShiftDto all = new KqShiftDto();
+            all.Id = 0;
+            all.ShiftName = "所有";
             var kqshiftList = _kqShiftAppService.GetAllAsync().Result.ToList();
+            kqshiftList.Add(all);
+            kqshiftList = kqshiftList.OrderBy(p => p.Id).ToList();
+
+            List<string> IsUnusuallist = new List<string>();
+            IsUnusuallist.Add("所有");
+            IsUnusuallist.Add("正常");
+            IsUnusuallist.Add("异常");
+            ViewBag.IsUnusuallist = IsUnusuallist;
+
             ViewBag.KqShiftName = kqshiftList;
             return View();
         }
 
-        public ActionResult Detail(string UserName = "", string StartTime = "", string EndTime = "",string IsUnusual="")
+        public ActionResult Detail(string UserName = "", string StartTime = "", string EndTime = "", string IsUnusual = "", string KqShiftName = "")
         {
             if (string.IsNullOrEmpty(StartTime) || string.IsNullOrEmpty(EndTime))
             {
@@ -63,14 +78,25 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             }
             ViewBag.UserName = UserName;
 
-            //List<string> IsUnusuallist = new List<string>();
-            //IsUnusuallist.Add(IsUnusual);
-            //IsUnusuallist.Add("正常");
-            //IsUnusuallist.Add("异常");
-            //ViewBag.IsUnusual = IsUnusuallist;
+            ViewBag.IsUnusual = IsUnusual;
+            List<string> IsUnusuallist = new List<string>();
+            IsUnusuallist.Add("所有");
+            IsUnusuallist.Add("正常");
+            IsUnusuallist.Add("异常");
+            ViewBag.IsUnusuallist = IsUnusuallist;
 
+            ViewBag.KqShiftName = KqShiftName;
+
+            KqShiftDto all = new KqShiftDto();
+            all.Id = 0;
+            all.ShiftName = "所有";
             var kqshiftList = _kqShiftAppService.GetAllAsync().Result.ToList();
-            ViewBag.KqShiftName = kqshiftList;
+            kqshiftList.Add(all);
+            kqshiftList = kqshiftList.OrderBy(p => p.Id).ToList();
+
+
+            ViewBag.KqShiftList = kqshiftList;
+
             return View();
         }
 
@@ -216,7 +242,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             cell2.SetCellValue("所属部门");
             cell2.CellStyle = ContentStyle;
 
-            var cell3= tableTitleRow.CreateCell(cellNum++);
+            var cell3 = tableTitleRow.CreateCell(cellNum++);
             cell3.SetCellValue("班次名称");
             cell3.CellStyle = ContentStyle;
 
@@ -338,7 +364,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
         }
 
 
-        
+
         //考勤统计导出
         public void KqStatictisExport(GetExportKqStatisticDto input)
         {
@@ -505,9 +531,9 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
             cell8.SetCellValue("缺卡");
             cell8.CellStyle = ContentStyle;
 
-        
 
-          
+
+
 
             //遍历数据
             for (int i = 0; i < dt.Result.Count; i++)
@@ -550,7 +576,7 @@ namespace Vickn.Platform.Web.Areas.KqStatistics.Controllers
                 rowCell8.SetCellValue(dt.Result[i].AbnormalDay);
                 rowCell8.CellStyle = ContentStyle;
 
-              
+
 
             }
 

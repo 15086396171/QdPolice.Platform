@@ -26,7 +26,7 @@ namespace Vickn.Platform.Attendences.KqStatistics.Dtos
 
 
         /// <summary>
-        /// 签到类型
+        /// 是否异常
         /// </summary>
         public string IsUnusual { get; set; }
 

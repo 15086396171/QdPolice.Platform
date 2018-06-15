@@ -139,15 +139,16 @@ function DataList() {
                 action: function (data) {
                     var StartTime = $("#StartTime").val();
                     var EndTime = $("#EndTime").val();
-                    var IsUnusual= $("#IsUnusual").val();
-
+                    var IsUnusual = $("#IsUnusual").val();
+                    var KqShiftName = $("#KqShiftName").val();
+                    
                     var index = layer.open({
                         title: "",
                         type: 2,
                         area: ['90%', '550px'],
                         content: abp.appPath +
 
-                        "KqStatistics/KqStatistic/Detail?UserName=" + data.userName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual
+                        "KqStatistics/KqStatistic/Detail?UserName=" + data.userName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&IsUnusual=" + IsUnusual + "&KqShiftName=" + KqShiftName
                     });
 
                     layer.full(index);
@@ -171,8 +172,7 @@ function Export() {
     var EndTime = $("#EndTime").val();
     var KqShiftName = $("#KqShiftName").val();
     var IsUnusual = $("#IsUnusual").val();
-    alert(IsUnusual);
-    window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&KqShiftName=" + KqShiftName;
+    window.location.href = "/KqStatistics/KqStatistic/KqStatictisExport?UserName=" + UserName + "&StartTime=" + StartTime + "&EndTime=" + EndTime + "&KqShiftName=" + KqShiftName + "&IsUnusual=" + IsUnusual;
 
 }
 

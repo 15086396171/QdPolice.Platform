@@ -234,8 +234,9 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
 
             #endregion
+
             //根据考勤班次名称过滤集合
-            if (!string.IsNullOrEmpty(input.KqShiftName))
+            if (input.KqShiftName != "所有")
             {
                 KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
             }
@@ -247,7 +248,7 @@ namespace Vickn.Platform.Attendences.KqStatistics
             }
             else if (input.IsUnusual == "异常")
             {
-                KqStatisticList = KqStatisticList.Where(p=>p.LateDay != 0|| p.LeaveEarlyDay != 0 || p.AbsenteeismDay != 0 || p.AbnormalDay != 0).ToList();
+                KqStatisticList = KqStatisticList.Where(p => p.LateDay != 0 || p.LeaveEarlyDay != 0 || p.AbsenteeismDay != 0 || p.AbnormalDay != 0).ToList();
             }
             else
             {
@@ -450,10 +451,14 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             }
 
-            if (!string.IsNullOrEmpty(input.KqShiftName))
+
+            //根据考勤班次名称过滤集合
+            if (input.KqShiftName != "所有")
             {
                 kqList = kqList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
             }
+
+        
 
 
             ////TODO:根据传入的参数添加过滤条件
@@ -745,11 +750,26 @@ namespace Vickn.Platform.Attendences.KqStatistics
 
             }
 
-            if (!string.IsNullOrEmpty(input.KqShiftName))
+
+            //根据考勤班次名称过滤集合
+            if (input.KqShiftName != "所有")
             {
                 KqStatisticList = KqStatisticList.Where(p => p.KqShiftName == input.KqShiftName).ToList();
             }
 
+            //根据考勤是否异常过滤集合
+            if (input.IsUnusual == "正常")
+            {
+                KqStatisticList = KqStatisticList.Where(p => p.NormalDay != 0 && p.LateDay == 0 && p.LeaveEarlyDay == 0 && p.AbsenteeismDay == 0 && p.AbnormalDay == 0).ToList();
+            }
+            else if (input.IsUnusual == "异常")
+            {
+                KqStatisticList = KqStatisticList.Where(p => p.LateDay != 0 || p.LeaveEarlyDay != 0 || p.AbsenteeismDay != 0 || p.AbnormalDay != 0).ToList();
+            }
+            else
+            {
+                //所有
+            }
 
             #endregion
             return KqStatisticList;

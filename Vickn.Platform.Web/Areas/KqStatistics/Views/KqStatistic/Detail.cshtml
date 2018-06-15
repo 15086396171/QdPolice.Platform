@@ -22,18 +22,33 @@
                 <input type="text" Id="EndTime" onclick="laydate()" value="@ViewBag.EndTime" class="form-control" style="width: 150px;" />
                 <label>@L("KqShift.Name")</label>
                 <select class="form-control valid" id="KqShiftName" name="KqShiftName" aria-invalid="false">
-                    @foreach (var item in ViewBag.KqShiftName)
+                    @foreach (var item in ViewBag.KqShiftList)
                     {
-                        <option value="@item.ShiftName">@item.ShiftName</option>
+                        if (item.ShiftName == ViewBag.KqShiftName)
+                        {
+                            <option value="@item.ShiftName" selected="selected">@item.ShiftName</option>
+                        }
+                        else
+                        {
+                            <option value="@item.ShiftName">@item.ShiftName</option>
+                        }
 
                     }
                 </select>
+
                 <label>@L("QDType")</label>
-                <select class="form-control valid" id="IsUnusual" name="IsUnusual"  aria-invalid="false">
-                    <option value="所有">所有</option>
-                    <option value="正常">正常</option>
-                    <option value="异常">异常</option>
-              
+                <select class="form-control valid" id="IsUnusual" name="IsUnusual" aria-invalid="false">  
+                    @foreach (var item in ViewBag.IsUnusuallist)
+                    {
+                        if (item == ViewBag.IsUnusual)
+                        {
+                            <option value="@item" selected="selected">@item</option>
+                        }
+                        else
+                        {
+                            <option value="@item">@item</option>
+                        }
+                    }
                 </select>
 
 

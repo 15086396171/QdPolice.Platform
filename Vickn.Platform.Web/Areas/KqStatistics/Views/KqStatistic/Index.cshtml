@@ -28,9 +28,11 @@
                 </select>
                 <label>@L("QDType")</label>
                 <select class="form-control valid" id="IsUnusual" name="IsUnusual" aria-invalid="false">
-                    <option value="所有">所有</option>
-                    <option value="正常">正常</option>
-                    <option value="异常">异常</option>
+                    @foreach (var item in ViewBag.IsUnusuallist)
+                    {
+                        <option value="@item">@item</option>
+
+                    }
                 </select>
                 <button type="button" class="btn btn-default" id="research"><span class="glyphicon glyphicon-refresh"></span> @L("ReSearch")</button>
                 <button type="button" class="btn btn-success" id="search" name=""><span class="glyphicon glyphicon-search"></span> @L("Search")</button>
