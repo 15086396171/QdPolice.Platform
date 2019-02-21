@@ -216,8 +216,8 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 list.UserName = entityUserlist[i].Key;
                 var userName = entityUserlist[i].Key;
                 long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
-                long KqShiftId = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId).KqShiftId;
-                list.KqShiftName = _KqShiftUnitRepository.FirstOrDefault(p => p.Id == KqShiftId).ShiftName;
+                long? KqShiftId = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId)?.KqShiftId;
+                list.KqShiftName = _KqShiftUnitRepository.FirstOrDefault(p => p.Id == KqShiftId)?.ShiftName;
                 list.NormalDay = entity.Count(p => p.QDType == 0 && p.UserName == userName);
                 var groupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
                 list.GroupName = groupName;

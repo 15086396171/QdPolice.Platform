@@ -25,6 +25,7 @@ using Vickn.Platform.Zero.Users.Dtos;
 using Vickn.Platform.DataDictionaries;
 using Abp.Organizations;
 using Vickn.Platform.Zero.UserPositions;
+using Vickn.Platform.Attendances.KqShifts;
 
 namespace Vickn.Platform.Users
 {
@@ -38,9 +39,10 @@ namespace Vickn.Platform.Users
         private readonly IRepository<DataDictionary> _dataDictionaryRepository;
         private readonly IRepository<OrganizationUnit, long> _OrganizationUnitsRepository;
         private readonly IRepository<UserPosition, long> _userPositionRepository;
+        private readonly IRepository<KqShiftUser, long> _kqShiftUserRepository;
 
 
-        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository, IRepository<UserPosition, long> userPositionRepository)
+        public UserAppService(IRepository<User, long> userRepository, IPermissionManager permissionManager, RoleManager roleManager, IRepository<UserOrganizationUnit, long> userOrganizationRepository, IRepository<UserRole, long> userRoleRepository, IRepository<DataDictionary> dataDictionaryRepository, IRepository<OrganizationUnit, long> organizationUnitsRepository, IRepository<UserPosition, long> userPositionRepository, IRepository<KqShiftUser, long> kqShiftUserRepository)
         {
             _userRepository = userRepository;
             _permissionManager = permissionManager;
@@ -50,6 +52,8 @@ namespace Vickn.Platform.Users
             _dataDictionaryRepository = dataDictionaryRepository;
             _OrganizationUnitsRepository = organizationUnitsRepository;
             _userPositionRepository = userPositionRepository;
+
+            _kqShiftUserRepository = kqShiftUserRepository;
         }
 
         public async Task ProhibitPermission(ProhibitPermissionInput input)
@@ -359,6 +363,10 @@ namespace Vickn.Platform.Users
             //TODO:删除前的逻辑判断，是否允许删除
             if (_userRepository.FirstOrDefault(input.Id).UserName != PlatformConsts.UserConst.DefaultAdminUserName)
                 await _userRepository.DeleteAsync(input.Id);
+
+            //删除用户关联考勤班次的记录
+            await _kqShiftUserRepository.FirstOrDefaultAsync(p => p.UserId == input.Id);
+
         }
 
         /// <summary>
@@ -447,7 +455,6 @@ namespace Vickn.Platform.Users
         public async Task<List<UserListDto>> GetUserslist()
         {
 
-
             var users = await _userRepository.GetAllListAsync();
 
             return new List<UserListDto>(
@@ -471,8 +478,6 @@ namespace Vickn.Platform.Users
             long rganizationUnitId = rganizationUnit.Id;
 
             var userOrganizationlist = userOrganization.Where(p => p.OrganizationUnitId == rganizationUnitId);
-
-
 
             List<UserLeadersListDto> userLeaderlist = new List<UserLeadersListDto>();
             foreach (var item in userOrganizationlist)
