@@ -25,12 +25,13 @@ namespace Vickn.Platform.Web
             app.UseAbp();
            
             app.UseOAuthBearerAuthentication(AccountController.OAuthBearerOptions);
-            
+
             app.UseCookieAuthentication(new CookieAuthenticationOptions
             {
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
-                CookieName = "Police.Platform.Cookies"
+                CookieName = "Police.Platform.Cookies",
+                CookieHttpOnly = false
             });
            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
