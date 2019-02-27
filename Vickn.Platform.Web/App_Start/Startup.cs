@@ -31,7 +31,7 @@ namespace Vickn.Platform.Web
                 AuthenticationType = DefaultAuthenticationTypes.ApplicationCookie,
                 LoginPath = new PathString("/Account/Login"),
                 CookieName = "Police.Platform.Cookies",
-                CookieHttpOnly = false
+ 
             });
            
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
