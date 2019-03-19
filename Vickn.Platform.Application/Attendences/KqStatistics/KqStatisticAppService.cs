@@ -742,6 +742,13 @@ namespace Vickn.Platform.Attendences.KqStatistics
                 var userName = entityUserlist[i].Key;
 
                 long UserId = _Usersrepository.FirstOrDefault(p => p.UserName == userName).Id;
+
+                var userKqShift = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId);
+                if (userKqShift == null)
+                {
+                    continue;
+                }
+
                 long KqShiftId = _KqShiftUserRepository.FirstOrDefault(p => p.UserId == UserId).KqShiftId;
                 list.KqShiftName = _KqShiftUnitRepository.FirstOrDefault(p => p.Id == KqShiftId).ShiftName;
                 var groupName = userGroupList.FirstOrDefault(p => p.UserName == userName).DisplayName;
