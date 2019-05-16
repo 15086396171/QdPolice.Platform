@@ -233,11 +233,13 @@ namespace Vickn.Platform.Organizations
         public async Task DeleteOrganizationUnit(EntityDto<long> input)
         {
             await _organizationUnitManager.DeleteAsync(input.Id);
+            await _userOrganizationUnitRepository.DeleteAsync(p => p.OrganizationUnitId == input.Id);
         }
 
         public async Task BatchDeleteOrganizationUnitAsync(List<long> input)
         {
             await _organizationUnitRepository.DeleteAsync(p => input.Contains(p.Id));
+            await _userOrganizationUnitRepository.DeleteAsync(p => input.Contains(p.OrganizationUnitId));
         }
 
         public async Task AddUserToOrganizationUnit(UserToOrganizationUnitInput input)

@@ -367,6 +367,9 @@ namespace Vickn.Platform.Users
             //删除用户关联考勤班次的记录
             await _kqShiftUserRepository.DeleteAsync(p => p.UserId == input.Id);
 
+            //删除用户关联部门的记录
+            await _userOrganizationRepository.DeleteAsync(p=>p.UserId==input.Id);
+
         }
 
         /// <summary>
